@@ -1,39 +1,39 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "particle": "minecraft:block/grindstone_side",
-  "disque": "minecraft:block/grindstone_side",
-  "tranche": "minecraft:block/grindstone_round",
-  "pivot": "minecraft:block/grindstone_pivot"
+  "particle": "airain:block/meule_pierre",
+  "disque": "airain:block/meule_pierre",
+  "tranche": "airain:block/meule_tranche",
+  "pivot": "airain:block/banc_laiton"
  },
  "elements": [
   {
    "from": [
-    6.5,
-    17,
-    7.5
+    7,
+    16.5,
+    7
    ],
    "to": [
-    9.5,
-    24,
-    14.5
+    9,
+    24.5,
+    15
    ],
    "faces": {
     "east": {
      "uv": [
-      2,
-      2,
-      14,
-      14
+      4,
+      4,
+      12,
+      12
      ],
      "texture": "#disque"
     },
     "west": {
      "uv": [
-      2,
-      2,
-      14,
-      14
+      4,
+      4,
+      12,
+      12
      ],
      "texture": "#disque"
     },
@@ -41,8 +41,8 @@
      "uv": [
       0,
       0,
-      3,
-      7
+      2,
+      8
      ],
      "texture": "#tranche"
     },
@@ -50,8 +50,8 @@
      "uv": [
       0,
       0,
-      3,
-      7
+      2,
+      8
      ],
      "texture": "#tranche"
     },
@@ -59,8 +59,8 @@
      "uv": [
       0,
       0,
-      3,
-      7
+      2,
+      8
      ],
      "texture": "#tranche"
     },
@@ -68,10 +68,309 @@
      "uv": [
       0,
       0,
-      3,
-      7
+      2,
+      8
      ],
      "texture": "#tranche"
+    }
+   }
+  },
+  {
+   "from": [
+    7,
+    16.5,
+    7
+   ],
+   "to": [
+    9,
+    24.5,
+    15
+   ],
+   "faces": {
+    "east": {
+     "uv": [
+      4,
+      4,
+      12,
+      12
+     ],
+     "texture": "#disque"
+    },
+    "west": {
+     "uv": [
+      4,
+      4,
+      12,
+      12
+     ],
+     "texture": "#disque"
+    },
+    "north": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    }
+   },
+   "rotation": {
+    "angle": 22.5,
+    "axis": "x",
+    "origin": [
+     8,
+     20.5,
+     11
+    ]
+   }
+  },
+  {
+   "from": [
+    7,
+    16.5,
+    7
+   ],
+   "to": [
+    9,
+    24.5,
+    15
+   ],
+   "faces": {
+    "east": {
+     "uv": [
+      4,
+      4,
+      12,
+      12
+     ],
+     "texture": "#disque"
+    },
+    "west": {
+     "uv": [
+      4,
+      4,
+      12,
+      12
+     ],
+     "texture": "#disque"
+    },
+    "north": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    }
+   },
+   "rotation": {
+    "angle": 45,
+    "axis": "x",
+    "origin": [
+     8,
+     20.5,
+     11
+    ]
+   }
+  },
+  {
+   "from": [
+    7,
+    16.5,
+    7
+   ],
+   "to": [
+    9,
+    24.5,
+    15
+   ],
+   "faces": {
+    "east": {
+     "uv": [
+      4,
+      4,
+      12,
+      12
+     ],
+     "texture": "#disque"
+    },
+    "west": {
+     "uv": [
+      4,
+      4,
+      12,
+      12
+     ],
+     "texture": "#disque"
+    },
+    "north": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      2,
+      8
+     ],
+     "texture": "#tranche"
+    }
+   },
+   "rotation": {
+    "angle": -22.5,
+    "axis": "x",
+    "origin": [
+     8,
+     20.5,
+     11
+    ]
+   }
+  },
+  {
+   "from": [
+    6.5,
+    19.5,
+    10
+   ],
+   "to": [
+    9.5,
+    21.5,
+    12
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      0,
+      0,
+      3,
+      2
+     ],
+     "texture": "#pivot"
+    },
+    "south": {
+     "uv": [
+      0,
+      0,
+      3,
+      2
+     ],
+     "texture": "#pivot"
+    },
+    "east": {
+     "uv": [
+      0,
+      0,
+      3,
+      2
+     ],
+     "texture": "#pivot"
+    },
+    "west": {
+     "uv": [
+      0,
+      0,
+      3,
+      2
+     ],
+     "texture": "#pivot"
+    },
+    "up": {
+     "uv": [
+      0,
+      0,
+      3,
+      2
+     ],
+     "texture": "#pivot"
+    },
+    "down": {
+     "uv": [
+      0,
+      0,
+      3,
+      2
+     ],
+     "texture": "#pivot"
     }
    }
   },
