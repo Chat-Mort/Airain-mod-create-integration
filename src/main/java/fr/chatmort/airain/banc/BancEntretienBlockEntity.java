@@ -180,6 +180,16 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 		progres = 0;
 	}
 
+	/**
+	 * Pénalité de lenteur, pour compenser l'absence de coût en expérience :
+	 * ×1 à 256 tr/min, ×1,5 à 128, ×2 à 64, ×2,5 à 32, ×3 à 16 (chaque division par deux de la vitesse ajoute 0,5).
+	 * Une réparation complète (4 unités) prend ainsi 2,5 s à 256 tr/min et 2 min à 16 tr/min.
+	 */
+	public static float penalite(float vitesse) {
+		float v = Math.max(16f, Math.min(256f, vitesse));
+		return 1f + 0.5f * (float) (Math.log(256f / v) / Math.log(2));
+	}
+
 	// ------------------------------------------------------------------ interactions à la main
 	public boolean utiliserObjet(Player player, InteractionHand hand, ItemStack tenu) {
 		// Burette d'huile (objet de KubeJS)
