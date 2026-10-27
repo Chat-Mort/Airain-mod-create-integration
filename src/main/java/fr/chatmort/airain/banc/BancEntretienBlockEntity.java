@@ -48,6 +48,11 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 	 * Durée d'une réparation complète (4 unités) : 2,5 s à 256 tr/min, 7,5 s à 128, 20 s à 64, 50 s à 32, 2 min à 16.
 	 */
 	public static final float TRAVAIL = 200f;
+	/**
+	 * Chaque niveau d'enchantement de l'objet allonge le travail de 25 % (l'enclume, elle, coûterait plus d'expérience).
+	 * Exemple : pioche Efficacité V, Solidité III, Fortune III, Raccommodage = 12 niveaux, soit ×4.
+	 */
+	public static final float PAR_NIVEAU = 0.25f;
 	public static final TagKey<Fluid> HUILES = TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath("airain", "huile_entretien"));
 	public static final ResourceLocation BURETTE_ID = ResourceLocation.fromNamespaceAndPath("kubejs", "huile_machine");
 	public static final ResourceLocation HUILE_ID = ResourceLocation.fromNamespaceAndPath("kubejs", "huile");
@@ -95,9 +100,16 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 	}
 
 	// ------------------------------------------------------------------ travail
+	public static int niveauxEnchantements(ItemStack a) {
+		int total = 0;
+		for (var e : a.getEnchantments().entrySet())
+			total += e.getIntValue();
+		return total;
+	}
+
 	/** Points de travail pour une unité de réparation de cet objet. */
 	public static float travailPour(ItemStack a) {
-		return TRAVAIL;
+		return TRAVAIL * (1 + PAR_NIVEAU * niveauxEnchantements(a));
 	}
 
 	/** Points de travail gagnés par tick à cette vitesse. */

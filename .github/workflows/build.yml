@@ -33,15 +33,13 @@ jobs:
       - name: Publier le résultat sur la branche build
         if: always()
         run: |
-          mkdir -p /tmp/sortie
-          cp build.log /tmp/sortie/ || true
-          cp build/libs/*.jar /tmp/sortie/ 2>/dev/null || true
-          echo "${{ github.sha }} ${{ steps.build.outcome }}" > /tmp/sortie/ETAT.txt
+          mkdir -p /tmp/sortie && cd /tmp/sortie
+          cp $GITHUB_WORKSPACE/build.log . || true
+          cp $GITHUB_WORKSPACE/build/libs/*.jar . 2>/dev/null || true
+          echo "${{ github.sha }} ${{ steps.build.outcome }}" > ETAT.txt
+          git init -q -b build
           git config user.name "compilation"
           git config user.email "actions@github.com"
-          git checkout --orphan build-tmp
-          git rm -rf . > /dev/null
-          cp /tmp/sortie/* .
           git add -A
-          git commit -m "Compilation de ${{ github.sha }} : ${{ steps.build.outcome }}"
-          git push -f origin build-tmp:build
+          git commit -q -m "Compilation de ${{ github.sha }} : ${{ steps.build.outcome }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" build:build
