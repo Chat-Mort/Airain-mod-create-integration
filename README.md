@@ -8,7 +8,8 @@ Petit mod NeoForge 1.21.1 pour le modpack **L'Empire d'Airain**. Il dépend de C
   Elle répare l'équipement comme une enclume, mais avec de l'huile de machine (`kubejs:huile`) au lieu de l'expérience.
   - Matériau de réparation : chaque unité rend 25 % de la durabilité. Deux objets identiques : durabilités additionnées + 12 %.
   - 1 000 mB d'huile par unité (deux burettes `kubejs:huile_machine`). Réservoir de 8 000 mB.
-  - Arbre de transmission sur l'axe horizontal ; 16 tr/min minimum. Une tranche de 25 % prend 30 s à 16 tr/min et 7,5 s à 256 tr/min (racine carrée de la vitesse), +20 % par niveau d'enchantement de l'objet.
+  - Arbre de transmission sur l'axe horizontal ; 16 tr/min minimum. Pénalité de lenteur ×1 à 256 tr/min, ×1,5 à 128, ×2 à 64, ×2,5 à 32, ×3 à 16 :
+    réparation complète en 2,5 s à 256 tr/min, 7,5 s à 128, 20 s à 64, 50 s à 32, 2 min à 16.
   - Entonnoirs et tapis : l'objet abîmé puis le matériau entrent par toutes les faces, l'objet réparé ressort.
 
 L'huile et la burette sont fournies par les scripts KubeJS du modpack.
