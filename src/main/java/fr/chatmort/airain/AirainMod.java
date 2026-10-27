@@ -7,6 +7,7 @@ import fr.chatmort.airain.banc.BancEntretienBlockEntity;
 import fr.chatmort.airain.enchant.DesenchanteurBlock;
 import fr.chatmort.airain.enchant.DesenchanteurBlockEntity;
 import fr.chatmort.airain.enchant.TableEmpireBlock;
+import fr.chatmort.airain.enchant.TableEmpireBlockEntity;
 import fr.chatmort.airain.enchant.TableEmpireMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -69,6 +70,9 @@ public class AirainMod {
 		() -> new TableEmpireBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_ORANGE).strength(5f, 1200f).requiresCorrectToolForDrops().sound(SoundType.COPPER)
 			.lightLevel(s -> 7).noOcclusion()));
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TableEmpireBlockEntity>> TABLE_BE =
+		BLOCK_ENTITIES.register("table_enchantement",
+			() -> BlockEntityType.Builder.of(TableEmpireBlockEntity::new, TABLE.get()).build(null));
 	public static final DeferredItem<BlockItem> TABLE_ITEM = ITEMS.register("table_enchantement",
 		() -> new BlockItem(TABLE.get(), new Item.Properties()));
 	public static final DeferredHolder<MenuType<?>, MenuType<TableEmpireMenu>> TABLE_MENU = MENUS.register("table_enchantement",
