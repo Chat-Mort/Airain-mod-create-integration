@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["PAP", "CDC", "SKS"],
+  "key": {
+    "P": {"item": "create:copper_sheet"},
+    "A": {"item": "minecraft:anvil"},
+    "C": {"item": "create:copper_casing"},
+    "D": {"item": "create:item_drain"},
+    "S": {"item": "create:iron_sheet"},
+    "K": {"item": "create:cogwheel"}
+  },
+  "result": {"id": "airain:banc_entretien", "count": 1}
+}

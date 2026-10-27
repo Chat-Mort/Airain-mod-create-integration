@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "horizontal_axis=z": { "model": "airain:block/banc_entretien" },
+    "horizontal_axis=x": { "model": "airain:block/banc_entretien", "y": 90 }
+  }
+}
