@@ -43,7 +43,14 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 	public static final int CAPACITE = 8000;
 	public static final int COUT = 1000;
 	public static final int BURETTE = 500;
-	public static final float TRAVAIL = 200f;          // 16 tr/min : 10 s par unité ; 256 tr/min : moins d'une seconde
+	/**
+	 * Travail par unité de réparation, en « points ». Chaque tick ajoute sqrt(vitesse / 16) points :
+	 * 16 tr/min = 1 point, 64 = 2, 256 = 4. Tourner plus vite aide, mais de moins en moins.
+	 * Sans enchantement : 30 s par unité à 16 tr/min, 7,5 s à 256 tr/min.
+	 */
+	public static final float TRAVAIL = 600f;
+	/** Chaque niveau d'enchantement allonge le travail de 20 % (l'enclume, elle, coûte plus d'expérience). */
+	public static final float PAR_NIVEAU = 0.2f;
 	public static final TagKey<Fluid> HUILES = TagKey.create(Registries.FLUID, ResourceLocation.fromNamespaceAndPath("airain", "huile_entretien"));
 	public static final ResourceLocation BURETTE_ID = ResourceLocation.fromNamespaceAndPath("kubejs", "huile_machine");
 	public static final ResourceLocation HUILE_ID = ResourceLocation.fromNamespaceAndPath("kubejs", "huile");
@@ -91,6 +98,18 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 	}
 
 	// ------------------------------------------------------------------ travail
+	public static int niveauxEnchantements(ItemStack a) {
+		int total = 0;
+		for (var e : a.getEnchantments().entrySet())
+			total += e.getIntValue();
+		return total;
+	}
+
+	/** Points de travail pour une unité de réparation de cet objet. */
+	public static float travailPour(ItemStack a) {
+		return TRAVAIL * (1 + PAR_NIVEAU * niveauxEnchantements(a));
+	}
+
 	@Override
 	public void tick() {
 		super.tick();
@@ -131,8 +150,8 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 		if (vitesse < 16 || isOverStressed())
 			return false;
 
-		progres += vitesse / 16f;
-		if (progres < TRAVAIL)
+		progres += (float) Math.sqrt(vitesse / 16f);
+		if (progres < travailPour(a))
 			return true;
 		progres = 0;
 
@@ -263,6 +282,12 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 			int pct = 100 - a.getDamageValue() * 100 / Math.max(1, a.getMaxDamage());
 			tooltip.add(Component.literal("     ").append(a.getHoverName().copy().withStyle(ChatFormatting.WHITE))
 				.append(Component.literal(" : " + pct + " %").withStyle(ChatFormatting.AQUA)));
+			float vitesse = Math.abs(getSpeed());
+			if (vitesse >= 16) {
+				int secondes = Math.round(travailPour(a) / (float) Math.sqrt(vitesse / 16f) / 20f);
+				tooltip.add(Component.literal("     ").append(Component.translatable("airain.banc.duree", secondes)
+					.withStyle(ChatFormatting.GRAY)));
+			}
 		}
 		return true;
 	}
