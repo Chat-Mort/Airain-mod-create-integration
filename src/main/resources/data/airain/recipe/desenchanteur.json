@@ -1,0 +1,33 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "PAP",
+  "CGC",
+  "SKS"
+ ],
+ "key": {
+  "P": {
+   "item": "create:brass_sheet"
+  },
+  "A": {
+   "item": "minecraft:amethyst_shard"
+  },
+  "C": {
+   "item": "create:brass_casing"
+  },
+  "G": {
+   "item": "minecraft:grindstone"
+  },
+  "S": {
+   "item": "create:iron_sheet"
+  },
+  "K": {
+   "item": "create:cogwheel"
+  }
+ },
+ "result": {
+  "id": "airain:desenchanteur",
+  "count": 1
+ }
+}

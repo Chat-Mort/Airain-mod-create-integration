@@ -4,6 +4,17 @@ import com.simibubi.create.api.stress.BlockStressValues;
 
 import fr.chatmort.airain.banc.BancEntretienBlock;
 import fr.chatmort.airain.banc.BancEntretienBlockEntity;
+import fr.chatmort.airain.enchant.DesenchanteurBlock;
+import fr.chatmort.airain.enchant.DesenchanteurBlockEntity;
+import fr.chatmort.airain.enchant.TableEmpireBlock;
+import fr.chatmort.airain.enchant.TableEmpireMenu;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -35,6 +46,7 @@ public class AirainMod {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ID);
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ID);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ID);
+	public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, ID);
 
 	public static final DeferredBlock<BancEntretienBlock> BANC = BLOCKS.register("banc_entretien",
 		() -> new BancEntretienBlock(BlockBehaviour.Properties.of()
@@ -52,10 +64,32 @@ public class AirainMod {
 		BLOCK_ENTITIES.register("banc_entretien",
 			() -> BlockEntityType.Builder.of(BancEntretienBlockEntity::new, BANC.get()).build(null));
 
+	// ---- enchantement : table de l'Empire et désenchanteur
+	public static final DeferredBlock<TableEmpireBlock> TABLE = BLOCKS.register("table_enchantement",
+		() -> new TableEmpireBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.COLOR_ORANGE).strength(5f, 1200f).requiresCorrectToolForDrops().sound(SoundType.COPPER)
+			.lightLevel(s -> 7).noOcclusion()));
+	public static final DeferredItem<BlockItem> TABLE_ITEM = ITEMS.register("table_enchantement",
+		() -> new BlockItem(TABLE.get(), new Item.Properties()));
+	public static final DeferredHolder<MenuType<?>, MenuType<TableEmpireMenu>> TABLE_MENU = MENUS.register("table_enchantement",
+		() -> IMenuTypeExtension.create(TableEmpireMenu::new));
+
+	public static final DeferredBlock<DesenchanteurBlock> DESENCH = BLOCKS.register("desenchanteur",
+		() -> new DesenchanteurBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f).requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion()));
+	public static final DeferredItem<BlockItem> DESENCH_ITEM = ITEMS.register("desenchanteur",
+		() -> new BlockItem(DESENCH.get(), new Item.Properties()));
+	@SuppressWarnings("DataFlowIssue")
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DesenchanteurBlockEntity>> DESENCH_BE =
+		BLOCK_ENTITIES.register("desenchanteur",
+			() -> BlockEntityType.Builder.of(DesenchanteurBlockEntity::new, DESENCH.get()).build(null));
+
 	public AirainMod(IEventBus bus) {
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
 		BLOCK_ENTITIES.register(bus);
+		MENUS.register(bus);
+		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
 		bus.addListener(this::setup);
 		bus.addListener(this::capacites);
 		bus.addListener(this::ongletCreatif);
@@ -63,16 +97,36 @@ public class AirainMod {
 
 	private void setup(FMLCommonSetupEvent event) {
 		// Impact de stress à 1 tr/min, comme la presse mécanique
-		event.enqueueWork(() -> BlockStressValues.IMPACTS.register(BANC.get(), () -> 8.0));
+		event.enqueueWork(() -> {
+			BlockStressValues.IMPACTS.register(BANC.get(), () -> 8.0);
+			BlockStressValues.IMPACTS.register(DESENCH.get(), () -> 8.0);
+		});
 	}
 
 	private void capacites(RegisterCapabilitiesEvent event) {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BANC_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, BANC_BE.get(), (be, side) -> be.reservoir);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.automatisation);
+		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.reservoir);
 	}
 
 	private void ongletCreatif(BuildCreativeModeTabContentsEvent event) {
-		if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS)
+		if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
 			event.accept(BANC_ITEM.get());
+			event.accept(TABLE_ITEM.get());
+			event.accept(DESENCH_ITEM.get());
+		}
+	}
+
+	/** La table d'enchantement vanilla ne s'ouvre plus : c'est la table de l'Empire qui enchante. */
+	private void tableVanilla(PlayerInteractEvent.RightClickBlock event) {
+		if (!event.getLevel().getBlockState(event.getPos()).is(Blocks.ENCHANTING_TABLE))
+			return;
+		if (event.getEntity().isShiftKeyDown() && !event.getItemStack().isEmpty())
+			return;   // laisser poser un bloc contre la table
+		event.setCanceled(true);
+		event.setCancellationResult(InteractionResult.SUCCESS);
+		if (!event.getLevel().isClientSide)
+			event.getEntity().displayClientMessage(Component.translatable("airain.table.vanilla_bloquee"), true);
 	}
 }

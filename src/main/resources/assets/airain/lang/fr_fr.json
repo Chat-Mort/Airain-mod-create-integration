@@ -3,5 +3,14 @@
   "airain.banc.huile": "Huile : %s / %s mB",
   "airain.banc.plein": "Le réservoir est plein.",
   "airain.banc.lunettes.titre": "Banc d'entretien :",
-  "airain.banc.duree": "%s s par tranche de 25 %%"
+  "airain.banc.duree": "%s s par tranche de 25 %%",
+  "block.airain.table_enchantement": "Table d'enchantement de l'Empire",
+  "block.airain.desenchanteur": "Désenchanteur",
+  "airain.table.vide": "Aucun livre enchanté dans les bibliothèques sculptées autour de la table (3 blocs).",
+  "airain.table.cout": "Coût : %s niveaux, %s lapis-lazuli",
+  "airain.table.sans_objet": "Posez un objet à enchanter.",
+  "airain.table.incompatible": "Impossible sur cet objet.",
+  "airain.table.vanilla_bloquee": "Cette vieille table ne répond plus. Utilisez la table d'enchantement de l'Empire.",
+  "airain.desench.lunettes.titre": "Désenchanteur :",
+  "airain.desench.enchantements": " enchantement(s)"
 }

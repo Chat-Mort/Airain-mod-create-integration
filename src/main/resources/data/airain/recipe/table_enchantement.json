@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  " P ",
+  "CEC",
+  "SSS"
+ ],
+ "key": {
+  "P": {
+   "item": "create:precision_mechanism"
+  },
+  "C": {
+   "item": "create:brass_casing"
+  },
+  "E": {
+   "item": "minecraft:enchanting_table"
+  },
+  "S": {
+   "item": "create:brass_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:table_enchantement",
+  "count": 1
+ }
+}

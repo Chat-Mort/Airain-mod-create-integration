@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/desenchanteur/block"
+  },
+  "facing=east": {
+   "model": "airain:block/desenchanteur/block",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/desenchanteur/block",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/desenchanteur/block",
+   "y": 270
+  }
+ }
+}

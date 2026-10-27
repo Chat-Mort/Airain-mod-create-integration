@@ -5,6 +5,9 @@ import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 
 import dev.engine_room.flywheel.lib.visualization.SimpleBlockEntityVisualizer;
 import fr.chatmort.airain.banc.BancEntretienRenderer;
+import fr.chatmort.airain.enchant.DesenchanteurRenderer;
+import fr.chatmort.airain.enchant.TableEmpireScreen;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -17,10 +20,12 @@ public class AirainClient {
 		AirainPartials.init();
 		bus.addListener(this::rendus);
 		bus.addListener(this::setup);
+		bus.addListener(this::ecrans);
 	}
 
 	private void rendus(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerBlockEntityRenderer(AirainMod.BANC_BE.get(), BancEntretienRenderer::new);
+		event.registerBlockEntityRenderer(AirainMod.DESENCH_BE.get(), DesenchanteurRenderer::new);
 	}
 
 	private void setup(FMLClientSetupEvent event) {
@@ -30,5 +35,13 @@ public class AirainClient {
 			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
 			.skipVanillaRender(be -> false)
 			.apply();
+		SimpleBlockEntityVisualizer.builder(AirainMod.DESENCH_BE.get())
+			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
+			.skipVanillaRender(be -> false)
+			.apply();
+	}
+
+	private void ecrans(RegisterMenuScreensEvent event) {
+		event.register(AirainMod.TABLE_MENU.get(), TableEmpireScreen::new);
 	}
 }
