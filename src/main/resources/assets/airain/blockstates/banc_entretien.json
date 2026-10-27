@@ -1,6 +1,19 @@
 {
-  "variants": {
-    "horizontal_axis=z": { "model": "airain:block/banc_entretien" },
-    "horizontal_axis=x": { "model": "airain:block/banc_entretien", "y": 90 }
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/banc_entretien/block"
+  },
+  "facing=east": {
+   "model": "airain:block/banc_entretien/block",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/banc_entretien/block",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/banc_entretien/block",
+   "y": 270
   }
+ }
 }

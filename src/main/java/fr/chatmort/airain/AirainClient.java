@@ -1,5 +1,6 @@
 package fr.chatmort.airain;
 
+import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 
 import dev.engine_room.flywheel.lib.visualization.SimpleBlockEntityVisualizer;
@@ -13,6 +14,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 @Mod(value = AirainMod.ID, dist = Dist.CLIENT)
 public class AirainClient {
 	public AirainClient(IEventBus bus) {
+		AirainPartials.init();
 		bus.addListener(this::rendus);
 		bus.addListener(this::setup);
 	}
@@ -22,9 +24,10 @@ public class AirainClient {
 	}
 
 	private void setup(FMLClientSetupEvent event) {
-		// Avec Flywheel, l'arbre est dessiné par une instance ; le rendu classique reste actif pour les objets posés dessus.
+		// Avec Flywheel, le rouage (celui de la meule de Create) est une instance ;
+		// le rendu classique reste actif pour la meule en pierre, la jauge et les objets.
 		SimpleBlockEntityVisualizer.builder(AirainMod.BANC_BE.get())
-			.factory(SingleAxisRotatingVisual::shaft)
+			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
 			.skipVanillaRender(be -> false)
 			.apply();
 	}
