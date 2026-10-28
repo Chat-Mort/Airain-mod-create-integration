@@ -48,6 +48,18 @@ public class AirainMod {
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ID);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ID);
 	public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, ID);
+	public static final DeferredRegister<net.minecraft.world.item.CreativeModeTab> ONGLETS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ID);
+
+	/** Un seul onglet créatif pour tout l'Empire : les objets du mod, puis ceux du pack (KubeJS). */
+	public static final DeferredHolder<net.minecraft.world.item.CreativeModeTab, net.minecraft.world.item.CreativeModeTab> ONGLET = ONGLETS.register("empire",
+		() -> net.minecraft.world.item.CreativeModeTab.builder()
+			.title(Component.translatable("itemGroup.airain.empire"))
+			.icon(() -> new net.minecraft.world.item.ItemStack(AirainMod.FONDATION_ITEM.get()))
+			.displayItems((params, sortie) -> {
+				for (var h : ITEMS.getEntries()) sortie.accept(h.get());
+				for (var e : net.minecraft.core.registries.BuiltInRegistries.ITEM.entrySet())
+					if (e.getKey().location().getNamespace().equals("kubejs")) sortie.accept(e.getValue());
+			}).build());
 
 	public static final DeferredBlock<BancEntretienBlock> BANC = BLOCKS.register("banc_entretien",
 		() -> new BancEntretienBlock(BlockBehaviour.Properties.of()
@@ -124,10 +136,12 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		bus.addListener((net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent e) -> e.registrar("1")
 			.playToServer(fr.chatmort.airain.fondation.ConfigurerFondation.TYPE, fr.chatmort.airain.fondation.ConfigurerFondation.CODEC,
-				fr.chatmort.airain.fondation.ConfigurerFondation::traiter));
+				fr.chatmort.airain.fondation.ConfigurerFondation::traiter)
+			.playToClient(fr.chatmort.airain.fondation.TitreFondation.TYPE, fr.chatmort.airain.fondation.TitreFondation.CODEC,
+				(m, ctx) -> fr.chatmort.airain.fondation.HudFondation.recevoir(m, ctx)));
 		bus.addListener(this::setup);
 		bus.addListener(this::capacites);
-		bus.addListener(this::ongletCreatif);
+		ONGLETS.register(bus);
 	}
 
 	private void setup(FMLCommonSetupEvent event) {
@@ -143,20 +157,6 @@ public class AirainMod {
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, BANC_BE.get(), (be, side) -> be.reservoir);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.reservoir);
-	}
-
-	private void ongletCreatif(BuildCreativeModeTabContentsEvent event) {
-		if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-			event.accept(BANC_ITEM.get());
-			event.accept(TABLE_ITEM.get());
-			event.accept(DESENCH_ITEM.get());
-			event.accept(SOCLE_ITEM.get());
-			event.accept(FONDATION_ITEM.get());
-		}
-		if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
-			event.accept(ENCRE.get());
-		if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
-			event.accept(REGISTRE.get());
 	}
 
 	/** La table d'enchantement vanilla ne s'ouvre plus : c'est la table de l'Empire qui enchante. */

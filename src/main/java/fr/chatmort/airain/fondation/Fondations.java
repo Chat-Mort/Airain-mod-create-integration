@@ -6,9 +6,6 @@ import java.util.UUID;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;
-import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
-import net.minecraft.network.protocol.game.ClientboundSetTitlesAnimationPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
@@ -30,10 +27,7 @@ public final class Fondations {
 			if (cle.equals(avant)) continue;
 			derniere.put(p.getUUID(), cle);
 			if (f != null) {
-				String nom = f.nom().isEmpty() ? Component.translatable("airain.fondation.sans_nom").getString() : f.nom();
-				p.connection.send(new ClientboundSetTitlesAnimationPacket(10, 50, 15));
-				p.connection.send(new ClientboundSetSubtitleTextPacket(Component.translatable("airain.fondation.sous_titre").withStyle(ChatFormatting.GRAY)));
-				p.connection.send(new ClientboundSetTitleTextPacket(Component.literal(nom).withStyle(ChatFormatting.GOLD)));
+				net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(p, new TitreFondation(f.nom()));
 			} else if (!avant.isEmpty()) {
 				p.displayClientMessage(Component.translatable("airain.fondation.quitte").withStyle(ChatFormatting.GRAY), true);
 			}

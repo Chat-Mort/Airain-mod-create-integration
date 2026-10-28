@@ -24,7 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 /** Socle de l'Empire : on y expose un trophée de boss ; tant qu'il y reste, son effet profite à toute l'équipe. */
 public class SocleBlock extends Block implements EntityBlock {
-	private static final VoxelShape FORME = Shapes.or(Block.box(1, 0, 1, 15, 2, 15), Block.box(3, 2, 3, 13, 10, 13), Block.box(1, 10, 1, 15, 12, 15));
+	private static final VoxelShape FORME = Shapes.or(Block.box(0, 0, 0, 16, 4, 16), Block.box(3, 4, 3, 13, 10, 13), Block.box(1, 10, 1, 15, 13, 15));
 
 	public SocleBlock(Properties p) {
 		super(p);

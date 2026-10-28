@@ -60,7 +60,8 @@ public class FondationBlock extends Block implements EntityBlock {
 	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
 		BlockPos pos = ctx.getClickedPos();
 		Level level = ctx.getLevel();
-		if (pos.getY() >= level.getMaxBuildHeight() - 1 || !level.getBlockState(pos.above()).canBeReplaced(ctx))
+		if (pos.getY() >= level.getMaxBuildHeight() - 2 || !level.getBlockState(pos.above()).canBeReplaced(ctx)
+			|| !level.getBlockState(pos.above(2)).canBeReplaced(ctx))   // le haut du mât et la bannière dépassent d'un bloc
 			return null;
 		return defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
 	}

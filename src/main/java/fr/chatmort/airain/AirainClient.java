@@ -21,6 +21,8 @@ public class AirainClient {
 		bus.addListener(this::rendus);
 		bus.addListener(this::setup);
 		bus.addListener(this::ecrans);
+		bus.addListener((net.neoforged.neoforge.client.event.RegisterGuiLayersEvent e) -> e.registerAboveAll(
+			net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "fondation"), fr.chatmort.airain.fondation.HudFondation::rendre));
 	}
 
 	private void rendus(EntityRenderersEvent.RegisterRenderers event) {

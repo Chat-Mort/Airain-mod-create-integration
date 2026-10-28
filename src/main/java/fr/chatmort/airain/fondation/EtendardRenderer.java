@@ -71,17 +71,17 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	private static float[] point(int style, float u, float v, float t, float decal) {
 		switch (style) {
 			case 0 -> {   // potence : suspendue sous le bras, sur le côté
-				float x = 16 + u * 11, y = 28.5f - v * 22, z = 8;
+				float x = 16 + u * 11, y = 44.5f - v * 22, z = 8;
 				float o = 1.3f * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.10f + v * 4f + u * 2f);
 				return new float[] {x, y, z + o + decal};
 			}
 			case 1 -> {   // vexillum : devant le piédestal, sous la traverse
-				float x = 1 + u * 14, y = 28.5f - v * 28, z = -1.2f;
+				float x = 1 + u * 14, y = 44.5f - v * 28, z = -1.2f;
 				float o = 1.1f * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.09f + v * 3.5f + u * 1.5f);
 				return new float[] {x, y, z - Math.abs(o) * 0.6f + o * 0.4f + decal};
 			}
 			default -> {  // cérémonie : le long du mât, flotte à l'horizontale ; u = hauteur, v = longueur
-				float s = v, x = 9.5f + s * 16, y = 30.5f - u * 12 - 0.8f * s * s, z = 8;
+				float s = v, x = 9.5f + s * 16, y = 46.5f - u * 12 - 0.8f * s * s, z = 8;
 				float o = 1.6f * (float) Math.pow(s, 1.1) * Mth.sin(t * 0.16f - s * 5f + u * 1f);
 				return new float[] {x, y, z + o + decal};
 			}
@@ -99,6 +99,6 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	}
 
 	public AABB getRenderBoundingBox(FondationBlockEntity be) {
-		return new AABB(be.getBlockPos()).inflate(1.5, 0, 1.5).expandTowards(0, 2, 0);
+		return new AABB(be.getBlockPos()).inflate(1.5, 0, 1.5).expandTowards(0, 3, 0);
 	}
 }

@@ -22,7 +22,7 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 			return;
 		float t = be.getLevel().getGameTime() + pt;
 		ms.pushPose();
-		ms.translate(0.5, 1.15 + Mth.sin(t / 20f) * 0.04, 0.5);
+		ms.translate(0.5, 1.22 + Mth.sin(t / 20f) * 0.04, 0.5);
 		ms.mulPose(Axis.YP.rotationDegrees(t * 1.5f));
 		ms.scale(0.75f, 0.75f, 0.75f);
 		Minecraft.getInstance().getItemRenderer().renderStatic(p, ItemDisplayContext.FIXED, light, OverlayTexture.NO_OVERLAY, ms, buffers, be.getLevel(), 0);
