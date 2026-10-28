@@ -81,6 +81,16 @@ public class AirainMod {
 	public static final DeferredBlock<DesenchanteurBlock> DESENCH = BLOCKS.register("desenchanteur",
 		() -> new DesenchanteurBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f).requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion()));
+	/** Socle de l'Empire : expose un trophée de boss, effet permanent pour toute l'équipe. */
+	public static final DeferredBlock<fr.chatmort.airain.trophee.SocleBlock> SOCLE = BLOCKS.register("socle_trophee",
+		() -> new fr.chatmort.airain.trophee.SocleBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.GOLD).strength(3f, 9f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));
+	public static final DeferredItem<BlockItem> SOCLE_ITEM = ITEMS.register("socle_trophee",
+		() -> new BlockItem(SOCLE.get(), new Item.Properties()));
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.trophee.SocleBlockEntity>> SOCLE_BE =
+		BLOCK_ENTITIES.register("socle_trophee",
+			() -> BlockEntityType.Builder.of(fr.chatmort.airain.trophee.SocleBlockEntity::new, SOCLE.get()).build(null));
+
 	/** Encre runique : consommée quand la table applique le niveau ouvert par un tome ancien. */
 	public static final DeferredItem<Item> ENCRE = ITEMS.register("encre_runique",
 		() -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
@@ -97,6 +107,8 @@ public class AirainMod {
 		BLOCK_ENTITIES.register(bus);
 		MENUS.register(bus);
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		bus.addListener(this::setup);
 		bus.addListener(this::capacites);
 		bus.addListener(this::ongletCreatif);
@@ -122,6 +134,7 @@ public class AirainMod {
 			event.accept(BANC_ITEM.get());
 			event.accept(TABLE_ITEM.get());
 			event.accept(DESENCH_ITEM.get());
+			event.accept(SOCLE_ITEM.get());
 		}
 		if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
 			event.accept(ENCRE.get());

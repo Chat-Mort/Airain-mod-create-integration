@@ -1,0 +1,215 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "particle": "airain:block/banc_laiton",
+  "laiton": "airain:block/banc_laiton",
+  "cote": "airain:block/socle_cote",
+  "dessus": "airain:block/socle_dessus"
+ },
+ "elements": [
+  {
+   "from": [
+    1,
+    0,
+    1
+   ],
+   "to": [
+    15,
+    2,
+    15
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      1,
+      14,
+      15,
+      16
+     ],
+     "texture": "#laiton"
+    },
+    "south": {
+     "uv": [
+      1,
+      14,
+      15,
+      16
+     ],
+     "texture": "#laiton"
+    },
+    "east": {
+     "uv": [
+      1,
+      14,
+      15,
+      16
+     ],
+     "texture": "#laiton"
+    },
+    "west": {
+     "uv": [
+      1,
+      14,
+      15,
+      16
+     ],
+     "texture": "#laiton"
+    },
+    "up": {
+     "uv": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "texture": "#laiton"
+    },
+    "down": {
+     "uv": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    3,
+    2,
+    3
+   ],
+   "to": [
+    13,
+    10,
+    13
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      3,
+      6,
+      13,
+      14
+     ],
+     "texture": "#cote"
+    },
+    "south": {
+     "uv": [
+      3,
+      6,
+      13,
+      14
+     ],
+     "texture": "#cote"
+    },
+    "east": {
+     "uv": [
+      3,
+      6,
+      13,
+      14
+     ],
+     "texture": "#cote"
+    },
+    "west": {
+     "uv": [
+      3,
+      6,
+      13,
+      14
+     ],
+     "texture": "#cote"
+    },
+    "up": {
+     "uv": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "texture": "#cote"
+    },
+    "down": {
+     "uv": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    10,
+    1
+   ],
+   "to": [
+    15,
+    12,
+    15
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      1,
+      4,
+      15,
+      6
+     ],
+     "texture": "#laiton"
+    },
+    "south": {
+     "uv": [
+      1,
+      4,
+      15,
+      6
+     ],
+     "texture": "#laiton"
+    },
+    "east": {
+     "uv": [
+      1,
+      4,
+      15,
+      6
+     ],
+     "texture": "#laiton"
+    },
+    "west": {
+     "uv": [
+      1,
+      4,
+      15,
+      6
+     ],
+     "texture": "#laiton"
+    },
+    "up": {
+     "uv": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "texture": "#dessus"
+    },
+    "down": {
+     "uv": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "texture": "#laiton"
+    }
+   }
+  }
+ ]
+}

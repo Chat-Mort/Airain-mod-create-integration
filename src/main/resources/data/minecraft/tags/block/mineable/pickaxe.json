@@ -1,1 +1,8 @@
-{"values": ["airain:banc_entretien", "airain:table_enchantement", "airain:desenchanteur"]}
+{
+ "values": [
+  "airain:banc_entretien",
+  "airain:table_enchantement",
+  "airain:desenchanteur",
+  "airain:socle_trophee"
+ ]
+}

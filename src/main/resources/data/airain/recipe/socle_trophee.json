@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  " G ",
+  "SCS",
+  "SSS"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:gold_block"
+  },
+  "S": {
+   "item": "create:brass_sheet"
+  },
+  "C": {
+   "item": "create:brass_casing"
+  }
+ },
+ "result": {
+  "id": "airain:socle_trophee",
+  "count": 1
+ }
+}

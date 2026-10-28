@@ -1,0 +1,12 @@
+{
+ "replace": false,
+ "values": [
+  "#airain:trophees/feu",
+  "#airain:trophees/regeneration",
+  "#airain:trophees/chute",
+  "#airain:trophees/vision",
+  "#airain:trophees/resistance",
+  "#airain:trophees/hate",
+  "#airain:trophees/force"
+ ]
+}
