@@ -30,7 +30,8 @@ import java.util.Set;
 public final class Bibliotheque {
 	public static final int RAYON = 3;
 
-	public record Entree(Holder<Enchantment> enchantement, int niveauMax) {}
+	/** niveauMax : le plus haut niveau proposé ; tome : ce niveau-là vient d'un tome ancien (un seul compte par enchantement). */
+	public record Entree(Holder<Enchantment> enchantement, int niveauMax, boolean tome) {}
 
 	private Bibliotheque() {}
 
@@ -49,7 +50,7 @@ public final class Bibliotheque {
 		return ench.keySet().iterator().next();
 	}
 
-	/** Au-delà du maximum vanilla : seulement avec un tome ancien, qui est consommé. */
+	/** Au-delà du maximum vanilla : coût renforcé (40 niveaux, double lapis). */
 	public static boolean depasse(Holder<Enchantment> h, int niveau) {
 		return niveau > h.value().getMaxLevel();
 	}
@@ -76,7 +77,8 @@ public final class Bibliotheque {
 			}
 		}
 		List<Entree> liste = new ArrayList<>();
-		trouve.forEach((h, n) -> liste.add(new Entree(h, tomes.contains(h) && n >= h.value().getMaxLevel() ? n + 1 : n)));
+		// un tome ancien ajoute UN niveau à celui du meilleur livre, quel qu'il soit ; plusieurs tomes du même enchantement ne comptent qu'une fois
+		trouve.forEach((h, n) -> liste.add(tomes.contains(h) ? new Entree(h, n + 1, true) : new Entree(h, n, false)));
 		return liste;
 	}
 

@@ -13,5 +13,6 @@
   "airain.table.vanilla_bloquee": "This old table no longer answers. Use the Empire Enchanting Table.",
   "airain.desench.lunettes.titre": "Disenchanter:",
   "airain.desench.enchantements": " enchantment(s)",
-  "airain.table.tome": "Beyond the maximum: consumes the ancient tome kept in a bookshelf."
+  "airain.table.tome": "Unlocked by an ancient tome: the tome is consumed.",
+  "airain.table.depasse": "Beyond the maximum: increased cost."
 }

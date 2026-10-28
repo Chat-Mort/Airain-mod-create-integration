@@ -96,12 +96,17 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 			nombre.set(n);
 			for (int i = 0; i < n; i++) {
 				ids[i].set(reg.getId(liste.get(i).enchantement().value()));
-				niveaux[i].set(liste.get(i).niveauMax());
+				niveaux[i].set(liste.get(i).niveauMax() + (liste.get(i).tome() ? 100 : 0));
 			}
 		});
 	}
 
-	public record Ligne(Holder<Enchantment> enchantement, int niveauMax) {}
+	public record Ligne(Holder<Enchantment> enchantement, int niveauMax, boolean tome) {
+		/** Ce niveau est-il celui qu'ouvre le tome ancien (et qui le consomme) ? */
+		public boolean parTome(int niveau) {
+			return tome && niveau == niveauMax;
+		}
+	}
 
 	/** Le répertoire tel que le voit ce côté (client ou serveur). */
 	public List<Ligne> lignes(Level level) {
@@ -110,7 +115,7 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 		for (int i = 0; i < nombre.get(); i++) {
 			Enchantment e = reg.byId(ids[i].get());
 			if (e != null)
-				l.add(new Ligne(reg.wrapAsHolder(e), niveaux[i].get()));
+				l.add(new Ligne(reg.wrapAsHolder(e), niveaux[i].get() % 100, niveaux[i].get() >= 100));
 		}
 		return l;
 	}
@@ -138,6 +143,7 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 		if (index < 0 || index >= l.size() || niveau < 1 || niveau > l.get(index).niveauMax())
 			return false;
 		Holder<Enchantment> h = l.get(index).enchantement();
+		boolean parTome = l.get(index).parTome(niveau);
 		ItemStack objet = table.getItem(0);
 		ItemStack lapis = table.getItem(1);
 		if (!Bibliotheque.applicable(objet, h, niveau))
@@ -148,7 +154,7 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 
 		boolean[] ok = {true};
 		access.execute((level, pos) -> {
-			if (Bibliotheque.depasse(h, niveau) && !Bibliotheque.consommerTome(level, pos, h)) {
+			if (parTome && !Bibliotheque.consommerTome(level, pos, h)) {
 				ok[0] = false;
 				return;
 			}

@@ -88,7 +88,7 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 		Bouton survole = null;
 		for (Bouton b : boutons()) {
 			boolean dessus = mouseX >= b.x && mouseX < b.x + BOUTON && mouseY >= b.y && mouseY < b.y + 14;
-			boolean tome = Bibliotheque.depasse(b.ligne.enchantement(), b.niveau);
+			boolean tome = b.ligne.parTome(b.niveau);
 			int fond = !b.actif ? (tome ? 0xFF3A3018 : 0xFF2B2B2B) : tome ? (dessus ? 0xFFFFE070 : 0xFFE0B020) : dessus ? 0xFFD9A54E : 0xFF8A6A2E;
 			g.fill(b.x, b.y, b.x + BOUTON, b.y + 14, fond);
 			if (tome)
@@ -106,8 +106,10 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 			info.add(net.minecraft.world.item.enchantment.Enchantment.getFullname(survole.ligne.enchantement(), survole.niveau));
 			info.add(Component.translatable("airain.table.cout", Bibliotheque.coutXp(survole.ligne.enchantement(), survole.niveau),
 				Bibliotheque.coutLapis(survole.ligne.enchantement(), survole.niveau)).withStyle(ChatFormatting.GRAY));
-			if (Bibliotheque.depasse(survole.ligne.enchantement(), survole.niveau))
+			if (survole.ligne.parTome(survole.niveau))
 				info.add(Component.translatable("airain.table.tome").withStyle(ChatFormatting.GOLD));
+			if (Bibliotheque.depasse(survole.ligne.enchantement(), survole.niveau))
+				info.add(Component.translatable("airain.table.depasse").withStyle(ChatFormatting.GOLD));
 			if (!Bibliotheque.applicable(menu.objet(), survole.ligne.enchantement(), survole.niveau))
 				info.add(Component.translatable(menu.objet().isEmpty() ? "airain.table.sans_objet" : "airain.table.incompatible").withStyle(ChatFormatting.RED));
 			g.renderComponentTooltip(font, info, mouseX, mouseY);
