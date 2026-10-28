@@ -82,21 +82,6 @@ public final class Bibliotheque {
 		return liste;
 	}
 
-	/** Retire un tome ancien de cet enchantement d'une bibliothèque voisine. Faux s'il n'y en a plus. */
-	public static boolean consommerTome(Level level, BlockPos table, Holder<Enchantment> h) {
-		for (BlockPos p : BlockPos.betweenClosed(table.offset(-RAYON, -1, -RAYON), table.offset(RAYON, 2, RAYON))) {
-			if (!(level.getBlockEntity(p) instanceof ChiseledBookShelfBlockEntity etagere))
-				continue;
-			for (int i = 0; i < etagere.getContainerSize(); i++) {
-				if (h.equals(enchantementDuTome(etagere.getItem(i)))) {
-					etagere.removeItem(i, 1);
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
 	/** Coût en niveaux d'expérience : 3 par niveau, plus deux fois le coût d'enclume de l'enchantement (30 au plus). */
 	public static int coutXp(Holder<Enchantment> h, int niveau) {
 		if (depasse(h, niveau))

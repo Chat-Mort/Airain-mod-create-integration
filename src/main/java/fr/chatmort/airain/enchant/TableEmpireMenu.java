@@ -25,7 +25,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 
 /**
- * Écran de la table de l'Empire. Case 0 : l'objet ; case 1 : le lapis.
+ * Écran de la table de l'Empire. Case 0 : l'objet ; case 1 : le lapis ; case 2 : l'encre runique (niveaux ouverts par un tome).
  * Le répertoire (enchantement + niveau maximal) est calculé côté serveur et envoyé au client par des DataSlot :
  * identifiant de l'enchantement dans le registre, puis niveau maximal. Bouton = index × 16 + niveau.
  */
@@ -49,7 +49,7 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 		super(AirainMod.TABLE_MENU.get(), id);
 		this.access = access;
 		this.joueur = inv.player;
-		this.table = new SimpleContainer(2) {
+		this.table = new SimpleContainer(3) {
 			@Override
 			public void setChanged() {
 				super.setChanged();
@@ -71,6 +71,12 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return stack.is(Items.LAPIS_LAZULI);
+			}
+		});
+		addSlot(new Slot(table, 2, 22, 85) {
+			@Override
+			public boolean mayPlace(ItemStack stack) {
+				return stack.is(AirainMod.ENCRE.get());
 			}
 		});
 		for (int l = 0; l < 3; l++)
@@ -149,24 +155,22 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 		if (!Bibliotheque.applicable(objet, h, niveau))
 			return false;
 		int xp = Bibliotheque.coutXp(h, niveau), nl = Bibliotheque.coutLapis(h, niveau);
-		if (!player.getAbilities().instabuild && (player.experienceLevel < xp || lapis.getCount() < nl))
+		ItemStack encre = table.getItem(2);
+		if (!player.getAbilities().instabuild && (player.experienceLevel < xp || lapis.getCount() < nl || (parTome && encre.isEmpty())))
 			return false;
 
-		boolean[] ok = {true};
 		access.execute((level, pos) -> {
-			if (parTome && !Bibliotheque.consommerTome(level, pos, h)) {
-				ok[0] = false;
-				return;
-			}
 			EnchantmentHelper.updateEnchantments(objet, m -> m.set(h, niveau));
 			if (!player.getAbilities().instabuild) {
 				player.giveExperienceLevels(-xp);
 				lapis.shrink(nl);
+				if (parTome)
+					encre.shrink(1);
 			}
 			table.setChanged();
 			level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, level.random.nextFloat() * 0.1f + 0.9f);
 		});
-		return ok[0];
+		return true;
 	}
 
 	// ------------------------------------------------------------------ divers
@@ -187,11 +191,14 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 		if (!slot.hasItem())
 			return ItemStack.EMPTY;
 		ItemStack s = slot.getItem(), copie = s.copy();
-		if (index < 2) {
-			if (!moveItemStackTo(s, 2, slots.size(), true))
+		if (index < 3) {
+			if (!moveItemStackTo(s, 3, slots.size(), true))
 				return ItemStack.EMPTY;
 		} else if (s.is(Items.LAPIS_LAZULI)) {
 			if (!moveItemStackTo(s, 1, 2, false))
+				return ItemStack.EMPTY;
+		} else if (s.is(AirainMod.ENCRE.get())) {
+			if (!moveItemStackTo(s, 2, 3, false))
 				return ItemStack.EMPTY;
 		} else {
 			if (slots.get(0).hasItem() || !slots.get(0).mayPlace(s))
@@ -211,5 +218,9 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 
 	public int lapis() {
 		return table.getItem(1).getCount();
+	}
+
+	public int encre() {
+		return table.getItem(2).getCount();
 	}
 }

@@ -13,6 +13,7 @@
   "airain.table.vanilla_bloquee": "Cette vieille table ne répond plus. Utilisez la table d'enchantement de l'Empire.",
   "airain.desench.lunettes.titre": "Désenchanteur :",
   "airain.desench.enchantements": " enchantement(s)",
-  "airain.table.tome": "Ouvert par un tome ancien : le tome est consommé.",
-  "airain.table.depasse": "Au-delà du maximum : coût renforcé."
+  "airain.table.tome": "Ouvert par un tome ancien : consomme une encre runique. Le tome reste en place.",
+  "airain.table.depasse": "Au-delà du maximum : coût renforcé.",
+  "item.airain.encre_runique": "Encre runique"
 }

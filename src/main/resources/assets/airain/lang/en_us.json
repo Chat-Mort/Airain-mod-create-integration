@@ -13,6 +13,7 @@
   "airain.table.vanilla_bloquee": "This old table no longer answers. Use the Empire Enchanting Table.",
   "airain.desench.lunettes.titre": "Disenchanter:",
   "airain.desench.enchantements": " enchantment(s)",
-  "airain.table.tome": "Unlocked by an ancient tome: the tome is consumed.",
-  "airain.table.depasse": "Beyond the maximum: increased cost."
+  "airain.table.tome": "Unlocked by an ancient tome: consumes one rune ink. The tome stays in place.",
+  "airain.table.depasse": "Beyond the maximum: increased cost.",
+  "item.airain.encre_runique": "Rune Ink"
 }

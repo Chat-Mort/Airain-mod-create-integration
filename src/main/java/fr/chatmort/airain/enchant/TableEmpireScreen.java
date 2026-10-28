@@ -39,7 +39,8 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 				int x = leftPos + LISTE_X + LARGEUR - (ligne.niveauMax() - n + 1) * (BOUTON + 1) - 2;
 				boolean possible = Bibliotheque.applicable(objet, ligne.enchantement(), n)
 					&& (minecraft.player.getAbilities().instabuild
-						|| (minecraft.player.experienceLevel >= Bibliotheque.coutXp(ligne.enchantement(), n) && menu.lapis() >= Bibliotheque.coutLapis(ligne.enchantement(), n)));
+						|| (minecraft.player.experienceLevel >= Bibliotheque.coutXp(ligne.enchantement(), n) && menu.lapis() >= Bibliotheque.coutLapis(ligne.enchantement(), n)
+							&& (!ligne.parTome(n) || menu.encre() > 0)));
 				b.add(new Bouton(i + defilement, n, x, y + 2, possible, ligne));
 			}
 		}
@@ -51,7 +52,7 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 		int x = leftPos, y = topPos;
 		g.fill(x, y, x + imageWidth, y + imageHeight, CADRE);
 		g.fill(x + 2, y + 2, x + imageWidth - 2, y + imageHeight - 2, FOND);
-		for (int[] c : new int[][] {{22, 35}, {22, 60}})
+		for (int[] c : new int[][] {{22, 35}, {22, 60}, {22, 85}})
 			caseVide(g, x + c[0], y + c[1]);
 		for (int l = 0; l < 3; l++)
 			for (int c = 0; c < 9; c++)

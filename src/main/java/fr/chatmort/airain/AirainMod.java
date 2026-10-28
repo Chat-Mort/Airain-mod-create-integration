@@ -81,6 +81,9 @@ public class AirainMod {
 	public static final DeferredBlock<DesenchanteurBlock> DESENCH = BLOCKS.register("desenchanteur",
 		() -> new DesenchanteurBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f).requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion()));
+	/** Encre runique : consommée quand la table applique le niveau ouvert par un tome ancien. */
+	public static final DeferredItem<Item> ENCRE = ITEMS.register("encre_runique",
+		() -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
 	public static final DeferredItem<BlockItem> DESENCH_ITEM = ITEMS.register("desenchanteur",
 		() -> new BlockItem(DESENCH.get(), new Item.Properties()));
 	@SuppressWarnings("DataFlowIssue")
@@ -120,6 +123,8 @@ public class AirainMod {
 			event.accept(TABLE_ITEM.get());
 			event.accept(DESENCH_ITEM.get());
 		}
+		if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
+			event.accept(ENCRE.get());
 	}
 
 	/** La table d'enchantement vanilla ne s'ouvre plus : c'est la table de l'Empire qui enchante. */
