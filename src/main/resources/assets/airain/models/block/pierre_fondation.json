@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/cube_bottom_top",
+ "textures": {
+  "side": "airain:block/fondation_cote",
+  "top": "airain:block/fondation_dessus",
+  "bottom": "airain:block/fondation_dessus"
+ }
+}

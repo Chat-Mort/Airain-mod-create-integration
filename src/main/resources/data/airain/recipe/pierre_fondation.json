@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "SAS",
+  "SPS",
+  "SSS"
+ ],
+ "key": {
+  "S": {
+   "item": "minecraft:polished_andesite"
+  },
+  "A": {
+   "item": "create:andesite_alloy"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  }
+ },
+ "result": {
+  "id": "airain:pierre_fondation",
+  "count": 1
+ }
+}

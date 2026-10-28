@@ -18,5 +18,18 @@
  "item.airain.encre_runique": "Encre runique",
  "block.airain.socle_trophee": "Socle de l'Empire",
  "airain.socle.pas_trophee": "Seul un trophée de boss peut être exposé ici.",
- "airain.socle.expose": "Trophée exposé : son effet profite à toute l'équipe."
+ "airain.socle.expose": "Trophée exposé : son effet profite à toute l'équipe.",
+ "block.airain.pierre_fondation": "Pierre de fondation",
+ "item.airain.registre_fondations": "Registre des fondations",
+ "airain.fondation.ecran": "Nom de la fondation",
+ "airain.fondation.sans_nom": "Fondation sans nom",
+ "airain.fondation.sous_titre": "Fondation de l'Empire",
+ "airain.fondation.quitte": "Vous quittez la fondation",
+ "airain.fondation.rayon": "Rayon de la fondation : %s blocs",
+ "airain.registre.titre": "Registre des fondations",
+ "airain.registre.vide": "Aucune fondation n'a encore été posée.\n\nPosez une pierre de fondation au cœur d'une base pour l'inscrire ici.",
+ "airain.registre.dim.overworld": "Surface",
+ "airain.registre.dim.the_nether": "Nether",
+ "airain.registre.dim.the_end": "End",
+ "airain.registre.distance": " · à %s blocs"
 }

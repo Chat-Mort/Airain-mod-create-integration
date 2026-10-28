@@ -18,5 +18,18 @@
  "item.airain.encre_runique": "Rune Ink",
  "block.airain.socle_trophee": "Empire Pedestal",
  "airain.socle.pas_trophee": "Only a boss trophy can be displayed here.",
- "airain.socle.expose": "Trophy displayed: its effect benefits the whole team."
+ "airain.socle.expose": "Trophy displayed: its effect benefits the whole team.",
+ "block.airain.pierre_fondation": "Foundation Stone",
+ "item.airain.registre_fondations": "Foundation Register",
+ "airain.fondation.ecran": "Foundation name",
+ "airain.fondation.sans_nom": "Unnamed foundation",
+ "airain.fondation.sous_titre": "Foundation of the Empire",
+ "airain.fondation.quitte": "You leave the foundation",
+ "airain.fondation.rayon": "Foundation radius: %s blocks",
+ "airain.registre.titre": "Foundation Register",
+ "airain.registre.vide": "No foundation has been laid yet.\n\nPlace a foundation stone at the heart of a base to record it here.",
+ "airain.registre.dim.overworld": "Overworld",
+ "airain.registre.dim.the_nether": "Nether",
+ "airain.registre.dim.the_end": "End",
+ "airain.registre.distance": " · %s blocks away"
 }

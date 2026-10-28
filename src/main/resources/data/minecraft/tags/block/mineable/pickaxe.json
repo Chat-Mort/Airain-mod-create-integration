@@ -3,6 +3,7 @@
   "airain:banc_entretien",
   "airain:table_enchantement",
   "airain:desenchanteur",
-  "airain:socle_trophee"
+  "airain:socle_trophee",
+  "airain:pierre_fondation"
  ]
 }

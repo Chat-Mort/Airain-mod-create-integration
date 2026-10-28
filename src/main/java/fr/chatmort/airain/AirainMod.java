@@ -91,6 +91,18 @@ public class AirainMod {
 		BLOCK_ENTITIES.register("socle_trophee",
 			() -> BlockEntityType.Builder.of(fr.chatmort.airain.trophee.SocleBlockEntity::new, SOCLE.get()).build(null));
 
+	/** Pierre de fondation : nomme une base, titre à l'écran en entrant dans sa zone. */
+	public static final DeferredBlock<fr.chatmort.airain.fondation.FondationBlock> FONDATION = BLOCKS.register("pierre_fondation",
+		() -> new fr.chatmort.airain.fondation.FondationBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+	public static final DeferredItem<BlockItem> FONDATION_ITEM = ITEMS.register("pierre_fondation",
+		() -> new BlockItem(FONDATION.get(), new Item.Properties()));
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fondation.FondationBlockEntity>> FONDATION_BE =
+		BLOCK_ENTITIES.register("pierre_fondation",
+			() -> BlockEntityType.Builder.of(fr.chatmort.airain.fondation.FondationBlockEntity::new, FONDATION.get()).build(null));
+	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
+		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
+
 	/** Encre runique : consommée quand la table applique le niveau ouvert par un tome ancien. */
 	public static final DeferredItem<Item> ENCRE = ITEMS.register("encre_runique",
 		() -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
@@ -109,6 +121,10 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
+		bus.addListener((net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent e) -> e.registrar("1")
+			.playToServer(fr.chatmort.airain.fondation.NommerFondation.TYPE, fr.chatmort.airain.fondation.NommerFondation.CODEC,
+				fr.chatmort.airain.fondation.NommerFondation::traiter));
 		bus.addListener(this::setup);
 		bus.addListener(this::capacites);
 		bus.addListener(this::ongletCreatif);
@@ -135,9 +151,12 @@ public class AirainMod {
 			event.accept(TABLE_ITEM.get());
 			event.accept(DESENCH_ITEM.get());
 			event.accept(SOCLE_ITEM.get());
+			event.accept(FONDATION_ITEM.get());
 		}
 		if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
 			event.accept(ENCRE.get());
+		if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
+			event.accept(REGISTRE.get());
 	}
 
 	/** La table d'enchantement vanilla ne s'ouvre plus : c'est la table de l'Empire qui enchante. */
