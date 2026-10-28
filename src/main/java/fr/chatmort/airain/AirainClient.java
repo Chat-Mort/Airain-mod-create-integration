@@ -30,6 +30,10 @@ public class AirainClient {
 	}
 
 	private void setup(FMLClientSetupEvent event) {
+		// Gardien des Cieux : rendu translucide pour que la lumière traverse les vitraux de ses ailes
+		event.enqueueWork(() -> net.minecraft.client.renderer.entity.EnderDragonRenderer.RENDER_TYPE =
+			net.minecraft.client.renderer.RenderType.entityTranslucent(
+				net.minecraft.resources.ResourceLocation.withDefaultNamespace("textures/entity/enderdragon/dragon.png")));
 		// Avec Flywheel, le rouage (celui de la meule de Create) est une instance ;
 		// le rendu classique reste actif pour la meule en pierre, la jauge et les objets.
 		SimpleBlockEntityVisualizer.builder(AirainMod.BANC_BE.get())

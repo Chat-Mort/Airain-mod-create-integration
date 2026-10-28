@@ -2,9 +2,12 @@ modLoader="javafml"
 loaderVersion="[1,)"
 license="All Rights Reserved"
 
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
 [[mods]]
 modId="airain"
-version="1.4.0"
+version="1.4.6"
 displayName="Airain : intégration Create"
 authors="Chat-Mort"
 description='''
