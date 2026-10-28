@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 public record Apparence(int style, int fond, int ornement, int motif, int forme) {
 	public static final int[] FONDS = {0x8E1A16, 0x1E3A6E, 0x1F4D2E, 0x1C1A1C, 0xE6DCC2, 0x5A1E5E, 0xB8792A, 0x5E6670};
 	public static final int[] ORNEMENTS = {0xE8BE5A, 0xD8DCE0, 0xC77A48, 0x282222};
-	public static final String[] MOTIFS = {"rouage", "cle", "flamme", "couronne", "ancre", "eclair", "etoile", "rouage_brise", "poing", "fiole", "aucun"};
+	public static final String[] MOTIFS = {"rouage", "cle", "flamme", "couronne", "ancre", "eclair", "etoile", "rouage_brise", "cristal", "fiole", "aucun"};
 	public static final String[] FORMES = {"aronde", "droit", "pointe"};
 	public static final int STYLES = 3;
 	public static final Apparence DEFAUT = new Apparence(0, 0, 0, 0, 0);
