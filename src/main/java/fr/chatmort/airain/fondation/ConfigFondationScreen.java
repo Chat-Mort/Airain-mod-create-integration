@@ -15,13 +15,13 @@ public class ConfigFondationScreen extends Screen {
 	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme"};
 	private static final int[] TAILLES = {Apparence.STYLES, Apparence.FONDS.length, Apparence.ORNEMENTS.length, Apparence.MOTIFS.length, Apparence.FORMES.length};
 	private final BlockPos pos;
-	private final String nomActuel;
+	private final String nomActuel, deviseActuelle;
 	private final int[] choix;
-	private EditBox champ;
+	private EditBox champ, devise;
 
-	public ConfigFondationScreen(BlockPos pos, String nom, Apparence a) {
+	public ConfigFondationScreen(BlockPos pos, String nom, String dev, Apparence a) {
 		super(Component.translatable("airain.fondation.ecran"));
-		this.pos = pos; this.nomActuel = nom;
+		this.pos = pos; this.nomActuel = nom; this.deviseActuelle = dev;
 		this.choix = new int[] {a.style(), a.fond(), a.ornement(), a.motif(), a.forme()};
 	}
 
@@ -31,38 +31,43 @@ public class ConfigFondationScreen extends Screen {
 
 	@Override
 	protected void init() {
-		int x = width / 2 - 150, y = height / 2 - 90;
+		int x = width / 2 - 150, y = height / 2 - 104;
 		champ = new EditBox(font, x, y + 14, 190, 20, Component.translatable("airain.fondation.ecran"));
 		champ.setMaxLength(32); champ.setValue(nomActuel);
 		addRenderableWidget(champ); setInitialFocus(champ);
+		devise = new EditBox(font, x, y + 48, 190, 20, Component.translatable("airain.fondation.devise"));
+		devise.setMaxLength(48); devise.setValue(deviseActuelle);
+		devise.setHint(Component.translatable("airain.fondation.sous_titre"));
+		addRenderableWidget(devise);
 		for (int k = 0; k < CLES.length; k++) {
 			final int i = k;
-			int ly = y + 48 + k * 24;
+			int ly = y + 76 + k * 24;
 			addRenderableWidget(Button.builder(Component.literal("<"), b -> choix[i] = Math.floorMod(choix[i] - 1, TAILLES[i])).bounds(x + 80, ly, 20, 20).build());
 			addRenderableWidget(Button.builder(Component.literal(">"), b -> choix[i] = Math.floorMod(choix[i] + 1, TAILLES[i])).bounds(x + 170, ly, 20, 20).build());
 		}
-		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 172, 94, 20).build());
-		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 172, 94, 20).build());
+		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 200, 94, 20).build());
+		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 200, 94, 20).build());
 	}
 
 	private void valider() {
-		PacketDistributor.sendToServer(new ConfigurerFondation(pos, champ.getValue().trim(), apparence().pack()));
+		PacketDistributor.sendToServer(new ConfigurerFondation(pos, champ.getValue().trim(), devise.getValue().trim(), apparence().pack()));
 		onClose();
 	}
 
 	@Override
 	public boolean keyPressed(int key, int scan, int mods) {
-		if ((key == 257 || key == 335) && champ.isFocused()) { valider(); return true; }
+		if ((key == 257 || key == 335) && (champ.isFocused() || devise.isFocused())) { valider(); return true; }
 		return super.keyPressed(key, scan, mods);
 	}
 
 	@Override
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		super.render(g, mx, my, pt);
-		int x = width / 2 - 150, y = height / 2 - 90;
+		int x = width / 2 - 150, y = height / 2 - 104;
 		g.drawString(font, title, x, y, 0xE8C878);
+		g.drawString(font, Component.translatable("airain.fondation.devise"), x, y + 38, 0xD0C8B0);
 		for (int k = 0; k < CLES.length; k++) {
-			int ly = y + 48 + k * 24;
+			int ly = y + 76 + k * 24;
 			g.drawString(font, Component.translatable("airain.etendard." + CLES[k]), x, ly + 6, 0xD0C8B0);
 			g.drawCenteredString(font, Component.translatable("airain.etendard." + CLES[k] + "." + choix[k]), x + 135, ly + 6, 0xFFFFFF);
 		}

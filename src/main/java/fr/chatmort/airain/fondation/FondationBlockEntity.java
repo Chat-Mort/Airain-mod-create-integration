@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class FondationBlockEntity extends BlockEntity {
 	public static final int RAYON_MIN = 16, RAYON_MAX = 128, PAS = 16;
 	private String nom = "";
+	private String devise = "";
 	private int rayon = 48;
 	private Apparence apparence = Apparence.DEFAUT;
 
@@ -24,11 +25,12 @@ public class FondationBlockEntity extends BlockEntity {
 	}
 
 	public String nom() { return nom; }
+	public String devise() { return devise; }
 	public int rayon() { return rayon; }
 	public Apparence apparence() { return apparence; }
 
-	public void configurer(String n, Apparence a) {
-		nom = n; apparence = a;
+	public void configurer(String n, String d, Apparence a) {
+		nom = n; devise = d; apparence = a;
 		if (level != null && !level.isClientSide) FondationBlock.appliquerStyle(level, worldPosition, a.style());
 		enregistrer(); maj();
 	}
@@ -39,7 +41,7 @@ public class FondationBlockEntity extends BlockEntity {
 
 	public void enregistrer() {
 		if (level instanceof ServerLevel sl)
-			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon);
+			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon, devise, apparence.pack());
 	}
 
 	@Override
@@ -56,13 +58,13 @@ public class FondationBlockEntity extends BlockEntity {
 	@Override
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
-		tag.putString("nom", nom); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack());
+		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack());
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
-		nom = tag.getString("nom"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
+		nom = tag.getString("nom"); devise = tag.getString("devise"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
 		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence")) : Apparence.DEFAUT;
 	}
 

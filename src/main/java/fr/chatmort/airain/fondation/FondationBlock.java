@@ -72,7 +72,7 @@ public class FondationBlock extends Block implements EntityBlock {
 		if (level.getBlockEntity(pos) instanceof FondationBlockEntity f) {
 			f.enregistrer();
 			if (level.isClientSide && FMLEnvironment.dist.isClient())
-				EcranClient.ouvrir(pos, f.nom(), f.apparence());
+				EcranClient.ouvrir(pos, f.nom(), f.devise(), f.apparence());
 		}
 	}
 
@@ -147,7 +147,7 @@ public class FondationBlock extends Block implements EntityBlock {
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player joueur, BlockHitResult hit) {
 		BlockPos b = bas(state, pos);
 		if (level.isClientSide && FMLEnvironment.dist.isClient() && level.getBlockEntity(b) instanceof FondationBlockEntity f)
-			EcranClient.ouvrir(b, f.nom(), f.apparence());
+			EcranClient.ouvrir(b, f.nom(), f.devise(), f.apparence());
 		return InteractionResult.sidedSuccess(level.isClientSide);
 	}
 
