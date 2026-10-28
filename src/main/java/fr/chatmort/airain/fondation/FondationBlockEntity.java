@@ -12,10 +12,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+/** Moitié basse de l'étendard : nom, rayon de la zone, apparence de la bannière. */
 public class FondationBlockEntity extends BlockEntity {
 	public static final int RAYON_MIN = 16, RAYON_MAX = 128, PAS = 16;
 	private String nom = "";
 	private int rayon = 48;
+	private Apparence apparence = Apparence.DEFAUT;
 
 	public FondationBlockEntity(BlockPos pos, BlockState state) {
 		super(AirainMod.FONDATION_BE.get(), pos, state);
@@ -23,9 +25,12 @@ public class FondationBlockEntity extends BlockEntity {
 
 	public String nom() { return nom; }
 	public int rayon() { return rayon; }
+	public Apparence apparence() { return apparence; }
 
-	public void nommer(String n) {
-		nom = n; enregistrer(); maj();
+	public void configurer(String n, Apparence a) {
+		nom = n; apparence = a;
+		if (level != null && !level.isClientSide) FondationBlock.appliquerStyle(level, worldPosition, a.style());
+		enregistrer(); maj();
 	}
 
 	public void regler(int r) {
@@ -51,13 +56,14 @@ public class FondationBlockEntity extends BlockEntity {
 	@Override
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
-		tag.putString("nom", nom); tag.putInt("rayon", rayon);
+		tag.putString("nom", nom); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack());
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
 		nom = tag.getString("nom"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
+		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence")) : Apparence.DEFAUT;
 	}
 
 	@Override

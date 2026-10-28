@@ -94,7 +94,7 @@ public class AirainMod {
 	/** Pierre de fondation : nomme une base, titre à l'écran en entrant dans sa zone. */
 	public static final DeferredBlock<fr.chatmort.airain.fondation.FondationBlock> FONDATION = BLOCKS.register("pierre_fondation",
 		() -> new fr.chatmort.airain.fondation.FondationBlock(BlockBehaviour.Properties.of()
-			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
 	public static final DeferredItem<BlockItem> FONDATION_ITEM = ITEMS.register("pierre_fondation",
 		() -> new BlockItem(FONDATION.get(), new Item.Properties()));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fondation.FondationBlockEntity>> FONDATION_BE =
@@ -123,8 +123,8 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		bus.addListener((net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent e) -> e.registrar("1")
-			.playToServer(fr.chatmort.airain.fondation.NommerFondation.TYPE, fr.chatmort.airain.fondation.NommerFondation.CODEC,
-				fr.chatmort.airain.fondation.NommerFondation::traiter));
+			.playToServer(fr.chatmort.airain.fondation.ConfigurerFondation.TYPE, fr.chatmort.airain.fondation.ConfigurerFondation.CODEC,
+				fr.chatmort.airain.fondation.ConfigurerFondation::traiter));
 		bus.addListener(this::setup);
 		bus.addListener(this::capacites);
 		bus.addListener(this::ongletCreatif);

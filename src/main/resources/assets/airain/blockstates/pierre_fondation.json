@@ -1,7 +1,100 @@
 {
  "variants": {
-  "": {
-   "model": "airain:block/pierre_fondation"
+  "facing=north,half=lower,style=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 0
+  },
+  "facing=north,half=lower,style=1": {
+   "model": "airain:block/etendard_socle",
+   "y": 0
+  },
+  "facing=north,half=lower,style=2": {
+   "model": "airain:block/etendard_socle",
+   "y": 0
+  },
+  "facing=north,half=upper,style=0": {
+   "model": "airain:block/etendard_mat_potence",
+   "y": 0
+  },
+  "facing=north,half=upper,style=1": {
+   "model": "airain:block/etendard_mat_vexillum",
+   "y": 0
+  },
+  "facing=north,half=upper,style=2": {
+   "model": "airain:block/etendard_mat_ceremonie",
+   "y": 0
+  },
+  "facing=east,half=lower,style=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 90
+  },
+  "facing=east,half=lower,style=1": {
+   "model": "airain:block/etendard_socle",
+   "y": 90
+  },
+  "facing=east,half=lower,style=2": {
+   "model": "airain:block/etendard_socle",
+   "y": 90
+  },
+  "facing=east,half=upper,style=0": {
+   "model": "airain:block/etendard_mat_potence",
+   "y": 90
+  },
+  "facing=east,half=upper,style=1": {
+   "model": "airain:block/etendard_mat_vexillum",
+   "y": 90
+  },
+  "facing=east,half=upper,style=2": {
+   "model": "airain:block/etendard_mat_ceremonie",
+   "y": 90
+  },
+  "facing=south,half=lower,style=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 180
+  },
+  "facing=south,half=lower,style=1": {
+   "model": "airain:block/etendard_socle",
+   "y": 180
+  },
+  "facing=south,half=lower,style=2": {
+   "model": "airain:block/etendard_socle",
+   "y": 180
+  },
+  "facing=south,half=upper,style=0": {
+   "model": "airain:block/etendard_mat_potence",
+   "y": 180
+  },
+  "facing=south,half=upper,style=1": {
+   "model": "airain:block/etendard_mat_vexillum",
+   "y": 180
+  },
+  "facing=south,half=upper,style=2": {
+   "model": "airain:block/etendard_mat_ceremonie",
+   "y": 180
+  },
+  "facing=west,half=lower,style=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 270
+  },
+  "facing=west,half=lower,style=1": {
+   "model": "airain:block/etendard_socle",
+   "y": 270
+  },
+  "facing=west,half=lower,style=2": {
+   "model": "airain:block/etendard_socle",
+   "y": 270
+  },
+  "facing=west,half=upper,style=0": {
+   "model": "airain:block/etendard_mat_potence",
+   "y": 270
+  },
+  "facing=west,half=upper,style=1": {
+   "model": "airain:block/etendard_mat_vexillum",
+   "y": 270
+  },
+  "facing=west,half=upper,style=2": {
+   "model": "airain:block/etendard_mat_ceremonie",
+   "y": 270
   }
  }
 }

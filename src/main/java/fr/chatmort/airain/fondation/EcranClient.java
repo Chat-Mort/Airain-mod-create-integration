@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 public final class EcranClient {
 	private EcranClient() {}
 
-	public static void ouvrir(BlockPos pos, String nom) {
-		Minecraft.getInstance().setScreen(new NomFondationScreen(pos, nom));
+	public static void ouvrir(BlockPos pos, String nom, Apparence a) {
+		Minecraft.getInstance().setScreen(new ConfigFondationScreen(pos, nom, a));
 	}
 }
