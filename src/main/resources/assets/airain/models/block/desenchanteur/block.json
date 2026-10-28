@@ -6,7 +6,7 @@
   "0": "create:block/gearbox",
   "5": "create:block/millstone",
   "cuivre": "airain:block/banc_cuivre",
-  "plan": "airain:block/banc_plan",
+  "plan": "airain:block/desench_plan",
   "verre": "minecraft:block/glass",
   "laiton": "airain:block/banc_laiton",
   "fond": "airain:block/jauge_fond"
