@@ -59,8 +59,11 @@
   "airain.etendard.motif.4": "Anchor",
   "airain.etendard.motif.5": "Lightning",
   "airain.etendard.motif.6": "Star",
-  "airain.etendard.motif.7": "None",
+  "airain.etendard.motif.7": "Broken cog (Refractories)",
   "airain.etendard.forme.0": "Swallowtail",
   "airain.etendard.forme.1": "Straight",
-  "airain.etendard.forme.2": "Pointed"
+  "airain.etendard.forme.2": "Pointed",
+  "airain.etendard.motif.8": "Raised fist (Refractories)",
+  "airain.etendard.motif.9": "Ominous vial (Refractories)",
+  "airain.etendard.motif.10": "None"
 }

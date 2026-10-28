@@ -59,8 +59,11 @@
   "airain.etendard.motif.4": "Ancre",
   "airain.etendard.motif.5": "Éclair",
   "airain.etendard.motif.6": "Étoile",
-  "airain.etendard.motif.7": "Aucun",
+  "airain.etendard.motif.7": "Rouage brisé (réfractaires)",
   "airain.etendard.forme.0": "Queue d'aronde",
   "airain.etendard.forme.1": "Droite",
-  "airain.etendard.forme.2": "Pointe"
+  "airain.etendard.forme.2": "Pointe",
+  "airain.etendard.motif.8": "Poing levé (réfractaires)",
+  "airain.etendard.motif.9": "Fiole funeste (réfractaires)",
+  "airain.etendard.motif.10": "Aucun"
 }
