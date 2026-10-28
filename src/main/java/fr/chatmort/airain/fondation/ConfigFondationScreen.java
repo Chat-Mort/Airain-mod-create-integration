@@ -42,8 +42,8 @@ public class ConfigFondationScreen extends Screen {
 		for (int k = 0; k < CLES.length; k++) {
 			final int i = k;
 			int ly = y + 76 + k * 24;
-			addRenderableWidget(Button.builder(Component.literal("<"), b -> choix[i] = Math.floorMod(choix[i] - 1, TAILLES[i])).bounds(x + 80, ly, 20, 20).build());
-			addRenderableWidget(Button.builder(Component.literal(">"), b -> choix[i] = Math.floorMod(choix[i] + 1, TAILLES[i])).bounds(x + 170, ly, 20, 20).build());
+			addRenderableWidget(new Fleche(x + 66, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, TAILLES[i])));
+			addRenderableWidget(new Fleche(x + 174, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, TAILLES[i])));
 		}
 		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 200, 94, 20).build());
 		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 200, 94, 20).build());
@@ -64,12 +64,18 @@ public class ConfigFondationScreen extends Screen {
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		super.render(g, mx, my, pt);
 		int x = width / 2 - 150, y = height / 2 - 104;
+		for (int k = 0; k < CLES.length; k++) {            // cartouche sombre derrière chaque valeur
+			int ly = y + 76 + k * 24;
+			g.fill(x + 84, ly + 2, x + 172, ly + 18, 0xA0100C08);
+			g.fill(x + 84, ly + 2, x + 172, ly + 3, 0xFF6E5020);
+			g.fill(x + 84, ly + 17, x + 172, ly + 18, 0xFF6E5020);
+		}
 		g.drawString(font, title, x, y, 0xE8C878);
 		g.drawString(font, Component.translatable("airain.fondation.devise"), x, y + 38, 0xD0C8B0);
 		for (int k = 0; k < CLES.length; k++) {
 			int ly = y + 76 + k * 24;
 			g.drawString(font, Component.translatable("airain.etendard." + CLES[k]), x, ly + 6, 0xD0C8B0);
-			g.drawCenteredString(font, Component.translatable("airain.etendard." + CLES[k] + "." + choix[k]), x + 135, ly + 6, 0xFFFFFF);
+			g.drawCenteredString(font, Component.translatable("airain.etendard." + CLES[k] + "." + choix[k]), x + 128, ly + 6, 0xFFE9B0);
 		}
 		// aperçu de la bannière (calques teintés)
 		Apparence a = apparence();
@@ -89,4 +95,27 @@ public class ConfigFondationScreen extends Screen {
 
 	@Override
 	public boolean isPauseScreen() { return false; }
+
+	/** Petite flèche dessinée à la main : lisible quel que soit le pack de ressources. */
+	private static final class Fleche extends Button {
+		private final boolean droite;
+
+		Fleche(int x, int y, boolean droite, OnPress action) {
+			super(x, y, 16, 16, Component.literal(droite ? ">" : "<"), action, DEFAULT_NARRATION);
+			this.droite = droite;
+		}
+
+		@Override
+		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
+			int x = getX(), y = getY(), w = width, h = height;
+			boolean survol = isHoveredOrFocused();
+			g.fill(x, y, x + w, y + h, survol ? 0xFFE8BE5A : 0xFF8A6526);         // cadre laiton
+			g.fill(x + 1, y + 1, x + w - 1, y + h - 1, survol ? 0xFF3A2A12 : 0xFF1C140A);
+			int c = survol ? 0xFFFFF0C0 : 0xFFE8BE5A;
+			for (int i = 0; i < 4; i++) {                                        // triangle de 4 colonnes
+				int col = droite ? x + 6 + i : x + 9 - i;
+				g.fill(col, y + 4 + i, col + 1, y + h - 4 - i, c);
+			}
+		}
+	}
 }

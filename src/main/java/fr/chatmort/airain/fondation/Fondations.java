@@ -28,8 +28,6 @@ public final class Fondations {
 			derniere.put(p.getUUID(), cle);
 			if (f != null) {
 				net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(p, new TitreFondation(f.nom(), f.devise(), f.apparence()));
-			} else if (!avant.isEmpty()) {
-				p.displayClientMessage(Component.translatable("airain.fondation.quitte").withStyle(ChatFormatting.GRAY), true);
 			}
 		}
 	}
