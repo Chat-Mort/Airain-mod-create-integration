@@ -39,7 +39,7 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 				int x = leftPos + LISTE_X + LARGEUR - (ligne.niveauMax() - n + 1) * (BOUTON + 1) - 2;
 				boolean possible = Bibliotheque.applicable(objet, ligne.enchantement(), n)
 					&& (minecraft.player.getAbilities().instabuild
-						|| (minecraft.player.experienceLevel >= Bibliotheque.coutXp(ligne.enchantement(), n) && menu.lapis() >= Bibliotheque.coutLapis(n)));
+						|| (minecraft.player.experienceLevel >= Bibliotheque.coutXp(ligne.enchantement(), n) && menu.lapis() >= Bibliotheque.coutLapis(ligne.enchantement(), n)));
 				b.add(new Bouton(i + defilement, n, x, y + 2, possible, ligne));
 			}
 		}
@@ -88,10 +88,13 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 		Bouton survole = null;
 		for (Bouton b : boutons()) {
 			boolean dessus = mouseX >= b.x && mouseX < b.x + BOUTON && mouseY >= b.y && mouseY < b.y + 14;
-			int fond = !b.actif ? 0xFF2B2B2B : dessus ? 0xFFD9A54E : 0xFF8A6A2E;
+			boolean tome = Bibliotheque.depasse(b.ligne.enchantement(), b.niveau);
+			int fond = !b.actif ? (tome ? 0xFF3A3018 : 0xFF2B2B2B) : tome ? (dessus ? 0xFFFFE070 : 0xFFE0B020) : dessus ? 0xFFD9A54E : 0xFF8A6A2E;
 			g.fill(b.x, b.y, b.x + BOUTON, b.y + 14, fond);
+			if (tome)
+				g.renderOutline(b.x, b.y, BOUTON, 14, b.actif ? 0xFFFFF4C0 : 0xFF806020);
 			Component chiffre = Component.translatable("enchantment.level." + b.niveau);
-			g.drawCenteredString(font, chiffre, b.x + BOUTON / 2 + 1, b.y + 3, b.actif ? 0xFFFFFF : 0x707070);
+			g.drawCenteredString(font, chiffre, b.x + BOUTON / 2 + 1, b.y + 3, b.actif ? (tome ? 0x3A2400 : 0xFFFFFF) : (tome ? 0xA08040 : 0x707070));
 			if (dessus)
 				survole = b;
 		}
@@ -102,7 +105,9 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 			List<Component> info = new ArrayList<>();
 			info.add(net.minecraft.world.item.enchantment.Enchantment.getFullname(survole.ligne.enchantement(), survole.niveau));
 			info.add(Component.translatable("airain.table.cout", Bibliotheque.coutXp(survole.ligne.enchantement(), survole.niveau),
-				Bibliotheque.coutLapis(survole.niveau)).withStyle(ChatFormatting.GRAY));
+				Bibliotheque.coutLapis(survole.ligne.enchantement(), survole.niveau)).withStyle(ChatFormatting.GRAY));
+			if (Bibliotheque.depasse(survole.ligne.enchantement(), survole.niveau))
+				info.add(Component.translatable("airain.table.tome").withStyle(ChatFormatting.GOLD));
 			if (!Bibliotheque.applicable(menu.objet(), survole.ligne.enchantement(), survole.niveau))
 				info.add(Component.translatable(menu.objet().isEmpty() ? "airain.table.sans_objet" : "airain.table.incompatible").withStyle(ChatFormatting.RED));
 			g.renderComponentTooltip(font, info, mouseX, mouseY);

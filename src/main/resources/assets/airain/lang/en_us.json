@@ -12,5 +12,6 @@
   "airain.table.incompatible": "Not possible on this item.",
   "airain.table.vanilla_bloquee": "This old table no longer answers. Use the Empire Enchanting Table.",
   "airain.desench.lunettes.titre": "Disenchanter:",
-  "airain.desench.enchantements": " enchantment(s)"
+  "airain.desench.enchantements": " enchantment(s)",
+  "airain.table.tome": "Beyond the maximum: consumes the ancient tome kept in a bookshelf."
 }

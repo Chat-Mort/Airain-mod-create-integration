@@ -16,6 +16,11 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Le répertoire de la table d'enchantement de l'Empire : les livres enchantés rangés dans les bibliothèques sculptées
@@ -29,33 +34,77 @@ public final class Bibliotheque {
 
 	private Bibliotheque() {}
 
+	/** Composant des tomes anciens de Quark (lu par son nom : pas de dépendance à la compilation). */
+	private static final ResourceLocation TOME_ID = ResourceLocation.fromNamespaceAndPath("quark", "ancient_tome");
+	private static final ResourceLocation TOME_COMPOSANT = ResourceLocation.fromNamespaceAndPath("quark", "tome_enchantments");
+
+	/** Enchantement porté par un tome ancien de Quark, ou null. */
+	@SuppressWarnings("unchecked")
+	public static Holder<Enchantment> enchantementDuTome(ItemStack pile) {
+		if (pile.isEmpty() || !BuiltInRegistries.ITEM.getKey(pile.getItem()).equals(TOME_ID))
+			return null;
+		DataComponentType<?> type = BuiltInRegistries.DATA_COMPONENT_TYPE.get(TOME_COMPOSANT);
+		if (type == null || !(pile.get(type) instanceof ItemEnchantments ench) || ench.isEmpty())
+			return null;
+		return ench.keySet().iterator().next();
+	}
+
+	/** Au-delà du maximum vanilla : seulement avec un tome ancien, qui est consommé. */
+	public static boolean depasse(Holder<Enchantment> h, int niveau) {
+		return niveau > h.value().getMaxLevel();
+	}
+
 	public static List<Entree> lire(Level level, BlockPos table) {
 		Map<Holder<Enchantment>, Integer> trouve = new LinkedHashMap<>();
+		Set<Holder<Enchantment>> tomes = new HashSet<>();
 		for (BlockPos p : BlockPos.betweenClosed(table.offset(-RAYON, -1, -RAYON), table.offset(RAYON, 2, RAYON))) {
 			if (!(level.getBlockEntity(p) instanceof ChiseledBookShelfBlockEntity etagere))
 				continue;
 			for (int i = 0; i < etagere.getContainerSize(); i++) {
 				ItemStack livre = etagere.getItem(i);
+				Holder<Enchantment> tome = enchantementDuTome(livre);
+				if (tome != null) {
+					tomes.add(tome);
+					continue;
+				}
 				if (!livre.is(Items.ENCHANTED_BOOK))
 					continue;
 				ItemEnchantments ench = livre.getOrDefault(DataComponents.STORED_ENCHANTMENTS, ItemEnchantments.EMPTY);
+				// un livre au-delà du maximum compte comme un livre au maximum : seul le tome ouvre le niveau suivant
 				for (Object2IntMap.Entry<Holder<Enchantment>> e : ench.entrySet())
-					trouve.merge(e.getKey(), e.getIntValue(), Math::max);
+					trouve.merge(e.getKey(), Math.min(e.getIntValue(), e.getKey().value().getMaxLevel()), Math::max);
 			}
 		}
 		List<Entree> liste = new ArrayList<>();
-		trouve.forEach((h, n) -> liste.add(new Entree(h, n)));
+		trouve.forEach((h, n) -> liste.add(new Entree(h, tomes.contains(h) && n >= h.value().getMaxLevel() ? n + 1 : n)));
 		return liste;
+	}
+
+	/** Retire un tome ancien de cet enchantement d'une bibliothèque voisine. Faux s'il n'y en a plus. */
+	public static boolean consommerTome(Level level, BlockPos table, Holder<Enchantment> h) {
+		for (BlockPos p : BlockPos.betweenClosed(table.offset(-RAYON, -1, -RAYON), table.offset(RAYON, 2, RAYON))) {
+			if (!(level.getBlockEntity(p) instanceof ChiseledBookShelfBlockEntity etagere))
+				continue;
+			for (int i = 0; i < etagere.getContainerSize(); i++) {
+				if (h.equals(enchantementDuTome(etagere.getItem(i)))) {
+					etagere.removeItem(i, 1);
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/** Coût en niveaux d'expérience : 3 par niveau, plus deux fois le coût d'enclume de l'enchantement (30 au plus). */
 	public static int coutXp(Holder<Enchantment> h, int niveau) {
+		if (depasse(h, niveau))
+			return 40;
 		return Math.min(30, 3 * niveau + 2 * h.value().getAnvilCost());
 	}
 
 	/** Coût en lapis-lazuli : un par niveau. */
-	public static int coutLapis(int niveau) {
-		return niveau;
+	public static int coutLapis(Holder<Enchantment> h, int niveau) {
+		return depasse(h, niveau) ? 2 * niveau : niveau;
 	}
 
 	/** L'enchantement peut-il aller sur cet objet, compte tenu de ceux qu'il porte déjà ? */

@@ -142,11 +142,16 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 		ItemStack lapis = table.getItem(1);
 		if (!Bibliotheque.applicable(objet, h, niveau))
 			return false;
-		int xp = Bibliotheque.coutXp(h, niveau), nl = Bibliotheque.coutLapis(niveau);
+		int xp = Bibliotheque.coutXp(h, niveau), nl = Bibliotheque.coutLapis(h, niveau);
 		if (!player.getAbilities().instabuild && (player.experienceLevel < xp || lapis.getCount() < nl))
 			return false;
 
+		boolean[] ok = {true};
 		access.execute((level, pos) -> {
+			if (Bibliotheque.depasse(h, niveau) && !Bibliotheque.consommerTome(level, pos, h)) {
+				ok[0] = false;
+				return;
+			}
 			EnchantmentHelper.updateEnchantments(objet, m -> m.set(h, niveau));
 			if (!player.getAbilities().instabuild) {
 				player.giveExperienceLevels(-xp);
@@ -155,7 +160,7 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 			table.setChanged();
 			level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, level.random.nextFloat() * 0.1f + 0.9f);
 		});
-		return true;
+		return ok[0];
 	}
 
 	// ------------------------------------------------------------------ divers

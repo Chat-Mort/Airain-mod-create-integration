@@ -12,5 +12,6 @@
   "airain.table.incompatible": "Impossible sur cet objet.",
   "airain.table.vanilla_bloquee": "Cette vieille table ne répond plus. Utilisez la table d'enchantement de l'Empire.",
   "airain.desench.lunettes.titre": "Désenchanteur :",
-  "airain.desench.enchantements": " enchantement(s)"
+  "airain.desench.enchantements": " enchantement(s)",
+  "airain.table.tome": "Au-delà du maximum : consomme le tome ancien rangé dans une bibliothèque."
 }
