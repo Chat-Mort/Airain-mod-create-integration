@@ -126,6 +126,12 @@ public class FondationBlock extends Block implements EntityBlock {
 		BlockPos b = bas(state, pos);
 		if (!(level.getBlockEntity(b) instanceof FondationBlockEntity f))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		reglerRayon(level, b, f, joueur);
+		return ItemInteractionResult.sidedSuccess(level.isClientSide);
+	}
+
+	/** Clé de Create : agrandit (ou réduit en s'accroupissant) la zone, montre le cercle en particules. */
+	public static void reglerRayon(Level level, BlockPos b, FondationBlockEntity f, Player joueur) {
 		if (!level.isClientSide) {
 			int r = f.rayon() + (joueur.isShiftKeyDown() ? -FondationBlockEntity.PAS : FondationBlockEntity.PAS);
 			if (r > FondationBlockEntity.RAYON_MAX) r = FondationBlockEntity.RAYON_MIN;
@@ -135,12 +141,11 @@ public class FondationBlock extends Block implements EntityBlock {
 			level.playSound(null, b, SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.BLOCKS, 0.5f, 1.2f);
 			if (level instanceof ServerLevel sl)
 				for (int k = 0; k < 96; k++) {
-					double a = k * Math.PI * 2 / 96;
-					sl.sendParticles(ParticleTypes.END_ROD, b.getX() + 0.5 + Math.cos(a) * f.rayon(), b.getY() + 1.2,
-						b.getZ() + 0.5 + Math.sin(a) * f.rayon(), 1, 0, 0.2, 0, 0);
-				}
-		}
-		return ItemInteractionResult.sidedSuccess(level.isClientSide);
+				double a = k * Math.PI * 2 / 96;
+				sl.sendParticles(ParticleTypes.END_ROD, b.getX() + 0.5 + Math.cos(a) * f.rayon(), b.getY() + 1.2,
+				b.getZ() + 0.5 + Math.sin(a) * f.rayon(), 1, 0, 0.2, 0, 0);
+			}
+	}
 	}
 
 	@Override

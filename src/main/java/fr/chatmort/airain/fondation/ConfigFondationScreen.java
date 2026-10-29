@@ -12,26 +12,39 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 /** Écran de l'étendard : nom de la base, puis style, couleurs, motif et forme de la bannière, avec un aperçu. */
 public class ConfigFondationScreen extends Screen {
-	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme"};
-	private static final int[] TAILLES = {Apparence.STYLES, Apparence.FONDS.length, Apparence.ORNEMENTS.length, Apparence.MOTIFS.length, Apparence.FORMES.length};
+	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme", "longueur", "largeur", "vent"};
+	private static final int[] TAILLES = {Apparence.STYLES, Apparence.FONDS.length, Apparence.ORNEMENTS.length, Apparence.MOTIFS.length,
+		Apparence.FORMES.length, Apparence.LONGUEURS.length, Apparence.LARGEURS.length, Apparence.VENTS.length};
+	private static final int PAS = 21;
 	private final BlockPos pos;
 	private final String nomActuel, deviseActuelle;
 	private final int[] choix;
 	private EditBox champ, devise;
+	private boolean grand;
 
 	public ConfigFondationScreen(BlockPos pos, String nom, String dev, Apparence a) {
 		super(Component.translatable("airain.fondation.ecran"));
 		this.pos = pos; this.nomActuel = nom; this.deviseActuelle = dev;
-		this.choix = new int[] {a.style(), a.fond(), a.ornement(), a.motif(), a.forme()};
+		this.choix = new int[] {a.style(), a.fond(), a.ornement(), a.motif(), a.forme(), a.longueur(), a.largeur(), a.vent()};
 	}
 
 	private Apparence apparence() {
-		return new Apparence(choix[0], choix[1], choix[2], choix[3], choix[4]);
+		return new Apparence(choix[0], choix[1], choix[2], choix[3], choix[4], choix[5], choix[6], choix[7]);
+	}
+
+	/** Le grand étendard montre trois réglages de plus. */
+	private int lignes() {
+		return grand ? CLES.length : 5;
+	}
+
+	private int haut() {
+		return height / 2 - (76 + lignes() * PAS + 26) / 2;
 	}
 
 	@Override
 	protected void init() {
-		int x = width / 2 - 150, y = height / 2 - 104;
+		grand = minecraft != null && minecraft.level != null && minecraft.level.getBlockState(pos).getBlock() instanceof GrandEtendardBlock;
+		int x = width / 2 - 150, y = haut();
 		champ = new EditBox(font, x, y + 14, 190, 20, Component.translatable("airain.fondation.ecran"));
 		champ.setMaxLength(32); champ.setValue(nomActuel);
 		addRenderableWidget(champ); setInitialFocus(champ);
@@ -39,14 +52,14 @@ public class ConfigFondationScreen extends Screen {
 		devise.setMaxLength(48); devise.setValue(deviseActuelle);
 		devise.setHint(Component.translatable("airain.fondation.sous_titre"));
 		addRenderableWidget(devise);
-		for (int k = 0; k < CLES.length; k++) {
+		for (int k = 0; k < lignes(); k++) {
 			final int i = k;
-			int ly = y + 76 + k * 24;
+			int ly = y + 76 + k * PAS;
 			addRenderableWidget(new Fleche(x + 66, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, TAILLES[i])));
 			addRenderableWidget(new Fleche(x + 174, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, TAILLES[i])));
 		}
-		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 200, 94, 20).build());
-		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 200, 94, 20).build());
+		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 80 + lignes() * PAS, 94, 20).build());
+		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 80 + lignes() * PAS, 94, 20).build());
 	}
 
 	private void valider() {
@@ -63,34 +76,35 @@ public class ConfigFondationScreen extends Screen {
 	@Override
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		super.render(g, mx, my, pt);
-		int x = width / 2 - 150, y = height / 2 - 104;
-		for (int k = 0; k < CLES.length; k++) {            // cartouche sombre derrière chaque valeur
-			int ly = y + 76 + k * 24;
+		int x = width / 2 - 150, y = haut();
+		for (int k = 0; k < lignes(); k++) {               // cartouche sombre derrière chaque valeur
+			int ly = y + 76 + k * PAS;
 			g.fill(x + 84, ly + 2, x + 172, ly + 18, 0xA0100C08);
 			g.fill(x + 84, ly + 2, x + 172, ly + 3, 0xFF6E5020);
 			g.fill(x + 84, ly + 17, x + 172, ly + 18, 0xFF6E5020);
 		}
 		g.drawString(font, title, x, y, 0xE8C878);
 		g.drawString(font, Component.translatable("airain.fondation.devise"), x, y + 38, 0xD0C8B0);
-		for (int k = 0; k < CLES.length; k++) {
-			int ly = y + 76 + k * 24;
+		for (int k = 0; k < lignes(); k++) {
+			int ly = y + 76 + k * PAS;
 			g.drawString(font, Component.translatable("airain.etendard." + CLES[k]), x, ly + 6, 0xD0C8B0);
 			g.drawCenteredString(font, Component.translatable("airain.etendard." + CLES[k] + "." + choix[k]), x + 128, ly + 6, 0xFFE9B0);
 		}
 		// aperçu de la bannière (calques teintés)
 		Apparence a = apparence();
-		int px = x + 220, py = y + 14;
-		g.fill(px - 6, py - 6, px + 70, py + 138, 0x80101010);
+		int bh = 128, bw = grand ? Math.round(128f * Apparence.LARGEURS[a.largeur()] / Apparence.LONGUEURS[a.longueur()]) : 64;
+		int px = x + 220 + (64 - bw) / 2, py = y + 14;
+		g.fill(x + 214, py - 6, x + 290, py + bh + 10, 0x80101010);
 		RenderSystem.enableBlend();
-		dessiner(g, a.texFond(), Apparence.FONDS[a.fond()], px, py);
-		if (a.texMotif() != null) dessiner(g, a.texMotif(), Apparence.ORNEMENTS[a.ornement()], px, py);
-		dessiner(g, a.texOrnement(), Apparence.ORNEMENTS[a.ornement()], px, py);
+		dessiner(g, a.texFond(), Apparence.FONDS[a.fond()], px, py, bw, bh);
+		if (a.texMotif() != null) dessiner(g, a.texMotif(), Apparence.ORNEMENTS[a.ornement()], px, py, bw, bh);
+		dessiner(g, a.texOrnement(), Apparence.ORNEMENTS[a.ornement()], px, py, bw, bh);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 	}
 
-	private static void dessiner(GuiGraphics g, ResourceLocation tex, int c, int x, int y) {
+	private static void dessiner(GuiGraphics g, ResourceLocation tex, int c, int x, int y, int w, int h) {
 		RenderSystem.setShaderColor((c >> 16 & 255) / 255f, (c >> 8 & 255) / 255f, (c & 255) / 255f, 1f);
-		g.blit(tex, x, y, 64, 128, 0f, 0f, 16, 32, 16, 32);
+		g.blit(tex, x, y, w, h, 0f, 0f, 16, 32, 16, 32);
 	}
 
 	@Override

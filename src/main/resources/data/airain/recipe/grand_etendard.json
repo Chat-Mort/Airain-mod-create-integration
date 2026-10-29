@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "WBW",
+  "IFI",
+  "WBW"
+ ],
+ "key": {
+  "W": {
+   "item": "minecraft:white_wool"
+  },
+  "B": {
+   "item": "create:brass_ingot"
+  },
+  "I": {
+   "item": "create:iron_sheet"
+  },
+  "F": {
+   "item": "airain:pierre_fondation"
+  }
+ },
+ "result": {
+  "id": "airain:grand_etendard",
+  "count": 1
+ }
+}

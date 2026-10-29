@@ -1,0 +1,116 @@
+{
+ "variants": {
+  "facing=north,partie=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 0
+  },
+  "facing=north,partie=1": {
+   "model": "airain:block/grand_mat_pied",
+   "y": 0
+  },
+  "facing=north,partie=2": {
+   "model": "airain:block/grand_mat",
+   "y": 0
+  },
+  "facing=north,partie=3": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 0
+  },
+  "facing=north,partie=4": {
+   "model": "airain:block/grand_mat",
+   "y": 0
+  },
+  "facing=north,partie=5": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 0
+  },
+  "facing=north,partie=6": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=east,partie=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 90
+  },
+  "facing=east,partie=1": {
+   "model": "airain:block/grand_mat_pied",
+   "y": 90
+  },
+  "facing=east,partie=2": {
+   "model": "airain:block/grand_mat",
+   "y": 90
+  },
+  "facing=east,partie=3": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 90
+  },
+  "facing=east,partie=4": {
+   "model": "airain:block/grand_mat",
+   "y": 90
+  },
+  "facing=east,partie=5": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 90
+  },
+  "facing=east,partie=6": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=south,partie=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 180
+  },
+  "facing=south,partie=1": {
+   "model": "airain:block/grand_mat_pied",
+   "y": 180
+  },
+  "facing=south,partie=2": {
+   "model": "airain:block/grand_mat",
+   "y": 180
+  },
+  "facing=south,partie=3": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 180
+  },
+  "facing=south,partie=4": {
+   "model": "airain:block/grand_mat",
+   "y": 180
+  },
+  "facing=south,partie=5": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 180
+  },
+  "facing=south,partie=6": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=west,partie=0": {
+   "model": "airain:block/etendard_socle",
+   "y": 270
+  },
+  "facing=west,partie=1": {
+   "model": "airain:block/grand_mat_pied",
+   "y": 270
+  },
+  "facing=west,partie=2": {
+   "model": "airain:block/grand_mat",
+   "y": 270
+  },
+  "facing=west,partie=3": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 270
+  },
+  "facing=west,partie=4": {
+   "model": "airain:block/grand_mat",
+   "y": 270
+  },
+  "facing=west,partie=5": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 270
+  },
+  "facing=west,partie=6": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  }
+ }
+}

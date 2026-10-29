@@ -109,9 +109,15 @@ public class AirainMod {
 			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
 	public static final DeferredItem<BlockItem> FONDATION_ITEM = ITEMS.register("pierre_fondation",
 		() -> new BlockItem(FONDATION.get(), new Item.Properties()));
+	/** Grand étendard : même piédestal, mât de six blocs, bannière réglable en taille. */
+	public static final DeferredBlock<fr.chatmort.airain.fondation.GrandEtendardBlock> GRAND_ETENDARD = BLOCKS.register("grand_etendard",
+		() -> new fr.chatmort.airain.fondation.GrandEtendardBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
+	public static final DeferredItem<BlockItem> GRAND_ETENDARD_ITEM = ITEMS.register("grand_etendard",
+		() -> new BlockItem(GRAND_ETENDARD.get(), new Item.Properties()));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fondation.FondationBlockEntity>> FONDATION_BE =
 		BLOCK_ENTITIES.register("pierre_fondation",
-			() -> BlockEntityType.Builder.of(fr.chatmort.airain.fondation.FondationBlockEntity::new, FONDATION.get()).build(null));
+			() -> BlockEntityType.Builder.of(fr.chatmort.airain.fondation.FondationBlockEntity::new, FONDATION.get(), GRAND_ETENDARD.get()).build(null));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 

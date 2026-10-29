@@ -69,7 +69,7 @@ public class FondationBlockEntity extends BlockEntity {
 	}
 
 	@Override
-	public CompoundTag getUpdateTag(HolderLookup.Provider r) { return saveWithoutMetadata(r); }
+	public CompoundTag getUpdateTag(HolderLookup.Provider r) { CompoundTag t = saveWithoutMetadata(r); t.putBoolean("sync", true); return t; }
 
 	@Override
 	public Packet<ClientGamePacketListener> getUpdatePacket() { return ClientboundBlockEntityDataPacket.create(this); }

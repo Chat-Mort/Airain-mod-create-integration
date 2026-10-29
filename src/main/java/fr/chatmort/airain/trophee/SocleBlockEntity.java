@@ -69,7 +69,9 @@ public class SocleBlockEntity extends BlockEntity {
 
 	@Override
 	public CompoundTag getUpdateTag(HolderLookup.Provider registres) {
-		return saveWithoutMetadata(registres);
+		CompoundTag t = saveWithoutMetadata(registres);
+		t.putBoolean("sync", true);   // un paquet vide est ignoré par le client : l'objet retiré resterait affiché
+		return t;
 	}
 
 	@Override

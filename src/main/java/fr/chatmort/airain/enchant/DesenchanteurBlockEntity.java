@@ -116,7 +116,7 @@ public class DesenchanteurBlockEntity extends KineticBlockEntity {
 		if (liste.isEmpty())
 			return null;
 		var e = liste.get(level.random.nextInt(liste.size()));
-		niveauChoisi = e.getIntValue();
+		niveauChoisi = Math.min(e.getIntValue(), e.getKey().value().getMaxLevel());   // jamais au-delà du maximum vanilla
 		choix = e.getKey().unwrapKey().map(k -> k.location().toString()).orElse("");
 		return e.getKey();
 	}
@@ -138,6 +138,7 @@ public class DesenchanteurBlockEntity extends KineticBlockEntity {
 			if (h == null)
 				return false;
 		}
+		niveauChoisi = Math.max(1, Math.min(niveauChoisi, h.value().getMaxLevel()));
 		if (reservoir.getFluidAmount() < COUT_PAR_NIVEAU * niveauChoisi)
 			return false;
 		float vitesse = Math.abs(getSpeed());
