@@ -94,7 +94,8 @@ public class FondationBlockEntity extends BlockEntity {
 			int[] v = a.valeurs(); v[12] = 0; a = Apparence.depuis(v);
 		}
 		nom = n; devise = d; apparence = a;
-		if (level != null && !level.isClientSide) FondationBlock.appliquerStyle(level, worldPosition, a.style());
+		if (level != null && !level.isClientSide && getBlockState().getBlock() instanceof FondationBlock)
+			FondationBlock.appliquerStyle(level, worldPosition, a.style());
 		enregistrer(); maj();
 	}
 
