@@ -193,5 +193,20 @@
  "airain.registre.hors_base": "Hors de toute base",
  "airain.gabarit.vide_socle": "Gabarit vide : accroupis-toi et clic droit sur un piédestal pour copier son apparence",
  "airain.gabarit.plein_socle": "Contient l'apparence d'un piédestal",
- "airain.etendard.presence.2": "Selon trophées"
+ "airain.etendard.presence.2": "Selon trophées",
+ "item.airain.meule_fine": "Meule fine",
+ "item.airain.demultiplicateur": "Démultiplicateur",
+ "item.airain.graisseur": "Graisseur",
+ "airain.banc.module.meule_fine": "Meule fine : −30 % d'huile",
+ "airain.banc.module.demultiplicateur": "Démultiplicateur : +60 % de vitesse, couple ×2",
+ "airain.banc.module.graisseur": "Graisseur : huile pompée alentour",
+ "airain.banc.emplacement_module": "Emplacement de module",
+ "airain.banc.arret": "À l'arrêt",
+ "airain.banc.vitesse": "%s tr/min",
+ "airain.banc.rythme": "%s tr/min · %s s",
+ "airain.affute.outil": "Fraîchement entretenu : +10 %% de vitesse (%s min)",
+ "airain.affute.arme": "Fraîchement affûté : +10 %% de dégâts (%s min)",
+ "airain.desench.purge": "Purge : %s",
+ "airain.desench.extraction": "Extraction : %s",
+ "airain.desench.encre": "Encre runique : %s"
 }

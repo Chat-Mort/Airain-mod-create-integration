@@ -193,5 +193,20 @@
  "airain.registre.hors_base": "Outside any base",
  "airain.gabarit.vide_socle": "Empty template: sneak and right-click a pedestal to copy its look",
  "airain.gabarit.plein_socle": "Holds a pedestal's look",
- "airain.etendard.presence.2": "By trophies"
+ "airain.etendard.presence.2": "By trophies",
+ "item.airain.meule_fine": "Fine Grindstone",
+ "item.airain.demultiplicateur": "Gear Reducer",
+ "item.airain.graisseur": "Greaser",
+ "airain.banc.module.meule_fine": "Fine grindstone: −30% oil",
+ "airain.banc.module.demultiplicateur": "Gear reducer: +60% speed, 2× stress",
+ "airain.banc.module.graisseur": "Greaser: pumps nearby oil",
+ "airain.banc.emplacement_module": "Module slot",
+ "airain.banc.arret": "Stopped",
+ "airain.banc.vitesse": "%s RPM",
+ "airain.banc.rythme": "%s RPM · %s s",
+ "airain.affute.outil": "Freshly serviced: +10%% speed (%s min)",
+ "airain.affute.arme": "Freshly sharpened: +10%% damage (%s min)",
+ "airain.desench.purge": "Purging: %s",
+ "airain.desench.extraction": "Extracting: %s",
+ "airain.desench.encre": "Runic ink: %s"
 }

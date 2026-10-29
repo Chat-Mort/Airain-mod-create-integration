@@ -60,8 +60,12 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 	public final ItemStackHandler inventaire;
 	public final FluidTank reservoir;
 	public final IItemHandler automatisation;
+	/** Trois emplacements de modules : meule fine, démultiplicateur, graisseur (un exemplaire de chaque compte). */
+	public final ItemStackHandler modules;
 	private float progres;
 	private boolean travaille;
+	/** Affûtage : durée du bonus d'un objet qui sort du banc (10 min, 15 si le réservoir est aux trois quarts). */
+	public static final long AFFUTAGE = 12000, AFFUTAGE_HUILE = 18000;
 
 	public BancEntretienBlockEntity(BlockPos pos, BlockState state) {
 		this(fr.chatmort.airain.AirainMod.BANC_BE.get(), pos, state);
@@ -83,7 +87,75 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 				sendData();
 			}
 		};
+		modules = new ItemStackHandler(3) {
+			@Override
+			protected void onContentsChanged(int slot) {
+				setChanged();
+				sendData();
+				if (level != null && !level.isClientSide && hasNetwork())        // le démultiplicateur change le couple demandé
+					getOrCreateNetwork().updateStressFor(BancEntretienBlockEntity.this, calculateStressApplied());
+			}
+
+			@Override
+			public int getSlotLimit(int slot) {
+				return 1;
+			}
+
+			@Override
+			public boolean isItemValid(int slot, ItemStack stack) {
+				return Module.de(stack) != null;
+			}
+		};
 		automatisation = new Automatisation();
+	}
+
+	// ------------------------------------------------------------------ modules
+	public enum Module { MEULE_FINE, DEMULTIPLICATEUR, GRAISSEUR;
+		public static Module de(ItemStack s) {
+			if (s.is(fr.chatmort.airain.AirainMod.MEULE_FINE.get())) return MEULE_FINE;
+			if (s.is(fr.chatmort.airain.AirainMod.DEMULTIPLICATEUR.get())) return DEMULTIPLICATEUR;
+			if (s.is(fr.chatmort.airain.AirainMod.GRAISSEUR.get())) return GRAISSEUR;
+			return null;
+		}
+	}
+
+	public boolean a(Module m) {
+		for (int i = 0; i < modules.getSlots(); i++)
+			if (Module.de(modules.getStackInSlot(i)) == m) return true;
+		return false;
+	}
+
+	/** Huile par unité de réparation : 30 % de moins avec la meule fine. */
+	public int cout() {
+		return a(Module.MEULE_FINE) ? COUT * 7 / 10 : COUT;
+	}
+
+	/** Le démultiplicateur va 60 % plus vite mais demande deux fois plus de couple. */
+	private float facteur() {
+		return a(Module.DEMULTIPLICATEUR) ? 1.6f : 1f;
+	}
+
+	@Override
+	public float calculateStressApplied() {
+		float impact = super.calculateStressApplied() * (a(Module.DEMULTIPLICATEUR) ? 2f : 1f);
+		this.lastStressApplied = impact;
+		return impact;
+	}
+
+	public boolean travaille() { return travaille; }
+
+	/** Avancement de l'unité en cours (0 à 1). */
+	public float avancement() {
+		ItemStack a = inventaire.getStackInSlot(0);
+		return a.isEmpty() ? 0 : Math.min(1f, progres / travailPour(a));
+	}
+
+	/** Secondes restantes pour l'unité en cours à la vitesse actuelle (-1 si à l'arrêt). */
+	public int secondesRestantes() {
+		ItemStack a = inventaire.getStackInSlot(0);
+		float v = Math.abs(getSpeed());
+		if (a.isEmpty() || v < 16) return -1;
+		return Math.round((travailPour(a) - progres) / (rythme(v) * facteur()) / 20f);
 	}
 
 	// ------------------------------------------------------------------ règles
@@ -124,11 +196,11 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 			return;
 
 		if (level.isClientSide) {
-			if (travaille && level.random.nextInt(3) == 0)
-				level.addParticle(ParticleTypes.CRIT, worldPosition.getX() + 0.3 + level.random.nextDouble() * 0.4,
-					worldPosition.getY() + 1.05, worldPosition.getZ() + 0.3 + level.random.nextDouble() * 0.4, 0, 0.05, 0);
+			if (travaille) etincelles();
 			return;
 		}
+		if (a(Module.GRAISSEUR) && level.getGameTime() % 20 == 0) graisser();
+		if (travaille && level.getGameTime() % 10 == 0) level.updateNeighbourForOutputSignal(worldPosition, getBlockState().getBlock());
 
 		boolean actif = etape();
 		if (actif != travaille) {
@@ -151,13 +223,13 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 		ItemStack b = inventaire.getStackInSlot(1);
 		if (!accepteEnSecond(a, b))
 			return false;
-		if (reservoir.getFluidAmount() < COUT)
+		if (reservoir.getFluidAmount() < cout())
 			return false;
 		float vitesse = Math.abs(getSpeed());
 		if (vitesse < 16 || isOverStressed())
 			return false;
 
-		progres += rythme(vitesse);
+		progres += rythme(vitesse) * facteur();
 		if (progres < travailPour(a))
 			return true;
 		progres = 0;
@@ -172,11 +244,66 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 		}
 		inventaire.extractItem(1, 1, false);
 		inventaire.setStackInSlot(0, repare);
-		reservoir.drain(COUT, IFluidHandler.FluidAction.EXECUTE);
+		reservoir.drain(cout(), IFluidHandler.FluidAction.EXECUTE);
 		level.playSound(null, worldPosition, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.35f, 1.5f);
-		if (!reparable(repare))
+		if (!reparable(repare)) {
+			affuter(repare);
+			inventaire.setStackInSlot(0, repare);
 			versSortie();
+		}
 		return true;
+	}
+
+	/** Un outil ou une arme qui sort du banc est fraîchement affûté (bonus temporaire, voir {@link Affutage}). */
+	private void affuter(ItemStack s) {
+		if (!Affutage.affutable(s) || level == null) return;
+		long duree = reservoir.getFluidAmount() >= CAPACITE * 3 / 4 ? AFFUTAGE_HUILE : AFFUTAGE;
+		Affutage.marquer(s, level.getGameTime() + duree);
+	}
+
+	/** Le graisseur aspire l'huile d'un réservoir voisin (250 mB par seconde). */
+	private void graisser() {
+		int place = CAPACITE - reservoir.getFluidAmount();
+		if (place < 250) return;
+		for (net.minecraft.core.Direction d : net.minecraft.core.Direction.values()) {
+			IFluidHandler h = level.getCapability(net.neoforged.neoforge.capabilities.Capabilities.FluidHandler.BLOCK, worldPosition.relative(d), d.getOpposite());
+			if (h == null) continue;
+			for (int t = 0; t < h.getTanks(); t++) {
+				FluidStack f = h.getFluidInTank(t);
+				if (f.isEmpty() || !f.is(HUILES)) continue;
+				FluidStack pris = h.drain(f.copyWithAmount(Math.min(250, place)), IFluidHandler.FluidAction.EXECUTE);
+				if (!pris.isEmpty()) { reservoir.fill(pris, IFluidHandler.FluidAction.EXECUTE); return; }
+			}
+		}
+	}
+
+	/** Position locale (devant = nord) → monde. */
+	private net.minecraft.world.phys.Vec3 monde(double x, double y, double z) {
+		double dx = x - 0.5, dz = z - 0.5, rx, rz;
+		switch (getBlockState().getValue(BancEntretienBlock.FACING)) {
+			case EAST -> { rx = -dz; rz = dx; }
+			case SOUTH -> { rx = -dx; rz = -dz; }
+			case WEST -> { rx = dz; rz = -dx; }
+			default -> { rx = dx; rz = dz; }
+		}
+		return new net.minecraft.world.phys.Vec3(worldPosition.getX() + 0.5 + rx, worldPosition.getY() + y, worldPosition.getZ() + 0.5 + rz);
+	}
+
+	/** Étincelles là où l'objet touche la meule ; fumée à pleine vitesse. */
+	private void etincelles() {
+		var r = level.random;
+		var p = monde(0.5, 18.6 / 16, 7.4 / 16);
+		var avant = monde(0.5, 18.6 / 16, 4.0 / 16).subtract(p);
+		if (r.nextInt(2) == 0)
+			level.addParticle(ParticleTypes.ELECTRIC_SPARK, p.x + r.nextGaussian() * 0.03, p.y, p.z + r.nextGaussian() * 0.03,
+				avant.x * 0.6 + r.nextGaussian() * 0.04, 0.05 + r.nextDouble() * 0.06, avant.z * 0.6 + r.nextGaussian() * 0.04);
+		if (r.nextInt(3) == 0)
+			level.addParticle(new net.minecraft.core.particles.DustParticleOptions(new org.joml.Vector3f(1f, 0.62f, 0.2f), 0.5f),
+				p.x, p.y, p.z, 0, 0, 0);
+		if (Math.abs(getSpeed()) >= 128 && r.nextInt(6) == 0) {
+			var f = monde(0.5, 1.55, 11 / 16.0);
+			level.addParticle(ParticleTypes.SMOKE, f.x + r.nextGaussian() * 0.05, f.y, f.z + r.nextGaussian() * 0.05, 0, 0.03, 0);
+		}
 	}
 
 	private void versSortie() {
@@ -301,11 +428,14 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 				.append(Component.literal(" : " + pct + " %").withStyle(ChatFormatting.AQUA)));
 			float vitesse = Math.abs(getSpeed());
 			if (vitesse >= 16) {
-				int secondes = Math.round(travailPour(a) / rythme(vitesse) / 20f);
+				int secondes = secondesRestantes();
 				tooltip.add(Component.literal("     ").append(Component.translatable("airain.banc.duree", secondes)
 					.withStyle(ChatFormatting.GRAY)));
 			}
 		}
+		for (Module m : Module.values())
+			if (a(m)) tooltip.add(Component.literal("     ").append(Component.translatable("airain.banc.module." + m.name().toLowerCase())
+				.withStyle(ChatFormatting.DARK_AQUA)));
 		return true;
 	}
 
@@ -317,6 +447,7 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 		tag.put("Reservoir", reservoir.writeToNBT(registries, new CompoundTag()));
 		tag.putFloat("Progres", progres);
 		tag.putBoolean("Travaille", travaille);
+		tag.put("Modules", modules.serializeNBT(registries));
 	}
 
 	@Override
@@ -326,6 +457,7 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 		reservoir.readFromNBT(registries, tag.getCompound("Reservoir"));
 		progres = tag.getFloat("Progres");
 		travaille = tag.getBoolean("Travaille");
+		if (tag.contains("Modules")) modules.deserializeNBT(registries, tag.getCompound("Modules"));
 	}
 
 	@Override
@@ -338,5 +470,6 @@ public class BancEntretienBlockEntity extends KineticBlockEntity {
 	public void destroy() {
 		super.destroy();
 		ItemHelper.dropContents(level, worldPosition, inventaire);
+		ItemHelper.dropContents(level, worldPosition, modules);
 	}
 }

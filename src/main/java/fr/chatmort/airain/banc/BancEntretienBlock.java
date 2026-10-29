@@ -98,7 +98,11 @@ public class BancEntretienBlock extends KineticBlock implements IBE<BancEntretie
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (level.isClientSide)
 			return InteractionResult.SUCCESS;
-		withBlockEntityDo(level, pos, be -> be.reprendre(player));
+		withBlockEntityDo(level, pos, be -> {
+			if (player instanceof net.minecraft.server.level.ServerPlayer sp)
+				sp.openMenu(new net.minecraft.world.SimpleMenuProvider((id, inv, p) -> new BancMenu(id, inv, be, BancMenu.donnees(be)),
+					net.minecraft.network.chat.Component.translatable("block.airain.banc_entretien")), buf -> buf.writeBlockPos(pos));
+		});
 		return InteractionResult.SUCCESS;
 	}
 
@@ -115,5 +119,16 @@ public class BancEntretienBlock extends KineticBlock implements IBE<BancEntretie
 	@Override
 	protected boolean isPathfindable(BlockState state, PathComputationType type) {
 		return false;
+	}
+
+	/** Comparateur : avancement de l'unité de réparation en cours. */
+	@Override
+	protected boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return level.getBlockEntity(pos) instanceof BancEntretienBlockEntity b && b.travaille() ? 1 + Math.round(b.avancement() * 14) : 0;
 	}
 }

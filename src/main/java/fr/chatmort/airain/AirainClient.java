@@ -54,5 +54,6 @@ public class AirainClient {
 
 	private void ecrans(RegisterMenuScreensEvent event) {
 		event.register(AirainMod.TABLE_MENU.get(), TableEmpireScreen::new);
+		event.register(AirainMod.BANC_MENU.get(), fr.chatmort.airain.banc.BancScreen::new);
 	}
 }

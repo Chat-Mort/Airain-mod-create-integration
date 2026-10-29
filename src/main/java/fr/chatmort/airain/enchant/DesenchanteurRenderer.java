@@ -46,7 +46,15 @@ public class DesenchanteurRenderer extends KineticBlockEntityRenderer<Desenchant
 		ms.translate(8 / 16f, 0, 11 / 16f);
 		ms.mulPose(Axis.YP.rotation(angle));
 		ms.translate(-8 / 16f, 0, -11 / 16f);
-		CachedBuffers.partial(AirainPartials.CRISTAL, state).light(light).renderInto(ms, buffer.getBuffer(RenderType.cutout()));
+		if (be.travaille()) {                                   // le cristal pulse et s'illumine au rythme du travail
+			float t = be.getLevel().getGameTime() + partialTicks;
+			float s = 1f + 0.07f * net.minecraft.util.Mth.sin(t * (0.25f + 0.35f * be.avancement()));
+			ms.translate(8 / 16f, 22.9f / 16f, 11 / 16f);
+			ms.scale(s, s, s);
+			ms.translate(-8 / 16f, -22.9f / 16f, -11 / 16f);
+		}
+		int lumCristal = be.travaille() ? net.minecraft.client.renderer.LightTexture.FULL_BRIGHT : light;
+		CachedBuffers.partial(AirainPartials.CRISTAL, state).light(lumCristal).renderInto(ms, buffer.getBuffer(RenderType.cutout()));
 		ms.popPose();
 
 		float plein = be.reservoir.getFluidAmount() / (float) DesenchanteurBlockEntity.CAPACITE;

@@ -87,6 +87,12 @@ public class AirainMod {
 			() -> BlockEntityType.Builder.of(TableEmpireBlockEntity::new, TABLE.get()).build(null));
 	public static final DeferredItem<BlockItem> TABLE_ITEM = ITEMS.register("table_enchantement",
 		() -> new BlockItem(TABLE.get(), new Item.Properties()));
+	public static final DeferredHolder<MenuType<?>, MenuType<fr.chatmort.airain.banc.BancMenu>> BANC_MENU = MENUS.register("banc_entretien",
+		() -> IMenuTypeExtension.create(fr.chatmort.airain.banc.BancMenu::new));
+	/** Modules du banc d'entretien. */
+	public static final DeferredItem<Item> MEULE_FINE = ITEMS.register("meule_fine", () -> new Item(new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> DEMULTIPLICATEUR = ITEMS.register("demultiplicateur", () -> new Item(new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> GRAISSEUR = ITEMS.register("graisseur", () -> new Item(new Item.Properties().stacksTo(1)));
 	public static final DeferredHolder<MenuType<?>, MenuType<TableEmpireMenu>> TABLE_MENU = MENUS.register("table_enchantement",
 		() -> IMenuTypeExtension.create(TableEmpireMenu::new));
 
@@ -150,6 +156,9 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::vitesse);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::degats);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::infobulle);
 		bus.addListener((net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent e) -> e.registrar("1")
 			.playToServer(fr.chatmort.airain.trophee.ConfigurerSocle.TYPE, fr.chatmort.airain.trophee.ConfigurerSocle.CODEC,
 				fr.chatmort.airain.trophee.ConfigurerSocle::traiter)

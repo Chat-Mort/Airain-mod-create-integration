@@ -68,7 +68,16 @@ public class BancEntretienRenderer extends KineticBlockEntityRenderer<BancEntret
 		ItemStack a = be.inventaire.getStackInSlot(0);
 		ItemStack b = be.inventaire.getStackInSlot(1);
 		ItemStack c = be.inventaire.getStackInSlot(2);
-		poser(be, a.isEmpty() ? c : a, 0.33f, 0.3f, ms, buffer, light, overlay);
+		if (be.travaille() && !a.isEmpty()) {                     // l'objet est tenu contre la meule, il vibre légèrement
+			float t = be.getLevel().getGameTime() + partialTicks;
+			ms.pushPose();
+			ms.translate(0.5 + net.minecraft.util.Mth.sin(t * 0.9f) * 0.012, 18.4f / 16f, 6.2f / 16f + net.minecraft.util.Mth.sin(t * 1.7f) * 0.004);
+			ms.mulPose(Axis.XP.rotationDegrees(62));
+			ms.mulPose(Axis.ZP.rotationDegrees(-45));
+			ms.scale(0.42f, 0.42f, 0.42f);
+			Minecraft.getInstance().getItemRenderer().renderStatic(a, ItemDisplayContext.FIXED, light, overlay, ms, buffer, be.getLevel(), 0);
+			ms.popPose();
+		} else poser(be, a.isEmpty() ? c : a, 0.33f, 0.3f, ms, buffer, light, overlay);
 		poser(be, b, 0.68f, 0.3f, ms, buffer, light, overlay);
 		ms.popPose();
 

@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "create:mechanical_pump"
+  },
+  {
+   "item": "create:fluid_pipe"
+  },
+  {
+   "item": "create:copper_sheet"
+  }
+ ],
+ "result": {
+  "id": "airain:graisseur",
+  "count": 1
+ }
+}

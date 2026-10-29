@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "minecraft:grindstone"
+  },
+  {
+   "item": "create:polished_rose_quartz"
+  },
+  {
+   "item": "create:andesite_alloy"
+  }
+ ],
+ "result": {
+  "id": "airain:meule_fine",
+  "count": 1
+ }
+}
