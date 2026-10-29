@@ -13,7 +13,9 @@ import net.minecraft.world.item.ItemStack;
 /** Écran de la table de l'Empire : une ligne par enchantement du répertoire, un bouton par niveau disponible. */
 public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> {
 	private static final int LISTE_X = 50, LISTE_Y = 18, LIGNE = 18, VISIBLES = 6, LARGEUR = 176, BOUTON = 15;
-	private static final int FOND = 0xFF2A211B, CADRE = 0xFFB0853A, CASE = 0xFF1A1512, LIGNE_FOND = 0xFF3A2E24, LIGNE_SURVOL = 0xFF4E3D2E;
+	private static final int LIGNE_FOND = 0xFF3E2A16, LIGNE_SURVOL = 0xFF523A1E, SEPARATION = 0xFF281A0C, BRUN = 0x3A220E;
+	private static final net.minecraft.resources.ResourceLocation FOND = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/table_empire.png");
+	private static final net.minecraft.resources.ResourceLocation ELEMENTS = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/elements.png");
 	private int defilement;
 
 	public TableEmpireScreen(TableEmpireMenu menu, Inventory inv, Component titre) {
@@ -47,26 +49,10 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 		return b;
 	}
 
+	/** Panneau de laiton : cases (avec leurs silhouettes), registre riveté, tuyau et engrenages, plaque de titre. */
 	@Override
 	protected void renderBg(GuiGraphics g, float partialTick, int mouseX, int mouseY) {
-		int x = leftPos, y = topPos;
-		g.fill(x, y, x + imageWidth, y + imageHeight, CADRE);
-		g.fill(x + 2, y + 2, x + imageWidth - 2, y + imageHeight - 2, FOND);
-		for (int[] c : new int[][] {{22, 35}, {22, 60}, {22, 85}})
-			caseVide(g, x + c[0], y + c[1]);
-		for (int l = 0; l < 3; l++)
-			for (int c = 0; c < 9; c++)
-				caseVide(g, x + 35 + c * 18, y + 140 + l * 18);
-		for (int c = 0; c < 9; c++)
-			caseVide(g, x + 35 + c * 18, y + 198);
-		// liste
-		g.fill(x + LISTE_X - 1, y + LISTE_Y - 1, x + LISTE_X + LARGEUR + 1, y + LISTE_Y + VISIBLES * LIGNE + 1, CADRE);
-		g.fill(x + LISTE_X, y + LISTE_Y, x + LISTE_X + LARGEUR, y + LISTE_Y + VISIBLES * LIGNE, CASE);
-	}
-
-	private void caseVide(GuiGraphics g, int x, int y) {
-		g.fill(x - 1, y - 1, x + 17, y + 17, 0xFF8B8B8B);
-		g.fill(x, y, x + 16, y + 16, 0xFF373737);
+		g.blit(FOND, leftPos, topPos, 0, 0, imageWidth, imageHeight, 256, 256);
 	}
 
 	@Override
@@ -84,24 +70,28 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 			int y = topPos + LISTE_Y + i * LIGNE;
 			boolean survol = mouseX >= leftPos + LISTE_X && mouseX < leftPos + LISTE_X + LARGEUR && mouseY >= y && mouseY < y + LIGNE;
 			g.fill(leftPos + LISTE_X + 1, y + 1, leftPos + LISTE_X + LARGEUR - 1, y + LIGNE - 1, survol ? LIGNE_SURVOL : LIGNE_FOND);
-			g.drawString(font, ligne.enchantement().value().description(), leftPos + LISTE_X + 4, y + 5, 0xE8D8B0, false);
+			g.fill(leftPos + LISTE_X + 1, y + LIGNE - 1, leftPos + LISTE_X + LARGEUR - 1, y + LIGNE, SEPARATION);
+			// le nom s'arrête avant les touches (le nom complet reste dans l'infobulle)
+			int place = LARGEUR - 10 - ligne.niveauMax() * (BOUTON + 1);
+			String nom = ligne.enchantement().value().description().getString();
+			if (font.width(nom) > place) nom = font.plainSubstrByWidth(nom, place - font.width("…")) + "…";
+			g.drawString(font, nom, leftPos + LISTE_X + 4, y + 5, 0xF0DCAA, false);
 		}
 		Bouton survole = null;
 		for (Bouton b : boutons()) {
 			boolean dessus = mouseX >= b.x && mouseX < b.x + BOUTON && mouseY >= b.y && mouseY < b.y + 14;
 			boolean tome = b.ligne.parTome(b.niveau);
-			int fond = !b.actif ? (tome ? 0xFF3A3018 : 0xFF2B2B2B) : tome ? (dessus ? 0xFFFFE070 : 0xFFE0B020) : dessus ? 0xFFD9A54E : 0xFF8A6A2E;
-			g.fill(b.x, b.y, b.x + BOUTON, b.y + 14, fond);
-			if (tome)
-				g.renderOutline(b.x, b.y, BOUTON, 14, b.actif ? 0xFFFFF4C0 : 0xFF806020);
+			// touche de machine à écrire : ivoire (disponible), grise (hors de portée), dorée cerclée d'améthyste (tome + encre)
+			int touche = (tome ? 3 : 0) + (!b.actif ? 2 : dessus ? 1 : 0);
+			g.blit(ELEMENTS, b.x, b.y, touche * 16, 0, 15, 14, 128, 64);
 			Component chiffre = Component.translatable("enchantment.level." + b.niveau);
-			g.drawCenteredString(font, chiffre, b.x + BOUTON / 2 + 1, b.y + 3, b.actif ? (tome ? 0x3A2400 : 0xFFFFFF) : (tome ? 0xA08040 : 0x707070));
+			g.drawString(font, chiffre, b.x + 8 - font.width(chiffre) / 2, b.y + 3, b.actif ? BRUN : 0x968C78, false);
 			if (dessus)
 				survole = b;
 		}
 		if (l.size() > VISIBLES)
 			g.drawString(font, (defilement + 1) + "-" + Math.min(l.size(), defilement + VISIBLES) + " / " + l.size(),
-				leftPos + LISTE_X + LARGEUR - 50, topPos + LISTE_Y + VISIBLES * LIGNE + 3, 0xA08060, false);
+				leftPos + LISTE_X + LARGEUR - 50, topPos + LISTE_Y + VISIBLES * LIGNE + 3, BRUN, false);
 		if (survole != null) {
 			List<Component> info = new ArrayList<>();
 			info.add(net.minecraft.world.item.enchantment.Enchantment.getFullname(survole.ligne.enchantement(), survole.niveau));
@@ -121,8 +111,8 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 
 	@Override
 	protected void renderLabels(GuiGraphics g, int mouseX, int mouseY) {
-		g.drawString(font, title, 8, 6, 0xE8D8B0, false);
-		g.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0xB0A080, false);
+		g.drawString(font, title, 10, 6, BRUN, false);
+		g.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, BRUN, false);
 	}
 
 	@Override
