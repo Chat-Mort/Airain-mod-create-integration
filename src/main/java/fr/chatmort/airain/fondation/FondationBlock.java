@@ -121,6 +121,8 @@ public class FondationBlock extends Block implements EntityBlock {
 
 	@Override
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
+		if (pile.getItem() instanceof GabaritItem)
+			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		BlockPos b = bas(state, pos);
@@ -161,5 +163,11 @@ public class FondationBlock extends Block implements EntityBlock {
 		if (!state.is(neuf.getBlock()) && state.getValue(HALF) == DoubleBlockHalf.LOWER && level instanceof ServerLevel sl)
 			FondationRegistre.de(sl.getServer()).retirer(level, pos);
 		super.onRemove(state, level, pos, neuf, deplace);
+	}
+
+	@Override
+	public <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> getTicker(Level level, BlockState state,
+			net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
+		return FondationBlockEntity.ticker(level, type);
 	}
 }

@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/banniere_murale"
+  },
+  "facing=south": {
+   "model": "airain:block/banniere_murale"
+  },
+  "facing=east": {
+   "model": "airain:block/banniere_murale"
+  },
+  "facing=west": {
+   "model": "airain:block/banniere_murale"
+  }
+ }
+}

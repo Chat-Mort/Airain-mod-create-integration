@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "decorations",
+ "pattern": [
+  "NIN",
+  "WWW",
+  " W "
+ ],
+ "key": {
+  "N": {
+   "item": "create:brass_nugget"
+  },
+  "I": {
+   "item": "create:iron_sheet"
+  },
+  "W": {
+   "item": "minecraft:white_wool"
+  }
+ },
+ "result": {
+  "id": "airain:banniere_murale",
+  "count": 1
+ }
+}

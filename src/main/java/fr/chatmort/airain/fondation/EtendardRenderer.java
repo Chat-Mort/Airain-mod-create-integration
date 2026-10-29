@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.phys.AABB;
 
 /**
- * Bannière de l'étendard : un tissu maillé qui ondule au vent, peint en trois calques teintés (fond, motif, ornements).
+ * Bannière de l'étendard : un tissu maillé qui ondule au vent, peint avec la toile composée par TexturesBanniere.
  * Coordonnées en pixels, devant = nord, comme les modèles du mât.
  */
 public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntity> {
@@ -28,7 +28,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	private static final ResourceLocation LAITON = ResourceLocation.fromNamespaceAndPath("create", "textures/block/brass_block.png");
 
 	/** Géométrie d'une bannière : style, taille (grand étendard) et force du vent. */
-	private record Geo(int style, boolean grand, float w, float l, float vent, int forme, boolean lanternes) {}
+	private record Geo(int style, boolean grand, boolean murale, float w, float l, float vent, int forme, boolean lanternes, float meteo) {}
 	private static final ResourceLocation OR = ResourceLocation.withDefaultNamespace("textures/block/gold_block.png");
 	private static final ResourceLocation FRANGE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/etendard/frange.png");
 	private static final int PLEIN_FEU = LightTexture.FULL_BRIGHT;
@@ -40,63 +40,91 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		if (be.getLevel() == null) return;
 		Apparence a = be.apparence();
 		float t = be.getLevel().getGameTime() + pt + (be.getBlockPos().asLong() % 97);
-		boolean grand = be.getBlockState().getBlock() instanceof GrandEtendardBlock;
-		int lum = LevelRenderer.getLightColor(be.getLevel(), be.getBlockPos().above(grand ? be.hauteur() - 1 : 1));
+		boolean grand = be.grand(), murale = be.murale();
+		float meteo = be.meteo(), hisse = be.hisse(pt);
+		int lum = LevelRenderer.getLightColor(be.getLevel(), murale ? be.getBlockPos() : be.getBlockPos().above(grand ? be.hauteur() - 1 : 1));
 		Direction face = be.getBlockState().getValue(FondationBlock.FACING);
-		Geo geo = grand ? new Geo(a.style(), true, Apparence.LARGEURS[a.largeur()], Apparence.LONGUEURS[a.longueur()], Apparence.VENTS[a.vent()],
-				a.forme(), a.avecLanternes())
-			: new Geo(a.style(), false, 0, 0, 1, a.forme(), false);
+		Geo geo;
+		if (grand) geo = new Geo(a.style(), true, false, Apparence.LARGEURS[a.largeur()], Apparence.LONGUEURS[a.longueur()],
+			Apparence.VENTS[a.vent()] * meteo, a.forme(), a.avecLanternes(), meteo);
+		else if (murale) geo = new Geo(1, false, true, BanniereMuraleBlock.LARGEURS[a.largeur()],
+			BanniereMuraleBlock.LONGUEURS[a.longueur()] * (1 - 0.8f * hisse), Apparence.VENTS[a.vent()] * meteo, a.forme(), a.avecLanternes(), meteo);
+		else geo = new Geo(a.style(), false, false, 0, 0, 1, a.forme(), false, meteo);
 		ms.pushPose();
 		ms.translate(0.5, 0, 0.5);
 		ms.mulPose(Axis.YP.rotationDegrees(-face.toYRot() + 180));   // nord = 0
 		ms.translate(-0.5, 0, -0.5);
 		ms.scale(1 / 16f, 1 / 16f, 1 / 16f);
-		ResourceLocation motif = a.texMotif();
-		int fond = Apparence.FONDS[a.fond()], orn = Apparence.ORNEMENTS[a.ornement()];
-		if (!grand) {
-			calque(ms, buffers, geo, a.texFond(), fond, 0, t, lum);
-			if (motif != null) calque(ms, buffers, geo, motif, orn, 1, t, lum);
-			calque(ms, buffers, geo, a.texOrnement(), orn, 2, t, lum);
-			ms.popPose();
-			return;
-		}
-		ms.translate(0, (be.hauteur() - GrandEtendardBlock.MAT) * 16, 0);   // la géométrie est écrite pour un mât de six blocs
+		ResourceLocation toile = TexturesBanniere.de(a);
+		int orn = Apparence.ORNEMENTS[a.ornement()];
 		// les lanternes éclairent la bannière la nuit
-		int lumB = a.avecLanternes() ? LightTexture.pack(Math.max(LightTexture.block(lum), 14), LightTexture.sky(lum)) : lum;
-		fleuron(ms, buffers, a.fleuron(), t, lum);
-		int cotes = a.estDouble() && a.style() != 1 ? 2 : 1;
-		for (int c = 0; c < cotes; c++) {
-			ms.pushPose();
-			if (c == 1) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière, en miroir de l'autre côté du mât
-			ferrures(ms, buffers, geo, lumB);
-			calque(ms, buffers, geo, a.texFond(), fond, 0, t, lumB);
-			if (motif != null) calque(ms, buffers, geo, motif, orn, 1, t, lumB);
-			calque(ms, buffers, geo, a.texOrnement(), orn, 2, t, lumB);
-			if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);
-			ms.popPose();
-		}
-		if (a.avecLanternes() && a.style() == 2) {          // cérémonie : deux lanternes sur des potences avant et arrière
-			VertexConsumer fer = buffers.getBuffer(RenderType.entityCutoutNoCull(FER));
-			boite(ms, fer, 7.25f, 100f, -3f, 8.75f, 101.5f, 6.5f, lum);
-			boite(ms, fer, 7.25f, 100f, 9.5f, 8.75f, 101.5f, 19f, lum);
-			lanterne(ms, buffers, 8, 100, -2);
-			lanterne(ms, buffers, 8, 100, 18);
+		int lumB = a.avecLanternes() && (grand || murale) ? LightTexture.pack(Math.max(LightTexture.block(lum), 14), LightTexture.sky(lum)) : lum;
+		if (murale) {
+			murale(ms, buffers, geo, a, t, lum, lumB, toile, orn);
+		} else if (!grand) {
+			toile(ms, buffers, geo, toile, t, lum);
+		} else {
+			ms.translate(0, (be.hauteur() - GrandEtendardBlock.MAT) * 16, 0);   // la géométrie est écrite pour un mât de six blocs
+			fleuron(ms, buffers, a.fleuron(), t, lum);
+			// mise en berne : la bannière et ses ferrures descendent le long du mât
+			float bas = a.style() == 2 ? 104 - geo.w() - 10 : (a.style() == 1 ? 101.5f : 102.5f) - geo.l();
+			float descente = Math.max(0, bas + (be.hauteur() - GrandEtendardBlock.MAT) * 16 - 22) * hisse;
+			int cotes = a.estDouble() && a.style() != 1 ? 2 : 1;
+			for (int c = 0; c < cotes; c++) {
+				ms.pushPose();
+				ms.translate(0, -descente, 0);
+				if (c == 1) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière, en miroir de l'autre côté du mât
+				ferrures(ms, buffers, geo, lumB);
+				toile(ms, buffers, geo, toile, t, lumB);
+				if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);
+				ms.popPose();
+			}
+			if (a.avecLanternes() && a.style() == 2) {          // cérémonie : deux lanternes sur des potences avant et arrière
+				VertexConsumer fer = buffers.getBuffer(RenderType.entityCutoutNoCull(FER));
+				boite(ms, fer, 7.25f, 100f, -3f, 8.75f, 101.5f, 6.5f, lum);
+				boite(ms, fer, 7.25f, 100f, 9.5f, 8.75f, 101.5f, 19f, lum);
+				lanterne(ms, buffers, 8, 100, -2);
+				lanterne(ms, buffers, 8, 100, 18);
+			}
 		}
 		ms.popPose();
 	}
 
-	/** Un calque, recto (+eps) et verso (−eps) pour rester visible des deux côtés. */
-	private void calque(PoseStack ms, MultiBufferSource buffers, Geo geo, ResourceLocation tex, int couleur, int rang, float t, int lum) {
-		VertexConsumer vc = buffers.getBuffer(RenderType.entityCutoutNoCull(tex));
-		int r = couleur >> 16 & 255, g = couleur >> 8 & 255, b = couleur & 255;
-		if (rang == 0) { tissu(ms, vc, geo, 0, t, lum, r, g, b); return; }
-		tissu(ms, vc, geo, EPS * rang, t, lum, r, g, b);
-		tissu(ms, vc, geo, -EPS * rang, t, lum, r, g, b);
+	/** Bannière murale : tringle, supports, embouts (fleurons couchés), lanternes, toile et franges. Mur côté sud (z = 16). */
+	private void murale(PoseStack ms, MultiBufferSource buffers, Geo geo, Apparence a, float t, int lum, int lumB, ResourceLocation toile, int orn) {
+		float W = geo.w(), e = a.avecLanternes() ? 6.5f : 1.5f;
+		VertexConsumer fer = buffers.getBuffer(RenderType.entityCutoutNoCull(FER));
+		boite(ms, fer, 8 - W / 2 - e, 12.25f, 11.75f, 8 + W / 2 + e, 13.75f, 13.25f, lum);            // tringle
+		VertexConsumer laiton = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
+		for (float x : new float[] {8 - W / 2 + 1, 8 + W / 2 - 1}) {                                  // supports scellés au mur
+			boite(ms, laiton, x - 0.75f, 12, 13.25f, x + 0.75f, 14, 16, lum);
+			boite(ms, laiton, x - 1.5f, 11, 15.4f, x + 1.5f, 15, 16, lum);
+		}
+		for (int c = 0; c < 2; c++) {                                                                // embouts
+			ms.pushPose();
+			ms.translate(c == 0 ? 8 + W / 2 + e : 8 - W / 2 - e, 13, 12.5f);
+			ms.mulPose(Axis.ZP.rotationDegrees(c == 0 ? -90 : 90));
+			ms.scale(0.4f, 0.4f, 0.4f);
+			ms.translate(-8, -108, -8);
+			fleuron(ms, buffers, a.fleuron(), t, lum);
+			ms.popPose();
+		}
+		if (a.avecLanternes()) {
+			lanterne(ms, buffers, 8 - W / 2 - 3.5f, 12.25f, 12.5f);
+			lanterne(ms, buffers, 8 + W / 2 + 3.5f, 12.25f, 12.5f);
+		}
+		toile(ms, buffers, geo, toile, t, lumB);
+		if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);
+	}
+
+	/** La toile composée (une seule texture, visible des deux côtés). */
+	private void toile(PoseStack ms, MultiBufferSource buffers, Geo geo, ResourceLocation tex, float t, int lum) {
+		tissu(ms, buffers.getBuffer(RenderType.entityCutoutNoCull(tex)), geo, 0, t, lum, 255, 255, 255);
 	}
 
 	private void tissu(PoseStack ms, VertexConsumer vc, Geo geo, float decal, float t, int lum, int r, int g, int b) {
 		int style = geo.style();
-		int nu = geo.grand() ? 12 : style == 2 ? 16 : 8, nv = geo.grand() ? 24 : style == 2 ? 8 : 16;
+		int nu = geo.grand() || geo.murale() ? 12 : style == 2 ? 16 : 8, nv = geo.grand() || geo.murale() ? 24 : style == 2 ? 8 : 16;
 		PoseStack.Pose pose = ms.last();
 		for (int i = 0; i < nu; i++)
 			for (int j = 0; j < nv; j++) {
@@ -113,20 +141,26 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	/** Position d'un point du tissu : (u, v) dans le maillage, ondulation selon le temps. */
 	private static float[] point(Geo geo, float u, float v, float t, float decal) {
 		if (geo.grand()) return pointGrand(geo, u, v, t, decal);
+		if (geo.murale()) {   // contre le mur : ondule à peine, sans jamais traverser le mur
+			float x = 8 - geo.w() / 2 + u * geo.w(), y = 12.75f - v * geo.l();
+			float o = 0.7f * geo.vent() * (float) Math.pow(v, 1.2) * Mth.sin(t * 0.06f * (0.7f + 0.3f * geo.vent()) + v * 3f + u * 2f);
+			return new float[] {x, y, 12.5f - Math.abs(o) + decal};
+		}
+		float m = geo.meteo();
 		switch (geo.style()) {
 			case 0 -> {   // potence : suspendue sous le bras, sur le côté
 				float x = 16 + u * 11, y = 44.5f - v * 22, z = 8;
-				float o = 1.3f * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.10f + v * 4f + u * 2f);
+				float o = m * 1.3f * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.10f + v * 4f + u * 2f);
 				return new float[] {x, y, z + o + decal};
 			}
 			case 1 -> {   // vexillum : devant le piédestal, sous la traverse
 				float x = 1 + u * 14, y = 44.5f - v * 28, z = -1.2f;
-				float o = 1.1f * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.09f + v * 3.5f + u * 1.5f);
+				float o = m * 1.1f * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.09f + v * 3.5f + u * 1.5f);
 				return new float[] {x, y, z - Math.abs(o) * 0.6f + o * 0.4f + decal};
 			}
 			default -> {  // cérémonie : le long du mât, flotte à l'horizontale ; u = hauteur, v = longueur
 				float s = v, x = 9.5f + s * 16, y = 46.5f - u * 12 - 0.8f * s * s, z = 8;
-				float o = 1.6f * (float) Math.pow(s, 1.1) * Mth.sin(t * 0.16f - s * 5f + u * 1f);
+				float o = m * 1.6f * (float) Math.pow(s, 1.1) * Mth.sin(t * 0.16f - s * 5f + u * 1f);
 				return new float[] {x, y, z + o + decal};
 			}
 		}
@@ -264,7 +298,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 			float a0 = i / (float) n, a1 = (i + 1) / (float) n;
 			float[] h0, h1;
 			float tu0, tu1;
-			if (geo.style() == 2) {   // cérémonie : le long du bord bas, jusqu'à la découpe du bout
+			if (geo.style() == 2 && geo.grand()) {   // cérémonie : le long du bord bas, jusqu'à la découpe du bout
 				float fin = basForme(geo.forme(), 1f);
 				h0 = point(geo, 1f, a0 * fin, t, 0); h1 = point(geo, 1f, a1 * fin, t, 0);
 				tu0 = a0 * fin * geo.l() / 16f; tu1 = a1 * fin * geo.l() / 16f;
@@ -312,6 +346,8 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	}
 
 	public AABB getRenderBoundingBox(FondationBlockEntity be) {
+		if (be.murale())
+			return new AABB(be.getBlockPos()).inflate(2.5, 0, 2.5).expandTowards(0, -5, 0);
 		if (be.getBlockState().getBlock() instanceof GrandEtendardBlock)
 			return new AABB(be.getBlockPos()).inflate(3.5, 0, 3.5).expandTowards(0, be.hauteur() + 2, 0);
 		return new AABB(be.getBlockPos()).inflate(1.5, 0, 1.5).expandTowards(0, 3, 0);

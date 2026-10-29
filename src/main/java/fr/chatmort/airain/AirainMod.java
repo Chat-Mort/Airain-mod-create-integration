@@ -115,9 +115,18 @@ public class AirainMod {
 			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
 	public static final DeferredItem<BlockItem> GRAND_ETENDARD_ITEM = ITEMS.register("grand_etendard",
 		() -> new BlockItem(GRAND_ETENDARD.get(), new Item.Properties()));
+	/** Bannière murale : décorative, mêmes réglages de toile. */
+	public static final DeferredBlock<fr.chatmort.airain.fondation.BanniereMuraleBlock> BANNIERE_MURALE = BLOCKS.register("banniere_murale",
+		() -> new fr.chatmort.airain.fondation.BanniereMuraleBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.WOOL).strength(0.8f).sound(SoundType.WOOL).noOcclusion().noCollission()));
+	public static final DeferredItem<BlockItem> BANNIERE_MURALE_ITEM = ITEMS.register("banniere_murale",
+		() -> new BlockItem(BANNIERE_MURALE.get(), new Item.Properties()));
+	/** Gabarit de bannière : copie l'apparence d'un étendard pour l'appliquer à un autre. */
+	public static final DeferredItem<Item> GABARIT = ITEMS.register("gabarit_banniere",
+		() -> new fr.chatmort.airain.fondation.GabaritItem(new Item.Properties().stacksTo(1)));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fondation.FondationBlockEntity>> FONDATION_BE =
 		BLOCK_ENTITIES.register("pierre_fondation",
-			() -> BlockEntityType.Builder.of(fr.chatmort.airain.fondation.FondationBlockEntity::new, FONDATION.get(), GRAND_ETENDARD.get()).build(null));
+			() -> BlockEntityType.Builder.of(fr.chatmort.airain.fondation.FondationBlockEntity::new, FONDATION.get(), GRAND_ETENDARD.get(), BANNIERE_MURALE.get()).build(null));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 

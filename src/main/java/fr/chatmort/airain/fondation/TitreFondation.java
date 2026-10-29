@@ -7,11 +7,12 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 
 /** Serveur → client : afficher le nom de la fondation en haut de l'écran. */
-public record TitreFondation(String nom, String devise, int apparence) implements CustomPacketPayload {
+public record TitreFondation(String nom, String devise, int apparence, int ext) implements CustomPacketPayload {
 	public static final Type<TitreFondation> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("airain", "titre_fondation"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, TitreFondation> CODEC = StreamCodec.composite(
 		ByteBufCodecs.stringUtf8(64), TitreFondation::nom, ByteBufCodecs.stringUtf8(64), TitreFondation::devise,
-		ByteBufCodecs.VAR_INT, TitreFondation::apparence, TitreFondation::new);
+		ByteBufCodecs.VAR_INT, TitreFondation::apparence,
+		ByteBufCodecs.VAR_INT, TitreFondation::ext, TitreFondation::new);
 
 	@Override
 	public Type<? extends CustomPacketPayload> type() { return TYPE; }

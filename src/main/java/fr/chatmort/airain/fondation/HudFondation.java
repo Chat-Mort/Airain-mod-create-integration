@@ -63,7 +63,7 @@ public final class HudFondation {
 		g.pose().popPose();
 
 		// bannières de l'étendard, de chaque côté
-		Apparence app = Apparence.unpack(titre.apparence());
+		Apparence app = Apparence.unpack(titre.apparence(), titre.ext());
 		int bw = (int) (16 * TAILLE_BANNIERE), bh = (int) (32 * TAILLE_BANNIERE);
 		int by = y - 6, ecart = demi + 14;
 		RenderSystem.enableBlend();
@@ -75,13 +75,8 @@ public final class HudFondation {
 	private static void banniere(GuiGraphics g, Apparence app, int x, int y, int w, int h, float a) {
 		// hampe dorée au-dessus de la bannière
 		g.fill(x - 2, y - 2, x + w + 2, y, ((int) (a * 255) << 24) | 0xC8962E);
-		calque(g, app.texFond(), Apparence.FONDS[app.fond()], x, y, w, h, a);
-		if (app.texMotif() != null) calque(g, app.texMotif(), Apparence.ORNEMENTS[app.ornement()], x, y, w, h, a);
-		calque(g, app.texOrnement(), Apparence.ORNEMENTS[app.ornement()], x, y, w, h, a);
-	}
-
-	private static void calque(GuiGraphics g, ResourceLocation tex, int c, int x, int y, int w, int h, float a) {
-		RenderSystem.setShaderColor((c >> 16 & 255) / 255f, (c >> 8 & 255) / 255f, (c & 255) / 255f, a);
-		g.blit(tex, x, y, w, h, 0f, 0f, 16, 32, 16, 32);
+		RenderSystem.setShaderColor(1, 1, 1, a);
+		g.blit(TexturesBanniere.de(app), x, y, w, h, 0f, 0f, 16, 32, 16, 32);
+		RenderSystem.setShaderColor(1, 1, 1, 1);
 	}
 }
