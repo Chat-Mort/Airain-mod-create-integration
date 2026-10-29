@@ -24,6 +24,8 @@ public class FondationBlockEntity extends BlockEntity {
 	private int hauteur = GrandEtendardBlock.MAT;   // grand étendard : nombre de blocs du mât
 	private Apparence apparence = Apparence.DEFAUT;
 	private boolean berne;
+	/** Position réglée par une rotation de Create (0 = hissée, 1 = en bas) ; la redstone l'emporte tant qu'elle est active. */
+	private float manuelle;
 	/** Côté client : position de la bannière, 0 = hissée, 1 = en berne (avec la valeur du tick précédent). */
 	private float hisse, hisseAvant;
 
@@ -53,7 +55,8 @@ public class FondationBlockEntity extends BlockEntity {
 	/** Tick côté client : animation de la mise en berne, claquements de toile par grand vent ou par orage. */
 	public void tickClient() {
 		hisseAvant = hisse;
-		hisse = berne ? Math.min(1f, hisse + 1 / 60f) : Math.max(0f, hisse - 1 / 60f);
+		float cible = berne ? 1f : manuelle;
+		hisse = hisse < cible ? Math.min(cible, hisse + 1 / 40f) : Math.max(cible, hisse - 1 / 40f);
 		if (level == null) return;
 		BlockPos haut = worldPosition.above(grand() ? hauteur : murale() ? 0 : 2);
 		float chance = (grand() || murale()) && apparence.vent() == 2 ? 0.004f : 0f;
@@ -61,6 +64,34 @@ public class FondationBlockEntity extends BlockEntity {
 		if (chance > 0 && level.random.nextFloat() < chance)
 			level.playLocalSound(haut.getX() + 0.5, haut.getY(), haut.getZ() + 0.5, net.minecraft.sounds.SoundEvents.PHANTOM_FLAP,
 				net.minecraft.sounds.SoundSource.BLOCKS, 0.22f, 0.55f + level.random.nextFloat() * 0.25f, false);
+	}
+
+	/**
+	 * Tick serveur (grand étendard et bannière murale) : un arbre de Create qui tourne contre le piédestal ou la bannière
+	 * la hisse ou l'abaisse selon le sens, d'autant plus vite qu'il tourne vite (10 s de course à 32 tr/min).
+	 */
+	public void tickServeur() {
+		if (level == null || !(grand() || murale())) return;
+		float v = vitesseCreate();
+		if (v == 0) return;
+		float avant = manuelle;
+		manuelle = Math.max(0f, Math.min(1f, manuelle - v / 6400f));
+		if (manuelle != avant) {
+			setChanged();
+			if (level.getGameTime() % 5 == 0 || manuelle == 0f || manuelle == 1f) maj();
+		}
+	}
+
+	private float vitesseCreate() {
+		for (net.minecraft.core.Direction d : net.minecraft.core.Direction.values()) {
+			BlockPos n = worldPosition.relative(d);
+			if (level.getBlockEntity(n) instanceof com.simibubi.create.content.kinetics.base.KineticBlockEntity k && k.getSpeed() != 0) {
+				BlockState s = level.getBlockState(n);
+				if (s.getBlock() instanceof com.simibubi.create.content.kinetics.base.IRotate r && r.hasShaftTowards(level, n, s, d.getOpposite()))
+					return k.getSpeed();
+			}
+		}
+		return 0;
 	}
 
 	/** Vent dû à la météo, si le ciel est visible au sommet. */
@@ -75,8 +106,9 @@ public class FondationBlockEntity extends BlockEntity {
 	@SuppressWarnings("unchecked")
 	public static <T extends BlockEntity> net.minecraft.world.level.block.entity.BlockEntityTicker<T> ticker(
 			net.minecraft.world.level.Level l, net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
-		return l.isClientSide && type == AirainMod.FONDATION_BE.get()
-			? (lv, p, st, be) -> ((FondationBlockEntity) be).tickClient() : null;
+		if (type != AirainMod.FONDATION_BE.get()) return null;
+		return l.isClientSide ? (lv, p, st, be) -> ((FondationBlockEntity) be).tickClient()
+			: (lv, p, st, be) -> ((FondationBlockEntity) be).tickServeur();
 	}
 
 	/** Position de la porte d'un étendard ou d'une bannière murale à partir de n'importe lequel de ses blocs. */
@@ -124,14 +156,14 @@ public class FondationBlockEntity extends BlockEntity {
 	@Override
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
-		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("ext", apparence.packExt()); tag.putBoolean("berne", berne); tag.putInt("hauteur", hauteur);
+		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("ext", apparence.packExt()); tag.putBoolean("berne", berne); tag.putFloat("manuelle", manuelle); tag.putInt("hauteur", hauteur);
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
 		nom = tag.getString("nom"); devise = tag.getString("devise"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
-		berne = tag.getBoolean("berne");
+		berne = tag.getBoolean("berne"); manuelle = tag.getFloat("manuelle");
 		hauteur = tag.contains("hauteur") ? tag.getInt("hauteur") : GrandEtendardBlock.MAT;
 		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence"), tag.getInt("ext")) : Apparence.DEFAUT;
 	}

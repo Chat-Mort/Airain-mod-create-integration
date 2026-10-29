@@ -39,7 +39,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	public void render(FondationBlockEntity be, float pt, PoseStack ms, MultiBufferSource buffers, int light, int overlay) {
 		if (be.getLevel() == null) return;
 		Apparence a = be.apparence();
-		float t = be.getLevel().getGameTime() + pt + (be.getBlockPos().asLong() % 97);
+		float t = be.getLevel().getGameTime() + pt + (a.synchronise() ? 0 : be.getBlockPos().asLong() % 97);   // vent commun : même phase partout
 		boolean grand = be.grand(), murale = be.murale();
 		float meteo = be.meteo(), hisse = be.hisse(pt);
 		int lum = LevelRenderer.getLightColor(be.getLevel(), murale ? be.getBlockPos() : be.getBlockPos().above(grand ? be.hauteur() - 1 : 1));
@@ -55,14 +55,13 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		ms.mulPose(Axis.YP.rotationDegrees(-face.toYRot() + 180));   // nord = 0
 		ms.translate(-0.5, 0, -0.5);
 		ms.scale(1 / 16f, 1 / 16f, 1 / 16f);
-		ResourceLocation toile = TexturesBanniere.de(a);
 		int orn = Apparence.ORNEMENTS[a.ornement()];
 		// les lanternes éclairent la bannière la nuit
 		int lumB = a.avecLanternes() && (grand || murale) ? LightTexture.pack(Math.max(LightTexture.block(lum), 14), LightTexture.sky(lum)) : lum;
 		if (murale) {
-			murale(ms, buffers, geo, a, t, lum, lumB, toile, orn);
+			murale(ms, buffers, geo, a, t, lum, lumB, orn);
 		} else if (!grand) {
-			toile(ms, buffers, geo, toile, t, lum);
+			toile(ms, buffers, geo, a, t, lum);
 		} else {
 			ms.translate(0, (be.hauteur() - GrandEtendardBlock.MAT) * 16, 0);   // la géométrie est écrite pour un mât de six blocs
 			fleuron(ms, buffers, a.fleuron(), t, lum);
@@ -75,7 +74,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 				ms.translate(0, -descente, 0);
 				if (c == 1) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière, en miroir de l'autre côté du mât
 				ferrures(ms, buffers, geo, lumB);
-				toile(ms, buffers, geo, toile, t, lumB);
+				toile(ms, buffers, geo, a, t, lumB);
 				if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);
 				ms.popPose();
 			}
@@ -91,7 +90,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	}
 
 	/** Bannière murale : tringle, supports, embouts (fleurons couchés), lanternes, toile et franges. Mur côté sud (z = 16). */
-	private void murale(PoseStack ms, MultiBufferSource buffers, Geo geo, Apparence a, float t, int lum, int lumB, ResourceLocation toile, int orn) {
+	private void murale(PoseStack ms, MultiBufferSource buffers, Geo geo, Apparence a, float t, int lum, int lumB, int orn) {
 		float W = geo.w(), e = a.avecLanternes() ? 6.5f : 1.5f;
 		VertexConsumer fer = buffers.getBuffer(RenderType.entityCutoutNoCull(FER));
 		boite(ms, fer, 8 - W / 2 - e, 12.25f, 11.75f, 8 + W / 2 + e, 13.75f, 13.25f, lum);            // tringle
@@ -113,13 +112,18 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 			lanterne(ms, buffers, 8 - W / 2 - 3.5f, 12.25f, 12.5f);
 			lanterne(ms, buffers, 8 + W / 2 + 3.5f, 12.25f, 12.5f);
 		}
-		toile(ms, buffers, geo, toile, t, lumB);
+		toile(ms, buffers, geo, a, t, lumB);
 		if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);
 	}
 
 	/** La toile composée (une seule texture, visible des deux côtés). */
-	private void toile(PoseStack ms, MultiBufferSource buffers, Geo geo, ResourceLocation tex, float t, int lum) {
-		tissu(ms, buffers.getBuffer(RenderType.entityCutoutNoCull(tex)), geo, 0, t, lum, 255, 255, 255);
+	private void toile(PoseStack ms, MultiBufferSource buffers, Geo geo, Apparence a, float t, int lum) {
+		tissu(ms, buffers.getBuffer(RenderType.entityCutoutNoCull(TexturesBanniere.de(a))), geo, 0, t, lum, 255, 255, 255);
+		if (a.brille()) {   // broderie lumineuse : motif et ornements repeints en pleine lumière, juste devant et derrière la toile
+			VertexConsumer vc = buffers.getBuffer(RenderType.entityCutoutNoCull(TexturesBanniere.lueur(a)));
+			tissu(ms, vc, geo, EPS, t, PLEIN_FEU, 255, 255, 255);
+			tissu(ms, vc, geo, -EPS, t, PLEIN_FEU, 255, 255, 255);
+		}
 	}
 
 	private void tissu(PoseStack ms, VertexConsumer vc, Geo geo, float decal, float t, int lum, int r, int g, int b) {

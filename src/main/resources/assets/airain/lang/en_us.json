@@ -143,5 +143,11 @@
  "airain.etendard.titre_page.grand_toile": "Great standard: cloth",
  "airain.etendard.titre_page.grand_mat": "Great standard: mast and fittings",
  "airain.etendard.titre_page.murale_toile": "Wall banner: cloth",
- "airain.etendard.titre_page.murale_taille": "Wall banner: size and fittings"
+ "airain.etendard.titre_page.murale_taille": "Wall banner: size and fittings",
+ "airain.etendard.broderie": "Embroidery",
+ "airain.etendard.broderie.0": "Plain",
+ "airain.etendard.broderie.1": "Glowing",
+ "airain.etendard.synchro": "Shared wind",
+ "airain.etendard.synchro.0": "No",
+ "airain.etendard.synchro.1": "Synced"
 }

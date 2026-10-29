@@ -143,5 +143,11 @@
  "airain.etendard.titre_page.grand_toile": "Grand étendard : toile",
  "airain.etendard.titre_page.grand_mat": "Grand étendard : mât et ornements",
  "airain.etendard.titre_page.murale_toile": "Bannière murale : toile",
- "airain.etendard.titre_page.murale_taille": "Bannière murale : taille et ornements"
+ "airain.etendard.titre_page.murale_taille": "Bannière murale : taille et ornements",
+ "airain.etendard.broderie": "Broderie",
+ "airain.etendard.broderie.0": "Normale",
+ "airain.etendard.broderie.1": "Lumineuse",
+ "airain.etendard.synchro": "Vent commun",
+ "airain.etendard.synchro.0": "Non",
+ "airain.etendard.synchro.1": "Synchronisé"
 }

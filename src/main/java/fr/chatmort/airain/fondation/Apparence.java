@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
  */
 public record Apparence(int style, int fond, int ornement, int motif, int forme,
 		int longueur, int largeur, int vent, int franges, int fleuron, int double_, int lanternes, int masque,
-		int partition, int fond2, int couleurMotif, int etat) {
+		int partition, int fond2, int couleurMotif, int etat, int lumineux, int synchro) {
 	public static final int[] FONDS = {0x8E1A16, 0x1E3A6E, 0x1F4D2E, 0x1C1A1C, 0xE6DCC2, 0x5A1E5E, 0xB8792A, 0x5E6670};
 	public static final int[] ORNEMENTS = {0xE8BE5A, 0xD8DCE0, 0xC77A48, 0x282222};
 	public static final String[] MOTIFS = {"rouage", "cle", "flamme", "couronne", "ancre", "eclair", "etoile", "rouage_brise", "cristal", "fiole", "aucun"};
@@ -32,26 +32,29 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 	public static final int ETATS = 3;
 	/** Taille de chaque réglage, dans l'ordre du constructeur. */
 	public static final int[] TAILLES = {STYLES, FONDS.length, ORNEMENTS.length, MOTIFS.length, FORMES.length,
-		LONGUEURS.length, LARGEURS.length, VENTS.length, 2, FLEURONS, 2, 2, 2, PARTITIONS, FONDS.length, COULEURS_MOTIF, ETATS};
+		LONGUEURS.length, LARGEURS.length, VENTS.length, 2, FLEURONS, 2, 2, 2, PARTITIONS, FONDS.length, COULEURS_MOTIF, ETATS, 2, 2};
 	public static final int CHAMPS = TAILLES.length;
 	private static final int[] DEFAUTS_GRAND = {1, 1, 1, 0, 0, 0, 0, 0};
 	private static final int[] BITS_GRAND = {2, 2, 2, 1, 2, 1, 1, 1};
-	public static final Apparence DEFAUT = depuis(new int[] {0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 4, 0, 0});
+	public static final Apparence DEFAUT = depuis(new int[] {0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0});
 
 	public int[] valeurs() {
 		return new int[] {style, fond, ornement, motif, forme, longueur, largeur, vent, franges, fleuron, double_, lanternes, masque,
-			partition, fond2, couleurMotif, etat};
+			partition, fond2, couleurMotif, etat, lumineux, synchro};
 	}
 
 	public static Apparence depuis(int[] v) {
 		return new Apparence(v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7], v[8], v[9], v[10], v[11], v[12],
-			v.length > 13 ? v[13] : 0, v.length > 14 ? v[14] : 4, v.length > 15 ? v[15] : 0, v.length > 16 ? v[16] : 0);
+			v.length > 13 ? v[13] : 0, v.length > 14 ? v[14] : 4, v.length > 15 ? v[15] : 0, v.length > 16 ? v[16] : 0,
+			v.length > 17 ? v[17] : 0, v.length > 18 ? v[18] : 0);
 	}
 
 	public boolean avecFranges() { return franges == 1; }
 	public boolean estDouble() { return double_ == 1; }
 	public boolean avecLanternes() { return lanternes == 1; }
 	public boolean estMasque() { return masque == 1; }
+	public boolean brille() { return lumineux == 1; }
+	public boolean synchronise() { return synchro == 1; }
 
 	public int pack() {
 		int[] v = valeurs();
@@ -64,9 +67,9 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 		return r;
 	}
 
-	/** Partition (3 bits), seconde couleur (3 bits, écart à l'ivoire), couleur du motif (4 bits), état (2 bits). */
+	/** Partition (3 bits), seconde couleur (3 bits, écart à l'ivoire), couleur du motif (4 bits), état (2 bits), broderie lumineuse, vent synchronisé. */
 	public int packExt() {
-		return partition | Math.floorMod(fond2 - 4, FONDS.length) << 3 | couleurMotif << 6 | etat << 10;
+		return partition | Math.floorMod(fond2 - 4, FONDS.length) << 3 | couleurMotif << 6 | etat << 10 | lumineux << 12 | synchro << 13;
 	}
 
 	/** Couleur appliquée au motif. */
@@ -77,7 +80,7 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 
 	/** Clé des seuls réglages qui changent la toile (pour le cache des textures). */
 	public long cleToile() {
-		return fond | ornement << 3 | (long) motif << 5 | (long) forme << 9 | (long) packExt() << 11;
+		return fond | ornement << 3 | (long) motif << 5 | (long) forme << 9 | (long) (packExt() & 0x1FFF) << 11;
 	}
 
 	public static Apparence unpack(int p, int ext) {
@@ -85,6 +88,7 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 		int[] v = a.valeurs();
 		v[13] = borne(ext & 7, PARTITIONS); v[14] = borne((ext >> 3 & 7) + 4, FONDS.length);
 		v[15] = borne(ext >> 6 & 15, COULEURS_MOTIF); v[16] = borne(ext >> 10 & 3, ETATS);
+		v[17] = ext >> 12 & 1; v[18] = ext >> 13 & 1;
 		return depuis(v);
 	}
 

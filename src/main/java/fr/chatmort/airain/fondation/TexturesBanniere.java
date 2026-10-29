@@ -14,12 +14,19 @@ import net.minecraft.resources.ResourceLocation;
  * en une seule texture 16x32, mise en cache par combinaison de réglages.
  */
 public final class TexturesBanniere {
-	private static final Map<Long, ResourceLocation> CACHE = new HashMap<>();
+	private static final Map<Long, ResourceLocation> CACHE = new HashMap<>(), LUEURS = new HashMap<>();
 
 	private TexturesBanniere() {}
 
 	public static ResourceLocation de(Apparence a) {
-		return CACHE.computeIfAbsent(a.cleToile(), k -> composer(a, k));
+		if (!CACHE.containsKey(a.cleToile())) composer(a, a.cleToile());
+		return CACHE.get(a.cleToile());
+	}
+
+	/** Broderie lumineuse : seulement le motif et les ornements (rendus en pleine lumière). */
+	public static ResourceLocation lueur(Apparence a) {
+		if (!LUEURS.containsKey(a.cleToile())) composer(a, a.cleToile());
+		return LUEURS.get(a.cleToile());
 	}
 
 	private static NativeImage lire(ResourceLocation rl) {
@@ -59,25 +66,33 @@ public final class TexturesBanniere {
 		return (h & 0xFFFF) / 65535f;
 	}
 
-	private static ResourceLocation composer(Apparence a, long cle) {
+	private static void composer(Apparence a, long cle) {
 		NativeImage out = new NativeImage(16, 32, true);
 		NativeImage fond = lire(a.texFond()), orn = lire(a.texOrnement());
 		NativeImage motif = a.texMotif() == null ? null : lire(a.texMotif());
+		boolean[] brode = new boolean[16 * 32];
 		int c1 = Apparence.FONDS[a.fond()], c2 = Apparence.FONDS[a.fond2()], co = Apparence.ORNEMENTS[a.ornement()], cm = a.teinteMotif();
 		for (int y = 0; y < 32; y++)
 			for (int x = 0; x < 16; x++) {
 				int p = 0;
 				if (fond != null && alpha(fond.getPixelRGBA(x, y)) > 0)
 					p = teinter(fond.getPixelRGBA(x, y), partition(a.partition(), x, y) ? c2 : c1, 255);
-				if (motif != null && alpha(motif.getPixelRGBA(x, y)) > 0) p = teinter(motif.getPixelRGBA(x, y), cm, 255);
-				if (orn != null && alpha(orn.getPixelRGBA(x, y)) > 0) p = teinter(orn.getPixelRGBA(x, y), co, 255);
+				if (motif != null && alpha(motif.getPixelRGBA(x, y)) > 0) { p = teinter(motif.getPixelRGBA(x, y), cm, 255); brode[y * 16 + x] = true; }
+				if (orn != null && alpha(orn.getPixelRGBA(x, y)) > 0) { p = teinter(orn.getPixelRGBA(x, y), co, 255); brode[y * 16 + x] = true; }
 				out.setPixelRGBA(x, y, p);
 			}
 		if (a.etat() > 0) user(out, a.etat());
 		for (NativeImage i : new NativeImage[] {fond, orn, motif}) if (i != null) i.close();
+		NativeImage lueur = new NativeImage(16, 32, true);
+		for (int y = 0; y < 32; y++)
+			for (int x = 0; x < 16; x++)
+				if (brode[y * 16 + x] && alpha(out.getPixelRGBA(x, y)) > 0) lueur.setPixelRGBA(x, y, out.getPixelRGBA(x, y));
 		ResourceLocation rl = ResourceLocation.fromNamespaceAndPath("airain", "banniere/" + Long.toHexString(cle));
+		ResourceLocation rl2 = ResourceLocation.fromNamespaceAndPath("airain", "banniere/lueur_" + Long.toHexString(cle));
 		Minecraft.getInstance().getTextureManager().register(rl, new DynamicTexture(out));
-		return rl;
+		Minecraft.getInstance().getTextureManager().register(rl2, new DynamicTexture(lueur));
+		CACHE.put(cle, rl);
+		LUEURS.put(cle, rl2);
 	}
 
 	/** Usée : couleurs passées, bords effilochés. Déchirée : en plus, bas en lambeaux, trous et une déchirure. */
