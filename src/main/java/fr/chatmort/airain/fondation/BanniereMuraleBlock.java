@@ -104,4 +104,15 @@ public class BanniereMuraleBlock extends Block implements EntityBlock {
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
 		return FondationBlockEntity.ticker(level, type);
 	}
+
+	/** Les structures tournées (camps réfractaires) tournent aussi la bannière. */
+	@Override
+	protected BlockState rotate(BlockState state, net.minecraft.world.level.block.Rotation rot) {
+		return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
+	}
+
+	@Override
+	protected BlockState mirror(BlockState state, net.minecraft.world.level.block.Mirror miroir) {
+		return state.rotate(miroir.getRotation(state.getValue(FACING)));
+	}
 }
