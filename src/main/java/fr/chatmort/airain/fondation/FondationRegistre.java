@@ -18,6 +18,9 @@ import net.minecraft.world.level.saveddata.SavedData;
 /** Toutes les fondations posées : dimension, position, nom, rayon. Persistant, indépendant des chunks chargés. */
 public class FondationRegistre extends SavedData {
 	public record Fondation(ResourceLocation dim, BlockPos pos, String nom, int rayon, String devise, int apparence) {
+		/** Grand étendard décoratif : pas de titre, pas de ligne dans le registre. */
+		public boolean decorative() { return Apparence.unpack(apparence).estMasque(); }
+
 		public boolean contient(ResourceLocation d, double x, double z) {
 			return dim.equals(d) && distance(x, z) <= rayon;
 		}
@@ -56,7 +59,7 @@ public class FondationRegistre extends SavedData {
 	public Fondation zone(ResourceLocation dim, double x, double z) {
 		Fondation meilleure = null;
 		for (Fondation f : fondations.values())
-			if (f.contient(dim, x, z) && (meilleure == null || f.distance(x, z) < meilleure.distance(x, z)))
+			if (!f.decorative() && f.contient(dim, x, z) && (meilleure == null || f.distance(x, z) < meilleure.distance(x, z)))
 				meilleure = f;
 		return meilleure;
 	}

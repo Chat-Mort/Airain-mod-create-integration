@@ -30,6 +30,9 @@ public class FondationBlockEntity extends BlockEntity {
 	public Apparence apparence() { return apparence; }
 
 	public void configurer(String n, String d, Apparence a) {
+		if (!(getBlockState().getBlock() instanceof GrandEtendardBlock) && a.estMasque()) {   // seul le grand peut être décoratif
+			int[] v = a.valeurs(); v[12] = 0; a = Apparence.depuis(v);
+		}
 		nom = n; devise = d; apparence = a;
 		if (level != null && !level.isClientSide) FondationBlock.appliquerStyle(level, worldPosition, a.style());
 		enregistrer(); maj();

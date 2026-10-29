@@ -3,7 +3,9 @@ package fr.chatmort.airain.fondation;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -12,6 +14,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.phys.AABB;
 
 /**
@@ -24,7 +28,10 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	private static final ResourceLocation LAITON = ResourceLocation.fromNamespaceAndPath("create", "textures/block/brass_block.png");
 
 	/** Géométrie d'une bannière : style, taille (grand étendard) et force du vent. */
-	private record Geo(int style, boolean grand, float w, float l, float vent) {}
+	private record Geo(int style, boolean grand, float w, float l, float vent, int forme, boolean lanternes) {}
+	private static final ResourceLocation OR = ResourceLocation.withDefaultNamespace("textures/block/gold_block.png");
+	private static final ResourceLocation FRANGE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/etendard/frange.png");
+	private static final int PLEIN_FEU = LightTexture.FULL_BRIGHT;
 
 	public EtendardRenderer(BlockEntityRendererProvider.Context ctx) {}
 
@@ -36,8 +43,9 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		boolean grand = be.getBlockState().getBlock() instanceof GrandEtendardBlock;
 		int lum = LevelRenderer.getLightColor(be.getLevel(), be.getBlockPos().above(grand ? 5 : 1));
 		Direction face = be.getBlockState().getValue(FondationBlock.FACING);
-		Geo geo = grand ? new Geo(a.style(), true, Apparence.LARGEURS[a.largeur()], Apparence.LONGUEURS[a.longueur()], Apparence.VENTS[a.vent()])
-			: new Geo(a.style(), false, 0, 0, 1);
+		Geo geo = grand ? new Geo(a.style(), true, Apparence.LARGEURS[a.largeur()], Apparence.LONGUEURS[a.longueur()], Apparence.VENTS[a.vent()],
+				a.forme(), a.avecLanternes())
+			: new Geo(a.style(), false, 0, 0, 1, a.forme(), false);
 		ms.pushPose();
 		ms.translate(0.5, 0, 0.5);
 		ms.mulPose(Axis.YP.rotationDegrees(-face.toYRot() + 180));   // nord = 0
@@ -45,10 +53,34 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		ms.scale(1 / 16f, 1 / 16f, 1 / 16f);
 		ResourceLocation motif = a.texMotif();
 		int fond = Apparence.FONDS[a.fond()], orn = Apparence.ORNEMENTS[a.ornement()];
-		if (grand) ferrures(ms, buffers, geo, lum);
-		calque(ms, buffers, geo, a.texFond(), fond, 0, t, lum);
-		if (motif != null) calque(ms, buffers, geo, motif, orn, 1, t, lum);
-		calque(ms, buffers, geo, a.texOrnement(), orn, 2, t, lum);
+		if (!grand) {
+			calque(ms, buffers, geo, a.texFond(), fond, 0, t, lum);
+			if (motif != null) calque(ms, buffers, geo, motif, orn, 1, t, lum);
+			calque(ms, buffers, geo, a.texOrnement(), orn, 2, t, lum);
+			ms.popPose();
+			return;
+		}
+		// les lanternes éclairent la bannière la nuit
+		int lumB = a.avecLanternes() ? LightTexture.pack(Math.max(LightTexture.block(lum), 14), LightTexture.sky(lum)) : lum;
+		fleuron(ms, buffers, a.fleuron(), t, lum);
+		int cotes = a.estDouble() && a.style() != 1 ? 2 : 1;
+		for (int c = 0; c < cotes; c++) {
+			ms.pushPose();
+			if (c == 1) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière, en miroir de l'autre côté du mât
+			ferrures(ms, buffers, geo, lumB);
+			calque(ms, buffers, geo, a.texFond(), fond, 0, t, lumB);
+			if (motif != null) calque(ms, buffers, geo, motif, orn, 1, t, lumB);
+			calque(ms, buffers, geo, a.texOrnement(), orn, 2, t, lumB);
+			if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);
+			ms.popPose();
+		}
+		if (a.avecLanternes() && a.style() == 2) {          // cérémonie : deux lanternes sur des potences avant et arrière
+			VertexConsumer fer = buffers.getBuffer(RenderType.entityCutoutNoCull(FER));
+			boite(ms, fer, 7.25f, 100f, -3f, 8.75f, 101.5f, 6.5f, lum);
+			boite(ms, fer, 7.25f, 100f, 9.5f, 8.75f, 101.5f, 19f, lum);
+			lanterne(ms, buffers, 8, 100, -2);
+			lanterne(ms, buffers, 8, 100, 18);
+		}
 		ms.popPose();
 	}
 
@@ -127,24 +159,124 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		float W = geo.w();
 		switch (geo.style()) {
 			case 0 -> {
-				boite(ms, fer, 9.5f, 102.5f, 7.25f, 12.5f + W, 104f, 8.75f, lum);
+				float e = geo.lanternes() ? 6 : 3;                                            // bras rallongé pour la lanterne
+				boite(ms, fer, 9.5f, 102.5f, 7.25f, 9.5f + e + W, 104f, 8.75f, lum);
 				boite(ms, fer, 9.5f, 99f, 7.5f, 11f, 102.5f, 8.5f, lum);                       // jambe de force
 				VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
-				boite(ms, or, 11.5f + W, 102f, 7f, 13.5f + W, 104.5f, 9f, lum);               // embout
+				boite(ms, or, 8.5f + e + W, 102f, 7f, 10.5f + e + W, 104.5f, 9f, lum);         // embout
 				boite(ms, or, 5.5f, 101.5f, 5.5f, 10.5f, 103f, 10.5f, lum);                   // collier
+				if (geo.lanternes()) lanterne(ms, buffers, 15.5f + W, 102.5f, 8);
 			}
 			case 1 -> {
+				float e = geo.lanternes() ? 5 : 1;
 				boite(ms, fer, 7.25f, 101f, -2.5f, 8.75f, 102.5f, 6f, lum);                    // potence avant
-				boite(ms, fer, 8 - W / 2 - 1, 101.5f, -2.75f, 8 + W / 2 + 1, 103f, -1.25f, lum); // traverse
+				boite(ms, fer, 8 - W / 2 - e, 101.5f, -2.75f, 8 + W / 2 + e, 103f, -1.25f, lum); // traverse
 				VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
-				boite(ms, or, 8 - W / 2 - 2.5f, 101f, -3.25f, 8 - W / 2 - 1, 103.5f, -0.75f, lum);
-				boite(ms, or, 8 + W / 2 + 1, 101f, -3.25f, 8 + W / 2 + 2.5f, 103.5f, -0.75f, lum);
+				boite(ms, or, 8 - W / 2 - e - 1.5f, 101f, -3.25f, 8 - W / 2 - e, 103.5f, -0.75f, lum);
+				boite(ms, or, 8 + W / 2 + e, 101f, -3.25f, 8 + W / 2 + e + 1.5f, 103.5f, -0.75f, lum);
 				boite(ms, or, 5.5f, 100.5f, 5.5f, 10.5f, 102f, 10.5f, lum);
+				if (geo.lanternes()) {
+					lanterne(ms, buffers, 8 - W / 2 - 4, 101.5f, -2);
+					lanterne(ms, buffers, 8 + W / 2 + 4, 101.5f, -2);
+				}
 			}
 			default -> {
 				VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
 				boite(ms, or, 5.5f, 103.5f, 5.5f, 10.5f, 105f, 10.5f, lum);                   // anneaux qui tiennent la hampe
 				boite(ms, or, 5.5f, 103.5f - W, 5.5f, 10.5f, 105f - W, 10.5f, lum);
+			}
+		}
+	}
+
+	/** Lanterne suspendue (vraie lanterne du jeu), son sommet accroché en (x, y, z) ; toujours allumée. */
+	private static void lanterne(PoseStack ms, MultiBufferSource buffers, float x, float y, float z) {
+		ms.pushPose();
+		ms.translate(x - 8, y - 16, z - 8);
+		ms.scale(16, 16, 16);
+		Minecraft.getInstance().getBlockRenderer().renderSingleBlock(
+			Blocks.LANTERN.defaultBlockState().setValue(LanternBlock.HANGING, true), ms, buffers, PLEIN_FEU, OverlayTexture.NO_OVERLAY);
+		ms.popPose();
+	}
+
+	/** Fleuron doré au sommet du mât (108 px) : pointe, globe, rouage qui tourne, couronne. */
+	private static void fleuron(PoseStack ms, MultiBufferSource buffers, int type, float t, int lum) {
+		VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(OR));
+		switch (type) {
+			case 0 -> {
+				boite(ms, or, 6.25f, 108, 6.25f, 9.75f, 111.5f, 9.75f, lum);
+				boite(ms, or, 5.75f, 108.75f, 5.75f, 10.25f, 110.75f, 10.25f, lum);
+				boite(ms, or, 7.25f, 111.5f, 7.25f, 8.75f, 115, 8.75f, lum);
+				boite(ms, or, 7.6f, 115, 7.6f, 8.4f, 117, 8.4f, lum);
+			}
+			case 1 -> {
+				boite(ms, or, 7.25f, 108, 7.25f, 8.75f, 109.5f, 8.75f, lum);
+				boite(ms, or, 5.5f, 110.5f, 6.5f, 10.5f, 113.5f, 9.5f, lum);
+				boite(ms, or, 6.5f, 110.5f, 5.5f, 9.5f, 113.5f, 10.5f, lum);
+				boite(ms, or, 6.5f, 109.5f, 6.5f, 9.5f, 114.5f, 9.5f, lum);
+				boite(ms, or, 7.5f, 114.5f, 7.5f, 8.5f, 115.5f, 8.5f, lum);
+			}
+			case 2 -> {
+				boite(ms, or, 7.25f, 108, 7.25f, 8.75f, 110.5f, 8.75f, lum);
+				ms.pushPose();
+				ms.translate(8, 114.5f, 8);
+				ms.mulPose(Axis.ZP.rotationDegrees(t * 1.5f));
+				boite(ms, or, -1.25f, -1.25f, -0.9f, 1.25f, 1.25f, 0.9f, lum);                   // moyeu
+				for (int k = 0; k < 8; k++) {
+					ms.pushPose();
+					ms.mulPose(Axis.ZP.rotationDegrees(k * 45));
+					boite(ms, or, -1.3f, 2.4f, -0.6f, 1.3f, 3.4f, 0.6f, lum);                    // jante
+					boite(ms, or, -0.8f, 3.4f, -0.6f, 0.8f, 4.6f, 0.6f, lum);                    // dent
+					if (k % 2 == 0) boite(ms, or, -0.4f, 1.25f, -0.4f, 0.4f, 2.4f, 0.4f, lum);   // rayon
+					ms.popPose();
+				}
+				ms.popPose();
+			}
+			default -> {
+				boite(ms, or, 7, 108, 7, 9, 109, 9, lum);
+				boite(ms, or, 5.5f, 109, 5.5f, 10.5f, 111, 10.5f, lum);
+				for (float[] c : new float[][] {{5.5f, 5.5f}, {9.5f, 5.5f}, {5.5f, 9.5f}, {9.5f, 9.5f}})
+					boite(ms, or, c[0], 111, c[1], c[0] + 1, 113, c[1] + 1, lum);
+				for (float[] c : new float[][] {{7.5f, 5.5f}, {7.5f, 9.5f}, {5.5f, 7.5f}, {9.5f, 7.5f}})
+					boite(ms, or, c[0], 111, c[1], c[0] + 1, 112.5f, c[1] + 1, lum);
+				boite(ms, or, 7.25f, 111, 7.25f, 8.75f, 113.5f, 8.75f, lum);
+				boite(ms, or, 7.6f, 113.5f, 7.6f, 8.4f, 115.5f, 8.4f, lum);
+				boite(ms, or, 7, 114.2f, 7.6f, 9, 114.8f, 8.4f, lum);
+			}
+		}
+	}
+
+	/** Bas de la bannière (en v) pour la colonne u, selon la forme : suit la découpe des textures. */
+	private static float basForme(int forme, float u) {
+		float x = u * 16 - 0.5f, d = Math.abs(x - 7.5f) * 0.85f;
+		float rang = switch (forme) { case 0 -> 25 + d; case 2 -> 31.4f - d; default -> 31; };
+		return Math.min(1f, (rang + 1) / 32f);
+	}
+
+	/** Franges teintes aux ornements, sous le bord inférieur de la bannière. */
+	private static void franges(PoseStack ms, MultiBufferSource buffers, Geo geo, int couleur, float t, int lum) {
+		VertexConsumer vc = buffers.getBuffer(RenderType.entityCutoutNoCull(FRANGE));
+		int r = couleur >> 16 & 255, g = couleur >> 8 & 255, b = couleur & 255;
+		PoseStack.Pose pose = ms.last();
+		float h = 4f;
+		int n = 24;
+		for (int i = 0; i < n; i++) {
+			float a0 = i / (float) n, a1 = (i + 1) / (float) n;
+			float[] h0, h1;
+			float tu0, tu1;
+			if (geo.style() == 2) {   // cérémonie : le long du bord bas, jusqu'à la découpe du bout
+				float fin = basForme(geo.forme(), 1f);
+				h0 = point(geo, 1f, a0 * fin, t, 0); h1 = point(geo, 1f, a1 * fin, t, 0);
+				tu0 = a0 * fin * geo.l() / 16f; tu1 = a1 * fin * geo.l() / 16f;
+			} else {
+				h0 = point(geo, a0, basForme(geo.forme(), a0), t, 0); h1 = point(geo, a1, basForme(geo.forme(), a1), t, 0);
+				tu0 = a0 * geo.w() / 16f; tu1 = a1 * geo.w() / 16f;
+			}
+			float[] b0 = {h0[0], h0[1] - h, h0[2]}, b1 = {h1[0], h1[1] - h, h1[2]};
+			for (float[][] q : new float[][][] {{h0, b0, b1, h1}}) {
+				float[][] uv = {{tu0, 0}, {tu0, 1}, {tu1, 1}, {tu1, 0}};
+				for (int k = 0; k < 4; k++)
+					vc.addVertex(pose, q[k][0], q[k][1], q[k][2]).setColor(r, g, b, 255).setUv(uv[k][0], uv[k][1])
+						.setOverlay(OverlayTexture.NO_OVERLAY).setLight(lum).setNormal(pose, 0, 0, 1);
 			}
 		}
 	}

@@ -31,6 +31,7 @@ public class RegistreItem extends Item {
 		ItemStack pile = joueur.getItemInHand(main);
 		if (joueur instanceof ServerPlayer sp) {
 			List<FondationRegistre.Fondation> liste = new ArrayList<>(FondationRegistre.de(sp.getServer()).toutes());
+			liste.removeIf(FondationRegistre.Fondation::decorative);
 			String dim = sp.level().dimension().location().toString();
 			liste.sort(Comparator.comparing((FondationRegistre.Fondation f) -> !f.dim().toString().equals(dim))
 				.thenComparingDouble(f -> f.distance(sp.getX(), sp.getZ())));

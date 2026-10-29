@@ -10,66 +10,83 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.PacketDistributor;
 
-/** Écran de l'étendard : nom de la base, puis style, couleurs, motif et forme de la bannière, avec un aperçu. */
+/**
+ * Écran de l'étendard : nom de la base, devise, puis style, couleurs, motif et forme de la bannière, avec un aperçu.
+ * Le grand étendard a une seconde page (taille, vent, franges, fleuron, bannière double, lanternes, titre).
+ */
 public class ConfigFondationScreen extends Screen {
-	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme", "longueur", "largeur", "vent"};
-	private static final int[] TAILLES = {Apparence.STYLES, Apparence.FONDS.length, Apparence.ORNEMENTS.length, Apparence.MOTIFS.length,
-		Apparence.FORMES.length, Apparence.LONGUEURS.length, Apparence.LARGEURS.length, Apparence.VENTS.length};
-	private static final int PAS = 21;
+	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme",
+		"longueur", "largeur", "vent", "franges", "fleuron", "double", "lanternes", "titre"};
+	private static final int PAS = 21, PAGE1 = 5;
 	private final BlockPos pos;
-	private final String nomActuel, deviseActuelle;
+	private String nom, dev;
 	private final int[] choix;
 	private EditBox champ, devise;
 	private boolean grand;
+	private int page;
 
 	public ConfigFondationScreen(BlockPos pos, String nom, String dev, Apparence a) {
 		super(Component.translatable("airain.fondation.ecran"));
-		this.pos = pos; this.nomActuel = nom; this.deviseActuelle = dev;
-		this.choix = new int[] {a.style(), a.fond(), a.ornement(), a.motif(), a.forme(), a.longueur(), a.largeur(), a.vent()};
+		this.pos = pos; this.nom = nom; this.dev = dev;
+		this.choix = a.valeurs();
 	}
 
 	private Apparence apparence() {
-		return new Apparence(choix[0], choix[1], choix[2], choix[3], choix[4], choix[5], choix[6], choix[7]);
+		return Apparence.depuis(choix);
 	}
 
-	/** Le grand étendard montre trois réglages de plus. */
-	private int lignes() {
-		return grand ? CLES.length : 5;
-	}
+	/** Réglages affichés sur la page courante (indices dans CLES) et leur première ligne. */
+	private int premier() { return page == 0 ? 0 : PAGE1; }
+	private int dernier() { return page == 0 ? PAGE1 : CLES.length; }
+	private int debutLignes() { return page == 0 ? 76 : 14; }
 
 	private int haut() {
-		return height / 2 - (76 + lignes() * PAS + 26) / 2;
+		return height / 2 - 108;
 	}
 
 	@Override
 	protected void init() {
 		grand = minecraft != null && minecraft.level != null && minecraft.level.getBlockState(pos).getBlock() instanceof GrandEtendardBlock;
 		int x = width / 2 - 150, y = haut();
-		champ = new EditBox(font, x, y + 14, 190, 20, Component.translatable("airain.fondation.ecran"));
-		champ.setMaxLength(32); champ.setValue(nomActuel);
-		addRenderableWidget(champ); setInitialFocus(champ);
-		devise = new EditBox(font, x, y + 48, 190, 20, Component.translatable("airain.fondation.devise"));
-		devise.setMaxLength(48); devise.setValue(deviseActuelle);
-		devise.setHint(Component.translatable("airain.fondation.sous_titre"));
-		addRenderableWidget(devise);
-		for (int k = 0; k < lignes(); k++) {
-			final int i = k;
-			int ly = y + 76 + k * PAS;
-			addRenderableWidget(new Fleche(x + 66, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, TAILLES[i])));
-			addRenderableWidget(new Fleche(x + 174, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, TAILLES[i])));
+		if (page == 0) {
+			champ = new EditBox(font, x, y + 14, 190, 20, Component.translatable("airain.fondation.ecran"));
+			champ.setMaxLength(32); champ.setValue(nom); champ.setResponder(v -> nom = v);
+			addRenderableWidget(champ); setInitialFocus(champ);
+			devise = new EditBox(font, x, y + 48, 190, 20, Component.translatable("airain.fondation.devise"));
+			devise.setMaxLength(48); devise.setValue(dev); devise.setResponder(v -> dev = v);
+			devise.setHint(Component.translatable("airain.fondation.sous_titre"));
+			addRenderableWidget(devise);
+		} else {
+			champ = null; devise = null;
 		}
-		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 80 + lignes() * PAS, 94, 20).build());
-		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 80 + lignes() * PAS, 94, 20).build());
+		for (int k = premier(); k < dernier(); k++) {
+			final int i = k;
+			int ly = y + debutLignes() + (k - premier()) * PAS;
+			addRenderableWidget(new Fleche(x + 66, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, Apparence.TAILLES[i])));
+			addRenderableWidget(new Fleche(x + 174, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, Apparence.TAILLES[i])));
+		}
+		int yb = y + 186;
+		if (grand) {   // onglets : bannière / étendard
+			addRenderableWidget(Button.builder(Component.translatable("airain.etendard.page." + (page == 0 ? 1 : 0)), b -> changerPage())
+				.bounds(x + 214, y + 168, 76, 16).build());
+		}
+		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, yb, 94, 20).build());
+		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, yb, 94, 20).build());
+	}
+
+	private void changerPage() {
+		page = 1 - page;
+		rebuildWidgets();
 	}
 
 	private void valider() {
-		PacketDistributor.sendToServer(new ConfigurerFondation(pos, champ.getValue().trim(), devise.getValue().trim(), apparence().pack()));
+		PacketDistributor.sendToServer(new ConfigurerFondation(pos, nom.trim(), dev.trim(), apparence().pack()));
 		onClose();
 	}
 
 	@Override
 	public boolean keyPressed(int key, int scan, int mods) {
-		if ((key == 257 || key == 335) && (champ.isFocused() || devise.isFocused())) { valider(); return true; }
+		if ((key == 257 || key == 335) && champ != null && (champ.isFocused() || devise.isFocused())) { valider(); return true; }
 		return super.keyPressed(key, scan, mods);
 	}
 
@@ -77,18 +94,17 @@ public class ConfigFondationScreen extends Screen {
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		super.render(g, mx, my, pt);
 		int x = width / 2 - 150, y = haut();
-		for (int k = 0; k < lignes(); k++) {               // cartouche sombre derrière chaque valeur
-			int ly = y + 76 + k * PAS;
-			g.fill(x + 84, ly + 2, x + 172, ly + 18, 0xA0100C08);
+		Component titre = grand ? Component.translatable("airain.etendard.titre_page." + page) : title;
+		g.drawString(font, titre, x, y, 0xE8C878);
+		if (page == 0) g.drawString(font, Component.translatable("airain.fondation.devise"), x, y + 38, 0xD0C8B0);
+		for (int k = premier(); k < dernier(); k++) {
+			int ly = y + debutLignes() + (k - premier()) * PAS;
+			g.fill(x + 84, ly + 2, x + 172, ly + 18, 0xA0100C08);           // cartouche sombre derrière chaque valeur
 			g.fill(x + 84, ly + 2, x + 172, ly + 3, 0xFF6E5020);
 			g.fill(x + 84, ly + 17, x + 172, ly + 18, 0xFF6E5020);
-		}
-		g.drawString(font, title, x, y, 0xE8C878);
-		g.drawString(font, Component.translatable("airain.fondation.devise"), x, y + 38, 0xD0C8B0);
-		for (int k = 0; k < lignes(); k++) {
-			int ly = y + 76 + k * PAS;
 			g.drawString(font, Component.translatable("airain.etendard." + CLES[k]), x, ly + 6, 0xD0C8B0);
-			g.drawCenteredString(font, Component.translatable("airain.etendard." + CLES[k] + "." + choix[k]), x + 128, ly + 6, 0xFFE9B0);
+			boolean inutile = k == 10 && choix[0] == 1;                       // le vexillum n'a qu'une bannière
+			g.drawCenteredString(font, Component.translatable("airain.etendard." + CLES[k] + "." + choix[k]), x + 128, ly + 6, inutile ? 0x8A8070 : 0xFFE9B0);
 		}
 		// aperçu de la bannière (calques teintés)
 		Apparence a = apparence();
@@ -100,6 +116,10 @@ public class ConfigFondationScreen extends Screen {
 		if (a.texMotif() != null) dessiner(g, a.texMotif(), Apparence.ORNEMENTS[a.ornement()], px, py, bw, bh);
 		dessiner(g, a.texOrnement(), Apparence.ORNEMENTS[a.ornement()], px, py, bw, bh);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
+		if (grand && a.avecFranges()) {                                       // franges sous la bannière
+			int c = 0xFF000000 | Apparence.ORNEMENTS[a.ornement()];
+			for (int i = 0; i < bw; i += 2) g.fill(px + i, py + bh, px + i + 1, py + bh + 6, c);
+		}
 	}
 
 	private static void dessiner(GuiGraphics g, ResourceLocation tex, int c, int x, int y, int w, int h) {
