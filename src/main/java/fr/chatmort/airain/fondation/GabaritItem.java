@@ -20,7 +20,8 @@ import net.minecraft.world.level.Level;
 
 /**
  * Gabarit de bannière : accroupi + clic droit sur un étendard ou une bannière murale copie son apparence ;
- * clic droit sur un autre l'y applique (le nom, la devise et le mode décoratif de la cible sont conservés).
+ * clic droit sur un autre l'y applique, mode décoratif compris (le nom et la devise de la cible sont conservés ;
+ * seul un grand étendard peut être décoratif).
  */
 public class GabaritItem extends Item {
 	public GabaritItem(Properties p) {
@@ -54,7 +55,6 @@ public class GabaritItem extends Item {
 			return InteractionResult.CONSUME;
 		}
 		int[] v = Apparence.unpack(d.getInt("apparence"), d.getInt("ext")).valeurs();
-		v[12] = f.apparence().masque();                                  // la cible garde son mode décoratif
 		if (f.grand() && d.contains("hauteur") && d.getInt("hauteur") != f.hauteur())
 			GrandEtendardBlock.changerHauteur(level, porte, f.hauteur(), d.getInt("hauteur"));
 		f.configurer(f.nom(), f.devise(), Apparence.depuis(v));
