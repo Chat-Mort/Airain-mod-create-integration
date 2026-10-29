@@ -84,12 +84,12 @@ public class ConfigFondationScreen extends Screen {
 		for (int n = 0; n < lignes.length; n++) {
 			final int i = lignes[n];
 			int ly = y + debutLignes() + n * pas();
-			addRenderableWidget(new Fleche(x + 78, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, taille(i))));
-			addRenderableWidget(new Fleche(x + 186, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, taille(i))));
+			addRenderableWidget(new fr.chatmort.airain.gui.WidgetsEmpire.Fleche(x + 78, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, taille(i))));
+			addRenderableWidget(new fr.chatmort.airain.gui.WidgetsEmpire.Fleche(x + 186, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, taille(i))));
 		}
 		for (int k = 0; k < pages.length; k++) {                            // onglets de laiton au-dessus du panneau
 			final int cible = k;
-			addRenderableWidget(new Onglet(x + 4 + k * 74, y - 23, Component.translatable("airain.etendard.onglet." + pages[k].cle()),
+			addRenderableWidget(new fr.chatmort.airain.gui.WidgetsEmpire.Onglet(x + 4 + k * 74, y - 23, Component.translatable("airain.etendard.onglet." + pages[k].cle()),
 				k == page, b -> { page = cible; rebuildWidgets(); }));
 		}
 		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 186, 94, 20).build());
@@ -169,36 +169,4 @@ public class ConfigFondationScreen extends Screen {
 	@Override
 	public boolean isPauseScreen() { return false; }
 
-	/** Bouton rond de laiton avec une flèche (planche elements.png). */
-	private static final class Fleche extends Button {
-		private final boolean droite;
-
-		Fleche(int x, int y, boolean droite, OnPress action) {
-			super(x, y, 16, 16, Component.literal(droite ? ">" : "<"), action, DEFAULT_NARRATION);
-			this.droite = droite;
-		}
-
-		@Override
-		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
-			int u = (droite ? 16 : 0) + (isHoveredOrFocused() ? 32 : 0);
-			g.blit(ELEMENTS, getX(), getY(), u, 16, 16, 16, 128, 64);
-		}
-	}
-
-	/** Onglet de laiton au-dessus du panneau ; l'onglet actif est plus clair. */
-	private final class Onglet extends Button {
-		private final boolean actif;
-
-		Onglet(int x, int y, Component nom, boolean actif, OnPress action) {
-			super(x, y, 72, 14, nom, action, DEFAULT_NARRATION);
-			this.actif = actif;
-		}
-
-		@Override
-		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
-			g.blit(ELEMENTS, getX(), getY(), 0, actif ? 32 : 48, 72, 14, 128, 64);
-			int c = actif ? BRUN : isHoveredOrFocused() ? 0x5A3A1A : 0x46301A;
-			g.drawString(font, getMessage(), getX() + 36 - font.width(getMessage()) / 2, getY() + 4, c, false);
-		}
-	}
 }

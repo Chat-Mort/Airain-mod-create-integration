@@ -96,7 +96,8 @@ public class AirainMod {
 	/** Socle de l'Empire : expose un trophée de boss, effet permanent pour toute l'équipe. */
 	public static final DeferredBlock<fr.chatmort.airain.trophee.SocleBlock> SOCLE = BLOCKS.register("socle_trophee",
 		() -> new fr.chatmort.airain.trophee.SocleBlock(BlockBehaviour.Properties.of()
-			.mapColor(MapColor.GOLD).strength(3f, 9f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()));
+			.mapColor(MapColor.GOLD).strength(3f, 9f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()
+			.lightLevel(s -> s.getValue(fr.chatmort.airain.trophee.SocleBlock.LUMIERE) ? 12 : 0)));
 	public static final DeferredItem<BlockItem> SOCLE_ITEM = ITEMS.register("socle_trophee",
 		() -> new BlockItem(SOCLE.get(), new Item.Properties()));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.trophee.SocleBlockEntity>> SOCLE_BE =
@@ -150,6 +151,8 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		bus.addListener((net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent e) -> e.registrar("1")
+			.playToServer(fr.chatmort.airain.trophee.ConfigurerSocle.TYPE, fr.chatmort.airain.trophee.ConfigurerSocle.CODEC,
+				fr.chatmort.airain.trophee.ConfigurerSocle::traiter)
 			.playToServer(fr.chatmort.airain.fondation.ConfigurerFondation.TYPE, fr.chatmort.airain.fondation.ConfigurerFondation.CODEC,
 				fr.chatmort.airain.fondation.ConfigurerFondation::traiter)
 			.playToClient(fr.chatmort.airain.fondation.TitreFondation.TYPE, fr.chatmort.airain.fondation.TitreFondation.CODEC,

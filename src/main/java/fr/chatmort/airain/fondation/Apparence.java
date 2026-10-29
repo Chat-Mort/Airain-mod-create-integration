@@ -32,7 +32,7 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 	public static final int ETATS = 3;
 	/** Taille de chaque réglage, dans l'ordre du constructeur. */
 	public static final int[] TAILLES = {STYLES, FONDS.length, ORNEMENTS.length, MOTIFS.length, FORMES.length,
-		LONGUEURS.length, LARGEURS.length, VENTS.length, 2, FLEURONS, 2, 2, 2, PARTITIONS, FONDS.length, COULEURS_MOTIF, ETATS, 2, 2, 2};
+		LONGUEURS.length, LARGEURS.length, VENTS.length, 2, FLEURONS, 2, 2, 2, PARTITIONS, FONDS.length, COULEURS_MOTIF, ETATS, 2, 2, 3};
 	public static final int CHAMPS = TAILLES.length;
 	private static final int[] DEFAUTS_GRAND = {1, 1, 1, 0, 0, 0, 0, 0};
 	private static final int[] BITS_GRAND = {2, 2, 2, 1, 2, 1, 1, 1};
@@ -57,6 +57,8 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 	public boolean synchronise() { return synchro == 1; }
 	/** Hissage selon la présence de joueurs dans la zone de la fondation. */
 	public boolean selonPresence() { return auto == 1; }
+	/** Hissage selon les trophées exposés dans la zone de la fondation. */
+	public boolean selonTrophees() { return auto == 2; }
 
 	public int pack() {
 		int[] v = valeurs();
@@ -90,7 +92,7 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 		int[] v = a.valeurs();
 		v[13] = borne(ext & 7, PARTITIONS); v[14] = borne((ext >> 3 & 7) + 4, FONDS.length);
 		v[15] = borne(ext >> 6 & 15, COULEURS_MOTIF); v[16] = borne(ext >> 10 & 3, ETATS);
-		v[17] = ext >> 12 & 1; v[18] = ext >> 13 & 1; v[19] = ext >> 14 & 1;
+		v[17] = ext >> 12 & 1; v[18] = ext >> 13 & 1; v[19] = borne(ext >> 14 & 3, 3);
 		return depuis(v);
 	}
 

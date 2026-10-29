@@ -57,7 +57,7 @@ public class FondationBlockEntity extends BlockEntity {
 	/** Tick côté client : animation de la mise en berne, claquements de toile par grand vent ou par orage. */
 	public void tickClient() {
 		hisseAvant = hisse;
-		float cible = berne ? 1f : apparence.selonPresence() ? (autoBas ? 1f : 0f) : manuelle;
+		float cible = berne ? 1f : apparence.selonPresence() || apparence.selonTrophees() ? (autoBas ? 1f : 0f) : manuelle;
 		hisse = hisse < cible ? Math.min(cible, hisse + 1 / 40f) : Math.max(cible, hisse - 1 / 40f);
 		if (level == null) return;
 		BlockPos haut = worldPosition.above(grand() ? hauteur : murale() ? 0 : 2);
@@ -79,6 +79,14 @@ public class FondationBlockEntity extends BlockEntity {
 			FondationRegistre reg = FondationRegistre.de(sl.getServer());
 			FondationRegistre.Fondation f = reg.zone(level.dimension().location(), worldPosition.getX() + 0.5, worldPosition.getZ() + 0.5);
 			boolean bas = f != null && !reg.occupee(f.dim(), f.pos());
+			if (bas != autoBas) { autoBas = bas; maj(); }
+			return;
+		}
+		if (apparence.selonTrophees() && level instanceof ServerLevel sl) {
+			// toutes à la même seconde : les bannières de la zone se lèvent ensemble quand un trophée y est exposé
+			if (level.getGameTime() % 20 != 0) return;
+			FondationRegistre.Fondation f = FondationRegistre.de(sl.getServer()).zone(level.dimension().location(), worldPosition.getX() + 0.5, worldPosition.getZ() + 0.5);
+			boolean bas = f != null && !fr.chatmort.airain.trophee.TropheeRegistre.de(sl.getServer()).dansZone(f);
 			if (bas != autoBas) { autoBas = bas; maj(); }
 			return;
 		}

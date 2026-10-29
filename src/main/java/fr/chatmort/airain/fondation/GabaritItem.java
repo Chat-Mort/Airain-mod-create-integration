@@ -36,6 +36,8 @@ public class GabaritItem extends Item {
 	@Override
 	public InteractionResult useOn(UseOnContext ctx) {
 		Level level = ctx.getLevel();
+		fr.chatmort.airain.trophee.SocleBlockEntity socle = fr.chatmort.airain.trophee.SocleBlock.socle(level, ctx.getClickedPos());
+		if (socle != null) return piedestal(ctx, socle);
 		BlockPos porte = FondationBlockEntity.porte(level, ctx.getClickedPos());
 		if (porte == null || !(level.getBlockEntity(porte) instanceof FondationBlockEntity f)) return InteractionResult.PASS;
 		if (level.isClientSide) return InteractionResult.SUCCESS;
@@ -43,7 +45,7 @@ public class GabaritItem extends Item {
 		ItemStack s = ctx.getItemInHand();
 		CompoundTag d = donnees(s);
 		if (p != null && p.isShiftKeyDown()) {
-			CompoundTag t = new CompoundTag();
+			CompoundTag t = d == null ? new CompoundTag() : d;
 			t.putInt("apparence", f.apparence().pack()); t.putInt("ext", f.apparence().packExt()); t.putInt("hauteur", f.hauteur());
 			s.set(DataComponents.CUSTOM_DATA, CustomData.of(t));
 			p.displayClientMessage(Component.translatable("airain.gabarit.copie").withStyle(ChatFormatting.GOLD), true);
@@ -63,16 +65,42 @@ public class GabaritItem extends Item {
 		return InteractionResult.CONSUME;
 	}
 
+	/** Le gabarit sert aussi aux piédestaux : il copie leur apparence (pas la plaque gravée). */
+	private InteractionResult piedestal(UseOnContext ctx, fr.chatmort.airain.trophee.SocleBlockEntity socle) {
+		Level level = ctx.getLevel();
+		if (level.isClientSide) return InteractionResult.SUCCESS;
+		Player p = ctx.getPlayer();
+		ItemStack s = ctx.getItemInHand();
+		CompoundTag d = donnees(s);
+		if (p != null && p.isShiftKeyDown()) {
+			CompoundTag t = d == null ? new CompoundTag() : d;
+			t.putInt("socle", socle.apparence().pack());
+			s.set(DataComponents.CUSTOM_DATA, CustomData.of(t));
+			p.displayClientMessage(Component.translatable("airain.gabarit.copie").withStyle(ChatFormatting.GOLD), true);
+			level.playSound(null, socle.getBlockPos(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 0.8f, 1.1f);
+			return InteractionResult.CONSUME;
+		}
+		if (d == null || !d.contains("socle")) {
+			if (p != null) p.displayClientMessage(Component.translatable("airain.gabarit.vide_socle").withStyle(ChatFormatting.GRAY), true);
+			return InteractionResult.CONSUME;
+		}
+		fr.chatmort.airain.trophee.ConfigurerSocle.appliquer(p, socle, fr.chatmort.airain.trophee.SocleApparence.unpack(d.getInt("socle")), socle.plaque());
+		if (p != null) p.displayClientMessage(Component.translatable("airain.gabarit.applique").withStyle(ChatFormatting.GOLD), true);
+		level.playSound(null, socle.getBlockPos(), SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 0.8f, 1f);
+		return InteractionResult.CONSUME;
+	}
+
 	@Override
 	public boolean isFoil(ItemStack s) {
 		CompoundTag d = donnees(s);
-		return d != null && d.contains("apparence");
+		return d != null && (d.contains("apparence") || d.contains("socle"));
 	}
 
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext ctx, List<Component> lignes, TooltipFlag f) {
 		CompoundTag d = donnees(s);
-		lignes.add(Component.translatable(d != null && d.contains("apparence") ? "airain.gabarit.plein" : "airain.gabarit.aide")
-			.withStyle(ChatFormatting.GRAY));
+		if (d != null && d.contains("apparence")) lignes.add(Component.translatable("airain.gabarit.plein").withStyle(ChatFormatting.GRAY));
+		if (d != null && d.contains("socle")) lignes.add(Component.translatable("airain.gabarit.plein_socle").withStyle(ChatFormatting.GRAY));
+		if (d == null || !(d.contains("apparence") || d.contains("socle"))) lignes.add(Component.translatable("airain.gabarit.aide").withStyle(ChatFormatting.GRAY));
 	}
 }

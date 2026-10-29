@@ -51,6 +51,32 @@ public class RegistreItem extends Item {
 				}
 				pages.add(Filterable.passThrough(page));
 			}
+			// trophées de l'Empire : objet, effets, plaque gravée, base qui l'expose
+			var trophees = fr.chatmort.airain.trophee.TropheeRegistre.de(sp.getServer()).entrees();
+			FondationRegistre reg = FondationRegistre.de(sp.getServer());
+			for (int i = 0; i < trophees.size(); i += 3) {
+				MutableComponent page = Component.translatable("airain.registre.trophees").withStyle(ChatFormatting.DARK_RED, ChatFormatting.BOLD);
+				for (var e : trophees.subList(i, Math.min(trophees.size(), i + 3))) {
+					ItemStack objet = new ItemStack(net.minecraft.core.registries.BuiltInRegistries.ITEM.get(e.getValue().objet()));
+					page.append(Component.literal("\n\n").append(objet.getHoverName()).withStyle(s -> s.withBold(true).withColor(ChatFormatting.DARK_BLUE)));
+					MutableComponent effets = Component.literal("\n");
+					boolean premier = true;
+					for (var ef : fr.chatmort.airain.trophee.Trophees.effetsDe(objet)) {
+						if (!premier) effets.append(", ");
+						effets.append(Component.translatable("airain.trophee.effet." + ef.name().toLowerCase()));
+						premier = false;
+					}
+					page.append(effets.withStyle(s -> s.withBold(false).withColor(ChatFormatting.DARK_GREEN)));
+					if (!e.getValue().plaque().isEmpty())
+						page.append(Component.translatable("airain.registre.plaque", e.getValue().plaque(), e.getValue().jour())
+							.withStyle(s -> s.withBold(false).withItalic(true).withColor(ChatFormatting.DARK_GRAY)));
+					var pos = e.getKey().pos();
+					FondationRegistre.Fondation base = reg.zone(e.getKey().dimension().location(), pos.getX() + 0.5, pos.getZ() + 0.5);
+					page.append(Component.literal("\n").append(base != null && !base.nom().isEmpty() ? Component.literal(base.nom())
+						: Component.translatable("airain.registre.hors_base")).withStyle(s -> s.withBold(false).withColor(ChatFormatting.BLACK)));
+				}
+				pages.add(Filterable.passThrough(page));
+			}
 			pile.set(DataComponents.WRITTEN_BOOK_CONTENT, new WrittenBookContent(
 				Filterable.passThrough("Registre"), sp.getGameProfile().getName(), 0, pages, true));
 			sp.openItemGui(pile, main);
