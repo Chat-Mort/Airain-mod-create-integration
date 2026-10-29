@@ -102,5 +102,11 @@
  "airain.etendard.page.0": "◂ Bannière",
  "airain.etendard.page.1": "Étendard ▸",
  "airain.etendard.titre_page.0": "Grand étendard : bannière",
- "airain.etendard.titre_page.1": "Grand étendard : mât et options"
+ "airain.etendard.titre_page.1": "Grand étendard : mât et options",
+ "airain.etendard.hauteur": "Hauteur du mât",
+ "airain.etendard.pas_de_place": "Pas assez de place au-dessus du mât : hauteur inchangée.",
+ "airain.etendard.hauteur.0": "5 blocs",
+ "airain.etendard.hauteur.1": "6 blocs",
+ "airain.etendard.hauteur.2": "7 blocs",
+ "airain.etendard.hauteur.3": "8 blocs"
 }

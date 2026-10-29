@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
@@ -35,20 +36,23 @@ import net.neoforged.fml.loading.FMLEnvironment;
  * en longueur et en largeur, et le vent se choisit.
  */
 public class GrandEtendardBlock extends Block implements EntityBlock {
-	public static final int MAT = 6;
-	public static final IntegerProperty PARTIE = IntegerProperty.create("partie", 0, MAT);
+	public static final int MAT = 6, MAT_MIN = 5, MAT_MAX = 8;
+	public static final IntegerProperty PARTIE = IntegerProperty.create("partie", 0, MAT_MAX);
+	/** Dernier tronçon du mât : porte le collier du sommet, rien n'est attendu au-dessus. */
+	public static final BooleanProperty SOMMET = BooleanProperty.create("sommet");
+	private static final int SILENCIEUX = Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE;
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private static final VoxelShape SOCLE = Shapes.or(Block.box(0, 0, 0, 16, 4, 16), Block.box(1, 4, 1, 15, 15, 15), Block.box(5.5, 15, 5.5, 10.5, 16, 10.5));
 	private static final VoxelShape TRONCON = Block.box(6, 0, 6, 10, 16, 10);
 
 	public GrandEtendardBlock(Properties p) {
 		super(p);
-		registerDefaultState(stateDefinition.any().setValue(PARTIE, 0).setValue(FACING, Direction.NORTH));
+		registerDefaultState(stateDefinition.any().setValue(PARTIE, 0).setValue(FACING, Direction.NORTH).setValue(SOMMET, false));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-		b.add(PARTIE, FACING);
+		b.add(PARTIE, FACING, SOMMET);
 	}
 
 	@Override
@@ -66,7 +70,7 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 	@Override
 	public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity qui, ItemStack pile) {
 		for (int k = 1; k <= MAT; k++)
-			level.setBlock(pos.above(k), state.setValue(PARTIE, k), 3);
+			level.setBlock(pos.above(k), state.setValue(PARTIE, k).setValue(SOMMET, k == MAT), 3);
 		if (level.getBlockEntity(pos) instanceof FondationBlockEntity f) {
 			f.enregistrer();
 			if (level.isClientSide && FMLEnvironment.dist.isClient())
@@ -82,11 +86,43 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 	@Override
 	protected BlockState updateShape(BlockState state, Direction dir, BlockState voisin, LevelAccessor level, BlockPos pos, BlockPos posVoisin) {
 		int p = state.getValue(PARTIE);
-		if (dir == Direction.UP && p < MAT && !(voisin.is(this) && voisin.getValue(PARTIE) == p + 1))
+		if (dir == Direction.UP && p < MAT_MAX && !state.getValue(SOMMET) && !(voisin.is(this) && voisin.getValue(PARTIE) == p + 1))
 			return Blocks.AIR.defaultBlockState();
 		if (dir == Direction.DOWN && p > 0 && !(voisin.is(this) && voisin.getValue(PARTIE) == p - 1))
 			return Blocks.AIR.defaultBlockState();
 		return super.updateShape(state, dir, voisin, level, pos, posVoisin);
+	}
+
+	/**
+	 * Allonge ou raccourcit le mât. Pour l'allonger, toute la place au-dessus doit être libre.
+	 * Les blocs sont posés sans mise à jour de forme, le sommet est marqué à la fin.
+	 */
+	public static boolean changerHauteur(Level level, BlockPos base, int avant, int apres) {
+		apres = Math.max(MAT_MIN, Math.min(MAT_MAX, apres));
+		BlockState socle = level.getBlockState(base);
+		if (!(socle.getBlock() instanceof GrandEtendardBlock) || apres == avant) return true;
+		if (apres > avant) {
+			if (base.getY() + apres >= level.getMaxBuildHeight()) return false;
+			for (int k = avant + 1; k <= apres; k++)
+				if (!level.getBlockState(base.above(k)).canBeReplaced()) return false;
+			for (int k = avant + 1; k <= apres; k++)
+				level.setBlock(base.above(k), socle.setValue(PARTIE, k).setValue(SOMMET, k == apres), SILENCIEUX);
+			level.setBlock(base.above(avant), socle.setValue(PARTIE, avant).setValue(SOMMET, false), SILENCIEUX);
+		} else {
+			level.setBlock(base.above(apres), socle.setValue(PARTIE, apres).setValue(SOMMET, true), SILENCIEUX);
+			for (int k = avant; k > apres; k--)
+				level.setBlock(base.above(k), net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), SILENCIEUX);
+		}
+		if (level.getBlockEntity(base) instanceof FondationBlockEntity f) f.hauteur(apres);
+		return true;
+	}
+
+	/** Remet le sommet au bon tronçon (étendards posés avant que la hauteur soit réglable). */
+	public static void marquerSommet(Level level, BlockPos base, int hauteur) {
+		BlockPos haut = base.above(hauteur);
+		BlockState s = level.getBlockState(haut);
+		if (s.getBlock() instanceof GrandEtendardBlock && s.getValue(PARTIE) == hauteur && !s.getValue(SOMMET))
+			level.setBlock(haut, s.setValue(SOMMET, true), SILENCIEUX);
 	}
 
 	@Override

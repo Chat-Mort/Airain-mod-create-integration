@@ -102,5 +102,11 @@
  "airain.etendard.page.0": "◂ Banner",
  "airain.etendard.page.1": "Standard ▸",
  "airain.etendard.titre_page.0": "Great standard: banner",
- "airain.etendard.titre_page.1": "Great standard: mast and options"
+ "airain.etendard.titre_page.1": "Great standard: mast and options",
+ "airain.etendard.hauteur": "Mast height",
+ "airain.etendard.pas_de_place": "Not enough room above the mast: height unchanged.",
+ "airain.etendard.hauteur.0": "5 blocks",
+ "airain.etendard.hauteur.1": "6 blocks",
+ "airain.etendard.hauteur.2": "7 blocks",
+ "airain.etendard.hauteur.3": "8 blocks"
 }

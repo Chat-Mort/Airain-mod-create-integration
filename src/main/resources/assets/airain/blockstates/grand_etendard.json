@@ -1,114 +1,290 @@
 {
  "variants": {
-  "facing=north,partie=0": {
+  "facing=north,partie=0,sommet=false": {
    "model": "airain:block/etendard_socle",
    "y": 0
   },
-  "facing=north,partie=1": {
+  "facing=north,partie=0,sommet=true": {
+   "model": "airain:block/etendard_socle",
+   "y": 0
+  },
+  "facing=north,partie=1,sommet=false": {
    "model": "airain:block/grand_mat_pied",
    "y": 0
   },
-  "facing=north,partie=2": {
-   "model": "airain:block/grand_mat",
-   "y": 0
-  },
-  "facing=north,partie=3": {
-   "model": "airain:block/grand_mat_bague",
-   "y": 0
-  },
-  "facing=north,partie=4": {
-   "model": "airain:block/grand_mat",
-   "y": 0
-  },
-  "facing=north,partie=5": {
-   "model": "airain:block/grand_mat_bague",
-   "y": 0
-  },
-  "facing=north,partie=6": {
+  "facing=north,partie=1,sommet=true": {
    "model": "airain:block/grand_mat_haut",
    "y": 0
   },
-  "facing=east,partie=0": {
+  "facing=north,partie=2,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 0
+  },
+  "facing=north,partie=2,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=north,partie=3,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 0
+  },
+  "facing=north,partie=3,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=north,partie=4,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 0
+  },
+  "facing=north,partie=4,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=north,partie=5,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 0
+  },
+  "facing=north,partie=5,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=north,partie=6,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 0
+  },
+  "facing=north,partie=6,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=north,partie=7,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 0
+  },
+  "facing=north,partie=7,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=north,partie=8,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 0
+  },
+  "facing=north,partie=8,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 0
+  },
+  "facing=east,partie=0,sommet=false": {
    "model": "airain:block/etendard_socle",
    "y": 90
   },
-  "facing=east,partie=1": {
+  "facing=east,partie=0,sommet=true": {
+   "model": "airain:block/etendard_socle",
+   "y": 90
+  },
+  "facing=east,partie=1,sommet=false": {
    "model": "airain:block/grand_mat_pied",
    "y": 90
   },
-  "facing=east,partie=2": {
-   "model": "airain:block/grand_mat",
-   "y": 90
-  },
-  "facing=east,partie=3": {
-   "model": "airain:block/grand_mat_bague",
-   "y": 90
-  },
-  "facing=east,partie=4": {
-   "model": "airain:block/grand_mat",
-   "y": 90
-  },
-  "facing=east,partie=5": {
-   "model": "airain:block/grand_mat_bague",
-   "y": 90
-  },
-  "facing=east,partie=6": {
+  "facing=east,partie=1,sommet=true": {
    "model": "airain:block/grand_mat_haut",
    "y": 90
   },
-  "facing=south,partie=0": {
+  "facing=east,partie=2,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 90
+  },
+  "facing=east,partie=2,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=east,partie=3,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 90
+  },
+  "facing=east,partie=3,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=east,partie=4,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 90
+  },
+  "facing=east,partie=4,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=east,partie=5,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 90
+  },
+  "facing=east,partie=5,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=east,partie=6,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 90
+  },
+  "facing=east,partie=6,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=east,partie=7,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 90
+  },
+  "facing=east,partie=7,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=east,partie=8,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 90
+  },
+  "facing=east,partie=8,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 90
+  },
+  "facing=south,partie=0,sommet=false": {
    "model": "airain:block/etendard_socle",
    "y": 180
   },
-  "facing=south,partie=1": {
+  "facing=south,partie=0,sommet=true": {
+   "model": "airain:block/etendard_socle",
+   "y": 180
+  },
+  "facing=south,partie=1,sommet=false": {
    "model": "airain:block/grand_mat_pied",
    "y": 180
   },
-  "facing=south,partie=2": {
-   "model": "airain:block/grand_mat",
-   "y": 180
-  },
-  "facing=south,partie=3": {
-   "model": "airain:block/grand_mat_bague",
-   "y": 180
-  },
-  "facing=south,partie=4": {
-   "model": "airain:block/grand_mat",
-   "y": 180
-  },
-  "facing=south,partie=5": {
-   "model": "airain:block/grand_mat_bague",
-   "y": 180
-  },
-  "facing=south,partie=6": {
+  "facing=south,partie=1,sommet=true": {
    "model": "airain:block/grand_mat_haut",
    "y": 180
   },
-  "facing=west,partie=0": {
+  "facing=south,partie=2,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 180
+  },
+  "facing=south,partie=2,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=south,partie=3,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 180
+  },
+  "facing=south,partie=3,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=south,partie=4,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 180
+  },
+  "facing=south,partie=4,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=south,partie=5,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 180
+  },
+  "facing=south,partie=5,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=south,partie=6,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 180
+  },
+  "facing=south,partie=6,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=south,partie=7,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 180
+  },
+  "facing=south,partie=7,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=south,partie=8,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 180
+  },
+  "facing=south,partie=8,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 180
+  },
+  "facing=west,partie=0,sommet=false": {
    "model": "airain:block/etendard_socle",
    "y": 270
   },
-  "facing=west,partie=1": {
+  "facing=west,partie=0,sommet=true": {
+   "model": "airain:block/etendard_socle",
+   "y": 270
+  },
+  "facing=west,partie=1,sommet=false": {
    "model": "airain:block/grand_mat_pied",
    "y": 270
   },
-  "facing=west,partie=2": {
+  "facing=west,partie=1,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  },
+  "facing=west,partie=2,sommet=false": {
    "model": "airain:block/grand_mat",
    "y": 270
   },
-  "facing=west,partie=3": {
+  "facing=west,partie=2,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  },
+  "facing=west,partie=3,sommet=false": {
    "model": "airain:block/grand_mat_bague",
    "y": 270
   },
-  "facing=west,partie=4": {
+  "facing=west,partie=3,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  },
+  "facing=west,partie=4,sommet=false": {
    "model": "airain:block/grand_mat",
    "y": 270
   },
-  "facing=west,partie=5": {
+  "facing=west,partie=4,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  },
+  "facing=west,partie=5,sommet=false": {
    "model": "airain:block/grand_mat_bague",
    "y": 270
   },
-  "facing=west,partie=6": {
+  "facing=west,partie=5,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  },
+  "facing=west,partie=6,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 270
+  },
+  "facing=west,partie=6,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  },
+  "facing=west,partie=7,sommet=false": {
+   "model": "airain:block/grand_mat_bague",
+   "y": 270
+  },
+  "facing=west,partie=7,sommet=true": {
+   "model": "airain:block/grand_mat_haut",
+   "y": 270
+  },
+  "facing=west,partie=8,sommet=false": {
+   "model": "airain:block/grand_mat",
+   "y": 270
+  },
+  "facing=west,partie=8,sommet=true": {
    "model": "airain:block/grand_mat_haut",
    "y": 270
   }

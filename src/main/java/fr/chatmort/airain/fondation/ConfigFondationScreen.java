@@ -16,8 +16,10 @@ import net.neoforged.neoforge.network.PacketDistributor;
  */
 public class ConfigFondationScreen extends Screen {
 	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme",
-		"longueur", "largeur", "vent", "franges", "fleuron", "double", "lanternes", "titre"};
-	private static final int PAS = 21, PAGE1 = 5;
+		"longueur", "largeur", "vent", "franges", "fleuron", "double", "lanternes", "titre", "hauteur"};
+	/** Ordre des lignes : page bannière, page étendard (la hauteur du mât n'est pas dans l'apparence, d'où l'indice 13). */
+	private static final int[][] ORDRE = {{0, 1, 2, 3, 4}, {13, 5, 6, 7, 8, 9, 10, 11, 12}};
+	private static final int PAGE1 = 5;
 	private final BlockPos pos;
 	private String nom, dev;
 	private final int[] choix;
@@ -28,7 +30,10 @@ public class ConfigFondationScreen extends Screen {
 	public ConfigFondationScreen(BlockPos pos, String nom, String dev, Apparence a) {
 		super(Component.translatable("airain.fondation.ecran"));
 		this.pos = pos; this.nom = nom; this.dev = dev;
-		this.choix = a.valeurs();
+		this.choix = java.util.Arrays.copyOf(a.valeurs(), 14);
+		var mc = net.minecraft.client.Minecraft.getInstance();
+		if (mc.level != null && mc.level.getBlockEntity(pos) instanceof FondationBlockEntity f)
+			choix[13] = f.hauteur() - GrandEtendardBlock.MAT_MIN;
 	}
 
 	private Apparence apparence() {
@@ -36,8 +41,9 @@ public class ConfigFondationScreen extends Screen {
 	}
 
 	/** Réglages affichés sur la page courante (indices dans CLES) et leur première ligne. */
-	private int premier() { return page == 0 ? 0 : PAGE1; }
-	private int dernier() { return page == 0 ? PAGE1 : CLES.length; }
+	private int[] ordre() { return ORDRE[page]; }
+	private int pas() { return page == 0 ? 21 : 19; }
+	private static int taille(int i) { return i == 13 ? GrandEtendardBlock.MAT_MAX - GrandEtendardBlock.MAT_MIN + 1 : Apparence.TAILLES[i]; }
 	private int debutLignes() { return page == 0 ? 76 : 14; }
 
 	private int haut() {
@@ -59,11 +65,11 @@ public class ConfigFondationScreen extends Screen {
 		} else {
 			champ = null; devise = null;
 		}
-		for (int k = premier(); k < dernier(); k++) {
-			final int i = k;
-			int ly = y + debutLignes() + (k - premier()) * PAS;
-			addRenderableWidget(new Fleche(x + 66, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, Apparence.TAILLES[i])));
-			addRenderableWidget(new Fleche(x + 174, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, Apparence.TAILLES[i])));
+		for (int n = 0; n < ordre().length; n++) {
+			final int i = ordre()[n];
+			int ly = y + debutLignes() + n * pas();
+			addRenderableWidget(new Fleche(x + 66, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, taille(i))));
+			addRenderableWidget(new Fleche(x + 174, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, taille(i))));
 		}
 		int yb = y + 186;
 		if (grand) {   // onglets : bannière / étendard
@@ -80,7 +86,7 @@ public class ConfigFondationScreen extends Screen {
 	}
 
 	private void valider() {
-		PacketDistributor.sendToServer(new ConfigurerFondation(pos, nom.trim(), dev.trim(), apparence().pack()));
+		PacketDistributor.sendToServer(new ConfigurerFondation(pos, nom.trim(), dev.trim(), apparence().pack(), choix[13] + GrandEtendardBlock.MAT_MIN));
 		onClose();
 	}
 
@@ -97,8 +103,9 @@ public class ConfigFondationScreen extends Screen {
 		Component titre = grand ? Component.translatable("airain.etendard.titre_page." + page) : title;
 		g.drawString(font, titre, x, y, 0xE8C878);
 		if (page == 0) g.drawString(font, Component.translatable("airain.fondation.devise"), x, y + 38, 0xD0C8B0);
-		for (int k = premier(); k < dernier(); k++) {
-			int ly = y + debutLignes() + (k - premier()) * PAS;
+		for (int n = 0; n < ordre().length; n++) {
+			int k = ordre()[n];
+			int ly = y + debutLignes() + n * pas();
 			g.fill(x + 84, ly + 2, x + 172, ly + 18, 0xA0100C08);           // cartouche sombre derrière chaque valeur
 			g.fill(x + 84, ly + 2, x + 172, ly + 3, 0xFF6E5020);
 			g.fill(x + 84, ly + 17, x + 172, ly + 18, 0xFF6E5020);

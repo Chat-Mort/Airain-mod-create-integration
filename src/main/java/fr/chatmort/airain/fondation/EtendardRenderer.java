@@ -41,7 +41,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		Apparence a = be.apparence();
 		float t = be.getLevel().getGameTime() + pt + (be.getBlockPos().asLong() % 97);
 		boolean grand = be.getBlockState().getBlock() instanceof GrandEtendardBlock;
-		int lum = LevelRenderer.getLightColor(be.getLevel(), be.getBlockPos().above(grand ? 5 : 1));
+		int lum = LevelRenderer.getLightColor(be.getLevel(), be.getBlockPos().above(grand ? be.hauteur() - 1 : 1));
 		Direction face = be.getBlockState().getValue(FondationBlock.FACING);
 		Geo geo = grand ? new Geo(a.style(), true, Apparence.LARGEURS[a.largeur()], Apparence.LONGUEURS[a.longueur()], Apparence.VENTS[a.vent()],
 				a.forme(), a.avecLanternes())
@@ -60,6 +60,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 			ms.popPose();
 			return;
 		}
+		ms.translate(0, (be.hauteur() - GrandEtendardBlock.MAT) * 16, 0);   // la géométrie est écrite pour un mât de six blocs
 		// les lanternes éclairent la bannière la nuit
 		int lumB = a.avecLanternes() ? LightTexture.pack(Math.max(LightTexture.block(lum), 14), LightTexture.sky(lum)) : lum;
 		fleuron(ms, buffers, a.fleuron(), t, lum);
@@ -312,7 +313,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 
 	public AABB getRenderBoundingBox(FondationBlockEntity be) {
 		if (be.getBlockState().getBlock() instanceof GrandEtendardBlock)
-			return new AABB(be.getBlockPos()).inflate(3.5, 0, 3.5).expandTowards(0, 8, 0);
+			return new AABB(be.getBlockPos()).inflate(3.5, 0, 3.5).expandTowards(0, be.hauteur() + 2, 0);
 		return new AABB(be.getBlockPos()).inflate(1.5, 0, 1.5).expandTowards(0, 3, 0);
 	}
 }

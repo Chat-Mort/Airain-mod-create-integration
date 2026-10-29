@@ -18,6 +18,7 @@ public class FondationBlockEntity extends BlockEntity {
 	private String nom = "";
 	private String devise = "";
 	private int rayon = 48;
+	private int hauteur = GrandEtendardBlock.MAT;   // grand étendard : nombre de blocs du mât
 	private Apparence apparence = Apparence.DEFAUT;
 
 	public FondationBlockEntity(BlockPos pos, BlockState state) {
@@ -27,6 +28,11 @@ public class FondationBlockEntity extends BlockEntity {
 	public String nom() { return nom; }
 	public String devise() { return devise; }
 	public int rayon() { return rayon; }
+	public int hauteur() { return hauteur; }
+
+	public void hauteur(int h) {
+		hauteur = h; maj();
+	}
 	public Apparence apparence() { return apparence; }
 
 	public void configurer(String n, String d, Apparence a) {
@@ -50,6 +56,8 @@ public class FondationBlockEntity extends BlockEntity {
 	@Override
 	public void onLoad() {
 		super.onLoad();
+		if (level != null && !level.isClientSide && getBlockState().getBlock() instanceof GrandEtendardBlock)
+			level.getServer().execute(() -> GrandEtendardBlock.marquerSommet(level, worldPosition, hauteur));   // étendards posés avant la hauteur réglable
 		enregistrer();
 	}
 
@@ -61,13 +69,14 @@ public class FondationBlockEntity extends BlockEntity {
 	@Override
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
-		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack());
+		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("hauteur", hauteur);
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
 		nom = tag.getString("nom"); devise = tag.getString("devise"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
+		hauteur = tag.contains("hauteur") ? tag.getInt("hauteur") : GrandEtendardBlock.MAT;
 		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence")) : Apparence.DEFAUT;
 	}
 
