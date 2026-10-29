@@ -170,4 +170,15 @@ public class FondationBlock extends Block implements EntityBlock {
 			net.minecraft.world.level.block.entity.BlockEntityType<T> type) {
 		return FondationBlockEntity.ticker(level, type);
 	}
+
+	/** Comparateur contre le piédestal : 15 tant qu'un joueur est dans la zone. */
+	@Override
+	protected boolean hasAnalogOutputSignal(BlockState state) {
+		return state.getValue(HALF) == DoubleBlockHalf.LOWER;
+	}
+
+	@Override
+	protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return level instanceof ServerLevel sl && FondationRegistre.de(sl.getServer()).occupee(level.dimension().location(), pos) ? 15 : 0;
+	}
 }

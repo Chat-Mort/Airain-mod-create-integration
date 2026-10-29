@@ -7,7 +7,7 @@ file="META-INF/accesstransformer.cfg"
 
 [[mods]]
 modId="airain"
-version="1.13.0"
+version="1.14.0"
 displayName="Airain : intégration Create"
 authors="Chat-Mort"
 description='''

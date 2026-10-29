@@ -20,15 +20,26 @@ public final class Fondations {
 		MinecraftServer serveur = event.getServer();
 		if (serveur.getTickCount() % 20 != 0) return;
 		FondationRegistre reg = FondationRegistre.de(serveur);
+		java.util.Set<String> occupees = new java.util.HashSet<>();
 		for (ServerPlayer p : serveur.getPlayerList().getPlayers()) {
+			if (p.isSpectator()) continue;
 			FondationRegistre.Fondation f = reg.zone(p.level().dimension().location(), p.getX(), p.getZ());
 			String cle = f == null ? "" : f.dim() + "|" + f.pos().asLong();
+			if (f != null) occupees.add(cle);
 			String avant = derniere.getOrDefault(p.getUUID(), "");
 			if (cle.equals(avant)) continue;
 			derniere.put(p.getUUID(), cle);
 			if (f != null) {
 				net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(p, new TitreFondation(f.nom(), f.devise(), f.apparence(), f.ext()));
 			}
+		}
+		// présence : le comparateur contre l'étendard se met à jour, les bannières « selon présence » suivent d'elles-mêmes
+		for (String c : reg.occuper(occupees)) {
+			FondationRegistre.Fondation f = reg.par(c);
+			if (f == null) continue;
+			var level = serveur.getLevel(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, f.dim()));
+			if (level != null && level.isLoaded(f.pos()))
+				level.updateNeighbourForOutputSignal(f.pos(), level.getBlockState(f.pos()).getBlock());
 		}
 	}
 }

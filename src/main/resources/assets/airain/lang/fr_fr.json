@@ -149,5 +149,8 @@
  "airain.etendard.broderie.1": "Lumineuse",
  "airain.etendard.synchro": "Vent commun",
  "airain.etendard.synchro.0": "Non",
- "airain.etendard.synchro.1": "Synchronisé"
+ "airain.etendard.synchro.1": "Synchronisé",
+ "airain.etendard.presence": "Hissage",
+ "airain.etendard.presence.0": "Manuel",
+ "airain.etendard.presence.1": "Selon présence"
 }

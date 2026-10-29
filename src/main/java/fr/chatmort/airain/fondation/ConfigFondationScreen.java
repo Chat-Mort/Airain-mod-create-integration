@@ -17,14 +17,14 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class ConfigFondationScreen extends Screen {
 	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme",
 		"longueur", "largeur", "vent", "franges", "fleuron", "double", "lanternes", "titre",
-		"partition", "fond2", "couleur_motif", "etat", "broderie", "synchro", "hauteur"};
-	private static final int HAUTEUR = 19;
+		"partition", "fond2", "couleur_motif", "etat", "broderie", "synchro", "presence", "hauteur"};
+	private static final int HAUTEUR = 20;
 	private record Page(String cle, boolean champs, int[] lignes) {}
 	private static final Page GENERAL = new Page("general", true, new int[] {0, 18});
 	private static final Page GENERAL_GRAND = new Page("general", true, new int[] {0, HAUTEUR, 12});
 	private static final Page TOILE = new Page("toile", false, new int[] {1, 13, 14, 2, 3, 15, 4, 16, 17});
-	private static final Page MAT = new Page("mat", false, new int[] {5, 6, 7, 18, 8, 9, 10, 11});
-	private static final Page TAILLE = new Page("taille", false, new int[] {5, 6, 7, 18, 8, 9, 11});
+	private static final Page MAT = new Page("mat", false, new int[] {5, 6, 7, 18, 19, 8, 9, 10, 11});
+	private static final Page TAILLE = new Page("taille", false, new int[] {5, 6, 7, 18, 19, 8, 9, 11});
 	private final BlockPos pos;
 	private String nom, dev;
 	private final int[] choix;

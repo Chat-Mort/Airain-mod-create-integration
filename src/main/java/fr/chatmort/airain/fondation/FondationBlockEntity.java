@@ -26,6 +26,8 @@ public class FondationBlockEntity extends BlockEntity {
 	private boolean berne;
 	/** Position réglée par une rotation de Create (0 = hissée, 1 = en bas) ; la redstone l'emporte tant qu'elle est active. */
 	private float manuelle;
+	/** Hissage selon présence : personne dans la zone, la bannière est en bas. */
+	private boolean autoBas;
 	/** Côté client : position de la bannière, 0 = hissée, 1 = en berne (avec la valeur du tick précédent). */
 	private float hisse, hisseAvant;
 
@@ -55,7 +57,7 @@ public class FondationBlockEntity extends BlockEntity {
 	/** Tick côté client : animation de la mise en berne, claquements de toile par grand vent ou par orage. */
 	public void tickClient() {
 		hisseAvant = hisse;
-		float cible = berne ? 1f : manuelle;
+		float cible = berne ? 1f : apparence.selonPresence() ? (autoBas ? 1f : 0f) : manuelle;
 		hisse = hisse < cible ? Math.min(cible, hisse + 1 / 40f) : Math.max(cible, hisse - 1 / 40f);
 		if (level == null) return;
 		BlockPos haut = worldPosition.above(grand() ? hauteur : murale() ? 0 : 2);
@@ -72,6 +74,14 @@ public class FondationBlockEntity extends BlockEntity {
 	 */
 	public void tickServeur() {
 		if (level == null || !(grand() || murale())) return;
+		if (apparence.selonPresence() && level instanceof ServerLevel sl) {
+			// toutes les bannières d'une zone lisent le même état, mis à jour au même tick : elles bougent ensemble
+			FondationRegistre reg = FondationRegistre.de(sl.getServer());
+			FondationRegistre.Fondation f = reg.zone(level.dimension().location(), worldPosition.getX() + 0.5, worldPosition.getZ() + 0.5);
+			boolean bas = f != null && !reg.occupee(f.dim(), f.pos());
+			if (bas != autoBas) { autoBas = bas; maj(); }
+			return;
+		}
 		float v = vitesseCreate();
 		if (v == 0) return;
 		float avant = manuelle;
@@ -156,14 +166,14 @@ public class FondationBlockEntity extends BlockEntity {
 	@Override
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
-		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("ext", apparence.packExt()); tag.putBoolean("berne", berne); tag.putFloat("manuelle", manuelle); tag.putInt("hauteur", hauteur);
+		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("ext", apparence.packExt()); tag.putBoolean("berne", berne); tag.putFloat("manuelle", manuelle); tag.putBoolean("autoBas", autoBas); tag.putInt("hauteur", hauteur);
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
 		nom = tag.getString("nom"); devise = tag.getString("devise"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
-		berne = tag.getBoolean("berne"); manuelle = tag.getFloat("manuelle");
+		berne = tag.getBoolean("berne"); manuelle = tag.getFloat("manuelle"); autoBas = tag.getBoolean("autoBas");
 		hauteur = tag.contains("hauteur") ? tag.getInt("hauteur") : GrandEtendardBlock.MAT;
 		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence"), tag.getInt("ext")) : Apparence.DEFAUT;
 	}

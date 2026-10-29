@@ -32,13 +32,15 @@ public class FondationRegistre extends SavedData {
 	}
 
 	private final Map<String, Fondation> fondations = new LinkedHashMap<>();
+	/** Fondations où se trouve au moins un joueur (non sauvegardé, recalculé chaque seconde). */
+	private final java.util.Set<String> occupees = new java.util.HashSet<>();
 
 	public static FondationRegistre de(MinecraftServer serveur) {
 		return serveur.overworld().getDataStorage().computeIfAbsent(
 			new SavedData.Factory<>(FondationRegistre::new, FondationRegistre::charger, null), "airain_fondations");
 	}
 
-	private static String cle(ResourceLocation dim, BlockPos pos) {
+	public static String cle(ResourceLocation dim, BlockPos pos) {
 		return dim + "|" + pos.asLong();
 	}
 
@@ -49,6 +51,25 @@ public class FondationRegistre extends SavedData {
 
 	public void retirer(Level level, BlockPos pos) {
 		if (fondations.remove(cle(level.dimension().location(), pos)) != null) setDirty();
+	}
+
+	public boolean occupee(ResourceLocation dim, BlockPos pos) {
+		return occupees.contains(cle(dim, pos));
+	}
+
+	/** Remplace l'ensemble des fondations occupées ; renvoie celles qui ont changé d'état. */
+	public java.util.Set<String> occuper(java.util.Set<String> nouvelles) {
+		java.util.Set<String> changees = new java.util.HashSet<>(nouvelles);
+		changees.addAll(occupees);
+		java.util.Set<String> communes = new java.util.HashSet<>(nouvelles);
+		communes.retainAll(occupees);
+		changees.removeAll(communes);
+		occupees.clear(); occupees.addAll(nouvelles);
+		return changees;
+	}
+
+	public Fondation par(String cle) {
+		return fondations.get(cle);
 	}
 
 	public List<Fondation> toutes() {

@@ -188,4 +188,15 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 		if (level.getBlockEntity(b) instanceof FondationBlockEntity f)
 			f.mettreEnBerne(level.hasNeighborSignal(b) || level.hasNeighborSignal(b.above()));
 	}
+
+	/** Comparateur contre le piédestal : 15 tant qu'un joueur est dans la zone. */
+	@Override
+	protected boolean hasAnalogOutputSignal(BlockState state) {
+		return state.getValue(PARTIE) == 0;
+	}
+
+	@Override
+	protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		return level instanceof ServerLevel sl && FondationRegistre.de(sl.getServer()).occupee(level.dimension().location(), pos) ? 15 : 0;
+	}
 }

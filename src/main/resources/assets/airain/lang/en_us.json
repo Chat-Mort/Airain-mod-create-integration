@@ -149,5 +149,8 @@
  "airain.etendard.broderie.1": "Glowing",
  "airain.etendard.synchro": "Shared wind",
  "airain.etendard.synchro.0": "No",
- "airain.etendard.synchro.1": "Synced"
+ "airain.etendard.synchro.1": "Synced",
+ "airain.etendard.presence": "Hoisting",
+ "airain.etendard.presence.0": "Manual",
+ "airain.etendard.presence.1": "By presence"
 }
