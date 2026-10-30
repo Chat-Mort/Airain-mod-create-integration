@@ -134,6 +134,20 @@ public class AirainMod {
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fondation.FondationBlockEntity>> FONDATION_BE =
 		BLOCK_ENTITIES.register("pierre_fondation",
 			() -> BlockEntityType.Builder.of(fr.chatmort.airain.fondation.FondationBlockEntity::new, FONDATION.get(), GRAND_ETENDARD.get(), BANNIERE_MURALE.get()).build(null));
+	/** Balise de défense : tour-phare à sirène de 3 x 3 x 8 ; lance les assauts de l'Empire (logique : airain_balise.js). */
+	public static final DeferredBlock<fr.chatmort.airain.balise.BaliseBlock> BALISE = BLOCKS.register("balise_defense",
+		() -> new fr.chatmort.airain.balise.BaliseBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.METAL).strength(5f, 1200f).sound(SoundType.METAL).noOcclusion()));
+	public static final DeferredBlock<fr.chatmort.airain.balise.BalisePartieBlock> BALISE_PARTIE = BLOCKS.register("balise_partie",
+		() -> new fr.chatmort.airain.balise.BalisePartieBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.METAL).strength(5f, 1200f).sound(SoundType.METAL).noOcclusion().noLootTable()
+			.lightLevel(s -> s.getValue(fr.chatmort.airain.balise.BalisePartieBlock.LUMIERE) ? 15 : 0)));
+	public static final DeferredItem<BlockItem> BALISE_ITEM = ITEMS.register("balise_defense",
+		() -> new BlockItem(BALISE.get(), new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.RARE)));
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.balise.BaliseBlockEntity>> BALISE_BE =
+		BLOCK_ENTITIES.register("balise_defense",
+			() -> BlockEntityType.Builder.of(fr.chatmort.airain.balise.BaliseBlockEntity::new, BALISE.get()).build(null));
+
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 

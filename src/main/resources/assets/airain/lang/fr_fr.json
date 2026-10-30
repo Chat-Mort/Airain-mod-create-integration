@@ -225,5 +225,8 @@
  "airain.table.livres": "Livres lus : %s",
  "airain.table.enchantements": "Enchantements proposés : %s",
  "airain.table.tomes": "Tomes anciens : %s",
- "airain.table.aucun": "Aucun livre enchanté à portée"
+ "airain.table.aucun": "Aucun livre enchanté à portée",
+ "block.airain.balise_defense": "Balise de défense",
+ "block.airain.balise_partie": "Balise de défense",
+ "airain.balise.place": "Pas assez de place : la tour demande 3 × 3 blocs au sol et 8 de haut, sans rien au-dessus."
 }

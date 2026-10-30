@@ -5,6 +5,8 @@
   "airain:desenchanteur",
   "airain:socle_trophee",
   "airain:pierre_fondation",
-  "airain:grand_etendard"
+  "airain:grand_etendard",
+  "airain:balise_defense",
+  "airain:balise_partie"
  ]
 }

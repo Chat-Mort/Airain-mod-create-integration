@@ -225,5 +225,8 @@
  "airain.table.livres": "Books read: %s",
  "airain.table.enchantements": "Enchantments offered: %s",
  "airain.table.tomes": "Ancient tomes: %s",
- "airain.table.aucun": "No enchanted book in range"
+ "airain.table.aucun": "No enchanted book in range",
+ "block.airain.balise_defense": "Defense Beacon",
+ "block.airain.balise_partie": "Defense Beacon",
+ "airain.balise.place": "Not enough room: the tower needs 3 × 3 blocks of ground and 8 of height, with nothing above."
 }

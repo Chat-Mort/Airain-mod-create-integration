@@ -1,0 +1,2 @@
+{ "type": "minecraft:block", "pools": [ { "rolls": 1, "entries": [ { "type": "minecraft:item", "name": "airain:balise_defense" } ],
+  "conditions": [ { "condition": "minecraft:survives_explosion" } ] } ] }

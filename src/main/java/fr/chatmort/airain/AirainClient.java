@@ -33,6 +33,7 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(AirainMod.TABLE_BE.get(), fr.chatmort.airain.enchant.TableEmpireRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.SOCLE_BE.get(), fr.chatmort.airain.trophee.SocleRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.FONDATION_BE.get(), fr.chatmort.airain.fondation.EtendardRenderer::new);
+		event.registerBlockEntityRenderer(AirainMod.BALISE_BE.get(), fr.chatmort.airain.balise.BaliseRenderer::new);
 	}
 
 	private void setup(FMLClientSetupEvent event) {
