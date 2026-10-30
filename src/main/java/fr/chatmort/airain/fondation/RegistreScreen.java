@@ -128,10 +128,10 @@ public class RegistreScreen extends Screen {
 		paragraphe(g, Component.translatable("airain.registre.sous_titre").withStyle(ChatFormatting.ITALIC), x, y + 22, SEPIA, 2, true);
 		RenderSystem.enableBlend();
 		g.blit(LIVRE, x + LARGE / 2 - 14, y + 46, 320, 0, 28, 28, 512, 256);
-		filet(g, x, y + 86);
-		centre(g, Component.translatable("airain.registre.compte_bases", donnees.bases().size()), x, y + 96, ENCRE);
-		centre(g, Component.translatable("airain.registre.compte_trophees", donnees.trophees().size()), x, y + 108, ENCRE);
-		paragraphe(g, Component.translatable("airain.registre.note"), x, y + 124, SEPIA, 2, true);
+		filet(g, x, y + 80);
+		centre(g, Component.translatable("airain.registre.compte_bases", donnees.bases().size()), x, y + 88, ENCRE);
+		centre(g, Component.translatable("airain.registre.compte_trophees", donnees.trophees().size()), x, y + 99, ENCRE);
+		paragraphe(g, Component.translatable("airain.registre.note"), x, y + 112, SEPIA, 1, true);
 	}
 
 	private void pageVide(GuiGraphics g, int x, int y, float pt) {
@@ -142,10 +142,10 @@ public class RegistreScreen extends Screen {
 		OuvrirRegistre.Base b = donnees.bases().get(k);
 		Apparence a = Apparence.unpack(b.apparence(), b.ext());
 		RenderSystem.enableBlend();
-		g.fill(x + LARGE / 2 - 11, y - 1, x + LARGE / 2 + 11, y, 0xFF5A3A1A);           // tringle
-		g.blit(TexturesBanniere.de(a), x + LARGE / 2 - 9, y, 18, 36, 0f, 0f, 16, 32, 16, 32);
+		g.fill(x + LARGE / 2 - 9, y - 1, x + LARGE / 2 + 9, y, 0xFF5A3A1A);             // tringle
+		g.blit(TexturesBanniere.de(a), x + LARGE / 2 - 7, y, 14, 28, 0f, 0f, 16, 32, 16, 32);
 		Component nom = b.nom().isEmpty() ? Component.translatable("airain.fondation.sans_nom") : Component.literal(b.nom());
-		int yy = paragraphe(g, nom.copy().withStyle(ChatFormatting.BOLD), x, y + 40, ENCRE, 2, true);
+		int yy = paragraphe(g, nom.copy().withStyle(ChatFormatting.BOLD), x, y + 32, ENCRE, 1, true);
 		if (!b.devise().isEmpty())
 			yy = paragraphe(g, Component.literal("« " + b.devise() + " »").withStyle(ChatFormatting.ITALIC), x, yy, SEPIA, 2, true);
 		filet(g, x, yy + 3);
@@ -181,7 +181,7 @@ public class RegistreScreen extends Screen {
 		List<ItemStack> ici = new ArrayList<>();
 		for (OuvrirRegistre.Trophee t : donnees.trophees())
 			if (t.base() == k) ici.add(new ItemStack(BuiltInRegistries.ITEM.get(t.objet())));
-		if (!ici.isEmpty()) {
+		if (!ici.isEmpty() && yy + 26 <= y + 134) {
 			g.drawString(font, Component.translatable("airain.registre.exposes"), x, yy, SEPIA, false);
 			for (int i = 0; i < Math.min(6, ici.size()); i++) g.renderItem(ici.get(i), x + i * 19, yy + 10);
 		}

@@ -212,7 +212,7 @@
  "airain.registre.sous_titre": "of the Airain Empire",
  "airain.registre.compte_bases": "Foundations: %s",
  "airain.registre.compte_trophees": "Trophies: %s",
- "airain.registre.note": "Decorative standards are not listed.",
+ "airain.registre.note": "Decorative standards excluded.",
  "airain.registre.coordonnees": "Position",
  "airain.registre.lieu": "World",
  "airain.registre.distance_seule": "Distance",
