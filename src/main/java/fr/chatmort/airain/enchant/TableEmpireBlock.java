@@ -59,22 +59,30 @@ public class TableEmpireBlock extends Block implements EntityBlock {
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		if (!level.isClientSide || type != AirainMod.TABLE_BE.get())
+		if (type != AirainMod.TABLE_BE.get())
 			return null;
-		return (l, p, s, be) -> TableEmpireBlockEntity.animer(l, p, s, (TableEmpireBlockEntity) be);
+		return level.isClientSide ? (l, p, s, be) -> TableEmpireBlockEntity.animer(l, p, s, (TableEmpireBlockEntity) be)
+			: (l, p, s, be) -> TableEmpireBlockEntity.tickServeur(l, p, s, (TableEmpireBlockEntity) be);
 	}
 
-	/** Comme la table vanilla : des glyphes s'échappent des bibliothèques sculptées garnies vers la table. */
+	/**
+	 * Des glyphes s'échappent des bibliothèques que la table lit (livres enchantés) et filent vers elle ;
+	 * celles qui portent un tome ancien envoient en plus des étincelles dorées.
+	 */
 	@Override
 	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-		for (int i = 0; i < 6; i++) {
-			BlockPos b = pos.offset(random.nextInt(7) - 3, random.nextInt(4) - 1, random.nextInt(7) - 3);
-			if (b.equals(pos) || !(level.getBlockEntity(b) instanceof net.minecraft.world.level.block.entity.ChiseledBookShelfBlockEntity etagere)
-				|| etagere.isEmpty())
-				continue;
+		if (!(level.getBlockEntity(pos) instanceof TableEmpireBlockEntity table)) return;
+		var et = table.etageres(false);
+		for (int i = 0; i < Math.min(4, et.size()); i++) {
+			BlockPos b = et.get(random.nextInt(et.size()));
 			level.addParticle(ParticleTypes.ENCHANT, pos.getX() + 0.5, pos.getY() + 2.0, pos.getZ() + 0.5,
-				b.getX() - pos.getX() + random.nextFloat() - 0.5, b.getY() - pos.getY() - random.nextFloat() - 1.0,
-				b.getZ() - pos.getZ() + random.nextFloat() - 0.5);
+				b.getX() + random.nextFloat() - 0.5, b.getY() - random.nextFloat() - 1.0, b.getZ() + random.nextFloat() - 0.5);
+		}
+		for (BlockPos b : table.etageres(true)) {
+			if (random.nextInt(3) != 0) continue;
+			double sx = pos.getX() + b.getX() + 0.5, sy = pos.getY() + b.getY() + 0.5, sz = pos.getZ() + b.getZ() + 0.5;
+			double dx = pos.getX() + 0.5 - sx, dy = pos.getY() + 1.1 - sy, dz = pos.getZ() + 0.5 - sz;
+			level.addParticle(ParticleTypes.WAX_ON, sx, sy, sz, dx * 0.12, dy * 0.12 + 0.02, dz * 0.12);
 		}
 	}
 }

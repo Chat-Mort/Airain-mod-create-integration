@@ -7,6 +7,10 @@ import net.minecraft.core.BlockPos;
 public final class EcranClient {
 	private EcranClient() {}
 
+	public static void registre(OuvrirRegistre m) {
+		Minecraft.getInstance().setScreen(new RegistreScreen(m));
+	}
+
 	public static void ouvrir(BlockPos pos, String nom, String devise, Apparence a) {
 		Minecraft.getInstance().setScreen(new ConfigFondationScreen(pos, nom, devise, a));
 	}

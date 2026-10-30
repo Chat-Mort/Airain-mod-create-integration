@@ -165,7 +165,9 @@ public class AirainMod {
 			.playToServer(fr.chatmort.airain.fondation.ConfigurerFondation.TYPE, fr.chatmort.airain.fondation.ConfigurerFondation.CODEC,
 				fr.chatmort.airain.fondation.ConfigurerFondation::traiter)
 			.playToClient(fr.chatmort.airain.fondation.TitreFondation.TYPE, fr.chatmort.airain.fondation.TitreFondation.CODEC,
-				(m, ctx) -> fr.chatmort.airain.fondation.HudFondation.recevoir(m, ctx)));
+				(m, ctx) -> fr.chatmort.airain.fondation.HudFondation.recevoir(m, ctx))
+			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.registre(m))));
 		bus.addListener(this::setup);
 		bus.addListener(this::capacites);
 		ONGLETS.register(bus);

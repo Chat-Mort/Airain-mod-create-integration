@@ -26,6 +26,10 @@ public class RegistreItem extends Item {
 		super(p);
 	}
 
+	/**
+	 * Le registre s'ouvre dans son propre écran (un livre vanilla ne s'ouvre que pour un « livre écrit » :
+	 * c'est pour ça que l'ancien registre ne répondait pas au clic droit).
+	 */
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player joueur, InteractionHand main) {
 		ItemStack pile = joueur.getItemInHand(main);
@@ -35,52 +39,20 @@ public class RegistreItem extends Item {
 			String dim = sp.level().dimension().location().toString();
 			liste.sort(Comparator.comparing((FondationRegistre.Fondation f) -> !f.dim().toString().equals(dim))
 				.thenComparingDouble(f -> f.distance(sp.getX(), sp.getZ())));
-			List<Filterable<Component>> pages = new ArrayList<>();
-			if (liste.isEmpty())
-				pages.add(Filterable.passThrough(Component.translatable("airain.registre.vide")));
-			for (int i = 0; i < liste.size(); i += PAR_PAGE) {
-				MutableComponent page = Component.translatable("airain.registre.titre").withStyle(ChatFormatting.DARK_RED, ChatFormatting.BOLD);
-				for (FondationRegistre.Fondation f : liste.subList(i, Math.min(liste.size(), i + PAR_PAGE))) {
-					String nom = f.nom().isEmpty() ? Component.translatable("airain.fondation.sans_nom").getString() : f.nom();
-					page.append(Component.literal("\n\n" + nom).withStyle(ChatFormatting.DARK_BLUE, ChatFormatting.BOLD));
-					page.append(Component.literal("\n" + f.pos().getX() + " " + f.pos().getY() + " " + f.pos().getZ() + " · ").withStyle(ChatFormatting.BLACK).withStyle(s -> s.withBold(false)));
-					page.append(Component.translatable("airain.registre.dim." + f.dim().getPath()).withStyle(s -> s.withBold(false).withColor(ChatFormatting.DARK_GRAY)));
-					page.append(f.dim().toString().equals(dim)
-						? Component.translatable("airain.registre.distance", (int) f.distance(sp.getX(), sp.getZ())).withStyle(s -> s.withBold(false).withColor(ChatFormatting.DARK_GRAY))
-						: Component.literal(""));
-				}
-				pages.add(Filterable.passThrough(page));
-			}
-			// trophées de l'Empire : objet, effets, plaque gravée, base qui l'expose
-			var trophees = fr.chatmort.airain.trophee.TropheeRegistre.de(sp.getServer()).entrees();
+			List<OuvrirRegistre.Base> bases = new ArrayList<>();
+			for (FondationRegistre.Fondation f : liste)
+				bases.add(new OuvrirRegistre.Base(f.nom(), f.devise(), f.pos(), f.dim(), f.apparence(), f.ext()));
 			FondationRegistre reg = FondationRegistre.de(sp.getServer());
-			for (int i = 0; i < trophees.size(); i += 3) {
-				MutableComponent page = Component.translatable("airain.registre.trophees").withStyle(ChatFormatting.DARK_RED, ChatFormatting.BOLD);
-				for (var e : trophees.subList(i, Math.min(trophees.size(), i + 3))) {
-					ItemStack objet = new ItemStack(net.minecraft.core.registries.BuiltInRegistries.ITEM.get(e.getValue().objet()));
-					page.append(Component.literal("\n\n").append(objet.getHoverName()).withStyle(s -> s.withBold(true).withColor(ChatFormatting.DARK_BLUE)));
-					MutableComponent effets = Component.literal("\n");
-					boolean premier = true;
-					for (var ef : fr.chatmort.airain.trophee.Trophees.effetsDe(objet)) {
-						if (!premier) effets.append(", ");
-						effets.append(Component.translatable("airain.trophee.effet." + ef.name().toLowerCase()));
-						premier = false;
-					}
-					page.append(effets.withStyle(s -> s.withBold(false).withColor(ChatFormatting.DARK_GREEN)));
-					if (!e.getValue().plaque().isEmpty())
-						page.append(Component.translatable("airain.registre.plaque", e.getValue().plaque(), e.getValue().jour())
-							.withStyle(s -> s.withBold(false).withItalic(true).withColor(ChatFormatting.DARK_GRAY)));
-					var pos = e.getKey().pos();
-					FondationRegistre.Fondation base = reg.zone(e.getKey().dimension().location(), pos.getX() + 0.5, pos.getZ() + 0.5);
-					page.append(Component.literal("\n").append(base != null && !base.nom().isEmpty() ? Component.literal(base.nom())
-						: Component.translatable("airain.registre.hors_base")).withStyle(s -> s.withBold(false).withColor(ChatFormatting.BLACK)));
-				}
-				pages.add(Filterable.passThrough(page));
+			List<OuvrirRegistre.Trophee> trophees = new ArrayList<>();
+			for (var e : fr.chatmort.airain.trophee.TropheeRegistre.de(sp.getServer()).entrees()) {
+				var pos = e.getKey().pos();
+				FondationRegistre.Fondation base = reg.zone(e.getKey().dimension().location(), pos.getX() + 0.5, pos.getZ() + 0.5);
+				int k = base == null ? -1 : liste.indexOf(base);
+				trophees.add(new OuvrirRegistre.Trophee(e.getValue().objet(), e.getValue().plaque(), e.getValue().jour(), k));
 			}
-			pile.set(DataComponents.WRITTEN_BOOK_CONTENT, new WrittenBookContent(
-				Filterable.passThrough("Registre"), sp.getGameProfile().getName(), 0, pages, true));
-			sp.openItemGui(pile, main);
+			net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(sp, new OuvrirRegistre(bases, trophees));
 		}
+		level.playSound(joueur, joueur.blockPosition(), net.minecraft.sounds.SoundEvents.BOOK_PAGE_TURN, net.minecraft.sounds.SoundSource.PLAYERS, 1f, 1f);
 		return InteractionResultHolder.sidedSuccess(pile, level.isClientSide);
 	}
 }

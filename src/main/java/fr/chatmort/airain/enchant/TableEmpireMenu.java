@@ -169,6 +169,12 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 			}
 			table.setChanged();
 			level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1f, level.random.nextFloat() * 0.1f + 0.9f);
+			if (parTome || Bibliotheque.depasse(h, niveau)) {         // au-delà du savoir ordinaire : la table résonne
+				level.playSound(null, pos, SoundEvents.BEACON_POWER_SELECT, SoundSource.BLOCKS, 0.9f, 1.3f);
+				level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 1f, 0.8f);
+				if (level instanceof net.minecraft.server.level.ServerLevel sl)
+					sl.sendParticles(net.minecraft.core.particles.ParticleTypes.WAX_ON, pos.getX() + 0.5, pos.getY() + 1.3, pos.getZ() + 0.5, 24, 0.5, 0.4, 0.5, 0.6);
+			}
 		});
 		return true;
 	}
