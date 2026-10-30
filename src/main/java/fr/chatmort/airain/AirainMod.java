@@ -148,6 +148,9 @@ public class AirainMod {
 		BLOCK_ENTITIES.register("balise_defense",
 			() -> BlockEntityType.Builder.of(fr.chatmort.airain.balise.BaliseBlockEntity::new, BALISE.get()).build(null));
 
+	/** Codex de l'Empire : une page par créature, ouverte en combattant. */
+	public static final DeferredItem<Item> CODEX = ITEMS.register("codex",
+		() -> new fr.chatmort.airain.codex.CodexItem(new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
@@ -170,6 +173,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::vitesse);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::degats);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::infobulle);
@@ -180,6 +184,8 @@ public class AirainMod {
 				fr.chatmort.airain.fondation.ConfigurerFondation::traiter)
 			.playToClient(fr.chatmort.airain.fondation.TitreFondation.TYPE, fr.chatmort.airain.fondation.TitreFondation.CODEC,
 				(m, ctx) -> fr.chatmort.airain.fondation.HudFondation.recevoir(m, ctx))
+			.playToClient(fr.chatmort.airain.codex.OuvrirCodex.TYPE, fr.chatmort.airain.codex.OuvrirCodex.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.codex(m)))
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.registre(m))));
 		bus.addListener(this::setup);

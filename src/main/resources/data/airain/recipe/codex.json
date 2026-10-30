@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shapeless", "category": "misc", "ingredients": [{"item": "minecraft:book"}, {"item": "create:cogwheel"}], "result": {"id": "airain:codex", "count": 1}}

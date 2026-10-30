@@ -7,6 +7,10 @@ import net.minecraft.core.BlockPos;
 public final class EcranClient {
 	private EcranClient() {}
 
+	public static void codex(fr.chatmort.airain.codex.OuvrirCodex m) {
+		Minecraft.getInstance().setScreen(new fr.chatmort.airain.codex.CodexScreen(m));
+	}
+
 	public static void registre(OuvrirRegistre m) {
 		Minecraft.getInstance().setScreen(new RegistreScreen(m));
 	}
