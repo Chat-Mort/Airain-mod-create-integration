@@ -66,7 +66,7 @@ public class LivreIngenieurScreen extends Screen {
 		if (planche == 0)
 			for (int i = 0; i < CHAPITRES.length; i++) {
 				int x = (i < 6 ? bx() + 20 : bx() + 162), y = by() + 22 + (i < 6 ? 52 : 14) + (i % 6) * 17;
-				if (i >= 6) y = by() + 22 + 14 + (i - 6) * 18;
+				if (i >= 6) y = by() + 22 + 14 + (i - 6) * 16;
 				if (mx >= x && mx < x + LARGE && my >= y - 2 && my < y + 16) { aller(i + 1); return true; }
 			}
 		return super.mouseClicked(mx, my, b);
@@ -95,7 +95,7 @@ public class LivreIngenieurScreen extends Screen {
 			texte(g, Component.translatable("item.airain.livre_ingenieur").withStyle(ChatFormatting.BOLD), gx, y + 2, ROUGE, 2);
 			texte(g, Component.translatable("airain.ingenieur.intro").withStyle(ChatFormatting.ITALIC), gx, y + 16, SEPIA, 3);
 			for (int i = 0; i < CHAPITRES.length; i++) {
-				int x = i < 6 ? gx : dx, yy = i < 6 ? y + 52 + i * 17 : y + 14 + (i - 6) * 18;
+				int x = i < 6 ? gx : dx, yy = i < 6 ? y + 52 + i * 17 : y + 14 + (i - 6) * 16;
 				g.renderItem(objet(i), x, yy - 4);
 				boolean survol = mx >= x && mx < x + LARGE && my >= yy - 2 && my < yy + 16;
 				g.drawString(font, Component.translatable("airain.ingenieur." + CHAPITRES[i][0] + ".court"), x + 19, yy, survol ? BLEU : ENCRE, false);
