@@ -425,6 +425,8 @@
  "airain.epilogue.echo.p1": "Le diapason sonne contre le laiton. Une seule note, très pure.\n\nLe Cœur se fend. La lumière qui en sort n'a pas de chaleur : ce sont des âmes, des milliers, qui montent sans bruit.",
  "airain.epilogue.echo.p2": "Une voix se détache du Chœur : celle d'Elias Vael.\n\n« Ada. Tu avais raison, depuis le début. Je te pardonne. Pardonne-moi. »\n\nPuis il rejoint les autres, et le chant s'éteint.",
  "airain.epilogue.echo.p3": "Partout, les automates s'arrêtent au milieu d'un pas. Ils ne repartiront plus : il n'y a plus rien pour les faire tourner.\n\nDans l'End, les réfractaires sortent de leurs refuges et regardent le ciel.",
- "airain.epilogue.echo.p4": "Il vous reste un peu de l'Écho : vous voyez dans le noir, vous tombez comme une plume, et le sculk ne vous entend plus.\n\nL'Empire d'Airain est fini. Les âmes sont libres.\n\n— Fin : Le dernier chant",
- "airain.fin.benediction": "La bénédiction de l'Écho reste sur vous : vision dans le noir, chute légère, et le sculk ne vous entend plus. Les âmes sans repos ne reviendront pas."
+ "airain.epilogue.echo.p4": "Il vous reste un peu de l'Écho : vous voyez dans le noir, les âmes vous cèdent leur savoir, et le sculk ne vous entend plus. Quand vous vous taisez, le monde vous répond.\n\nL'Empire d'Airain est fini. Les âmes sont libres.\n\n— Fin : Le dernier chant",
+ "airain.fin.benediction": "La bénédiction de l'Écho reste sur vous : vision dans le noir, moitié plus d'expérience, et le sculk ne vous entend plus. Accroupi et immobile un instant, une onde révèle les créatures proches. Les âmes sans repos ne reviendront pas.",
+ "airain.fin.sonar": "L'Écho répond : %s créature(s) révélée(s).",
+ "airain.fin.sonar_recharge": "L'Écho se tait encore %s s."
 }

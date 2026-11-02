@@ -97,20 +97,61 @@ public class Fin extends SavedData {
 		e.setCanceled(true);
 	}
 
-	/** Commandement (couronne) et bénédiction de l'Écho, toutes les deux secondes. */
+	private static final java.util.Map<java.util.UUID, Integer> ACCROUPI = new java.util.HashMap<>();
+	private static final java.util.Map<java.util.UUID, Long> RECHARGE = new java.util.HashMap<>();
+	public static final int SONAR_ATTENTE = 30, SONAR_RECHARGE = 300, SONAR_RAYON = 24, SONAR_DUREE = 120;
+
+	/** Commandement (couronne) toutes les deux secondes ; sonar de l'Écho à chaque tick. */
 	public static void tick(PlayerTickEvent.Post e) {
-		if (!(e.getEntity() instanceof ServerPlayer p) || p.tickCount % 40 != 0) return;
-		if (couronne(p)) {
+		if (!(e.getEntity() instanceof ServerPlayer p)) return;
+		if (p.tickCount % 40 == 0 && couronne(p)) {
 			for (GardienEntity g : p.level().getEntitiesOfClass(GardienEntity.class, new AABB(p.blockPosition()).inflate(16), g -> !g.enPanne())) {
 				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 80, 0, true, true));
 				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, 0, true, true));
 			}
 		}
-		if (de(p.server).echo()) {
-			if (!p.hasEffect(MobEffects.NIGHT_VISION) || p.getEffect(MobEffects.NIGHT_VISION).getDuration() < 300)
-				p.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0, true, false, true));
-			p.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 80, 0, true, false, true));
+		if (!de(p.server).echo()) return;
+		if (p.tickCount % 40 == 0 && (!p.hasEffect(MobEffects.NIGHT_VISION) || p.getEffect(MobEffects.NIGHT_VISION).getDuration() < 300))
+			p.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0, true, false, true));
+		sonar(p);
+	}
+
+	/** Sonar : accroupi et immobile une seconde et demie, une onde révèle les créatures proches à travers les murs. */
+	private static void sonar(ServerPlayer p) {
+		boolean immobile = p.isShiftKeyDown() && p.onGround() && p.getDeltaMovement().horizontalDistanceSqr() < 1.0E-4;
+		int n = immobile ? ACCROUPI.getOrDefault(p.getUUID(), 0) + 1 : 0;
+		ACCROUPI.put(p.getUUID(), n);
+		if (n != SONAR_ATTENTE) return;
+		long maintenant = p.level().getGameTime();
+		if (maintenant < RECHARGE.getOrDefault(p.getUUID(), 0L)) {
+			p.displayClientMessage(Component.translatable("airain.fin.sonar_recharge", (RECHARGE.get(p.getUUID()) - maintenant + 19) / 20), true);
+			return;
 		}
+		RECHARGE.put(p.getUUID(), maintenant + SONAR_RECHARGE);
+		ServerLevel sl = p.serverLevel();
+		int nb = 0;
+		for (LivingEntity c : sl.getEntitiesOfClass(LivingEntity.class, new AABB(p.blockPosition()).inflate(SONAR_RAYON),
+				c -> c != p && !(c instanceof net.minecraft.world.entity.decoration.ArmorStand) && c.distanceToSqr(p) <= SONAR_RAYON * SONAR_RAYON)) {
+			c.addEffect(new MobEffectInstance(MobEffects.GLOWING, SONAR_DUREE, 0, true, false));
+			nb++;
+		}
+		sl.playSound(null, p.blockPosition(), net.minecraft.sounds.SoundEvents.SCULK_SHRIEKER_SHRIEK, net.minecraft.sounds.SoundSource.PLAYERS, 0.5f, 1.6f);
+		sl.playSound(null, p.blockPosition(), net.minecraft.sounds.SoundEvents.WARDEN_HEARTBEAT, net.minecraft.sounds.SoundSource.PLAYERS, 1f, 1f);
+		for (int i = 0; i < 48; i++) {
+			double a = i * Math.PI * 2 / 48;
+			sl.sendParticles(net.minecraft.core.particles.ParticleTypes.SCULK_SOUL, p.getX(), p.getY() + 0.3, p.getZ(), 0,
+				Math.cos(a), 0.02, Math.sin(a), 0.35);
+		}
+		p.displayClientMessage(Component.translatable("airain.fin.sonar", nb), true);
+	}
+
+	/** Moisson d'âmes : l'expérience, ce sont des éclats d'Écho ; après la libération, on en récolte moitié plus. */
+	public static void experience(net.neoforged.neoforge.event.entity.player.PlayerXpEvent.XpChange e) {
+		if (e.getAmount() <= 0 || !(e.getEntity() instanceof ServerPlayer p) || !de(p.server).echo()) return;
+		float v = e.getAmount() * 1.5f;
+		int n = (int) v;
+		if (p.getRandom().nextFloat() < v - n) n++;
+		e.setAmount(n);
 	}
 
 	/** Bénédiction : le sculk n'entend plus les joueurs (plus d'appel du Warden). */

@@ -209,6 +209,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::commandes);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::cible);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::experience);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::vibration);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::apparition);
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
