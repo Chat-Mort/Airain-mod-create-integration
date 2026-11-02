@@ -626,5 +626,6 @@
  "painting.airain.affiche_diapason.title": "Le diapason d'Ada",
  "painting.airain.affiche_diapason.author": "Les Réfractaires",
  "painting.airain.affiche_libres.title": "Libres",
- "painting.airain.affiche_libres.author": "Les Réfractaires"
+ "painting.airain.affiche_libres.author": "Les Réfractaires",
+ "airain.chronique.j.patrouille": "%s repousse une patrouille de l'Empire."
 }

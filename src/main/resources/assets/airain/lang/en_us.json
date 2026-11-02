@@ -626,5 +626,6 @@
  "airain.atlas.lieu.kubejs.sanctuaire_refractaire": "Refractory sanctuary",
  "airain.atlas.lieu.kubejs.station_capsules": "Capsule station",
  "airain.atlas.lieu.kubejs.station_observation": "Observation station",
- "airain.atlas.lieu.kubejs.abri_nether": "Refractory shelter"
+ "airain.atlas.lieu.kubejs.abri_nether": "Refractory shelter",
+ "airain.chronique.j.patrouille": "%s repels an Empire patrol."
 }
