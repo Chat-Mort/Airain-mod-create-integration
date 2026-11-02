@@ -151,6 +151,9 @@ public class AirainMod {
 	/** Codex de l'Empire : une page par créature, ouverte en combattant. */
 	public static final DeferredItem<Item> CODEX = ITEMS.register("codex",
 		() -> new fr.chatmort.airain.codex.CodexItem(new Item.Properties().stacksTo(1)));
+	/** Livre de l'ingénieur : le manuel des machines de l'Empire. */
+	public static final DeferredItem<Item> LIVRE_INGENIEUR = ITEMS.register("livre_ingenieur",
+		() -> new fr.chatmort.airain.ingenieur.LivreIngenieurItem(new Item.Properties().stacksTo(1)));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
