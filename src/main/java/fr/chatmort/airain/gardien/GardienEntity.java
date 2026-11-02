@@ -99,6 +99,17 @@ public class GardienEntity extends IronGolem {
 	@Override
 	public boolean isPushable() { return !enPanne() && super.isPushable(); }
 
+	/** À l'arrêt, les monstres l'ignorent et seuls les joueurs peuvent l'abîmer : il attend d'être trouvé. */
+	@Override
+	public boolean canBeSeenAsEnemy() { return !enPanne() && super.canBeSeenAsEnemy(); }
+
+	@Override
+	public boolean hurt(net.minecraft.world.damagesource.DamageSource source, float n) {
+		if (enPanne() && !(source.getEntity() instanceof Player)
+			&& !source.is(net.minecraft.tags.DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
+		return super.hurt(source, n);
+	}
+
 	@Override
 	public void aiStep() {
 		super.aiStep();
