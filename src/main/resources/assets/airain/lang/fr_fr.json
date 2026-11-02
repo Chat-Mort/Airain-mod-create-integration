@@ -665,5 +665,14 @@
  "airain.carte.grand_relais": "le Grand Relais",
  "airain.carte.station": "une station d'observation",
  "airain.carte.citadelle": "la citadelle en ruine",
- "airain.carte.dirigeable": "un dirigeable"
+ "airain.carte.dirigeable": "un dirigeable",
+ "airain.plan.moulin_vent": "moulin à vent",
+ "airain.plan.moulin_vent.desc": "17 voiles sur un roulement. Clic droit sur le roulement pour l'assembler ; la force sort par l'arbre à l'arrière.",
+ "airain.plan.centrale_roues": "centrale à roues",
+ "airain.plan.centrale_roues.desc": "Six roues à eau sur un même arbre. Versez un seau d'eau sur chaque case de la rangée haute : l'eau passe sur les roues.",
+ "airain.plan.meunerie": "meunerie",
+ "airain.plan.meunerie.desc": "Trois meules : coffres d'entrée au-dessus, un coffre de sortie commun. Force : l'arbre vertical sous le premier rouage.",
+ "airain.plan.signe.sortie": "Force ici →",
+ "airain.plan.signe.eau": "Eau ici",
+ "airain.plan.signe.force": "Force ici ↓"
 }

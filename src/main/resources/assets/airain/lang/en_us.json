@@ -665,5 +665,14 @@
  "airain.carte.grand_relais": "the Great Relay",
  "airain.carte.station": "an observation station",
  "airain.carte.citadelle": "the ruined citadel",
- "airain.carte.dirigeable": "an airship"
+ "airain.carte.dirigeable": "an airship",
+ "airain.plan.moulin_vent": "windmill",
+ "airain.plan.moulin_vent.desc": "17 sails on a bearing. Right-click the bearing to assemble it; power comes out of the shaft at the back.",
+ "airain.plan.centrale_roues": "water wheel plant",
+ "airain.plan.centrale_roues.desc": "Six water wheels on one shaft. Pour a bucket of water on each cell of the upper row: water flows over the wheels.",
+ "airain.plan.meunerie": "mill",
+ "airain.plan.meunerie.desc": "Three millstones: input chests on top, one shared output chest. Power: the vertical shaft under the first cogwheel.",
+ "airain.plan.signe.sortie": "Power here →",
+ "airain.plan.signe.eau": "Water here",
+ "airain.plan.signe.force": "Power here ↓"
 }
