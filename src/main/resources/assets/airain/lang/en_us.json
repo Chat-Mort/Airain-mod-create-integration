@@ -431,7 +431,7 @@
  "airain.fin.sonar_recharge": "The Echo stays silent for %s more s.",
  "key.airain.loupe": "Crown loupe (zoom)",
  "key.categories.airain": "The Airain Empire",
- "item.airain.couronne_airain.l4": "Loupe: engineer's goggles, and zoom by holding Z.",
+ "item.airain.couronne_airain.l4": "Loupe: engineer's goggles, and zoom by holding H.",
  "item.airain.casque_couronne": "Crowned Helmet",
  "item.airain.couronne_airain.enclume": "At an anvil, on a netherite helmet: crowned helmet.",
  "item.airain.casque_couronne.separer": "Sneak + right-click: detach the crown.",
@@ -558,5 +558,5 @@
  "airain.ingenieur.reliure.titre": "Engineer's Binding",
  "airain.ingenieur.reliure.court": "Binding",
  "airain.ingenieur.reliure.histoire": "An Empire engineer never travelled without his manuals. He strapped them together, and the strap bore his name.",
- "airain.ingenieur.reliure.usage": "Eight books: Chronicles, register, codex, this manual, quest book, Ars Nouveau notebook. Right-click to read, sneak + right-click to store, B key from anywhere. Stored in a backpack, its books appear as tabs left of the backpack."
+ "airain.ingenieur.reliure.usage": "Eight books: Chronicles, register, codex, this manual, quest book, Ars Nouveau notebook. Right-click to read, sneak + right-click to store, K key from anywhere. Stored in a backpack, its books appear as tabs left of the backpack."
 }

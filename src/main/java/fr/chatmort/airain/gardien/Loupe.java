@@ -13,11 +13,11 @@ import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
 
-/** La loupe de la couronne : maintenir la touche (Z par défaut) pour zoomer comme à la longue-vue. */
+/** La loupe de la couronne : maintenir la touche (H par défaut) pour zoomer comme à la longue-vue. */
 public final class Loupe {
 	private Loupe() {}
 
-	public static final KeyMapping TOUCHE = new KeyMapping("key.airain.loupe", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_Z, "key.categories.airain");
+	public static final KeyMapping TOUCHE = new KeyMapping("key.airain.loupe", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_H, "key.categories.airain");
 	private static boolean active;
 
 	public static boolean porte(Player p) {

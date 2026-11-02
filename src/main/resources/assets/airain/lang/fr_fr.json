@@ -431,7 +431,7 @@
  "airain.fin.sonar_recharge": "L'Écho se tait encore %s s.",
  "key.airain.loupe": "Loupe de la couronne (zoom)",
  "key.categories.airain": "L'Empire d'Airain",
- "item.airain.couronne_airain.l4": "Loupe : lunettes d'ingénieur, et zoom en maintenant Z.",
+ "item.airain.couronne_airain.l4": "Loupe : lunettes d'ingénieur, et zoom en maintenant H.",
  "item.airain.casque_couronne": "Casque couronné",
  "item.airain.couronne_airain.enclume": "À l'enclume, sur un casque de netherite : casque couronné.",
  "item.airain.casque_couronne.separer": "Accroupi + clic droit : détacher la couronne.",
@@ -558,5 +558,5 @@
  "airain.ingenieur.reliure.titre": "Reliure de l'ingénieur",
  "airain.ingenieur.reliure.court": "Reliure",
  "airain.ingenieur.reliure.histoire": "Un ingénieur de l'Empire ne voyageait jamais sans ses manuels. Il les sanglait ensemble, et la sangle portait son nom.",
- "airain.ingenieur.reliure.usage": "Huit livres : Chroniques, registre, codex, ce manuel, livre de quêtes, carnet d'Ars Nouveau. Clic droit pour lire, accroupi + clic droit pour ranger, touche B depuis n'importe où. Rangée dans un sac, ses livres apparaissent en onglets à gauche du sac."
+ "airain.ingenieur.reliure.usage": "Huit livres : Chroniques, registre, codex, ce manuel, livre de quêtes, carnet d'Ars Nouveau. Clic droit pour lire, accroupi + clic droit pour ranger, touche K depuis n'importe où. Rangée dans un sac, ses livres apparaissent en onglets à gauche du sac."
 }

@@ -17,7 +17,7 @@ import org.lwjgl.glfw.GLFW;
 public final class LectureClient {
 	private LectureClient() {}
 
-	public static final KeyMapping TOUCHE = new KeyMapping("key.airain.reliure", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_B, "key.categories.airain");
+	public static final KeyMapping TOUCHE = new KeyMapping("key.airain.reliure", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_K, "key.categories.airain");
 	private static Screen retour;
 	private static int attente;          // ticks pendant lesquels on attend que le livre s'ouvre
 	private static boolean ouvert;
