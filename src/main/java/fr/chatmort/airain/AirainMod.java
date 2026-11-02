@@ -179,7 +179,7 @@ public class AirainMod {
 			@Override
 			public void appendHoverText(net.minecraft.world.item.ItemStack s, net.minecraft.world.item.Item.TooltipContext c,
 					java.util.List<Component> l, net.minecraft.world.item.TooltipFlag f) {
-				for (int i = 1; i <= 3; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i).withStyle(net.minecraft.ChatFormatting.GOLD));
+				for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i).withStyle(net.minecraft.ChatFormatting.GOLD));
 			}
 		});
 
@@ -239,6 +239,9 @@ public class AirainMod {
 	private void setup(FMLCommonSetupEvent event) {
 		// Impact de stress à 1 tr/min, comme la presse mécanique
 		event.enqueueWork(() -> {
+			// la loupe de la couronne fait office de lunettes d'ingénieur de Create
+			com.simibubi.create.content.equipment.goggles.GogglesItem.addIsWearingPredicate(
+				p -> p.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.HEAD).is(COURONNE.get()));
 			BlockStressValues.IMPACTS.register(BANC.get(), () -> 8.0);
 			BlockStressValues.IMPACTS.register(DESENCH.get(), () -> 8.0);
 		});

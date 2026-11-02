@@ -428,5 +428,8 @@
  "airain.epilogue.echo.p4": "Il vous reste un peu de l'Écho : vous voyez dans le noir, les âmes vous cèdent leur savoir, et le sculk ne vous entend plus. Quand vous vous taisez, le monde vous répond.\n\nL'Empire d'Airain est fini. Les âmes sont libres.\n\n— Fin : Le dernier chant",
  "airain.fin.benediction": "La bénédiction de l'Écho reste sur vous : vision dans le noir, moitié plus d'expérience, et le sculk ne vous entend plus. Accroupi et immobile un instant, une onde révèle les créatures proches. Les âmes sans repos ne reviendront pas.",
  "airain.fin.sonar": "L'Écho répond : %s créature(s) révélée(s).",
- "airain.fin.sonar_recharge": "L'Écho se tait encore %s s."
+ "airain.fin.sonar_recharge": "L'Écho se tait encore %s s.",
+ "key.airain.loupe": "Loupe de la couronne (zoom)",
+ "key.categories.airain": "L'Empire d'Airain",
+ "item.airain.couronne_airain.l4": "Loupe : lunettes d'ingénieur, et zoom en maintenant Z."
 }

@@ -428,5 +428,8 @@
  "airain.epilogue.echo.p4": "A little of the Echo stays with you: you see in the dark, the souls yield their knowledge to you, and the sculk no longer hears you. When you fall silent, the world answers.\n\nThe Airain Empire is over. The souls are free.\n\n— Ending: The Last Song",
  "airain.fin.benediction": "The Echo's blessing stays with you: sight in the dark, half again as much experience, and the sculk no longer hears you. Crouch still for a moment and a wave reveals nearby creatures. The restless souls will not return.",
  "airain.fin.sonar": "The Echo answers: %s creature(s) revealed.",
- "airain.fin.sonar_recharge": "The Echo stays silent for %s more s."
+ "airain.fin.sonar_recharge": "The Echo stays silent for %s more s.",
+ "key.airain.loupe": "Crown loupe (zoom)",
+ "key.categories.airain": "The Airain Empire",
+ "item.airain.couronne_airain.l4": "Loupe: engineer's goggles, and zoom by holding Z."
 }

@@ -21,6 +21,9 @@ public class AirainClient {
 		bus.addListener(this::rendus);
 		bus.addListener(this::setup);
 		bus.addListener(this::ecrans);
+		bus.addListener(fr.chatmort.airain.gardien.Loupe::touches);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::tick);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::champ);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
 			e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE, fr.chatmort.airain.gardien.CouronneModele::creer));
 		bus.addListener((net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent e) ->
