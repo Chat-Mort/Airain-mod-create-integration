@@ -627,5 +627,17 @@
  "painting.airain.affiche_diapason.author": "Les Réfractaires",
  "painting.airain.affiche_libres.title": "Libres",
  "painting.airain.affiche_libres.author": "Les Réfractaires",
- "airain.chronique.j.patrouille": "%s repousse une patrouille de l'Empire."
+ "airain.chronique.j.patrouille": "%s repousse une patrouille de l'Empire.",
+ "item.airain.charte": "Charte impériale",
+ "item.airain.charte.aide": "Couronne sur la tête, dans un avant-poste : clic droit pour le rallumer.",
+ "airain.suite.pas_empire": "Seul celui qui a rallumé le Cœur peut signer une charte.",
+ "airain.suite.couronne": "Portez la couronne d'airain pour signer la charte.",
+ "airain.suite.hors_poste": "La charte ne vaut que dans un avant-poste ou une cité de l'Empire.",
+ "airain.suite.deja_poste": "Cet avant-poste est déjà rallumé.",
+ "airain.suite.poste_ok": "L'avant-poste se rallume (%s en tout). %s bannières aux couleurs de votre base, %s comptoirs à prix réduit, un gardien en faction.",
+ "airain.suite.deja_relais": "Ce relais est déjà apaisé.",
+ "airain.suite.fragments": "Il faut %s fragments de résonance pour accorder le relais.",
+ "airain.suite.relais_ok": "Le relais s'apaise (%s en tout). L'Écho ne rôde plus autour de lui.",
+ "airain.chronique.j.rallume": "%s rallume un avant-poste (%s en tout).",
+ "airain.chronique.j.apaise": "%s apaise un relais (%s en tout)."
 }

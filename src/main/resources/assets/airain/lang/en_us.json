@@ -627,5 +627,17 @@
  "airain.atlas.lieu.kubejs.station_capsules": "Capsule station",
  "airain.atlas.lieu.kubejs.station_observation": "Observation station",
  "airain.atlas.lieu.kubejs.abri_nether": "Refractory shelter",
- "airain.chronique.j.patrouille": "%s repels an Empire patrol."
+ "airain.chronique.j.patrouille": "%s repels an Empire patrol.",
+ "item.airain.charte": "Imperial Charter",
+ "item.airain.charte.aide": "Crown on your head, in an outpost: right-click to rekindle it.",
+ "airain.suite.pas_empire": "Only those who rekindled the Heart can sign a charter.",
+ "airain.suite.couronne": "Wear the Airain Crown to sign the charter.",
+ "airain.suite.hors_poste": "The charter is only valid in an Empire outpost or city.",
+ "airain.suite.deja_poste": "This outpost is already rekindled.",
+ "airain.suite.poste_ok": "The outpost comes back to life (%s in all). %s banners in your base's colors, %s counters at reduced prices, a guardian on watch.",
+ "airain.suite.deja_relais": "This relay is already soothed.",
+ "airain.suite.fragments": "You need %s resonance fragments to tune the relay.",
+ "airain.suite.relais_ok": "The relay grows calm (%s in all). The Echo no longer prowls around it.",
+ "airain.chronique.j.rallume": "%s rekindles an outpost (%s in all).",
+ "airain.chronique.j.apaise": "%s soothes a relay (%s in all)."
 }

@@ -206,6 +206,9 @@ public class AirainMod {
 		() -> new fr.chatmort.airain.atlas.AtlasItem(new Item.Properties().stacksTo(1)));
 	/** Affiche vierge : à passer au déployeur avec un symbole. */
 	public static final DeferredItem<Item> AFFICHE_VIERGE = ITEMS.register("affiche_vierge", () -> new Item(new Item.Properties()));
+	/** Charte impériale : rallume un avant-poste (fin de l'Empire). */
+	public static final DeferredItem<Item> CHARTE = ITEMS.register("charte",
+		() -> new fr.chatmort.airain.suite.CharteItem(new Item.Properties().stacksTo(16).rarity(net.minecraft.world.item.Rarity.RARE)));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
@@ -239,6 +242,10 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.tableau.Tableaux::connexion);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.atlas.Atlas::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.atlas.Atlas::mort);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.suite.Suites::diapason);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.suite.Suites::apparition);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.suite.Suites::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.suite.Suites::connexion);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::vibration);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::apparition);
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
