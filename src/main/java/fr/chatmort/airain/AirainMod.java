@@ -209,6 +209,11 @@ public class AirainMod {
 	/** Charte impériale : rallume un avant-poste (fin de l'Empire). */
 	public static final DeferredItem<Item> CHARTE = ITEMS.register("charte",
 		() -> new fr.chatmort.airain.suite.CharteItem(new Item.Properties().stacksTo(16).rarity(net.minecraft.world.item.Rarity.RARE)));
+	/** Comptoirs des avant-postes : carte vers une structure, plan pour le canon à schémas. */
+	public static final DeferredItem<Item> CARTE_EMPIRE = ITEMS.register("carte_empire",
+		() -> new fr.chatmort.airain.comptoir.CarteItem(new Item.Properties()));
+	public static final DeferredItem<Item> PLAN = ITEMS.register("plan",
+		() -> new fr.chatmort.airain.comptoir.PlanItem(new Item.Properties()));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
