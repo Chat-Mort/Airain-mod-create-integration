@@ -431,5 +431,8 @@
  "airain.fin.sonar_recharge": "The Echo stays silent for %s more s.",
  "key.airain.loupe": "Crown loupe (zoom)",
  "key.categories.airain": "The Airain Empire",
- "item.airain.couronne_airain.l4": "Loupe: engineer's goggles, and zoom by holding Z."
+ "item.airain.couronne_airain.l4": "Loupe: engineer's goggles, and zoom by holding Z.",
+ "item.airain.casque_couronne": "Crowned Helmet",
+ "item.airain.couronne_airain.enclume": "At an anvil, on a netherite helmet: crowned helmet.",
+ "item.airain.casque_couronne.separer": "Sneak + right-click: detach the crown."
 }

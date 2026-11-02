@@ -431,5 +431,8 @@
  "airain.fin.sonar_recharge": "L'Écho se tait encore %s s.",
  "key.airain.loupe": "Loupe de la couronne (zoom)",
  "key.categories.airain": "L'Empire d'Airain",
- "item.airain.couronne_airain.l4": "Loupe : lunettes d'ingénieur, et zoom en maintenant Z."
+ "item.airain.couronne_airain.l4": "Loupe : lunettes d'ingénieur, et zoom en maintenant Z.",
+ "item.airain.casque_couronne": "Casque couronné",
+ "item.airain.couronne_airain.enclume": "À l'enclume, sur un casque de netherite : casque couronné.",
+ "item.airain.casque_couronne.separer": "Accroupi + clic droit : détacher la couronne."
 }

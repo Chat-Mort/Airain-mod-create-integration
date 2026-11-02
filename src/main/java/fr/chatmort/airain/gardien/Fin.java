@@ -84,8 +84,8 @@ public class Fin extends SavedData {
 		if (v.equals("echo")) p.sendSystemMessage(Component.translatable("airain.fin.benediction").withStyle(net.minecraft.ChatFormatting.DARK_AQUA));
 	}
 
-	static boolean couronne(LivingEntity e) {
-		return e.getItemBySlot(EquipmentSlot.HEAD).is(fr.chatmort.airain.AirainMod.COURONNE.get());
+	public static boolean couronne(LivingEntity e) {
+		return e.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof CouronneItem;
 	}
 
 	/** Autorité : les automates de l'Empire ne prennent plus le porteur de la couronne pour cible, sauf s'il frappe le premier ou pendant un assaut. */

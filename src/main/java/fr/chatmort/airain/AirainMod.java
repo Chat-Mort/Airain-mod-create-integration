@@ -163,25 +163,28 @@ public class AirainMod {
 			.sized(1.4f, 2.7f).clientTrackingRange(10).build("gardien"));
 	public static final DeferredItem<Item> GARDIEN_OEUF = ITEMS.register("gardien_spawn_egg",
 		() -> new net.neoforged.neoforge.common.DeferredSpawnEggItem(GARDIEN, 0xA8742C, 0x3A8C7A, new Item.Properties()));
-	/** Couronne d'airain : récompense de « Rallumer le Cœur ». */
-	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_COURONNE = MATERIAUX.register("couronne",
-		() -> new net.minecraft.world.item.ArmorMaterial(
-			java.util.Map.of(net.minecraft.world.item.ArmorItem.Type.HELMET, 3, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 8,
-				net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 6, net.minecraft.world.item.ArmorItem.Type.BOOTS, 3, net.minecraft.world.item.ArmorItem.Type.BODY, 11),
+	/** Couronne d'airain : récompense de « Rallumer le Cœur ». Portée seule, ou montée à l'enclume sur un casque de netherite. */
+	private static net.minecraft.world.item.ArmorMaterial materiau(String couche, int casque, float robustesse, float recul) {
+		return new net.minecraft.world.item.ArmorMaterial(
+			java.util.Map.of(net.minecraft.world.item.ArmorItem.Type.HELMET, casque, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, casque,
+				net.minecraft.world.item.ArmorItem.Type.LEGGINGS, casque, net.minecraft.world.item.ArmorItem.Type.BOOTS, casque, net.minecraft.world.item.ArmorItem.Type.BODY, casque),
 			15, net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_GOLD,
 			() -> net.minecraft.world.item.crafting.Ingredient.EMPTY,
-			java.util.List.of(new net.minecraft.world.item.ArmorMaterial.Layer(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, "couronne"))),
-			3f, 0.1f));
+			java.util.List.of(new net.minecraft.world.item.ArmorMaterial.Layer(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, couche))),
+			robustesse, recul);
+	}
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_COURONNE =
+		MATERIAUX.register("couronne", () -> materiau("couronne", 2, 0f, 0f));
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_CASQUE =
+		MATERIAUX.register("casque_couronne", () -> materiau("casque_couronne", 3, 3f, 0.1f));
 	public static final DeferredItem<Item> COURONNE = ITEMS.register("couronne_airain",
-		() -> new net.minecraft.world.item.ArmorItem(AIRAIN_COURONNE, net.minecraft.world.item.ArmorItem.Type.HELMET, new Item.Properties()
+		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_COURONNE, false, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
-			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))) {
-			@Override
-			public void appendHoverText(net.minecraft.world.item.ItemStack s, net.minecraft.world.item.Item.TooltipContext c,
-					java.util.List<Component> l, net.minecraft.world.item.TooltipFlag f) {
-				for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i).withStyle(net.minecraft.ChatFormatting.GOLD));
-			}
-		});
+			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))));
+	public static final DeferredItem<Item> CASQUE_COURONNE = ITEMS.register("casque_couronne",
+		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_CASQUE, true, new Item.Properties()
+			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
@@ -210,6 +213,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::cible);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::experience);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.CouronneItem::enclume);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::vibration);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::apparition);
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
@@ -241,7 +245,7 @@ public class AirainMod {
 		event.enqueueWork(() -> {
 			// la loupe de la couronne fait office de lunettes d'ingénieur de Create
 			com.simibubi.create.content.equipment.goggles.GogglesItem.addIsWearingPredicate(
-				p -> p.getItemBySlot(net.minecraft.world.entity.EquipmentSlot.HEAD).is(COURONNE.get()));
+				fr.chatmort.airain.gardien.Fin::couronne);
 			BlockStressValues.IMPACTS.register(BANC.get(), () -> 8.0);
 			BlockStressValues.IMPACTS.register(DESENCH.get(), () -> 8.0);
 		});

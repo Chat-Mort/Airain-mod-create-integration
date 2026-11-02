@@ -21,7 +21,7 @@ public final class Loupe {
 	private static boolean active;
 
 	public static boolean porte(Player p) {
-		return p != null && p.getItemBySlot(EquipmentSlot.HEAD).is(AirainMod.COURONNE.get());
+		return p != null && Fin.couronne(p);
 	}
 
 	public static void touches(RegisterKeyMappingsEvent e) { e.register(TOUCHE); }
