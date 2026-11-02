@@ -195,6 +195,17 @@ public class AirainMod {
 			.component(net.minecraft.core.component.DataComponents.CONTAINER, net.minecraft.world.item.component.ItemContainerContents.EMPTY)));
 	public static final DeferredHolder<MenuType<?>, MenuType<fr.chatmort.airain.reliure.ReliureMenu>> RELIURE_MENU = MENUS.register("reliure",
 		() -> IMenuTypeExtension.create(fr.chatmort.airain.reliure.ReliureMenu::new));
+	/** Tableau de service : notes épinglées pour l'équipe. */
+	public static final DeferredBlock<fr.chatmort.airain.tableau.TableauBlock> TABLEAU = BLOCKS.register("tableau_service",
+		() -> new fr.chatmort.airain.tableau.TableauBlock(BlockBehaviour.Properties.of()
+			.mapColor(MapColor.WOOD).strength(1f).sound(SoundType.WOOD).noOcclusion().noCollission()));
+	public static final DeferredItem<BlockItem> TABLEAU_ITEM = ITEMS.register("tableau_service",
+		() -> new BlockItem(TABLEAU.get(), new Item.Properties()));
+	/** Atlas impérial : la carte de ce que l'équipe a parcouru. */
+	public static final DeferredItem<Item> ATLAS = ITEMS.register("atlas",
+		() -> new fr.chatmort.airain.atlas.AtlasItem(new Item.Properties().stacksTo(1)));
+	/** Affiche vierge : à passer au déployeur avec un symbole. */
+	public static final DeferredItem<Item> AFFICHE_VIERGE = ITEMS.register("affiche_vierge", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
@@ -225,6 +236,9 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.CouronneItem::enclume);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::dimension);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.tableau.Tableaux::connexion);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.atlas.Atlas::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.atlas.Atlas::mort);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::vibration);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::apparition);
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
@@ -246,6 +260,12 @@ public class AirainMod {
 			.playToServer(fr.chatmort.airain.reliure.Paquets.Chercher.TYPE, fr.chatmort.airain.reliure.Paquets.Chercher.CODEC, fr.chatmort.airain.reliure.Paquets.Chercher::traiter)
 			.playToClient(fr.chatmort.airain.reliure.Paquets.Ouvrir.TYPE, fr.chatmort.airain.reliure.Paquets.Ouvrir.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.reliure(m)))
+			.playToServer(fr.chatmort.airain.tableau.PaquetsTableau.Action.TYPE, fr.chatmort.airain.tableau.PaquetsTableau.Action.CODEC,
+				fr.chatmort.airain.tableau.PaquetsTableau.Action::traiter)
+			.playToClient(fr.chatmort.airain.tableau.PaquetsTableau.Ouvrir.TYPE, fr.chatmort.airain.tableau.PaquetsTableau.Ouvrir.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.tableau(m)))
+			.playToClient(fr.chatmort.airain.atlas.OuvrirAtlas.TYPE, fr.chatmort.airain.atlas.OuvrirAtlas.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.atlas(m)))
 			.playToClient(fr.chatmort.airain.chronique.OuvrirChroniques.TYPE, fr.chatmort.airain.chronique.OuvrirChroniques.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.chroniques(m)))
 			.playToClient(fr.chatmort.airain.codex.OuvrirCodex.TYPE, fr.chatmort.airain.codex.OuvrirCodex.CODEC,

@@ -30,7 +30,10 @@ public class LivreIngenieurScreen extends Screen {
 		{"fondation", "airain:pierre_fondation"}, {"grand_etendard", "airain:grand_etendard"}, {"banniere_murale", "airain:banniere_murale"},
 		{"gabarit", "airain:gabarit_banniere"}, {"registre", "airain:registre_fondations"}, {"socle", "airain:socle_trophee"},
 		{"banc", "airain:banc_entretien"}, {"modules", "airain:meule_fine"}, {"table", "airain:table_enchantement"},
-		{"desenchanteur", "airain:desenchanteur"}, {"balise", "airain:balise_defense"}, {"codex", "airain:codex"}, {"gardien", "airain:gardien_spawn_egg"}, {"reliure", "airain:reliure"}};
+		{"desenchanteur", "airain:desenchanteur"}, {"balise", "airain:balise_defense"}, {"codex", "airain:codex"}, {"gardien", "airain:gardien_spawn_egg"}, {"reliure", "airain:reliure"},
+		{"tableau", "airain:tableau_service"}, {"atlas", "airain:atlas"}, {"affiches", "airain:affiche_vierge"}};
+	/** Pas de la colonne de droite de la table des matières (elle s'adapte au nombre de chapitres). */
+	private static final int PAS = Math.min(18, 130 / Math.max(1, CHAPITRES.length - 6));
 	private int planche;
 
 	public LivreIngenieurScreen() { super(Component.translatable("item.airain.livre_ingenieur")); }
@@ -66,7 +69,7 @@ public class LivreIngenieurScreen extends Screen {
 		if (planche == 0)
 			for (int i = 0; i < CHAPITRES.length; i++) {
 				int x = (i < 6 ? bx() + 20 : bx() + 162), y = by() + 22 + (i < 6 ? 52 : 14) + (i % 6) * 17;
-				if (i >= 6) y = by() + 22 + 14 + (i - 6) * 16;
+				if (i >= 6) y = by() + 22 + 14 + (i - 6) * PAS;
 				if (mx >= x && mx < x + LARGE && my >= y - 2 && my < y + 16) { aller(i + 1); return true; }
 			}
 		return super.mouseClicked(mx, my, b);
@@ -95,7 +98,7 @@ public class LivreIngenieurScreen extends Screen {
 			texte(g, Component.translatable("item.airain.livre_ingenieur").withStyle(ChatFormatting.BOLD), gx, y + 2, ROUGE, 2);
 			texte(g, Component.translatable("airain.ingenieur.intro").withStyle(ChatFormatting.ITALIC), gx, y + 16, SEPIA, 3);
 			for (int i = 0; i < CHAPITRES.length; i++) {
-				int x = i < 6 ? gx : dx, yy = i < 6 ? y + 52 + i * 17 : y + 14 + (i - 6) * 16;
+				int x = i < 6 ? gx : dx, yy = i < 6 ? y + 52 + i * 17 : y + 14 + (i - 6) * PAS;
 				g.renderItem(objet(i), x, yy - 4);
 				boolean survol = mx >= x && mx < x + LARGE && my >= yy - 2 && my < yy + 16;
 				g.drawString(font, Component.translatable("airain.ingenieur." + CHAPITRES[i][0] + ".court"), x + 19, yy, survol ? BLEU : ENCRE, false);

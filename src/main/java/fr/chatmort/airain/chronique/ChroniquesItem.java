@@ -18,7 +18,15 @@ public class ChroniquesItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level level, Player joueur, InteractionHand main) {
 		if (joueur instanceof ServerPlayer sp) {
 			Chronique.auteur(sp);
-			net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(sp, new OuvrirChroniques(Chronique.de(sp.server).paquet(sp.server)));
+			var t = Chronique.de(sp.server).paquet(sp.server);
+			var notes = new net.minecraft.nbt.ListTag();
+			for (var n : fr.chatmort.airain.tableau.Tableaux.de(sp.server).nonLues(sp.getGameProfile().getName())) {
+				var c = new net.minecraft.nbt.CompoundTag();
+				c.putString("auteur", n.auteur); c.putString("texte", n.texte);
+				notes.add(c);
+			}
+			t.put("notes", notes);
+			net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(sp, new OuvrirChroniques(t));
 		}
 		level.playSound(joueur, joueur.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1f, 0.9f);
 		return InteractionResultHolder.sidedSuccess(joueur.getItemInHand(main), level.isClientSide);

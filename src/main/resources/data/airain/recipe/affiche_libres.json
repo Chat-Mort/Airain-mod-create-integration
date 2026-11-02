@@ -1,0 +1,22 @@
+{
+ "type": "create:deploying",
+ "ingredients": [
+  {
+   "item": "airain:affiche_vierge"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  }
+ ],
+ "results": [
+  {
+   "id": "minecraft:painting",
+   "components": {
+    "minecraft:entity_data": {
+     "id": "minecraft:painting",
+     "variant": "airain:affiche_libres"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shapeless", "category": "misc", "ingredients": [{"item": "minecraft:book"}, {"item": "minecraft:map"}, {"item": "minecraft:compass"}], "result": {"id": "airain:atlas", "count": 1}}

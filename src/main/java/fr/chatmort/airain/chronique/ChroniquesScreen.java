@@ -110,6 +110,14 @@ public class ChroniquesScreen extends Screen {
 			texte(Component.translatable("airain.chronique.ou_dernier").withStyle(ChatFormatting.BOLD), SEPIA);
 			texte(entree(journal.get(journal.taille() - 1)), ENCRE);
 		}
+		var notes = d.getList("notes", Tag.TAG_COMPOUND);
+		if (!notes.isEmpty()) {
+			vide();
+			texte(Component.translatable("airain.chronique.notes").withStyle(ChatFormatting.BOLD), SEPIA);
+			for (int i = 0; i < notes.size(); i++)
+				texte(Component.literal(notes.getCompound(i).getString("auteur") + " : ").withStyle(ChatFormatting.BOLD)
+					.append(Component.literal(notes.getCompound(i).getString("texte").replace('\n', ' ')).withStyle(ChatFormatting.ITALIC)), ENCRE);
+		}
 		// le récit
 		titre(Component.translatable("airain.chronique.recit"));
 		sections[1] = pages.size() - 1;

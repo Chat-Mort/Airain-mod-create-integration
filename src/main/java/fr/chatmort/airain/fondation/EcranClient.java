@@ -19,6 +19,14 @@ public final class EcranClient {
 		fr.chatmort.airain.reliure.LectureClient.ouvrir(m);
 	}
 
+	public static void tableau(fr.chatmort.airain.tableau.PaquetsTableau.Ouvrir m) {
+		Minecraft.getInstance().setScreen(new fr.chatmort.airain.tableau.TableauScreen(m));
+	}
+
+	public static void atlas(fr.chatmort.airain.atlas.OuvrirAtlas m) {
+		Minecraft.getInstance().setScreen(new fr.chatmort.airain.atlas.AtlasScreen(m.donnees()));
+	}
+
 	public static void registre(OuvrirRegistre m) {
 		Minecraft.getInstance().setScreen(new RegistreScreen(m));
 	}
