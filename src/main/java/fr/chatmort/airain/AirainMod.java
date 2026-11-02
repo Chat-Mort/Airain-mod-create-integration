@@ -164,19 +164,19 @@ public class AirainMod {
 	public static final DeferredItem<Item> GARDIEN_OEUF = ITEMS.register("gardien_spawn_egg",
 		() -> new net.neoforged.neoforge.common.DeferredSpawnEggItem(GARDIEN, 0xA8742C, 0x3A8C7A, new Item.Properties()));
 	/** Couronne d'airain : récompense de « Rallumer le Cœur ». Portée seule, ou montée à l'enclume sur un casque de netherite. */
-	private static net.minecraft.world.item.ArmorMaterial materiau(String couche, int casque, float robustesse, float recul) {
+	private static net.minecraft.world.item.ArmorMaterial materiau(String couche, int casque, float robustesse, float recul, net.minecraft.world.item.Item reparation) {
 		return new net.minecraft.world.item.ArmorMaterial(
 			java.util.Map.of(net.minecraft.world.item.ArmorItem.Type.HELMET, casque, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, casque,
 				net.minecraft.world.item.ArmorItem.Type.LEGGINGS, casque, net.minecraft.world.item.ArmorItem.Type.BOOTS, casque, net.minecraft.world.item.ArmorItem.Type.BODY, casque),
 			15, net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_GOLD,
-			() -> net.minecraft.world.item.crafting.Ingredient.EMPTY,
+			() -> reparation == null ? net.minecraft.world.item.crafting.Ingredient.EMPTY : net.minecraft.world.item.crafting.Ingredient.of(reparation),
 			java.util.List.of(new net.minecraft.world.item.ArmorMaterial.Layer(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, couche))),
 			robustesse, recul);
 	}
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_COURONNE =
-		MATERIAUX.register("couronne", () -> materiau("couronne", 2, 0f, 0f));
+		MATERIAUX.register("couronne", () -> materiau("couronne", 2, 0f, 0f, null));
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_CASQUE =
-		MATERIAUX.register("casque_couronne", () -> materiau("casque_couronne", 3, 3f, 0.1f));
+		MATERIAUX.register("casque_couronne", () -> materiau("casque_couronne", 3, 3f, 0.1f, net.minecraft.world.item.Items.NETHERITE_INGOT));
 	public static final DeferredItem<Item> COURONNE = ITEMS.register("couronne_airain",
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_COURONNE, false, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
