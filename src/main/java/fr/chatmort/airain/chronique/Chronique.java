@@ -33,7 +33,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public class Chronique extends SavedData {
 	/** Ordre du récit : les clés débloquées par les quêtes, dans l'ordre de l'histoire. */
 	public static final String[] RECIT = {"reveil", "surface", "avant_poste", "atelier", "entretien", "refractaires", "gardien_vent",
-		"inscriptions", "marees", "bastion", "capsules", "forge_ames", "gardien_cieux", "cites", "citadelle", "memoires", "coeur",
+		"inscriptions", "marees", "bastion", "capsules", "forge_ames", "station", "gardien_cieux", "cites", "citadelle", "memoires", "coeur",
 		"eveil", "colosse", "berceau", "empereur", "fin_empire", "fin_echo",
 		"echo_refus", "echo_vael", "echo_ada", "echo_choeur"};
 
