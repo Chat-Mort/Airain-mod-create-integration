@@ -1,0 +1,32 @@
+{
+ "values": [
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_spider",
+   "required": false
+  },
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_sphere",
+   "required": false
+  },
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_spider_guardian",
+   "required": false
+  },
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_centurion",
+   "required": false
+  },
+  {
+   "id": "cataclysm:the_watcher",
+   "required": false
+  },
+  {
+   "id": "cataclysm:the_prowler",
+   "required": false
+  },
+  "minecraft:hoglin",
+  "minecraft:zoglin",
+  "minecraft:slime",
+  "minecraft:magma_cube"
+ ]
+}

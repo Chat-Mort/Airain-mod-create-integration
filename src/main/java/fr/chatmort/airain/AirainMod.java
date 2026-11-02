@@ -154,6 +154,35 @@ public class AirainMod {
 	/** Livre de l'ingénieur : le manuel des machines de l'Empire. */
 	public static final DeferredItem<Item> LIVRE_INGENIEUR = ITEMS.register("livre_ingenieur",
 		() -> new fr.chatmort.airain.ingenieur.LivreIngenieurItem(new Item.Properties().stacksTo(1)));
+	// ---- gardiens d'airain et choix final
+	public static final DeferredRegister<net.minecraft.world.entity.EntityType<?>> ENTITES = DeferredRegister.create(Registries.ENTITY_TYPE, ID);
+	public static final DeferredRegister<net.minecraft.world.item.ArmorMaterial> MATERIAUX = DeferredRegister.create(Registries.ARMOR_MATERIAL, ID);
+	public static final DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<fr.chatmort.airain.gardien.GardienEntity>> GARDIEN =
+		ENTITES.register("gardien", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.gardien.GardienEntity>of(
+			fr.chatmort.airain.gardien.GardienEntity::new, net.minecraft.world.entity.MobCategory.MISC)
+			.sized(1.4f, 2.7f).clientTrackingRange(10).build("gardien"));
+	public static final DeferredItem<Item> GARDIEN_OEUF = ITEMS.register("gardien_spawn_egg",
+		() -> new net.neoforged.neoforge.common.DeferredSpawnEggItem(GARDIEN, 0xA8742C, 0x3A8C7A, new Item.Properties()));
+	/** Couronne d'airain : récompense de « Rallumer le Cœur ». */
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_COURONNE = MATERIAUX.register("couronne",
+		() -> new net.minecraft.world.item.ArmorMaterial(
+			java.util.Map.of(net.minecraft.world.item.ArmorItem.Type.HELMET, 3, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 8,
+				net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 6, net.minecraft.world.item.ArmorItem.Type.BOOTS, 3, net.minecraft.world.item.ArmorItem.Type.BODY, 11),
+			15, net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_GOLD,
+			() -> net.minecraft.world.item.crafting.Ingredient.EMPTY,
+			java.util.List.of(new net.minecraft.world.item.ArmorMaterial.Layer(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, "couronne"))),
+			3f, 0.1f));
+	public static final DeferredItem<Item> COURONNE = ITEMS.register("couronne_airain",
+		() -> new net.minecraft.world.item.ArmorItem(AIRAIN_COURONNE, net.minecraft.world.item.ArmorItem.Type.HELMET, new Item.Properties()
+			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))) {
+			@Override
+			public void appendHoverText(net.minecraft.world.item.ItemStack s, net.minecraft.world.item.Item.TooltipContext c,
+					java.util.List<Component> l, net.minecraft.world.item.TooltipFlag f) {
+				for (int i = 1; i <= 3; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i).withStyle(net.minecraft.ChatFormatting.GOLD));
+			}
+		});
+
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
@@ -172,6 +201,16 @@ public class AirainMod {
 		ITEMS.register(bus);
 		BLOCK_ENTITIES.register(bus);
 		MENUS.register(bus);
+		ENTITES.register(bus);
+		MATERIAUX.register(bus);
+		bus.addListener((net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent e) ->
+			e.put(GARDIEN.get(), net.minecraft.world.entity.animal.IronGolem.createAttributes().build()));
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Gardiens::etendard);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::commandes);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::cible);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::vibration);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::apparition);
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);

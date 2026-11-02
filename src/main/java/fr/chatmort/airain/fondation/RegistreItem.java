@@ -40,8 +40,10 @@ public class RegistreItem extends Item {
 			liste.sort(Comparator.comparing((FondationRegistre.Fondation f) -> !f.dim().toString().equals(dim))
 				.thenComparingDouble(f -> f.distance(sp.getX(), sp.getZ())));
 			List<OuvrirRegistre.Base> bases = new ArrayList<>();
+			var gardiens = fr.chatmort.airain.gardien.Gardiens.de(sp.getServer());
 			for (FondationRegistre.Fondation f : liste)
-				bases.add(new OuvrirRegistre.Base(f.nom(), f.devise(), f.pos(), f.dim(), f.apparence(), f.ext()));
+				bases.add(new OuvrirRegistre.Base(f.nom(), f.devise(), f.pos(), f.dim(), f.apparence(), f.ext(),
+					gardiens.nombre(FondationRegistre.cle(f.dim(), f.pos()))));
 			FondationRegistre reg = FondationRegistre.de(sp.getServer());
 			List<OuvrirRegistre.Trophee> trophees = new ArrayList<>();
 			for (var e : fr.chatmort.airain.trophee.TropheeRegistre.de(sp.getServer()).entrees()) {

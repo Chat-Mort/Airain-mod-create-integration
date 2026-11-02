@@ -177,6 +177,10 @@ public class RegistreScreen extends Screen {
 		} else {
 			g.drawString(font, Component.translatable("airain.registre.ailleurs"), x, yy, SEPIA, false);
 		}
+		yy += 11;
+		g.drawString(font, Component.translatable("airain.registre.gardiens"), x, yy, SEPIA, false);
+		Component ng = Component.translatable("airain.registre.gardiens_n", b.gardiens(), fr.chatmort.airain.gardien.Gardiens.LIMITE);
+		g.drawString(font, ng, x + LARGE - font.width(ng), yy, b.gardiens() > 0 ? ENCRE : SEPIA, false);
 		yy += 14;
 		List<ItemStack> ici = new ArrayList<>();
 		for (OuvrirRegistre.Trophee t : donnees.trophees())

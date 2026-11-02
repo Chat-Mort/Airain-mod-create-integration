@@ -1,0 +1,41 @@
+{
+ "values": [
+  "minecraft:zombie",
+  "minecraft:husk",
+  "minecraft:drowned",
+  "minecraft:skeleton",
+  "minecraft:stray",
+  "minecraft:bogged",
+  "minecraft:creeper",
+  "minecraft:spider",
+  "minecraft:cave_spider",
+  "minecraft:silverfish",
+  "minecraft:slime",
+  "minecraft:guardian",
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_spider",
+   "required": false
+  },
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_sphere",
+   "required": false
+  },
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_spider_guardian",
+   "required": false
+  },
+  {
+   "id": "mebahelcreaturesdwarven:dwarven_centurion",
+   "required": false
+  },
+  {
+   "id": "cataclysm:the_watcher",
+   "required": false
+  },
+  "minecraft:wither_skeleton",
+  "minecraft:blaze",
+  "minecraft:magma_cube",
+  "minecraft:hoglin",
+  "minecraft:zoglin"
+ ]
+}
