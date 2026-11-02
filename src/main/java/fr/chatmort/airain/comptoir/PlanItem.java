@@ -41,7 +41,7 @@ public class PlanItem extends Item {
 		String c = plan(pile);
 		if (c.isEmpty() || level.isClientSide) return InteractionResultHolder.sidedSuccess(pile, level.isClientSide);
 		ItemStack schema = com.simibubi.create.content.schematics.SchematicItem.create(
-			level.holderLookup(Registries.BLOCK), "airain_" + c + ".nbt", PROPRIETAIRE);
+			level, "airain_" + c + ".nbt", PROPRIETAIRE);
 		schema.set(DataComponents.CUSTOM_NAME, Component.translatable("item.airain.plan.nom", Component.translatable("airain.plan." + c)).withStyle(s -> s.withItalic(false)));
 		level.playSound(null, p.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1f, 0.8f);
 		if (pile.getCount() == 1) return InteractionResultHolder.consume(schema);
