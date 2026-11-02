@@ -15,6 +15,10 @@ public final class EcranClient {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.chronique.ChroniquesScreen(m.donnees()));
 	}
 
+	public static void reliure(fr.chatmort.airain.reliure.Paquets.Ouvrir m) {
+		fr.chatmort.airain.reliure.LectureClient.ouvrir(m);
+	}
+
 	public static void registre(OuvrirRegistre m) {
 		Minecraft.getInstance().setScreen(new RegistreScreen(m));
 	}

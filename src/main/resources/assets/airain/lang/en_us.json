@@ -545,5 +545,18 @@
  "airain.chronique.suite.echo_ada": "Make her tuning fork and strike it at the Great Relay.",
  "airain.chronique.recit.echo_choeur.titre": "The Choir of the Lost",
  "airain.chronique.recit.echo_choeur": "At the Great Relay, thousands of spirits fused in pain awoke. Defeating them was freeing them. They entrusted us with what they were: the Primordial Echo.",
- "airain.chronique.suite.echo_choeur": "The Primordial Echo may serve in the final choice."
+ "airain.chronique.suite.echo_choeur": "The Primordial Echo may serve in the final choice.",
+ "item.airain.reliure": "Engineer's Binding",
+ "key.airain.reliure": "Open the Binding (even in a backpack)",
+ "airain.reliure.vide": "No books stored.",
+ "airain.reliure.aide": "Right-click: read · sneak + right-click: store",
+ "airain.reliure.ecran": "Eight books, always at hand.\n\nOne tab per book, on the left: a click opens it right here.\n\nEscape, once the book is closed, brings you back.\n\nSneak + right-click with the Binding: store or remove a book.",
+ "airain.reliure.ouvrir": "Click: open this book. It is always up to date: the register, codex and chronicles read the world when they open.",
+ "airain.reliure.vide_ecran": "The Binding is empty. Sneak + right-click to store the Empire's books, the quest book or the Ars Nouveau notebook.",
+ "airain.reliure.clic": "Click: read",
+ "airain.reliure.introuvable": "No Binding in your inventory or in a carried backpack.",
+ "airain.ingenieur.reliure.titre": "Engineer's Binding",
+ "airain.ingenieur.reliure.court": "Binding",
+ "airain.ingenieur.reliure.histoire": "An Empire engineer never travelled without his manuals. He strapped them together, and the strap bore his name.",
+ "airain.ingenieur.reliure.usage": "Eight books: Chronicles, register, codex, this manual, quest book, Ars Nouveau notebook. Right-click to read, sneak + right-click to store, B key from anywhere. Stored in a backpack, its books appear as tabs left of the backpack."
 }

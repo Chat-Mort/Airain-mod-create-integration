@@ -545,5 +545,18 @@
  "airain.chronique.suite.echo_ada": "Fabriquer son diapason et le frapper au Grand Relais.",
  "airain.chronique.recit.echo_choeur.titre": "Le Chœur des Égarés",
  "airain.chronique.recit.echo_choeur": "Au Grand Relais, des milliers d'esprits fusionnés dans la douleur se sont réveillés. Les vaincre, c'était les libérer. Ils nous ont confié ce qu'ils étaient : l'Écho primordial.",
- "airain.chronique.suite.echo_choeur": "L'Écho primordial pourra servir au choix final."
+ "airain.chronique.suite.echo_choeur": "L'Écho primordial pourra servir au choix final.",
+ "item.airain.reliure": "Reliure de l'ingénieur",
+ "key.airain.reliure": "Ouvrir la Reliure (même dans le sac)",
+ "airain.reliure.vide": "Aucun livre rangé.",
+ "airain.reliure.aide": "Clic droit : lire · accroupi + clic droit : ranger",
+ "airain.reliure.ecran": "Huit livres, toujours sous la main.\n\nUn onglet par livre, à gauche : un clic l'ouvre ici même.\n\nÉchap, une fois le livre refermé, ramène ici.\n\nAccroupi + clic droit avec la Reliure : ranger ou retirer un livre.",
+ "airain.reliure.ouvrir": "Clic : ouvrir ce livre. Il est toujours à jour : registre, codex et chroniques lisent le monde au moment où on les ouvre.",
+ "airain.reliure.vide_ecran": "La Reliure est vide. Accroupi + clic droit pour y ranger les livres de l'Empire, le livre de quêtes ou le carnet d'Ars Nouveau.",
+ "airain.reliure.clic": "Clic : lire",
+ "airain.reliure.introuvable": "Aucune Reliure dans l'inventaire ni dans un sac porté.",
+ "airain.ingenieur.reliure.titre": "Reliure de l'ingénieur",
+ "airain.ingenieur.reliure.court": "Reliure",
+ "airain.ingenieur.reliure.histoire": "Un ingénieur de l'Empire ne voyageait jamais sans ses manuels. Il les sanglait ensemble, et la sangle portait son nom.",
+ "airain.ingenieur.reliure.usage": "Huit livres : Chroniques, registre, codex, ce manuel, livre de quêtes, carnet d'Ars Nouveau. Clic droit pour lire, accroupi + clic droit pour ranger, touche B depuis n'importe où. Rangée dans un sac, ses livres apparaissent en onglets à gauche du sac."
 }

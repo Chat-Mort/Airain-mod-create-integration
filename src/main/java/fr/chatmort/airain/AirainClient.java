@@ -22,6 +22,10 @@ public class AirainClient {
 		bus.addListener(this::setup);
 		bus.addListener(this::ecrans);
 		bus.addListener(fr.chatmort.airain.gardien.Loupe::touches);
+		bus.addListener(fr.chatmort.airain.reliure.LectureClient::touches);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.LectureClient::tick);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.Onglets::rendu);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.Onglets::clic);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::tick);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::champ);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
@@ -66,5 +70,6 @@ public class AirainClient {
 	private void ecrans(RegisterMenuScreensEvent event) {
 		event.register(AirainMod.TABLE_MENU.get(), TableEmpireScreen::new);
 		event.register(AirainMod.BANC_MENU.get(), fr.chatmort.airain.banc.BancScreen::new);
+		event.register(AirainMod.RELIURE_MENU.get(), fr.chatmort.airain.reliure.ReliureMenuScreen::new);
 	}
 }

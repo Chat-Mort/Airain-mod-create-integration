@@ -189,6 +189,12 @@ public class AirainMod {
 	/** Chroniques oubliées : le livre de l'aventure. */
 	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chroniques",
 		() -> new fr.chatmort.airain.chronique.ChroniquesItem(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
+	/** Reliure de l'ingénieur : huit livres sous la main, lisibles depuis le sac. */
+	public static final DeferredItem<Item> RELIURE = ITEMS.register("reliure",
+		() -> new fr.chatmort.airain.reliure.ReliureItem(new Item.Properties().stacksTo(1)
+			.component(net.minecraft.core.component.DataComponents.CONTAINER, net.minecraft.world.item.component.ItemContainerContents.EMPTY)));
+	public static final DeferredHolder<MenuType<?>, MenuType<fr.chatmort.airain.reliure.ReliureMenu>> RELIURE_MENU = MENUS.register("reliure",
+		() -> IMenuTypeExtension.create(fr.chatmort.airain.reliure.ReliureMenu::new));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
@@ -236,6 +242,10 @@ public class AirainMod {
 				fr.chatmort.airain.fondation.ConfigurerFondation::traiter)
 			.playToClient(fr.chatmort.airain.fondation.TitreFondation.TYPE, fr.chatmort.airain.fondation.TitreFondation.CODEC,
 				(m, ctx) -> fr.chatmort.airain.fondation.HudFondation.recevoir(m, ctx))
+			.playToServer(fr.chatmort.airain.reliure.Paquets.Lire.TYPE, fr.chatmort.airain.reliure.Paquets.Lire.CODEC, fr.chatmort.airain.reliure.Paquets.Lire::traiter)
+			.playToServer(fr.chatmort.airain.reliure.Paquets.Chercher.TYPE, fr.chatmort.airain.reliure.Paquets.Chercher.CODEC, fr.chatmort.airain.reliure.Paquets.Chercher::traiter)
+			.playToClient(fr.chatmort.airain.reliure.Paquets.Ouvrir.TYPE, fr.chatmort.airain.reliure.Paquets.Ouvrir.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.reliure(m)))
 			.playToClient(fr.chatmort.airain.chronique.OuvrirChroniques.TYPE, fr.chatmort.airain.chronique.OuvrirChroniques.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.chroniques(m)))
 			.playToClient(fr.chatmort.airain.codex.OuvrirCodex.TYPE, fr.chatmort.airain.codex.OuvrirCodex.CODEC,
