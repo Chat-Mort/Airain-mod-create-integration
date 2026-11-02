@@ -92,12 +92,7 @@ public class GardienEntity extends IronGolem {
 		return (e instanceof Enemy && !(e instanceof Creeper)) || e.getType().is(CIBLES) || e.getTags().contains("airain_vague");
 	}
 
-	// ---- en panne : immobile, sans IA
-	@Override
-	protected void serverAiStep() {
-		if (!enPanne()) super.serverAiStep();
-	}
-
+	// ---- en panne : immobile, sans IA (un mob immobile ne fait pas tourner ses objectifs)
 	@Override
 	public boolean isImmobile() { return enPanne() || super.isImmobile(); }
 

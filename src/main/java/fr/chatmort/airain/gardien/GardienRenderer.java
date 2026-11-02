@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.animal.IronGolem;
 
 /** Golem de laiton au vert-de-gris ; en panne, il est assis, tête basse, couvert de mousse. */
 public class GardienRenderer extends MobRenderer<GardienEntity, GardienRenderer.Modele> {
@@ -79,9 +78,8 @@ public class GardienRenderer extends MobRenderer<GardienEntity, GardienRenderer.
 		@Override
 		public void render(PoseStack pose, MultiBufferSource tampon, int lumiere, GardienEntity e, float pas, float ampleur, float pt, float age, float lacet, float tangage) {
 			if (e.isInvisible()) return;
-			IronGolem.Crackiness c = e.getCrackiness();
-			if (c == IronGolem.Crackiness.NONE) return;
-			String n = switch (c) { case LOW -> "low"; case MEDIUM -> "medium"; default -> "high"; };
+			String n = e.getCrackiness().name().toLowerCase(java.util.Locale.ROOT);
+			if (n.equals("none")) return;
 			renderColoredCutoutModel(getParentModel(), ResourceLocation.withDefaultNamespace("textures/entity/iron_golem/iron_golem_crackiness_" + n + ".png"),
 				pose, tampon, lumiere, e, -1);
 		}
