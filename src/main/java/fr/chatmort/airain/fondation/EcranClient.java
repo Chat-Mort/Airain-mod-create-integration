@@ -11,6 +11,10 @@ public final class EcranClient {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.codex.CodexScreen(m));
 	}
 
+	public static void chroniques(fr.chatmort.airain.chronique.OuvrirChroniques m) {
+		Minecraft.getInstance().setScreen(new fr.chatmort.airain.chronique.ChroniquesScreen(m.donnees()));
+	}
+
 	public static void registre(OuvrirRegistre m) {
 		Minecraft.getInstance().setScreen(new RegistreScreen(m));
 	}

@@ -76,6 +76,7 @@ public final class Codex {
 			p.displayClientMessage(Component.translatable(n == 1 ? "airain.codex.nouvelle" : "airain.codex.note",
 				ev.getEntity().getType().getDescription()).withStyle(net.minecraft.ChatFormatting.GOLD), true);
 		if (n == 1) emblemes(p, c, v, e.force);
+		if (e.boss) fr.chatmort.airain.chronique.Chronique.boss(p, ev.getEntity());
 	}
 
 	/** Toutes les pages d'une force ouvertes : son emblème, une seule fois. */

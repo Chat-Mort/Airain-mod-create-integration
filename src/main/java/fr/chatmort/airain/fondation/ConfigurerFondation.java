@@ -31,6 +31,12 @@ public record ConfigurerFondation(BlockPos pos, String nom, String devise, int a
 					&& !GrandEtendardBlock.changerHauteur(p.level(), m.pos(), f.hauteur(), m.hauteur()))
 					p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.etendard.pas_de_place")
 						.withStyle(net.minecraft.ChatFormatting.RED), true);
+				String avant = FondationRegistre.de(p.server).par(FondationRegistre.cle(p.level().dimension().location(), m.pos())) instanceof FondationRegistre.Fondation fo ? fo.nom() : "";
+				if (!n.isEmpty() && !n.equals(avant) && !Apparence.unpack(m.apparence(), m.ext()).estMasque()) {
+					fr.chatmort.airain.chronique.Chronique.auteur(p);
+					fr.chatmort.airain.chronique.Chronique.noter(p.server, avant.isEmpty() ? "airain.chronique.j.fondation" : "airain.chronique.j.renomme",
+						p.getGameProfile().getName(), n.length() <= 32 ? n : n.substring(0, 32));
+				}
 				f.configurer(n.length() <= 32 ? n : n.substring(0, 32), d.length() <= 48 ? d : d.substring(0, 48), Apparence.unpack(m.apparence(), m.ext()));
 			}
 		});

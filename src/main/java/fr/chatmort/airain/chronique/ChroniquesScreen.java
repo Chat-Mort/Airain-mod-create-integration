@@ -1,0 +1,249 @@
+package fr.chatmort.airain.chronique;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mojang.blaze3d.systems.RenderSystem;
+
+import fr.chatmort.airain.gui.WidgetsEmpire;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.BookViewScreen;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
+
+/**
+ * Les Chroniques oubliées, au style du registre : page de garde et sommaire, « Où en étions-nous ? »,
+ * le récit, le journal de bord et les archives (un clic rouvre l'écrit).
+ */
+public class ChroniquesScreen extends Screen {
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
+	private static final int W = 300, LARGE = 118, LIGNES = 13;
+	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, BLEU = 0x28507A;
+
+	/** Une ligne de page : texte, couleur, et éventuellement un écrit à rouvrir ou une page où sauter. */
+	private record Ligne(FormattedCharSequence texte, int couleur, ItemStack ecrit, int saut, boolean centre) {}
+
+	private final List<List<Ligne>> pages = new ArrayList<>();
+	private final int[] sections = new int[4];
+	private final CompoundTag d;
+	private int planche;
+
+	public ChroniquesScreen(CompoundTag donnees) {
+		super(Component.translatable("item.airain.chroniques"));
+		this.d = donnees;
+	}
+
+	private int bx() { return (width - W) / 2; }
+	private int by() { return (height - 196) / 2; }
+
+	// ---- mise en page
+	private List<Ligne> page;
+
+	private void nouvellePage() { page = new ArrayList<>(); pages.add(page); }
+
+	private void ligne(Ligne l) {
+		if (page == null || page.size() >= LIGNES) nouvellePage();
+		page.add(l);
+	}
+
+	private void texte(Component t, int c) { for (FormattedCharSequence s : font.split(t, LARGE)) ligne(new Ligne(s, c, null, -1, false)); }
+
+	private void vide() { if (page != null && !page.isEmpty() && page.size() < LIGNES) page.add(new Ligne(FormattedCharSequence.EMPTY, 0, null, -1, false)); }
+
+	private void titre(Component t) {
+		nouvellePage();
+		ligne(new Ligne(t.copy().withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
+		vide();
+	}
+
+	private static Component arg(String a) { return a.startsWith("#") ? Component.translatable(a.substring(1)) : Component.literal(a); }
+
+	private void construire() {
+		pages.clear();
+		// page de garde
+		nouvellePage();
+		vide(); vide();
+		ligne(new Ligne(Component.translatable("item.airain.chroniques").withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
+		ligne(new Ligne(Component.translatable("airain.chronique.sous_titre").withStyle(ChatFormatting.ITALIC).getVisualOrderText(), SEPIA, null, -1, true));
+		vide(); vide();
+		List<String> auteurs = new ArrayList<>();
+		for (Tag t : d.getList("auteurs", Tag.TAG_STRING)) auteurs.add(t.getAsString());
+		if (!auteurs.isEmpty()) {
+			ligne(new Ligne(Component.translatable("airain.chronique.tenues").getVisualOrderText(), SEPIA, null, -1, true));
+			ligne(new Ligne(Component.literal(String.join(", ", auteurs)).getVisualOrderText(), ENCRE, null, -1, true));
+			vide();
+		}
+		ligne(new Ligne(Component.translatable("airain.chronique.jour", d.getInt("aujourdhui")).getVisualOrderText(), ENCRE, null, -1, true));
+		// sommaire (rempli plus bas, une fois les sections placées)
+		nouvellePage();
+		List<Ligne> sommaire = page;
+		// où en étions-nous
+		List<String> recit = new ArrayList<>();
+		for (Tag t : d.getList("recit", Tag.TAG_STRING)) recit.add(t.getAsString());
+		List<String> ordonne = new ArrayList<>();
+		for (String k : Chronique.RECIT) if (recit.contains(k)) ordonne.add(k);
+		titre(Component.translatable("airain.chronique.ou"));
+		sections[0] = pages.size() - 1;
+		ListTag2 journal = new ListTag2(d.getList("journal", Tag.TAG_COMPOUND));
+		String dernier = null;
+		for (String k : ordonne) if (!k.startsWith("echo_")) dernier = k;
+		if (dernier == null) texte(Component.translatable("airain.chronique.ou_vide"), SEPIA);
+		else {
+			texte(Component.translatable("airain.chronique.ou_chapitre").withStyle(ChatFormatting.BOLD), SEPIA);
+			texte(Component.translatable("airain.chronique.recit." + dernier + ".titre"), ENCRE);
+			vide();
+			texte(Component.translatable("airain.chronique.ou_suite").withStyle(ChatFormatting.BOLD), SEPIA);
+			texte(Component.translatable("airain.chronique.suite." + dernier), ENCRE);
+		}
+		if (journal.taille() > 0) {
+			vide();
+			texte(Component.translatable("airain.chronique.ou_dernier").withStyle(ChatFormatting.BOLD), SEPIA);
+			texte(entree(journal.get(journal.taille() - 1)), ENCRE);
+		}
+		// le récit
+		titre(Component.translatable("airain.chronique.recit"));
+		sections[1] = pages.size() - 1;
+		if (ordonne.isEmpty()) texte(Component.translatable("airain.chronique.recit_vide"), SEPIA);
+		for (String k : ordonne) {
+			texte(Component.translatable("airain.chronique.recit." + k + ".titre").withStyle(ChatFormatting.BOLD), ROUGE);
+			texte(Component.translatable("airain.chronique.recit." + k), ENCRE);
+			vide();
+		}
+		// le journal de bord
+		titre(Component.translatable("airain.chronique.journal"));
+		sections[2] = pages.size() - 1;
+		if (journal.taille() == 0) texte(Component.translatable("airain.chronique.journal_vide"), SEPIA);
+		int jourPrec = -1;
+		for (int i = 0; i < journal.taille(); i++) {
+			CompoundTag e = journal.get(i);
+			if (e.getInt("jour") != jourPrec) {
+				jourPrec = e.getInt("jour");
+				texte(Component.translatable("airain.chronique.jour", jourPrec).withStyle(ChatFormatting.BOLD), ROUGE);
+			}
+			texte(Component.literal("· ").append(entree(e)), ENCRE);
+		}
+		// les archives
+		titre(Component.translatable("airain.chronique.archives"));
+		sections[3] = pages.size() - 1;
+		var archives = d.getList("archives", Tag.TAG_COMPOUND);
+		if (archives.isEmpty()) texte(Component.translatable("airain.chronique.archives_vide"), SEPIA);
+		else texte(Component.translatable("airain.chronique.archives_aide").withStyle(ChatFormatting.ITALIC), SEPIA);
+		for (Tag t : archives) {
+			ItemStack s = minecraft != null && minecraft.level != null
+				? ItemStack.parseOptional(minecraft.level.registryAccess(), (CompoundTag) t) : ItemStack.EMPTY;
+			if (s.isEmpty()) continue;
+			var livre = s.get(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT);
+			String nom = livre != null ? livre.title().raw() : s.getHoverName().getString();
+			ligne(new Ligne(Component.literal("✎ " + nom).getVisualOrderText(), BLEU, s, -1, false));
+		}
+		// sommaire
+		sommaire.add(new Ligne(Component.translatable("airain.chronique.sommaire").withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
+		sommaire.add(new Ligne(FormattedCharSequence.EMPTY, 0, null, -1, false));
+		String[] noms = {"ou", "recit", "journal", "archives"};
+		for (int i = 0; i < 4; i++) {
+			sommaire.add(new Ligne(Component.literal((i + 1) + ". ").append(Component.translatable("airain.chronique." + noms[i])).getVisualOrderText(), ENCRE, null, sections[i], false));
+			sommaire.add(new Ligne(FormattedCharSequence.EMPTY, 0, null, -1, false));
+		}
+	}
+
+	private static Component entree(CompoundTag e) {
+		var a = e.getList("args", Tag.TAG_STRING);
+		Object[] args = new Object[a.size()];
+		for (int i = 0; i < a.size(); i++) args[i] = arg(a.getString(i));
+		return Component.translatable(e.getString("cle"), args);
+	}
+
+	/** Petit accès indexé à une liste NBT. */
+	private record ListTag2(net.minecraft.nbt.ListTag l) {
+		int taille() { return l.size(); }
+		CompoundTag get(int i) { return l.getCompound(i); }
+	}
+
+	@Override
+	protected void init() {
+		if (pages.isEmpty()) construire();
+		addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
+		addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
+	}
+
+	private int planches() { return (pages.size() + 1) / 2; }
+
+	private void aller(int n) {
+		n = Mth.clamp(n, 0, planches() - 1);
+		if (n != planche && minecraft != null) minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.BOOK_PAGE_TURN, 1f));
+		planche = n;
+	}
+
+	@Override
+	public boolean mouseScrolled(double mx, double my, double sx, double sy) { aller(planche + (sy > 0 ? -1 : 1)); return true; }
+
+	@Override
+	public boolean keyPressed(int key, int scan, int mods) {
+		if (key == 262 || key == 267) { aller(planche + 1); return true; }
+		if (key == 263 || key == 266) { aller(planche - 1); return true; }
+		return super.keyPressed(key, scan, mods);
+	}
+
+	private int px(int cote) { return cote == 0 ? bx() + 20 : bx() + 162; }
+
+	@Override
+	public boolean mouseClicked(double mx, double my, int b) {
+		for (int cote = 0; cote < 2; cote++) {
+			int k = planche * 2 + cote;
+			if (k >= pages.size()) continue;
+			List<Ligne> p = pages.get(k);
+			for (int i = 0; i < p.size(); i++) {
+				int x = px(cote), y = by() + 18 + i * 10;
+				if (mx < x || mx >= x + LARGE || my < y - 1 || my >= y + 9) continue;
+				Ligne l = p.get(i);
+				if (l.saut() >= 0) { aller(l.saut() / 2); return true; }
+				if (l.ecrit() != null && minecraft != null) {
+					BookViewScreen.BookAccess acces = BookViewScreen.BookAccess.fromItem(l.ecrit());
+					if (acces != null) { minecraft.setScreen(new BookViewScreen(acces)); return true; }
+				}
+			}
+		}
+		return super.mouseClicked(mx, my, b);
+	}
+
+	@Override
+	public void renderBackground(GuiGraphics g, int mx, int my, float pt) {
+		super.renderBackground(g, mx, my, pt);
+		RenderSystem.enableBlend();
+		g.blit(LIVRE, bx(), by(), 0, 0, W, 196, 512, 256);
+	}
+
+	@Override
+	public void render(GuiGraphics g, int mx, int my, float pt) {
+		super.render(g, mx, my, pt);
+		for (int cote = 0; cote < 2; cote++) {
+			int k = planche * 2 + cote;
+			if (k >= pages.size()) continue;
+			List<Ligne> p = pages.get(k);
+			for (int i = 0; i < p.size(); i++) {
+				Ligne l = p.get(i);
+				int x = px(cote), y = by() + 18 + i * 10;
+				boolean survol = (l.saut() >= 0 || l.ecrit() != null) && mx >= x && mx < x + LARGE && my >= y - 1 && my < y + 9;
+				int c = survol ? BLEU : l.couleur();
+				if (l.centre()) x += (LARGE - font.width(l.texte())) / 2;
+				g.drawString(font, l.texte(), x, y, c, false);
+				if (survol) g.fill(x, y + 9, x + font.width(l.texte()), y + 10, 0xFF000000 | BLEU);
+			}
+		}
+		String n = (planche + 1) + " / " + planches();
+		g.drawString(font, n, bx() + W / 2 - font.width(n) / 2, by() + 162, SEPIA, false);
+	}
+
+	@Override
+	public boolean isPauseScreen() { return false; }
+}

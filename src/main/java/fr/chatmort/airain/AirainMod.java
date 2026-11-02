@@ -186,6 +186,9 @@ public class AirainMod {
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 
+	/** Chroniques oubliées : le livre de l'aventure. */
+	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chroniques",
+		() -> new fr.chatmort.airain.chronique.ChroniquesItem(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
 	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
@@ -214,6 +217,8 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::experience);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.CouronneItem::enclume);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::dimension);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::vibration);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::apparition);
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
@@ -231,6 +236,8 @@ public class AirainMod {
 				fr.chatmort.airain.fondation.ConfigurerFondation::traiter)
 			.playToClient(fr.chatmort.airain.fondation.TitreFondation.TYPE, fr.chatmort.airain.fondation.TitreFondation.CODEC,
 				(m, ctx) -> fr.chatmort.airain.fondation.HudFondation.recevoir(m, ctx))
+			.playToClient(fr.chatmort.airain.chronique.OuvrirChroniques.TYPE, fr.chatmort.airain.chronique.OuvrirChroniques.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.chroniques(m)))
 			.playToClient(fr.chatmort.airain.codex.OuvrirCodex.TYPE, fr.chatmort.airain.codex.OuvrirCodex.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.codex(m)))
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
