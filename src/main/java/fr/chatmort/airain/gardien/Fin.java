@@ -60,9 +60,28 @@ public class Fin extends SavedData {
 						}
 						f.choix = v.equals("aucun") ? "" : v;
 						f.setDirty();
-						c.getSource().sendSuccess(() -> Component.translatable("airain.fin.enregistre", Component.translatable("airain.fin." + v)), true);
+						if (c.getSource().getEntity() instanceof ServerPlayer p && !v.equals("aucun")) recompenser(p, v);
+						else c.getSource().sendSuccess(() -> Component.translatable("airain.fin.enregistre", Component.translatable("airain.fin." + v)), true);
 						return 1;
 					}))));
+	}
+
+	/** Le livre d'épilogue (pages traduites) et, pour l'Empire, la couronne. */
+	private static void recompenser(ServerPlayer p, String v) {
+		java.util.List<net.minecraft.server.network.Filterable<Component>> pages = new java.util.ArrayList<>();
+		for (int i = 1; i <= 4; i++) pages.add(net.minecraft.server.network.Filterable.passThrough(Component.translatable("airain.epilogue." + v + ".p" + i)));
+		net.minecraft.world.item.ItemStack livre = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WRITTEN_BOOK);
+		livre.set(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT, new net.minecraft.world.item.component.WrittenBookContent(
+			net.minecraft.server.network.Filterable.passThrough(v.equals("empire") ? "L'Empire renaissant" : "Le dernier chant"), "Elias Vael", 0, pages, true));
+		livre.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, Component.translatable("airain.epilogue." + v + ".titre")
+			.withStyle(s -> s.withItalic(false).withColor(net.minecraft.ChatFormatting.GOLD)));
+		if (v.equals("empire")) p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(fr.chatmort.airain.AirainMod.COURONNE.get()));
+		p.getInventory().placeItemBackInInventory(livre);
+		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket(Component.translatable("airain.epilogue." + v + ".titre").withStyle(net.minecraft.ChatFormatting.GOLD)));
+		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket(Component.translatable("airain.fin." + v)));
+		p.level().playSound(null, p.blockPosition(), v.equals("empire") ? net.minecraft.sounds.SoundEvents.BEACON_ACTIVATE : net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_RESONATE,
+			net.minecraft.sounds.SoundSource.PLAYERS, 1f, v.equals("empire") ? 0.7f : 0.6f);
+		if (v.equals("echo")) p.sendSystemMessage(Component.translatable("airain.fin.benediction").withStyle(net.minecraft.ChatFormatting.DARK_AQUA));
 	}
 
 	static boolean couronne(LivingEntity e) {

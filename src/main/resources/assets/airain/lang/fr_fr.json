@@ -415,5 +415,16 @@
  "airain.ingenieur.gardien.titre": "Gardien d'airain",
  "airain.ingenieur.gardien.court": "Gardiens",
  "airain.ingenieur.gardien.histoire": "Les golems de garde de l'Empire. Quand le Cœur a faibli, ils se sont assis là où ils veillaient, et la mousse a fait le reste.",
- "airain.ingenieur.gardien.usage": "Réveil : clé de Create, avec 16 ferrailles, 4 huiles et 2 rouages brisés sur soi. Il garde la fondation où il se trouve (4 par base). Accroupi + clé : il vous suit ; clé sur un étendard : il y prend son poste. Une huile le soigne."
+ "airain.ingenieur.gardien.usage": "Réveil : clé de Create, avec 16 ferrailles, 4 huiles et 2 rouages brisés sur soi. Il garde la fondation où il se trouve (4 par base). Accroupi + clé : il vous suit ; clé sur un étendard : il y prend son poste. Une huile le soigne.",
+ "airain.epilogue.empire.titre": "L'Empire renaissant",
+ "airain.epilogue.empire.p1": "Le Cœur repart. D'abord un battement, puis un autre, régulier comme une horloge de gare.\n\nDans toutes les ruines, les automates relèvent la tête. Ils attendent un ordre. Le vôtre.",
+ "airain.epilogue.empire.p2": "Une voix monte des engrenages : celle d'Elias Vael.\n\n« Merci. Il faisait si froid. Je sens les machines, toutes, jusqu'au fond du Nether. Elles vous écoutent, maintenant. »",
+ "airain.epilogue.empire.p3": "Il ne sent pas qu'il brûle. Les autres âmes du Cœur non plus. Elles font tourner les rouages de votre empire, comme elles tournaient ceux de l'ancien.\n\nAu fond du Nether, l'Écho se tait. Il a perdu.",
+ "airain.epilogue.empire.p4": "Vos gardiens se redressent, plus droits qu'avant. Les cheminées fument de nouveau.\n\nL'Empire d'Airain n'est pas mort. Il a changé de maîtres.\n\n— Fin : L'Empire renaissant",
+ "airain.epilogue.echo.titre": "Le dernier chant",
+ "airain.epilogue.echo.p1": "Le diapason sonne contre le laiton. Une seule note, très pure.\n\nLe Cœur se fend. La lumière qui en sort n'a pas de chaleur : ce sont des âmes, des milliers, qui montent sans bruit.",
+ "airain.epilogue.echo.p2": "Une voix se détache du Chœur : celle d'Elias Vael.\n\n« Ada. Tu avais raison, depuis le début. Je te pardonne. Pardonne-moi. »\n\nPuis il rejoint les autres, et le chant s'éteint.",
+ "airain.epilogue.echo.p3": "Partout, les automates s'arrêtent au milieu d'un pas. Ils ne repartiront plus : il n'y a plus rien pour les faire tourner.\n\nDans l'End, les réfractaires sortent de leurs refuges et regardent le ciel.",
+ "airain.epilogue.echo.p4": "Il vous reste un peu de l'Écho : vous voyez dans le noir, vous tombez comme une plume, et le sculk ne vous entend plus.\n\nL'Empire d'Airain est fini. Les âmes sont libres.\n\n— Fin : Le dernier chant",
+ "airain.fin.benediction": "La bénédiction de l'Écho reste sur vous : vision dans le noir, chute légère, et le sculk ne vous entend plus. Les âmes sans repos ne reviendront pas."
 }

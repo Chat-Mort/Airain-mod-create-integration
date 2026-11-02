@@ -415,5 +415,16 @@
  "airain.ingenieur.gardien.titre": "Airain Guardian",
  "airain.ingenieur.gardien.court": "Guardians",
  "airain.ingenieur.gardien.histoire": "The Empire's watch golems. When the Heart faltered they sat down where they stood guard, and the moss did the rest.",
- "airain.ingenieur.gardien.usage": "Wake: Create wrench, with 16 scrap, 4 oil and 2 broken cogs on you. It guards the foundation it stands in (4 per base). Sneak + wrench: it follows you; wrench on a standard: it takes its post there. Oil heals it."
+ "airain.ingenieur.gardien.usage": "Wake: Create wrench, with 16 scrap, 4 oil and 2 broken cogs on you. It guards the foundation it stands in (4 per base). Sneak + wrench: it follows you; wrench on a standard: it takes its post there. Oil heals it.",
+ "airain.epilogue.empire.titre": "The Empire Reborn",
+ "airain.epilogue.empire.p1": "The Heart starts again. One beat, then another, steady as a station clock.\n\nIn every ruin, the automatons raise their heads. They are waiting for an order. Yours.",
+ "airain.epilogue.empire.p2": "A voice rises from the gears: Elias Vael's.\n\n\"Thank you. It was so cold. I can feel the machines, all of them, down to the depths of the Nether. They listen to you now.\"",
+ "airain.epilogue.empire.p3": "He does not feel himself burning. Nor do the other souls in the Heart. They turn the gears of your empire, as they turned those of the old one.\n\nDeep in the Nether, the Echo falls silent. It has lost.",
+ "airain.epilogue.empire.p4": "Your guardians rise, standing taller than before. The chimneys smoke again.\n\nThe Airain Empire is not dead. It has changed masters.\n\n— Ending: The Empire Reborn",
+ "airain.epilogue.echo.titre": "The Last Song",
+ "airain.epilogue.echo.p1": "The tuning fork rings against the brass. A single note, very pure.\n\nThe Heart cracks. The light pouring out has no warmth: souls, thousands of them, rising without a sound.",
+ "airain.epilogue.echo.p2": "One voice breaks from the Choir: Elias Vael's.\n\n\"Ada. You were right, from the start. I forgive you. Forgive me.\"\n\nThen he joins the others, and the song fades.",
+ "airain.epilogue.echo.p3": "Everywhere, the automatons stop mid-step. They will never move again: nothing is left to drive them.\n\nIn the End, the Refractories leave their shelters and look up at the sky.",
+ "airain.epilogue.echo.p4": "A little of the Echo stays with you: you see in the dark, you fall like a feather, and the sculk no longer hears you.\n\nThe Airain Empire is over. The souls are free.\n\n— Ending: The Last Song",
+ "airain.fin.benediction": "The Echo's blessing stays with you: sight in the dark, a gentle fall, and the sculk no longer hears you. The restless souls will not return."
 }
