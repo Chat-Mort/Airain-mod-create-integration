@@ -109,6 +109,8 @@ public class SocleBlockEntity extends BlockEntity {
 				case HATE -> new DustParticleOptions(new Vector3f(1f, 0.82f, 0.3f), 0.7f);
 				case FORCE -> new DustParticleOptions(new Vector3f(0.85f, 0.15f, 0.12f), 0.8f);
 				case CHUTE -> ParticleTypes.WHITE_ASH;
+				case ABSORPTION -> new DustParticleOptions(new Vector3f(1f, 0.85f, 0.25f), 0.8f);
+				case SATIETE -> r.nextInt(3) == 0 ? ParticleTypes.HAPPY_VILLAGER : null;
 			};
 			if (p == null) continue;
 			double a = r.nextDouble() * Math.PI * 2, d = 0.25 + r.nextDouble() * 0.15;

@@ -1024,5 +1024,19 @@
  "airain.ingenieur.armure_arcanique.usage2": "Le Nimbe de la Haute-Prêtresse garde les dons du diadème (le Warden vous ignore, sonar renforcé) et vous fait voler.",
  "airain.ingenieur.armes_runiques.usage2": "Twinblade : chaque coup frappe une seconde fois (25 %) et fait luire la cible. Pioche, Écholocation : accroupi + clic droit, les minerais à 8 blocs luisent à travers la roche.",
  "airain.ingenieur.armes_arcaniques.usage2": "Jumelles d'Écho : second coup (50 %), la cible luit ; clic droit, tourbillon. Sonde arcanique : les minerais à 16 blocs luisent.",
- "airain.ingenieur.solium.usage2": "Âmes : expérience doublée (triplée avec la bénédiction de l'Écho). Croissance : dans les bases, les plantes poussent trois fois plus vite. Résonance : les sourcelinks d'Ars Nouveau produisent le double."
+ "airain.ingenieur.solium.usage2": "Âmes : expérience doublée (triplée avec la bénédiction de l'Écho). Croissance : dans les bases, les plantes poussent trois fois plus vite. Résonance : les sourcelinks d'Ars Nouveau produisent le double.",
+ "item.airain.rivet_colosse": "Rivet du Colosse",
+ "item.airain.rivet_colosse.l1": "Arraché au Ferrous Wroughtnaut.",
+ "item.airain.coeur_magma": "Cœur de magma",
+ "item.airain.coeur_magma.l1": "Il battait dans le Monstre de netherite.",
+ "item.airain.engrenage_rodeur": "Engrenage du Rôdeur",
+ "item.airain.engrenage_rodeur.l1": "L'œil du Rôdeur tourne encore.",
+ "item.airain.oeil_gardien": "Œil du Gardien",
+ "item.airain.oeil_gardien.l1": "Le regard du Gardien de l'End.",
+ "item.airain.sceau_centurion": "Sceau du Centurion",
+ "item.airain.sceau_centurion.l1": "Frappé aux armes du Centurion nain.",
+ "airain.trophee.effet.absorption": "Absorption (cœurs dorés qui se reforment)",
+ "airain.trophee.effet.satiete": "Satiété (plus de faim)",
+ "airain.trophee.sur_socle": "Sur un socle : %s",
+ "airain.trophee.obtenu": "Trophée obtenu : %s. Exposez-le sur un socle."
 }

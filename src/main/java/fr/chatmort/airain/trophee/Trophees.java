@@ -32,6 +32,8 @@ public final class Trophees {
 		RESISTANCE("resistance", MobEffects.DAMAGE_RESISTANCE),
 		HATE("hate", MobEffects.DIG_SPEED),
 		FORCE("force", MobEffects.DAMAGE_BOOST),
+		ABSORPTION("absorption", null),     // cœurs dorés qui se reforment (géré à part)
+		SATIETE("satiete", MobEffects.SATURATION),
 		CHUTE("chute", null);           // pas de dégâts de chute (géré à part)
 
 		public final TagKey<Item> tag;
@@ -97,11 +99,45 @@ public final class Trophees {
 
 	/** Feu sacré : les flammes s'éteignent dès la sortie de la lave ; vision sacrée : ni cécité ni obscurité. */
 	public static void joueur(net.neoforged.neoforge.event.tick.PlayerTickEvent.Post e) {
-		if (!(e.getEntity() instanceof ServerPlayer p) || sacres.isEmpty()) return;
+		if (!(e.getEntity() instanceof ServerPlayer p)) return;
+		absorption(p);
+		if (sacres.isEmpty()) return;
 		if (sacres.contains(Effet.FEU) && p.isOnFire() && !p.isInLava()) p.clearFire();
 		if (sacres.contains(Effet.VISION) && p.tickCount % 5 == 0) {
 			if (p.hasEffect(net.minecraft.world.effect.MobEffects.BLINDNESS)) p.removeEffect(net.minecraft.world.effect.MobEffects.BLINDNESS);
 			if (p.hasEffect(net.minecraft.world.effect.MobEffects.DARKNESS)) p.removeEffect(net.minecraft.world.effect.MobEffects.DARKNESS);
+		}
+	}
+
+	/** Absorption : jusqu'à 4 cœurs dorés (8 si sacré), un demi-cœur se reforme toutes les 5 s. */
+	private static final ResourceLocation BOUCLIER = ResourceLocation.fromNamespaceAndPath("airain", "trophee_absorption");
+	private static void absorption(ServerPlayer p) {
+		var max = p.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_ABSORPTION);
+		if (max == null) return;
+		boolean actif = actifs.contains(Effet.ABSORPTION);
+		double v = actif ? (sacres.contains(Effet.ABSORPTION) ? 16 : 8) : 0;
+		var mod = max.getModifier(BOUCLIER);
+		if (mod == null || mod.amount() != v) {
+			max.removeModifier(BOUCLIER);
+			if (v > 0) max.addTransientModifier(new net.minecraft.world.entity.ai.attributes.AttributeModifier(BOUCLIER, v,
+				net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE));
+		}
+		if (actif && p.tickCount % 100 == 0 && p.getAbsorptionAmount() < p.getMaxAbsorption())
+			p.setAbsorptionAmount(Math.min(p.getMaxAbsorption(), p.getAbsorptionAmount() + 1f));
+	}
+
+	/** Les boss avancés laissent leur trophée à chaque joueur présent (64 blocs), sinon au sol. */
+	public static void boss(net.neoforged.neoforge.event.entity.living.LivingDeathEvent e) {
+		var mort = e.getEntity();
+		if (!(mort.level() instanceof net.minecraft.server.level.ServerLevel sl)) return;
+		var item = fr.chatmort.airain.AirainMod.TROPHEES_BOSS.get(BuiltInRegistries.ENTITY_TYPE.getKey(mort.getType()).toString());
+		if (item == null) return;
+		var joueurs = sl.getEntitiesOfClass(ServerPlayer.class, mort.getBoundingBox().inflate(64), p -> !p.isSpectator());
+		if (joueurs.isEmpty()) { mort.spawnAtLocation(new ItemStack(item.get())); return; }
+		for (ServerPlayer p : joueurs) {
+			ItemStack t = new ItemStack(item.get());
+			if (!p.getInventory().add(t)) p.drop(t, false);
+			p.sendSystemMessage(net.minecraft.network.chat.Component.translatable("airain.trophee.obtenu", t.getHoverName()).withStyle(net.minecraft.ChatFormatting.GOLD));
 		}
 	}
 
