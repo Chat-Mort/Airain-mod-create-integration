@@ -55,11 +55,13 @@ public final class WidgetsEmpire {
 			int bas = y + 22 + (s ? 4 : 0);
 			int corps = s ? 0xFFD8383A : 0xFFBE2224, ombre = s ? 0xFFA01C1E : 0xFF8E1418;
 			int clair = s ? 0xFFEC6A6C : 0xFFD24446;
-			g.fill(x, y + 2, x + 9, bas - 4, corps);             // le ruban
-			g.fill(x, bas - 4, x + 3, bas, corps);               // queue fourchue : deux pointes et une encoche en V
-			g.fill(x + 6, bas - 4, x + 9, bas, corps);
-			g.fill(x + 3, bas - 4, x + 6, bas - 3, corps);
-			g.fill(x + 4, bas - 3, x + 5, bas - 2, corps);
+			g.fill(x, y + 2, x + 9, bas - 5, corps);             // le ruban
+			int[] encoche = {-1, 0, 0, 1, 2};                    // queue fourchue : encoche en V sur les 5 dernières lignes
+			for (int r = 0; r < 5; r++) {
+				int h = encoche[r], yy = bas - 5 + r;
+				if (h < 0) g.fill(x, yy, x + 9, yy + 1, corps);
+				else { g.fill(x, yy, x + 4 - h, yy + 1, corps); g.fill(x + 5 + h, yy, x + 9, yy + 1, corps); }
+			}
 			g.fill(x, y + 2, x + 2, bas, ombre);                 // pli à gauche, reflet à droite
 			g.fill(x + 7, y + 2, x + 8, bas, clair);
 			g.fill(x - 1, y, x + 10, y + 3, 0xFF7A5420);         // agrafe de laiton
