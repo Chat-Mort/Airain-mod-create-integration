@@ -287,8 +287,11 @@ public class AirainMod {
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_RUNIQUE =
 		MATERIAUX.register("runique", () -> materiauArmure("runique", 3, 9, 7, 3, 3.5f, 0.15f));
 	public static final DeferredItem<Item> DIADEME = ITEMS.register("diademe_echo",
-		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_DIADEME, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_DIADEME, false, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))));
+	public static final DeferredItem<Item> CASQUE_DIADEME = ITEMS.register("casque_diademe",
+		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_CASQUE, true, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 	public static final DeferredItem<Item> LINGOT_ARCANIUM = ITEMS.register("lingot_arcanium",
 		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)));
 	public static final DeferredBlock<net.minecraft.world.level.block.Block> BLOC_ECHO = BLOCKS.register("bloc_echo_primordial",
@@ -411,6 +414,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::experience);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.CouronneItem::enclume);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.DiademeItem::enclume);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::dimension);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.tableau.Tableaux::connexion);

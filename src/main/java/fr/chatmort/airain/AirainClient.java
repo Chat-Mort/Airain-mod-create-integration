@@ -33,6 +33,8 @@ public class AirainClient {
 			  e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE_CASQUE, fr.chatmort.airain.gardien.CouronneModele::creerCasque);
 			  e.registerLayerDefinition(fr.chatmort.airain.gardien.ModulesCouche.COUCHE, fr.chatmort.airain.gardien.ModulesCouche::creer);
 			  e.registerLayerDefinition(fr.chatmort.airain.armure.DiademeModele.COUCHE, fr.chatmort.airain.armure.DiademeModele::creer);
+			  for (int i = 0; i < 3; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.CoiffesModele.COUCHES[k], () -> fr.chatmort.airain.armure.CoiffesModele.creer(k)); }
+			  e.registerLayerDefinition(fr.chatmort.airain.armure.CoiffesModele.HALO, fr.chatmort.airain.armure.CoiffesModele::creerHalo);
 			  for (int i = 0; i < 4; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.ArcaniqueModele.COUCHES[k], () -> fr.chatmort.airain.armure.ArcaniqueModele.creer(k)); }
 			  for (int i = 0; i < 4; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.ImperialeModele.COUCHES[k], () -> fr.chatmort.airain.armure.ImperialeModele.creer(k)); } });
 		bus.addListener((net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent e) ->
@@ -40,13 +42,20 @@ public class AirainClient {
 			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION_CASQUE, AirainMod.CASQUE_COURONNE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(0), AirainMod.CASQUE_IMPERIAL.get());
 			  e.registerItem(fr.chatmort.airain.armure.DiademeModele.EXTENSION, AirainMod.DIADEME.get());
-			  e.registerItem(fr.chatmort.airain.armure.ArcaniqueModele.extension(0), AirainMod.CASQUE_ARCANIQUE.get());
+			  e.registerItem(fr.chatmort.airain.armure.CoiffesModele.extension(0), AirainMod.CASQUE_DIADEME.get());
+			  e.registerItem(fr.chatmort.airain.armure.CoiffesModele.extension(1), AirainMod.CASQUE_RUNIQUE.get());
+			  e.registerItem(fr.chatmort.airain.armure.CoiffesModele.extension(2), AirainMod.CASQUE_ARCANIQUE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ArcaniqueModele.extension(1), AirainMod.PLASTRON_ARCANIQUE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ArcaniqueModele.extension(2), AirainMod.JAMBIERES_ARCANIQUES.get());
 			  e.registerItem(fr.chatmort.airain.armure.ArcaniqueModele.extension(3), AirainMod.BOTTES_ARCANIQUES.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(1), AirainMod.PLASTRON_IMPERIAL.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(2), AirainMod.JAMBIERES_IMPERIALES.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(3), AirainMod.BOTTES_IMPERIALES.get()); });
+		bus.addListener((EntityRenderersEvent.AddLayers e) -> {
+			for (var m : e.getSkins())
+				if (e.getSkin(m) instanceof net.minecraft.client.renderer.entity.player.PlayerRenderer r)
+					r.addLayer(new fr.chatmort.airain.armure.CoiffesHalo(r, e.getEntityModels()));
+		});
 		bus.addListener((net.neoforged.neoforge.client.event.RegisterGuiLayersEvent e) -> e.registerAboveAll(
 			net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "fondation"), fr.chatmort.airain.fondation.HudFondation::rendre));
 		bus.addListener((net.neoforged.neoforge.client.event.RegisterGuiLayersEvent e) -> e.registerAboveAll(

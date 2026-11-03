@@ -25,13 +25,10 @@
   },
   {
    "item": "minecraft:diamond_block"
-  },
-  {
-   "item": "airain:diademe_echo"
   }
  ],
  "reagent": {
-  "item": "minecraft:netherite_helmet"
+  "item": "airain:casque_diademe"
  },
  "result": {
   "count": 1,

@@ -822,5 +822,8 @@
  "airain.sceptre.echo.l2": "Clic droit : onde sonique droit devant (16 blocs, 10 dégâts, recharge 3 s).",
  "airain.armure.vol": "Portée : vous pouvez voler.",
  "airain.morgana.note.titre": "Note de Morgana",
- "airain.morgana.note.p1": "À celui qui libérera le Chœur,\n\nce diadème était le mien. Il n'a jamais été une couronne : il sert à écouter, pas à commander.\n\nTu as fait ce que je n'ai pas su faire. Ils sont libres, et le silence qu'ils laissent t'appartient.\n\nPorte-le mieux que moi.\n\n— Morgana Dalmont"
+ "airain.morgana.note.p1": "À celui qui libérera le Chœur,\n\nce diadème était le mien. Il n'a jamais été une couronne : il sert à écouter, pas à commander.\n\nTu as fait ce que je n'ai pas su faire. Ils sont libres, et le silence qu'ils laissent t'appartient.\n\nPorte-le mieux que moi.\n\n— Morgana Dalmont",
+ "item.airain.casque_diademe": "Casque au diadème",
+ "item.airain.casque_diademe.separer": "Accroupi + clic droit : détacher le diadème.",
+ "item.airain.diademe_echo.enclume": "À l'enclume, sur un casque de netherite : casque au diadème."
 }

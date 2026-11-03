@@ -822,5 +822,8 @@
  "airain.sceptre.echo.l2": "Right-click: sonic wave straight ahead (16 blocks, 10 damage, 3 s cooldown).",
  "airain.armure.vol": "Worn: you can fly.",
  "airain.morgana.note.titre": "Morgana's Note",
- "airain.morgana.note.p1": "To the one who will free the Choir,\n\nthis diadem was mine. It was never a crown: it is for listening, not for commanding.\n\nYou did what I could not. They are free, and the silence they leave behind is yours.\n\nWear it better than I did.\n\n— Morgana Dalmont"
+ "airain.morgana.note.p1": "To the one who will free the Choir,\n\nthis diadem was mine. It was never a crown: it is for listening, not for commanding.\n\nYou did what I could not. They are free, and the silence they leave behind is yours.\n\nWear it better than I did.\n\n— Morgana Dalmont",
+ "item.airain.casque_diademe": "Diadem Helmet",
+ "item.airain.casque_diademe.separer": "Sneak + right-click: detach the diadem.",
+ "item.airain.diademe_echo.enclume": "In an anvil, on a netherite helmet: diadem helmet."
 }
