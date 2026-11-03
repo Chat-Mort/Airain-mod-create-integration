@@ -86,11 +86,13 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 		ms.pushPose();
 		ms.scale(1 / 16f, 1 / 16f, 1 / 16f);
 		int garn = Apparence.ORNEMENTS[a.garniture()], vel = Apparence.FONDS[a.velours()];
-		VertexConsumer socle = buffers.getBuffer(RenderType.entityCutoutNoCull(rl(MATERIAUX[a.materiau()][0])));
-		VertexConsumer colonne = buffers.getBuffer(RenderType.entityCutoutNoCull(rl(MATERIAUX[a.materiau()][1])));
-		VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(GARNITURE));
-		VertexConsumer velours = buffers.getBuffer(RenderType.entityCutoutNoCull(
-			rl("airain:textures/block/socle_velours_" + (a.losange() ? "losange" : "simple") + ".png")));
+		// Types de rendu (et non des VertexConsumer) : avec le BufferSource immédiat de l'écran, chaque getBuffer
+		// d'un autre type clôt les précédents — on demande donc le tampon au moment de dessiner.
+		RenderType tSocle = RenderType.entityCutoutNoCull(rl(MATERIAUX[a.materiau()][0]));
+		RenderType tColonne = RenderType.entityCutoutNoCull(rl(MATERIAUX[a.materiau()][1]));
+		RenderType tOr = RenderType.entityCutoutNoCull(GARNITURE);
+		RenderType tVelours = RenderType.entityCutoutNoCull(
+			rl("airain:textures/block/socle_velours_" + (a.losange() ? "losange" : "simple") + ".png"));
 		boolean haute = a.haute();
 		for (float[] e : ELEMENTS) {
 			float y0 = e[1], y1 = e[4];
@@ -99,7 +101,7 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 				else if (y0 >= 9.4f) { y0 += 16; y1 += 16; }
 			}
 			int m = (int) e[6];
-			VertexConsumer vc = m == 0 ? socle : m == 1 ? colonne : m == 2 ? or : velours;
+			VertexConsumer vc = buffers.getBuffer(m == 0 ? tSocle : m == 1 ? tColonne : m == 2 ? tOr : tVelours);
 			int c = m == 2 ? garn : m == 3 ? vel : 0xFFFFFF;
 			boite(ms, vc, e[0], y0, e[2], e[3], y1, e[5], c, light);
 		}
@@ -111,14 +113,14 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 		// plaque gravée sur la colonne
 		if (a.avecPlaque()) {
 			float py = haute ? 13.5f : 5.5f;
-			boite(ms, or, 4.4f, py, 3.3f, 11.6f, py + 3.6f, 3.5f, garn, light);
+			boite(ms, buffers.getBuffer(tOr), 4.4f, py, 3.3f, 11.6f, py + 3.6f, 3.5f, garn, light);
 			boite(ms, buffers.getBuffer(RenderType.entityCutoutNoCull(NOIR)), 4.8f, py + 0.4f, 3.2f, 11.2f, py + 3.2f, 3.3f, 0x2A2420, light);
 		}
 		// chevalet
 		if (a.presentation() == 2 && !trophee.isEmpty()) {
-			boite(ms, or, 4.5f, haut, 9.2f, 5.5f, haut + 9, 10.2f, garn, light);
-			boite(ms, or, 10.5f, haut, 9.2f, 11.5f, haut + 9, 10.2f, garn, light);
-			boite(ms, or, 4.5f, haut + 1.8f, 7.6f, 11.5f, haut + 2.6f, 10.2f, garn, light);   // tablette
+			boite(ms, buffers.getBuffer(tOr), 4.5f, haut, 9.2f, 5.5f, haut + 9, 10.2f, garn, light);
+			boite(ms, buffers.getBuffer(tOr), 10.5f, haut, 9.2f, 11.5f, haut + 9, 10.2f, garn, light);
+			boite(ms, buffers.getBuffer(tOr), 4.5f, haut + 1.8f, 7.6f, 11.5f, haut + 2.6f, 10.2f, garn, light);   // tablette
 		}
 		// halo lumineux sous le trophée
 		if (a.eclaire()) {
@@ -127,8 +129,8 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 		}
 		// cloche de verre : anneau, dôme en gradins, bouton
 		if (a.presentation() == 3) {
-			boite(ms, or, 2.3f, haut, 2.3f, 13.7f, haut + 0.7f, 13.7f, garn, light);
-			boite(ms, or, 7.2f, haut + 13.5f, 7.2f, 8.8f, haut + 15f, 8.8f, garn, light);
+			boite(ms, buffers.getBuffer(tOr), 2.3f, haut, 2.3f, 13.7f, haut + 0.7f, 13.7f, garn, light);
+			boite(ms, buffers.getBuffer(tOr), 7.2f, haut + 13.5f, 7.2f, 8.8f, haut + 15f, 8.8f, garn, light);
 			VertexConsumer v = buffers.getBuffer(RenderType.entityTranslucent(VERRE));
 			float[][] gradins = {{5.4f, 0.7f, 9f}, {4.7f, 9f, 11f}, {3.5f, 11f, 12.5f}, {2f, 12.5f, 13.5f}};
 			for (int k = 0; k < gradins.length; k++) {
