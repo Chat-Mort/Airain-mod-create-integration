@@ -56,15 +56,7 @@ public class AirainMod {
 			.title(Component.translatable("itemGroup.airain.empire"))
 			.icon(() -> new net.minecraft.world.item.ItemStack(AirainMod.FONDATION_ITEM.get()))
 			.displayItems((params, sortie) -> {
-				for (var h : ITEMS.getEntries()) {
-					sortie.accept(h.get());
-					if (h.getId().getPath().equals("casque_couronne")) {      // la couronne sacrée (casque couronné consacré), visible dans JEI
-						var sacree = new net.minecraft.world.item.ItemStack(h.get());
-						fr.chatmort.airain.Sacre.marquer(sacree, true);
-						sacree.set(net.minecraft.core.component.DataComponents.RARITY, net.minecraft.world.item.Rarity.RARE);
-						sortie.accept(sacree);
-					}
-				}
+				for (var h : ITEMS.getEntries()) sortie.accept(h.get());
 				for (var e : net.minecraft.core.registries.BuiltInRegistries.ITEM.entrySet())
 					if (e.getKey().location().getNamespace().equals("kubejs")) sortie.accept(e.getValue());
 			}).build());
@@ -189,6 +181,14 @@ public class AirainMod {
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_COURONNE, false, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))));
+	public static final DeferredRegister<net.minecraft.world.item.crafting.RecipeSerializer<?>> SERIALISEURS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, ID);
+	public static final DeferredHolder<net.minecraft.world.item.crafting.RecipeSerializer<?>, net.minecraft.world.item.crafting.RecipeSerializer<Monture>> MONTURE =
+		SERIALISEURS.register("monture", () -> Monture.SERIALISEUR);
+	/** Couronne sacrée : le casque couronné consacré par une plaque sacrée (objet à part, pour JEI/EMI). */
+	public static final DeferredItem<Item> CASQUE_COURONNE_SACREE = ITEMS.register("casque_couronne_sacree",
+		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_CASQUE, true, new Item.Properties()
+			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
+			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 	public static final DeferredItem<Item> CASQUE_COURONNE = ITEMS.register("casque_couronne",
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_CASQUE, true, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
@@ -428,6 +428,7 @@ public class AirainMod {
 		BLOCK_ENTITIES.register(bus);
 		MENUS.register(bus);
 		ENTITES.register(bus);
+		SERIALISEURS.register(bus);
 		MATERIAUX.register(bus);
 		bus.addListener((net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent e) ->
 			e.put(GARDIEN.get(), net.minecraft.world.entity.animal.IronGolem.createAttributes().build()));

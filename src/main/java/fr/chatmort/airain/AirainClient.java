@@ -42,7 +42,7 @@ public class AirainClient {
 			  for (int i = 0; i < 4; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.ImperialeModele.COUCHES[k], () -> fr.chatmort.airain.armure.ImperialeModele.creer(k)); } });
 		bus.addListener((net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent e) ->
 			{ e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION, AirainMod.COURONNE.get());
-			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION_CASQUE, AirainMod.CASQUE_COURONNE.get());
+			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION_CASQUE, AirainMod.CASQUE_COURONNE.get(), AirainMod.CASQUE_COURONNE_SACREE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(0), AirainMod.CASQUE_IMPERIAL.get());
 			  e.registerItem(fr.chatmort.airain.armure.DiademeModele.EXTENSION, AirainMod.DIADEME.get());
 			  e.registerItem(fr.chatmort.airain.armure.CoiffesModele.extension(0), AirainMod.CASQUE_DIADEME.get());

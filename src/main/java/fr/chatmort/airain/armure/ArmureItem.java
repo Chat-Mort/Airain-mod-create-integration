@@ -54,7 +54,7 @@ public class ArmureItem extends ArmorItem {
 	public static int palier(ItemStack s, Lignee l) {
 		if (s.getItem() instanceof ArmureItem a) return a.lignee == l ? a.palier : 0;
 		if (l != Lignee.EMPIRE) return 0;
-		if (s.getItem() instanceof fr.chatmort.airain.gardien.CouronneItem && s.is(fr.chatmort.airain.AirainMod.CASQUE_COURONNE.get())
+		if (s.getItem() instanceof fr.chatmort.airain.gardien.CouronneItem && (s.is(fr.chatmort.airain.AirainMod.CASQUE_COURONNE.get()) || s.is(fr.chatmort.airain.AirainMod.CASQUE_COURONNE_SACREE.get()))
 			&& fr.chatmort.airain.Sacre.sacree(s)) return 1;
 		return 0;
 	}

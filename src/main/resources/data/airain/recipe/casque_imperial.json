@@ -4,14 +4,7 @@
   "item": "minecraft:netherite_upgrade_smithing_template"
  },
  "base": {
-  "type": "neoforge:components",
-  "items": "airain:casque_couronne",
-  "components": {
-   "minecraft:custom_data": {
-    "airain_sacree": true
-   }
-  },
-  "strict": false
+  "item": "airain:casque_couronne_sacree"
  },
  "addition": {
   "item": "airain:plaque_imperiale"

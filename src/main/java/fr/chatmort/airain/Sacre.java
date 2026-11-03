@@ -22,6 +22,7 @@ public final class Sacre {
 	public static boolean plaque(ItemStack s) { return s.is(AirainMod.PLAQUE_SACREE.get()); }
 
 	public static boolean sacree(ItemStack s) {
+		if (s.is(AirainMod.CASQUE_COURONNE_SACREE.get())) return true;
 		CustomData d = s.get(DataComponents.CUSTOM_DATA);
 		return d != null && d.copyTag().getBoolean(CLE);
 	}

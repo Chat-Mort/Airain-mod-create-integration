@@ -56,7 +56,7 @@ public class CouronneItem extends ArmorItem {
 
 	@Override
 	public Component getName(ItemStack s) {
-		return fr.chatmort.airain.Sacre.sacree(s) ? Component.translatable(getDescriptionId() + "_sacree") : super.getName(s);
+		return fr.chatmort.airain.Sacre.sacree(s) && !s.is(AirainMod.CASQUE_COURONNE_SACREE.get()) ? Component.translatable(getDescriptionId() + "_sacree") : super.getName(s);
 	}
 
 	@Override
@@ -65,8 +65,13 @@ public class CouronneItem extends ArmorItem {
 	/** La couronne sacrée porte la rareté des pièces sacrées (nom en bleu), y compris pour celles forgées avant. */
 	@Override
 	public void inventoryTick(ItemStack s, Level level, net.minecraft.world.entity.Entity e, int slot, boolean main) {
-		if (!level.isClientSide && casque && fr.chatmort.airain.Sacre.sacree(s) && s.get(net.minecraft.core.component.DataComponents.RARITY) != net.minecraft.world.item.Rarity.RARE)
-			s.set(net.minecraft.core.component.DataComponents.RARITY, net.minecraft.world.item.Rarity.RARE);
+		// ancienne couronne sacrée (casque couronné marqué) : remplacée par l'objet « couronne sacrée »
+		if (level.isClientSide || !casque || s.is(AirainMod.CASQUE_COURONNE_SACREE.get()) || !fr.chatmort.airain.Sacre.sacree(s) || !(e instanceof Player p)) return;
+		ItemStack n = s.transmuteCopy(AirainMod.CASQUE_COURONNE_SACREE.get(), 1);
+		fr.chatmort.airain.Sacre.marquer(n, false);
+		n.remove(net.minecraft.core.component.DataComponents.RARITY);
+		var inv = p.getInventory();
+		for (int i = 0; i < inv.getContainerSize(); i++) if (inv.getItem(i) == s) { inv.setItem(i, n); return; }
 	}
 
 	/** Accroupi + clic droit avec le casque couronné : la couronne se détache, le casque de netherite garde ses enchantements. */
@@ -91,9 +96,9 @@ public class CouronneItem extends ArmorItem {
 	/** Enclume : casque de netherite à gauche, couronne à droite → casque couronné (enchantements, usure et nom conservés). */
 	public static void enclume(AnvilUpdateEvent e) {
 		if (!e.getLeft().is(Items.NETHERITE_HELMET) || !e.getRight().is(AirainMod.COURONNE.get())) return;
-		ItemStack sortie = new ItemStack(AirainMod.CASQUE_COURONNE.get());
+		ItemStack sortie = new ItemStack(fr.chatmort.airain.Sacre.sacree(e.getRight()) ? AirainMod.CASQUE_COURONNE_SACREE.get() : AirainMod.CASQUE_COURONNE.get());
 		sortie.applyComponents(e.getLeft().getComponentsPatch());
-		if (fr.chatmort.airain.Sacre.sacree(e.getRight())) fr.chatmort.airain.Sacre.marquer(sortie, true);
+
 		String nom = e.getName();
 		if (nom != null && !nom.isBlank() && !nom.equals(e.getLeft().getHoverName().getString()))
 			sortie.set(DataComponents.CUSTOM_NAME, Component.literal(nom));

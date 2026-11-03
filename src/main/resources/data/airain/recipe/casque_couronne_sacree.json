@@ -10,13 +10,7 @@
   "item": "airain:plaque_netherite_sacree"
  },
  "result": {
-  "id": "airain:casque_couronne",
-  "count": 1,
-  "components": {
-   "minecraft:custom_data": {
-    "airain_sacree": true
-   },
-   "minecraft:rarity": "rare"
-  }
+  "id": "airain:casque_couronne_sacree",
+  "count": 1
  }
 }
