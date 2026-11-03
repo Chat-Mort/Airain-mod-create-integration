@@ -28,6 +28,18 @@ jobs:
           ./gradlew build --stacktrace 2>&1 | tee build.log
           exit ${PIPESTATUS[0]}
 
+      # Vérifie que les cibles des mixins existent dans le jar de Create utilisé
+      - name: Vérifier les cibles des mixins
+        if: always()
+        run: |
+          J=$(find ~/.gradle/caches -name 'create-1.21.1-*slim*.jar' | head -1)
+          echo "jar: $J" > mixins.txt
+          mkdir -p /tmp/cj && cd /tmp/cj && unzip -oq "$J" 'com/simibubi/create/content/kinetics/millstone/MillstoneBlockEntity.class' 'com/simibubi/create/content/kinetics/crusher/CrushingWheelControllerBlockEntity.class' 'com/simibubi/create/content/kinetics/fan/AirCurrent.class' 'com/simibubi/create/content/kinetics/fan/processing/FanProcessing.class' || true
+          for c in millstone/MillstoneBlockEntity crusher/CrushingWheelControllerBlockEntity fan/AirCurrent fan/processing/FanProcessing; do
+            echo "== $c" >> $GITHUB_WORKSPACE/mixins.txt
+            javap -c -p com/simibubi/create/content/kinetics/$c.class | grep -E '^  [a-z].*\(|rollResults|FanProcessingType.process|applyProcessing' >> $GITHUB_WORKSPACE/mixins.txt || true
+          done
+
       # Le résultat (jar ou journal d'erreurs) est publié sur la branche « build »,
       # pour qu'on puisse le récupérer sans compte.
       - name: Publier le résultat sur la branche build
@@ -35,6 +47,7 @@ jobs:
         run: |
           mkdir -p /tmp/sortie && cd /tmp/sortie
           cp $GITHUB_WORKSPACE/build.log . || true
+          cp $GITHUB_WORKSPACE/mixins.txt . 2>/dev/null || true
           cp $GITHUB_WORKSPACE/build/libs/*.jar . 2>/dev/null || true
           echo "${{ github.sha }} ${{ steps.build.outcome }}" > ETAT.txt
           git init -q -b build
