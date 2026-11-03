@@ -22,6 +22,7 @@ public class PiocheItem extends PickaxeItem {
 
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
+		l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
 		l.add(Component.translatable("airain.arme.pioche.nom").withStyle(ChatFormatting.GOLD));
 		l.add(Component.translatable("airain.arme.pioche.effet", filon()).withStyle(ChatFormatting.GRAY));
 	}

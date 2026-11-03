@@ -49,6 +49,7 @@ public class ArmeItem extends SwordItem {
 
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
+		l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
 		String k = "airain.arme." + type.name().toLowerCase(java.util.Locale.ROOT);
 		l.add(Component.translatable(k + ".nom").withStyle(ChatFormatting.GOLD));
 		l.add(Component.translatable(k + ".effet" + palier).withStyle(ChatFormatting.GRAY));

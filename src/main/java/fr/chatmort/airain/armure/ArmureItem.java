@@ -24,6 +24,7 @@ public class ArmureItem extends ArmorItem {
 
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
+		l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
 		String k = palier == 2 ? "imperiale" : "sacree";
 		l.add(Component.translatable("airain.armure." + k + ".ensemble").withStyle(ChatFormatting.GOLD));
 		l.add(Component.translatable("airain.armure." + k + ".bonus").withStyle(ChatFormatting.GRAY));

@@ -19,9 +19,9 @@ public final class Armures {
 		return min;
 	}
 
-	/** Chaque fin réserve sa lignée : l'impériale ne sert que si l'Empire a été rallumé. */
+	/** Chaque fin réserve sa lignée : sacrée et impériale ne servent que si l'Empire a été rallumé. */
 	public static boolean autorise(net.minecraft.world.entity.player.Player p, int palier) {
-		if (palier < 2 || !(p.level() instanceof net.minecraft.server.level.ServerLevel sl)) return true;
+		if (palier < 1 || !(p.level() instanceof net.minecraft.server.level.ServerLevel sl)) return true;
 		return fr.chatmort.airain.gardien.Fin.de(sl.getServer()).empire();
 	}
 
