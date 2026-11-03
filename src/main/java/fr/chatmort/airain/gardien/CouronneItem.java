@@ -34,6 +34,13 @@ public class CouronneItem extends ArmorItem {
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
 		boolean sacree = fr.chatmort.airain.Sacre.sacree(s);
+		if (sacree && casque) {                                   // la couronne sacrée se présente comme les autres pièces sacrées
+			l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
+			l.add(Component.translatable("airain.armure.sacree.ensemble").withStyle(ChatFormatting.GOLD));
+			l.add(Component.translatable("airain.armure.sacree.bonus").withStyle(ChatFormatting.GRAY));
+			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GRAY));
+			return;
+		}
 		if (sacree) l.add(Component.translatable("item.airain.couronne_airain.sacree").withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.BOLD));
 		for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (sacree && i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
 		if (!(casque && fr.chatmort.airain.Sacre.sacree(s))) l.add(Component.translatable(casque ? "item.airain.casque_couronne.separer" : "item.airain.couronne_airain.enclume").withStyle(ChatFormatting.DARK_GRAY));
@@ -54,7 +61,14 @@ public class CouronneItem extends ArmorItem {
 	}
 
 	@Override
-	public boolean isFoil(ItemStack s) { return fr.chatmort.airain.Sacre.sacree(s) || super.isFoil(s); }
+	public boolean isFoil(ItemStack s) { return (!casque && fr.chatmort.airain.Sacre.sacree(s)) || super.isFoil(s); }
+
+	/** La couronne sacrée porte la rareté des pièces sacrées (nom en bleu), y compris pour celles forgées avant. */
+	@Override
+	public void inventoryTick(ItemStack s, Level level, net.minecraft.world.entity.Entity e, int slot, boolean main) {
+		if (!level.isClientSide && casque && fr.chatmort.airain.Sacre.sacree(s) && s.get(net.minecraft.core.component.DataComponents.RARITY) != net.minecraft.world.item.Rarity.RARE)
+			s.set(net.minecraft.core.component.DataComponents.RARITY, net.minecraft.world.item.Rarity.RARE);
+	}
 
 	/** Accroupi + clic droit avec le casque couronné : la couronne se détache, le casque de netherite garde ses enchantements. */
 	@Override

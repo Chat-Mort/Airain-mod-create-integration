@@ -15,7 +15,8 @@
   "components": {
    "minecraft:custom_data": {
     "airain_sacree": true
-   }
+   },
+   "minecraft:rarity": "rare"
   }
  }
 }

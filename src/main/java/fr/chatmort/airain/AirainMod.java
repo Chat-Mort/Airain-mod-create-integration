@@ -61,6 +61,7 @@ public class AirainMod {
 					if (h.getId().getPath().equals("casque_couronne")) {      // la couronne sacrée (casque couronné consacré), visible dans JEI
 						var sacree = new net.minecraft.world.item.ItemStack(h.get());
 						fr.chatmort.airain.Sacre.marquer(sacree, true);
+						sacree.set(net.minecraft.core.component.DataComponents.RARITY, net.minecraft.world.item.Rarity.RARE);
 						sortie.accept(sacree);
 					}
 				}
