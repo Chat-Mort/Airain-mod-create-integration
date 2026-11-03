@@ -32,11 +32,13 @@ public class AirainClient {
 			{ e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE, fr.chatmort.airain.gardien.CouronneModele::creer);
 			  e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE_CASQUE, fr.chatmort.airain.gardien.CouronneModele::creerCasque);
 			  e.registerLayerDefinition(fr.chatmort.airain.gardien.ModulesCouche.COUCHE, fr.chatmort.airain.gardien.ModulesCouche::creer);
+			  e.registerLayerDefinition(fr.chatmort.airain.armure.DiademeModele.COUCHE, fr.chatmort.airain.armure.DiademeModele::creer);
 			  for (int i = 0; i < 4; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.ImperialeModele.COUCHES[k], () -> fr.chatmort.airain.armure.ImperialeModele.creer(k)); } });
 		bus.addListener((net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent e) ->
 			{ e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION, AirainMod.COURONNE.get());
 			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION_CASQUE, AirainMod.CASQUE_COURONNE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(0), AirainMod.CASQUE_IMPERIAL.get());
+			  e.registerItem(fr.chatmort.airain.armure.DiademeModele.EXTENSION, AirainMod.DIADEME.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(1), AirainMod.PLASTRON_IMPERIAL.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(2), AirainMod.JAMBIERES_IMPERIALES.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(3), AirainMod.BOTTES_IMPERIALES.get()); });

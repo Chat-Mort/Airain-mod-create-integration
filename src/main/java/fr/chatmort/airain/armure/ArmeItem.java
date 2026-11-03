@@ -27,12 +27,18 @@ public class ArmeItem extends SwordItem {
 	public enum Type { EPEE, KATANA, ESPADON, TWINBLADE }
 	public final Type type;
 	public final int palier;
+	public final Lignee lignee;
 
-	public ArmeItem(Tier tier, Type type, int palier, Properties p) {
+	public ArmeItem(Tier tier, Type type, int palier, Properties p) { this(tier, type, palier, Lignee.EMPIRE, p); }
+
+	public ArmeItem(Tier tier, Type type, int palier, Lignee lignee, Properties p) {
 		super(tier, p);
 		this.type = type;
 		this.palier = palier;
+		this.lignee = lignee;
 	}
+
+	boolean echo() { return lignee == Lignee.ECHO; }
 
 	/** Dégâts et vitesse finaux, portée et recul ajoutés. */
 	public static ItemAttributeModifiers stats(double degats, double vitesse, double portee, double recul, double balayage) {
@@ -49,18 +55,21 @@ public class ArmeItem extends SwordItem {
 
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
-		l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
-		String k = "airain.arme." + type.name().toLowerCase(java.util.Locale.ROOT);
+		l.add(Component.translatable("airain.lignee." + lignee.cle()).withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
+		String k = "airain.arme." + type.name().toLowerCase(java.util.Locale.ROOT) + (echo() ? "_echo" : "");
 		l.add(Component.translatable(k + ".nom").withStyle(ChatFormatting.GOLD));
 		l.add(Component.translatable(k + ".effet" + palier).withStyle(ChatFormatting.GRAY));
-		if (type == Type.KATANA) l.add(Component.translatable("airain.arme.katana.souffle" + palier).withStyle(ChatFormatting.GRAY));
+		if (type == Type.KATANA && !echo()) l.add(Component.translatable("airain.arme.katana.souffle" + palier).withStyle(ChatFormatting.GRAY));
 	}
 
 	@Override
 	public boolean hurtEnemy(ItemStack s, LivingEntity cible, LivingEntity porteur) {
-		if (porteur instanceof ServerPlayer p && cible.level() instanceof ServerLevel sl && Armes.autorise(p, palier)) {
-			if (type == Type.EPEE) Armes.jugement(sl, p, cible, palier);
-			else if (type == Type.TWINBLADE) Armes.doubleCoup(p, cible, palier);
+		if (porteur instanceof ServerPlayer p && cible.level() instanceof ServerLevel sl && Armes.autorise(p, lignee)) {
+			if (type == Type.EPEE) { if (echo()) Armes.onde(sl, p, cible, palier); else Armes.jugement(sl, p, cible, palier); }
+			else if (type == Type.TWINBLADE) {
+				Armes.doubleCoup(p, cible, palier);
+				if (echo()) cible.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.GLOWING, 100, 0));
+			}
 		}
 		return super.hurtEnemy(s, cible, porteur);
 	}
@@ -70,7 +79,7 @@ public class ArmeItem extends SwordItem {
 	public InteractionResultHolder<ItemStack> use(Level level, Player p, InteractionHand main) {
 		ItemStack s = p.getItemInHand(main);
 		if (main != InteractionHand.MAIN_HAND) return InteractionResultHolder.pass(s);
-		if (!level.isClientSide && !Armes.autorise(p, palier)) return InteractionResultHolder.fail(s);
+		if (!level.isClientSide && !Armes.autorise(p, lignee)) return InteractionResultHolder.fail(s);
 		switch (type) {
 			case KATANA -> {
 				if (!level.isClientSide) Armes.iai((ServerPlayer) p, this, palier);
@@ -78,7 +87,7 @@ public class ArmeItem extends SwordItem {
 			}
 			case ESPADON -> { p.startUsingItem(main); return InteractionResultHolder.consume(s); }
 			case TWINBLADE -> {
-				if (palier < 2) return InteractionResultHolder.pass(s);
+				if (palier < 2 || echo()) return InteractionResultHolder.pass(s);
 				if (!level.isClientSide) Armes.tourbillon((ServerPlayer) p, this);
 				return InteractionResultHolder.sidedSuccess(s, level.isClientSide);
 			}

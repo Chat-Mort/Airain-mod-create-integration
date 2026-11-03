@@ -77,6 +77,7 @@ public class Fin extends SavedData {
 		livre.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, Component.translatable("airain.epilogue." + v + ".titre")
 			.withStyle(s -> s.withItalic(false).withColor(net.minecraft.ChatFormatting.GOLD)));
 		if (v.equals("empire")) p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(fr.chatmort.airain.AirainMod.COURONNE.get()));
+		if (v.equals("echo")) p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(fr.chatmort.airain.AirainMod.DIADEME.get()));
 		p.getInventory().placeItemBackInInventory(livre);
 		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket(Component.translatable("airain.epilogue." + v + ".titre").withStyle(net.minecraft.ChatFormatting.GOLD)));
 		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket(Component.translatable("airain.fin." + v)));
@@ -133,11 +134,13 @@ public class Fin extends SavedData {
 			p.displayClientMessage(Component.translatable("airain.fin.sonar_recharge", (RECHARGE.get(p.getUUID()) - maintenant + 19) / 20), true);
 			return;
 		}
-		RECHARGE.put(p.getUUID(), maintenant + SONAR_RECHARGE);
+		boolean diademe = fr.chatmort.airain.armure.ArmureItem.diademe(p.getItemBySlot(EquipmentSlot.HEAD));   // le diadème porte l'onde plus loin
+		int rayon = diademe ? 40 : SONAR_RAYON;
+		RECHARGE.put(p.getUUID(), maintenant + (diademe ? SONAR_RECHARGE / 2 : SONAR_RECHARGE));
 		ServerLevel sl = p.serverLevel();
 		int nb = 0;
-		for (LivingEntity c : sl.getEntitiesOfClass(LivingEntity.class, new AABB(p.blockPosition()).inflate(SONAR_RAYON),
-				c -> c != p && !(c instanceof net.minecraft.world.entity.decoration.ArmorStand) && c.distanceToSqr(p) <= SONAR_RAYON * SONAR_RAYON)) {
+		for (LivingEntity c : sl.getEntitiesOfClass(LivingEntity.class, new AABB(p.blockPosition()).inflate(rayon),
+				c -> c != p && !(c instanceof net.minecraft.world.entity.decoration.ArmorStand) && c.distanceToSqr(p) <= rayon * rayon)) {
 			c.addEffect(new MobEffectInstance(MobEffects.GLOWING, SONAR_DUREE, 0, true, false));
 			nb++;
 		}

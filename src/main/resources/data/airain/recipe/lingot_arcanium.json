@@ -1,0 +1,38 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": false,
+ "pedestalItems": [
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:lapis_lazuli"
+  },
+  {
+   "item": "minecraft:lapis_lazuli"
+  },
+  {
+   "item": "minecraft:lapis_lazuli"
+  },
+  {
+   "item": "minecraft:lapis_lazuli"
+  }
+ ],
+ "reagent": {
+  "item": "minecraft:diamond"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:lingot_arcanium"
+ },
+ "sourceCost": 1000
+}

@@ -47,11 +47,67 @@ public final class Armes {
 		return e instanceof Enemy || (e instanceof Mob m && m.getTarget() == p);
 	}
 
-	/** L'arme impériale ne livre ses pouvoirs qu'aux serviteurs de l'Empire. */
-	static boolean autorise(Player p, int palier) {
-		if (Armures.autorise(p, palier)) return true;
-		p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.lignee.refus_empire"), true);
+	/** Une arme de lignée ne livre ses pouvoirs qu'à ceux qui ont choisi sa fin. */
+	static boolean autorise(Player p, Lignee l) {
+		if (Armures.autorise(p, l)) return true;
+		p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.lignee.refus_" + l.cle()), true);
 		return false;
+	}
+
+	// ------------------------------------------------------------ épée de l'Écho : Onde sonique
+	static void onde(ServerLevel sl, ServerPlayer p, LivingEntity cible, int palier) {
+		var d = cible.getPersistentData();
+		long t = sl.getGameTime();
+		int n = (t - d.getLong("airain_onde_t") > 100 ? 0 : d.getInt("airain_onde")) + 1;
+		d.putLong("airain_onde_t", t);
+		if (n < (palier == 2 ? 4 : 5)) { d.putInt("airain_onde", n); return; }
+		d.putInt("airain_onde", 0);
+		Vec3 de = p.getEyePosition(), a = centre(cible), dir = a.subtract(de).normalize();
+		double portee = palier == 2 ? 12 : 6;
+		for (int i = 1; i <= (int) portee; i++) {
+			Vec3 q = de.add(dir.scale(i));
+			sl.sendParticles(ParticleTypes.SONIC_BOOM, q.x, q.y, q.z, 1, 0, 0, 0, 0);
+		}
+		// l'onde traverse : tout ce qui est sur la ligne est touché, armure ignorée
+		var boite = new net.minecraft.world.phys.AABB(de, de.add(dir.scale(portee))).inflate(1);
+		for (LivingEntity e : sl.getEntitiesOfClass(LivingEntity.class, boite, e -> ennemi(p, e) || e == cible)) {
+			Vec3 v = centre(e).subtract(de);
+			if (v.cross(dir).length() > 1.2) continue;
+			e.invulnerableTime = 0;
+			e.hurt(sl.damageSources().sonicBoom(p), palier == 2 ? 10f : 6f);
+		}
+		sl.playSound(null, p.blockPosition(), SoundEvents.WARDEN_SONIC_BOOM, SoundSource.PLAYERS, 0.8f, 1.3f);
+	}
+
+	// ------------------------------------------------------------ pioche de l'Écho : Écholocation
+	private record Reperes(ServerLevel sl, String tag, long fin) {}
+	private static final List<Reperes> REPERES = new ArrayList<>();
+
+	static void echolocation(ServerPlayer p, PiocheItem pioche) {
+		if (p.getCooldowns().isOnCooldown(pioche)) return;
+		ServerLevel sl = p.serverLevel();
+		int r = pioche.rayonEcho(), nb = 0;
+		String tag = "airain_eclo_" + p.getId() + "_" + sl.getGameTime();
+		BlockPos c = p.blockPosition();
+		for (BlockPos b : BlockPos.betweenClosed(c.offset(-r, -r, -r), c.offset(r, r, r))) {
+			if (nb >= 48) break;
+			BlockState s = sl.getBlockState(b);
+			if (!s.is(Tags.Blocks.ORES)) continue;
+			nb++;
+			String etat = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(s.getBlock()).toString();
+			sl.getServer().getCommands().performPrefixedCommand(sl.getServer().createCommandSourceStack().withLevel(sl).withSuppressedOutput().withPermission(4),
+				"summon minecraft:block_display " + b.getX() + " " + b.getY() + " " + b.getZ()
+					+ " {block_state:{Name:\"" + etat + "\"},Glowing:1b,glow_color_override:12492543,brightness:{sky:15,block:15},Tags:[\"" + tag + "\"]}");
+		}
+		REPERES.add(new Reperes(sl, tag, sl.getGameTime() + 100));
+		sl.playSound(null, p.blockPosition(), SoundEvents.WARDEN_HEARTBEAT, SoundSource.PLAYERS, 1f, 1.4f);
+		sl.playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 1f, 0.8f);
+		for (int i = 0; i < 32; i++) {
+			double a = i * Math.PI * 2 / 32;
+			sl.sendParticles(ParticleTypes.SCULK_SOUL, p.getX(), p.getY() + 0.3, p.getZ(), 0, Math.cos(a), 0.02, Math.sin(a), 0.3);
+		}
+		p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.arme.pioche_echo.trouve", nb), true);
+		p.getCooldowns().addCooldown(pioche, 100);
 	}
 
 	static float degats(Player p) { return (float) p.getAttributeValue(Attributes.ATTACK_DAMAGE); }
@@ -156,7 +212,9 @@ public final class Armes {
 			c.invulnerableTime = 0;
 			c.hurt(sl.damageSources().playerAttack(p), degats(p));
 			sl.sendParticles(ParticleTypes.CRIT, c.getX(), c.getY() + c.getBbHeight() * .6, c.getZ(), 8, .3, .3, .3, .2);
-			if (!c.isAlive() && arme.palier == 2) p.getCooldowns().removeCooldown(arme);    // achevé : on peut enchaîner
+			if (!c.isAlive() && arme.palier == 2 && !arme.echo()) p.getCooldowns().removeCooldown(arme);    // achevé : on peut enchaîner
+			if (arme.echo() && c.isAlive())                                                  // écho de lame : la ruée refrappe
+				COUPS.add(new Coup(p.getUUID(), c, degats(p) * (arme.palier == 2 ? 0.8f : 0.5f), sl.getGameTime() + 20));
 		}
 	}
 
@@ -193,12 +251,30 @@ public final class Armes {
 		sl.playSound(null, p.blockPosition(), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 0.8f, 0.6f);
 		sl.playSound(null, p.blockPosition(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.6f, 0.5f);
 		p.getCooldowns().addCooldown(arme, palier == 2 ? 100 : 140);
+		if (arme.echo()) {                                                      // résonance : une zone qui ralentit
+			var nuage = new net.minecraft.world.entity.AreaEffectCloud(sl, p.getX(), p.getY(), p.getZ());
+			nuage.setRadius((float) r - 1); nuage.setDuration(palier == 2 ? 120 : 80); nuage.setOwner(p);
+			nuage.setParticle(ParticleTypes.SCULK_SOUL); nuage.setWaitTime(0); nuage.setRadiusPerTick(0);
+			nuage.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, palier == 2 ? 2 : 1));
+			if (palier == 2) nuage.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0));
+			sl.addFreshEntity(nuage);
+		}
 		p.swing(net.minecraft.world.InteractionHand.MAIN_HAND, true);
 		p.getMainHandItem().hurtAndBreak(2, p, EquipmentSlot.MAINHAND);
 	}
 
 	// ------------------------------------------------------------ tick serveur : seconds coups de la twinblade
 	public static void tick(ServerTickEvent.Post e) {
+		if (!REPERES.isEmpty()) {
+			Iterator<Reperes> ir = REPERES.iterator();
+			while (ir.hasNext()) {
+				Reperes r = ir.next();
+				if (r.sl().getGameTime() < r.fin()) continue;
+				ir.remove();
+				r.sl().getServer().getCommands().performPrefixedCommand(r.sl().getServer().createCommandSourceStack().withLevel(r.sl()).withSuppressedOutput().withPermission(4),
+					"kill @e[type=minecraft:block_display,tag=" + r.tag() + "]");
+			}
+		}
 		if (COUPS.isEmpty()) return;
 		Iterator<Coup> it = COUPS.iterator();
 		while (it.hasNext()) {
@@ -222,8 +298,8 @@ public final class Armes {
 	public static void filon(BlockEvent.BreakEvent e) {
 		if (filonEnCours || !(e.getPlayer() instanceof ServerPlayer p) || !p.isShiftKeyDown()) return;
 		ItemStack outil = p.getMainHandItem();
-		if (!(outil.getItem() instanceof PiocheItem pioche) || !e.getState().is(Tags.Blocks.ORES)) return;
-		if (!autorise(p, pioche.palier)) return;
+		if (!(outil.getItem() instanceof PiocheItem pioche) || pioche.lignee != Lignee.EMPIRE || !e.getState().is(Tags.Blocks.ORES)) return;
+		if (!autorise(p, pioche.lignee)) return;
 		if (!(e.getLevel() instanceof ServerLevel sl)) return;
 		BlockState type = e.getState();
 		ArrayDeque<BlockPos> file = new ArrayDeque<>();

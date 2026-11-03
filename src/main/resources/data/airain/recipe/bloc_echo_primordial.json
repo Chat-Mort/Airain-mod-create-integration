@@ -1,0 +1,41 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": false,
+ "pedestalItems": [
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  }
+ ],
+ "reagent": {
+  "item": "kubejs:echo_primordial"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:bloc_echo_primordial"
+ },
+ "sourceCost": 3000
+}

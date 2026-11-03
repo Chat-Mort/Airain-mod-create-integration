@@ -1,0 +1,38 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": true,
+ "pedestalItems": [
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:diamond_block"
+  }
+ ],
+ "reagent": {
+  "item": "simplyswords:netherite_twinblade"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:twinblade_runique"
+ },
+ "sourceCost": 2500
+}

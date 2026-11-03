@@ -249,7 +249,44 @@ public class AirainMod {
 						net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE), net.minecraft.world.entity.EquipmentSlotGroup.MAINHAND))));
 	}
 	public static final DeferredItem<Item> PIOCHE_SACREE = pioche("pioche_sacree", 1, 1);
+	private static DeferredItem<Item> armeEcho(String nom, fr.chatmort.airain.armure.ArmeItem.Type type, int pal,
+			double degats, double vitesse, double portee, double recul, double balayage) {
+		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(TIER_SACRE, type, pal, fr.chatmort.airain.armure.Lignee.ECHO,
+			new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
+				.attributes(fr.chatmort.airain.armure.ArmeItem.stats(degats, vitesse, portee, recul, balayage))));
+	}
+	public static final DeferredItem<Item> EPEE_RUNIQUE = armeEcho("epee_runique", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 1, 10, 1.7, 0.5, 0, 0);
+	public static final DeferredItem<Item> KATANA_RUNIQUE = armeEcho("katana_runique", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
+	public static final DeferredItem<Item> ESPADON_RUNIQUE = armeEcho("espadon_runique", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
+	public static final DeferredItem<Item> TWINBLADE_RUNIQUE = armeEcho("twinblade_runique", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
+	public static final DeferredItem<Item> PIOCHE_RUNIQUE = ITEMS.register("pioche_runique", () -> new fr.chatmort.airain.armure.PiocheItem(TIER_SACRE, 1,
+		fr.chatmort.airain.armure.Lignee.ECHO, new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
+			.attributes(net.minecraft.world.item.PickaxeItem.createAttributes(TIER_SACRE, 6f, -2.8f))));
 	public static final DeferredItem<Item> PIOCHE_IMPERIALE = pioche("pioche_imperiale", 2, 2);
+
+	// ---------------------------------------------------------------- lignée de l'Écho (fin Écho) : diadème, matériaux, palier runique
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_DIADEME =
+		MATERIAUX.register("diademe", () -> materiau("diademe", 2, 0f, 0f, null));
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_RUNIQUE =
+		MATERIAUX.register("runique", () -> materiauArmure("runique", 3, 9, 7, 3, 3.5f, 0.15f));
+	public static final DeferredItem<Item> DIADEME = ITEMS.register("diademe_echo",
+		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_DIADEME, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))));
+	public static final DeferredItem<Item> LINGOT_ARCANIUM = ITEMS.register("lingot_arcanium",
+		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)));
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> BLOC_ECHO = BLOCKS.register("bloc_echo_primordial",
+		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
+			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST).lightLevel(s -> 12)));
+	public static final DeferredItem<BlockItem> BLOC_ECHO_ITEM = ITEMS.register("bloc_echo_primordial",
+		() -> new BlockItem(BLOC_ECHO.get(), new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	private static DeferredItem<Item> armureEcho(String nom, net.minecraft.world.item.ArmorItem.Type type, int pal) {
+		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmureItem(AIRAIN_RUNIQUE, type, pal, fr.chatmort.airain.armure.Lignee.ECHO,
+			new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE).durability(type.getDurability(45))));
+	}
+	public static final DeferredItem<Item> CASQUE_RUNIQUE = armureEcho("casque_runique", net.minecraft.world.item.ArmorItem.Type.HELMET, 1);
+	public static final DeferredItem<Item> PLASTRON_RUNIQUE = armureEcho("plastron_runique", net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 1);
+	public static final DeferredItem<Item> JAMBIERES_RUNIQUES = armureEcho("jambieres_runiques", net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 1);
+	public static final DeferredItem<Item> BOTTES_RUNIQUES = armureEcho("bottes_runiques", net.minecraft.world.item.ArmorItem.Type.BOOTS, 1);
 
 	/** Modules de gardien (niveaux 1 et 2) et plaque de netherite sacrée qui sert à les améliorer. */
 	public static final java.util.Map<String, DeferredItem<Item>> MODULES = new java.util.LinkedHashMap<>();
@@ -363,6 +400,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::joueur);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::cible);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::joueur);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::critique);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::tick);
