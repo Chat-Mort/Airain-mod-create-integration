@@ -19,5 +19,8 @@ public class TropheeItem extends Item {
 		l.add(Component.translatable("item.airain." + cle + ".l1").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
 		for (Trophees.Effet e : Trophees.effetsDe(s))
 			l.add(Component.translatable("airain.trophee.sur_socle", Component.translatable("airain.trophee.effet." + e.name().toLowerCase(java.util.Locale.ROOT))).withStyle(ChatFormatting.GOLD));
+		if (Trophees.grave(s))
+			for (Trophees.Effet e : Trophees.effetsDe(s))
+				l.add(Component.translatable("airain.trophee.gravure", Component.translatable("airain.trophee.gravure." + e.name().toLowerCase(java.util.Locale.ROOT))).withStyle(ChatFormatting.AQUA));
 	}
 }

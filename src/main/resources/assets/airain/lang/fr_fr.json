@@ -355,7 +355,7 @@
  "airain.ingenieur.registre.usage": "Clic droit : une page par base (bannière, devise, position, distance et flèche vers elle), puis les trophées exposés. Molette ou flèches pour tourner les pages.",
  "airain.ingenieur.socle.titre": "Socle de l'Empire",
  "airain.ingenieur.socle.histoire": "Les palais exposaient les trophées de leurs victoires. Leur gloire profitait à tous.",
- "airain.ingenieur.socle.usage": "Clic droit avec un trophée : son effet profite à toute l'équipe. Accroupi, main vide : matériau, velours, présentation, lumière, plaque gravée. Deux trophées identiques ne cumulent pas.",
+ "airain.ingenieur.socle.usage": "Clic droit avec un trophée : son effet profite à toute l'équipe. Accroupi, main vide : matériau, velours, présentation, lumière, plaque gravée. Deux trophées identiques ne cumulent pas. Gravure : clic droit avec 2 couronnes, le trophée gagne un second effet.",
  "airain.ingenieur.banc.titre": "Banc d'entretien",
  "airain.ingenieur.banc.histoire": "Les automates ne saignent pas : ils fuient. Leur huile répare ce que l'expérience réparait.",
  "airain.ingenieur.banc.usage": "Entraîné par un rouage. Main vide : l'écran. Objet, matériau, huile (1 000 mB par lingot). Les outils et armes réparés sortent affûtés 10 minutes (+10 %).",
@@ -1039,5 +1039,18 @@
  "airain.trophee.obtenu": "Trophée obtenu : %s. Exposez-le sur un socle.",
  "airain.ingenieur.socle.usage2": "Trophées : œuf de dragon (chute), crâne de wither squelette (feu), Cœur du Gardien des enfers (régénération), écho primordial (vision), Visière du Colosse (force), Cœur de magma (résistance), Engrenage du Rôdeur (célérité), Œil du Gardien (absorption), Sceau du Centurion (satiété).",
  "item.airain.visiere_colosse": "Visière du Colosse",
- "item.airain.visiere_colosse.l1": "Arrachée au heaume du Ferrous Wroughtnaut."
+ "item.airain.visiere_colosse.l1": "Arrachée au heaume du Ferrous Wroughtnaut.",
+ "airain.trophee.gravure": "Gravé : %s",
+ "airain.trophee.deja_grave": "Ce trophée est déjà gravé.",
+ "airain.trophee.prix_gravure": "La gravure coûte %s couronnes.",
+ "airain.trophee.grave_ok": "%s est gravé : son second effet s'éveille.",
+ "airain.trophee.gravure.feu": "vos coups enflamment",
+ "airain.trophee.gravure.regeneration": "+2 cœurs max",
+ "airain.trophee.gravure.vision": "les créatures hostiles à 16 blocs brillent",
+ "airain.trophee.gravure.chute": "saut amélioré",
+ "airain.trophee.gravure.force": "vos coups repoussent plus fort",
+ "airain.trophee.gravure.resistance": "épines (20 % renvoyés)",
+ "airain.trophee.gravure.hate": "vitesse de marche +10 %",
+ "airain.trophee.gravure.absorption": "cœurs dorés deux fois plus rapides",
+ "airain.trophee.gravure.satiete": "ni faim ni poison"
 }

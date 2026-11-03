@@ -57,6 +57,9 @@ public class SocleBlockEntity extends BlockEntity {
 		maj();
 	}
 
+	/** Gravure (payée en couronnes) : marquée sur le trophée lui-même, elle le suit d'un socle à l'autre. */
+	public void graver() { Trophees.marquerGrave(trophee); enregistrer(); maj(); }
+
 	public ItemStack reprendre() {
 		ItemStack p = trophee;
 		trophee = ItemStack.EMPTY;
@@ -79,7 +82,7 @@ public class SocleBlockEntity extends BlockEntity {
 
 	private void enregistrer() {
 		if (level instanceof ServerLevel sl && !trophee.isEmpty())
-			TropheeRegistre.de(sl.getServer()).poser(level, worldPosition, BuiltInRegistries.ITEM.getKey(trophee.getItem()), plaque, jour, sacre);
+			TropheeRegistre.de(sl.getServer()).poser(level, worldPosition, BuiltInRegistries.ITEM.getKey(trophee.getItem()), plaque, jour, sacre, Trophees.grave(trophee));
 	}
 
 	@Override

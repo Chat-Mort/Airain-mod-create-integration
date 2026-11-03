@@ -468,6 +468,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::boss);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::coups);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::joueur);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::cible);

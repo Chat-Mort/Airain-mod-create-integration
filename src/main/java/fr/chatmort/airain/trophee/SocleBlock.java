@@ -139,6 +139,10 @@ public class SocleBlock extends Block implements EntityBlock {
 			}
 			return ItemInteractionResult.sidedSuccess(level.isClientSide);
 		}
+		if (socle != null && !socle.trophee().isEmpty() && Trophees.couronnes(pile)) {     // gravure : 2 couronnes
+			if (!level.isClientSide) Trophees.payerGravure((ServerLevel) level, socle, joueur, pile);
+			return ItemInteractionResult.sidedSuccess(level.isClientSide);
+		}
 		if (socle == null || !socle.trophee().isEmpty())
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		if (!Trophees.estTrophee(pile)) {

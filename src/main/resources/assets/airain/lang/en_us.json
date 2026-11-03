@@ -355,7 +355,7 @@
  "airain.ingenieur.registre.usage": "Right-click: a page per base (banner, motto, position, distance and an arrow to it), then the displayed trophies. Scroll or arrows to turn pages.",
  "airain.ingenieur.socle.titre": "Empire Pedestal",
  "airain.ingenieur.socle.histoire": "Palaces displayed the trophies of their victories. Their glory served everyone.",
- "airain.ingenieur.socle.usage": "Right-click with a trophy: its effect benefits the whole team. Sneak, empty hand: material, velvet, display, light, engraved plaque. Identical trophies don't stack.",
+ "airain.ingenieur.socle.usage": "Right-click with a trophy: its effect benefits the whole team. Sneak, empty hand: material, velvet, display, light, engraved plaque. Identical trophies don't stack. Engraving: right-click with 2 crowns, the trophy gains a second effect.",
  "airain.ingenieur.banc.titre": "Maintenance Bench",
  "airain.ingenieur.banc.histoire": "Automatons don't bleed: they leak. Their oil mends what experience used to.",
  "airain.ingenieur.banc.usage": "Driven by a cogwheel. Empty hand: the screen. Item, material, oil (1,000 mB per ingot). Repaired tools and weapons come out sharpened for 10 minutes (+10%).",
@@ -1039,5 +1039,18 @@
  "airain.trophee.obtenu": "Trophy obtained: %s. Display it on a pedestal.",
  "airain.ingenieur.socle.usage2": "Trophies: dragon egg (fall), wither skeleton skull (fire), Infernal Guardian Core (regeneration), primordial echo (vision), Colossus Visor (strength), Magma Heart (resistance), Prowler's Gear (haste), Guardian's Eye (absorption), Centurion's Seal (satiety).",
  "item.airain.visiere_colosse": "Colossus Visor",
- "item.airain.visiere_colosse.l1": "Torn from the Ferrous Wroughtnaut's helm."
+ "item.airain.visiere_colosse.l1": "Torn from the Ferrous Wroughtnaut's helm.",
+ "airain.trophee.gravure": "Engraved: %s",
+ "airain.trophee.deja_grave": "This trophy is already engraved.",
+ "airain.trophee.prix_gravure": "Engraving costs %s crowns.",
+ "airain.trophee.grave_ok": "%s is engraved: its second effect awakens.",
+ "airain.trophee.gravure.feu": "your hits set enemies ablaze",
+ "airain.trophee.gravure.regeneration": "+2 max hearts",
+ "airain.trophee.gravure.vision": "hostile creatures within 16 blocks glow",
+ "airain.trophee.gravure.chute": "jump boost",
+ "airain.trophee.gravure.force": "your hits knock back harder",
+ "airain.trophee.gravure.resistance": "thorns (20% returned)",
+ "airain.trophee.gravure.hate": "walking speed +10%",
+ "airain.trophee.gravure.absorption": "golden hearts reform twice as fast",
+ "airain.trophee.gravure.satiete": "no hunger or poison"
 }

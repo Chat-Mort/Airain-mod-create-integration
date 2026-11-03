@@ -26,6 +26,9 @@ public final class HudSocle {
 		l.add(s.trophee().getHoverName());
 		for (Trophees.Effet e : Trophees.effetsDe(s.trophee()))
 			l.add(Component.translatable("airain.trophee.effet." + e.name().toLowerCase()));
+		if (Trophees.grave(s.trophee()))
+			for (Trophees.Effet e : Trophees.effetsDe(s.trophee()))
+				l.add(Component.translatable("airain.trophee.gravure", Component.translatable("airain.trophee.gravure." + e.name().toLowerCase())));
 		if (!s.plaque().isEmpty()) l.add(Component.translatable("airain.socle.grave", s.plaque(), s.jour()));
 		var f = mc.font;
 		int w = 0;

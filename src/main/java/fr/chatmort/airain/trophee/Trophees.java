@@ -54,6 +54,81 @@ public final class Trophees {
 		return !pile.isEmpty() && pile.is(TOUS);
 	}
 
+	// ------------------------------------------------------------------ gravure (2 couronnes)
+	public static final int PRIX_GRAVURE = 2;
+	private static final ResourceLocation COURONNE_PIECE = ResourceLocation.fromNamespaceAndPath("numismatics", "crown");
+
+	public static boolean grave(ItemStack s) {
+		var d = s.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+		return d != null && d.copyTag().getBoolean("airain_grave");
+	}
+
+	static void marquerGrave(ItemStack s) {
+		var t = s.getOrDefault(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.EMPTY).copyTag();
+		t.putBoolean("airain_grave", true);
+		s.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(t));
+	}
+
+	public static boolean couronnes(ItemStack s) { return BuiltInRegistries.ITEM.getKey(s.getItem()).equals(COURONNE_PIECE); }
+
+	static void payerGravure(net.minecraft.server.level.ServerLevel sl, SocleBlockEntity socle, net.minecraft.world.entity.player.Player p, ItemStack pile) {
+		if (grave(socle.trophee())) { p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.trophee.deja_grave"), true); return; }
+		if (!p.getAbilities().instabuild && pile.getCount() < PRIX_GRAVURE) {
+			p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.trophee.prix_gravure", PRIX_GRAVURE), true);
+			return;
+		}
+		if (!p.getAbilities().instabuild) pile.shrink(PRIX_GRAVURE);
+		socle.graver();
+		var b = socle.getBlockPos().above();
+		sl.playSound(null, b, net.minecraft.sounds.SoundEvents.SMITHING_TABLE_USE, net.minecraft.sounds.SoundSource.BLOCKS, 1f, 1.3f);
+		sl.playSound(null, b, net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_CHIME, net.minecraft.sounds.SoundSource.BLOCKS, 1f, 1.2f);
+		sl.sendParticles(net.minecraft.core.particles.ParticleTypes.WAX_OFF, b.getX() + 0.5, b.getY() + 0.6, b.getZ() + 0.5, 25, 0.35, 0.35, 0.35, 0.1);
+		p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.trophee.grave_ok", socle.trophee().getHoverName()), true);
+	}
+
+	/** Effets dont le trophée est gravé (calculés au tick du serveur). */
+	private static Set<Effet> graves = EnumSet.noneOf(Effet.class);
+	private static final ResourceLocation COEURS = ResourceLocation.fromNamespaceAndPath("airain", "gravure_coeurs");
+	private static final ResourceLocation RECUL = ResourceLocation.fromNamespaceAndPath("airain", "gravure_recul");
+	private static final ResourceLocation ALLURE = ResourceLocation.fromNamespaceAndPath("airain", "gravure_allure");
+
+	private static void modif(ServerPlayer p, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> at, ResourceLocation id, double v,
+			net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation op) {
+		var a = p.getAttribute(at);
+		if (a == null) return;
+		var m = a.getModifier(id);
+		if (m != null && m.amount() == v) return;
+		a.removeModifier(id);
+		if (v != 0) a.addTransientModifier(new net.minecraft.world.entity.ai.attributes.AttributeModifier(id, v, op));
+	}
+
+	/** Gravures : effets secondaires des trophées, toutes les 2 secondes. */
+	private static void gravures(ServerPlayer p) {
+		var OP = net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE;
+		modif(p, net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH, COEURS, graves.contains(Effet.REGENERATION) ? 4 : 0, OP);
+		modif(p, net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK, RECUL, graves.contains(Effet.FORCE) ? 1 : 0, OP);
+		modif(p, net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED, ALLURE, graves.contains(Effet.HATE) ? 0.1 : 0,
+			net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+		if (graves.contains(Effet.CHUTE)) p.addEffect(new MobEffectInstance(MobEffects.JUMP, 260, 0, true, false, true));
+		if (graves.contains(Effet.SATIETE)) {
+			if (p.hasEffect(MobEffects.HUNGER)) p.removeEffect(MobEffects.HUNGER);
+			if (p.hasEffect(MobEffects.POISON)) p.removeEffect(MobEffects.POISON);
+		}
+		if (graves.contains(Effet.VISION))
+			for (var m : p.level().getEntitiesOfClass(net.minecraft.world.entity.Mob.class, p.getBoundingBox().inflate(16), m -> m instanceof net.minecraft.world.entity.monster.Enemy))
+				m.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, true, false));
+	}
+
+	/** Feu gravé : vos coups enflamment ; Résistance gravée : épines (20 % des dégâts renvoyés). */
+	public static void coups(net.neoforged.neoforge.event.entity.living.LivingDamageEvent.Post e) {
+		if (graves.isEmpty()) return;
+		if (graves.contains(Effet.FEU) && e.getSource().getEntity() instanceof ServerPlayer p && e.getSource().getDirectEntity() == p && e.getEntity() != p)
+			e.getEntity().igniteForSeconds(4);
+		if (graves.contains(Effet.RESISTANCE) && e.getEntity() instanceof ServerPlayer p && e.getSource().getEntity() instanceof net.minecraft.world.entity.LivingEntity at
+				&& at != p && !e.getSource().is(net.minecraft.world.damagesource.DamageTypes.THORNS) && e.getNewDamage() > 0)
+			at.hurt(p.damageSources().thorns(p), Math.max(1f, e.getNewDamage() * 0.2f));
+	}
+
 	public static Set<Effet> effetsDe(ItemStack pile) {
 		Set<Effet> s = EnumSet.noneOf(Effet.class);
 		for (Effet e : Effet.values())
@@ -69,15 +144,18 @@ public final class Trophees {
 		TropheeRegistre reg = TropheeRegistre.de(serveur);
 		if (serveur.getTickCount() % 600 == 0)
 			reg.nettoyer(serveur);
-		Set<Effet> s = EnumSet.noneOf(Effet.class), sac = EnumSet.noneOf(Effet.class);
+		Set<Effet> s = EnumSet.noneOf(Effet.class), sac = EnumSet.noneOf(Effet.class), gr = EnumSet.noneOf(Effet.class);
 		for (TropheeRegistre.Entree en : reg.toutes()) {
 			Set<Effet> ef = effetsDe(new ItemStack(BuiltInRegistries.ITEM.get(en.objet())));
 			s.addAll(ef);
 			if (en.sacre()) sac.addAll(ef);
+			if (en.grave()) gr.addAll(ef);
 		}
 		actifs = s;
 		sacres = sac;
+		graves = gr;
 		for (ServerPlayer joueur : serveur.getPlayerList().getPlayers()) {
+			gravures(joueur);
 			for (Effet e : s)
 				if (e.effet != null)
 					joueur.addEffect(new MobEffectInstance(e.effet, 260, sac.contains(e) ? 1 : 0, true, false, true));
@@ -122,7 +200,7 @@ public final class Trophees {
 			if (v > 0) max.addTransientModifier(new net.minecraft.world.entity.ai.attributes.AttributeModifier(BOUCLIER, v,
 				net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE));
 		}
-		if (actif && p.tickCount % 100 == 0 && p.getAbsorptionAmount() < p.getMaxAbsorption())
+		if (actif && p.tickCount % (graves.contains(Effet.ABSORPTION) ? 50 : 100) == 0 && p.getAbsorptionAmount() < p.getMaxAbsorption())
 			p.setAbsorptionAmount(Math.min(p.getMaxAbsorption(), p.getAbsorptionAmount() + 1f));
 	}
 
