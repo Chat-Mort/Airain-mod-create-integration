@@ -6,13 +6,7 @@
    "item": "kubejs:echo_primordial"
   },
   {
-   "item": "kubejs:echo_primordial"
-  },
-  {
-   "item": "kubejs:echo_primordial"
-  },
-  {
-   "item": "kubejs:echo_primordial"
+   "item": "airain:lingot_arcanium"
   },
   {
    "item": "kubejs:echo_primordial"
@@ -21,17 +15,20 @@
    "item": "airain:lingot_arcanium"
   },
   {
-   "item": "airain:lingot_arcanium"
+   "item": "kubejs:echo_primordial"
   },
   {
    "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "kubejs:echo_primordial"
   },
   {
    "item": "airain:lingot_arcanium"
   }
  ],
  "reagent": {
-  "item": "kubejs:echo_primordial"
+  "item": "ars_nouveau:source_gem_block"
  },
  "result": {
   "count": 1,

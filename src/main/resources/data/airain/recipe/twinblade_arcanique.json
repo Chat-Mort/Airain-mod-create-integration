@@ -3,10 +3,7 @@
  "keepNbtOfReagent": true,
  "pedestalItems": [
   {
-   "item": "airain:bloc_echo_primordial"
-  },
-  {
-   "item": "airain:bloc_echo_primordial"
+   "item": "airain:lingot_arcanium"
   },
   {
    "item": "airain:bloc_echo_primordial"
@@ -18,7 +15,10 @@
    "item": "airain:lingot_arcanium"
   },
   {
-   "item": "airain:lingot_arcanium"
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
   }
  ],
  "reagent": {

@@ -6,15 +6,6 @@
    "item": "kubejs:echo_primordial"
   },
   {
-   "item": "kubejs:fragment_resonance"
-  },
-  {
-   "item": "kubejs:fragment_resonance"
-  },
-  {
-   "item": "kubejs:fragment_resonance"
-  },
-  {
    "item": "minecraft:echo_shard"
   },
   {
@@ -28,6 +19,15 @@
   },
   {
    "item": "minecraft:diamond_block"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
   }
  ],
  "reagent": {

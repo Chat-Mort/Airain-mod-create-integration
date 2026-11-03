@@ -49,6 +49,11 @@ public class CouronneItem extends ArmorItem {
 	}
 
 	@Override
+	public Component getName(ItemStack s) {
+		return fr.chatmort.airain.Sacre.sacree(s) ? Component.translatable(getDescriptionId() + "_sacree") : super.getName(s);
+	}
+
+	@Override
 	public boolean isFoil(ItemStack s) { return fr.chatmort.airain.Sacre.sacree(s) || super.isFoil(s); }
 
 	/** Accroupi + clic droit avec le casque couronné : la couronne se détache, le casque de netherite garde ses enchantements. */

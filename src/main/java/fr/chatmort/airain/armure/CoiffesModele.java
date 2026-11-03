@@ -35,7 +35,9 @@ public final class CoiffesModele {
 			case 1 -> CoiffesGeo.tiare(c);
 			default -> CoiffesGeo.nimbe(c);
 		}
-		mesh.getRoot().getChild("head").addOrReplaceChild("coiffe", c, PartPose.ZERO);
+		// la tête et le chapeau du modèle de base sont vidés : seule la coiffe est dessinée (sinon un cube cache le visage)
+		mesh.getRoot().addOrReplaceChild("head", CubeListBuilder.create(), PartPose.ZERO).addOrReplaceChild("coiffe", c, PartPose.ZERO);
+		mesh.getRoot().addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
 		return LayerDefinition.create(mesh, 64, 96);
 	}
 

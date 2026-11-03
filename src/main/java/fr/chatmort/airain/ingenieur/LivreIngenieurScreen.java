@@ -31,9 +31,10 @@ public class LivreIngenieurScreen extends Screen {
 		{"gabarit", "airain:gabarit_banniere"}, {"registre", "airain:registre_fondations"}, {"socle", "airain:socle_trophee"},
 		{"banc", "airain:banc_entretien"}, {"modules", "airain:meule_fine"}, {"table", "airain:table_enchantement"},
 		{"desenchanteur", "airain:desenchanteur"}, {"balise", "airain:balise_defense"}, {"codex", "airain:codex"}, {"gardien", "airain:gardien_spawn_egg"}, {"modules_gardien", "airain:module_lanterne"}, {"reliure", "airain:reliure"},
-		{"tableau", "airain:tableau_service"}, {"atlas", "airain:atlas"}, {"affiches", "airain:affiche_vierge"}};
-	/** Table des matières : 8 chapitres à gauche (sous l'introduction), le reste à droite ; icônes réduites, pas de 13 px. */
-	private static final int GAUCHE = 8, PAS = 13;
+		{"tableau", "airain:tableau_service"}, {"atlas", "airain:atlas"}, {"affiches", "airain:affiche_vierge"},
+		{"sacre", "airain:plaque_netherite_sacree"}, {"elite", "airain:plaque_imperiale"}, {"siege", "airain:trone_imperial"}};
+	/** Table des matières : 9 chapitres à gauche (sous l'introduction), le reste à droite ; icônes réduites, pas de 11 px. */
+	private static final int GAUCHE = 9, PAS = 11;
 	private int planche;
 	private WidgetsEmpire.Fleche avant, apres;
 	private WidgetsEmpire.Signet signet;
@@ -112,12 +113,12 @@ public class LivreIngenieurScreen extends Screen {
 				int[] l = ligne(i);
 				int x = l[0], yy = l[1];
 				g.pose().pushPose();                               // icône réduite (12 px), centrée sur la ligne
-				g.pose().translate(x, yy - 2.5f, 0);
-				g.pose().scale(0.75f, 0.75f, 1f);
+				g.pose().translate(x + 1, yy - 1.5f, 0);
+				g.pose().scale(0.62f, 0.62f, 1f);
 				g.renderItem(objet(i), 0, 0);
 				g.pose().popPose();
 				boolean survol = mx >= x && mx < x + LARGE && my >= yy - 2 && my < yy - 2 + PAS;
-				g.drawString(font, Component.translatable("airain.ingenieur." + CHAPITRES[i][0] + ".court"), x + 15, yy, survol ? BLEU : ENCRE, false);
+				g.drawString(font, Component.translatable("airain.ingenieur." + CHAPITRES[i][0] + ".court"), x + 13, yy, survol ? BLEU : ENCRE, false);
 			}
 		} else {
 			int i = planche - 1;

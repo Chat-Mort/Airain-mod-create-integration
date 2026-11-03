@@ -3,7 +3,10 @@
  "keepNbtOfReagent": false,
  "pedestalItems": [
   {
-   "item": "airain:lingot_arcanium"
+   "item": "minecraft:purple_wool"
+  },
+  {
+   "item": "minecraft:crying_obsidian"
   },
   {
    "item": "airain:lingot_arcanium"
@@ -12,19 +15,16 @@
    "item": "ars_nouveau:source_gem_block"
   },
   {
+   "item": "minecraft:purple_wool"
+  },
+  {
+   "item": "minecraft:crying_obsidian"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
    "item": "ars_nouveau:source_gem_block"
-  },
-  {
-   "item": "minecraft:purple_wool"
-  },
-  {
-   "item": "minecraft:purple_wool"
-  },
-  {
-   "item": "minecraft:crying_obsidian"
-  },
-  {
-   "item": "minecraft:crying_obsidian"
   }
  ],
  "reagent": {

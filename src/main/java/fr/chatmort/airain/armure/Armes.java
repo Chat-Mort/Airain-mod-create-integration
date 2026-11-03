@@ -164,7 +164,10 @@ public final class Armes {
 			e.invulnerableTime = 0;
 			e.hurt(sl.damageSources().playerAttack(p), degats(p) * 0.8f);
 			e.knockback(0.5, p.getX() - e.getX(), p.getZ() - e.getZ());
+			sl.sendParticles(arme.echo() ? ParticleTypes.SCULK_CHARGE_POP : ParticleTypes.CRIT, e.getX(), e.getY() + e.getBbHeight() * .6, e.getZ(), 10, .3, .3, .3, .2);
 		}
+		TOURBILLONS.add(new Tourbillon(sl, p.getUUID(), sl.getGameTime(), arme.echo()));
+		if (arme.echo()) sl.playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 1f, 1.5f);
 		for (int k = 0; k < 12; k++) {
 			double a = k * Math.PI / 6;
 			sl.sendParticles(ParticleTypes.SWEEP_ATTACK, p.getX() + Math.cos(a) * 2.2, p.getY() + 1, p.getZ() + Math.sin(a) * 2.2, 1, 0, 0, 0, 0);
@@ -251,20 +254,61 @@ public final class Armes {
 		sl.playSound(null, p.blockPosition(), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 0.8f, 0.6f);
 		sl.playSound(null, p.blockPosition(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.6f, 0.5f);
 		p.getCooldowns().addCooldown(arme, palier == 2 ? 100 : 140);
-		if (arme.echo()) {                                                      // résonance : une zone qui ralentit
-			var nuage = new net.minecraft.world.entity.AreaEffectCloud(sl, p.getX(), p.getY(), p.getZ());
-			nuage.setRadius((float) r - 1); nuage.setDuration(palier == 2 ? 120 : 80); nuage.setOwner(p);
-			nuage.setParticle(ParticleTypes.SCULK_SOUL); nuage.setWaitTime(0); nuage.setRadiusPerTick(0);
-			nuage.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, palier == 2 ? 2 : 1));
-			if (palier == 2) nuage.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0));
-			sl.addFreshEntity(nuage);
-		}
+		if (arme.echo())                                                        // résonance : une zone qui ralentit (les ennemis seulement)
+			ZONES.add(new Zone(sl, p.getUUID(), p.position(), r - 1, sl.getGameTime() + (palier == 2 ? 120 : 80), palier));
 		p.swing(net.minecraft.world.InteractionHand.MAIN_HAND, true);
 		p.getMainHandItem().hurtAndBreak(2, p, EquipmentSlot.MAINHAND);
 	}
 
+	private record Zone(ServerLevel sl, UUID joueur, Vec3 c, double r, long fin, int palier) {}
+	private static final List<Zone> ZONES = new ArrayList<>();
+	private record Tourbillon(ServerLevel sl, UUID joueur, long debut, boolean echo) {}
+	private static final List<Tourbillon> TOURBILLONS = new ArrayList<>();
+
+	private static void zones() {
+		Iterator<Zone> iz = ZONES.iterator();
+		while (iz.hasNext()) {
+			Zone z = iz.next();
+			long t = z.sl().getGameTime();
+			if (t >= z.fin()) { iz.remove(); continue; }
+			if (t % 4 == 0)
+				for (int k = 0; k < 6; k++) {
+					double a = z.sl().random.nextDouble() * Math.PI * 2, d = Math.sqrt(z.sl().random.nextDouble()) * z.r();
+					z.sl().sendParticles(ParticleTypes.SCULK_SOUL, z.c().x + Math.cos(a) * d, z.c().y + 0.2, z.c().z + Math.sin(a) * d, 1, 0, 0.05, 0, 0.01);
+				}
+			if (t % 10 != 0) continue;
+			Player p = z.sl().getPlayerByUUID(z.joueur());
+			for (LivingEntity e : z.sl().getEntitiesOfClass(LivingEntity.class, new net.minecraft.world.phys.AABB(z.c(), z.c()).inflate(z.r(), 2, z.r()),
+					e -> (p != null ? ennemi(p, e) : e instanceof net.minecraft.world.entity.monster.Enemy) && e.position().distanceTo(z.c()) <= z.r())) {
+				e.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, z.palier() == 2 ? 2 : 1));
+				if (z.palier() == 2) e.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30, 0));
+			}
+		}
+	}
+
+	/** Les lames du tourbillon tournent autour du joueur pendant une demi-seconde. */
+	private static void tourbillons() {
+		Iterator<Tourbillon> it = TOURBILLONS.iterator();
+		while (it.hasNext()) {
+			Tourbillon w = it.next();
+			long t = w.sl().getGameTime() - w.debut();
+			Player p = w.sl().getPlayerByUUID(w.joueur());
+			if (t > 10 || p == null) { it.remove(); continue; }
+			for (int lame = 0; lame < 2; lame++) {
+				double a = t * 0.75 + lame * Math.PI;
+				for (double r : new double[] {1.4, 2.4}) {
+					double x = p.getX() + Math.cos(a) * r, z = p.getZ() + Math.sin(a) * r;
+					w.sl().sendParticles(ParticleTypes.SWEEP_ATTACK, x, p.getY() + 0.9, z, 1, 0, 0, 0, 0);
+					w.sl().sendParticles(w.echo() ? ParticleTypes.SCULK_SOUL : ParticleTypes.ENCHANTED_HIT, x, p.getY() + 0.9, z, 2, 0.1, 0.1, 0.1, 0.02);
+				}
+			}
+		}
+	}
+
 	// ------------------------------------------------------------ tick serveur : seconds coups de la twinblade
 	public static void tick(ServerTickEvent.Post e) {
+		if (!ZONES.isEmpty()) zones();
+		if (!TOURBILLONS.isEmpty()) tourbillons();
 		if (!REPERES.isEmpty()) {
 			Iterator<Reperes> ir = REPERES.iterator();
 			while (ir.hasNext()) {
@@ -287,8 +331,12 @@ public final class Armes {
 			if (p == null) continue;
 			c.cible().invulnerableTime = 0;
 			c.cible().hurt(sl.damageSources().playerAttack(p), c.degats());
-			sl.sendParticles(ParticleTypes.SWEEP_ATTACK, c.cible().getX(), c.cible().getY() + c.cible().getBbHeight() * .6, c.cible().getZ(), 1, 0, 0, 0, 0);
+			double cy = c.cible().getY() + c.cible().getBbHeight() * .6;
+			sl.sendParticles(ParticleTypes.SWEEP_ATTACK, c.cible().getX(), cy, c.cible().getZ(), 1, 0, 0, 0, 0);
+			boolean echo = p.getMainHandItem().getItem() instanceof ArmeItem a && a.echo();
+			sl.sendParticles(echo ? ParticleTypes.SCULK_CHARGE_POP : ParticleTypes.ENCHANTED_HIT, c.cible().getX(), cy, c.cible().getZ(), 12, .35, .35, .35, .15);
 			sl.playSound(null, c.cible().blockPosition(), SoundEvents.PLAYER_ATTACK_STRONG, SoundSource.PLAYERS, 0.7f, 1.4f);
+			if (echo) sl.playSound(null, c.cible().blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 0.8f, 1.6f);
 		}
 	}
 

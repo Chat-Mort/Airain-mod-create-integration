@@ -56,7 +56,14 @@ public class AirainMod {
 			.title(Component.translatable("itemGroup.airain.empire"))
 			.icon(() -> new net.minecraft.world.item.ItemStack(AirainMod.FONDATION_ITEM.get()))
 			.displayItems((params, sortie) -> {
-				for (var h : ITEMS.getEntries()) sortie.accept(h.get());
+				for (var h : ITEMS.getEntries()) {
+					sortie.accept(h.get());
+					if (h.get() == COURONNE.get() || h.get() == CASQUE_COURONNE.get()) {      // versions sacrées (visibles dans JEI)
+						var sacree = new net.minecraft.world.item.ItemStack(h.get());
+						fr.chatmort.airain.Sacre.marquer(sacree, true);
+						sortie.accept(sacree);
+					}
+				}
 				for (var e : net.minecraft.core.registries.BuiltInRegistries.ITEM.entrySet())
 					if (e.getKey().location().getNamespace().equals("kubejs")) sortie.accept(e.getValue());
 			}).build());

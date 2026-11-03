@@ -39,7 +39,8 @@ public final class DiademeModele {
 		// petits cristaux
 		for (float[] k : new float[][] {{-4.7f, -2.5f}, {-4.7f, 1.5f}, {4.2f, -2.5f}, {4.2f, 1.5f}})
 			c.texOffs(u(VIOLET), v(VIOLET)).addBox(k[0], -8f, k[1], 0.5f, 1.4f, 1f);
-		r.getChild("head").addOrReplaceChild("diademe", c, PartPose.ZERO);
+		r.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.ZERO).addOrReplaceChild("diademe", c, PartPose.ZERO);
+		r.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
 		return LayerDefinition.create(mesh, 64, 64);
 	}
 
