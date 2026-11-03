@@ -87,7 +87,7 @@ public class ArmeItem extends SwordItem {
 			}
 			case ESPADON -> { p.startUsingItem(main); return InteractionResultHolder.consume(s); }
 			case TWINBLADE -> {
-				if (palier < 2 || echo()) return InteractionResultHolder.pass(s);
+				if (palier < 2) return InteractionResultHolder.pass(s);
 				if (!level.isClientSide) Armes.tourbillon((ServerPlayer) p, this);
 				return InteractionResultHolder.sidedSuccess(s, level.isClientSide);
 			}

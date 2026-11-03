@@ -259,6 +259,23 @@ public class AirainMod {
 	public static final DeferredItem<Item> KATANA_RUNIQUE = armeEcho("katana_runique", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
 	public static final DeferredItem<Item> ESPADON_RUNIQUE = armeEcho("espadon_runique", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
 	public static final DeferredItem<Item> TWINBLADE_RUNIQUE = armeEcho("twinblade_runique", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
+	private static DeferredItem<Item> armeArcanique(String nom, fr.chatmort.airain.armure.ArmeItem.Type type,
+			double degats, double vitesse, double portee, double recul, double balayage) {
+		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(TIER_IMPERIAL, type, 2, fr.chatmort.airain.armure.Lignee.ECHO,
+			new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+				.attributes(fr.chatmort.airain.armure.ArmeItem.stats(degats, vitesse, portee, recul, balayage))));
+	}
+	public static final DeferredItem<Item> EPEE_ARCANIQUE = armeArcanique("epee_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 13, 1.8, 1, 0, 0);
+	public static final DeferredItem<Item> KATANA_ARCANIQUE = armeArcanique("katana_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 12, 2.3, 1, 0, 0);
+	public static final DeferredItem<Item> ESPADON_ARCANIQUE = armeArcanique("espadon_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 18, 1.0, 1.5, 0.5, 0.5);
+	public static final DeferredItem<Item> TWINBLADE_ARCANIQUE = armeArcanique("twinblade_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 10, 2.0, 0, 0, 0);
+	public static final DeferredItem<Item> PIOCHE_ARCANIQUE = ITEMS.register("pioche_arcanique", () -> new fr.chatmort.airain.armure.PiocheItem(TIER_IMPERIAL, 2,
+		fr.chatmort.airain.armure.Lignee.ECHO, new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+			.attributes(net.minecraft.world.item.PickaxeItem.createAttributes(TIER_IMPERIAL, 6f, -2.8f))));
+	public static final DeferredItem<Item> SCEPTRE_IMPERIAL = ITEMS.register("sceptre_imperial", () -> new fr.chatmort.airain.armure.SceptreItem(
+		fr.chatmort.airain.armure.Lignee.EMPIRE, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	public static final DeferredItem<Item> SCEPTRE_ARCANIQUE = ITEMS.register("sceptre_arcanique", () -> new fr.chatmort.airain.armure.SceptreItem(
+		fr.chatmort.airain.armure.Lignee.ECHO, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
 	public static final DeferredItem<Item> PIOCHE_RUNIQUE = ITEMS.register("pioche_runique", () -> new fr.chatmort.airain.armure.PiocheItem(TIER_SACRE, 1,
 		fr.chatmort.airain.armure.Lignee.ECHO, new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.attributes(net.minecraft.world.item.PickaxeItem.createAttributes(TIER_SACRE, 6f, -2.8f))));
@@ -287,6 +304,16 @@ public class AirainMod {
 	public static final DeferredItem<Item> PLASTRON_RUNIQUE = armureEcho("plastron_runique", net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 1);
 	public static final DeferredItem<Item> JAMBIERES_RUNIQUES = armureEcho("jambieres_runiques", net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 1);
 	public static final DeferredItem<Item> BOTTES_RUNIQUES = armureEcho("bottes_runiques", net.minecraft.world.item.ArmorItem.Type.BOOTS, 1);
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_ARCANIQUE =
+		MATERIAUX.register("arcanique", () -> materiauArmure("arcanique", 4, 10, 8, 4, 4.5f, 0.2f));
+	private static DeferredItem<Item> armureArcanique(String nom, net.minecraft.world.item.ArmorItem.Type type) {
+		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmureItem(AIRAIN_ARCANIQUE, type, 2, fr.chatmort.airain.armure.Lignee.ECHO,
+			new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC).durability(type.getDurability(55))));
+	}
+	public static final DeferredItem<Item> CASQUE_ARCANIQUE = armureArcanique("casque_arcanique", net.minecraft.world.item.ArmorItem.Type.HELMET);
+	public static final DeferredItem<Item> PLASTRON_ARCANIQUE = armureArcanique("plastron_arcanique", net.minecraft.world.item.ArmorItem.Type.CHESTPLATE);
+	public static final DeferredItem<Item> JAMBIERES_ARCANIQUES = armureArcanique("jambieres_arcaniques", net.minecraft.world.item.ArmorItem.Type.LEGGINGS);
+	public static final DeferredItem<Item> BOTTES_ARCANIQUES = armureArcanique("bottes_arcaniques", net.minecraft.world.item.ArmorItem.Type.BOOTS);
 
 	/** Modules de gardien (niveaux 1 et 2) et plaque de netherite sacrée qui sert à les améliorer. */
 	public static final java.util.Map<String, DeferredItem<Item>> MODULES = new java.util.LinkedHashMap<>();

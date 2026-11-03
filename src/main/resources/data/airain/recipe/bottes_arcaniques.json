@@ -1,0 +1,32 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": true,
+ "pedestalItems": [
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  }
+ ],
+ "reagent": {
+  "item": "airain:bottes_runiques"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:bottes_arcaniques"
+ },
+ "sourceCost": 5000
+}

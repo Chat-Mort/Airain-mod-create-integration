@@ -1,0 +1,38 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": false,
+ "pedestalItems": [
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "airain:lingot_arcanium"
+  },
+  {
+   "item": "ars_nouveau:source_gem_block"
+  },
+  {
+   "item": "ars_nouveau:source_gem_block"
+  }
+ ],
+ "reagent": {
+  "item": "airain:bloc_echo_primordial"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:sceptre_arcanique"
+ },
+ "sourceCost": 5000
+}
