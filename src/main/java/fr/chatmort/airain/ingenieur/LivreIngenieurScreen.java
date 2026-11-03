@@ -59,23 +59,41 @@ public class LivreIngenieurScreen extends Screen {
 			for (String[] c : CHAPITRES[s]) { TOUS.add(c); SECTION_DE.add(s); }
 		}
 	}
-	/** Sommaire : 9 lignes à gauche (sous le titre), le reste à droite ; icônes réduites, pas de 12 px. */
-	private static final int GAUCHE = 6, PAS = 14;
+	/** Sommaire : 5 lignes à gauche (sous le titre et les onglets), le reste à droite ; pas de 14 px. */
+	private static final int GAUCHE = 5, PAS = 14, LIGNES = 12;
+	/** Pages des chapitres : {chapitre, texte (1 : « .usage », 2 : « .usage2 »), première ligne}. Un texte trop long continue sur la double page suivante. */
+	private final List<int[]> pages = new ArrayList<>();
+	private final int[] premiere = new int[256];
 	private int planche;
 	private WidgetsEmpire.Fleche avant, apres;
 	private WidgetsEmpire.Signet signet;
 
 	public LivreIngenieurScreen() { super(Component.translatable("item.airain.livre_ingenieur")); }
 
+	private void paginer() {
+		pages.clear();
+		for (int i = 0; i < TOUS.size(); i++) {
+			premiere[i] = pages.size();
+			for (int partie = 1; partie <= 2; partie++) {
+				String k = "airain.ingenieur." + TOUS.get(i)[0] + (partie == 1 ? ".usage" : ".usage2");
+				if (partie == 2 && !net.minecraft.client.resources.language.I18n.exists(k)) break;
+				int n = Math.max(1, font.split(Component.translatable(k), LARGE).size());
+				for (int d = 0; d < n; d += LIGNES) pages.add(new int[] {i, partie, d});
+			}
+		}
+	}
+
 	private int bx() { return (width - W) / 2; }
 	private int by() { return (height - 196) / 2; }
-	private static int dernier() { return SECTIONS.length + TOUS.size() - 1; }
+	private int dernier() { return SECTIONS.length + pages.size() - 1; }
 
 	@Override
 	protected void init() {
+		paginer();
+		planche = Math.min(planche, dernier());
 		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
 		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
-		signet = addRenderableWidget(new WidgetsEmpire.Signet(bx(), by(), b -> aller(planche >= SECTIONS.length ? SECTION_DE.get(planche - SECTIONS.length) : 0)));
+		signet = addRenderableWidget(new WidgetsEmpire.Signet(bx(), by(), b -> aller(planche >= SECTIONS.length ? SECTION_DE.get(pages.get(planche - SECTIONS.length)[0]) : 0)));
 	}
 
 	private void aller(int n) {
@@ -115,7 +133,7 @@ public class LivreIngenieurScreen extends Screen {
 			String[][] ch = CHAPITRES[planche];
 			for (int i = 0; i < ch.length; i++) {
 				int[] l = ligne(i);
-				if (mx >= l[0] && mx < l[0] + LARGE && my >= l[1] - 2 && my < l[1] - 2 + PAS) { aller(SECTIONS.length + DEBUT[planche] + i); return true; }
+				if (mx >= l[0] && mx < l[0] + LARGE && my >= l[1] - 2 && my < l[1] - 2 + PAS) { aller(SECTIONS.length + premiere[DEBUT[planche] + i]); return true; }
 			}
 			for (int s = 0; s < SECTIONS.length; s++) {
 				int[] o = onglet(s);
@@ -175,21 +193,22 @@ public class LivreIngenieurScreen extends Screen {
 				g.drawString(font, Component.translatable("airain.ingenieur." + ch[i][0] + ".court"), x + 16, yy, survol ? BLEU : ENCRE, false);
 			}
 		} else {
-			String[] c = TOUS.get(planche - SECTIONS.length);
+			int[] pg = pages.get(planche - SECTIONS.length);
+			String[] c = TOUS.get(pg[0]);
 			String k = "airain.ingenieur." + c[0];
 			icone(g, c[1], gx + LARGE / 2f - 16, y + 2, 2f);
 			Component t = Component.translatable(k + ".titre").withStyle(ChatFormatting.BOLD);
 			if (font.width(t) > LARGE) t = Component.translatable(k + ".court").withStyle(ChatFormatting.BOLD);
 			g.drawString(font, t, gx + LARGE / 2 - font.width(t) / 2, y + 38, ENCRE, false);
 			g.fill(gx + 10, y + 50, gx + LARGE - 10, y + 51, 0xFF9A7046);
-			// le mode d'emploi remplit la page de droite ; s'il est long, la suite passe sous l'histoire, à gauche
-			List<FormattedCharSequence> mode = font.split(Component.translatable(k + ".usage"), LARGE);
-			boolean long_ = mode.size() > 12;
-			int yy = texte(g, Component.translatable(k + ".histoire").withStyle(ChatFormatting.ITALIC), gx, y + 56, SEPIA, long_ ? Math.max(2, 7 - (mode.size() - 12)) : 8);
-			g.drawString(font, Component.translatable("airain.ingenieur.mode").withStyle(ChatFormatting.BOLD), dx, y, ROUGE, false);
-			for (int i = 0; i < Math.min(12, mode.size()); i++) g.drawString(font, mode.get(i), dx, y + 13 + i * 10, ENCRE, false);
-			int ly = yy + 4;
-			for (int i = 12; i < mode.size() && ly <= by() + 140; i++, ly += 10) g.drawString(font, mode.get(i), gx, ly, ENCRE, false);
+			boolean suite = pages.get(planche - SECTIONS.length - 1 >= 0 ? planche - SECTIONS.length - 1 : 0)[0] == pg[0] && planche - SECTIONS.length > 0;
+			if (suite) texte(g, Component.translatable("airain.ingenieur.suite").withStyle(ChatFormatting.ITALIC), gx, y + 56, SEPIA, 1);
+			else texte(g, Component.translatable(k + ".histoire").withStyle(ChatFormatting.ITALIC), gx, y + 56, SEPIA, 7);
+			// en-tête : « Mode d'emploi » pour les machines et objets, « Effets » pour ce qui est réservé à une fin
+			String tete = SECTION_DE.get(pg[0]) >= 2 ? "airain.ingenieur.effets" : "airain.ingenieur.mode";
+			g.drawString(font, Component.translatable(tete).withStyle(ChatFormatting.BOLD), dx, y, ROUGE, false);
+			List<FormattedCharSequence> l = font.split(Component.translatable(k + (pg[1] == 2 ? ".usage2" : ".usage")), LARGE);
+			for (int i = pg[2]; i < Math.min(l.size(), pg[2] + LIGNES); i++) g.drawString(font, l.get(i), dx, y + 13 + (i - pg[2]) * 10, ENCRE, false);
 		}
 		String n = (planche + 1) + " / " + (dernier() + 1);
 		g.drawString(font, n, dx + LARGE / 2 - font.width(n) / 2, by() + 162, SEPIA, false);   // sous la page de droite
