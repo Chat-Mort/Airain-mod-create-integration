@@ -186,6 +186,34 @@ public class AirainMod {
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 
+	/** Armures de l'Empire : sacrée (netherite + plaque sacrée) puis impériale (sacrée + plaque impériale). */
+	private static net.minecraft.world.item.ArmorMaterial materiauArmure(String couche, int casque, int plastron, int jambieres, int bottes, float robustesse, float recul) {
+		return new net.minecraft.world.item.ArmorMaterial(
+			java.util.Map.of(net.minecraft.world.item.ArmorItem.Type.HELMET, casque, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, plastron,
+				net.minecraft.world.item.ArmorItem.Type.LEGGINGS, jambieres, net.minecraft.world.item.ArmorItem.Type.BOOTS, bottes, net.minecraft.world.item.ArmorItem.Type.BODY, plastron),
+			15, net.minecraft.sounds.SoundEvents.ARMOR_EQUIP_NETHERITE,
+			() -> net.minecraft.world.item.crafting.Ingredient.of(net.minecraft.world.item.Items.NETHERITE_INGOT),
+			java.util.List.of(new net.minecraft.world.item.ArmorMaterial.Layer(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, couche))),
+			robustesse, recul);
+	}
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_SACREE =
+		MATERIAUX.register("sacree", () -> materiauArmure("sacree", 3, 9, 7, 3, 3.5f, 0.15f));
+	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_IMPERIALE =
+		MATERIAUX.register("imperiale", () -> materiauArmure("imperiale", 4, 10, 8, 4, 4.5f, 0.2f));
+	private static DeferredItem<Item> armure(String nom, net.minecraft.core.Holder<net.minecraft.world.item.ArmorMaterial> m,
+			net.minecraft.world.item.ArmorItem.Type type, int palier) {
+		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmureItem(m, type, palier, new Item.Properties().stacksTo(1).fireResistant()
+			.rarity(palier == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
+			.durability(type.getDurability(palier == 2 ? 55 : 45))));
+	}
+	public static final DeferredItem<Item> PLASTRON_SACRE = armure("plastron_sacre", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 1);
+	public static final DeferredItem<Item> JAMBIERES_SACREES = armure("jambieres_sacrees", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 1);
+	public static final DeferredItem<Item> BOTTES_SACREES = armure("bottes_sacrees", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.BOOTS, 1);
+	public static final DeferredItem<Item> CASQUE_IMPERIAL = armure("casque_imperial", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.HELMET, 2);
+	public static final DeferredItem<Item> PLASTRON_IMPERIAL = armure("plastron_imperial", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 2);
+	public static final DeferredItem<Item> JAMBIERES_IMPERIALES = armure("jambieres_imperiales", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 2);
+	public static final DeferredItem<Item> BOTTES_IMPERIALES = armure("bottes_imperiales", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.BOOTS, 2);
+
 	/** Modules de gardien (niveaux 1 et 2) et plaque de netherite sacrée qui sert à les améliorer. */
 	public static final java.util.Map<String, DeferredItem<Item>> MODULES = new java.util.LinkedHashMap<>();
 	static {
@@ -297,6 +325,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::joueur);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::vitesse);

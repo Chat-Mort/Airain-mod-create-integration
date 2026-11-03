@@ -727,5 +727,17 @@
  "block.airain.bloc_etoile": "Bloc d'étoile du Nether",
  "item.airain.plaque_imperiale": "Plaque impériale",
  "item.airain.plaque_imperiale_inachevee": "Plaque impériale inachevée",
- "item.airain.plaque_imperiale.l1": "Forgée pour l'Empereur, et pour lui seul."
+ "item.airain.plaque_imperiale.l1": "Forgée pour l'Empereur, et pour lui seul.",
+ "item.airain.plastron_sacre": "Plastron sacré",
+ "item.airain.jambieres_sacrees": "Jambières sacrées",
+ "item.airain.bottes_sacrees": "Bottes sacrées",
+ "item.airain.casque_imperial": "Casque de l'Empereur",
+ "item.airain.plastron_imperial": "Plastron de l'Empereur",
+ "item.airain.jambieres_imperiales": "Jambières de l'Empereur",
+ "item.airain.bottes_imperiales": "Bottes de l'Empereur",
+ "airain.armure.sacree.ensemble": "Armure sacrée (avec le casque couronné sacré)",
+ "airain.armure.sacree.bonus": "Ensemble complet : insensible au Wither.",
+ "airain.armure.imperiale.ensemble": "Armure de l'Empereur",
+ "airain.armure.imperiale.bonus": "Ensemble complet : insensible au Wither, Résistance I, et les automates de l'Empire vous obéissent toujours.",
+ "airain.armure.imperiale.couronne": "Porte la couronne sacrée : commandement à 32 blocs, loupe (H)."
 }

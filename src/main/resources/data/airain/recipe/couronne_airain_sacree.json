@@ -14,7 +14,7 @@
   "count": 1,
   "components": {
    "minecraft:custom_data": {
-    "airain_sacree": 1
+    "airain_sacree": true
    }
   }
  }

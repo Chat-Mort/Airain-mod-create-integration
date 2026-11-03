@@ -88,7 +88,8 @@ public class Fin extends SavedData {
 	}
 
 	public static boolean couronne(LivingEntity e) {
-		return e.getItemBySlot(EquipmentSlot.HEAD).getItem() instanceof CouronneItem;
+		var t = e.getItemBySlot(EquipmentSlot.HEAD);
+		return t.getItem() instanceof CouronneItem || fr.chatmort.airain.armure.ArmureItem.casqueImperial(t);   // le casque impérial porte la couronne
 	}
 
 	/** Autorité : les automates de l'Empire ne prennent plus le porteur de la couronne pour cible, sauf s'il frappe le premier ou pendant un assaut. */
@@ -96,7 +97,7 @@ public class Fin extends SavedData {
 		if (!(e.getNewAboutToBeSetTarget() instanceof Player p) || !couronne(p)) return;
 		LivingEntity m = e.getEntity();
 		if (!m.getType().is(AUTOMATES) || m.getTags().contains("airain_vague")) return;
-		if (m.getLastHurtByMob() == p) return;
+		if (m.getLastHurtByMob() == p && fr.chatmort.airain.armure.Armures.ensemble(p) < 2) return;   // l'Empereur est toujours obéi
 		e.setCanceled(true);
 	}
 
@@ -108,7 +109,8 @@ public class Fin extends SavedData {
 	public static void tick(PlayerTickEvent.Post e) {
 		if (!(e.getEntity() instanceof ServerPlayer p)) return;
 		if (p.tickCount % 40 == 0 && couronne(p)) {
-			boolean sacree = fr.chatmort.airain.Sacre.sacree(p.getItemBySlot(EquipmentSlot.HEAD));   // couronne sacrée : 32 blocs, niveau II
+			var tete = p.getItemBySlot(EquipmentSlot.HEAD);
+			boolean sacree = fr.chatmort.airain.Sacre.sacree(tete) || fr.chatmort.airain.armure.ArmureItem.casqueImperial(tete);   // couronne sacrée : 32 blocs, niveau II
 			for (GardienEntity g : p.level().getEntitiesOfClass(GardienEntity.class, new AABB(p.blockPosition()).inflate(sacree ? 32 : 16), g -> !g.enPanne())) {
 				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 80, sacree ? 1 : 0, true, true));
 				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, sacree ? 1 : 0, true, true));

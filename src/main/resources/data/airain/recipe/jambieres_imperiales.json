@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:smithing_transform",
+ "template": {
+  "item": "minecraft:netherite_upgrade_smithing_template"
+ },
+ "base": {
+  "item": "airain:jambieres_sacrees"
+ },
+ "addition": {
+  "item": "airain:plaque_imperiale"
+ },
+ "result": {
+  "id": "airain:jambieres_imperiales",
+  "count": 1
+ }
+}

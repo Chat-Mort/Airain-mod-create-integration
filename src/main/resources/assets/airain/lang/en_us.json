@@ -727,5 +727,17 @@
  "block.airain.bloc_etoile": "Nether Star Block",
  "item.airain.plaque_imperiale": "Imperial Plate",
  "item.airain.plaque_imperiale_inachevee": "Unfinished Imperial Plate",
- "item.airain.plaque_imperiale.l1": "Forged for the Emperor, and for him alone."
+ "item.airain.plaque_imperiale.l1": "Forged for the Emperor, and for him alone.",
+ "item.airain.plastron_sacre": "Sacred Chestplate",
+ "item.airain.jambieres_sacrees": "Sacred Leggings",
+ "item.airain.bottes_sacrees": "Sacred Boots",
+ "item.airain.casque_imperial": "Emperor's Helm",
+ "item.airain.plastron_imperial": "Emperor's Chestplate",
+ "item.airain.jambieres_imperiales": "Emperor's Leggings",
+ "item.airain.bottes_imperiales": "Emperor's Boots",
+ "airain.armure.sacree.ensemble": "Sacred armor (with the sacred crowned helmet)",
+ "airain.armure.sacree.bonus": "Full set: immune to Wither.",
+ "airain.armure.imperiale.ensemble": "The Emperor's armor",
+ "airain.armure.imperiale.bonus": "Full set: immune to Wither, Resistance I, and the Empire's automatons always obey you.",
+ "airain.armure.imperiale.couronne": "Bears the sacred crown: command within 32 blocks, loupe (H)."
 }
