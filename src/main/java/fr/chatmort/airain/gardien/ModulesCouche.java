@@ -51,8 +51,9 @@ public class ModulesCouche extends RenderLayer<GardienEntity, GardienRenderer.Mo
 		GardienRenderer.Modele m = getParentModel();
 		int voile = LivingEntityRenderer.getOverlayCoords(e, 0f);
 		boolean actif = !e.enPanne();
-		for (Module.Emplacement emp : Module.Emplacement.values()) {
-			int code = e.codeModule(emp);
+		for (int i = 0; i < 6; i++) {
+			Module.Emplacement emp = Module.Emplacement.values()[i % 3];
+			int code = i < 3 ? e.codeModule(emp) : e.codeModule2(emp);
 			Module mod = Module.de(code);
 			if (mod == null) continue;
 			ResourceLocation tex = TEXTURES[Module.niveau(code) - 1];

@@ -35,6 +35,11 @@ public class Gardiens extends SavedData {
 	private static final ResourceLocation EMPIRE_FORCE = ResourceLocation.fromNamespaceAndPath("airain", "gardien_empire_force");
 
 	private final Map<String, Set<UUID>> parBase = new HashMap<>();
+	/** Le gardien d'élite de chaque fondation (capitaine impérial ou gardien d'Écho) : un seul par base. */
+	private final Map<String, UUID> elites = new HashMap<>();
+
+	public UUID elite(String cle) { return elites.get(cle); }
+	public void designer(String cle, UUID g) { elites.put(cle, g); setDirty(); }
 
 	public static Gardiens de(MinecraftServer serveur) {
 		return serveur.overworld().getDataStorage().computeIfAbsent(
@@ -59,6 +64,7 @@ public class Gardiens extends SavedData {
 
 	public void liberer(String cle, UUID g) {
 		Set<UUID> s = parBase.get(cle);
+		if (g.equals(elites.get(cle))) { elites.remove(cle); setDirty(); }
 		if (s != null && s.remove(g)) {
 			if (s.isEmpty()) parBase.remove(cle);
 			setDirty();
@@ -112,6 +118,7 @@ public class Gardiens extends SavedData {
 			ListTag u = new ListTag();
 			for (UUID id : s) u.add(NbtUtils.createUUID(id));
 			c.put("gardiens", u);
+			if (elites.containsKey(cle)) c.putUUID("elite", elites.get(cle));
 			l.add(c);
 		});
 		tag.put("bases", l);
@@ -125,6 +132,7 @@ public class Gardiens extends SavedData {
 			Set<UUID> s = new HashSet<>();
 			for (Tag u : c.getList("gardiens", Tag.TAG_INT_ARRAY)) s.add(NbtUtils.loadUUID(u));
 			g.parBase.put(c.getString("base"), s);
+			if (c.hasUUID("elite")) g.elites.put(c.getString("base"), c.getUUID("elite"));
 		}
 		return g;
 	}

@@ -825,5 +825,14 @@
  "airain.morgana.note.p1": "To the one who will free the Choir,\n\nthis diadem was mine. It was never a crown: it is for listening, not for commanding.\n\nYou did what I could not. They are free, and the silence they leave behind is yours.\n\nWear it better than I did.\n\n— Morgana Dalmont",
  "item.airain.casque_diademe": "Diadem Helmet",
  "item.airain.casque_diademe.separer": "Sneak + right-click: detach the diadem.",
- "item.airain.diademe_echo.enclume": "In an anvil, on a netherite helmet: diadem helmet."
+ "item.airain.diademe_echo.enclume": "In an anvil, on a netherite helmet: diadem helmet.",
+ "entity.airain.capitaine": "Imperial Captain",
+ "entity.airain.gardien_echo": "Echo Guardian",
+ "airain.gardien.elite_deja_promu": "This guardian has already been promoted.",
+ "airain.gardien.elite_fin_empire": "Only the rekindled Empire can appoint a captain.",
+ "airain.gardien.elite_fin_echo": "Only the freed Echo can awaken this guardian.",
+ "airain.gardien.elite_base": "The guardian must be bound to a base.",
+ "airain.gardien.elite_unique": "This base already has its elite guardian.",
+ "airain.gardien.promu_capitaine": "The guardian becomes an Imperial Captain: two modules per slot, it rallies nearby guardians.",
+ "airain.gardien.promu_echo": "The guardian awakens to the Echo: ranged sonic wave, it heals nearby guardians."
 }

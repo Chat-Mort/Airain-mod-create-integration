@@ -32,6 +32,7 @@ public class AirainClient {
 			{ e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE, fr.chatmort.airain.gardien.CouronneModele::creer);
 			  e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE_CASQUE, fr.chatmort.airain.gardien.CouronneModele::creerCasque);
 			  e.registerLayerDefinition(fr.chatmort.airain.gardien.ModulesCouche.COUCHE, fr.chatmort.airain.gardien.ModulesCouche::creer);
+			  e.registerLayerDefinition(fr.chatmort.airain.gardien.EliteCouche.COUCHE, fr.chatmort.airain.gardien.EliteCouche::creer);
 			  e.registerLayerDefinition(fr.chatmort.airain.armure.DiademeModele.COUCHE, fr.chatmort.airain.armure.DiademeModele::creer);
 			  for (int i = 0; i < 3; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.CoiffesModele.COUCHES[k], () -> fr.chatmort.airain.armure.CoiffesModele.creer(k)); }
 			  e.registerLayerDefinition(fr.chatmort.airain.armure.CoiffesModele.HALO, fr.chatmort.airain.armure.CoiffesModele::creerHalo);

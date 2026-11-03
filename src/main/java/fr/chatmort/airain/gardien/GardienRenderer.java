@@ -16,6 +16,8 @@ import net.minecraft.resources.ResourceLocation;
 /** Golem de laiton au vert-de-gris ; en panne, il est assis, tête basse, couvert de mousse. */
 public class GardienRenderer extends MobRenderer<GardienEntity, GardienRenderer.Modele> {
 	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/gardien.png");
+	private static final ResourceLocation CAPITAINE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/gardien_capitaine.png");
+	private static final ResourceLocation ECHO = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/gardien_echo.png");
 	private static final ResourceLocation MOUSSE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/gardien_mousse.png");
 
 	public GardienRenderer(EntityRendererProvider.Context ctx) {
@@ -23,10 +25,11 @@ public class GardienRenderer extends MobRenderer<GardienEntity, GardienRenderer.
 		addLayer(new Fissures(this));
 		addLayer(new Mousse(this));
 		addLayer(new ModulesCouche(this, ctx));
+		addLayer(new EliteCouche(this, ctx));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(GardienEntity e) { return TEXTURE; }
+	public ResourceLocation getTextureLocation(GardienEntity e) { return e.capitaine() ? CAPITAINE : e.echo() ? ECHO : TEXTURE; }
 
 	@Override
 	protected void setupRotations(GardienEntity e, PoseStack pose, float bob, float yRot, float pt, float echelle) {

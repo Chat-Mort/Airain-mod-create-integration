@@ -49,6 +49,10 @@ public class GardienEntity extends IronGolem {
 	private static final EntityDataAccessor<Boolean> PANNE = SynchedEntityData.defineId(GardienEntity.class, EntityDataSerializers.BOOLEAN);
 	/** Modules montés : un octet par emplacement (tête, épaules, torse), code = ordinal * 2 + niveau. */
 	private static final EntityDataAccessor<Integer> MODULES = SynchedEntityData.defineId(GardienEntity.class, EntityDataSerializers.INT);
+	/** Second module par emplacement (capitaine impérial seulement), même codage. */
+	private static final EntityDataAccessor<Integer> MODULES2 = SynchedEntityData.defineId(GardienEntity.class, EntityDataSerializers.INT);
+	/** Rang : 0 gardien, 1 capitaine impérial, 2 gardien d'Écho. */
+	private static final EntityDataAccessor<Byte> RANG = SynchedEntityData.defineId(GardienEntity.class, EntityDataSerializers.BYTE);
 	public static final TagKey<EntityType<?>> CIBLES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("airain", "cibles_gardien"));
 	public static final ResourceLocation CLE = ResourceLocation.fromNamespaceAndPath("create", "wrench");
 	public static final ResourceLocation FERRAILLE = ResourceLocation.fromNamespaceAndPath("kubejs", "ferraille");
@@ -72,6 +76,18 @@ public class GardienEntity extends IronGolem {
 		super.defineSynchedData(b);
 		b.define(PANNE, false);
 		b.define(MODULES, 0);
+		b.define(MODULES2, 0);
+		b.define(RANG, (byte) 0);
+	}
+
+	public int rang() { return entityData.get(RANG); }
+	public boolean capitaine() { return rang() == Elite.CAPITAINE; }
+	public boolean echo() { return rang() == Elite.ECHO; }
+	void promouvoir(int r) { entityData.set(RANG, (byte) r); Elite.attributs(this); }
+
+	@Override
+	protected Component getTypeName() {
+		return rang() == 0 ? super.getTypeName() : Component.translatable(capitaine() ? "entity.airain.capitaine" : "entity.airain.gardien_echo");
 	}
 
 	public boolean enPanne() { return entityData.get(PANNE); }
@@ -89,6 +105,12 @@ public class GardienEntity extends IronGolem {
 	BlockPos lumiere;
 
 	public int codeModule(Module.Emplacement e) { return (entityData.get(MODULES) >> (e.ordinal() * 8)) & 0xFF; }
+	public int codeModule2(Module.Emplacement e) { return (entityData.get(MODULES2) >> (e.ordinal() * 8)) & 0xFF; }
+	void poserModule2(Module.Emplacement e, int code) {
+		int v = entityData.get(MODULES2) & ~(0xFF << (e.ordinal() * 8));
+		entityData.set(MODULES2, v | (code << (e.ordinal() * 8)));
+		GardienModules.attributs(this);
+	}
 	void poserModule(Module.Emplacement e, int code) {
 		int v = entityData.get(MODULES) & ~(0xFF << (e.ordinal() * 8));
 		entityData.set(MODULES, v | (code << (e.ordinal() * 8)));
@@ -97,7 +119,9 @@ public class GardienEntity extends IronGolem {
 	/** Niveau du module donné (0 s'il n'est pas monté). */
 	public int niveau(Module m) {
 		int c = codeModule(m.emplacement);
-		return Module.de(c) == m ? Module.niveau(c) : 0;
+		if (Module.de(c) == m) return Module.niveau(c);
+		int c2 = codeModule2(m.emplacement);
+		return Module.de(c2) == m ? Module.niveau(c2) : 0;
 	}
 	/** Niveau du module donné s'il fonctionne (gardien en état de marche), sinon 0. */
 	public int actif(Module m) { return enPanne() ? 0 : niveau(m); }
@@ -170,7 +194,7 @@ public class GardienEntity extends IronGolem {
 	public void tick() {
 		super.tick();
 		if (!level().isClientSide && !enPanne() && tickCount % 20 == 0) majPoste();
-		if (!level().isClientSide && !enPanne()) GardienModules.tick(this);
+		if (!level().isClientSide && !enPanne()) { GardienModules.tick(this); Elite.tick(this); }
 	}
 
 	private void majPoste() {
@@ -218,12 +242,17 @@ public class GardienEntity extends IronGolem {
 			reparer(p);
 			return InteractionResult.CONSUME;
 		}
+		if (Elite.insigne(s) != 0) {
+			if (level().isClientSide) return InteractionResult.SUCCESS;
+			Elite.promouvoir(this, p, s);
+			return InteractionResult.CONSUME;
+		}
 		if (s.getItem() instanceof ModuleItem mi) {
 			if (level().isClientSide) return InteractionResult.SUCCESS;
 			GardienModules.monter(this, p, s, mi);
 			return InteractionResult.CONSUME;
 		}
-		if (s.isEmpty() && p.isShiftKeyDown() && main == InteractionHand.MAIN_HAND && entityData.get(MODULES) != 0) {
+		if (s.isEmpty() && p.isShiftKeyDown() && main == InteractionHand.MAIN_HAND && (entityData.get(MODULES) != 0 || entityData.get(MODULES2) != 0)) {
 			if (level().isClientSide) return InteractionResult.SUCCESS;
 			GardienModules.demonter(this, p);
 			return InteractionResult.CONSUME;
@@ -334,6 +363,8 @@ public class GardienEntity extends IronGolem {
 		fondation = null;
 	}
 
+	String fondation() { return fondation; }
+
 	public boolean escorte(Player p) { return p.getUUID().equals(escorte); }
 
 	@Override
@@ -351,6 +382,8 @@ public class GardienEntity extends IronGolem {
 		if (escorte != null) t.putUUID("Escorte", escorte);
 		if (poste != null) t.put("Poste", NbtUtils.writeBlockPos(poste));
 		t.putInt("Modules", entityData.get(MODULES));
+		t.putInt("Modules2", entityData.get(MODULES2));
+		t.putByte("Rang", entityData.get(RANG));
 		if (lumiere != null) t.put("Lumiere", NbtUtils.writeBlockPos(lumiere));
 		t.putInt("Sauvetages", sauvetages);
 		t.putLong("JourSauvetage", jourSauvetage);
@@ -364,6 +397,9 @@ public class GardienEntity extends IronGolem {
 		escorte = t.hasUUID("Escorte") ? t.getUUID("Escorte") : null;
 		poste = NbtUtils.readBlockPos(t, "Poste").orElse(null);
 		entityData.set(MODULES, t.getInt("Modules"));
+		entityData.set(MODULES2, t.getInt("Modules2"));
+		entityData.set(RANG, t.getByte("Rang"));
+		Elite.attributs(this);
 		lumiere = NbtUtils.readBlockPos(t, "Lumiere").orElse(null);
 		sauvetages = t.getInt("Sauvetages");
 		jourSauvetage = t.contains("JourSauvetage") ? t.getLong("JourSauvetage") : -1;

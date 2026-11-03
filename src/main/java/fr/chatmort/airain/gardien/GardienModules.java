@@ -52,10 +52,12 @@ public final class GardienModules {
 	// ------------------------------------------------------------ montage
 	static void monter(GardienEntity g, Player p, ItemStack s, ModuleItem mi) {
 		Module.Emplacement e = mi.module.emplacement;
-		int avant = g.codeModule(e);
+		// le capitaine impérial porte les deux modules d'un emplacement : le second va dans la seconde case
+		boolean second = g.capitaine() && Module.de(g.codeModule(e)) != null && Module.de(g.codeModule(e)) != mi.module;
+		int avant = second ? g.codeModule2(e) : g.codeModule(e);
 		if (avant == mi.code()) { p.displayClientMessage(Component.translatable("airain.gardien.module_deja"), true); return; }
 		if (Module.de(avant) == Module.LANTERNE) eteindre(g);
-		g.poserModule(e, mi.code());
+		if (second) g.poserModule2(e, mi.code()); else g.poserModule(e, mi.code());
 		ItemStack monte = s.copyWithCount(1);
 		if (!p.getAbilities().instabuild) s.shrink(1);
 		if (avant != 0) {
@@ -82,11 +84,12 @@ public final class GardienModules {
 	static void demonter(GardienEntity g, Player p) {
 		eteindre(g);
 		for (Module.Emplacement e : Module.Emplacement.values()) {
-			int c = g.codeModule(e);
-			if (c == 0) continue;
-			ItemStack rendu = objet(c);
-			if (!p.getInventory().add(rendu)) p.drop(rendu, false);
-			g.poserModule(e, 0);
+			for (int c : new int[] {g.codeModule(e), g.codeModule2(e)}) {
+				if (c == 0) continue;
+				ItemStack rendu = objet(c);
+				if (!p.getInventory().add(rendu)) p.drop(rendu, false);
+			}
+			g.poserModule(e, 0); g.poserModule2(e, 0);
 		}
 		p.displayClientMessage(Component.translatable("airain.gardien.modules_demontes"), true);
 		g.level().playSound(null, g.blockPosition(), SoundEvents.CHAIN_BREAK, SoundSource.NEUTRAL, 1f, 0.8f);
@@ -95,19 +98,20 @@ public final class GardienModules {
 	/** À la destruction du gardien, ses modules tombent au sol. */
 	static void lacher(GardienEntity g) {
 		for (Module.Emplacement e : Module.Emplacement.values()) {
-			int c = g.codeModule(e);
+			int c = g.codeModule(e), c2 = g.codeModule2(e);
 			if (c != 0) { g.spawnAtLocation(objet(c)); g.poserModule(e, 0); }
+			if (c2 != 0) { g.spawnAtLocation(objet(c2)); g.poserModule2(e, 0); }
 		}
 	}
 
 	static Component resume(GardienEntity g) {
 		MutableComponent l = null;
-		for (Module.Emplacement e : Module.Emplacement.values()) {
-			int c = g.codeModule(e);
-			if (c == 0) continue;
-			Component n = objet(c).getHoverName();
-			l = l == null ? n.copy() : l.append(", ").append(n);
-		}
+		for (Module.Emplacement e : Module.Emplacement.values())
+			for (int c : new int[] {g.codeModule(e), g.codeModule2(e)}) {
+				if (c == 0) continue;
+				Component n = objet(c).getHoverName();
+				l = l == null ? n.copy() : l.append(", ").append(n);
+			}
 		return l == null ? Component.empty() : Component.translatable("airain.gardien.modules_resume", l);
 	}
 
