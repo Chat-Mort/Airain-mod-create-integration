@@ -765,5 +765,6 @@
  "airain.arme.twinblade.effet1": "Chaque coup frappe une seconde fois (25 %).",
  "airain.arme.twinblade.effet2": "Chaque coup frappe une seconde fois (50 %) ; clic droit : tourbillon (recharge 4 s).",
  "airain.arme.pioche.nom": "Filon",
- "airain.arme.pioche.effet": "Accroupi : extrait tout le filon de minerai (%s blocs au plus)."
+ "airain.arme.pioche.effet": "Accroupi : extrait tout le filon de minerai (%s blocs au plus).",
+ "airain.lignee.refus_empire": "Les pouvoirs de l'Empereur ne répondent qu'à ceux qui ont rallumé l'Empire."
 }

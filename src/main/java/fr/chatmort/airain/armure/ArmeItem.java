@@ -57,7 +57,7 @@ public class ArmeItem extends SwordItem {
 
 	@Override
 	public boolean hurtEnemy(ItemStack s, LivingEntity cible, LivingEntity porteur) {
-		if (porteur instanceof ServerPlayer p && cible.level() instanceof ServerLevel sl) {
+		if (porteur instanceof ServerPlayer p && cible.level() instanceof ServerLevel sl && Armes.autorise(p, palier)) {
 			if (type == Type.EPEE) Armes.jugement(sl, p, cible, palier);
 			else if (type == Type.TWINBLADE) Armes.doubleCoup(p, cible, palier);
 		}
@@ -69,6 +69,7 @@ public class ArmeItem extends SwordItem {
 	public InteractionResultHolder<ItemStack> use(Level level, Player p, InteractionHand main) {
 		ItemStack s = p.getItemInHand(main);
 		if (main != InteractionHand.MAIN_HAND) return InteractionResultHolder.pass(s);
+		if (!level.isClientSide && !Armes.autorise(p, palier)) return InteractionResultHolder.fail(s);
 		switch (type) {
 			case KATANA -> {
 				if (!level.isClientSide) Armes.iai((ServerPlayer) p, this, palier);

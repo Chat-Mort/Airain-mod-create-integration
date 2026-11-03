@@ -47,6 +47,13 @@ public final class Armes {
 		return e instanceof Enemy || (e instanceof Mob m && m.getTarget() == p);
 	}
 
+	/** L'arme impériale ne livre ses pouvoirs qu'aux serviteurs de l'Empire. */
+	static boolean autorise(Player p, int palier) {
+		if (Armures.autorise(p, palier)) return true;
+		p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.lignee.refus_empire"), true);
+		return false;
+	}
+
 	static float degats(Player p) { return (float) p.getAttributeValue(Attributes.ATTACK_DAMAGE); }
 
 	static void arc(ServerLevel sl, Vec3 de, Vec3 a) {
@@ -216,6 +223,7 @@ public final class Armes {
 		if (filonEnCours || !(e.getPlayer() instanceof ServerPlayer p) || !p.isShiftKeyDown()) return;
 		ItemStack outil = p.getMainHandItem();
 		if (!(outil.getItem() instanceof PiocheItem pioche) || !e.getState().is(Tags.Blocks.ORES)) return;
+		if (!autorise(p, pioche.palier)) return;
 		if (!(e.getLevel() instanceof ServerLevel sl)) return;
 		BlockState type = e.getState();
 		ArrayDeque<BlockPos> file = new ArrayDeque<>();

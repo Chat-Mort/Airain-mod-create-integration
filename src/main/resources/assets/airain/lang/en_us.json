@@ -765,5 +765,6 @@
  "airain.arme.twinblade.effet1": "Each hit strikes a second time (25%).",
  "airain.arme.twinblade.effet2": "Each hit strikes a second time (50%); right-click: whirlwind (4 s cooldown).",
  "airain.arme.pioche.nom": "Vein",
- "airain.arme.pioche.effet": "Sneak: mines the whole ore vein (up to %s blocks)."
+ "airain.arme.pioche.effet": "Sneak: mines the whole ore vein (up to %s blocks).",
+ "airain.lignee.refus_empire": "The Emperor's power answers only to those who rekindled the Empire."
 }

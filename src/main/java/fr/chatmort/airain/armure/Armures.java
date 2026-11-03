@@ -19,8 +19,22 @@ public final class Armures {
 		return min;
 	}
 
+	/** Chaque fin réserve sa lignée : l'impériale ne sert que si l'Empire a été rallumé. */
+	public static boolean autorise(net.minecraft.world.entity.player.Player p, int palier) {
+		if (palier < 2 || !(p.level() instanceof net.minecraft.server.level.ServerLevel sl)) return true;
+		return fr.chatmort.airain.gardien.Fin.de(sl.getServer()).empire();
+	}
+
 	public static void tick(PlayerTickEvent.Post ev) {
 		if (!(ev.getEntity() instanceof ServerPlayer p) || p.tickCount % 10 != 0) return;
+		for (EquipmentSlot s : PIECES) {                                      // l'armure impériale refuse de servir
+			var pile = p.getItemBySlot(s);
+			if (pile.getItem() instanceof ArmureItem a && !autorise(p, a.palier)) {
+				p.setItemSlot(s, net.minecraft.world.item.ItemStack.EMPTY);
+				if (!p.getInventory().add(pile)) p.drop(pile, false);
+				p.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.lignee.refus_empire"), true);
+			}
+		}
 		int n = ensemble(p);
 		if (n >= 1 && p.hasEffect(MobEffects.WITHER)) p.removeEffect(MobEffects.WITHER);          // ensemble sacré : pas de Wither
 		if (n >= 2 && (!p.hasEffect(MobEffects.DAMAGE_RESISTANCE) || p.getEffect(MobEffects.DAMAGE_RESISTANCE).getDuration() < 100))
