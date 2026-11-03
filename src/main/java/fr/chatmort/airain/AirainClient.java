@@ -27,6 +27,8 @@ public class AirainClient {
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.Onglets::rendu);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.Onglets::clic);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::tick);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, fr.chatmort.airain.armure.TourbillonClient::avant);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.TourbillonClient::apres);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::champ);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
 			{ e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE, fr.chatmort.airain.gardien.CouronneModele::creer);
@@ -44,6 +46,7 @@ public class AirainClient {
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(0), AirainMod.CASQUE_IMPERIAL.get());
 			  e.registerItem(fr.chatmort.airain.armure.DiademeModele.EXTENSION, AirainMod.DIADEME.get());
 			  e.registerItem(fr.chatmort.airain.armure.CoiffesModele.extension(0), AirainMod.CASQUE_DIADEME.get());
+			  e.registerItem(fr.chatmort.airain.armure.TourbillonClient.MAIN, AirainMod.TWINBLADE_IMPERIALE.get(), AirainMod.TWINBLADE_ARCANIQUE.get());
 			  e.registerItem(fr.chatmort.airain.armure.CoiffesModele.extension(1), AirainMod.CASQUE_RUNIQUE.get());
 			  e.registerItem(fr.chatmort.airain.armure.CoiffesModele.extension(2), AirainMod.CASQUE_ARCANIQUE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ArcaniqueModele.extension(1), AirainMod.PLASTRON_ARCANIQUE.get());

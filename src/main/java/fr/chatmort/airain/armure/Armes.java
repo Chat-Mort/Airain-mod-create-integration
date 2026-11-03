@@ -167,6 +167,7 @@ public final class Armes {
 			sl.sendParticles(arme.echo() ? ParticleTypes.SCULK_CHARGE_POP : ParticleTypes.CRIT, e.getX(), e.getY() + e.getBbHeight() * .6, e.getZ(), 10, .3, .3, .3, .2);
 		}
 		TOURBILLONS.add(new Tourbillon(sl, p.getUUID(), sl.getGameTime(), arme.echo()));
+		net.neoforged.neoforge.network.PacketDistributor.sendToPlayersTrackingEntityAndSelf(p, new TourbillonPaquet(p.getId()));
 		if (arme.echo()) sl.playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 1f, 1.5f);
 		for (int k = 0; k < 12; k++) {
 			double a = k * Math.PI / 6;

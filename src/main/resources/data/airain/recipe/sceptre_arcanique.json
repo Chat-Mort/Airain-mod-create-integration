@@ -3,13 +3,7 @@
  "keepNbtOfReagent": false,
  "pedestalItems": [
   {
-   "item": "airain:bloc_echo_primordial"
-  },
-  {
-   "item": "airain:bloc_echo_primordial"
-  },
-  {
-   "item": "airain:bloc_echo_primordial"
+   "item": "ars_nouveau:source_gem_block"
   },
   {
    "item": "airain:lingot_arcanium"
@@ -24,11 +18,17 @@
    "item": "ars_nouveau:source_gem_block"
   },
   {
-   "item": "ars_nouveau:source_gem_block"
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
+  },
+  {
+   "item": "airain:bloc_echo_primordial"
   }
  ],
  "reagent": {
-  "item": "airain:bloc_echo_primordial"
+  "item": "kubejs:diapason_echo"
  },
  "result": {
   "count": 1,

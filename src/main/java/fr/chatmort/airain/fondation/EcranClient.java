@@ -7,6 +7,8 @@ import net.minecraft.core.BlockPos;
 public final class EcranClient {
 	private EcranClient() {}
 
+	public static void tourbillon(fr.chatmort.airain.armure.TourbillonPaquet m) { fr.chatmort.airain.armure.TourbillonClient.demarrer(m); }
+
 	public static void codex(fr.chatmort.airain.codex.OuvrirCodex m) {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.codex.CodexScreen(m));
 	}
