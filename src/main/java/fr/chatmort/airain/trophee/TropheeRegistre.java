@@ -93,7 +93,7 @@ public class TropheeRegistre extends SavedData {
 		for (String k : l.getAllKeys()) {
 			if (l.get(k) instanceof CompoundTag e)
 				r.socles.put(k, new Entree(ResourceLocation.parse(e.getString("objet")), e.getString("plaque"), e.getInt("jour"), e.getBoolean("sacre"), e.getBoolean("grave")));
-			else r.socles.put(k, new Entree(ResourceLocation.parse(l.getString(k)), "", 0, false));   // ancien format
+			else r.socles.put(k, new Entree(ResourceLocation.parse(l.getString(k)), "", 0, false, false));   // ancien format
 		}
 		return r;
 	}
