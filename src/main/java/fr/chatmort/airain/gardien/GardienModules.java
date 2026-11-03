@@ -64,9 +64,19 @@ public final class GardienModules {
 			p.displayClientMessage(Component.translatable("airain.gardien.module_remplace", monte.getHoverName(), objet(avant).getHoverName()), true);
 		} else p.displayClientMessage(Component.translatable("airain.gardien.module_monte", monte.getHoverName()), true);
 		ServerLevel sl = (ServerLevel) g.level();
+		etape(p, "airain_module_monte");
+		if (mi.niveau == 2) etape(p, "airain_module_2");
 		sl.playSound(null, g.blockPosition(), SoundEvents.SMITHING_TABLE_USE, SoundSource.NEUTRAL, 1f, 1.1f);
 		sl.playSound(null, g.blockPosition(), SoundEvents.IRON_GOLEM_REPAIR, SoundSource.NEUTRAL, 0.8f, 1.3f);
 		sl.sendParticles(ParticleTypes.WAX_ON, g.getX(), g.getY() + 1.8, g.getZ(), 10, 0.5, 0.6, 0.5, 0.1);
+	}
+
+	/** Étape de quête (FTB Quests, via KubeJS). */
+	static void etape(Player p, String etape) {
+		if (!(p instanceof net.minecraft.server.level.ServerPlayer sp)) return;
+		var srv = sp.getServer();
+		srv.getCommands().performPrefixedCommand(srv.createCommandSourceStack().withSuppressedOutput().withPermission(4),
+			"kubejs stages add " + sp.getGameProfile().getName() + " " + etape);
 	}
 
 	static void demonter(GardienEntity g, Player p) {

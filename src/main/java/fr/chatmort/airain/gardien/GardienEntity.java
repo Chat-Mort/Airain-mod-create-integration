@@ -295,6 +295,7 @@ public class GardienEntity extends IronGolem {
 		sl.sendParticles(ParticleTypes.ELECTRIC_SPARK, getX(), getY() + 1.4, getZ(), 20, 0.6, 0.8, 0.6, 0.2);
 		FondationRegistre reg = FondationRegistre.de(sl.getServer());
 		FondationRegistre.Fondation f = reg.zone(sl.dimension().location(), getX(), getZ());
+		GardienModules.etape(p, "airain_gardien_repare");
 		if (p instanceof net.minecraft.server.level.ServerPlayer sp) {
 			fr.chatmort.airain.chronique.Chronique.auteur(sp);
 			fr.chatmort.airain.chronique.Chronique.noter(sl.getServer(), "airain.chronique.j.gardien", sp.getGameProfile().getName());
