@@ -38,6 +38,8 @@ public class ArmureItem extends ArmorItem {
 			l.add(Component.translatable("airain.diademe.effet").withStyle(ChatFormatting.GRAY));
 		if (lignee == Lignee.EMPIRE && palier == 2 && getType() == Type.HELMET)
 			l.add(Component.translatable("airain.armure.imperiale.couronne").withStyle(ChatFormatting.GRAY));
+		if (palier == 2 && getType() == Type.HELMET)
+			l.add(Component.translatable("airain.armure.vol").withStyle(ChatFormatting.AQUA));
 	}
 
 	/** L'armure impériale a son propre modèle, peint sur une seule texture. */

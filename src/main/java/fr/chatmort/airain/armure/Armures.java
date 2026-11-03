@@ -68,6 +68,7 @@ public final class Armures {
 				p.displayClientMessage(Component.translatable("airain.lignee.refus_" + l.cle()), true);
 			}
 		}
+		vol(p);
 		int n = ensemble(p, Lignee.EMPIRE);
 		if (n >= 1 && p.hasEffect(MobEffects.WITHER)) p.removeEffect(MobEffects.WITHER);          // sacré : pas de Wither
 		if (n >= 2 && (!p.hasEffect(MobEffects.DAMAGE_RESISTANCE) || p.getEffect(MobEffects.DAMAGE_RESISTANCE).getDuration() < 100))
@@ -82,6 +83,21 @@ public final class Armures {
 		if (e >= 1) {
 			if (p.hasEffect(MobEffects.BLINDNESS)) p.removeEffect(MobEffects.BLINDNESS);
 			if (p.hasEffect(MobEffects.DARKNESS)) p.removeEffect(MobEffects.DARKNESS);
+		}
+	}
+
+	/** Couronne de l'Empereur, Nimbe de la Haute-Prêtresse : leur porteur vole. */
+	private static void vol(ServerPlayer p) {
+		ItemStack t = p.getItemBySlot(EquipmentSlot.HEAD);
+		boolean peut = t.getItem() instanceof ArmureItem a && a.palier == 2 && a.getType() == net.minecraft.world.item.ArmorItem.Type.HELMET && autorise(p, a.lignee);
+		var ab = p.getAbilities();
+		var d = p.getPersistentData();
+		if (peut) {
+			d.putBoolean("airain_vol", true);
+			if (!ab.mayfly) { ab.mayfly = true; p.onUpdateAbilities(); }
+		} else if (d.getBoolean("airain_vol")) {
+			d.remove("airain_vol");
+			if (!p.isCreative() && !p.isSpectator()) { ab.mayfly = false; ab.flying = false; p.onUpdateAbilities(); }
 		}
 	}
 

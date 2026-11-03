@@ -79,6 +79,18 @@ public class Fin extends SavedData {
 		if (v.equals("empire")) p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(fr.chatmort.airain.AirainMod.COURONNE.get()));
 		if (v.equals("echo")) p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(fr.chatmort.airain.AirainMod.DIADEME.get()));
 		p.getInventory().placeItemBackInInventory(livre);
+		if (v.equals("echo")) {                                                // le mot de Morgana, glissé avec le diadème
+			net.minecraft.world.item.ItemStack note = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WRITTEN_BOOK);
+			note.set(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT, new net.minecraft.world.item.component.WrittenBookContent(
+				net.minecraft.server.network.Filterable.passThrough("Note de Morgana"), "Morgana Dalmont", 0,
+				java.util.List.of(net.minecraft.server.network.Filterable.passThrough(Component.translatable("airain.morgana.note.p1"))), true));
+			note.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, Component.translatable("airain.morgana.note.titre")
+				.withStyle(s -> s.withItalic(false).withColor(net.minecraft.ChatFormatting.LIGHT_PURPLE)));
+			net.minecraft.nbt.CompoundTag cd = new net.minecraft.nbt.CompoundTag();
+			cd.putString("airain_doc", "morgana_note");
+			note.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(cd));
+			p.getInventory().placeItemBackInInventory(note);
+		}
 		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket(Component.translatable("airain.epilogue." + v + ".titre").withStyle(net.minecraft.ChatFormatting.GOLD)));
 		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket(Component.translatable("airain.fin." + v)));
 		p.level().playSound(null, p.blockPosition(), v.equals("empire") ? net.minecraft.sounds.SoundEvents.BEACON_ACTIVATE : net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_RESONATE,
