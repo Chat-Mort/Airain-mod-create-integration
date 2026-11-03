@@ -186,7 +186,7 @@ public class RegistreScreen extends Screen {
 		}
 		yy += 11;
 		g.drawString(font, Component.translatable("airain.registre.gardiens"), x, yy, SEPIA, false);
-		Component ng = Component.translatable("airain.registre.gardiens_n", b.gardiens(), fr.chatmort.airain.gardien.Gardiens.LIMITE);
+		Component ng = Component.translatable("airain.registre.gardiens_n", b.gardiens(), b.limite());
 		g.drawString(font, ng, x + LARGE - font.width(ng), yy, b.gardiens() > 0 ? ENCRE : SEPIA, false);
 		yy += 14;
 		List<ItemStack> ici = new ArrayList<>();

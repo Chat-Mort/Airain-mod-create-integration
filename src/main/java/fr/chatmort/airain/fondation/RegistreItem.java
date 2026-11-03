@@ -43,7 +43,7 @@ public class RegistreItem extends Item {
 			var gardiens = fr.chatmort.airain.gardien.Gardiens.de(sp.getServer());
 			for (FondationRegistre.Fondation f : liste)
 				bases.add(new OuvrirRegistre.Base(f.nom(), f.devise(), f.pos(), f.dim(), f.apparence(), f.ext(),
-					gardiens.nombre(FondationRegistre.cle(f.dim(), f.pos()))));
+					gardiens.nombre(FondationRegistre.cle(f.dim(), f.pos())), fr.chatmort.airain.gardien.Gardiens.limite(f)));
 			FondationRegistre reg = FondationRegistre.de(sp.getServer());
 			List<OuvrirRegistre.Trophee> trophees = new ArrayList<>();
 			for (var e : fr.chatmort.airain.trophee.TropheeRegistre.de(sp.getServer()).entrees()) {

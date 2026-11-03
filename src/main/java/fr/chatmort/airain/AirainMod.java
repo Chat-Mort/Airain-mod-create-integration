@@ -200,7 +200,13 @@ public class AirainMod {
 			}
 	}
 	public static final DeferredItem<Item> PLAQUE_SACREE = ITEMS.register("plaque_netherite_sacree",
-		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)) {
+			@Override
+			public void appendHoverText(net.minecraft.world.item.ItemStack st, Item.TooltipContext c, java.util.List<Component> l, net.minecraft.world.item.TooltipFlag f) {
+				l.add(Component.translatable("item.airain.plaque_netherite_sacree.l1").withStyle(net.minecraft.ChatFormatting.GRAY));
+				l.add(Component.translatable("item.airain.plaque_netherite_sacree.l2").withStyle(net.minecraft.ChatFormatting.GRAY));
+			}
+		});
 
 	/** Chroniques oubliées : le livre de l'aventure. */
 	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chroniques",
@@ -272,6 +278,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(this::tableVanilla);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::joueur);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::vitesse);

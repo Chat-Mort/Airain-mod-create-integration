@@ -76,8 +76,28 @@ public class BaliseBlock extends Block implements EntityBlock {
 			.setValue(BalisePartieBlock.PX, x).setValue(BalisePartieBlock.PY, y).setValue(BalisePartieBlock.PZ, z), 3));
 	}
 
+	/** Plaque de netherite sacrée sur la tour : la balise foudroie elle-même les assaillants. */
+	public static net.minecraft.world.ItemInteractionResult sacrer(ItemStack pile, Level level, BlockPos coeur, net.minecraft.world.entity.player.Player joueur) {
+		if (!fr.chatmort.airain.Sacre.plaque(pile) || !(level.getBlockEntity(coeur) instanceof BaliseBlockEntity b))
+			return net.minecraft.world.ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		if (level instanceof net.minecraft.server.level.ServerLevel sl) {
+			if (b.sacree()) fr.chatmort.airain.Sacre.deja(joueur);
+			else { b.sacrer(); fr.chatmort.airain.Sacre.consacrer(sl, coeur.above(5), joueur, pile, "airain.sacre.balise"); }
+		}
+		return net.minecraft.world.ItemInteractionResult.sidedSuccess(level.isClientSide);
+	}
+
+	@Override
+	protected net.minecraft.world.ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos,
+			net.minecraft.world.entity.player.Player joueur, net.minecraft.world.InteractionHand main, net.minecraft.world.phys.BlockHitResult hit) {
+		return sacrer(pile, level, pos, joueur);
+	}
+
 	@Override
 	protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState neuf, boolean deplace) {
+		if (!state.is(neuf.getBlock()) && !level.isClientSide && level.getBlockEntity(pos) instanceof BaliseBlockEntity b && b.sacree())
+			net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
+				new ItemStack(AirainMod.PLAQUE_SACREE.get()));                // la plaque sacrée est rendue
 		if (!state.is(neuf.getBlock()) && !level.isClientSide)
 			pourChaqueCase(pos, (x, y, z, p) -> {
 				if (level.getBlockState(p).is(AirainMod.BALISE_PARTIE.get()))

@@ -38,6 +38,12 @@ public class FondationBlockEntity extends BlockEntity {
 	public String nom() { return nom; }
 	public String devise() { return devise; }
 	public int rayon() { return rayon; }
+	/** Fondation sacrée (plaque de netherite sacrée) : zone jusqu'à 192 blocs, 6 gardiens. */
+	private boolean sacree;
+	public static final int RAYON_MAX_SACREE = 192;
+	public boolean sacree() { return sacree; }
+	public int rayonMax() { return sacree ? RAYON_MAX_SACREE : RAYON_MAX; }
+	public void sacrer() { sacree = true; rayon = Math.min(RAYON_MAX_SACREE, rayon * 3 / 2); enregistrer(); maj(); }
 	public int hauteur() { return hauteur; }
 
 	public void hauteur(int h) {
@@ -150,12 +156,12 @@ public class FondationBlockEntity extends BlockEntity {
 	}
 
 	public void regler(int r) {
-		rayon = Math.max(RAYON_MIN, Math.min(RAYON_MAX, r)); enregistrer(); maj();
+		rayon = Math.max(RAYON_MIN, Math.min(rayonMax(), r)); enregistrer(); maj();
 	}
 
 	public void enregistrer() {
 		if (level instanceof ServerLevel sl && !murale())
-			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon, devise, apparence.pack(), apparence.packExt());
+			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon, devise, apparence.pack(), apparence.packExt(), sacree);
 	}
 
 	@Override
@@ -175,12 +181,14 @@ public class FondationBlockEntity extends BlockEntity {
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
 		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("ext", apparence.packExt()); tag.putBoolean("berne", berne); tag.putFloat("manuelle", manuelle); tag.putBoolean("autoBas", autoBas); tag.putInt("hauteur", hauteur);
+		tag.putBoolean("sacree", sacree);
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
 		nom = tag.getString("nom"); devise = tag.getString("devise"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
+		sacree = tag.getBoolean("sacree");
 		berne = tag.getBoolean("berne"); manuelle = tag.getFloat("manuelle"); autoBas = tag.getBoolean("autoBas");
 		hauteur = tag.contains("hauteur") ? tag.getInt("hauteur") : GrandEtendardBlock.MAT;
 		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence"), tag.getInt("ext")) : Apparence.DEFAUT;

@@ -46,10 +46,13 @@ public class Gardiens extends SavedData {
 		return s == null ? 0 : s.size();
 	}
 
-	public boolean lier(String cle, UUID g) {
+	/** Gardiens au plus pour cette fondation : 4, ou 6 si elle est sacrée. */
+	public static int limite(FondationRegistre.Fondation f) { return f != null && f.sacree() ? 6 : LIMITE; }
+
+	public boolean lier(String cle, UUID g, int limite) {
 		Set<UUID> s = parBase.computeIfAbsent(cle, k -> new HashSet<>());
 		if (s.contains(g)) return true;
-		if (s.size() >= LIMITE) return false;
+		if (s.size() >= limite) return false;
 		s.add(g); setDirty();
 		return true;
 	}
@@ -96,8 +99,8 @@ public class Gardiens extends SavedData {
 		String cle = FondationRegistre.cle(f.dim(), f.pos());
 		sl.playSound(null, e.getPos(), SoundEvents.IRON_GOLEM_REPAIR, SoundSource.NEUTRAL, 1f, 1.2f);
 		joueur.displayClientMessage(refus == 0
-			? Component.translatable("airain.gardien.affectes", ok, GardienEntity.nom(f), de(sl.getServer()).nombre(cle), LIMITE)
-			: Component.translatable("airain.gardien.affectes_plein", ok, GardienEntity.nom(f), refus, LIMITE), true);
+			? Component.translatable("airain.gardien.affectes", ok, GardienEntity.nom(f), de(sl.getServer()).nombre(cle), limite(f))
+			: Component.translatable("airain.gardien.affectes_plein", ok, GardienEntity.nom(f), refus, limite(f)), true);
 	}
 
 	@Override

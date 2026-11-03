@@ -67,14 +67,42 @@ public final class Trophees {
 		TropheeRegistre reg = TropheeRegistre.de(serveur);
 		if (serveur.getTickCount() % 600 == 0)
 			reg.nettoyer(serveur);
-		Set<Effet> s = EnumSet.noneOf(Effet.class);
-		for (ResourceLocation id : reg.objets())
-			s.addAll(effetsDe(new ItemStack(BuiltInRegistries.ITEM.get(id))));
+		Set<Effet> s = EnumSet.noneOf(Effet.class), sac = EnumSet.noneOf(Effet.class);
+		for (TropheeRegistre.Entree en : reg.toutes()) {
+			Set<Effet> ef = effetsDe(new ItemStack(BuiltInRegistries.ITEM.get(en.objet())));
+			s.addAll(ef);
+			if (en.sacre()) sac.addAll(ef);
+		}
 		actifs = s;
-		for (ServerPlayer joueur : serveur.getPlayerList().getPlayers())
+		sacres = sac;
+		for (ServerPlayer joueur : serveur.getPlayerList().getPlayers()) {
 			for (Effet e : s)
 				if (e.effet != null)
-					joueur.addEffect(new MobEffectInstance(e.effet, 260, 0, true, false, true));
+					joueur.addEffect(new MobEffectInstance(e.effet, 260, sac.contains(e) ? 1 : 0, true, false, true));
+			// chute sacrée : insensible au souffle des explosions
+			var kb = joueur.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.EXPLOSION_KNOCKBACK_RESISTANCE);
+			if (kb != null) {
+				boolean veut = sac.contains(Effet.CHUTE);
+				if (veut && !kb.hasModifier(SOUFFLE))
+					kb.addTransientModifier(new net.minecraft.world.entity.ai.attributes.AttributeModifier(SOUFFLE, 1.0,
+						net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE));
+				else if (!veut && kb.hasModifier(SOUFFLE)) kb.removeModifier(SOUFFLE);
+			}
+		}
+	}
+
+	/** Trophées posés sur un socle sacré : niveau II, ou un bonus pour les effets sans niveau. */
+	private static Set<Effet> sacres = EnumSet.noneOf(Effet.class);
+	private static final ResourceLocation SOUFFLE = ResourceLocation.fromNamespaceAndPath("airain", "trophee_souffle");
+
+	/** Feu sacré : les flammes s'éteignent dès la sortie de la lave ; vision sacrée : ni cécité ni obscurité. */
+	public static void joueur(net.neoforged.neoforge.event.tick.PlayerTickEvent.Post e) {
+		if (!(e.getEntity() instanceof ServerPlayer p) || sacres.isEmpty()) return;
+		if (sacres.contains(Effet.FEU) && p.isOnFire() && !p.isInLava()) p.clearFire();
+		if (sacres.contains(Effet.VISION) && p.tickCount % 5 == 0) {
+			if (p.hasEffect(net.minecraft.world.effect.MobEffects.BLINDNESS)) p.removeEffect(net.minecraft.world.effect.MobEffects.BLINDNESS);
+			if (p.hasEffect(net.minecraft.world.effect.MobEffects.DARKNESS)) p.removeEffect(net.minecraft.world.effect.MobEffects.DARKNESS);
+		}
 	}
 
 	public static void chute(LivingIncomingDamageEvent event) {

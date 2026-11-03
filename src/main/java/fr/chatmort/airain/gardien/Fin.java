@@ -108,9 +108,10 @@ public class Fin extends SavedData {
 	public static void tick(PlayerTickEvent.Post e) {
 		if (!(e.getEntity() instanceof ServerPlayer p)) return;
 		if (p.tickCount % 40 == 0 && couronne(p)) {
-			for (GardienEntity g : p.level().getEntitiesOfClass(GardienEntity.class, new AABB(p.blockPosition()).inflate(16), g -> !g.enPanne())) {
-				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 80, 0, true, true));
-				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, 0, true, true));
+			boolean sacree = fr.chatmort.airain.Sacre.sacree(p.getItemBySlot(EquipmentSlot.HEAD));   // couronne sacrée : 32 blocs, niveau II
+			for (GardienEntity g : p.level().getEntitiesOfClass(GardienEntity.class, new AABB(p.blockPosition()).inflate(sacree ? 32 : 16), g -> !g.enPanne())) {
+				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 80, sacree ? 1 : 0, true, true));
+				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, sacree ? 1 : 0, true, true));
 			}
 		}
 		if (!de(p.server).echo()) return;

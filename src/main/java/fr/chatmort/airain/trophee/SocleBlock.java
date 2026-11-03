@@ -129,6 +129,16 @@ public class SocleBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem) return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
 		SocleBlockEntity socle = socle(level, pos);
+		if (socle != null && fr.chatmort.airain.Sacre.plaque(pile)) {              // plaque de netherite sacrée
+			if (!level.isClientSide) {
+				if (socle.sacre()) fr.chatmort.airain.Sacre.deja(joueur);
+				else {
+					socle.sacrer();
+					fr.chatmort.airain.Sacre.consacrer((ServerLevel) level, socle.getBlockPos().above(), joueur, pile, "airain.sacre.socle");
+				}
+			}
+			return ItemInteractionResult.sidedSuccess(level.isClientSide);
+		}
 		if (socle == null || !socle.trophee().isEmpty())
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		if (!Trophees.estTrophee(pile)) {
@@ -183,6 +193,8 @@ public class SocleBlock extends Block implements EntityBlock {
 		if (!state.is(neuf.getBlock()) && level.getBlockEntity(pos) instanceof SocleBlockEntity socle && level instanceof ServerLevel) {
 			ItemStack p = socle.reprendre();
 			if (!p.isEmpty()) Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, p);
+			if (socle.sacre())                                  // la plaque sacrée est rendue
+				Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_SACREE.get()));
 			if (level.getBlockState(pos.above()).getBlock() instanceof SocleBlock) level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 3);
 		}
 		super.onRemove(state, level, pos, neuf, deplace);

@@ -73,23 +73,29 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 	public void render(SocleBlockEntity be, float pt, PoseStack ms, MultiBufferSource buffers, int light, int overlay) {
 		if (be.getLevel() == null) return;
 		Direction face = be.getBlockState().hasProperty(SocleBlock.FACING) ? be.getBlockState().getValue(SocleBlock.FACING) : Direction.NORTH;
-		dessiner(ms, buffers, be.apparence(), be.trophee(), be.plaque(), be.jour(), be.getLevel().getGameTime() + pt, light, face, be.getLevel());
+		dessiner(ms, buffers, be.apparence(), be.trophee(), be.plaque(), be.jour(), be.getLevel().getGameTime() + pt, light, face, be.getLevel(), be.sacre());
 	}
 
 	/** Dessine tout le piédestal ; l'origine est le coin du bloc du bas. */
 	public static void dessiner(PoseStack ms, MultiBufferSource buffers, SocleApparence a, ItemStack trophee, String plaque, int jour,
 			float t, int light, Direction face, Level level) {
+		dessiner(ms, buffers, a, trophee, plaque, jour, t, light, face, level, false);
+	}
+
+	/** Socle sacré : socle et colonne en netherite, garniture d'or, quel que soit le matériau choisi. */
+	public static void dessiner(PoseStack ms, MultiBufferSource buffers, SocleApparence a, ItemStack trophee, String plaque, int jour,
+			float t, int light, Direction face, Level level, boolean sacre) {
 		ms.pushPose();
 		ms.translate(0.5, 0, 0.5);
 		ms.mulPose(Axis.YP.rotationDegrees(-face.toYRot() + 180));   // nord = 0
 		ms.translate(-0.5, 0, -0.5);
 		ms.pushPose();
 		ms.scale(1 / 16f, 1 / 16f, 1 / 16f);
-		int garn = Apparence.ORNEMENTS[a.garniture()], vel = Apparence.FONDS[a.velours()];
+		int garn = sacre ? 0xF0C050 : Apparence.ORNEMENTS[a.garniture()], vel = Apparence.FONDS[a.velours()];
 		// Types de rendu (et non des VertexConsumer) : avec le BufferSource immédiat de l'écran, chaque getBuffer
 		// d'un autre type clôt les précédents — on demande donc le tampon au moment de dessiner.
-		RenderType tSocle = RenderType.entityCutoutNoCull(rl(MATERIAUX[a.materiau()][0]));
-		RenderType tColonne = RenderType.entityCutoutNoCull(rl(MATERIAUX[a.materiau()][1]));
+		RenderType tSocle = RenderType.entityCutoutNoCull(rl(sacre ? "minecraft:textures/block/netherite_block.png" : MATERIAUX[a.materiau()][0]));
+		RenderType tColonne = RenderType.entityCutoutNoCull(rl(sacre ? "minecraft:textures/block/netherite_block.png" : MATERIAUX[a.materiau()][1]));
 		RenderType tOr = RenderType.entityCutoutNoCull(GARNITURE);
 		RenderType tVelours = RenderType.entityCutoutNoCull(
 			rl("airain:textures/block/socle_velours_" + (a.losange() ? "losange" : "simple") + ".png"));

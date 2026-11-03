@@ -123,6 +123,8 @@ public class FondationBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem)
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
+		if (fr.chatmort.airain.Sacre.plaque(pile) && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fs)
+			return sacrer(level, bas(state, pos), fs, joueur, pile);
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		BlockPos b = bas(state, pos);
@@ -132,12 +134,29 @@ public class FondationBlock extends Block implements EntityBlock {
 		return ItemInteractionResult.sidedSuccess(level.isClientSide);
 	}
 
+	/** Plaque de netherite sacrée : zone une fois et demie plus grande (192 blocs au plus), 6 gardiens. */
+	public static ItemInteractionResult sacrer(Level level, BlockPos b, FondationBlockEntity f, Player joueur, ItemStack pile) {
+		if (level instanceof ServerLevel sl) {
+			if (f.sacree()) fr.chatmort.airain.Sacre.deja(joueur);
+			else {
+				f.sacrer();
+				fr.chatmort.airain.Sacre.consacrer(sl, b.above(), joueur, pile, "airain.sacre.fondation");
+				for (int k = 0; k < 96; k++) {
+					double a = k * Math.PI * 2 / 96;
+					sl.sendParticles(ParticleTypes.END_ROD, b.getX() + 0.5 + Math.cos(a) * f.rayon(), b.getY() + 1.2,
+						b.getZ() + 0.5 + Math.sin(a) * f.rayon(), 1, 0, 0.2, 0, 0);
+				}
+			}
+		}
+		return ItemInteractionResult.sidedSuccess(level.isClientSide);
+	}
+
 	/** Clé de Create : agrandit (ou réduit en s'accroupissant) la zone, montre le cercle en particules. */
 	public static void reglerRayon(Level level, BlockPos b, FondationBlockEntity f, Player joueur) {
 		if (!level.isClientSide) {
 			int r = f.rayon() + (joueur.isShiftKeyDown() ? -FondationBlockEntity.PAS : FondationBlockEntity.PAS);
-			if (r > FondationBlockEntity.RAYON_MAX) r = FondationBlockEntity.RAYON_MIN;
-			if (r < FondationBlockEntity.RAYON_MIN) r = FondationBlockEntity.RAYON_MAX;
+			if (r > f.rayonMax()) r = FondationBlockEntity.RAYON_MIN;
+			if (r < FondationBlockEntity.RAYON_MIN) r = f.rayonMax();
 			f.regler(r);
 			joueur.displayClientMessage(Component.translatable("airain.fondation.rayon", f.rayon()), true);
 			level.playSound(null, b, SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.BLOCKS, 0.5f, 1.2f);
@@ -160,8 +179,12 @@ public class FondationBlock extends Block implements EntityBlock {
 
 	@Override
 	protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState neuf, boolean deplace) {
-		if (!state.is(neuf.getBlock()) && state.getValue(HALF) == DoubleBlockHalf.LOWER && level instanceof ServerLevel sl)
+		if (!state.is(neuf.getBlock()) && state.getValue(HALF) == DoubleBlockHalf.LOWER && level instanceof ServerLevel sl) {
+			if (level.getBlockEntity(pos) instanceof FondationBlockEntity fb && fb.sacree())      // la plaque sacrée est rendue
+				net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
+					new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_SACREE.get()));
 			FondationRegistre.de(sl.getServer()).retirer(level, pos);
+		}
 		super.onRemove(state, level, pos, neuf, deplace);
 	}
 

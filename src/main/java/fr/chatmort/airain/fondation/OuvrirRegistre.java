@@ -13,15 +13,15 @@ import java.util.List;
 
 /** Serveur → client : ouvrir le registre des fondations, avec toutes les bases et tous les trophées. */
 public record OuvrirRegistre(List<Base> bases, List<Trophee> trophees) implements CustomPacketPayload {
-	public record Base(String nom, String devise, BlockPos pos, ResourceLocation dim, int apparence, int ext, int gardiens) {
+	public record Base(String nom, String devise, BlockPos pos, ResourceLocation dim, int apparence, int ext, int gardiens, int limite) {
 		private record Tete(String nom, String devise, BlockPos pos, ResourceLocation dim) {}
 		private static final StreamCodec<ByteBuf, Tete> TETE = StreamCodec.composite(
 			ByteBufCodecs.stringUtf8(64), Tete::nom, ByteBufCodecs.stringUtf8(64), Tete::devise,
 			BlockPos.STREAM_CODEC, Tete::pos, ResourceLocation.STREAM_CODEC, Tete::dim, Tete::new);
 		public static final StreamCodec<ByteBuf, Base> CODEC = StreamCodec.composite(
 			TETE, b -> new Tete(b.nom(), b.devise(), b.pos(), b.dim()),
-			ByteBufCodecs.INT, Base::apparence, ByteBufCodecs.INT, Base::ext, ByteBufCodecs.VAR_INT, Base::gardiens,
-			(t, a, e, g) -> new Base(t.nom(), t.devise(), t.pos(), t.dim(), a, e, g));
+			ByteBufCodecs.INT, Base::apparence, ByteBufCodecs.INT, Base::ext, ByteBufCodecs.VAR_INT, Base::gardiens, ByteBufCodecs.VAR_INT, Base::limite,
+			(t, a, e, g, l) -> new Base(t.nom(), t.devise(), t.pos(), t.dim(), a, e, g, l));
 	}
 
 	/** base : indice dans la liste des bases (-1 : hors de toute base). */

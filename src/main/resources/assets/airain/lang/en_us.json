@@ -715,5 +715,13 @@
  "airain.ingenieur.modules_gardien.titre": "Guardian Modules",
  "airain.ingenieur.modules_gardien.court": "Guardian Modules",
  "airain.ingenieur.modules_gardien.histoire": "The Empire's workshops fitted their guardians to the garrison: lanterns for the mines, cannons for the ramparts, boilers for remote posts.",
- "airain.ingenieur.modules_gardien.usage": "Three slots (head, shoulders, torso), one module each. Right-click with the module to mount it; sneak with an empty hand to remove them all. Level II at the smithing table: netherite upgrade template + sacred netherite plate (deployer: an Infernal Guardian Core onto a netherite plate)."
+ "airain.ingenieur.modules_gardien.usage": "Three slots (head, shoulders, torso), one module each. Right-click with the module to mount it; sneak with an empty hand to remove them all. Level II at the smithing table: netherite upgrade template + sacred netherite plate (deployer: an Infernal Guardian Core onto a netherite plate).",
+ "item.airain.couronne_airain.sacree": "Sacred",
+ "item.airain.couronne_airain.l2_sacree": "Your guardians within 32 blocks gain Strength II and Resistance II.",
+ "airain.sacre.deja": "Already consecrated with sacred netherite.",
+ "airain.sacre.socle": "The pedestal is consecrated: its trophy's effect is strengthened.",
+ "airain.sacre.fondation": "The foundation is consecrated: its area grows, and it can hold 6 guardians.",
+ "airain.sacre.balise": "The beacon is consecrated: during assaults, it will strike the attackers.",
+ "item.airain.plaque_netherite_sacree.l1": "Smithing table: guardian modules, brass crown.",
+ "item.airain.plaque_netherite_sacree.l2": "Right-click a pedestal, a foundation or a defense beacon to consecrate it."
 }

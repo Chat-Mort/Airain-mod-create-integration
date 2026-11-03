@@ -42,6 +42,12 @@ public class BalisePartieBlock extends Block {
 	}
 
 	@Override
+	protected net.minecraft.world.ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos,
+			Player joueur, net.minecraft.world.InteractionHand main, net.minecraft.world.phys.BlockHitResult hit) {
+		return BaliseBlock.sacrer(pile, level, coeur(state, pos), joueur);
+	}
+
+	@Override
 	protected VoxelShape getShape(BlockState s, BlockGetter level, BlockPos pos, CollisionContext ctx) {
 		VoxelShape f = BaliseFormes.de(s.getValue(PX), s.getValue(PY), s.getValue(PZ));
 		return f == null ? Shapes.empty() : f;

@@ -715,5 +715,13 @@
  "airain.ingenieur.modules_gardien.titre": "Modules de gardien",
  "airain.ingenieur.modules_gardien.court": "Modules de gardien",
  "airain.ingenieur.modules_gardien.histoire": "Les ateliers de l'Empire équipaient leurs gardiens selon la garnison : lanternes pour les mines, canons pour les remparts, chaudières pour les postes isolés.",
- "airain.ingenieur.modules_gardien.usage": "Trois emplacements (tête, épaules, torse), un module chacun. Clic droit avec le module pour le monter ; accroupi, main vide : tout démonter. Niveau II à la table de forgeron : modèle d'amélioration en netherite + plaque de netherite sacrée (déployeur : un Cœur du Gardien des enfers sur une plaque de netherite)."
+ "airain.ingenieur.modules_gardien.usage": "Trois emplacements (tête, épaules, torse), un module chacun. Clic droit avec le module pour le monter ; accroupi, main vide : tout démonter. Niveau II à la table de forgeron : modèle d'amélioration en netherite + plaque de netherite sacrée (déployeur : un Cœur du Gardien des enfers sur une plaque de netherite).",
+ "item.airain.couronne_airain.sacree": "Sacrée",
+ "item.airain.couronne_airain.l2_sacree": "Vos gardiens à 32 blocs gagnent Force II et Résistance II.",
+ "airain.sacre.deja": "Déjà consacré par la netherite sacrée.",
+ "airain.sacre.socle": "Le piédestal est consacré : l'effet de son trophée est renforcé.",
+ "airain.sacre.fondation": "La fondation est consacrée : sa zone s'étend, et elle accueille 6 gardiens.",
+ "airain.sacre.balise": "La balise est consacrée : pendant les assauts, elle foudroiera les assaillants.",
+ "item.airain.plaque_netherite_sacree.l1": "Table de forgeron : modules de gardien, couronne d'airain.",
+ "item.airain.plaque_netherite_sacree.l2": "Clic droit sur un piédestal, une fondation ou une balise de défense pour le consacrer."
 }

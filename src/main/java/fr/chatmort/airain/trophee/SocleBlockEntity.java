@@ -31,6 +31,8 @@ public class SocleBlockEntity extends BlockEntity {
 	private SocleApparence apparence = SocleApparence.DEFAUT;
 	private String plaque = "";
 	private int jour;
+	/** Socle sacré (plaque de netherite sacrée) : effet du trophée renforcé, garniture netherite et or. */
+	private boolean sacre;
 
 	public SocleBlockEntity(BlockPos pos, BlockState state) {
 		super(AirainMod.SOCLE_BE.get(), pos, state);
@@ -40,6 +42,8 @@ public class SocleBlockEntity extends BlockEntity {
 	public SocleApparence apparence() { return apparence; }
 	public String plaque() { return plaque; }
 	public int jour() { return jour; }
+	public boolean sacre() { return sacre; }
+	public void sacrer() { sacre = true; enregistrer(); maj(); }
 
 	/** Pose d'un trophée : la plaque se grave toute seule (nom de l'objet et jour de jeu). */
 	public void exposer(ItemStack pile) {
@@ -75,7 +79,7 @@ public class SocleBlockEntity extends BlockEntity {
 
 	private void enregistrer() {
 		if (level instanceof ServerLevel sl && !trophee.isEmpty())
-			TropheeRegistre.de(sl.getServer()).poser(level, worldPosition, BuiltInRegistries.ITEM.getKey(trophee.getItem()), plaque, jour);
+			TropheeRegistre.de(sl.getServer()).poser(level, worldPosition, BuiltInRegistries.ITEM.getKey(trophee.getItem()), plaque, jour, sacre);
 	}
 
 	@Override
@@ -131,6 +135,7 @@ public class SocleBlockEntity extends BlockEntity {
 		super.saveAdditional(tag, registres);
 		if (!trophee.isEmpty()) tag.put("trophee", trophee.save(registres));
 		tag.putInt("apparence", apparence.pack()); tag.putString("plaque", plaque); tag.putInt("jour", jour);
+		tag.putBoolean("sacre", sacre);
 	}
 
 	@Override
@@ -139,6 +144,7 @@ public class SocleBlockEntity extends BlockEntity {
 		trophee = tag.contains("trophee") ? ItemStack.parseOptional(registres, tag.getCompound("trophee")) : ItemStack.EMPTY;
 		apparence = SocleApparence.unpack(tag.getInt("apparence"));
 		plaque = tag.getString("plaque"); jour = tag.getInt("jour");
+		sacre = tag.getBoolean("sacre");
 	}
 
 	@Override

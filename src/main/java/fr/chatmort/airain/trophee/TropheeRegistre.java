@@ -18,7 +18,7 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 /** Liste persistante des trophées exposés (dimension + position → objet, plaque gravée), indépendante des chunks chargés. */
 public class TropheeRegistre extends SavedData {
-	public record Entree(ResourceLocation objet, String plaque, int jour) {}
+	public record Entree(ResourceLocation objet, String plaque, int jour, boolean sacre) {}
 	private final Map<String, Entree> socles = new HashMap<>();
 
 	public static TropheeRegistre de(MinecraftServer serveur) {
@@ -30,8 +30,8 @@ public class TropheeRegistre extends SavedData {
 		return level.dimension().location() + "|" + pos.asLong();
 	}
 
-	public void poser(Level level, BlockPos pos, ResourceLocation objet, String plaque, int jour) {
-		socles.put(cle(level, pos), new Entree(objet, plaque, jour)); setDirty();
+	public void poser(Level level, BlockPos pos, ResourceLocation objet, String plaque, int jour, boolean sacre) {
+		socles.put(cle(level, pos), new Entree(objet, plaque, jour, sacre)); setDirty();
 	}
 
 	/** Toutes les entrées, avec leur dimension et leur position. */
@@ -60,6 +60,8 @@ public class TropheeRegistre extends SavedData {
 		return socles.values().stream().map(Entree::objet).toList();
 	}
 
+	public Collection<Entree> toutes() { return socles.values(); }
+
 	/** Retire les entrées dont le socle (chargé) n'existe plus ou est vide. */
 	public void nettoyer(MinecraftServer serveur) {
 		Iterator<Map.Entry<String, Entree>> it = socles.entrySet().iterator();
@@ -78,7 +80,7 @@ public class TropheeRegistre extends SavedData {
 		CompoundTag l = new CompoundTag();
 		socles.forEach((k, v) -> {
 			CompoundTag e = new CompoundTag();
-			e.putString("objet", v.objet().toString()); e.putString("plaque", v.plaque()); e.putInt("jour", v.jour());
+			e.putString("objet", v.objet().toString()); e.putString("plaque", v.plaque()); e.putInt("jour", v.jour()); e.putBoolean("sacre", v.sacre());
 			l.put(k, e);
 		});
 		tag.put("socles", l);
@@ -90,8 +92,8 @@ public class TropheeRegistre extends SavedData {
 		CompoundTag l = tag.getCompound("socles");
 		for (String k : l.getAllKeys()) {
 			if (l.get(k) instanceof CompoundTag e)
-				r.socles.put(k, new Entree(ResourceLocation.parse(e.getString("objet")), e.getString("plaque"), e.getInt("jour")));
-			else r.socles.put(k, new Entree(ResourceLocation.parse(l.getString(k)), "", 0));   // ancien format
+				r.socles.put(k, new Entree(ResourceLocation.parse(e.getString("objet")), e.getString("plaque"), e.getInt("jour"), e.getBoolean("sacre")));
+			else r.socles.put(k, new Entree(ResourceLocation.parse(l.getString(k)), "", 0, false));   // ancien format
 		}
 		return r;
 	}

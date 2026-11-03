@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:smithing_transform",
+ "template": {
+  "item": "minecraft:netherite_upgrade_smithing_template"
+ },
+ "base": {
+  "item": "airain:casque_couronne"
+ },
+ "addition": {
+  "item": "airain:plaque_netherite_sacree"
+ },
+ "result": {
+  "id": "airain:casque_couronne",
+  "count": 1,
+  "components": {
+   "minecraft:custom_data": {
+    "airain_sacree": 1
+   }
+  }
+ }
+}

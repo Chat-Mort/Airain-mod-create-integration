@@ -305,7 +305,7 @@ public class GardienEntity extends IronGolem {
 			p.displayClientMessage(Component.translatable("airain.gardien.reveil_libre"), true);
 		} else if (!affecter(f)) {
 			escorte = p.getUUID();
-			p.displayClientMessage(Component.translatable("airain.gardien.base_pleine", Gardiens.LIMITE), true);
+			p.displayClientMessage(Component.translatable("airain.gardien.base_pleine", Gardiens.limite(f)), true);
 		} else {
 			p.displayClientMessage(Component.translatable("airain.gardien.reveil_base", nom(f)), true);
 		}
@@ -321,7 +321,7 @@ public class GardienEntity extends IronGolem {
 		ServerLevel sl = (ServerLevel) level();
 		String k = FondationRegistre.cle(f.dim(), f.pos());
 		if (k.equals(fondation)) { escorte = null; return true; }
-		if (!Gardiens.de(sl.getServer()).lier(k, getUUID())) return false;
+		if (!Gardiens.de(sl.getServer()).lier(k, getUUID(), Gardiens.limite(f))) return false;
 		quitterFondation();
 		fondation = k;
 		escorte = null;

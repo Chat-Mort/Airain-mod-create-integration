@@ -149,6 +149,8 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem)
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
+		if (fr.chatmort.airain.Sacre.plaque(pile) && level.getBlockEntity(base(state, pos)) instanceof FondationBlockEntity fs)
+			return FondationBlock.sacrer(level, base(state, pos), fs, joueur, pile);
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		BlockPos b = base(state, pos);
@@ -168,8 +170,12 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 
 	@Override
 	protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState neuf, boolean deplace) {
-		if (!state.is(neuf.getBlock()) && state.getValue(PARTIE) == 0 && level instanceof ServerLevel sl)
+		if (!state.is(neuf.getBlock()) && state.getValue(PARTIE) == 0 && level instanceof ServerLevel sl) {
+			if (level.getBlockEntity(pos) instanceof FondationBlockEntity fb && fb.sacree())      // la plaque sacrée est rendue
+				net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
+					new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_SACREE.get()));
 			FondationRegistre.de(sl.getServer()).retirer(level, pos);
+		}
 		super.onRemove(state, level, pos, neuf, deplace);
 	}
 
