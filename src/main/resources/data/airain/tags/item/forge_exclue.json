@@ -1,0 +1,35 @@
+{
+ "replace": false,
+ "values": [
+  "minecraft:clay",
+  "minecraft:wet_sponge",
+  {
+   "id": "#create:crushed_raw_materials",
+   "required": false
+  },
+  {
+   "id": "#minecraft:wool",
+   "required": false
+  },
+  {
+   "id": "#c:glass_blocks",
+   "required": false
+  },
+  {
+   "id": "#c:glass_panes",
+   "required": false
+  },
+  {
+   "id": "create:industrial_iron_block",
+   "required": false
+  },
+  {
+   "id": "create:industrial_iron_window",
+   "required": false
+  },
+  {
+   "id": "create:industrial_iron_window_pane",
+   "required": false
+  }
+ ]
+}

@@ -346,6 +346,21 @@ public class AirainMod {
 			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> 15)));
 	public static final DeferredItem<BlockItem> BLOC_ETOILE_ITEM = ITEMS.register("bloc_etoile",
 		() -> new BlockItem(BLOC_ETOILE.get(), new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	/** Sièges du pouvoir : trône impérial (fin Empire) et solium de la Prêtresse (fin Écho). */
+	public static final DeferredBlock<fr.chatmort.airain.pouvoir.SiegeBlock> TRONE = BLOCKS.register("trone_imperial",
+		() -> new fr.chatmort.airain.pouvoir.SiegeBlock(true, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> 12).noOcclusion()));
+	public static final DeferredItem<BlockItem> TRONE_ITEM = ITEMS.register("trone_imperial",
+		() -> new BlockItem(TRONE.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	public static final DeferredBlock<fr.chatmort.airain.pouvoir.SiegeBlock> SOLIUM = BLOCKS.register("solium",
+		() -> new fr.chatmort.airain.pouvoir.SiegeBlock(false, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
+			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST).lightLevel(s -> 12).noOcclusion()));
+	public static final DeferredItem<BlockItem> SOLIUM_ITEM = ITEMS.register("solium",
+		() -> new BlockItem(SOLIUM.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	public static final DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<fr.chatmort.airain.pouvoir.Assise>> ASSISE =
+		ENTITES.register("assise", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.pouvoir.Assise>of(
+			fr.chatmort.airain.pouvoir.Assise::new, net.minecraft.world.entity.MobCategory.MISC)
+			.sized(0.25f, 0.35f).noSummon().clientTrackingRange(10).build("assise"));
 	public static final DeferredItem<Item> PLAQUE_IMPERIALE_INACHEVEE = ITEMS.register("plaque_imperiale_inachevee",
 		() -> new com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem(new Item.Properties().fireResistant()));
 	public static final DeferredItem<Item> PLAQUE_IMPERIALE = ITEMS.register("plaque_imperiale",
@@ -410,6 +425,9 @@ public class AirainMod {
 			e.put(GARDIEN.get(), net.minecraft.world.entity.animal.IronGolem.createAttributes().build()));
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Gardiens::etendard);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::commandes);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.pouvoir.Siege::commandes);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.pouvoir.Siege::mort);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.pouvoir.Siege::croissance);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::cible);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::experience);

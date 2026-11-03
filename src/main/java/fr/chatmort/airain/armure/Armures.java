@@ -78,7 +78,8 @@ public final class Armures {
 		boolean diademe = ArmureItem.diademe(p.getItemBySlot(EquipmentSlot.HEAD));
 		boolean sceptre = p.getMainHandItem().getItem() instanceof SceptreItem sc && sc.lignee == Lignee.ECHO && Lignee.ECHO.autorisee(p.server);
 		attribut(p, MANA_MAX, ID_MANA, e == 2 ? 500 : e == 1 ? 200 : 0);
-		attribut(p, MANA_REGEN, ID_REGEN, (e == 2 ? 6 : e == 1 ? 3 : 0) + (diademe ? 1 : 0) + (sceptre ? 3 : 0));
+		attribut(p, MANA_REGEN, ID_REGEN, (e == 2 ? 6 : e == 1 ? 3 : 0) + (diademe ? 1 : 0) + (sceptre ? 3 : 0)
+			+ (fr.chatmort.airain.pouvoir.Pouvoir.dansBase(p.server, false, p.level().dimension().location(), p.getX(), p.getZ()) ? 10 : 0));   // solium : mana dans sa base
 		attribut(p, SORTS, ID_SORTS, (e == 2 ? 3 : e == 1 ? 1 : 0) + (sceptre ? 3 : 0));
 		if (e >= 1) {
 			if (p.hasEffect(MobEffects.BLINDNESS)) p.removeEffect(MobEffects.BLINDNESS);

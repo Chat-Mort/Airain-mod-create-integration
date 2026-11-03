@@ -128,6 +128,14 @@ public class Fin extends SavedData {
 				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 80, sacree ? 1 : 0, true, true));
 				g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, sacree ? 1 : 0, true, true));
 			}
+			// trône impérial : dans sa base, la couronne commande tous les gardiens
+			if (fr.chatmort.airain.pouvoir.Pouvoir.dansBase(p.server, true, p.level().dimension().location(), p.getX(), p.getZ())) {
+				var f = fr.chatmort.airain.pouvoir.Pouvoir.de(p.server).base(p.server);
+				for (GardienEntity g : p.level().getEntitiesOfClass(GardienEntity.class, new AABB(f.pos()).inflate(f.rayon(), 64, f.rayon()), g -> !g.enPanne())) {
+					g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 80, sacree ? 1 : 0, true, true));
+					g.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, sacree ? 1 : 0, true, true));
+				}
+			}
 		}
 		if (!de(p.server).echo()) return;
 		if (p.tickCount % 40 == 0 && (!p.hasEffect(MobEffects.NIGHT_VISION) || p.getEffect(MobEffects.NIGHT_VISION).getDuration() < 300))
@@ -169,7 +177,7 @@ public class Fin extends SavedData {
 	/** Moisson d'âmes : l'expérience, ce sont des éclats d'Écho ; après la libération, on en récolte moitié plus. */
 	public static void experience(net.neoforged.neoforge.event.entity.player.PlayerXpEvent.XpChange e) {
 		if (e.getAmount() <= 0 || !(e.getEntity() instanceof ServerPlayer p) || !de(p.server).echo()) return;
-		float v = e.getAmount() * 1.5f;
+		float v = e.getAmount() * 1.5f * fr.chatmort.airain.pouvoir.Siege.experience(p.server);   // chant des âmes : ×2 en plus (×3)
 		int n = (int) v;
 		if (p.getRandom().nextFloat() < v - n) n++;
 		e.setAmount(n);

@@ -194,7 +194,7 @@ public class GardienEntity extends IronGolem {
 	public void tick() {
 		super.tick();
 		if (!level().isClientSide && !enPanne() && tickCount % 20 == 0) majPoste();
-		if (!level().isClientSide && !enPanne()) { GardienModules.tick(this); Elite.tick(this); }
+		if (!level().isClientSide && !enPanne()) { GardienModules.tick(this); Elite.tick(this); fr.chatmort.airain.pouvoir.Siege.gardien(this); }
 	}
 
 	private void majPoste() {
