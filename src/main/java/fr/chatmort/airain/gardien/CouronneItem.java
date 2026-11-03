@@ -36,9 +36,8 @@ public class CouronneItem extends ArmorItem {
 		boolean sacree = fr.chatmort.airain.Sacre.sacree(s);
 		if (sacree && casque) {                                   // la couronne sacrée se présente comme les autres pièces sacrées
 			l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
-			l.add(Component.translatable("airain.armure.sacree.ensemble").withStyle(ChatFormatting.GOLD));
+			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
 			l.add(Component.translatable("airain.armure.sacree.bonus").withStyle(ChatFormatting.GRAY));
-			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GRAY));
 			return;
 		}
 		if (sacree) l.add(Component.translatable("item.airain.couronne_airain.sacree").withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.BOLD));

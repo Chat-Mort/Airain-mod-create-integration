@@ -14,7 +14,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -59,14 +58,11 @@ public final class Siege {
 			p.sendSystemMessage(Component.translatable("airain.siege.en_cours", Component.translatable("airain.pouvoir." + pv.effet), minutes(pv.reste(s))).withStyle(ChatFormatting.GRAY));
 		long att = pv.attente(s);
 		if (att > 0) p.sendSystemMessage(Component.translatable("airain.siege.attente", minutes(att)).withStyle(ChatFormatting.DARK_GRAY));
-		MutableComponent ligne = Component.empty();
-		for (String e : trone ? Pouvoir.DECRETS : Pouvoir.CHANTS) {
-			ligne.append(Component.literal("[").append(Component.translatable("airain.pouvoir." + e)).append("] ")
+		for (String e : trone ? Pouvoir.DECRETS : Pouvoir.CHANTS)             // un décret (ou un chant) par ligne
+			p.sendSystemMessage(Component.literal(" [").append(Component.translatable("airain.pouvoir." + e)).append("]")
 				.withStyle(st -> st.withColor(att > 0 ? ChatFormatting.DARK_GRAY : c)
 					.withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/pouvoir choisir " + e))
 					.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("airain.pouvoir." + e + ".desc")))));
-		}
-		p.sendSystemMessage(ligne);
 	}
 
 	static String minutes(long ticks) { return String.valueOf((ticks + 1199) / 1200); }
