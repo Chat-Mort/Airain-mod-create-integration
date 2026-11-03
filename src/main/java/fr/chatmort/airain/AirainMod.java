@@ -58,7 +58,7 @@ public class AirainMod {
 			.displayItems((params, sortie) -> {
 				for (var h : ITEMS.getEntries()) {
 					sortie.accept(h.get());
-					if (h.get() == COURONNE.get() || h.get() == CASQUE_COURONNE.get()) {      // versions sacrées (visibles dans JEI)
+					if (h.getId().getPath().equals("couronne_airain") || h.getId().getPath().equals("casque_couronne")) {      // versions sacrées (visibles dans JEI)
 						var sacree = new net.minecraft.world.item.ItemStack(h.get());
 						fr.chatmort.airain.Sacre.marquer(sacree, true);
 						sortie.accept(sacree);
