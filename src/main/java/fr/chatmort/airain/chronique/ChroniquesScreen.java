@@ -74,7 +74,8 @@ public class ChroniquesScreen extends Screen {
 		nouvellePage();
 		vide(); vide();
 		ligne(new Ligne(Component.translatable("item.airain.chroniques").withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
-		ligne(new Ligne(Component.translatable("airain.chronique.sous_titre").withStyle(ChatFormatting.ITALIC).getVisualOrderText(), SEPIA, null, -1, true));
+		for (FormattedCharSequence st : font.split(Component.translatable("airain.chronique.sous_titre").withStyle(ChatFormatting.ITALIC), LARGE))
+			ligne(new Ligne(st, SEPIA, null, -1, true));
 		vide(); vide();
 		List<String> auteurs = new ArrayList<>();
 		for (Tag t : d.getList("auteurs", Tag.TAG_STRING)) auteurs.add(t.getAsString());
@@ -180,9 +181,11 @@ public class ChroniquesScreen extends Screen {
 	@Override
 	protected void init() {
 		if (pages.isEmpty()) construire();
-		addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
-		addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
+		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
+		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
 	}
+
+	private WidgetsEmpire.Fleche avant, apres;
 
 	private int planches() { return (pages.size() + 1) / 2; }
 
@@ -233,6 +236,8 @@ public class ChroniquesScreen extends Screen {
 
 	@Override
 	public void render(GuiGraphics g, int mx, int my, float pt) {
+		avant.visible = planche > 0;
+		apres.visible = planche < planches() - 1;
 		super.render(g, mx, my, pt);
 		for (int cote = 0; cote < 2; cote++) {
 			int k = planche * 2 + cote;
@@ -248,8 +253,12 @@ public class ChroniquesScreen extends Screen {
 				if (survol) g.fill(x, y + 9, x + font.width(l.texte()), y + 10, 0xFF000000 | BLEU);
 			}
 		}
-		String n = (planche + 1) + " / " + planches();
-		g.drawString(font, n, bx() + W / 2 - font.width(n) / 2, by() + 162, SEPIA, false);
+		for (int cote = 0; cote < 2; cote++) {                 // numéro sous chaque page, comme le registre
+			int k = planche * 2 + cote;
+			if (k >= pages.size()) break;
+			String n = String.valueOf(k + 1);
+			g.drawString(font, n, px(cote) + LARGE / 2 - font.width(n) / 2, by() + 162, SEPIA, false);
+		}
 	}
 
 	@Override

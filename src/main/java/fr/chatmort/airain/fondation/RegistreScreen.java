@@ -28,10 +28,11 @@ public class RegistreScreen extends Screen {
 	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
 	private static final int W = 300, H = 190, LARGE = 118;
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, VERT = 0x2E5A1E;
-	private static final int PAR_PAGE_TROPHEES = 3;
+	private static final int PAR_PAGE_TROPHEES = 2;
 	private final OuvrirRegistre donnees;
 	private final List<Page> contenus = new ArrayList<>();
 	private int planche;   // double page affichée
+	private WidgetsEmpire.Fleche avant, apres;
 
 	private interface Page { void dessiner(GuiGraphics g, int x, int y, float pt); }
 
@@ -57,8 +58,8 @@ public class RegistreScreen extends Screen {
 	@Override
 	protected void init() {
 		int x = bx(), y = by();
-		addRenderableWidget(new WidgetsEmpire.Fleche(x + 20, y + 156, false, b -> tourner(-1)));
-		addRenderableWidget(new WidgetsEmpire.Fleche(x + W - 36, y + 156, true, b -> tourner(1)));
+		avant = addRenderableWidget(new WidgetsEmpire.Fleche(x + 20, y + 156, false, b -> tourner(-1)));
+		apres = addRenderableWidget(new WidgetsEmpire.Fleche(x + W - 36, y + 156, true, b -> tourner(1)));
 	}
 
 	private void tourner(int d) {
@@ -90,6 +91,8 @@ public class RegistreScreen extends Screen {
 
 	@Override
 	public void render(GuiGraphics g, int mx, int my, float pt) {
+		avant.visible = planche > 0;
+		apres.visible = planche < planches() - 1;
 		super.render(g, mx, my, pt);
 		int x = bx(), y = by();
 		for (int c = 0; c < 2; c++) {
@@ -191,30 +194,64 @@ public class RegistreScreen extends Screen {
 		}
 	}
 
+	/** Coupe une ligne trop longue (style compris : gras, italique) et termine par « … ». */
+	private FormattedCharSequence coupe(Component t, int w) {
+		if (font.width(t) <= w) return t.getVisualOrderText();
+		FormattedText f = font.substrByWidth(t, w - font.width("…"));
+		return net.minecraft.locale.Language.getInstance().getVisualOrder(FormattedText.composite(f, Component.literal("…")));
+	}
+
 	private void pageTrophees(GuiGraphics g, int x, int y, int debut) {
-		centre(g, Component.translatable("airain.registre.trophees").withStyle(ChatFormatting.BOLD), x, y, ROUGE);
+		Component titre = Component.translatable("airain.registre.trophees").withStyle(ChatFormatting.BOLD);
+		if (font.width(titre) > LARGE) {                       // titre trop large (anglais) : un peu plus petit
+			float k = LARGE / (float) font.width(titre);
+			g.pose().pushPose();
+			g.pose().translate(x + LARGE / 2f, y + (1 - k) * 4, 0);
+			g.pose().scale(k, k, 1);
+			g.drawString(font, titre, -font.width(titre) / 2, 0, ROUGE, false);
+			g.pose().popPose();
+		} else centre(g, titre, x, y, ROUGE);
 		filet(g, x, y + 13);
 		int yy = y + 20;
 		for (int i = debut; i < Math.min(donnees.trophees().size(), debut + PAR_PAGE_TROPHEES); i++) {
 			OuvrirRegistre.Trophee t = donnees.trophees().get(i);
 			ItemStack s = new ItemStack(BuiltInRegistries.ITEM.get(t.objet()));
 			g.renderItem(s, x, yy);
-			int ly = paragraphe(g, s.getHoverName().copy().withStyle(ChatFormatting.BOLD), x + 20, yy, ENCRE, 1, false);
+			int ly = paragraphe2(g, s.getHoverName().copy().withStyle(ChatFormatting.BOLD), x + 20, yy, ENCRE, 1, LARGE - 20);
 			StringBuilder ef = new StringBuilder();
 			for (var e : fr.chatmort.airain.trophee.Trophees.effetsDe(s))
 				ef.append(ef.length() > 0 ? ", " : "").append(Component.translatable("airain.trophee.effet." + e.name().toLowerCase()).getString());
-			g.drawString(font, font.plainSubstrByWidth(ef.toString(), LARGE - 20), x + 20, ly, VERT, false);
-			ly += 10;
+			ly = Math.max(ly, yy + 8);
+			ly = paragraphe2(g, Component.literal(ef.toString()), x + 20, ly, VERT, 1, LARGE - 20);
+			ly = Math.max(ly, yy + 19);
 			if (!t.plaque().isEmpty()) {
-				String p = "« " + t.plaque() + " », " + Component.translatable("airain.registre.jour", t.jour()).getString();
-				g.drawString(font, Component.literal(font.plainSubstrByWidth(p, LARGE)).withStyle(ChatFormatting.ITALIC), x, ly, SEPIA, false);
-				ly += 10;
+				Component p = Component.literal("« " + t.plaque() + " »").withStyle(ChatFormatting.ITALIC);
+				ly = paragraphe2(g, p, x, ly, SEPIA, 2, LARGE);
 			}
+			Component jour = Component.translatable("airain.registre.jour", t.jour()).withStyle(ChatFormatting.ITALIC);
+			int lj = font.width(jour);
 			Component base = t.base() >= 0 && t.base() < donnees.bases().size() && !donnees.bases().get(t.base()).nom().isEmpty()
 				? Component.literal(donnees.bases().get(t.base()).nom()) : Component.translatable("airain.registre.hors_base");
-			g.drawString(font, Component.literal(font.plainSubstrByWidth(base.getString(), LARGE)), x, ly, ENCRE, false);
-			yy = ly + 14;
+			g.drawString(font, coupe(base, LARGE - lj - 6), x, ly, ENCRE, false);
+			g.drawString(font, jour, x + LARGE - lj, ly, SEPIA, false);
+			yy = ly + 16;
 		}
+	}
+
+	/** Paragraphe sur une largeur donnée ; la dernière ligne autorisée est coupée proprement si le texte déborde. */
+	private int paragraphe2(GuiGraphics g, Component t, int x, int y, int c, int maxLignes, int w) {
+		List<FormattedCharSequence> l = font.split(t, w);
+		if (l.size() > maxLignes) {
+			for (int i = 0; i < maxLignes - 1; i++) { g.drawString(font, l.get(i), x, y, c, false); y += 10; }
+			// reste du texte sur la dernière ligne, coupé
+			List<FormattedText> morceaux = font.getSplitter().splitLines(t, w, net.minecraft.network.chat.Style.EMPTY);
+			FormattedText reste = FormattedText.composite(morceaux.subList(maxLignes - 1, morceaux.size()).toArray(new FormattedText[0]));
+			FormattedText f = font.substrByWidth(reste, w - font.width("…"));
+			g.drawString(font, net.minecraft.locale.Language.getInstance().getVisualOrder(FormattedText.composite(f, Component.literal("…"))), x, y, c, false);
+			return y + 10;
+		}
+		for (FormattedCharSequence s : l) { g.drawString(font, s, x, y, c, false); y += 10; }
+		return y;
 	}
 
 	@Override

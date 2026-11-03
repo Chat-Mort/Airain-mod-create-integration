@@ -25,7 +25,7 @@ import net.minecraft.util.Mth;
 public class AtlasScreen extends Screen {
 	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
 	private static final ResourceLocation ICONES = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/atlas.png");
-	private static final int W = 300, X0 = 16, Y0 = 14, X1 = 284, Y1 = 166;
+	private static final int W = 300, X0 = 14, Y0 = 19, X1 = 286, Y1 = 155;
 	private static final int[] ECHELLES = {1, 2, 4, 8, 16};
 	/** Catégories (filtres) et leur case dans la planche d'icônes. */
 	private static final String[] TYPES = {"base", "poste", "ruine", "camp", "relais", "station", "lieu", "mort"};
@@ -91,7 +91,7 @@ public class AtlasScreen extends Screen {
 
 	@Override
 	public boolean mouseClicked(double mx, double my, int b) {
-		int fx = bx() + 22, fy = by() + 169;
+		int fx = bx() + 20, fy = by() + 159;
 		for (int i = 0; i < TYPES.length; i++) {
 			int x = fx + i * 15;
 			if (mx >= x && mx < x + 12 && my >= fy && my < fy + 12) { visibles[i] = !visibles[i]; return true; }
@@ -147,9 +147,18 @@ public class AtlasScreen extends Screen {
 			g.pose().popPose();
 		}
 		g.disableScissor();
-		g.fill(bx() + 146, y0, bx() + 154, y1, 0x50300808);      // le dos du livre
+		// pli de la carte au dos du livre : une ombre douce, plus sombre au centre
+		for (int k = 0; k < 4; k++) g.fill(bx() + 146 + k, y0, bx() + 154 - k, y1, 0x0C200804);
+		// cadre de la carte et cartouche du titre (le monde affiché)
+		g.fill(x0 - 1, y0 - 1, x1 + 1, y0, 0xFF6E5034); g.fill(x0 - 1, y1, x1 + 1, y1 + 1, 0xFF6E5034);
+		g.fill(x0 - 1, y0, x0, y1, 0xFF6E5034); g.fill(x1, y0, x1 + 1, y1, 0xFF6E5034);
+		Component dim = Component.translatable("airain.registre.dim." + ResourceLocation.parse(d.getString("dim")).getPath()).copy().withStyle(ChatFormatting.BOLD);
+		int lt = font.width(dim);
+		g.fill(x0 + 3, y0 + 3, x0 + 11 + lt, y0 + 15, 0xFF6E5034);
+		g.fill(x0 + 4, y0 + 4, x0 + 10 + lt, y0 + 14, 0xFFE9D3A5);
+		g.drawString(font, dim, x0 + 7, y0 + 5, 0x8A1A14, false);
 		// barre du bas : filtres, coordonnées, échelle
-		int fx = bx() + 22, fy = by() + 169;
+		int fx = bx() + 20, fy = by() + 159;
 		for (int i = 0; i < TYPES.length; i++) {
 			int x = fx + i * 15;
 			g.fill(x - 1, fy - 1, x + 13, fy + 13, visibles[i] ? 0xFF9A7046 : 0xFF5A4630);
@@ -158,9 +167,7 @@ public class AtlasScreen extends Screen {
 				g.renderTooltip(font, Component.translatable("airain.atlas.type." + TYPES[i]), mx, my);
 		}
 		String bas = dansCarte(mx, my) ? "x " + (int) wx(mx) + "  z " + (int) wz(my) + "   1:" + ech() : "1:" + ech();
-		g.drawString(font, bas, bx() + W - 22 - font.width(bas), fy + 2, 0x6E5034, false);
-		Component dim = Component.translatable("airain.registre.dim." + ResourceLocation.parse(d.getString("dim")).getPath());
-		g.drawString(font, dim.copy().withStyle(ChatFormatting.BOLD), bx() + 20, by() + 4, 0xE9D0A0, false);
+		g.drawString(font, bas, bx() + W - 20 - font.width(bas), fy + 2, 0x6E5034, false);
 		if (survol != null) g.renderTooltip(font, survol.nom(), mx, my);
 	}
 

@@ -32,9 +32,10 @@ public class LivreIngenieurScreen extends Screen {
 		{"banc", "airain:banc_entretien"}, {"modules", "airain:meule_fine"}, {"table", "airain:table_enchantement"},
 		{"desenchanteur", "airain:desenchanteur"}, {"balise", "airain:balise_defense"}, {"codex", "airain:codex"}, {"gardien", "airain:gardien_spawn_egg"}, {"reliure", "airain:reliure"},
 		{"tableau", "airain:tableau_service"}, {"atlas", "airain:atlas"}, {"affiches", "airain:affiche_vierge"}};
-	/** Pas de la colonne de droite de la table des matières (elle s'adapte au nombre de chapitres). */
-	private static final int PAS = Math.min(18, 130 / Math.max(1, CHAPITRES.length - 6));
+	/** Table des matières : 7 chapitres à gauche (sous l'introduction), le reste à droite ; icônes réduites, pas de 13 px. */
+	private static final int GAUCHE = 7, PAS = 13;
 	private int planche;
+	private WidgetsEmpire.Fleche avant, apres;
 
 	public LivreIngenieurScreen() { super(Component.translatable("item.airain.livre_ingenieur")); }
 
@@ -43,8 +44,8 @@ public class LivreIngenieurScreen extends Screen {
 
 	@Override
 	protected void init() {
-		addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
-		addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
+		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
+		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
 	}
 
 	private void aller(int n) {
@@ -63,14 +64,18 @@ public class LivreIngenieurScreen extends Screen {
 		return super.keyPressed(key, scan, mods);
 	}
 
-	/** Table des matières : six chapitres par page, un clic sur une ligne ouvre le chapitre. */
+	/** Position d'une ligne de la table des matières : {x, y du texte}. */
+	private int[] ligne(int i) {
+		return i < GAUCHE ? new int[] {bx() + 20, by() + 22 + 50 + i * PAS} : new int[] {bx() + 162, by() + 22 + 2 + (i - GAUCHE) * PAS};
+	}
+
+	/** Table des matières : un clic sur une ligne ouvre le chapitre. */
 	@Override
 	public boolean mouseClicked(double mx, double my, int b) {
 		if (planche == 0)
 			for (int i = 0; i < CHAPITRES.length; i++) {
-				int x = (i < 6 ? bx() + 20 : bx() + 162), y = by() + 22 + (i < 6 ? 52 : 14) + (i % 6) * 17;
-				if (i >= 6) y = by() + 22 + 14 + (i - 6) * PAS;
-				if (mx >= x && mx < x + LARGE && my >= y - 2 && my < y + 16) { aller(i + 1); return true; }
+				int[] l = ligne(i);
+				if (mx >= l[0] && mx < l[0] + LARGE && my >= l[1] - 2 && my < l[1] - 2 + PAS) { aller(i + 1); return true; }
 			}
 		return super.mouseClicked(mx, my, b);
 	}
@@ -92,16 +97,23 @@ public class LivreIngenieurScreen extends Screen {
 
 	@Override
 	public void render(GuiGraphics g, int mx, int my, float pt) {
+		avant.visible = planche > 0;
+		apres.visible = planche < CHAPITRES.length;
 		super.render(g, mx, my, pt);
 		int gx = bx() + 20, dx = bx() + 162, y = by() + 22;
 		if (planche == 0) {
 			texte(g, Component.translatable("item.airain.livre_ingenieur").withStyle(ChatFormatting.BOLD), gx, y + 2, ROUGE, 2);
 			texte(g, Component.translatable("airain.ingenieur.intro").withStyle(ChatFormatting.ITALIC), gx, y + 16, SEPIA, 3);
 			for (int i = 0; i < CHAPITRES.length; i++) {
-				int x = i < 6 ? gx : dx, yy = i < 6 ? y + 52 + i * 17 : y + 14 + (i - 6) * PAS;
-				g.renderItem(objet(i), x, yy - 4);
-				boolean survol = mx >= x && mx < x + LARGE && my >= yy - 2 && my < yy + 16;
-				g.drawString(font, Component.translatable("airain.ingenieur." + CHAPITRES[i][0] + ".court"), x + 19, yy, survol ? BLEU : ENCRE, false);
+				int[] l = ligne(i);
+				int x = l[0], yy = l[1];
+				g.pose().pushPose();                               // icône réduite (12 px), centrée sur la ligne
+				g.pose().translate(x, yy - 2.5f, 0);
+				g.pose().scale(0.75f, 0.75f, 1f);
+				g.renderItem(objet(i), 0, 0);
+				g.pose().popPose();
+				boolean survol = mx >= x && mx < x + LARGE && my >= yy - 2 && my < yy - 2 + PAS;
+				g.drawString(font, Component.translatable("airain.ingenieur." + CHAPITRES[i][0] + ".court"), x + 15, yy, survol ? BLEU : ENCRE, false);
 			}
 		} else {
 			int i = planche - 1;
@@ -119,7 +131,7 @@ public class LivreIngenieurScreen extends Screen {
 			texte(g, Component.translatable("airain.ingenieur." + CHAPITRES[i][0] + ".usage"), dx, y + 13, ENCRE, 12);
 		}
 		String n = (planche + 1) + " / " + (CHAPITRES.length + 1);
-		g.drawString(font, n, bx() + W / 2 - font.width(n) / 2, by() + 162, SEPIA, false);
+		g.drawString(font, n, dx + LARGE / 2 - font.width(n) / 2, by() + 162, SEPIA, false);   // sous la page de droite
 	}
 
 	@Override
