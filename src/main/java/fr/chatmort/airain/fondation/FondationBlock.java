@@ -125,7 +125,7 @@ public class FondationBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem)
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
-		if ((fr.chatmort.airain.Sacre.plaque(pile) || echo(pile)) && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fs)
+		if ((imperiale(pile) || echo(pile)) && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fs)
 			return sacrer(level, bas(state, pos), fs, joueur, pile);
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -137,17 +137,19 @@ public class FondationBlock extends Block implements EntityBlock {
 	}
 
 	public static boolean echo(ItemStack s) { return s.is(fr.chatmort.airain.AirainMod.BLOC_ECHO_ITEM.get()); }
+	public static boolean imperiale(ItemStack s) { return s.is(fr.chatmort.airain.AirainMod.PLAQUE_IMPERIALE.get()); }
 
 	/**
-	 * Capitale : plaque de netherite sacrée (capitale sacrée) ou bloc d'écho primordial après la fin Écho (capitale arcanique).
+	 * Capitale : plaque impériale après la fin Empire (capitale impériale) ou bloc d'écho primordial après la fin Écho (capitale arcanique).
 	 * Zone une fois et demie plus grande (192 blocs au plus), 6 gardiens.
 	 */
 	public static ItemInteractionResult sacrer(Level level, BlockPos b, FondationBlockEntity f, Player joueur, ItemStack pile) {
 		if (level instanceof ServerLevel sl) {
 			boolean arcane = echo(pile);
-			if (arcane && !fr.chatmort.airain.gardien.Fin.de(sl.getServer()).echo())
-				joueur.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.sacre.refus_echo"), true);
-			else if (arcane ? f.arcanique() : f.sacree()) fr.chatmort.airain.Sacre.deja(joueur);
+			var fin = fr.chatmort.airain.gardien.Fin.de(sl.getServer());
+			if (arcane ? !fin.echo() : !fin.empire())
+				joueur.displayClientMessage(net.minecraft.network.chat.Component.translatable(arcane ? "airain.sacre.refus_echo" : "airain.sacre.refus_empire"), true);
+			else if (f.arcanique() || f.imperiale()) fr.chatmort.airain.Sacre.deja(joueur);
 			else {
 				f.sacrer(arcane);
 				fr.chatmort.airain.Sacre.consacrer(sl, b.above(), joueur, pile, arcane ? "airain.sacre.fondation_echo" : "airain.sacre.fondation");
@@ -200,6 +202,8 @@ public class FondationBlock extends Block implements EntityBlock {
 	public static void rendre(Level level, BlockPos pos, FondationBlockEntity fb) {
 		if (fb.plaque()) net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
 			new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_SACREE.get()));
+		if (fb.imperiale()) net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
+			new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_IMPERIALE.get()));
 		if (fb.arcanique()) net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
 			new ItemStack(fr.chatmort.airain.AirainMod.BLOC_ECHO_ITEM.get()));
 	}

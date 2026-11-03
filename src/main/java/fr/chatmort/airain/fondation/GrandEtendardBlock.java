@@ -149,7 +149,7 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem)
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
-		if ((fr.chatmort.airain.Sacre.plaque(pile) || FondationBlock.echo(pile)) && level.getBlockEntity(base(state, pos)) instanceof FondationBlockEntity fs)
+		if ((FondationBlock.imperiale(pile) || FondationBlock.echo(pile)) && level.getBlockEntity(base(state, pos)) instanceof FondationBlockEntity fs)
 			return FondationBlock.sacrer(level, base(state, pos), fs, joueur, pile);
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

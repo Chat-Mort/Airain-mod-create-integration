@@ -5,7 +5,7 @@
    "y": 0
   },
   "facing=north,partie=0,sommet=false,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 0
   },
   "facing=north,partie=0,sommet=false,consacre=2": {
@@ -17,7 +17,7 @@
    "y": 0
   },
   "facing=north,partie=0,sommet=true,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 0
   },
   "facing=north,partie=0,sommet=true,consacre=2": {
@@ -221,7 +221,7 @@
    "y": 90
   },
   "facing=east,partie=0,sommet=false,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 90
   },
   "facing=east,partie=0,sommet=false,consacre=2": {
@@ -233,7 +233,7 @@
    "y": 90
   },
   "facing=east,partie=0,sommet=true,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 90
   },
   "facing=east,partie=0,sommet=true,consacre=2": {
@@ -437,7 +437,7 @@
    "y": 180
   },
   "facing=south,partie=0,sommet=false,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 180
   },
   "facing=south,partie=0,sommet=false,consacre=2": {
@@ -449,7 +449,7 @@
    "y": 180
   },
   "facing=south,partie=0,sommet=true,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 180
   },
   "facing=south,partie=0,sommet=true,consacre=2": {
@@ -653,7 +653,7 @@
    "y": 270
   },
   "facing=west,partie=0,sommet=false,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 270
   },
   "facing=west,partie=0,sommet=false,consacre=2": {
@@ -665,7 +665,7 @@
    "y": 270
   },
   "facing=west,partie=0,sommet=true,consacre=1": {
-   "model": "airain:block/etendard_socle_sacre",
+   "model": "airain:block/etendard_socle_imperial",
    "y": 270
   },
   "facing=west,partie=0,sommet=true,consacre=2": {

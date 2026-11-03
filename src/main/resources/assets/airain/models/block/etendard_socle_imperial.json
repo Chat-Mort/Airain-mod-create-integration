@@ -1,14 +1,14 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "particle": "minecraft:block/polished_blackstone",
-  "p": "airain:block/fondation_plaque_sacre",
+  "particle": "minecraft:block/quartz_block_bottom",
+  "p": "airain:block/fondation_plaque_imperiale",
   "l": "minecraft:block/gold_block",
-  "fer": "minecraft:block/netherite_block",
-  "tuf": "minecraft:block/polished_blackstone",
-  "briq": "minecraft:block/polished_blackstone_bricks",
-  "cis": "minecraft:block/chiseled_polished_blackstone",
-  "brique": "minecraft:block/polished_blackstone_bricks"
+  "fer": "minecraft:block/red_wool",
+  "tuf": "minecraft:block/quartz_block_bottom",
+  "briq": "minecraft:block/quartz_bricks",
+  "cis": "minecraft:block/chiseled_quartz_block",
+  "brique": "minecraft:block/red_nether_bricks"
  },
  "elements": [
   {
