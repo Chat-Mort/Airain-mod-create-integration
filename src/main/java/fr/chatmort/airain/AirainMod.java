@@ -192,7 +192,7 @@ public class AirainMod {
 	/** Trophées des boss avancés : type de créature → trophée. */
 	public static final java.util.Map<String, DeferredItem<Item>> TROPHEES_BOSS = new java.util.LinkedHashMap<>();
 	static {
-		String[][] t = {{"rivet_colosse", "mowziesmobs:ferrous_wroughtnaut"}, {"coeur_magma", "cataclysm:netherite_monstrosity"},
+		String[][] t = {{"visiere_colosse", "mowziesmobs:ferrous_wroughtnaut"}, {"coeur_magma", "cataclysm:netherite_monstrosity"},
 			{"engrenage_rodeur", "cataclysm:the_prowler"}, {"oeil_gardien", "cataclysm:ender_guardian"}, {"sceau_centurion", "mebahelcreaturesdwarven:dwarven_centurion"}};
 		for (String[] x : t) {
 			final String nom = x[0];

@@ -1025,8 +1025,6 @@
  "airain.ingenieur.armes_runiques.usage2": "Twinblade: every hit strikes a second time (25%) and makes the target glow. Pickaxe, Echolocation: sneak + right-click, ores within 8 blocks glow through the rock.",
  "airain.ingenieur.armes_arcaniques.usage2": "Echo Twins: second hit (50%), the target glows; right-click, whirlwind. Arcane Probe: ores within 16 blocks glow.",
  "airain.ingenieur.solium.usage2": "Souls: double experience (triple with the Echo's blessing). Growth: in bases, plants grow three times faster. Resonance: Ars Nouveau sourcelinks produce twice as much.",
- "item.airain.rivet_colosse": "Colossus Rivet",
- "item.airain.rivet_colosse.l1": "Torn from the Ferrous Wroughtnaut.",
  "item.airain.coeur_magma": "Magma Heart",
  "item.airain.coeur_magma.l1": "It beat inside the Netherite Monstrosity.",
  "item.airain.engrenage_rodeur": "Prowler's Gear",
@@ -1039,5 +1037,7 @@
  "airain.trophee.effet.satiete": "Satiety (no hunger)",
  "airain.trophee.sur_socle": "On a pedestal: %s",
  "airain.trophee.obtenu": "Trophy obtained: %s. Display it on a pedestal.",
- "airain.ingenieur.socle.usage2": "Trophies: dragon egg (fall), wither skeleton skull (fire), Infernal Guardian Core (regeneration), primordial echo (vision), Colossus Rivet (strength), Magma Heart (resistance), Prowler's Gear (haste), Guardian's Eye (absorption), Centurion's Seal (satiety)."
+ "airain.ingenieur.socle.usage2": "Trophies: dragon egg (fall), wither skeleton skull (fire), Infernal Guardian Core (regeneration), primordial echo (vision), Colossus Visor (strength), Magma Heart (resistance), Prowler's Gear (haste), Guardian's Eye (absorption), Centurion's Seal (satiety).",
+ "item.airain.visiere_colosse": "Colossus Visor",
+ "item.airain.visiere_colosse.l1": "Torn from the Ferrous Wroughtnaut's helm."
 }
