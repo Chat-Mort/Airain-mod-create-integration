@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "EEE",
+  "ENE",
+  "EEE"
+ ],
+ "key": {
+  "E": {
+   "item": "minecraft:nether_star"
+  },
+  "N": {
+   "item": "minecraft:netherite_block"
+  }
+ },
+ "result": {
+  "id": "airain:bloc_etoile",
+  "count": 1
+ }
+}

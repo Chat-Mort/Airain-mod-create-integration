@@ -723,5 +723,9 @@
  "airain.sacre.fondation": "La fondation est consacrée : sa zone s'étend, et elle accueille 6 gardiens.",
  "airain.sacre.balise": "La balise est consacrée : pendant les assauts, elle foudroiera les assaillants.",
  "item.airain.plaque_netherite_sacree.l1": "Table de forgeron : modules de gardien, couronne d'airain.",
- "item.airain.plaque_netherite_sacree.l2": "Clic droit sur un piédestal, une fondation ou une balise de défense pour le consacrer."
+ "item.airain.plaque_netherite_sacree.l2": "Clic droit sur un piédestal, une fondation ou une balise de défense pour le consacrer.",
+ "block.airain.bloc_etoile": "Bloc d'étoile du Nether",
+ "item.airain.plaque_imperiale": "Plaque impériale",
+ "item.airain.plaque_imperiale_inachevee": "Plaque impériale inachevée",
+ "item.airain.plaque_imperiale.l1": "Forgée pour l'Empereur, et pour lui seul."
 }

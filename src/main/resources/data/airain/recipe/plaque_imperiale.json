@@ -1,0 +1,33 @@
+{
+ "type": "create:sequenced_assembly",
+ "ingredient": {
+  "item": "airain:plaque_netherite_sacree"
+ },
+ "loops": 5,
+ "results": [
+  {
+   "id": "airain:plaque_imperiale"
+  }
+ ],
+ "sequence": [
+  {
+   "type": "create:deploying",
+   "ingredients": [
+    {
+     "item": "airain:plaque_imperiale_inachevee"
+    },
+    {
+     "item": "airain:bloc_etoile"
+    }
+   ],
+   "results": [
+    {
+     "id": "airain:plaque_imperiale_inachevee"
+    }
+   ]
+  }
+ ],
+ "transitional_item": {
+  "id": "airain:plaque_imperiale_inachevee"
+ }
+}

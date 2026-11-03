@@ -208,6 +208,24 @@ public class AirainMod {
 			}
 		});
 
+	/** Plaque impériale (fin de partie) : plaque sacrée + 5 blocs d'étoile du Nether au déployeur. */
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> BLOC_ETOILE = BLOCKS.register("bloc_etoile",
+		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
+			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> 15)));
+	public static final DeferredItem<BlockItem> BLOC_ETOILE_ITEM = ITEMS.register("bloc_etoile",
+		() -> new BlockItem(BLOC_ETOILE.get(), new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	public static final DeferredItem<Item> PLAQUE_IMPERIALE_INACHEVEE = ITEMS.register("plaque_imperiale_inachevee",
+		() -> new com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem(new Item.Properties().fireResistant()));
+	public static final DeferredItem<Item> PLAQUE_IMPERIALE = ITEMS.register("plaque_imperiale",
+		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)) {
+			@Override
+			public void appendHoverText(net.minecraft.world.item.ItemStack st, Item.TooltipContext c, java.util.List<Component> l, net.minecraft.world.item.TooltipFlag f) {
+				l.add(Component.translatable("item.airain.plaque_imperiale.l1").withStyle(net.minecraft.ChatFormatting.GOLD, net.minecraft.ChatFormatting.ITALIC));
+			}
+			@Override
+			public boolean isFoil(net.minecraft.world.item.ItemStack st) { return true; }
+		});
+
 	/** Chroniques oubliées : le livre de l'aventure. */
 	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chroniques",
 		() -> new fr.chatmort.airain.chronique.ChroniquesItem(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
