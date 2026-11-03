@@ -66,7 +66,7 @@ public class SiegeBlock extends HorizontalDirectionalBlock {
 		Pouvoir pv = Pouvoir.de(sl.getServer());
 		var f = FondationRegistre.de(sl.getServer()).zone(sl.dimension().location(), pos.getX() + 0.5, pos.getZ() + 0.5);
 		if (!lignee().autorisee(sl.getServer())) refus = "airain.siege.refus_fin_" + lignee().cle();
-		else if (f == null || !f.sacree()) refus = "airain.siege.refus_base";
+		else if (f == null || (trone ? !f.sacree() || f.arcanique() : !f.arcanique())) refus = trone ? "airain.siege.refus_base" : "airain.siege.refus_base_echo";
 		else if (pv.present() && !(pv.dim.equals(sl.dimension().location()) && pv.pos.equals(pos))) refus = "airain.siege.refus_unique";
 		if (refus != null) {
 			l.destroyBlock(pos, true);

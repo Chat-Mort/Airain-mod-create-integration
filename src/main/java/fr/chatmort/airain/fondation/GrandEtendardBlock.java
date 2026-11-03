@@ -47,12 +47,12 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 
 	public GrandEtendardBlock(Properties p) {
 		super(p);
-		registerDefaultState(stateDefinition.any().setValue(PARTIE, 0).setValue(FACING, Direction.NORTH).setValue(SOMMET, false));
+		registerDefaultState(stateDefinition.any().setValue(PARTIE, 0).setValue(FACING, Direction.NORTH).setValue(SOMMET, false).setValue(FondationBlock.CONSACRE, 0));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-		b.add(PARTIE, FACING, SOMMET);
+		b.add(PARTIE, FACING, SOMMET, FondationBlock.CONSACRE);
 	}
 
 	@Override
@@ -149,7 +149,7 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem)
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
-		if (fr.chatmort.airain.Sacre.plaque(pile) && level.getBlockEntity(base(state, pos)) instanceof FondationBlockEntity fs)
+		if ((fr.chatmort.airain.Sacre.plaque(pile) || FondationBlock.echo(pile)) && level.getBlockEntity(base(state, pos)) instanceof FondationBlockEntity fs)
 			return FondationBlock.sacrer(level, base(state, pos), fs, joueur, pile);
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -171,9 +171,7 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 	@Override
 	protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState neuf, boolean deplace) {
 		if (!state.is(neuf.getBlock()) && state.getValue(PARTIE) == 0 && level instanceof ServerLevel sl) {
-			if (level.getBlockEntity(pos) instanceof FondationBlockEntity fb && fb.sacree())      // la plaque sacrée est rendue
-				net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
-					new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_SACREE.get()));
+			if (level.getBlockEntity(pos) instanceof FondationBlockEntity fb) FondationBlock.rendre(level, pos, fb);
 			FondationRegistre.de(sl.getServer()).retirer(level, pos);
 		}
 		super.onRemove(state, level, pos, neuf, deplace);

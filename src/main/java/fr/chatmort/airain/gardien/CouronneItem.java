@@ -36,7 +36,7 @@ public class CouronneItem extends ArmorItem {
 		boolean sacree = fr.chatmort.airain.Sacre.sacree(s);
 		if (sacree) l.add(Component.translatable("item.airain.couronne_airain.sacree").withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.BOLD));
 		for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (sacree && i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
-		l.add(Component.translatable(casque ? "item.airain.casque_couronne.separer" : "item.airain.couronne_airain.enclume").withStyle(ChatFormatting.DARK_GRAY));
+		if (!(casque && fr.chatmort.airain.Sacre.sacree(s))) l.add(Component.translatable(casque ? "item.airain.casque_couronne.separer" : "item.airain.couronne_airain.enclume").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	/** Couronne sacrée : rouages et bandeau noircis, fleurons d'or, une étoile du Nether à la place du rubis. */
@@ -60,7 +60,7 @@ public class CouronneItem extends ArmorItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player p, InteractionHand main) {
 		ItemStack pile = p.getItemInHand(main);
-		if (!casque || !p.isShiftKeyDown()) return super.use(level, p, main);
+		if (!casque || !p.isShiftKeyDown() || fr.chatmort.airain.Sacre.sacree(pile)) return super.use(level, p, main);   // la couronne sacrée ne se démonte plus
 		if (!level.isClientSide) {
 			ItemStack netherite = new ItemStack(Items.NETHERITE_HELMET);
 			netherite.applyComponents(pile.getComponentsPatch());

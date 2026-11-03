@@ -43,17 +43,19 @@ public class FondationBlock extends Block implements EntityBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final IntegerProperty STYLE = IntegerProperty.create("style", 0, 2);
+	/** Base de capitale : 0 ordinaire, 1 sacrée, 2 arcanique. */
+	public static final IntegerProperty CONSACRE = IntegerProperty.create("consacre", 0, 2);
 	private static final VoxelShape SOCLE = Shapes.or(Block.box(0, 0, 0, 16, 4, 16), Block.box(1, 4, 1, 15, 15, 15), Block.box(5.5, 15, 5.5, 10.5, 16, 10.5));
 	private static final VoxelShape MAT = Block.box(6.5, 0, 6.5, 9.5, 16, 9.5);
 
 	public FondationBlock(Properties p) {
 		super(p);
-		registerDefaultState(stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH).setValue(STYLE, 0));
+		registerDefaultState(stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH).setValue(STYLE, 0).setValue(CONSACRE, 0));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
-		b.add(HALF, FACING, STYLE);
+		b.add(HALF, FACING, STYLE, CONSACRE);
 	}
 
 	@Override
@@ -123,7 +125,7 @@ public class FondationBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem)
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
-		if (fr.chatmort.airain.Sacre.plaque(pile) && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fs)
+		if ((fr.chatmort.airain.Sacre.plaque(pile) || echo(pile)) && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fs)
 			return sacrer(level, bas(state, pos), fs, joueur, pile);
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -134,13 +136,21 @@ public class FondationBlock extends Block implements EntityBlock {
 		return ItemInteractionResult.sidedSuccess(level.isClientSide);
 	}
 
-	/** Plaque de netherite sacrée : zone une fois et demie plus grande (192 blocs au plus), 6 gardiens. */
+	public static boolean echo(ItemStack s) { return s.is(fr.chatmort.airain.AirainMod.BLOC_ECHO_ITEM.get()); }
+
+	/**
+	 * Capitale : plaque de netherite sacrée (capitale sacrée) ou bloc d'écho primordial après la fin Écho (capitale arcanique).
+	 * Zone une fois et demie plus grande (192 blocs au plus), 6 gardiens.
+	 */
 	public static ItemInteractionResult sacrer(Level level, BlockPos b, FondationBlockEntity f, Player joueur, ItemStack pile) {
 		if (level instanceof ServerLevel sl) {
-			if (f.sacree()) fr.chatmort.airain.Sacre.deja(joueur);
+			boolean arcane = echo(pile);
+			if (arcane && !fr.chatmort.airain.gardien.Fin.de(sl.getServer()).echo())
+				joueur.displayClientMessage(net.minecraft.network.chat.Component.translatable("airain.sacre.refus_echo"), true);
+			else if (arcane ? f.arcanique() : f.sacree()) fr.chatmort.airain.Sacre.deja(joueur);
 			else {
-				f.sacrer();
-				fr.chatmort.airain.Sacre.consacrer(sl, b.above(), joueur, pile, "airain.sacre.fondation");
+				f.sacrer(arcane);
+				fr.chatmort.airain.Sacre.consacrer(sl, b.above(), joueur, pile, arcane ? "airain.sacre.fondation_echo" : "airain.sacre.fondation");
 				for (int k = 0; k < 96; k++) {
 					double a = k * Math.PI * 2 / 96;
 					sl.sendParticles(ParticleTypes.END_ROD, b.getX() + 0.5 + Math.cos(a) * f.rayon(), b.getY() + 1.2,
@@ -180,12 +190,18 @@ public class FondationBlock extends Block implements EntityBlock {
 	@Override
 	protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState neuf, boolean deplace) {
 		if (!state.is(neuf.getBlock()) && state.getValue(HALF) == DoubleBlockHalf.LOWER && level instanceof ServerLevel sl) {
-			if (level.getBlockEntity(pos) instanceof FondationBlockEntity fb && fb.sacree())      // la plaque sacrée est rendue
-				net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
-					new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_SACREE.get()));
+			if (level.getBlockEntity(pos) instanceof FondationBlockEntity fb) rendre(level, pos, fb);
 			FondationRegistre.de(sl.getServer()).retirer(level, pos);
 		}
 		super.onRemove(state, level, pos, neuf, deplace);
+	}
+
+	/** La plaque sacrée et le bloc d'écho sertis sont rendus quand on casse la base. */
+	public static void rendre(Level level, BlockPos pos, FondationBlockEntity fb) {
+		if (fb.plaque()) net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
+			new ItemStack(fr.chatmort.airain.AirainMod.PLAQUE_SACREE.get()));
+		if (fb.arcanique()) net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
+			new ItemStack(fr.chatmort.airain.AirainMod.BLOC_ECHO_ITEM.get()));
 	}
 
 	@Override

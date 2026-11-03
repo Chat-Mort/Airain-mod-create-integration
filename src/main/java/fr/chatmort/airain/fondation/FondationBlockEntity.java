@@ -43,7 +43,26 @@ public class FondationBlockEntity extends BlockEntity {
 	public static final int RAYON_MAX_SACREE = 192;
 	public boolean sacree() { return sacree; }
 	public int rayonMax() { return sacree ? RAYON_MAX_SACREE : RAYON_MAX; }
-	public void sacrer() { sacree = true; rayon = Math.min(RAYON_MAX_SACREE, rayon * 3 / 2); enregistrer(); maj(); }
+	/** Capitale arcanique (bloc d'écho primordial, fin Écho) : mêmes avantages, aux couleurs des arcanes. */
+	private boolean arcanique, plaque;
+	public boolean arcanique() { return arcanique; }
+	/** La plaque sacrée est-elle sertie (rendue si l'on casse le bloc) ? */
+	public boolean plaque() { return plaque; }
+	public void sacrer() { sacrer(false); }
+	public void sacrer(boolean arcane) {
+		if (!sacree) rayon = Math.min(RAYON_MAX_SACREE, rayon * 3 / 2);
+		sacree = true;
+		if (arcane) arcanique = true; else plaque = true;
+		enregistrer(); maj(); couleurs();
+	}
+	/** La base prend les couleurs de la capitale (sacrée : noir et or ; arcanique : noir et violet). */
+	public void couleurs() {
+		if (level == null || level.isClientSide) return;
+		BlockState s = getBlockState();
+		if (!s.hasProperty(FondationBlock.CONSACRE)) return;
+		int v = arcanique ? 2 : sacree ? 1 : 0;
+		if (s.getValue(FondationBlock.CONSACRE) != v) level.setBlock(worldPosition, s.setValue(FondationBlock.CONSACRE, v), Block.UPDATE_ALL);
+	}
 	public int hauteur() { return hauteur; }
 
 	public void hauteur(int h) {
@@ -161,7 +180,7 @@ public class FondationBlockEntity extends BlockEntity {
 
 	public void enregistrer() {
 		if (level instanceof ServerLevel sl && !murale())
-			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon, devise, apparence.pack(), apparence.packExt(), sacree);
+			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon, devise, apparence.pack(), apparence.packExt(), sacree, arcanique);
 	}
 
 	@Override
@@ -169,6 +188,7 @@ public class FondationBlockEntity extends BlockEntity {
 		super.onLoad();
 		if (level != null && !level.isClientSide && getBlockState().getBlock() instanceof GrandEtendardBlock)
 			level.getServer().execute(() -> GrandEtendardBlock.marquerSommet(level, worldPosition, hauteur));   // étendards posés avant la hauteur réglable
+		if (level != null && !level.isClientSide && sacree) level.getServer().execute(this::couleurs);
 		enregistrer();
 	}
 
@@ -181,14 +201,14 @@ public class FondationBlockEntity extends BlockEntity {
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
 		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("ext", apparence.packExt()); tag.putBoolean("berne", berne); tag.putFloat("manuelle", manuelle); tag.putBoolean("autoBas", autoBas); tag.putInt("hauteur", hauteur);
-		tag.putBoolean("sacree", sacree);
+		tag.putBoolean("sacree", sacree); tag.putBoolean("arcanique", arcanique); tag.putBoolean("plaque", plaque);
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
 		nom = tag.getString("nom"); devise = tag.getString("devise"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
-		sacree = tag.getBoolean("sacree");
+		sacree = tag.getBoolean("sacree"); arcanique = tag.getBoolean("arcanique"); plaque = tag.contains("plaque") ? tag.getBoolean("plaque") : sacree;
 		berne = tag.getBoolean("berne"); manuelle = tag.getFloat("manuelle"); autoBas = tag.getBoolean("autoBas");
 		hauteur = tag.contains("hauteur") ? tag.getInt("hauteur") : GrandEtendardBlock.MAT;
 		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence"), tag.getInt("ext")) : Apparence.DEFAUT;

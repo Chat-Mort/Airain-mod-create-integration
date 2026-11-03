@@ -145,7 +145,8 @@ public class Fin extends SavedData {
 
 	/** Sonar : accroupi et immobile une seconde et demie, une onde révèle les créatures proches à travers les murs. */
 	private static void sonar(ServerPlayer p) {
-		boolean immobile = p.isShiftKeyDown() && p.onGround() && p.getDeltaMovement().horizontalDistanceSqr() < 1.0E-4;
+		boolean pioche = p.getMainHandItem().getItem() instanceof fr.chatmort.airain.armure.PiocheItem;   // la pioche a son propre écho
+		boolean immobile = !pioche && p.isShiftKeyDown() && p.onGround() && p.getDeltaMovement().horizontalDistanceSqr() < 1.0E-4;
 		int n = immobile ? ACCROUPI.getOrDefault(p.getUUID(), 0) + 1 : 0;
 		ACCROUPI.put(p.getUUID(), n);
 		if (n != SONAR_ATTENTE) return;
