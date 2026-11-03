@@ -214,6 +214,43 @@ public class AirainMod {
 	public static final DeferredItem<Item> JAMBIERES_IMPERIALES = armure("jambieres_imperiales", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 2);
 	public static final DeferredItem<Item> BOTTES_IMPERIALES = armure("bottes_imperiales", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.BOOTS, 2);
 
+	/** Armes et pioche sacrées / impériales. */
+	private static net.minecraft.world.item.Tier palier(int usages, float vitesse) {
+		return new net.minecraft.world.item.Tier() {
+			public int getUses() { return usages; }
+			public float getSpeed() { return vitesse; }
+			public float getAttackDamageBonus() { return 0f; }
+			public net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block> getIncorrectBlocksForDrops() { return net.minecraft.tags.BlockTags.INCORRECT_FOR_NETHERITE_TOOL; }
+			public int getEnchantmentValue() { return 15; }
+			public net.minecraft.world.item.crafting.Ingredient getRepairIngredient() { return net.minecraft.world.item.crafting.Ingredient.of(net.minecraft.world.item.Items.NETHERITE_INGOT); }
+		};
+	}
+	public static final net.minecraft.world.item.Tier TIER_SACRE = palier(2600, 12f), TIER_IMPERIAL = palier(3600, 16f);
+	private static DeferredItem<Item> arme(String nom, fr.chatmort.airain.armure.ArmeItem.Type type, int pal,
+			double degats, double vitesse, double portee, double recul, double balayage) {
+		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(pal == 2 ? TIER_IMPERIAL : TIER_SACRE, type, pal,
+			new Item.Properties().fireResistant().rarity(pal == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
+				.attributes(fr.chatmort.airain.armure.ArmeItem.stats(degats, vitesse, portee, recul, balayage))));
+	}
+	public static final DeferredItem<Item> EPEE_SACREE = arme("epee_sacree", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 1, 10, 1.7, 0.5, 0, 0);
+	public static final DeferredItem<Item> EPEE_IMPERIALE = arme("epee_imperiale", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 2, 13, 1.8, 1, 0, 0);
+	public static final DeferredItem<Item> KATANA_SACRE = arme("katana_sacre", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
+	public static final DeferredItem<Item> KATANA_IMPERIAL = arme("katana_imperial", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 2, 12, 2.3, 1, 0, 0);
+	public static final DeferredItem<Item> ESPADON_SACRE = arme("espadon_sacre", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
+	public static final DeferredItem<Item> ESPADON_IMPERIAL = arme("espadon_imperial", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 2, 18, 1.0, 1.5, 0.5, 0.5);
+	public static final DeferredItem<Item> TWINBLADE_SACREE = arme("twinblade_sacree", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
+	public static final DeferredItem<Item> TWINBLADE_IMPERIALE = arme("twinblade_imperiale", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 2, 10, 2.0, 0, 0, 0);
+	private static DeferredItem<Item> pioche(String nom, int pal, double portee) {
+		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.PiocheItem(pal == 2 ? TIER_IMPERIAL : TIER_SACRE, pal,
+			new Item.Properties().fireResistant().rarity(pal == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
+				.attributes(net.minecraft.world.item.PickaxeItem.createAttributes(pal == 2 ? TIER_IMPERIAL : TIER_SACRE, 6f, -2.8f).withModifierAdded(
+					net.minecraft.world.entity.ai.attributes.Attributes.BLOCK_INTERACTION_RANGE,
+					new net.minecraft.world.entity.ai.attributes.AttributeModifier(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, "pioche_portee"), portee,
+						net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE), net.minecraft.world.entity.EquipmentSlotGroup.MAINHAND))));
+	}
+	public static final DeferredItem<Item> PIOCHE_SACREE = pioche("pioche_sacree", 1, 1);
+	public static final DeferredItem<Item> PIOCHE_IMPERIALE = pioche("pioche_imperiale", 2, 2);
+
 	/** Modules de gardien (niveaux 1 et 2) et plaque de netherite sacrée qui sert à les améliorer. */
 	public static final java.util.Map<String, DeferredItem<Item>> MODULES = new java.util.LinkedHashMap<>();
 	static {
@@ -326,6 +363,10 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::chute);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::joueur);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::joueur);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::critique);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::filon);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.banc.Affutage::vitesse);
