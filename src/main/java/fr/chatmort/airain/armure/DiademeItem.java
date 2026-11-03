@@ -30,9 +30,15 @@ public class DiademeItem extends ArmorItem {
 
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
-		l.add(Component.translatable("airain.lignee.echo").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.ITALIC));
-		l.add(Component.translatable("airain.diademe.l1").withStyle(ChatFormatting.LIGHT_PURPLE));
-		l.add(Component.translatable("airain.diademe.effet").withStyle(ChatFormatting.GRAY));
+		if (casque) {                                             // présenté comme les autres pièces de la lignée
+			l.add(Component.translatable("airain.lignee.echo").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
+			l.add(Component.translatable("airain.diademe.effet").withStyle(ChatFormatting.GOLD));
+			l.add(Component.translatable("airain.diademe.l1").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+		} else {
+			l.add(Component.translatable("airain.lignee.echo").withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.ITALIC));
+			l.add(Component.translatable("airain.diademe.l1").withStyle(ChatFormatting.LIGHT_PURPLE));
+			l.add(Component.translatable("airain.diademe.effet").withStyle(ChatFormatting.GRAY));
+		}
 		l.add(Component.translatable(casque ? "item.airain.casque_diademe.separer" : "item.airain.diademe_echo.enclume").withStyle(ChatFormatting.DARK_GRAY));
 	}
 

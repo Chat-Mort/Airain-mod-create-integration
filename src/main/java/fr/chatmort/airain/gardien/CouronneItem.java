@@ -40,6 +40,12 @@ public class CouronneItem extends ArmorItem {
 			l.add(Component.translatable("airain.armure.sacree.bonus").withStyle(ChatFormatting.GRAY));
 			return;
 		}
+		if (casque) {                                             // casque couronné : présenté comme les autres pièces de la lignée
+			l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
+			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i).withStyle(ChatFormatting.GOLD));
+			l.add(Component.translatable("item.airain.casque_couronne.separer").withStyle(ChatFormatting.DARK_GRAY));
+			return;
+		}
 		if (sacree) l.add(Component.translatable("item.airain.couronne_airain.sacree").withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.BOLD));
 		for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (sacree && i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
 		if (!(casque && fr.chatmort.airain.Sacre.sacree(s))) l.add(Component.translatable(casque ? "item.airain.casque_couronne.separer" : "item.airain.couronne_airain.enclume").withStyle(ChatFormatting.DARK_GRAY));

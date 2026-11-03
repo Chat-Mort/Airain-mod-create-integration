@@ -191,7 +191,7 @@ public class AirainMod {
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 	public static final DeferredItem<Item> CASQUE_COURONNE = ITEMS.register("casque_couronne",
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_CASQUE, true, new Item.Properties()
-			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 
 	/** Armures de l'Empire : sacrée (netherite + plaque sacrée) puis impériale (sacrée + plaque impériale). */
@@ -298,7 +298,7 @@ public class AirainMod {
 		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_DIADEME, false, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))));
 	public static final DeferredItem<Item> CASQUE_DIADEME = ITEMS.register("casque_diademe",
-		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_CASQUE, true, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
+		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_CASQUE, true, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 	public static final DeferredItem<Item> LINGOT_ARCANIUM = ITEMS.register("lingot_arcanium",
 		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)));
