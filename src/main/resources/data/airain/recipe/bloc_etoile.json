@@ -2,16 +2,16 @@
  "type": "minecraft:crafting_shaped",
  "category": "misc",
  "pattern": [
-  "EEE",
-  "ENE",
-  "EEE"
+  "NNN",
+  "NEN",
+  "NNN"
  ],
  "key": {
   "E": {
    "item": "minecraft:nether_star"
   },
   "N": {
-   "item": "minecraft:netherite_block"
+   "item": "minecraft:netherite_ingot"
   }
  },
  "result": {
