@@ -1038,5 +1038,6 @@
  "airain.trophee.effet.absorption": "Absorption (cœurs dorés qui se reforment)",
  "airain.trophee.effet.satiete": "Satiété (plus de faim)",
  "airain.trophee.sur_socle": "Sur un socle : %s",
- "airain.trophee.obtenu": "Trophée obtenu : %s. Exposez-le sur un socle."
+ "airain.trophee.obtenu": "Trophée obtenu : %s. Exposez-le sur un socle.",
+ "airain.ingenieur.socle.usage2": "Trophées : œuf de dragon (chute), crâne de wither squelette (feu), Cœur du Gardien des enfers (régénération), écho primordial (vision), Rivet du Colosse (force), Cœur de magma (résistance), Engrenage du Rôdeur (célérité), Œil du Gardien (absorption), Sceau du Centurion (satiété)."
 }
