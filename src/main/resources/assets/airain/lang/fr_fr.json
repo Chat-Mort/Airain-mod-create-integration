@@ -674,5 +674,6 @@
  "airain.plan.meunerie.desc": "Trois meules : coffres d'entrée au-dessus, un coffre de sortie commun. Force : l'arbre vertical sous le premier rouage.",
  "airain.plan.signe.sortie": "Force ici →",
  "airain.plan.signe.eau": "Eau ici",
- "airain.plan.signe.force": "Force ici ↓"
+ "airain.plan.signe.force": "Force ici ↓",
+ "airain.livre.sommaire": "Retour au sommaire"
 }

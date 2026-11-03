@@ -36,6 +36,7 @@ public class LivreIngenieurScreen extends Screen {
 	private static final int GAUCHE = 7, PAS = 13;
 	private int planche;
 	private WidgetsEmpire.Fleche avant, apres;
+	private WidgetsEmpire.Signet signet;
 
 	public LivreIngenieurScreen() { super(Component.translatable("item.airain.livre_ingenieur")); }
 
@@ -46,6 +47,7 @@ public class LivreIngenieurScreen extends Screen {
 	protected void init() {
 		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
 		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
+		signet = addRenderableWidget(new WidgetsEmpire.Signet(bx(), by(), b -> aller(0)));
 	}
 
 	private void aller(int n) {
@@ -59,6 +61,7 @@ public class LivreIngenieurScreen extends Screen {
 
 	@Override
 	public boolean keyPressed(int key, int scan, int mods) {
+		if (key == 268 || key == 259) { aller(0); return true; }   // Début / Retour arrière : le sommaire
 		if (key == 262 || key == 267) { aller(planche + 1); return true; }
 		if (key == 263 || key == 266) { aller(planche - 1); return true; }
 		return super.keyPressed(key, scan, mods);
@@ -99,6 +102,7 @@ public class LivreIngenieurScreen extends Screen {
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		avant.visible = planche > 0;
 		apres.visible = planche < CHAPITRES.length;
+		signet.visible = planche > 0;
 		super.render(g, mx, my, pt);
 		int gx = bx() + 20, dx = bx() + 162, y = by() + 22;
 		if (planche == 0) {

@@ -33,6 +33,7 @@ public class RegistreScreen extends Screen {
 	private final List<Page> contenus = new ArrayList<>();
 	private int planche;   // double page affichée
 	private WidgetsEmpire.Fleche avant, apres;
+	private WidgetsEmpire.Signet signet;
 
 	private interface Page { void dessiner(GuiGraphics g, int x, int y, float pt); }
 
@@ -60,6 +61,7 @@ public class RegistreScreen extends Screen {
 		int x = bx(), y = by();
 		avant = addRenderableWidget(new WidgetsEmpire.Fleche(x + 20, y + 156, false, b -> tourner(-1)));
 		apres = addRenderableWidget(new WidgetsEmpire.Fleche(x + W - 36, y + 156, true, b -> tourner(1)));
+		signet = addRenderableWidget(new WidgetsEmpire.Signet(x, y, b -> tourner(-planche)));
 	}
 
 	private void tourner(int d) {
@@ -77,6 +79,7 @@ public class RegistreScreen extends Screen {
 
 	@Override
 	public boolean keyPressed(int key, int scan, int mods) {
+		if (key == 268 || key == 259) { tourner(-planche); return true; }   // Début / Retour arrière : le sommaire
 		if (key == 262 || key == 267) { tourner(1); return true; }      // flèche droite, page suivante
 		if (key == 263 || key == 266) { tourner(-1); return true; }
 		return super.keyPressed(key, scan, mods);
@@ -93,6 +96,7 @@ public class RegistreScreen extends Screen {
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		avant.visible = planche > 0;
 		apres.visible = planche < planches() - 1;
+		signet.visible = planche > 0;
 		super.render(g, mx, my, pt);
 		int x = bx(), y = by();
 		for (int c = 0; c < 2; c++) {

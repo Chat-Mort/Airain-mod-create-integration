@@ -38,6 +38,36 @@ public final class WidgetsEmpire {
 		}
 	}
 
+	/**
+	 * Signet de ruban rouge qui dépasse du bas des livres (à la place du ruban peint) : un clic ramène au sommaire.
+	 * Au survol il se « tire » de quelques pixels. Placé en (bx + 258, by + 176) sur les livres de 300 x 196.
+	 */
+	public static final class Signet extends Button {
+		public Signet(int bx, int by, OnPress action) {
+			super(bx + 258, by + 176, 13, 28, Component.translatable("airain.livre.sommaire"), action, DEFAULT_NARRATION);
+			setTooltip(net.minecraft.client.gui.components.Tooltip.create(Component.translatable("airain.livre.sommaire")));
+		}
+
+		@Override
+		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
+			int x = getX() + 2, y = getY();
+			boolean s = isHoveredOrFocused();
+			int bas = y + 22 + (s ? 4 : 0);
+			int corps = s ? 0xFFD8383A : 0xFFBE2224, ombre = s ? 0xFFA01C1E : 0xFF8E1418;
+			int clair = s ? 0xFFEC6A6C : 0xFFD24446;
+			g.fill(x, y + 2, x + 9, bas - 4, corps);             // le ruban
+			g.fill(x, bas - 4, x + 3, bas, corps);               // queue fourchue : deux pointes et une encoche en V
+			g.fill(x + 6, bas - 4, x + 9, bas, corps);
+			g.fill(x + 3, bas - 4, x + 6, bas - 3, corps);
+			g.fill(x + 4, bas - 3, x + 5, bas - 2, corps);
+			g.fill(x, y + 2, x + 2, bas, ombre);                 // pli à gauche, reflet à droite
+			g.fill(x + 7, y + 2, x + 8, bas, clair);
+			g.fill(x - 1, y, x + 10, y + 3, 0xFF7A5420);         // agrafe de laiton
+			g.fill(x, y, x + 9, y + 2, s ? 0xFFF0C860 : 0xFFC89A3C);
+			g.fill(x + 3, y + 1, x + 6, y + 2, 0xFF7A5420);
+		}
+	}
+
 	/** Onglet de laiton au-dessus du panneau ; l'onglet actif est plus clair. */
 	public static final class Onglet extends Button {
 		private final boolean actif;

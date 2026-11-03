@@ -674,5 +674,6 @@
  "airain.plan.meunerie.desc": "Three millstones: input chests on top, one shared output chest. Power: the vertical shaft under the first cogwheel.",
  "airain.plan.signe.sortie": "Power here →",
  "airain.plan.signe.eau": "Water here",
- "airain.plan.signe.force": "Power here ↓"
+ "airain.plan.signe.force": "Power here ↓",
+ "airain.livre.sommaire": "Back to contents"
 }
