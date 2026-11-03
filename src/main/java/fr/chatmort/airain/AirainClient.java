@@ -30,7 +30,8 @@ public class AirainClient {
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::champ);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
 			{ e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE, fr.chatmort.airain.gardien.CouronneModele::creer);
-			  e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE_CASQUE, fr.chatmort.airain.gardien.CouronneModele::creerCasque); });
+			  e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE_CASQUE, fr.chatmort.airain.gardien.CouronneModele::creerCasque);
+			  e.registerLayerDefinition(fr.chatmort.airain.gardien.ModulesCouche.COUCHE, fr.chatmort.airain.gardien.ModulesCouche::creer); });
 		bus.addListener((net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent e) ->
 			{ e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION, AirainMod.COURONNE.get());
 			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION_CASQUE, AirainMod.CASQUE_COURONNE.get()); });

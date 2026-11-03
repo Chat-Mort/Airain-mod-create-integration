@@ -1,0 +1,16 @@
+{
+ "type": "create:deploying",
+ "ingredients": [
+  {
+   "item": "kubejs:plaque_netherite"
+  },
+  {
+   "item": "minecraft:nether_star"
+  }
+ ],
+ "results": [
+  {
+   "id": "airain:plaque_netherite_sacree"
+  }
+ ]
+}

@@ -22,6 +22,7 @@ public class GardienRenderer extends MobRenderer<GardienEntity, GardienRenderer.
 		super(ctx, new Modele(ctx.bakeLayer(ModelLayers.IRON_GOLEM)), 0.7f);
 		addLayer(new Fissures(this));
 		addLayer(new Mousse(this));
+		addLayer(new ModulesCouche(this, ctx));
 	}
 
 	@Override
@@ -42,16 +43,22 @@ public class GardienRenderer extends MobRenderer<GardienEntity, GardienRenderer.
 	}
 
 	public static class Modele extends IronGolemModel<GardienEntity> {
-		private final ModelPart tete, brasD, brasG, jambeD, jambeG;
+		private final ModelPart tete, corps, brasD, brasG, jambeD, jambeG;
 
 		public Modele(ModelPart racine) {
 			super(racine);
 			tete = racine.getChild("head");
+			corps = racine.getChild("body");
 			brasD = racine.getChild("right_arm");
 			brasG = racine.getChild("left_arm");
 			jambeD = racine.getChild("right_leg");
 			jambeG = racine.getChild("left_leg");
 		}
+
+		public ModelPart tete() { return tete; }
+		public ModelPart corps() { return corps; }
+		public ModelPart brasD() { return brasD; }
+		public ModelPart brasG() { return brasG; }
 
 		@Override
 		public void setupAnim(GardienEntity e, float pas, float ampleur, float age, float lacet, float tangage) {

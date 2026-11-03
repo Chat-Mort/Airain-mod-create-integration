@@ -30,10 +30,10 @@ public class LivreIngenieurScreen extends Screen {
 		{"fondation", "airain:pierre_fondation"}, {"grand_etendard", "airain:grand_etendard"}, {"banniere_murale", "airain:banniere_murale"},
 		{"gabarit", "airain:gabarit_banniere"}, {"registre", "airain:registre_fondations"}, {"socle", "airain:socle_trophee"},
 		{"banc", "airain:banc_entretien"}, {"modules", "airain:meule_fine"}, {"table", "airain:table_enchantement"},
-		{"desenchanteur", "airain:desenchanteur"}, {"balise", "airain:balise_defense"}, {"codex", "airain:codex"}, {"gardien", "airain:gardien_spawn_egg"}, {"reliure", "airain:reliure"},
+		{"desenchanteur", "airain:desenchanteur"}, {"balise", "airain:balise_defense"}, {"codex", "airain:codex"}, {"gardien", "airain:gardien_spawn_egg"}, {"modules_gardien", "airain:module_lanterne"}, {"reliure", "airain:reliure"},
 		{"tableau", "airain:tableau_service"}, {"atlas", "airain:atlas"}, {"affiches", "airain:affiche_vierge"}};
-	/** Table des matières : 7 chapitres à gauche (sous l'introduction), le reste à droite ; icônes réduites, pas de 13 px. */
-	private static final int GAUCHE = 7, PAS = 13;
+	/** Table des matières : 8 chapitres à gauche (sous l'introduction), le reste à droite ; icônes réduites, pas de 13 px. */
+	private static final int GAUCHE = 8, PAS = 13;
 	private int planche;
 	private WidgetsEmpire.Fleche avant, apres;
 	private WidgetsEmpire.Signet signet;

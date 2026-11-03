@@ -186,6 +186,22 @@ public class AirainMod {
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 
+	/** Modules de gardien (niveaux 1 et 2) et plaque de netherite sacrée qui sert à les améliorer. */
+	public static final java.util.Map<String, DeferredItem<Item>> MODULES = new java.util.LinkedHashMap<>();
+	static {
+		for (fr.chatmort.airain.gardien.Module m : fr.chatmort.airain.gardien.Module.values())
+			for (int n = 1; n <= 2; n++) {
+				final int niv = n;
+				Item.Properties pr = new Item.Properties().stacksTo(1);
+				if (niv == 2) pr = pr.fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC);
+				else pr = pr.rarity(net.minecraft.world.item.Rarity.UNCOMMON);
+				final Item.Properties props = pr;
+				MODULES.put(m.id(niv), ITEMS.register(m.id(niv), () -> new fr.chatmort.airain.gardien.ModuleItem(m, niv, props)));
+			}
+	}
+	public static final DeferredItem<Item> PLAQUE_SACREE = ITEMS.register("plaque_netherite_sacree",
+		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+
 	/** Chroniques oubliées : le livre de l'aventure. */
 	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chroniques",
 		() -> new fr.chatmort.airain.chronique.ChroniquesItem(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));

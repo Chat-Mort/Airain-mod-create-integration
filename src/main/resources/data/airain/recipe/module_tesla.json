@@ -1,0 +1,33 @@
+{
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "R": {
+   "item": "kubejs:fragment_resonance"
+  },
+  "C": {
+   "item": "create:copper_sheet"
+  },
+  "L": {
+   "item": "minecraft:lightning_rod"
+  },
+  "S": {
+   "item": "create:brass_sheet"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  }
+ },
+ "pattern": [
+  " R ",
+  "CLC",
+  "CLC",
+  "SPS"
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:module_tesla"
+ },
+ "show_notification": true
+}

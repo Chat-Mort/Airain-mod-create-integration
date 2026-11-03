@@ -47,6 +47,8 @@ import net.minecraft.core.registries.Registries;
  */
 public class GardienEntity extends IronGolem {
 	private static final EntityDataAccessor<Boolean> PANNE = SynchedEntityData.defineId(GardienEntity.class, EntityDataSerializers.BOOLEAN);
+	/** Modules montés : un octet par emplacement (tête, épaules, torse), code = ordinal * 2 + niveau. */
+	private static final EntityDataAccessor<Integer> MODULES = SynchedEntityData.defineId(GardienEntity.class, EntityDataSerializers.INT);
 	public static final TagKey<EntityType<?>> CIBLES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("airain", "cibles_gardien"));
 	public static final ResourceLocation CLE = ResourceLocation.fromNamespaceAndPath("create", "wrench");
 	public static final ResourceLocation FERRAILLE = ResourceLocation.fromNamespaceAndPath("kubejs", "ferraille");
@@ -69,10 +71,43 @@ public class GardienEntity extends IronGolem {
 	protected void defineSynchedData(SynchedEntityData.Builder b) {
 		super.defineSynchedData(b);
 		b.define(PANNE, false);
+		b.define(MODULES, 0);
 	}
 
 	public boolean enPanne() { return entityData.get(PANNE); }
-	public void mettreEnPanne(boolean p) { entityData.set(PANNE, p); }
+	public void mettreEnPanne(boolean p) {
+		entityData.set(PANNE, p);
+		if (p && !level().isClientSide) GardienModules.eteindre(this);
+	}
+
+	// ---- modules
+	/** Animations côté client : recul du canon, arc de la bobine (en ticks restants). */
+	public int reculCanon, eclairTesla;
+	/** Côté serveur : temps de recharge, lumière posée, sauvetages de la chaudière. */
+	int rechargeCanon, rechargeTesla, sauvetages;
+	long jourSauvetage = -1;
+	BlockPos lumiere;
+
+	public int codeModule(Module.Emplacement e) { return (entityData.get(MODULES) >> (e.ordinal() * 8)) & 0xFF; }
+	void poserModule(Module.Emplacement e, int code) {
+		int v = entityData.get(MODULES) & ~(0xFF << (e.ordinal() * 8));
+		entityData.set(MODULES, v | (code << (e.ordinal() * 8)));
+		GardienModules.attributs(this);
+	}
+	/** Niveau du module donné (0 s'il n'est pas monté). */
+	public int niveau(Module m) {
+		int c = codeModule(m.emplacement);
+		return Module.de(c) == m ? Module.niveau(c) : 0;
+	}
+	/** Niveau du module donné s'il fonctionne (gardien en état de marche), sinon 0. */
+	public int actif(Module m) { return enPanne() ? 0 : niveau(m); }
+
+	@Override
+	public void handleEntityEvent(byte id) {
+		if (id == 60) reculCanon = 6;
+		else if (id == 61) eclairTesla = 8;
+		else super.handleEntityEvent(id);
+	}
 
 	@Override
 	protected void registerGoals() {
@@ -84,7 +119,7 @@ public class GardienEntity extends IronGolem {
 		goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6f));
 		goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 		targetSelector.addGoal(1, new HurtByTargetGoal(this));
-		targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Mob.class, 5, false, false, GardienEntity::hostile));
+		targetSelector.addGoal(2, new GardienModules.Cibler(this));
 	}
 
 	static boolean hostile(LivingEntity e) {
@@ -107,7 +142,16 @@ public class GardienEntity extends IronGolem {
 	public boolean hurt(net.minecraft.world.damagesource.DamageSource source, float n) {
 		if (enPanne() && !(source.getEntity() instanceof Player)
 			&& !source.is(net.minecraft.tags.DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
+		int bl = actif(Module.BLINDAGE);
+		if (bl > 0 && !source.is(net.minecraft.tags.DamageTypeTags.BYPASSES_INVULNERABILITY)) n *= 1f - 0.2f * bl;   // −20 % / −40 %
 		return super.hurt(source, n);
+	}
+
+	@Override
+	public void die(net.minecraft.world.damagesource.DamageSource source) {
+		if (!level().isClientSide && GardienModules.sauver(this)) return;            // chaudière de secours
+		if (!level().isClientSide) { GardienModules.eteindre(this); GardienModules.lacher(this); }
+		super.die(source);
 	}
 
 	@Override
@@ -115,12 +159,18 @@ public class GardienEntity extends IronGolem {
 		super.aiStep();
 		if (level().isClientSide && enPanne() && random.nextInt(50) == 0)
 			level().addParticle(ParticleTypes.SMOKE, getX() + (random.nextDouble() - 0.5) * 0.8, getY() + 1.4, getZ() + (random.nextDouble() - 0.5) * 0.8, 0, 0.02, 0);
+		if (level().isClientSide) {
+			if (reculCanon > 0) reculCanon--;
+			if (eclairTesla > 0) eclairTesla--;
+			if (!enPanne()) GardienModules.particules(this);
+		}
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
 		if (!level().isClientSide && !enPanne() && tickCount % 20 == 0) majPoste();
+		if (!level().isClientSide && !enPanne()) GardienModules.tick(this);
 	}
 
 	private void majPoste() {
@@ -168,6 +218,16 @@ public class GardienEntity extends IronGolem {
 			reparer(p);
 			return InteractionResult.CONSUME;
 		}
+		if (s.getItem() instanceof ModuleItem mi) {
+			if (level().isClientSide) return InteractionResult.SUCCESS;
+			GardienModules.monter(this, p, s, mi);
+			return InteractionResult.CONSUME;
+		}
+		if (s.isEmpty() && p.isShiftKeyDown() && main == InteractionHand.MAIN_HAND && entityData.get(MODULES) != 0) {
+			if (level().isClientSide) return InteractionResult.SUCCESS;
+			GardienModules.demonter(this, p);
+			return InteractionResult.CONSUME;
+		}
 		if (cle && p.isShiftKeyDown()) {
 			if (level().isClientSide) return InteractionResult.SUCCESS;
 			if (p.getUUID().equals(escorte)) {
@@ -199,6 +259,10 @@ public class GardienEntity extends IronGolem {
 	}
 
 	private Component etat() {
+		return etatPoste().copy().append(GardienModules.resume(this));
+	}
+
+	private Component etatPoste() {
 		if (escorte != null) return Component.translatable("airain.gardien.etat_escorte");
 		if (fondation != null && level() instanceof ServerLevel sl) {
 			FondationRegistre.Fondation f = FondationRegistre.de(sl.getServer()).par(fondation);
@@ -273,7 +337,7 @@ public class GardienEntity extends IronGolem {
 
 	@Override
 	public void remove(RemovalReason raison) {
-		if (!level().isClientSide && raison.shouldDestroy()) quitterFondation();
+		if (!level().isClientSide && raison.shouldDestroy()) { quitterFondation(); GardienModules.eteindre(this); }
 		super.remove(raison);
 	}
 
@@ -285,6 +349,10 @@ public class GardienEntity extends IronGolem {
 		if (fondation != null) t.putString("Fondation", fondation);
 		if (escorte != null) t.putUUID("Escorte", escorte);
 		if (poste != null) t.put("Poste", NbtUtils.writeBlockPos(poste));
+		t.putInt("Modules", entityData.get(MODULES));
+		if (lumiere != null) t.put("Lumiere", NbtUtils.writeBlockPos(lumiere));
+		t.putInt("Sauvetages", sauvetages);
+		t.putLong("JourSauvetage", jourSauvetage);
 	}
 
 	@Override
@@ -294,6 +362,11 @@ public class GardienEntity extends IronGolem {
 		fondation = t.contains("Fondation") ? t.getString("Fondation") : null;
 		escorte = t.hasUUID("Escorte") ? t.getUUID("Escorte") : null;
 		poste = NbtUtils.readBlockPos(t, "Poste").orElse(null);
+		entityData.set(MODULES, t.getInt("Modules"));
+		lumiere = NbtUtils.readBlockPos(t, "Lumiere").orElse(null);
+		sauvetages = t.getInt("Sauvetages");
+		jourSauvetage = t.contains("JourSauvetage") ? t.getLong("JourSauvetage") : -1;
+		GardienModules.attributs(this);
 	}
 
 	/** Suit le joueur escorté ; se téléporte s'il est trop loin. */
