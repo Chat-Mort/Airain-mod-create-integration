@@ -17,8 +17,8 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class ConfigFondationScreen extends Screen {
 	private static final String[] CLES = {"style", "fond", "ornement", "motif", "forme",
 		"longueur", "largeur", "vent", "franges", "fleuron", "double", "lanternes", "titre",
-		"partition", "fond2", "couleur_motif", "etat", "broderie", "synchro", "presence", "hauteur"};
-	private static final int HAUTEUR = 20;
+		"partition", "fond2", "couleur_motif", "etat", "broderie", "synchro", "presence", "cote", "hauteur"};
+	private static final int HAUTEUR = 21;
 	private static final int BRUN = 0x3A220E, CREME = 0xFFE9B0;
 	private static final net.minecraft.resources.ResourceLocation FOND = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/standard.png");
 	static final net.minecraft.resources.ResourceLocation ELEMENTS = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/widgets.png");
@@ -84,8 +84,8 @@ public class ConfigFondationScreen extends Screen {
 		for (int n = 0; n < lignes.length; n++) {
 			final int i = lignes[n];
 			int ly = y + debutLignes() + n * pas();
-			addRenderableWidget(new fr.chatmort.airain.gui.WidgetsEmpire.Fleche(x + 78, ly + 2, false, b -> choix[i] = Math.floorMod(choix[i] - 1, taille(i))));
-			addRenderableWidget(new fr.chatmort.airain.gui.WidgetsEmpire.Fleche(x + 186, ly + 2, true, b -> choix[i] = Math.floorMod(choix[i] + 1, taille(i))));
+			addRenderableWidget(new fr.chatmort.airain.gui.WidgetsEmpire.Fleche(x + 78, ly + 2, false, b -> changer(i, -1)));
+			addRenderableWidget(new fr.chatmort.airain.gui.WidgetsEmpire.Fleche(x + 186, ly + 2, true, b -> changer(i, 1)));
 		}
 		for (int k = 0; k < pages.length; k++) {                            // onglets de laiton au-dessus du panneau
 			final int cible = k;
@@ -94,6 +94,16 @@ public class ConfigFondationScreen extends Screen {
 		}
 		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 186, 94, 20).build());
 		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 186, 94, 20).build());
+	}
+
+	/** La ligne « bannière » réunit simple à gauche, simple à droite et double. */
+	private int banniere() { return choix[10] == 1 ? 2 : choix[20]; }
+	private void changer(int i, int d) {
+		if (i == 10) {
+			int b = Math.floorMod(banniere() + d, 3);
+			choix[10] = b == 2 ? 1 : 0;
+			choix[20] = b == 1 ? 1 : 0;
+		} else choix[i] = Math.floorMod(choix[i] + d, taille(i));
 	}
 
 	/** Panneau de laiton, champs de saisie encastrés. */
@@ -149,7 +159,7 @@ public class ConfigFondationScreen extends Screen {
 			String libelle = murale && k == 9 ? "airain.etendard.embouts" : "airain.etendard." + CLES[k];
 			g.drawString(font, Component.translatable(libelle), x, ly + 6, BRUN, false);
 			boolean inutile = (k == 10 && choix[0] == 1) || (k == 14 && choix[13] == 0);   // vexillum : une seule bannière ; uni : pas de 2e couleur
-			g.drawCenteredString(font, Component.translatable(valeur(k, choix[k])), x + 140, ly + 6, inutile ? 0x8A8070 : CREME);
+			g.drawCenteredString(font, Component.translatable(k == 10 ? "airain.etendard.banniere." + banniere() : valeur(k, choix[k])), x + 140, ly + 6, inutile ? 0x8A8070 : CREME);
 		}
 		// aperçu de la toile
 		Apparence a = apparence();

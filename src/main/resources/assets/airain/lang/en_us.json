@@ -1113,5 +1113,8 @@
  "airain.ingenieur.borne_arcanique.histoire": "The Echo remembers everything that ever existed. You only have to ask.",
  "airain.ingenieur.borne_arcanique.usage": "After the Echo ending. Placed with its obelisks and a 3 x 3 arrival circle in front. Right-click: a catalogue of raw materials by aisle, with search. Add lots of 1, 32 or 64 (common blocks by 64 only), then order: the price is taken in coins, change given.",
  "airain.ingenieur.borne_arcanique.usage2": "The price rises with rarity. One minute later (bar at the top of the screen), a passage opens and the crate appears on the circle; right-click it to empty it. One order at a time, 27 stacks at most, and the circle must be clear.",
- "item.airain.crowned_helmet_sacred": "Sacred Crown"
+ "item.airain.crowned_helmet_sacred": "Sacred Crown",
+ "airain.etendard.banniere.0": "Single, left",
+ "airain.etendard.banniere.1": "Single, right",
+ "airain.etendard.banniere.2": "Double"
 }

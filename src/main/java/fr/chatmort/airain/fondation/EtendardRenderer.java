@@ -72,7 +72,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 			for (int c = 0; c < cotes; c++) {
 				ms.pushPose();
 				ms.translate(0, -descente, 0);
-				if (c == 1) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière, en miroir de l'autre côté du mât
+				if (c == 1 || a.aDroite() && a.style() != 1) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière (ou bannière simple à droite), en miroir de l'autre côté du mât
 				ferrures(ms, buffers, geo, lumB);
 				toile(ms, buffers, geo, a, t, lumB);
 				if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);

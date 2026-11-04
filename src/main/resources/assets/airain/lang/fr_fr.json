@@ -1113,5 +1113,8 @@
  "airain.ingenieur.borne_arcanique.histoire": "L'Écho se souvient de tout ce qui a existé. Il suffit de le lui demander.",
  "airain.ingenieur.borne_arcanique.usage": "Après la fin de l'Écho. Se pose avec ses obélisques et un cercle d'arrivée de 3 x 3 devant elle. Clic droit : catalogue de matières premières par rayon, avec recherche. Ajoutez des lots de 1, 32 ou 64 (les blocs communs par 64 seulement), puis commandez : le prix est prélevé en pièces, monnaie rendue.",
  "airain.ingenieur.borne_arcanique.usage2": "Le prix monte avec la rareté. Une minute plus tard (barre en haut de l'écran), un passage s'ouvre et la caisse apparaît sur le cercle ; clic droit dessus pour la vider. Une commande à la fois, 27 piles au plus, et le cercle doit être libre.",
- "item.airain.crowned_helmet_sacred": "Couronne sacrée"
+ "item.airain.crowned_helmet_sacred": "Couronne sacrée",
+ "airain.etendard.banniere.0": "Simple, à gauche",
+ "airain.etendard.banniere.1": "Simple, à droite",
+ "airain.etendard.banniere.2": "Double"
 }
