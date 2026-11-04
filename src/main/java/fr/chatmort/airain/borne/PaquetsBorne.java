@@ -49,7 +49,7 @@ public final class PaquetsBorne {
 	public record Commander(BlockPos pos, List<Ligne> lignes) implements CustomPacketPayload {
 		public static final Type<Commander> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("airain", "borne_commander"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, Commander> CODEC = StreamCodec.composite(
-			BlockPos.STREAM_CODEC, Commander::pos, Ligne.CODEC.apply(ByteBufCodecs.collection(ArrayList::new, 64)), Commander::lignes, Commander::new);
+			BlockPos.STREAM_CODEC, Commander::pos, Ligne.CODEC.apply(ByteBufCodecs.collection(ArrayList::new)), Commander::lignes, Commander::new);
 		@Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
 
 		public static void traiter(Commander m, IPayloadContext ctx) {
