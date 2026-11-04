@@ -1102,5 +1102,15 @@
  "airain.borne.palier.minerai": "Ore",
  "airain.borne.palier.precieux": "Precious",
  "airain.borne.palier.rare": "Rare",
- "airain.borne.palier.tres_rare": "Very rare"
+ "airain.borne.palier.tres_rare": "Very rare",
+ "airain.ingenieur.borne_imperiale.titre": "Difference Engine",
+ "airain.ingenieur.borne_imperiale.court": "Difference Engine",
+ "airain.ingenieur.borne_imperiale.histoire": "The Empire's warehouses were never empty; you only had to know how to count.",
+ "airain.ingenieur.borne_imperiale.usage": "After the Empire ending. Placed with its decorations and a 3 x 3 arrival pad in front. Right-click: a catalogue of raw materials by aisle, with search. Add lots of 1, 32 or 64 (common blocks by 64 only), then order: the price is taken in coins, change given.",
+ "airain.ingenieur.borne_imperiale.usage2": "The price rises with rarity. One minute later (bar at the top of the screen), the crate parachutes onto the pad; right-click it to empty it. One order at a time, 27 stacks at most, and the pad must be clear.",
+ "airain.ingenieur.borne_arcanique.titre": "Resonant Archive",
+ "airain.ingenieur.borne_arcanique.court": "Resonant Archive",
+ "airain.ingenieur.borne_arcanique.histoire": "The Echo remembers everything that ever existed. You only have to ask.",
+ "airain.ingenieur.borne_arcanique.usage": "After the Echo ending. Placed with its obelisks and a 3 x 3 arrival circle in front. Right-click: a catalogue of raw materials by aisle, with search. Add lots of 1, 32 or 64 (common blocks by 64 only), then order: the price is taken in coins, change given.",
+ "airain.ingenieur.borne_arcanique.usage2": "The price rises with rarity. One minute later (bar at the top of the screen), a passage opens and the crate appears on the circle; right-click it to empty it. One order at a time, 27 stacks at most, and the circle must be clear."
 }

@@ -1102,5 +1102,15 @@
  "airain.borne.palier.minerai": "Minerai",
  "airain.borne.palier.precieux": "Précieux",
  "airain.borne.palier.rare": "Rare",
- "airain.borne.palier.tres_rare": "Très rare"
+ "airain.borne.palier.tres_rare": "Très rare",
+ "airain.ingenieur.borne_imperiale.titre": "Machine différentielle",
+ "airain.ingenieur.borne_imperiale.court": "Machine différentielle",
+ "airain.ingenieur.borne_imperiale.histoire": "Les entrepôts de l'Empire n'ont jamais été vides ; il suffisait de savoir compter.",
+ "airain.ingenieur.borne_imperiale.usage": "Après la fin Empire. Se pose avec ses décors et une zone d'arrivage de 3 x 3 devant elle. Clic droit : catalogue de matières premières par rayon, avec recherche. Ajoutez des lots de 1, 32 ou 64 (les blocs communs par 64 seulement), puis commandez : le prix est prélevé en pièces, monnaie rendue.",
+ "airain.ingenieur.borne_imperiale.usage2": "Le prix monte avec la rareté. Une minute plus tard (barre en haut de l'écran), la caisse descend en parachute sur la zone ; clic droit dessus pour la vider. Une commande à la fois, 27 piles au plus, et la zone doit être libre.",
+ "airain.ingenieur.borne_arcanique.titre": "Archive résonante",
+ "airain.ingenieur.borne_arcanique.court": "Archive résonante",
+ "airain.ingenieur.borne_arcanique.histoire": "L'Écho se souvient de tout ce qui a existé. Il suffit de le lui demander.",
+ "airain.ingenieur.borne_arcanique.usage": "Après la fin de l'Écho. Se pose avec ses obélisques et un cercle d'arrivée de 3 x 3 devant elle. Clic droit : catalogue de matières premières par rayon, avec recherche. Ajoutez des lots de 1, 32 ou 64 (les blocs communs par 64 seulement), puis commandez : le prix est prélevé en pièces, monnaie rendue.",
+ "airain.ingenieur.borne_arcanique.usage2": "Le prix monte avec la rareté. Une minute plus tard (barre en haut de l'écran), un passage s'ouvre et la caisse apparaît sur le cercle ; clic droit dessus pour la vider. Une commande à la fois, 27 piles au plus, et le cercle doit être libre."
 }

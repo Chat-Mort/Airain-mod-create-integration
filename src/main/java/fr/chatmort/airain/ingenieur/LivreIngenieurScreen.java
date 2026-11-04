@@ -44,11 +44,11 @@ public class LivreIngenieurScreen extends Screen {
 		{{"sacre", "airain:plaque_netherite_sacree"}, {"couronne", "airain:couronne_airain"}, {"capitale_sacree", "airain:pierre_fondation"}, {"etoile", "airain:bloc_etoile"},
 		 {"armure_sacree", "airain:plastron_sacre"}, {"armure_imperiale", "airain:plastron_imperial"}, {"armes_sacrees", "airain:katana_sacre"},
 		 {"armes_imperiales", "airain:katana_imperial"}, {"sceptre_imperial", "airain:sceptre_imperial"}, {"capitaine", "airain:plaque_imperiale"},
-		 {"trone", "airain:trone_imperial"}, {"charte", "airain:charte"}},
+		 {"trone", "airain:trone_imperial"}, {"borne_imperiale", "airain:borne_imperiale"}, {"charte", "airain:charte"}},
 		{{"diademe", "airain:diademe_echo"}, {"capitale_arcanique", "airain:pierre_fondation"}, {"arcanium", "airain:lingot_arcanium"},
 		 {"armure_runique", "airain:plastron_runique"}, {"armure_arcanique", "airain:plastron_arcanique"}, {"armes_runiques", "airain:katana_runique"},
 		 {"armes_arcaniques", "airain:katana_arcanique"}, {"sceptre_arcanique", "airain:sceptre_arcanique"}, {"gardien_echo", "airain:bloc_echo_primordial"},
-		 {"solium", "airain:solium"}, {"relais", "kubejs:diapason_echo"}}};
+		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:borne_arcanique"}, {"relais", "kubejs:diapason_echo"}}};
 	/** Chapitres à la suite, et la section de chacun. */
 	private static final List<String[]> TOUS = new ArrayList<>();
 	private static final List<Integer> SECTION_DE = new ArrayList<>();
