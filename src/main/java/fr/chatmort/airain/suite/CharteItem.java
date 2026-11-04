@@ -24,6 +24,6 @@ public class CharteItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, java.util.List<net.minecraft.network.chat.Component> l, net.minecraft.world.item.TooltipFlag f) {
-		l.add(net.minecraft.network.chat.Component.translatable("item.airain.charte.aide").withStyle(net.minecraft.ChatFormatting.GRAY));
+		l.add(net.minecraft.network.chat.Component.translatable("item.airain.imperial_charter.aide").withStyle(net.minecraft.ChatFormatting.GRAY));
 	}
 }

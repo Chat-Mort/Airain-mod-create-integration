@@ -9,7 +9,7 @@
    "item": "minecraft:crying_obsidian"
   },
   {
-   "item": "airain:lingot_arcanium"
+   "item": "airain:arcanium_ingot"
   },
   {
    "item": "ars_nouveau:source_gem_block"
@@ -21,14 +21,14 @@
    "item": "minecraft:crying_obsidian"
   },
   {
-   "item": "airain:lingot_arcanium"
+   "item": "airain:arcanium_ingot"
   },
   {
    "item": "ars_nouveau:source_gem_block"
   }
  ],
  "reagent": {
-  "item": "airain:bloc_echo_primordial"
+  "item": "airain:primordial_echo_block"
  },
  "result": {
   "count": 1,

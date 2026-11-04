@@ -145,7 +145,7 @@ public class BorneBlock extends HorizontalDirectionalBlock implements EntityBloc
 
 	@Override
 	public void appendHoverText(ItemStack s, Item.TooltipContext c, List<Component> l, TooltipFlag f) {
-		String k = empire ? "borne_imperiale" : "borne_arcanique";
+		String k = empire ? "difference_engine" : "resonant_archive";
 		for (int i = 1; i <= 3; i++) l.add(Component.translatable("block.airain." + k + ".l" + i)
 			.withStyle(i == 1 ? (empire ? ChatFormatting.GOLD : ChatFormatting.LIGHT_PURPLE) : ChatFormatting.GRAY));
 	}

@@ -30,7 +30,7 @@ public class SocleScreen extends Screen {
 	private EditBox champ;
 
 	public SocleScreen(BlockPos pos, SocleApparence a, String plaque) {
-		super(Component.translatable("block.airain.socle_trophee"));
+		super(Component.translatable("block.airain.trophy_pedestal"));
 		this.pos = pos; this.choix = a.valeurs(); this.plaque = plaque;
 	}
 

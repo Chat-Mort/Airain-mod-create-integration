@@ -1,0 +1,20 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/imperial_throne",
+   "y": 0
+  },
+  "facing=east": {
+   "model": "airain:block/imperial_throne",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/imperial_throne",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/imperial_throne",
+   "y": 270
+  }
+ }
+}

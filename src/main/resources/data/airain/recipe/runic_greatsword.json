@@ -1,0 +1,38 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": true,
+ "pedestalItems": [
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:diamond_block"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  }
+ ],
+ "reagent": {
+  "item": "simplyswords:netherite_claymore"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:runic_greatsword"
+ },
+ "sourceCost": 2500
+}

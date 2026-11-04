@@ -26,7 +26,7 @@ import net.minecraft.world.item.ItemStack;
  * le récit, le journal de bord et les archives (un clic rouvre l'écrit).
  */
 public class ChroniquesScreen extends Screen {
-	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registry.png");
 	private static final int W = 300, LARGE = 118, LIGNES = 13;
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, BLEU = 0x28507A;
 
@@ -39,7 +39,7 @@ public class ChroniquesScreen extends Screen {
 	private int planche;
 
 	public ChroniquesScreen(CompoundTag donnees) {
-		super(Component.translatable("item.airain.chroniques"));
+		super(Component.translatable("item.airain.chronicles"));
 		this.d = donnees;
 	}
 
@@ -73,7 +73,7 @@ public class ChroniquesScreen extends Screen {
 		// page de garde
 		nouvellePage();
 		vide(); vide();
-		ligne(new Ligne(Component.translatable("item.airain.chroniques").withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
+		ligne(new Ligne(Component.translatable("item.airain.chronicles").withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
 		for (FormattedCharSequence st : font.split(Component.translatable("airain.chronique.sous_titre").withStyle(ChatFormatting.ITALIC), LARGE))
 			ligne(new Ligne(st, SEPIA, null, -1, true));
 		vide(); vide();

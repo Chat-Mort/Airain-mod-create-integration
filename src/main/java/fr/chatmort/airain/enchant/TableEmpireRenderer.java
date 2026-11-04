@@ -13,7 +13,7 @@ import net.minecraft.util.Mth;
 
 /** Livre de laiton et de cuir vert qui flotte au-dessus de la table, comme celui de la table vanilla. */
 public class TableEmpireRenderer implements BlockEntityRenderer<TableEmpireBlockEntity> {
-	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/table_livre.png");
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/table_book.png");
 	private final BookModel livre;
 
 	public TableEmpireRenderer(BlockEntityRendererProvider.Context ctx) {

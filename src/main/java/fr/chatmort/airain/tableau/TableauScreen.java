@@ -16,7 +16,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 /** Le tableau de service : six notes épinglées sur du liège ; une case vide pour en écrire une. */
 public class TableauScreen extends Screen {
-	private static final ResourceLocation FOND = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/tableau.png");
+	private static final ResourceLocation FOND = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/duty_board.png");
 	private static final int W = 276, H = 190, NW = 76, NH = 62;
 	private static final int[] PUNAISES = {0xFFBE2824, 0xFFE2B828, 0xFF46964A};
 	private final PaquetsTableau.Ouvrir d;

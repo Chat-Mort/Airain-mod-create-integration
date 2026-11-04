@@ -39,12 +39,12 @@ public class DiademeItem extends ArmorItem {
 			l.add(Component.translatable("airain.diademe.l1").withStyle(ChatFormatting.LIGHT_PURPLE));
 			l.add(Component.translatable("airain.diademe.effet").withStyle(ChatFormatting.GRAY));
 		}
-		l.add(Component.translatable(casque ? "item.airain.casque_diademe.separer" : "item.airain.diademe_echo.enclume").withStyle(ChatFormatting.DARK_GRAY));
+		l.add(Component.translatable(casque ? "item.airain.diadem_helmet.separer" : "item.airain.echo_diadem.enclume").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
 	public ResourceLocation getArmorTexture(ItemStack s, Entity e, EquipmentSlot slot, ArmorMaterial.Layer couche, boolean interieur) {
-		return casque ? ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/coiffes_echo.png") : null;
+		return casque ? ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/echo_headpieces.png") : null;
 	}
 
 	/** Accroupi + clic droit avec le casque au diadème : le diadème se détache, le casque de netherite garde ses enchantements. */

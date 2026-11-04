@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/disenchanter/block"
+  },
+  "facing=east": {
+   "model": "airain:block/disenchanter/block",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/disenchanter/block",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/disenchanter/block",
+   "y": 270
+  }
+ }
+}

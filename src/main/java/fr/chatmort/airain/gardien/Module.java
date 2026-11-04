@@ -20,7 +20,8 @@ public enum Module {
 	Module(Emplacement e) { emplacement = e; }
 
 	public String nom() { return name().toLowerCase(Locale.ROOT); }
-	public String id(int niveau) { return "module_" + nom() + (niveau == 2 ? "_2" : ""); }
+	private static final String[] ANGLAIS = {"lantern", "scope", "cannon", "tesla", "armor", "boiler"};
+	public String id(int niveau) { return ANGLAIS[ordinal()] + "_module" + (niveau == 2 ? "_2" : ""); }
 	public int code(int niveau) { return ordinal() * 2 + niveau; }
 
 	public static Module de(int code) { return code <= 0 || code > values().length * 2 ? null : values()[(code - 1) / 2]; }

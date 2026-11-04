@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:smithing_transform",
+ "template": {
+  "item": "minecraft:netherite_upgrade_smithing_template"
+ },
+ "base": {
+  "item": "airain:sacred_pickaxe"
+ },
+ "addition": {
+  "item": "airain:imperial_plate"
+ },
+ "result": {
+  "id": "airain:imperial_pickaxe",
+  "count": 1
+ }
+}

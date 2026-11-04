@@ -46,7 +46,7 @@ public class TableEmpireBlock extends Block implements EntityBlock {
 			return InteractionResult.SUCCESS;
 		if (player instanceof ServerPlayer sp) {
 			sp.openMenu(new SimpleMenuProvider((id, inv, p) -> new TableEmpireMenu(id, inv, ContainerLevelAccess.create(level, pos)),
-				Component.translatable("block.airain.table_enchantement")), buf -> buf.writeBlockPos(pos));
+				Component.translatable("block.airain.imperial_enchanting_table")), buf -> buf.writeBlockPos(pos));
 		}
 		return InteractionResult.CONSUME;
 	}

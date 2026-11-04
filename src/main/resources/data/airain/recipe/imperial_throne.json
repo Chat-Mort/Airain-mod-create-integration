@@ -1,0 +1,37 @@
+{
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "O": {
+   "item": "minecraft:gold_block"
+  },
+  "I": {
+   "item": "airain:imperial_plate"
+  },
+  "Q": {
+   "item": "minecraft:quartz_block"
+  },
+  "R": {
+   "item": "minecraft:red_wool"
+  },
+  "N": {
+   "item": "minecraft:netherite_block"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  }
+ },
+ "pattern": [
+  " OIO ",
+  "OQRQO",
+  " QRQ ",
+  "OQPQO",
+  "NNNNN"
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:imperial_throne"
+ },
+ "show_notification": true
+}

@@ -14,14 +14,14 @@ import net.minecraft.world.item.ItemStack;
 
 /** L'écran de la Reliure : les livres en onglets à gauche du livre ouvert ; un clic ouvre le livre. */
 public class ReliureScreen extends Screen {
-	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registry.png");
 	private static final int W = 300, LARGE = 118;
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14;
 	private final int ou, slot;
 	private final List<ItemStack> livres;
 
 	public ReliureScreen(int ou, int slot, List<ItemStack> livres) {
-		super(Component.translatable("item.airain.reliure"));
+		super(Component.translatable("item.airain.binder"));
 		this.ou = ou; this.slot = slot; this.livres = livres;
 	}
 
@@ -68,7 +68,7 @@ public class ReliureScreen extends Screen {
 			if (plein) g.renderItem(livres.get(i), x + dx + 5, y + 2);
 		}
 		int gx = bx() + 20, dx = bx() + 162, y = by() + 18;
-		g.drawString(font, Component.translatable("item.airain.reliure").withStyle(ChatFormatting.BOLD), gx, y, ROUGE, false);
+		g.drawString(font, Component.translatable("item.airain.binder").withStyle(ChatFormatting.BOLD), gx, y, ROUGE, false);
 		int yy = y + 16;
 		for (FormattedCharSequence l : font.split(Component.translatable("airain.reliure.ecran"), LARGE)) { g.drawString(font, l, gx, yy, ENCRE, false); yy += 10; }
 		if (h >= 0 && h < livres.size()) {

@@ -1,1 +1,1 @@
-{"values": ["airain:chroniques", "airain:registre_fondations", "airain:codex", "airain:livre_ingenieur", "airain:atlas", {"id": "ftbquests:book", "required": false}, {"id": "ars_nouveau:worn_notebook", "required": false}]}
+{"values": ["airain:chronicles", "airain:foundation_registry", "airain:codex", "airain:engineers_manual", "airain:atlas", {"id": "ftbquests:book", "required": false}, {"id": "ars_nouveau:worn_notebook", "required": false}]}

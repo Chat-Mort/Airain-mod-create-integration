@@ -22,8 +22,8 @@ import net.minecraft.resources.ResourceLocation;
 public class ModulesCouche extends RenderLayer<GardienEntity, GardienRenderer.Modele> {
 	public static final ModelLayerLocation COUCHE = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("airain", "gardien_modules"), "main");
 	private static final ResourceLocation[] TEXTURES = {
-		ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/gardien_modules.png"),
-		ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/gardien_modules_2.png")};
+		ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/guardian_modules.png"),
+		ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/guardian_modules_2.png")};
 	private final ModelPart racine;
 
 	public ModulesCouche(RenderLayerParent<GardienEntity, GardienRenderer.Modele> parent, EntityRendererProvider.Context ctx) {

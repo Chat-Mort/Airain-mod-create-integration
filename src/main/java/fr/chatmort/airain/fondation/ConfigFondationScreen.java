@@ -20,8 +20,8 @@ public class ConfigFondationScreen extends Screen {
 		"partition", "fond2", "couleur_motif", "etat", "broderie", "synchro", "presence", "hauteur"};
 	private static final int HAUTEUR = 20;
 	private static final int BRUN = 0x3A220E, CREME = 0xFFE9B0;
-	private static final net.minecraft.resources.ResourceLocation FOND = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/etendard.png");
-	static final net.minecraft.resources.ResourceLocation ELEMENTS = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/elements.png");
+	private static final net.minecraft.resources.ResourceLocation FOND = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/standard.png");
+	static final net.minecraft.resources.ResourceLocation ELEMENTS = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/widgets.png");
 	private record Page(String cle, boolean champs, int[] lignes) {}
 	private static final Page GENERAL = new Page("general", true, new int[] {0, 18});
 	private static final Page GENERAL_GRAND = new Page("general", true, new int[] {0, HAUTEUR, 12});

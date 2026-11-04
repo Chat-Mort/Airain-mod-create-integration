@@ -32,7 +32,7 @@ public class PlanItem extends Item {
 	@Override
 	public Component getName(ItemStack s) {
 		String c = plan(s);
-		return c.isEmpty() ? super.getName(s) : Component.translatable("item.airain.plan.nom", Component.translatable("airain.plan." + c));
+		return c.isEmpty() ? super.getName(s) : Component.translatable("item.airain.blueprint.nom", Component.translatable("airain.plan." + c));
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class PlanItem extends Item {
 		if (c.isEmpty() || level.isClientSide) return InteractionResultHolder.sidedSuccess(pile, level.isClientSide);
 		ItemStack schema = com.simibubi.create.content.schematics.SchematicItem.create(
 			level, "airain_" + c + ".nbt", PROPRIETAIRE);
-		schema.set(DataComponents.CUSTOM_NAME, Component.translatable("item.airain.plan.nom", Component.translatable("airain.plan." + c)).withStyle(s -> s.withItalic(false)));
+		schema.set(DataComponents.CUSTOM_NAME, Component.translatable("item.airain.blueprint.nom", Component.translatable("airain.plan." + c)).withStyle(s -> s.withItalic(false)));
 		level.playSound(null, p.blockPosition(), SoundEvents.BOOK_PAGE_TURN, SoundSource.PLAYERS, 1f, 0.8f);
 		if (pile.getCount() == 1) return InteractionResultHolder.consume(schema);
 		pile.shrink(1);

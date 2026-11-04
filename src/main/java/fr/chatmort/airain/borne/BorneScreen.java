@@ -29,7 +29,7 @@ public class BorneScreen extends Screen {
 	private Button commander;
 
 	public BorneScreen(PaquetsBorne.Ouvrir d) {
-		super(Component.translatable(d.empire() ? "block.airain.borne_imperiale" : "block.airain.borne_arcanique"));
+		super(Component.translatable(d.empire() ? "block.airain.difference_engine" : "block.airain.resonant_archive"));
 		this.d = d;
 		this.restant = d.restant();
 		if (d.empire()) { fond = 0xF0EDE6D4; cadre = 0xFFC9A13C; accent = 0xFF962024; texte = 0xFF3A2A1A; doux = 0xFF7A6A55; case_ = 0xFFDCD3BC; survol = 0xFFF3E3A8; }

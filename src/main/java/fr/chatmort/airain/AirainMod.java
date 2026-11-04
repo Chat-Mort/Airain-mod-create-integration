@@ -61,7 +61,7 @@ public class AirainMod {
 					if (e.getKey().location().getNamespace().equals("kubejs")) sortie.accept(e.getValue());
 			}).build());
 
-	public static final DeferredBlock<BancEntretienBlock> BANC = BLOCKS.register("banc_entretien",
+	public static final DeferredBlock<BancEntretienBlock> BANC = BLOCKS.register("maintenance_bench",
 		() -> new BancEntretienBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_ORANGE)
 			.strength(3f, 6f)
@@ -69,99 +69,99 @@ public class AirainMod {
 			.sound(SoundType.COPPER)
 			.noOcclusion()));
 
-	public static final DeferredItem<BlockItem> BANC_ITEM = ITEMS.register("banc_entretien",
+	public static final DeferredItem<BlockItem> BANC_ITEM = ITEMS.register("maintenance_bench",
 		() -> new BlockItem(BANC.get(), new Item.Properties()));
 
 	@SuppressWarnings("DataFlowIssue")
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BancEntretienBlockEntity>> BANC_BE =
-		BLOCK_ENTITIES.register("banc_entretien",
+		BLOCK_ENTITIES.register("maintenance_bench",
 			() -> BlockEntityType.Builder.of(BancEntretienBlockEntity::new, BANC.get()).build(null));
 
 	// ---- enchantement : table de l'Empire et désenchanteur
-	public static final DeferredBlock<TableEmpireBlock> TABLE = BLOCKS.register("table_enchantement",
+	public static final DeferredBlock<TableEmpireBlock> TABLE = BLOCKS.register("imperial_enchanting_table",
 		() -> new TableEmpireBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_ORANGE).strength(5f, 1200f).requiresCorrectToolForDrops().sound(SoundType.COPPER)
 			.lightLevel(s -> 7).noOcclusion()));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TableEmpireBlockEntity>> TABLE_BE =
-		BLOCK_ENTITIES.register("table_enchantement",
+		BLOCK_ENTITIES.register("imperial_enchanting_table",
 			() -> BlockEntityType.Builder.of(TableEmpireBlockEntity::new, TABLE.get()).build(null));
-	public static final DeferredItem<BlockItem> TABLE_ITEM = ITEMS.register("table_enchantement",
+	public static final DeferredItem<BlockItem> TABLE_ITEM = ITEMS.register("imperial_enchanting_table",
 		() -> new BlockItem(TABLE.get(), new Item.Properties()));
-	public static final DeferredHolder<MenuType<?>, MenuType<fr.chatmort.airain.banc.BancMenu>> BANC_MENU = MENUS.register("banc_entretien",
+	public static final DeferredHolder<MenuType<?>, MenuType<fr.chatmort.airain.banc.BancMenu>> BANC_MENU = MENUS.register("maintenance_bench",
 		() -> IMenuTypeExtension.create(fr.chatmort.airain.banc.BancMenu::new));
 	/** Modules du banc d'entretien. */
-	public static final DeferredItem<Item> MEULE_FINE = ITEMS.register("meule_fine", () -> new Item(new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> DEMULTIPLICATEUR = ITEMS.register("demultiplicateur", () -> new Item(new Item.Properties().stacksTo(1)));
-	public static final DeferredItem<Item> GRAISSEUR = ITEMS.register("graisseur", () -> new Item(new Item.Properties().stacksTo(1)));
-	public static final DeferredHolder<MenuType<?>, MenuType<TableEmpireMenu>> TABLE_MENU = MENUS.register("table_enchantement",
+	public static final DeferredItem<Item> MEULE_FINE = ITEMS.register("fine_grindstone", () -> new Item(new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> DEMULTIPLICATEUR = ITEMS.register("reduction_gear", () -> new Item(new Item.Properties().stacksTo(1)));
+	public static final DeferredItem<Item> GRAISSEUR = ITEMS.register("grease_gun", () -> new Item(new Item.Properties().stacksTo(1)));
+	public static final DeferredHolder<MenuType<?>, MenuType<TableEmpireMenu>> TABLE_MENU = MENUS.register("imperial_enchanting_table",
 		() -> IMenuTypeExtension.create(TableEmpireMenu::new));
 
-	public static final DeferredBlock<DesenchanteurBlock> DESENCH = BLOCKS.register("desenchanteur",
+	public static final DeferredBlock<DesenchanteurBlock> DESENCH = BLOCKS.register("disenchanter",
 		() -> new DesenchanteurBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f).requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion()));
 	/** Socle de l'Empire : expose un trophée de boss, effet permanent pour toute l'équipe. */
-	public static final DeferredBlock<fr.chatmort.airain.trophee.SocleBlock> SOCLE = BLOCKS.register("socle_trophee",
+	public static final DeferredBlock<fr.chatmort.airain.trophee.SocleBlock> SOCLE = BLOCKS.register("trophy_pedestal",
 		() -> new fr.chatmort.airain.trophee.SocleBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.GOLD).strength(3f, 9f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()
 			.lightLevel(s -> s.getValue(fr.chatmort.airain.trophee.SocleBlock.LUMIERE) ? 12 : 0)));
-	public static final DeferredItem<BlockItem> SOCLE_ITEM = ITEMS.register("socle_trophee",
+	public static final DeferredItem<BlockItem> SOCLE_ITEM = ITEMS.register("trophy_pedestal",
 		() -> new BlockItem(SOCLE.get(), new Item.Properties()));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.trophee.SocleBlockEntity>> SOCLE_BE =
-		BLOCK_ENTITIES.register("socle_trophee",
+		BLOCK_ENTITIES.register("trophy_pedestal",
 			() -> BlockEntityType.Builder.of(fr.chatmort.airain.trophee.SocleBlockEntity::new, SOCLE.get()).build(null));
 
 	/** Pierre de fondation : nomme une base, titre à l'écran en entrant dans sa zone. */
-	public static final DeferredBlock<fr.chatmort.airain.fondation.FondationBlock> FONDATION = BLOCKS.register("pierre_fondation",
+	public static final DeferredBlock<fr.chatmort.airain.fondation.FondationBlock> FONDATION = BLOCKS.register("foundation_stone",
 		() -> new fr.chatmort.airain.fondation.FondationBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
-	public static final DeferredItem<BlockItem> FONDATION_ITEM = ITEMS.register("pierre_fondation",
+	public static final DeferredItem<BlockItem> FONDATION_ITEM = ITEMS.register("foundation_stone",
 		() -> new BlockItem(FONDATION.get(), new Item.Properties()));
 	/** Grand étendard : même piédestal, mât de six blocs, bannière réglable en taille. */
-	public static final DeferredBlock<fr.chatmort.airain.fondation.GrandEtendardBlock> GRAND_ETENDARD = BLOCKS.register("grand_etendard",
+	public static final DeferredBlock<fr.chatmort.airain.fondation.GrandEtendardBlock> GRAND_ETENDARD = BLOCKS.register("great_standard",
 		() -> new fr.chatmort.airain.fondation.GrandEtendardBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
-	public static final DeferredItem<BlockItem> GRAND_ETENDARD_ITEM = ITEMS.register("grand_etendard",
+	public static final DeferredItem<BlockItem> GRAND_ETENDARD_ITEM = ITEMS.register("great_standard",
 		() -> new BlockItem(GRAND_ETENDARD.get(), new Item.Properties()));
 	/** Bannière murale : décorative, mêmes réglages de toile. */
-	public static final DeferredBlock<fr.chatmort.airain.fondation.BanniereMuraleBlock> BANNIERE_MURALE = BLOCKS.register("banniere_murale",
+	public static final DeferredBlock<fr.chatmort.airain.fondation.BanniereMuraleBlock> BANNIERE_MURALE = BLOCKS.register("foundation_wall_banner",
 		() -> new fr.chatmort.airain.fondation.BanniereMuraleBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.WOOL).strength(0.8f).sound(SoundType.WOOL).noOcclusion().noCollission()));
-	public static final DeferredItem<BlockItem> BANNIERE_MURALE_ITEM = ITEMS.register("banniere_murale",
+	public static final DeferredItem<BlockItem> BANNIERE_MURALE_ITEM = ITEMS.register("foundation_wall_banner",
 		() -> new BlockItem(BANNIERE_MURALE.get(), new Item.Properties()));
 	/** Gabarit de bannière : copie l'apparence d'un étendard pour l'appliquer à un autre. */
-	public static final DeferredItem<Item> GABARIT = ITEMS.register("gabarit_banniere",
+	public static final DeferredItem<Item> GABARIT = ITEMS.register("banner_template",
 		() -> new fr.chatmort.airain.fondation.GabaritItem(new Item.Properties().stacksTo(1)));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fondation.FondationBlockEntity>> FONDATION_BE =
-		BLOCK_ENTITIES.register("pierre_fondation",
+		BLOCK_ENTITIES.register("foundation_stone",
 			() -> BlockEntityType.Builder.of(fr.chatmort.airain.fondation.FondationBlockEntity::new, FONDATION.get(), GRAND_ETENDARD.get(), BANNIERE_MURALE.get()).build(null));
 	/** Balise de défense : tour-phare à sirène de 3 x 3 x 8 ; lance les assauts de l'Empire (logique : airain_balise.js). */
-	public static final DeferredBlock<fr.chatmort.airain.balise.BaliseBlock> BALISE = BLOCKS.register("balise_defense",
+	public static final DeferredBlock<fr.chatmort.airain.balise.BaliseBlock> BALISE = BLOCKS.register("defense_beacon",
 		() -> new fr.chatmort.airain.balise.BaliseBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.METAL).strength(5f, 1200f).sound(SoundType.METAL).noOcclusion()));
-	public static final DeferredBlock<fr.chatmort.airain.balise.BalisePartieBlock> BALISE_PARTIE = BLOCKS.register("balise_partie",
+	public static final DeferredBlock<fr.chatmort.airain.balise.BalisePartieBlock> BALISE_PARTIE = BLOCKS.register("defense_beacon_part",
 		() -> new fr.chatmort.airain.balise.BalisePartieBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.METAL).strength(5f, 1200f).sound(SoundType.METAL).noOcclusion().noLootTable()
 			.lightLevel(s -> s.getValue(fr.chatmort.airain.balise.BalisePartieBlock.LUMIERE) ? 15 : 0)));
-	public static final DeferredItem<BlockItem> BALISE_ITEM = ITEMS.register("balise_defense",
+	public static final DeferredItem<BlockItem> BALISE_ITEM = ITEMS.register("defense_beacon",
 		() -> new BlockItem(BALISE.get(), new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.RARE)));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.balise.BaliseBlockEntity>> BALISE_BE =
-		BLOCK_ENTITIES.register("balise_defense",
+		BLOCK_ENTITIES.register("defense_beacon",
 			() -> BlockEntityType.Builder.of(fr.chatmort.airain.balise.BaliseBlockEntity::new, BALISE.get()).build(null));
 
 	/** Codex de l'Empire : une page par créature, ouverte en combattant. */
 	public static final DeferredItem<Item> CODEX = ITEMS.register("codex",
 		() -> new fr.chatmort.airain.codex.CodexItem(new Item.Properties().stacksTo(1)));
 	/** Livre de l'ingénieur : le manuel des machines de l'Empire. */
-	public static final DeferredItem<Item> LIVRE_INGENIEUR = ITEMS.register("livre_ingenieur",
+	public static final DeferredItem<Item> LIVRE_INGENIEUR = ITEMS.register("engineers_manual",
 		() -> new fr.chatmort.airain.ingenieur.LivreIngenieurItem(new Item.Properties().stacksTo(1)));
 	// ---- gardiens d'airain et choix final
 	public static final DeferredRegister<net.minecraft.world.entity.EntityType<?>> ENTITES = DeferredRegister.create(Registries.ENTITY_TYPE, ID);
 	public static final DeferredRegister<net.minecraft.world.item.ArmorMaterial> MATERIAUX = DeferredRegister.create(Registries.ARMOR_MATERIAL, ID);
 	public static final DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<fr.chatmort.airain.gardien.GardienEntity>> GARDIEN =
-		ENTITES.register("gardien", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.gardien.GardienEntity>of(
+		ENTITES.register("guardian", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.gardien.GardienEntity>of(
 			fr.chatmort.airain.gardien.GardienEntity::new, net.minecraft.world.entity.MobCategory.MISC)
-			.sized(1.4f, 2.7f).clientTrackingRange(10).build("gardien"));
-	public static final DeferredItem<Item> GARDIEN_OEUF = ITEMS.register("gardien_spawn_egg",
+			.sized(1.4f, 2.7f).clientTrackingRange(10).build("guardian"));
+	public static final DeferredItem<Item> GARDIEN_OEUF = ITEMS.register("guardian_spawn_egg",
 		() -> new net.neoforged.neoforge.common.DeferredSpawnEggItem(GARDIEN, 0xA8742C, 0x3A8C7A, new Item.Properties()));
 	/** Couronne d'airain : récompense de « Rallumer le Cœur ». Portée seule, ou montée à l'enclume sur un casque de netherite. */
 	private static net.minecraft.world.item.ArmorMaterial materiau(String couche, int casque, float robustesse, float recul, net.minecraft.world.item.Item reparation) {
@@ -174,33 +174,33 @@ public class AirainMod {
 			robustesse, recul);
 	}
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_COURONNE =
-		MATERIAUX.register("couronne", () -> materiau("couronne", 2, 0f, 0f, null));
+		MATERIAUX.register("crown", () -> materiau("crown", 2, 0f, 0f, null));
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_CASQUE =
-		MATERIAUX.register("casque_couronne", () -> materiau("casque_couronne", 3, 3f, 0.1f, net.minecraft.world.item.Items.NETHERITE_INGOT));
-	public static final DeferredItem<Item> COURONNE = ITEMS.register("couronne_airain",
+		MATERIAUX.register("crowned_helmet", () -> materiau("crowned_helmet", 3, 3f, 0.1f, net.minecraft.world.item.Items.NETHERITE_INGOT));
+	public static final DeferredItem<Item> COURONNE = ITEMS.register("airain_crown",
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_COURONNE, false, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))));
 	public static final DeferredRegister<net.minecraft.world.item.crafting.RecipeSerializer<?>> SERIALISEURS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, ID);
 	public static final DeferredHolder<net.minecraft.world.item.crafting.RecipeSerializer<?>, net.minecraft.world.item.crafting.RecipeSerializer<Monture>> MONTURE =
-		SERIALISEURS.register("monture", () -> Monture.SERIALISEUR);
+		SERIALISEURS.register("mount", () -> Monture.SERIALISEUR);
 	/** Couronne sacrée : le casque couronné consacré par une plaque sacrée (objet à part, pour JEI/EMI). */
-	public static final DeferredItem<Item> CASQUE_COURONNE_SACREE = ITEMS.register("casque_couronne_sacree",
+	public static final DeferredItem<Item> CASQUE_COURONNE_SACREE = ITEMS.register("sacred_crown",
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_CASQUE, true, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
 	/** Trophées des boss avancés : type de créature → trophée. */
 	public static final java.util.Map<String, DeferredItem<Item>> TROPHEES_BOSS = new java.util.LinkedHashMap<>();
 	static {
-		String[][] t = {{"visiere_colosse", "mowziesmobs:ferrous_wroughtnaut"}, {"coeur_magma", "cataclysm:netherite_monstrosity"},
-			{"engrenage_rodeur", "cataclysm:the_prowler"}, {"oeil_gardien", "cataclysm:ender_guardian"}, {"sceau_centurion", "mebahelcreaturesdwarven:dwarven_centurion"}};
+		String[][] t = {{"colossus_visor", "mowziesmobs:ferrous_wroughtnaut"}, {"magma_heart", "cataclysm:netherite_monstrosity"},
+			{"prowler_gear", "cataclysm:the_prowler"}, {"guardian_eye", "cataclysm:ender_guardian"}, {"centurion_seal", "mebahelcreaturesdwarven:dwarven_centurion"}};
 		for (String[] x : t) {
 			final String nom = x[0];
 			TROPHEES_BOSS.put(x[1], ITEMS.register(nom, () -> new fr.chatmort.airain.trophee.TropheeItem(nom,
 				new Item.Properties().stacksTo(16).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC))));
 		}
 	}
-	public static final DeferredItem<Item> CASQUE_COURONNE = ITEMS.register("casque_couronne",
+	public static final DeferredItem<Item> CASQUE_COURONNE = ITEMS.register("crowned_helmet",
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_CASQUE, true, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
@@ -216,22 +216,22 @@ public class AirainMod {
 			robustesse, recul);
 	}
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_SACREE =
-		MATERIAUX.register("sacree", () -> materiauArmure("sacree", 3, 9, 7, 3, 3.5f, 0.15f));
+		MATERIAUX.register("sacred", () -> materiauArmure("sacred", 3, 9, 7, 3, 3.5f, 0.15f));
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_IMPERIALE =
-		MATERIAUX.register("imperiale", () -> materiauArmure("imperiale", 4, 10, 8, 4, 4.5f, 0.2f));
+		MATERIAUX.register("imperial", () -> materiauArmure("imperial", 4, 10, 8, 4, 4.5f, 0.2f));
 	private static DeferredItem<Item> armure(String nom, net.minecraft.core.Holder<net.minecraft.world.item.ArmorMaterial> m,
 			net.minecraft.world.item.ArmorItem.Type type, int palier) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmureItem(m, type, palier, new Item.Properties().stacksTo(1).fireResistant()
 			.rarity(palier == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
 			.durability(type.getDurability(palier == 2 ? 55 : 45))));
 	}
-	public static final DeferredItem<Item> PLASTRON_SACRE = armure("plastron_sacre", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 1);
-	public static final DeferredItem<Item> JAMBIERES_SACREES = armure("jambieres_sacrees", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 1);
-	public static final DeferredItem<Item> BOTTES_SACREES = armure("bottes_sacrees", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.BOOTS, 1);
-	public static final DeferredItem<Item> CASQUE_IMPERIAL = armure("casque_imperial", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.HELMET, 2);
-	public static final DeferredItem<Item> PLASTRON_IMPERIAL = armure("plastron_imperial", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 2);
-	public static final DeferredItem<Item> JAMBIERES_IMPERIALES = armure("jambieres_imperiales", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 2);
-	public static final DeferredItem<Item> BOTTES_IMPERIALES = armure("bottes_imperiales", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.BOOTS, 2);
+	public static final DeferredItem<Item> PLASTRON_SACRE = armure("sacred_chestplate", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 1);
+	public static final DeferredItem<Item> JAMBIERES_SACREES = armure("sacred_leggings", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 1);
+	public static final DeferredItem<Item> BOTTES_SACREES = armure("sacred_boots", AIRAIN_SACREE, net.minecraft.world.item.ArmorItem.Type.BOOTS, 1);
+	public static final DeferredItem<Item> CASQUE_IMPERIAL = armure("imperial_helmet", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.HELMET, 2);
+	public static final DeferredItem<Item> PLASTRON_IMPERIAL = armure("imperial_chestplate", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 2);
+	public static final DeferredItem<Item> JAMBIERES_IMPERIALES = armure("imperial_leggings", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 2);
+	public static final DeferredItem<Item> BOTTES_IMPERIALES = armure("imperial_boots", AIRAIN_IMPERIALE, net.minecraft.world.item.ArmorItem.Type.BOOTS, 2);
 
 	/** Armes et pioche sacrées / impériales. */
 	private static net.minecraft.world.item.Tier palier(int usages, float vitesse) {
@@ -251,14 +251,14 @@ public class AirainMod {
 			new Item.Properties().fireResistant().rarity(pal == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
 				.attributes(fr.chatmort.airain.armure.ArmeItem.stats(degats, vitesse, portee, recul, balayage))));
 	}
-	public static final DeferredItem<Item> EPEE_SACREE = arme("epee_sacree", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 1, 10, 1.7, 0.5, 0, 0);
-	public static final DeferredItem<Item> EPEE_IMPERIALE = arme("epee_imperiale", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 2, 13, 1.8, 1, 0, 0);
-	public static final DeferredItem<Item> KATANA_SACRE = arme("katana_sacre", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
-	public static final DeferredItem<Item> KATANA_IMPERIAL = arme("katana_imperial", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 2, 12, 2.3, 1, 0, 0);
-	public static final DeferredItem<Item> ESPADON_SACRE = arme("espadon_sacre", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
-	public static final DeferredItem<Item> ESPADON_IMPERIAL = arme("espadon_imperial", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 2, 18, 1.0, 1.5, 0.5, 0.5);
-	public static final DeferredItem<Item> TWINBLADE_SACREE = arme("twinblade_sacree", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
-	public static final DeferredItem<Item> TWINBLADE_IMPERIALE = arme("twinblade_imperiale", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 2, 10, 2.0, 0, 0, 0);
+	public static final DeferredItem<Item> EPEE_SACREE = arme("sacred_sword", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 1, 10, 1.7, 0.5, 0, 0);
+	public static final DeferredItem<Item> EPEE_IMPERIALE = arme("imperial_sword", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 2, 13, 1.8, 1, 0, 0);
+	public static final DeferredItem<Item> KATANA_SACRE = arme("sacred_katana", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
+	public static final DeferredItem<Item> KATANA_IMPERIAL = arme("imperial_katana", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 2, 12, 2.3, 1, 0, 0);
+	public static final DeferredItem<Item> ESPADON_SACRE = arme("sacred_greatsword", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
+	public static final DeferredItem<Item> ESPADON_IMPERIAL = arme("imperial_greatsword", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 2, 18, 1.0, 1.5, 0.5, 0.5);
+	public static final DeferredItem<Item> TWINBLADE_SACREE = arme("sacred_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
+	public static final DeferredItem<Item> TWINBLADE_IMPERIALE = arme("imperial_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 2, 10, 2.0, 0, 0, 0);
 	private static DeferredItem<Item> pioche(String nom, int pal, double portee) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.PiocheItem(pal == 2 ? TIER_IMPERIAL : TIER_SACRE, pal,
 			new Item.Properties().fireResistant().rarity(pal == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
@@ -267,75 +267,75 @@ public class AirainMod {
 					new net.minecraft.world.entity.ai.attributes.AttributeModifier(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, "pioche_portee"), portee,
 						net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE), net.minecraft.world.entity.EquipmentSlotGroup.MAINHAND))));
 	}
-	public static final DeferredItem<Item> PIOCHE_SACREE = pioche("pioche_sacree", 1, 1);
+	public static final DeferredItem<Item> PIOCHE_SACREE = pioche("sacred_pickaxe", 1, 1);
 	private static DeferredItem<Item> armeEcho(String nom, fr.chatmort.airain.armure.ArmeItem.Type type, int pal,
 			double degats, double vitesse, double portee, double recul, double balayage) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(TIER_SACRE, type, pal, fr.chatmort.airain.armure.Lignee.ECHO,
 			new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 				.attributes(fr.chatmort.airain.armure.ArmeItem.stats(degats, vitesse, portee, recul, balayage))));
 	}
-	public static final DeferredItem<Item> EPEE_RUNIQUE = armeEcho("epee_runique", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 1, 10, 1.7, 0.5, 0, 0);
-	public static final DeferredItem<Item> KATANA_RUNIQUE = armeEcho("katana_runique", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
-	public static final DeferredItem<Item> ESPADON_RUNIQUE = armeEcho("espadon_runique", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
-	public static final DeferredItem<Item> TWINBLADE_RUNIQUE = armeEcho("twinblade_runique", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
+	public static final DeferredItem<Item> EPEE_RUNIQUE = armeEcho("runic_sword", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 1, 10, 1.7, 0.5, 0, 0);
+	public static final DeferredItem<Item> KATANA_RUNIQUE = armeEcho("runic_katana", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
+	public static final DeferredItem<Item> ESPADON_RUNIQUE = armeEcho("runic_greatsword", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
+	public static final DeferredItem<Item> TWINBLADE_RUNIQUE = armeEcho("runic_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
 	private static DeferredItem<Item> armeArcanique(String nom, fr.chatmort.airain.armure.ArmeItem.Type type,
 			double degats, double vitesse, double portee, double recul, double balayage) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(TIER_IMPERIAL, type, 2, fr.chatmort.airain.armure.Lignee.ECHO,
 			new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 				.attributes(fr.chatmort.airain.armure.ArmeItem.stats(degats, vitesse, portee, recul, balayage))));
 	}
-	public static final DeferredItem<Item> EPEE_ARCANIQUE = armeArcanique("epee_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 13, 1.8, 1, 0, 0);
-	public static final DeferredItem<Item> KATANA_ARCANIQUE = armeArcanique("katana_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 12, 2.3, 1, 0, 0);
-	public static final DeferredItem<Item> ESPADON_ARCANIQUE = armeArcanique("espadon_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 18, 1.0, 1.5, 0.5, 0.5);
-	public static final DeferredItem<Item> TWINBLADE_ARCANIQUE = armeArcanique("twinblade_arcanique", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 10, 2.0, 0, 0, 0);
-	public static final DeferredItem<Item> PIOCHE_ARCANIQUE = ITEMS.register("pioche_arcanique", () -> new fr.chatmort.airain.armure.PiocheItem(TIER_IMPERIAL, 2,
+	public static final DeferredItem<Item> EPEE_ARCANIQUE = armeArcanique("arcane_sword", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 13, 1.8, 1, 0, 0);
+	public static final DeferredItem<Item> KATANA_ARCANIQUE = armeArcanique("arcane_katana", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 12, 2.3, 1, 0, 0);
+	public static final DeferredItem<Item> ESPADON_ARCANIQUE = armeArcanique("arcane_greatsword", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 18, 1.0, 1.5, 0.5, 0.5);
+	public static final DeferredItem<Item> TWINBLADE_ARCANIQUE = armeArcanique("arcane_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 10, 2.0, 0, 0, 0);
+	public static final DeferredItem<Item> PIOCHE_ARCANIQUE = ITEMS.register("arcane_pickaxe", () -> new fr.chatmort.airain.armure.PiocheItem(TIER_IMPERIAL, 2,
 		fr.chatmort.airain.armure.Lignee.ECHO, new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.attributes(net.minecraft.world.item.PickaxeItem.createAttributes(TIER_IMPERIAL, 6f, -2.8f))));
-	public static final DeferredItem<Item> SCEPTRE_IMPERIAL = ITEMS.register("sceptre_imperial", () -> new fr.chatmort.airain.armure.SceptreItem(
+	public static final DeferredItem<Item> SCEPTRE_IMPERIAL = ITEMS.register("imperial_scepter", () -> new fr.chatmort.airain.armure.SceptreItem(
 		fr.chatmort.airain.armure.Lignee.EMPIRE, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
-	public static final DeferredItem<Item> SCEPTRE_ARCANIQUE = ITEMS.register("sceptre_arcanique", () -> new fr.chatmort.airain.armure.SceptreItem(
+	public static final DeferredItem<Item> SCEPTRE_ARCANIQUE = ITEMS.register("arcane_scepter", () -> new fr.chatmort.airain.armure.SceptreItem(
 		fr.chatmort.airain.armure.Lignee.ECHO, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
-	public static final DeferredItem<Item> PIOCHE_RUNIQUE = ITEMS.register("pioche_runique", () -> new fr.chatmort.airain.armure.PiocheItem(TIER_SACRE, 1,
+	public static final DeferredItem<Item> PIOCHE_RUNIQUE = ITEMS.register("runic_pickaxe", () -> new fr.chatmort.airain.armure.PiocheItem(TIER_SACRE, 1,
 		fr.chatmort.airain.armure.Lignee.ECHO, new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.attributes(net.minecraft.world.item.PickaxeItem.createAttributes(TIER_SACRE, 6f, -2.8f))));
-	public static final DeferredItem<Item> PIOCHE_IMPERIALE = pioche("pioche_imperiale", 2, 2);
+	public static final DeferredItem<Item> PIOCHE_IMPERIALE = pioche("imperial_pickaxe", 2, 2);
 
 	// ---------------------------------------------------------------- lignée de l'Écho (fin Écho) : diadème, matériaux, palier runique
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_DIADEME =
-		MATERIAUX.register("diademe", () -> materiau("diademe", 2, 0f, 0f, null));
+		MATERIAUX.register("diadem", () -> materiau("diadem", 2, 0f, 0f, null));
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_RUNIQUE =
-		MATERIAUX.register("runique", () -> materiauArmure("runique", 3, 9, 7, 3, 3.5f, 0.15f));
-	public static final DeferredItem<Item> DIADEME = ITEMS.register("diademe_echo",
+		MATERIAUX.register("runic", () -> materiauArmure("runic", 3, 9, 7, 3, 3.5f, 0.15f));
+	public static final DeferredItem<Item> DIADEME = ITEMS.register("echo_diadem",
 		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_DIADEME, false, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)
 			.component(net.minecraft.core.component.DataComponents.UNBREAKABLE, new net.minecraft.world.item.component.Unbreakable(false))));
-	public static final DeferredItem<Item> CASQUE_DIADEME = ITEMS.register("casque_diademe",
+	public static final DeferredItem<Item> CASQUE_DIADEME = ITEMS.register("diadem_helmet",
 		() -> new fr.chatmort.airain.armure.DiademeItem(AIRAIN_CASQUE, true, new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
-	public static final DeferredItem<Item> LINGOT_ARCANIUM = ITEMS.register("lingot_arcanium",
+	public static final DeferredItem<Item> LINGOT_ARCANIUM = ITEMS.register("arcanium_ingot",
 		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)));
-	public static final DeferredBlock<net.minecraft.world.level.block.Block> BLOC_ECHO = BLOCKS.register("bloc_echo_primordial",
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> BLOC_ECHO = BLOCKS.register("primordial_echo_block",
 		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
 			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST).lightLevel(s -> 12)));
-	public static final DeferredItem<BlockItem> BLOC_ECHO_ITEM = ITEMS.register("bloc_echo_primordial",
+	public static final DeferredItem<BlockItem> BLOC_ECHO_ITEM = ITEMS.register("primordial_echo_block",
 		() -> new BlockItem(BLOC_ECHO.get(), new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
 	private static DeferredItem<Item> armureEcho(String nom, net.minecraft.world.item.ArmorItem.Type type, int pal) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmureItem(AIRAIN_RUNIQUE, type, pal, fr.chatmort.airain.armure.Lignee.ECHO,
 			new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE).durability(type.getDurability(45))));
 	}
-	public static final DeferredItem<Item> CASQUE_RUNIQUE = armureEcho("casque_runique", net.minecraft.world.item.ArmorItem.Type.HELMET, 1);
-	public static final DeferredItem<Item> PLASTRON_RUNIQUE = armureEcho("plastron_runique", net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 1);
-	public static final DeferredItem<Item> JAMBIERES_RUNIQUES = armureEcho("jambieres_runiques", net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 1);
-	public static final DeferredItem<Item> BOTTES_RUNIQUES = armureEcho("bottes_runiques", net.minecraft.world.item.ArmorItem.Type.BOOTS, 1);
+	public static final DeferredItem<Item> CASQUE_RUNIQUE = armureEcho("runic_helmet", net.minecraft.world.item.ArmorItem.Type.HELMET, 1);
+	public static final DeferredItem<Item> PLASTRON_RUNIQUE = armureEcho("runic_chestplate", net.minecraft.world.item.ArmorItem.Type.CHESTPLATE, 1);
+	public static final DeferredItem<Item> JAMBIERES_RUNIQUES = armureEcho("runic_leggings", net.minecraft.world.item.ArmorItem.Type.LEGGINGS, 1);
+	public static final DeferredItem<Item> BOTTES_RUNIQUES = armureEcho("runic_boots", net.minecraft.world.item.ArmorItem.Type.BOOTS, 1);
 	public static final DeferredHolder<net.minecraft.world.item.ArmorMaterial, net.minecraft.world.item.ArmorMaterial> AIRAIN_ARCANIQUE =
-		MATERIAUX.register("arcanique", () -> materiauArmure("arcanique", 4, 10, 8, 4, 4.5f, 0.2f));
+		MATERIAUX.register("arcane", () -> materiauArmure("arcane", 4, 10, 8, 4, 4.5f, 0.2f));
 	private static DeferredItem<Item> armureArcanique(String nom, net.minecraft.world.item.ArmorItem.Type type) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmureItem(AIRAIN_ARCANIQUE, type, 2, fr.chatmort.airain.armure.Lignee.ECHO,
 			new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC).durability(type.getDurability(55))));
 	}
-	public static final DeferredItem<Item> CASQUE_ARCANIQUE = armureArcanique("casque_arcanique", net.minecraft.world.item.ArmorItem.Type.HELMET);
-	public static final DeferredItem<Item> PLASTRON_ARCANIQUE = armureArcanique("plastron_arcanique", net.minecraft.world.item.ArmorItem.Type.CHESTPLATE);
-	public static final DeferredItem<Item> JAMBIERES_ARCANIQUES = armureArcanique("jambieres_arcaniques", net.minecraft.world.item.ArmorItem.Type.LEGGINGS);
-	public static final DeferredItem<Item> BOTTES_ARCANIQUES = armureArcanique("bottes_arcaniques", net.minecraft.world.item.ArmorItem.Type.BOOTS);
+	public static final DeferredItem<Item> CASQUE_ARCANIQUE = armureArcanique("arcane_helmet", net.minecraft.world.item.ArmorItem.Type.HELMET);
+	public static final DeferredItem<Item> PLASTRON_ARCANIQUE = armureArcanique("arcane_chestplate", net.minecraft.world.item.ArmorItem.Type.CHESTPLATE);
+	public static final DeferredItem<Item> JAMBIERES_ARCANIQUES = armureArcanique("arcane_leggings", net.minecraft.world.item.ArmorItem.Type.LEGGINGS);
+	public static final DeferredItem<Item> BOTTES_ARCANIQUES = armureArcanique("arcane_boots", net.minecraft.world.item.ArmorItem.Type.BOOTS);
 
 	/** Modules de gardien (niveaux 1 et 2) et plaque de netherite sacrée qui sert à les améliorer. */
 	public static final java.util.Map<String, DeferredItem<Item>> MODULES = new java.util.LinkedHashMap<>();
@@ -350,26 +350,26 @@ public class AirainMod {
 				MODULES.put(m.id(niv), ITEMS.register(m.id(niv), () -> new fr.chatmort.airain.gardien.ModuleItem(m, niv, props)));
 			}
 	}
-	public static final DeferredItem<Item> PLAQUE_SACREE = ITEMS.register("plaque_netherite_sacree",
+	public static final DeferredItem<Item> PLAQUE_SACREE = ITEMS.register("sacred_netherite_plate",
 		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)) {
 			@Override
 			public void appendHoverText(net.minecraft.world.item.ItemStack st, Item.TooltipContext c, java.util.List<Component> l, net.minecraft.world.item.TooltipFlag f) {
-				l.add(Component.translatable("item.airain.plaque_netherite_sacree.l1").withStyle(net.minecraft.ChatFormatting.GRAY));
-				l.add(Component.translatable("item.airain.plaque_netherite_sacree.l2").withStyle(net.minecraft.ChatFormatting.GRAY));
+				l.add(Component.translatable("item.airain.sacred_netherite_plate.l1").withStyle(net.minecraft.ChatFormatting.GRAY));
+				l.add(Component.translatable("item.airain.sacred_netherite_plate.l2").withStyle(net.minecraft.ChatFormatting.GRAY));
 			}
 		});
 
 	/** Plaque impériale (fin de partie) : plaque sacrée + 5 blocs d'étoile du Nether au déployeur. */
-	public static final DeferredBlock<net.minecraft.world.level.block.Block> BLOC_ETOILE = BLOCKS.register("bloc_etoile",
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> BLOC_ETOILE = BLOCKS.register("star_block",
 		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
 			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> 15)));
-	public static final DeferredItem<BlockItem> BLOC_ETOILE_ITEM = ITEMS.register("bloc_etoile",
+	public static final DeferredItem<BlockItem> BLOC_ETOILE_ITEM = ITEMS.register("star_block",
 		() -> new BlockItem(BLOC_ETOILE.get(), new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
 	/** Sièges du pouvoir : trône impérial (fin Empire) et solium de la Prêtresse (fin Écho). */
-	public static final DeferredBlock<fr.chatmort.airain.pouvoir.SiegeBlock> TRONE = BLOCKS.register("trone_imperial",
+	public static final DeferredBlock<fr.chatmort.airain.pouvoir.SiegeBlock> TRONE = BLOCKS.register("imperial_throne",
 		() -> new fr.chatmort.airain.pouvoir.SiegeBlock(true, BlockBehaviour.Properties.of().mapColor(MapColor.SNOW)
 			.strength(50f, 1200f).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> 12).noOcclusion()));
-	public static final DeferredItem<BlockItem> TRONE_ITEM = ITEMS.register("trone_imperial",
+	public static final DeferredItem<BlockItem> TRONE_ITEM = ITEMS.register("imperial_throne",
 		() -> new BlockItem(TRONE.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
 	public static final DeferredBlock<fr.chatmort.airain.pouvoir.SiegeBlock> SOLIUM = BLOCKS.register("solium",
 		() -> new fr.chatmort.airain.pouvoir.SiegeBlock(false, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
@@ -377,60 +377,60 @@ public class AirainMod {
 	public static final DeferredItem<BlockItem> SOLIUM_ITEM = ITEMS.register("solium",
 		() -> new BlockItem(SOLIUM.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
 	public static final DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<fr.chatmort.airain.pouvoir.Assise>> ASSISE =
-		ENTITES.register("assise", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.pouvoir.Assise>of(
+		ENTITES.register("seat", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.pouvoir.Assise>of(
 			fr.chatmort.airain.pouvoir.Assise::new, net.minecraft.world.entity.MobCategory.MISC)
-			.sized(0.25f, 0.35f).noSummon().clientTrackingRange(10).build("assise"));
-	public static final DeferredItem<Item> PLAQUE_IMPERIALE_INACHEVEE = ITEMS.register("plaque_imperiale_inachevee",
+			.sized(0.25f, 0.35f).noSummon().clientTrackingRange(10).build("seat"));
+	public static final DeferredItem<Item> PLAQUE_IMPERIALE_INACHEVEE = ITEMS.register("incomplete_imperial_plate",
 		() -> new com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem(new Item.Properties().fireResistant()));
-	public static final DeferredItem<Item> PLAQUE_IMPERIALE = ITEMS.register("plaque_imperiale",
+	public static final DeferredItem<Item> PLAQUE_IMPERIALE = ITEMS.register("imperial_plate",
 		() -> new Item(new Item.Properties().fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)) {
 			@Override
 			public void appendHoverText(net.minecraft.world.item.ItemStack st, Item.TooltipContext c, java.util.List<Component> l, net.minecraft.world.item.TooltipFlag f) {
-				l.add(Component.translatable("item.airain.plaque_imperiale.l1").withStyle(net.minecraft.ChatFormatting.GOLD, net.minecraft.ChatFormatting.ITALIC));
+				l.add(Component.translatable("item.airain.imperial_plate.l1").withStyle(net.minecraft.ChatFormatting.GOLD, net.minecraft.ChatFormatting.ITALIC));
 			}
 			@Override
 			public boolean isFoil(net.minecraft.world.item.ItemStack st) { return true; }
 		});
 
 	/** Chroniques oubliées : le livre de l'aventure. */
-	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chroniques",
+	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chronicles",
 		() -> new fr.chatmort.airain.chronique.ChroniquesItem(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
 	/** Reliure de l'ingénieur : huit livres sous la main, lisibles depuis le sac. */
-	public static final DeferredItem<Item> RELIURE = ITEMS.register("reliure",
+	public static final DeferredItem<Item> RELIURE = ITEMS.register("binder",
 		() -> new fr.chatmort.airain.reliure.ReliureItem(new Item.Properties().stacksTo(1)
 			.component(net.minecraft.core.component.DataComponents.CONTAINER, net.minecraft.world.item.component.ItemContainerContents.EMPTY)));
-	public static final DeferredHolder<MenuType<?>, MenuType<fr.chatmort.airain.reliure.ReliureMenu>> RELIURE_MENU = MENUS.register("reliure",
+	public static final DeferredHolder<MenuType<?>, MenuType<fr.chatmort.airain.reliure.ReliureMenu>> RELIURE_MENU = MENUS.register("binder",
 		() -> IMenuTypeExtension.create(fr.chatmort.airain.reliure.ReliureMenu::new));
 	/** Tableau de service : notes épinglées pour l'équipe. */
-	public static final DeferredBlock<fr.chatmort.airain.tableau.TableauBlock> TABLEAU = BLOCKS.register("tableau_service",
+	public static final DeferredBlock<fr.chatmort.airain.tableau.TableauBlock> TABLEAU = BLOCKS.register("duty_board",
 		() -> new fr.chatmort.airain.tableau.TableauBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.WOOD).strength(1f).sound(SoundType.WOOD).noOcclusion().noCollission()));
-	public static final DeferredItem<BlockItem> TABLEAU_ITEM = ITEMS.register("tableau_service",
+	public static final DeferredItem<BlockItem> TABLEAU_ITEM = ITEMS.register("duty_board",
 		() -> new BlockItem(TABLEAU.get(), new Item.Properties()));
 	/** Atlas impérial : la carte de ce que l'équipe a parcouru. */
 	public static final DeferredItem<Item> ATLAS = ITEMS.register("atlas",
 		() -> new fr.chatmort.airain.atlas.AtlasItem(new Item.Properties().stacksTo(1)));
 	/** Affiche vierge : à passer au déployeur avec un symbole. */
-	public static final DeferredItem<Item> AFFICHE_VIERGE = ITEMS.register("affiche_vierge", () -> new Item(new Item.Properties()));
+	public static final DeferredItem<Item> AFFICHE_VIERGE = ITEMS.register("blank_poster", () -> new Item(new Item.Properties()));
 	/** Charte impériale : rallume un avant-poste (fin de l'Empire). */
-	public static final DeferredItem<Item> CHARTE = ITEMS.register("charte",
+	public static final DeferredItem<Item> CHARTE = ITEMS.register("imperial_charter",
 		() -> new fr.chatmort.airain.suite.CharteItem(new Item.Properties().stacksTo(16).rarity(net.minecraft.world.item.Rarity.RARE)));
 	/** Comptoirs des avant-postes : carte vers une structure, plan pour le canon à schémas. */
-	public static final DeferredItem<Item> CARTE_EMPIRE = ITEMS.register("carte_empire",
+	public static final DeferredItem<Item> CARTE_EMPIRE = ITEMS.register("empire_map",
 		() -> new fr.chatmort.airain.comptoir.CarteItem(new Item.Properties()));
-	public static final DeferredItem<Item> PLAN = ITEMS.register("plan",
+	public static final DeferredItem<Item> PLAN = ITEMS.register("blueprint",
 		() -> new fr.chatmort.airain.comptoir.PlanItem(new Item.Properties()));
-	public static final DeferredItem<Item> REGISTRE = ITEMS.register("registre_fondations",
+	public static final DeferredItem<Item> REGISTRE = ITEMS.register("foundation_registry",
 		() -> new fr.chatmort.airain.fondation.RegistreItem(new Item.Properties().stacksTo(1)));
 
 	/** Encre runique : consommée quand la table applique le niveau ouvert par un tome ancien. */
-	public static final DeferredItem<Item> ENCRE = ITEMS.register("encre_runique",
+	public static final DeferredItem<Item> ENCRE = ITEMS.register("runic_ink",
 		() -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
-	public static final DeferredItem<BlockItem> DESENCH_ITEM = ITEMS.register("desenchanteur",
+	public static final DeferredItem<BlockItem> DESENCH_ITEM = ITEMS.register("disenchanter",
 		() -> new BlockItem(DESENCH.get(), new Item.Properties()));
 	@SuppressWarnings("DataFlowIssue")
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DesenchanteurBlockEntity>> DESENCH_BE =
-		BLOCK_ENTITIES.register("desenchanteur",
+		BLOCK_ENTITIES.register("disenchanter",
 			() -> BlockEntityType.Builder.of(DesenchanteurBlockEntity::new, DESENCH.get()).build(null));
 
 	// ---- bornes de commande (fin de partie)
@@ -438,35 +438,49 @@ public class AirainMod {
 		return BlockBehaviour.Properties.of().mapColor(emp ? MapColor.GOLD : MapColor.COLOR_PURPLE).strength(5f, 1200f)
 			.sound(emp ? SoundType.METAL : SoundType.AMETHYST).noOcclusion().lightLevel(s -> 9);
 	}
-	public static final DeferredBlock<fr.chatmort.airain.borne.BorneBlock> BORNE_IMPERIALE = BLOCKS.register("borne_imperiale",
+	public static final DeferredBlock<fr.chatmort.airain.borne.BorneBlock> BORNE_IMPERIALE = BLOCKS.register("difference_engine",
 		() -> new fr.chatmort.airain.borne.BorneBlock(true, propBorne(true)));
-	public static final DeferredBlock<fr.chatmort.airain.borne.BorneBlock> BORNE_ARCANIQUE = BLOCKS.register("borne_arcanique",
+	public static final DeferredBlock<fr.chatmort.airain.borne.BorneBlock> BORNE_ARCANIQUE = BLOCKS.register("resonant_archive",
 		() -> new fr.chatmort.airain.borne.BorneBlock(false, propBorne(false)));
-	public static final DeferredBlock<fr.chatmort.airain.borne.BornePartieBlock> BORNE_PARTIE_IMPERIALE = BLOCKS.register("borne_partie_imperiale",
+	public static final DeferredBlock<fr.chatmort.airain.borne.BornePartieBlock> BORNE_PARTIE_IMPERIALE = BLOCKS.register("difference_engine_part",
 		() -> new fr.chatmort.airain.borne.BornePartieBlock(true, propBorne(true).noLootTable()));
-	public static final DeferredBlock<fr.chatmort.airain.borne.BornePartieBlock> BORNE_PARTIE_ARCANIQUE = BLOCKS.register("borne_partie_arcanique",
+	public static final DeferredBlock<fr.chatmort.airain.borne.BornePartieBlock> BORNE_PARTIE_ARCANIQUE = BLOCKS.register("resonant_archive_part",
 		() -> new fr.chatmort.airain.borne.BornePartieBlock(false, propBorne(false).noLootTable()));
-	public static final DeferredItem<BlockItem> BORNE_IMPERIALE_ITEM = ITEMS.register("borne_imperiale",
+	public static final DeferredItem<BlockItem> BORNE_IMPERIALE_ITEM = ITEMS.register("difference_engine",
 		() -> new BlockItem(BORNE_IMPERIALE.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
-	public static final DeferredItem<BlockItem> BORNE_ARCANIQUE_ITEM = ITEMS.register("borne_arcanique",
+	public static final DeferredItem<BlockItem> BORNE_ARCANIQUE_ITEM = ITEMS.register("resonant_archive",
 		() -> new BlockItem(BORNE_ARCANIQUE.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
 	@SuppressWarnings("DataFlowIssue")
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.borne.BorneBlockEntity>> BORNE_BE =
-		BLOCK_ENTITIES.register("borne", () -> BlockEntityType.Builder.of(fr.chatmort.airain.borne.BorneBlockEntity::new,
+		BLOCK_ENTITIES.register("order_terminal", () -> BlockEntityType.Builder.of(fr.chatmort.airain.borne.BorneBlockEntity::new,
 			BORNE_IMPERIALE.get(), BORNE_ARCANIQUE.get()).build(null));
 	/** Modèles de la caisse livrée et du parachute (dessinés par l'entité, jamais posés). */
-	public static final DeferredBlock<net.minecraft.world.level.block.Block> CAISSE_IMPERIALE = BLOCKS.register("caisse_imperiale",
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> CAISSE_IMPERIALE = BLOCKS.register("imperial_delivery_crate",
 		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().noLootTable().noOcclusion()));
-	public static final DeferredBlock<net.minecraft.world.level.block.Block> CAISSE_ARCANIQUE = BLOCKS.register("caisse_arcanique",
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> CAISSE_ARCANIQUE = BLOCKS.register("arcane_delivery_crate",
 		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().noLootTable().noOcclusion()));
 	public static final DeferredBlock<net.minecraft.world.level.block.Block> PARACHUTE = BLOCKS.register("parachute",
 		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().noLootTable().noOcclusion()));
 	public static final DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<fr.chatmort.airain.borne.CaisseEntity>> CAISSE =
-		ENTITES.register("caisse_livraison", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.borne.CaisseEntity>of(
+		ENTITES.register("delivery_crate", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.borne.CaisseEntity>of(
 			fr.chatmort.airain.borne.CaisseEntity::new, net.minecraft.world.entity.MobCategory.MISC)
-			.sized(0.9f, 0.9f).noSummon().fireImmune().clientTrackingRange(10).updateInterval(2).build("caisse_livraison"));
+			.sized(0.9f, 0.9f).noSummon().fireImmune().clientTrackingRange(10).updateInterval(2).build("delivery_crate"));
+
+	/** Anciens identifiants (français) → nouveaux (anglais) : les mondes existants retrouvent leurs objets. */
+	private static final String[] ANCIENS_OBJETS = {"couronne_airain", "airain_crown", "bottes_arcaniques", "arcane_boots", "plastron_arcanique", "arcane_chestplate", "espadon_arcanique", "arcane_greatsword", "casque_arcanique", "arcane_helmet", "katana_arcanique", "arcane_katana", "jambieres_arcaniques", "arcane_leggings", "pioche_arcanique", "arcane_pickaxe", "sceptre_arcanique", "arcane_scepter", "epee_arcanique", "arcane_sword", "twinblade_arcanique", "arcane_twinblade", "lingot_arcanium", "arcanium_ingot", "module_blindage", "armor_module", "module_blindage_2", "armor_module_2", "gabarit_banniere", "banner_template", "reliure", "binder", "affiche_vierge", "blank_poster", "plan", "blueprint", "module_chaudiere", "boiler_module", "module_chaudiere_2", "boiler_module_2", "module_canon", "cannon_module", "module_canon_2", "cannon_module_2", "sceau_centurion", "centurion_seal", "chroniques", "chronicles", "visiere_colosse", "colossus_visor", "casque_couronne", "crowned_helmet", "balise_defense", "defense_beacon", "casque_diademe", "diadem_helmet", "borne_imperiale", "difference_engine", "desenchanteur", "disenchanter", "tableau_service", "duty_board", "diademe_echo", "echo_diadem", "carte_empire", "empire_map", "livre_ingenieur", "engineers_manual", "meule_fine", "fine_grindstone", "registre_fondations", "foundation_registry", "pierre_fondation", "foundation_stone", "banniere_murale", "foundation_wall_banner", "graisseur", "grease_gun", "grand_etendard", "great_standard", "oeil_gardien", "guardian_eye", "gardien_spawn_egg", "guardian_spawn_egg", "bottes_imperiales", "imperial_boots", "charte", "imperial_charter", "plastron_imperial", "imperial_chestplate", "table_enchantement", "imperial_enchanting_table", "espadon_imperial", "imperial_greatsword", "casque_imperial", "imperial_helmet", "katana_imperial", "imperial_katana", "jambieres_imperiales", "imperial_leggings", "pioche_imperiale", "imperial_pickaxe", "plaque_imperiale", "imperial_plate", "sceptre_imperial", "imperial_scepter", "epee_imperiale", "imperial_sword", "trone_imperial", "imperial_throne", "twinblade_imperiale", "imperial_twinblade", "plaque_imperiale_inachevee", "incomplete_imperial_plate", "module_lanterne", "lantern_module", "module_lanterne_2", "lantern_module_2", "coeur_magma", "magma_heart", "banc_entretien", "maintenance_bench", "bloc_echo_primordial", "primordial_echo_block", "engrenage_rodeur", "prowler_gear", "demultiplicateur", "reduction_gear", "borne_arcanique", "resonant_archive", "bottes_runiques", "runic_boots", "plastron_runique", "runic_chestplate", "espadon_runique", "runic_greatsword", "casque_runique", "runic_helmet", "encre_runique", "runic_ink", "katana_runique", "runic_katana", "jambieres_runiques", "runic_leggings", "pioche_runique", "runic_pickaxe", "epee_runique", "runic_sword", "twinblade_runique", "runic_twinblade", "bottes_sacrees", "sacred_boots", "plastron_sacre", "sacred_chestplate", "casque_couronne_sacree", "sacred_crown", "espadon_sacre", "sacred_greatsword", "katana_sacre", "sacred_katana", "jambieres_sacrees", "sacred_leggings", "plaque_netherite_sacree", "sacred_netherite_plate", "pioche_sacree", "sacred_pickaxe", "epee_sacree", "sacred_sword", "twinblade_sacree", "sacred_twinblade", "module_lunette", "scope_module", "module_lunette_2", "scope_module_2", "bloc_etoile", "star_block", "module_tesla", "tesla_module", "module_tesla_2", "tesla_module_2", "socle_trophee", "trophy_pedestal"};
+	private static final String[] ANCIENS_BLOCS = {"caisse_arcanique", "arcane_delivery_crate", "balise_defense", "defense_beacon", "balise_partie", "defense_beacon_part", "borne_imperiale", "difference_engine", "borne_partie_imperiale", "difference_engine_part", "desenchanteur", "disenchanter", "tableau_service", "duty_board", "pierre_fondation", "foundation_stone", "banniere_murale", "foundation_wall_banner", "grand_etendard", "great_standard", "caisse_imperiale", "imperial_delivery_crate", "table_enchantement", "imperial_enchanting_table", "trone_imperial", "imperial_throne", "banc_entretien", "maintenance_bench", "bloc_echo_primordial", "primordial_echo_block", "borne_arcanique", "resonant_archive", "borne_partie_arcanique", "resonant_archive_part", "bloc_etoile", "star_block", "socle_trophee", "trophy_pedestal"};
+	private static final String[] ANCIENNES_ENTITES = {"gardien", "guardian", "assise", "seat", "caisse_livraison", "delivery_crate"};
+	private static final String[] ANCIENS_BE = {"balise_defense", "defense_beacon", "banc_entretien", "maintenance_bench", "borne", "order_terminal", "desenchanteur", "disenchanter", "pierre_fondation", "foundation_stone", "socle_trophee", "trophy_pedestal", "table_enchantement", "imperial_enchanting_table"};
+	private static void alias(DeferredRegister<?> r, String[] t) {
+		for (int i = 0; i < t.length; i += 2)
+			r.addAlias(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, t[i]), net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ID, t[i + 1]));
+	}
 
 	public AirainMod(IEventBus bus) {
+		alias(ITEMS, ANCIENS_OBJETS);
+		alias(BLOCKS, ANCIENS_BLOCS);
+		alias(ENTITES, ANCIENNES_ENTITES);
+		alias(BLOCK_ENTITIES, ANCIENS_BE);
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
 		BLOCK_ENTITIES.register(bus);

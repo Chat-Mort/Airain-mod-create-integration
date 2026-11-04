@@ -45,9 +45,9 @@ public class ArmureItem extends ArmorItem {
 	/** L'armure impériale a son propre modèle, peint sur une seule texture. */
 	@Override
 	public ResourceLocation getArmorTexture(ItemStack s, Entity e, EquipmentSlot slot, ArmorMaterial.Layer couche, boolean interieur) {
-		if (lignee == Lignee.ECHO && getType() == Type.HELMET) return ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/coiffes_echo.png");   // tiare et nimbe
+		if (lignee == Lignee.ECHO && getType() == Type.HELMET) return ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/echo_headpieces.png");   // tiare et nimbe
 		if (palier < 2) return null;
-		return ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/" + (lignee == Lignee.EMPIRE ? "imperiale" : "arcanique") + ".png");
+		return ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/" + (lignee == Lignee.EMPIRE ? "imperial" : "arcane") + ".png");
 	}
 
 	/** Palier de la lignée porté à cet emplacement (le casque couronné sacré compte pour l'Empire), 0 sinon. */

@@ -1,8 +1,8 @@
 {
  "values": [
-  "airain:bloc_etoile",
-  "airain:bloc_echo_primordial",
-  "airain:trone_imperial",
+  "airain:star_block",
+  "airain:primordial_echo_block",
+  "airain:imperial_throne",
   "airain:solium"
  ]
 }

@@ -1,0 +1,16 @@
+{
+ "type": "airain:mount",
+ "category": "equipment",
+ "ingredients": [
+  {
+   "item": "minecraft:netherite_helmet"
+  },
+  {
+   "item": "airain:echo_diadem"
+  }
+ ],
+ "result": {
+  "id": "airain:diadem_helmet",
+  "count": 1
+ }
+}

@@ -1,0 +1,1 @@
+{"parent": "minecraft:item/generated", "textures": {"layer0": "airain:item/airain_crown"}, "overrides": [{"predicate": {"airain:sacree": 1}, "model": "airain:item/airain_crown_sacred"}]}

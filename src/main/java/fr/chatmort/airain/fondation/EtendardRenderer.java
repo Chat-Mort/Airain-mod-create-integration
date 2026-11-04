@@ -30,7 +30,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	/** Géométrie d'une bannière : style, taille (grand étendard) et force du vent. */
 	private record Geo(int style, boolean grand, boolean murale, float w, float l, float vent, int forme, boolean lanternes, float meteo) {}
 	private static final ResourceLocation OR = ResourceLocation.withDefaultNamespace("textures/block/gold_block.png");
-	private static final ResourceLocation FRANGE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/etendard/frange.png");
+	private static final ResourceLocation FRANGE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/standard/fringe.png");
 	private static final int PLEIN_FEU = LightTexture.FULL_BRIGHT;
 
 	public EtendardRenderer(BlockEntityRendererProvider.Context ctx) {}

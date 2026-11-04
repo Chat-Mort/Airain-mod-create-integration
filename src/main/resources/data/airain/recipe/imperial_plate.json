@@ -1,0 +1,33 @@
+{
+ "type": "create:sequenced_assembly",
+ "ingredient": {
+  "item": "airain:sacred_netherite_plate"
+ },
+ "loops": 5,
+ "results": [
+  {
+   "id": "airain:imperial_plate"
+  }
+ ],
+ "sequence": [
+  {
+   "type": "create:deploying",
+   "ingredients": [
+    {
+     "item": "airain:incomplete_imperial_plate"
+    },
+    {
+     "item": "airain:star_block"
+    }
+   ],
+   "results": [
+    {
+     "id": "airain:incomplete_imperial_plate"
+    }
+   ]
+  }
+ ],
+ "transitional_item": {
+  "id": "airain:incomplete_imperial_plate"
+ }
+}

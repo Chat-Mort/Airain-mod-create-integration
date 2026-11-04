@@ -1,0 +1,38 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": true,
+ "pedestalItems": [
+  {
+   "item": "kubejs:echo_primordial"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:echo_shard"
+  },
+  {
+   "item": "minecraft:diamond_block"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  },
+  {
+   "item": "kubejs:fragment_resonance"
+  }
+ ],
+ "reagent": {
+  "item": "minecraft:netherite_boots"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:runic_boots"
+ },
+ "sourceCost": 2500
+}

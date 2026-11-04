@@ -20,7 +20,7 @@ import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
  */
 public final class CoiffesModele {
 	private CoiffesModele() {}
-	public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/coiffes_echo.png");
+	public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("airain", "textures/models/armor/echo_headpieces.png");
 	public static final ModelLayerLocation[] COUCHES = {
 		new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("airain", "casque_diademe"), "main"),
 		new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("airain", "tiare_runique"), "main"),

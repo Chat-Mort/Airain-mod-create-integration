@@ -24,31 +24,31 @@ import java.util.List;
  * l'objet, son nom et ce qu'en disait l'Empire (et la suite du mode d'emploi s'il est long) ; à droite le mode d'emploi.
  */
 public class LivreIngenieurScreen extends Screen {
-	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registry.png");
 	private static final int W = 300, LARGE = 118;
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, BLEU = 0x28507A;
 
 	/** Sections : clé du sommaire, puis chapitres {clé de texte, objet illustré}. */
 	static final String[] SECTIONS = {"machines", "objets", "empire", "echo"};
 	static final String[][][] CHAPITRES = {
-		{{"fondation", "airain:pierre_fondation"}, {"grand_etendard", "airain:grand_etendard"}, {"banniere_murale", "airain:banniere_murale"},
-		 {"gabarit", "airain:gabarit_banniere"}, {"registre", "airain:registre_fondations"}, {"socle", "airain:socle_trophee"},
-		 {"banc", "airain:banc_entretien"}, {"modules", "airain:meule_fine"}, {"table", "airain:table_enchantement"},
-		 {"desenchanteur", "airain:desenchanteur"}, {"balise", "airain:balise_defense"}, {"gardien", "airain:gardien_spawn_egg"},
-		 {"modules_gardien", "airain:module_lanterne"}},
-		{{"codex", "airain:codex"}, {"chroniques", "airain:chroniques"}, {"reliure", "airain:reliure"}, {"tableau", "airain:tableau_service"},
-		 {"atlas", "airain:atlas"}, {"affiches", "airain:affiche_vierge"}, {"cartes", "airain:carte_empire"},
-		 {"encre", "airain:encre_runique"}, {"schemas", "kubejs:schema_cuivre"}, {"sceau", "kubejs:sceau_forge"},
+		{{"fondation", "airain:foundation_stone"}, {"grand_etendard", "airain:great_standard"}, {"banniere_murale", "airain:foundation_wall_banner"},
+		 {"gabarit", "airain:banner_template"}, {"registre", "airain:foundation_registry"}, {"socle", "airain:trophy_pedestal"},
+		 {"banc", "airain:maintenance_bench"}, {"modules", "airain:fine_grindstone"}, {"table", "airain:imperial_enchanting_table"},
+		 {"desenchanteur", "airain:disenchanter"}, {"balise", "airain:defense_beacon"}, {"gardien", "airain:guardian_spawn_egg"},
+		 {"modules_gardien", "airain:lantern_module"}},
+		{{"codex", "airain:codex"}, {"chroniques", "airain:chronicles"}, {"reliure", "airain:binder"}, {"tableau", "airain:duty_board"},
+		 {"atlas", "airain:atlas"}, {"affiches", "airain:blank_poster"}, {"cartes", "airain:empire_map"},
+		 {"encre", "airain:runic_ink"}, {"schemas", "kubejs:schema_cuivre"}, {"sceau", "kubejs:sceau_forge"},
 		 {"memoires", "kubejs:coeur_d_airain"}, {"resonance", "kubejs:fragment_resonance"}, {"recuperation", "kubejs:ferraille"},
 		 {"plaque_netherite", "kubejs:plaque_netherite"}},
-		{{"sacre", "airain:plaque_netherite_sacree"}, {"couronne", "airain:couronne_airain"}, {"capitale_sacree", "airain:pierre_fondation"}, {"etoile", "airain:bloc_etoile"},
-		 {"armure_sacree", "airain:plastron_sacre"}, {"armure_imperiale", "airain:plastron_imperial"}, {"armes_sacrees", "airain:katana_sacre"},
-		 {"armes_imperiales", "airain:katana_imperial"}, {"sceptre_imperial", "airain:sceptre_imperial"}, {"capitaine", "airain:plaque_imperiale"},
-		 {"trone", "airain:trone_imperial"}, {"borne_imperiale", "airain:borne_imperiale"}, {"charte", "airain:charte"}},
-		{{"diademe", "airain:diademe_echo"}, {"capitale_arcanique", "airain:pierre_fondation"}, {"arcanium", "airain:lingot_arcanium"},
-		 {"armure_runique", "airain:plastron_runique"}, {"armure_arcanique", "airain:plastron_arcanique"}, {"armes_runiques", "airain:katana_runique"},
-		 {"armes_arcaniques", "airain:katana_arcanique"}, {"sceptre_arcanique", "airain:sceptre_arcanique"}, {"gardien_echo", "airain:bloc_echo_primordial"},
-		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:borne_arcanique"}, {"relais", "kubejs:diapason_echo"}}};
+		{{"sacre", "airain:sacred_netherite_plate"}, {"couronne", "airain:airain_crown"}, {"capitale_sacree", "airain:foundation_stone"}, {"etoile", "airain:star_block"},
+		 {"armure_sacree", "airain:sacred_chestplate"}, {"armure_imperiale", "airain:imperial_chestplate"}, {"armes_sacrees", "airain:sacred_katana"},
+		 {"armes_imperiales", "airain:imperial_katana"}, {"sceptre_imperial", "airain:imperial_scepter"}, {"capitaine", "airain:imperial_plate"},
+		 {"trone", "airain:imperial_throne"}, {"borne_imperiale", "airain:difference_engine"}, {"charte", "airain:imperial_charter"}},
+		{{"diademe", "airain:echo_diadem"}, {"capitale_arcanique", "airain:foundation_stone"}, {"arcanium", "airain:arcanium_ingot"},
+		 {"armure_runique", "airain:runic_chestplate"}, {"armure_arcanique", "airain:arcane_chestplate"}, {"armes_runiques", "airain:runic_katana"},
+		 {"armes_arcaniques", "airain:arcane_katana"}, {"sceptre_arcanique", "airain:arcane_scepter"}, {"gardien_echo", "airain:primordial_echo_block"},
+		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:resonant_archive"}, {"relais", "kubejs:diapason_echo"}}};
 	/** Chapitres à la suite, et la section de chacun. */
 	private static final List<String[]> TOUS = new ArrayList<>();
 	private static final List<Integer> SECTION_DE = new ArrayList<>();
@@ -68,7 +68,7 @@ public class LivreIngenieurScreen extends Screen {
 	private WidgetsEmpire.Fleche avant, apres;
 	private WidgetsEmpire.Signet signet;
 
-	public LivreIngenieurScreen() { super(Component.translatable("item.airain.livre_ingenieur")); }
+	public LivreIngenieurScreen() { super(Component.translatable("item.airain.engineers_manual")); }
 
 	private void paginer() {
 		pages.clear();
@@ -175,7 +175,7 @@ public class LivreIngenieurScreen extends Screen {
 		int gx = bx() + 20, dx = bx() + 162, y = by() + 22;
 		if (planche < SECTIONS.length) {
 			String sec = SECTIONS[planche];
-			texte(g, Component.translatable("item.airain.livre_ingenieur").withStyle(ChatFormatting.BOLD), gx, y + 2, ROUGE, 1);
+			texte(g, Component.translatable("item.airain.engineers_manual").withStyle(ChatFormatting.BOLD), gx, y + 2, ROUGE, 1);
 			texte(g, Component.translatable("airain.ingenieur.sommaire." + sec).withStyle(ChatFormatting.ITALIC), gx, y + 14, SEPIA, 1);
 			for (int s = 0; s < SECTIONS.length; s++) {                     // onglets des sommaires
 				int[] o = onglet(s);

@@ -36,19 +36,19 @@ public class CouronneItem extends ArmorItem {
 		boolean sacree = fr.chatmort.airain.Sacre.sacree(s);
 		if (sacree && casque) {                                   // la couronne sacrée se présente comme les autres pièces sacrées
 			l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
-			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
+			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.airain_crown.l" + i + (i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
 			l.add(Component.translatable("airain.armure.sacree.bonus").withStyle(ChatFormatting.GRAY));
 			return;
 		}
 		if (casque) {                                             // casque couronné : présenté comme les autres pièces de la lignée
 			l.add(Component.translatable("airain.lignee.empire").withStyle(ChatFormatting.DARK_RED, ChatFormatting.ITALIC));
-			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i).withStyle(ChatFormatting.GOLD));
-			l.add(Component.translatable("item.airain.casque_couronne.separer").withStyle(ChatFormatting.DARK_GRAY));
+			for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.airain_crown.l" + i).withStyle(ChatFormatting.GOLD));
+			l.add(Component.translatable("item.airain.crowned_helmet.separer").withStyle(ChatFormatting.DARK_GRAY));
 			return;
 		}
-		if (sacree) l.add(Component.translatable("item.airain.couronne_airain.sacree").withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.BOLD));
-		for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.couronne_airain.l" + i + (sacree && i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
-		if (!(casque && fr.chatmort.airain.Sacre.sacree(s))) l.add(Component.translatable(casque ? "item.airain.casque_couronne.separer" : "item.airain.couronne_airain.enclume").withStyle(ChatFormatting.DARK_GRAY));
+		if (sacree) l.add(Component.translatable("item.airain.airain_crown.sacree").withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.BOLD));
+		for (int i = 1; i <= 4; i++) l.add(Component.translatable("item.airain.airain_crown.l" + i + (sacree && i == 2 ? "_sacree" : "")).withStyle(ChatFormatting.GOLD));
+		if (!(casque && fr.chatmort.airain.Sacre.sacree(s))) l.add(Component.translatable(casque ? "item.airain.crowned_helmet.separer" : "item.airain.airain_crown.enclume").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	/** Couronne sacrée : rouages et bandeau noircis, fleurons d'or, une étoile du Nether à la place du rubis. */
@@ -57,12 +57,12 @@ public class CouronneItem extends ArmorItem {
 			net.minecraft.world.item.ArmorMaterial.Layer couche, boolean interieur) {
 		if (!fr.chatmort.airain.Sacre.sacree(s)) return null;
 		return net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain",
-			"textures/models/armor/" + (casque ? "casque_couronne" : "couronne") + "_sacree_layer_1.png");
+			"textures/models/armor/" + (casque ? "crowned_helmet" : "crown") + "_sacred_layer_1.png");
 	}
 
 	@Override
 	public Component getName(ItemStack s) {
-		return fr.chatmort.airain.Sacre.sacree(s) && !s.is(AirainMod.CASQUE_COURONNE_SACREE.get()) ? Component.translatable(getDescriptionId() + "_sacree") : super.getName(s);
+		return fr.chatmort.airain.Sacre.sacree(s) && !s.is(AirainMod.CASQUE_COURONNE_SACREE.get()) ? Component.translatable(getDescriptionId() + "_sacred") : super.getName(s);
 	}
 
 	@Override

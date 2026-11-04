@@ -1,0 +1,23 @@
+{
+ "type": "create:deploying",
+ "ingredients": [
+  {
+   "item": "airain:blank_poster"
+  },
+  {
+   "item": "kubejs:diapason_echo"
+  }
+ ],
+ "results": [
+  {
+   "id": "minecraft:painting",
+   "components": {
+    "minecraft:entity_data": {
+     "id": "minecraft:painting",
+     "variant": "airain:affiche_diapason"
+    }
+   }
+  }
+ ],
+ "keep_held_item": true
+}

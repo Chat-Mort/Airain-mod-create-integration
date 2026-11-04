@@ -29,7 +29,7 @@ import java.util.Map;
  * à droite son histoire, puis la note d'ingénieur (dix victoires, ou un boss vaincu) et, pour un boss, sa page d'honneur.
  */
 public class CodexScreen extends Screen {
-	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registry.png");
 	private static final ResourceLocation ICONES = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/codex.png");
 	private static final int W = 300, LARGE = 118;
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, VERT = 0x2E5A1E, GRIS = 0x9A8A70;

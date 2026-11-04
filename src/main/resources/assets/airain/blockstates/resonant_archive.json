@@ -1,0 +1,20 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/resonant_archive",
+   "y": 0
+  },
+  "facing=east": {
+   "model": "airain:block/resonant_archive",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/resonant_archive",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/resonant_archive",
+   "y": 270
+  }
+ }
+}

@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 /** Écran du banc d'entretien, au style de l'Empire : réservoir d'huile en verre, conduite de progression, modules. */
 public class BancScreen extends AbstractContainerScreen<BancMenu> {
-	private static final ResourceLocation FOND = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/banc.png");
+	private static final ResourceLocation FOND = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/bench.png");
 
 	public BancScreen(BancMenu menu, Inventory inv, Component titre) {
 		super(menu, inv, titre);

@@ -25,7 +25,7 @@ import java.util.List;
  * puis les trophées de l'Empire, trois par page.
  */
 public class RegistreScreen extends Screen {
-	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registry.png");
 	private static final int W = 300, H = 190, LARGE = 118;
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, VERT = 0x2E5A1E;
 	private static final int PAR_PAGE_TROPHEES = 2;

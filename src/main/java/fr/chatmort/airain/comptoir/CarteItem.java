@@ -38,7 +38,7 @@ public class CarteItem extends Item {
 	@Override
 	public Component getName(ItemStack s) {
 		String c = cible(s);
-		return c.isEmpty() ? super.getName(s) : Component.translatable("item.airain.carte_empire.nom", Component.translatable("airain.carte." + c));
+		return c.isEmpty() ? super.getName(s) : Component.translatable("item.airain.empire_map.nom", Component.translatable("airain.carte." + c));
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class CarteItem extends Item {
 		ItemStack carte = MapItem.create(sl, cible.getX(), cible.getZ(), (byte) 2, true, true);
 		MapItem.renderBiomePreviewMap(sl, carte);
 		MapItemSavedData.addTargetDecoration(carte, cible, "+", MapDecorationTypes.RED_X);
-		carte.set(DataComponents.CUSTOM_NAME, Component.translatable("item.airain.carte_empire.nom", Component.translatable("airain.carte." + c))
+		carte.set(DataComponents.CUSTOM_NAME, Component.translatable("item.airain.empire_map.nom", Component.translatable("airain.carte." + c))
 			.withStyle(s -> s.withItalic(false)));
 		sl.playSound(null, p.blockPosition(), SoundEvents.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, SoundSource.PLAYERS, 1f, 1f);
 		if (pile.getCount() == 1) return InteractionResultHolder.consume(carte);

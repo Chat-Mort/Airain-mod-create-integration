@@ -16,7 +16,7 @@ import net.minecraft.world.phys.AABB;
 
 /** Dessine toute la tour depuis le cœur : bâtisse, jambes, sirène tournante, phare et ses faisceaux. */
 public class BaliseRenderer implements BlockEntityRenderer<BaliseBlockEntity> {
-	private static final ResourceLocation TEX = ResourceLocation.fromNamespaceAndPath("airain", "textures/block/balise_tour.png");
+	private static final ResourceLocation TEX = ResourceLocation.fromNamespaceAndPath("airain", "textures/block/beacon_tower.png");
 	private static final int FONTE = 0, LAITON = 2, LAITON_S = 11, FAISCEAU = 12;
 	private static final float C = 24f;
 

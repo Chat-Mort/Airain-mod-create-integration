@@ -53,15 +53,15 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 
 	};
 	private static final String[][] MATERIAUX = {
-		{"airain:textures/block/socle_marbre.png", "airain:textures/block/socle_colonne.png"},
+		{"airain:textures/block/pedestal_marble.png", "airain:textures/block/pedestal_column.png"},
 		{"minecraft:textures/block/polished_tuff.png", "minecraft:textures/block/tuff_bricks.png"},
 		{"minecraft:textures/block/polished_blackstone.png", "minecraft:textures/block/polished_blackstone_bricks.png"},
 		{"minecraft:textures/block/weathered_cut_copper.png", "minecraft:textures/block/weathered_copper.png"},
 		{"minecraft:textures/block/dark_oak_planks.png", "minecraft:textures/block/stripped_dark_oak_log.png"}};
-	private static final ResourceLocation GARNITURE = rl("airain:textures/block/socle_garniture.png");
+	private static final ResourceLocation GARNITURE = rl("airain:textures/block/pedestal_trim.png");
 	private static final ResourceLocation NOIR = rl("minecraft:textures/block/black_concrete.png");
-	private static final ResourceLocation HALO = rl("airain:textures/block/socle_halo.png");
-	private static final ResourceLocation VERRE = rl("airain:textures/block/socle_verre.png");
+	private static final ResourceLocation HALO = rl("airain:textures/block/pedestal_halo.png");
+	private static final ResourceLocation VERRE = rl("airain:textures/block/pedestal_glass.png");
 
 	public SocleRenderer(BlockEntityRendererProvider.Context ctx) {}
 
@@ -98,7 +98,7 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 		RenderType tColonne = RenderType.entityCutoutNoCull(rl(sacre ? "minecraft:textures/block/netherite_block.png" : MATERIAUX[a.materiau()][1]));
 		RenderType tOr = RenderType.entityCutoutNoCull(GARNITURE);
 		RenderType tVelours = RenderType.entityCutoutNoCull(
-			rl("airain:textures/block/socle_velours_" + (a.losange() ? "losange" : "simple") + ".png"));
+			rl("airain:textures/block/pedestal_velvet_" + (a.losange() ? "diamond" : "plain") + ".png"));
 		boolean haute = a.haute();
 		for (float[] e : ELEMENTS) {
 			float y0 = e[1], y1 = e[4];
@@ -114,7 +114,7 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 		float haut = haute ? 29 : 13;                          // dessus du velours
 		// garnitures sur le velours (passepoil, boutons du capitonnage)
 		VertexConsumer garni = buffers.getBuffer(RenderType.entityCutoutNoCull(
-			rl("airain:textures/block/socle_garni_" + (a.losange() ? "losange" : "simple") + ".png")));
+			rl("airain:textures/block/pedestal_trim_" + (a.losange() ? "diamond" : "plain") + ".png")));
 		quadHaut(ms, garni, 2, haut + 0.02f, 2, 14, 14, garn, light);
 		// plaque gravée sur la colonne
 		if (a.avecPlaque()) {

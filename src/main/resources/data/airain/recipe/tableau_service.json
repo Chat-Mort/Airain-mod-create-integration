@@ -1,1 +1,0 @@
-{"type": "minecraft:crafting_shaped", "category": "building", "pattern": ["LPL", "PSP", "LPL"], "key": {"L": {"item": "create:brass_sheet"}, "P": {"tag": "minecraft:planks"}, "S": {"item": "minecraft:paper"}}, "result": {"id": "airain:tableau_service", "count": 1}}

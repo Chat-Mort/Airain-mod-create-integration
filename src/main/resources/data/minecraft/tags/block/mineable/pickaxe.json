@@ -1,16 +1,16 @@
 {
  "values": [
-  "airain:banc_entretien",
-  "airain:table_enchantement",
-  "airain:desenchanteur",
-  "airain:socle_trophee",
-  "airain:pierre_fondation",
-  "airain:grand_etendard",
-  "airain:balise_defense",
-  "airain:balise_partie",
-  "airain:bloc_etoile",
-  "airain:bloc_echo_primordial",
-  "airain:trone_imperial",
+  "airain:maintenance_bench",
+  "airain:imperial_enchanting_table",
+  "airain:disenchanter",
+  "airain:trophy_pedestal",
+  "airain:foundation_stone",
+  "airain:great_standard",
+  "airain:defense_beacon",
+  "airain:defense_beacon_part",
+  "airain:star_block",
+  "airain:primordial_echo_block",
+  "airain:imperial_throne",
   "airain:solium"
  ]
 }

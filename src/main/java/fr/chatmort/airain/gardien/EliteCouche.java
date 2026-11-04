@@ -20,7 +20,7 @@ import net.minecraft.resources.ResourceLocation;
 /** Ornements des gardiens d'élite : couronne, plumet, épaulettes et cape du capitaine ; cœur de résonance et cristaux du gardien d'Écho. */
 public class EliteCouche extends RenderLayer<GardienEntity, GardienRenderer.Modele> {
 	public static final ModelLayerLocation COUCHE = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("airain", "gardien_elite"), "main");
-	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/gardien_elite.png");
+	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/guardian_elite.png");
 	private final ModelPart racine;
 
 	public EliteCouche(RenderLayerParent<GardienEntity, GardienRenderer.Modele> parent, EntityRendererProvider.Context ctx) {

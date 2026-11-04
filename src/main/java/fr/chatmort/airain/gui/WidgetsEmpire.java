@@ -6,11 +6,11 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-/** Éléments d'interface au style de l'Empire (planche textures/gui/elements.png), partagés par tous les écrans du mod. */
+/** Éléments d'interface au style de l'Empire (planche textures/gui/widgets.png), partagés par tous les écrans du mod. */
 public final class WidgetsEmpire {
-	public static final ResourceLocation ELEMENTS = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/elements.png");
+	public static final ResourceLocation ELEMENTS = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/widgets.png");
 	/** Panneau de laiton 310 x 226 (avec vitrine d'aperçu à droite). */
-	public static final ResourceLocation PANNEAU = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/etendard.png");
+	public static final ResourceLocation PANNEAU = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/standard.png");
 	public static final int BRUN = 0x3A220E, CREME = 0xFFE9B0, GRISE = 0x8A8070;
 
 	private WidgetsEmpire() {}

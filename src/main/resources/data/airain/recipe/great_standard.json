@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "WBW",
+  "IFI",
+  "WBW"
+ ],
+ "key": {
+  "W": {
+   "item": "minecraft:white_wool"
+  },
+  "B": {
+   "item": "create:brass_ingot"
+  },
+  "I": {
+   "item": "create:iron_sheet"
+  },
+  "F": {
+   "item": "airain:foundation_stone"
+  }
+ },
+ "result": {
+  "id": "airain:great_standard",
+  "count": 1
+ }
+}

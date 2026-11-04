@@ -1,0 +1,16 @@
+{
+ "type": "airain:mount",
+ "category": "equipment",
+ "ingredients": [
+  {
+   "item": "minecraft:netherite_helmet"
+  },
+  {
+   "item": "airain:airain_crown"
+  }
+ ],
+ "result": {
+  "id": "airain:crowned_helmet",
+  "count": 1
+ }
+}

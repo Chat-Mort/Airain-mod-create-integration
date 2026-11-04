@@ -117,7 +117,16 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 	public ResourceLocation texOrnement() { return tex("ornement_" + FORMES[forme]); }
 	public ResourceLocation texMotif() { return MOTIFS[motif].equals("aucun") ? null : tex("motif_" + MOTIFS[motif]); }
 
+	/** Noms anglais des fichiers de texture. */
+	private static final java.util.Map<String, String> TEXTURES = java.util.Map.ofEntries(
+		java.util.Map.entry("fond_aronde", "field_swallowtail"), java.util.Map.entry("fond_droit", "field_straight"), java.util.Map.entry("fond_pointe", "field_pointed"),
+		java.util.Map.entry("ornement_aronde", "trim_swallowtail"), java.util.Map.entry("ornement_droit", "trim_straight"), java.util.Map.entry("ornement_pointe", "trim_pointed"),
+		java.util.Map.entry("motif_rouage", "emblem_cog"), java.util.Map.entry("motif_cle", "emblem_key"), java.util.Map.entry("motif_flamme", "emblem_flame"),
+		java.util.Map.entry("motif_couronne", "emblem_crown"), java.util.Map.entry("motif_ancre", "emblem_anchor"), java.util.Map.entry("motif_eclair", "emblem_lightning"),
+		java.util.Map.entry("motif_etoile", "emblem_star"), java.util.Map.entry("motif_rouage_brise", "emblem_broken_cog"), java.util.Map.entry("motif_cristal", "emblem_crystal"),
+		java.util.Map.entry("motif_fiole", "emblem_vial"), java.util.Map.entry("frange", "fringe"));
+
 	private static ResourceLocation tex(String n) {
-		return ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/etendard/" + n + ".png");
+		return ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/standard/" + TEXTURES.getOrDefault(n, n) + ".png");
 	}
 }

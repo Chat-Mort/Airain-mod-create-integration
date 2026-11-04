@@ -23,7 +23,7 @@ import net.minecraft.util.Mth;
  * hachures ailleurs ; icônes des bases, des lieux visités et des morts. Glisser pour se déplacer, molette pour le zoom.
  */
 public class AtlasScreen extends Screen {
-	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registre.png");
+	private static final ResourceLocation LIVRE = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/registry.png");
 	private static final ResourceLocation ICONES = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/atlas.png");
 	private static final int W = 300, X0 = 14, Y0 = 19, X1 = 286, Y1 = 155;
 	private static final int[] ECHELLES = {1, 2, 4, 8, 16};

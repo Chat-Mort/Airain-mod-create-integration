@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "NNN",
+  "NEN",
+  "NNN"
+ ],
+ "key": {
+  "E": {
+   "item": "minecraft:nether_star"
+  },
+  "N": {
+   "item": "minecraft:netherite_ingot"
+  }
+ },
+ "result": {
+  "id": "airain:star_block",
+  "count": 1
+ }
+}

@@ -101,7 +101,7 @@ public class BancEntretienBlock extends KineticBlock implements IBE<BancEntretie
 		withBlockEntityDo(level, pos, be -> {
 			if (player instanceof net.minecraft.server.level.ServerPlayer sp)
 				sp.openMenu(new net.minecraft.world.SimpleMenuProvider((id, inv, p) -> new BancMenu(id, inv, be, BancMenu.donnees(be)),
-					net.minecraft.network.chat.Component.translatable("block.airain.banc_entretien")), buf -> buf.writeBlockPos(pos));
+					net.minecraft.network.chat.Component.translatable("block.airain.maintenance_bench")), buf -> buf.writeBlockPos(pos));
 		});
 		return InteractionResult.SUCCESS;
 	}

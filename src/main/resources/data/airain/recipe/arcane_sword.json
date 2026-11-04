@@ -1,0 +1,32 @@
+{
+ "type": "ars_nouveau:enchanting_apparatus",
+ "keepNbtOfReagent": true,
+ "pedestalItems": [
+  {
+   "item": "airain:arcanium_ingot"
+  },
+  {
+   "item": "airain:primordial_echo_block"
+  },
+  {
+   "item": "airain:primordial_echo_block"
+  },
+  {
+   "item": "airain:arcanium_ingot"
+  },
+  {
+   "item": "airain:primordial_echo_block"
+  },
+  {
+   "item": "airain:primordial_echo_block"
+  }
+ ],
+ "reagent": {
+  "item": "airain:runic_sword"
+ },
+ "result": {
+  "count": 1,
+  "id": "airain:arcane_sword"
+ },
+ "sourceCost": 5000
+}

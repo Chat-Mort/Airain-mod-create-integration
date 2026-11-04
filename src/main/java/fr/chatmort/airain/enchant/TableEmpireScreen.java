@@ -14,8 +14,8 @@ import net.minecraft.world.item.ItemStack;
 public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> {
 	private static final int LISTE_X = 50, LISTE_Y = 18, LIGNE = 18, VISIBLES = 6, LARGEUR = 176, BOUTON = 15;
 	private static final int LIGNE_FOND = 0xFF3E2A16, LIGNE_SURVOL = 0xFF523A1E, SEPARATION = 0xFF281A0C, BRUN = 0x3A220E;
-	private static final net.minecraft.resources.ResourceLocation FOND = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/table_empire.png");
-	private static final net.minecraft.resources.ResourceLocation ELEMENTS = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/elements.png");
+	private static final net.minecraft.resources.ResourceLocation FOND = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/imperial_table.png");
+	private static final net.minecraft.resources.ResourceLocation ELEMENTS = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/widgets.png");
 	private int defilement;
 
 	public TableEmpireScreen(TableEmpireMenu menu, Inventory inv, Component titre) {

@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:smithing_transform",
+ "template": {
+  "item": "minecraft:netherite_upgrade_smithing_template"
+ },
+ "base": {
+  "item": "minecraft:netherite_chestplate"
+ },
+ "addition": {
+  "item": "airain:sacred_netherite_plate"
+ },
+ "result": {
+  "id": "airain:sacred_chestplate",
+  "count": 1
+ }
+}

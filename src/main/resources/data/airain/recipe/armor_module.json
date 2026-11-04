@@ -1,0 +1,26 @@
+{
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "S": {
+   "item": "create:brass_sheet"
+  },
+  "K": {
+   "item": "create:sturdy_sheet"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  }
+ },
+ "pattern": [
+  "SK KS",
+  "KKPKK",
+  " KKK "
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:armor_module"
+ },
+ "show_notification": true
+}

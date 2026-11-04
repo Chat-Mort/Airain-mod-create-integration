@@ -1,0 +1,43 @@
+{
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "B": {
+   "item": "create:brass_block"
+  },
+  "L": {
+   "item": "minecraft:lectern"
+  },
+  "T": {
+   "item": "create:brass_sheet"
+  },
+  "R": {
+   "item": "create:large_cogwheel"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  },
+  "C": {
+   "item": "create:brass_casing"
+  },
+  "I": {
+   "item": "airain:imperial_plate"
+  },
+  "W": {
+   "item": "minecraft:red_wool"
+  }
+ },
+ "pattern": [
+  "BBLBB",
+  "TRPRT",
+  "TCICT",
+  "TRPRT",
+  "BBWBB"
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:difference_engine"
+ },
+ "show_notification": true
+}

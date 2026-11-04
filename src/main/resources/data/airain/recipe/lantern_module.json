@@ -1,0 +1,29 @@
+{
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "S": {
+   "item": "create:brass_sheet"
+  },
+  "G": {
+   "item": "minecraft:orange_stained_glass_pane"
+  },
+  "L": {
+   "item": "minecraft:lantern"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  }
+ },
+ "pattern": [
+  "SGS",
+  "GLG",
+  "SPS"
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:lantern_module"
+ },
+ "show_notification": true
+}

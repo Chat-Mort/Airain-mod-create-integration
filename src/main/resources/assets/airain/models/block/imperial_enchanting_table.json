@@ -1,0 +1,22 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "particle": "airain:block/table_bottom",
+  "dessus": "airain:block/table_top",
+  "cote": "airain:block/table_side",
+  "dessous": "airain:block/table_bottom"
+ },
+ "elements": [
+  {
+   "from": [0, 0, 0], "to": [16, 12, 16],
+   "faces": {
+    "down":  {"uv": [0, 0, 16, 16], "texture": "#dessous", "cullface": "down"},
+    "up":    {"uv": [0, 0, 16, 16], "texture": "#dessus"},
+    "north": {"uv": [0, 4, 16, 16], "texture": "#cote", "cullface": "north"},
+    "south": {"uv": [0, 4, 16, 16], "texture": "#cote", "cullface": "south"},
+    "west":  {"uv": [0, 4, 16, 16], "texture": "#cote", "cullface": "west"},
+    "east":  {"uv": [0, 4, 16, 16], "texture": "#cote", "cullface": "east"}
+   }
+  }
+ ]
+}
