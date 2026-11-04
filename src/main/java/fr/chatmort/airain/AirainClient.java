@@ -75,6 +75,7 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(AirainMod.BALISE_BE.get(), fr.chatmort.airain.balise.BaliseRenderer::new);
 		event.registerEntityRenderer(AirainMod.GARDIEN.get(), fr.chatmort.airain.gardien.GardienRenderer::new);
 		event.registerEntityRenderer(AirainMod.ASSISE.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
+		event.registerEntityRenderer(AirainMod.CAISSE.get(), fr.chatmort.airain.borne.CaisseRenderer::new);
 	}
 
 	private void setup(FMLClientSetupEvent event) {

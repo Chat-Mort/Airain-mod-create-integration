@@ -1,0 +1,305 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "#minecraft:logs",
+   "required": false
+  },
+  {
+   "id": "#minecraft:planks",
+   "required": false
+  },
+  {
+   "id": "#minecraft:saplings",
+   "required": false
+  },
+  {
+   "id": "#minecraft:leaves",
+   "required": false
+  },
+  {
+   "id": "#c:seeds",
+   "required": false
+  },
+  {
+   "id": "#minecraft:flowers",
+   "required": false
+  },
+  {
+   "id": "#minecraft:small_flowers",
+   "required": false
+  },
+  {
+   "id": "#c:crops",
+   "required": false
+  },
+  {
+   "id": "#c:mushrooms",
+   "required": false
+  },
+  {
+   "id": "#minecraft:wool",
+   "required": false
+  },
+  {
+   "id": "#c:dyes",
+   "required": false
+  },
+  {
+   "id": "#c:sandstone/blocks",
+   "required": false
+  },
+  {
+   "id": "#c:strings",
+   "required": false
+  },
+  {
+   "id": "#c:bones",
+   "required": false
+  },
+  {
+   "id": "#c:feathers",
+   "required": false
+  },
+  {
+   "id": "#c:leathers",
+   "required": false
+  },
+  {
+   "id": "minecraft:sugar_cane",
+   "required": false
+  },
+  {
+   "id": "minecraft:cactus",
+   "required": false
+  },
+  {
+   "id": "minecraft:bamboo",
+   "required": false
+  },
+  {
+   "id": "minecraft:kelp",
+   "required": false
+  },
+  {
+   "id": "minecraft:vine",
+   "required": false
+  },
+  {
+   "id": "minecraft:lily_pad",
+   "required": false
+  },
+  {
+   "id": "minecraft:moss_block",
+   "required": false
+  },
+  {
+   "id": "minecraft:apple",
+   "required": false
+  },
+  {
+   "id": "minecraft:cocoa_beans",
+   "required": false
+  },
+  {
+   "id": "minecraft:sweet_berries",
+   "required": false
+  },
+  {
+   "id": "minecraft:glow_berries",
+   "required": false
+  },
+  {
+   "id": "minecraft:nether_wart",
+   "required": false
+  },
+  {
+   "id": "minecraft:crimson_fungus",
+   "required": false
+  },
+  {
+   "id": "minecraft:warped_fungus",
+   "required": false
+  },
+  {
+   "id": "minecraft:crimson_roots",
+   "required": false
+  },
+  {
+   "id": "minecraft:warped_roots",
+   "required": false
+  },
+  {
+   "id": "minecraft:short_grass",
+   "required": false
+  },
+  {
+   "id": "minecraft:fern",
+   "required": false
+  },
+  {
+   "id": "minecraft:tall_grass",
+   "required": false
+  },
+  {
+   "id": "minecraft:large_fern",
+   "required": false
+  },
+  {
+   "id": "minecraft:wheat",
+   "required": false
+  },
+  {
+   "id": "minecraft:melon_slice",
+   "required": false
+  },
+  {
+   "id": "minecraft:melon",
+   "required": false
+  },
+  {
+   "id": "minecraft:pumpkin",
+   "required": false
+  },
+  {
+   "id": "minecraft:carrot",
+   "required": false
+  },
+  {
+   "id": "minecraft:potato",
+   "required": false
+  },
+  {
+   "id": "minecraft:beetroot",
+   "required": false
+  },
+  {
+   "id": "minecraft:brown_mushroom",
+   "required": false
+  },
+  {
+   "id": "minecraft:red_mushroom",
+   "required": false
+  },
+  {
+   "id": "minecraft:seagrass",
+   "required": false
+  },
+  {
+   "id": "minecraft:sea_pickle",
+   "required": false
+  },
+  {
+   "id": "minecraft:glow_lichen",
+   "required": false
+  },
+  {
+   "id": "minecraft:hanging_roots",
+   "required": false
+  },
+  {
+   "id": "minecraft:spore_blossom",
+   "required": false
+  },
+  {
+   "id": "minecraft:azalea",
+   "required": false
+  },
+  {
+   "id": "minecraft:flowering_azalea",
+   "required": false
+  },
+  {
+   "id": "minecraft:big_dripleaf",
+   "required": false
+  },
+  {
+   "id": "minecraft:small_dripleaf",
+   "required": false
+  },
+  {
+   "id": "minecraft:pink_petals",
+   "required": false
+  },
+  {
+   "id": "minecraft:dead_bush",
+   "required": false
+  },
+  {
+   "id": "minecraft:chorus_fruit",
+   "required": false
+  },
+  {
+   "id": "minecraft:twisting_vines",
+   "required": false
+  },
+  {
+   "id": "minecraft:weeping_vines",
+   "required": false
+  },
+  {
+   "id": "minecraft:shroomlight",
+   "required": false
+  },
+  {
+   "id": "minecraft:nether_wart_block",
+   "required": false
+  },
+  {
+   "id": "minecraft:warped_wart_block",
+   "required": false
+  },
+  {
+   "id": "minecraft:mangrove_roots",
+   "required": false
+  },
+  {
+   "id": "minecraft:rotten_flesh",
+   "required": false
+  },
+  {
+   "id": "minecraft:spider_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:ink_sac",
+   "required": false
+  },
+  {
+   "id": "minecraft:bone_meal",
+   "required": false
+  },
+  {
+   "id": "minecraft:egg",
+   "required": false
+  },
+  {
+   "id": "minecraft:packed_ice",
+   "required": false
+  },
+  {
+   "id": "minecraft:smooth_basalt",
+   "required": false
+  },
+  {
+   "id": "minecraft:clay_ball",
+   "required": false
+  },
+  {
+   "id": "minecraft:flint",
+   "required": false
+  },
+  {
+   "id": "minecraft:podzol",
+   "required": false
+  },
+  {
+   "id": "minecraft:rooted_dirt",
+   "required": false
+  },
+  {
+   "id": "minecraft:mycelium",
+   "required": false
+  }
+ ]
+}

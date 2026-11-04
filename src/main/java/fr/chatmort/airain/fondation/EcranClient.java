@@ -29,6 +29,10 @@ public final class EcranClient {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.atlas.AtlasScreen(m.donnees()));
 	}
 
+	public static void borne(fr.chatmort.airain.borne.PaquetsBorne.Ouvrir m) {
+		Minecraft.getInstance().setScreen(new fr.chatmort.airain.borne.BorneScreen(m));
+	}
+
 	public static void registre(OuvrirRegistre m) {
 		Minecraft.getInstance().setScreen(new RegistreScreen(m));
 	}

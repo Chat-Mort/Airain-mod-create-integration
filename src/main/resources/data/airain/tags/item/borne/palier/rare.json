@@ -1,0 +1,57 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "#c:gems/diamond",
+   "required": false
+  },
+  {
+   "id": "#c:gems/emerald",
+   "required": false
+  },
+  {
+   "id": "#c:ores/diamond",
+   "required": false
+  },
+  {
+   "id": "#c:ores/emerald",
+   "required": false
+  },
+  {
+   "id": "minecraft:ghast_tear",
+   "required": false
+  },
+  {
+   "id": "minecraft:shulker_shell",
+   "required": false
+  },
+  {
+   "id": "minecraft:rabbit_foot",
+   "required": false
+  },
+  {
+   "id": "minecraft:turtle_scute",
+   "required": false
+  },
+  {
+   "id": "minecraft:armadillo_scute",
+   "required": false
+  },
+  {
+   "id": "minecraft:nautilus_shell",
+   "required": false
+  },
+  {
+   "id": "minecraft:breeze_rod",
+   "required": false
+  },
+  {
+   "id": "minecraft:ancient_debris",
+   "required": false
+  },
+  {
+   "id": "minecraft:netherite_scrap",
+   "required": false
+  }
+ ]
+}

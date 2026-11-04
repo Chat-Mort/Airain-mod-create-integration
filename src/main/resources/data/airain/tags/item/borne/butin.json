@@ -1,0 +1,149 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "#c:strings",
+   "required": false
+  },
+  {
+   "id": "#c:bones",
+   "required": false
+  },
+  {
+   "id": "#c:feathers",
+   "required": false
+  },
+  {
+   "id": "#c:leathers",
+   "required": false
+  },
+  {
+   "id": "#c:gunpowders",
+   "required": false
+  },
+  {
+   "id": "#c:slime_balls",
+   "required": false
+  },
+  {
+   "id": "#c:ender_pearls",
+   "required": false
+  },
+  {
+   "id": "#c:rods/blaze",
+   "required": false
+  },
+  {
+   "id": "minecraft:rotten_flesh",
+   "required": false
+  },
+  {
+   "id": "minecraft:spider_eye",
+   "required": false
+  },
+  {
+   "id": "minecraft:ink_sac",
+   "required": false
+  },
+  {
+   "id": "minecraft:glow_ink_sac",
+   "required": false
+  },
+  {
+   "id": "minecraft:magma_cream",
+   "required": false
+  },
+  {
+   "id": "minecraft:ghast_tear",
+   "required": false
+  },
+  {
+   "id": "minecraft:phantom_membrane",
+   "required": false
+  },
+  {
+   "id": "minecraft:prismarine_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:prismarine_crystals",
+   "required": false
+  },
+  {
+   "id": "minecraft:honeycomb",
+   "required": false
+  },
+  {
+   "id": "minecraft:rabbit_hide",
+   "required": false
+  },
+  {
+   "id": "minecraft:rabbit_foot",
+   "required": false
+  },
+  {
+   "id": "minecraft:shulker_shell",
+   "required": false
+  },
+  {
+   "id": "minecraft:turtle_scute",
+   "required": false
+  },
+  {
+   "id": "minecraft:armadillo_scute",
+   "required": false
+  },
+  {
+   "id": "minecraft:nautilus_shell",
+   "required": false
+  },
+  {
+   "id": "minecraft:blaze_powder",
+   "required": false
+  },
+  {
+   "id": "minecraft:breeze_rod",
+   "required": false
+  },
+  {
+   "id": "minecraft:string",
+   "required": false
+  },
+  {
+   "id": "minecraft:bone",
+   "required": false
+  },
+  {
+   "id": "minecraft:bone_meal",
+   "required": false
+  },
+  {
+   "id": "minecraft:feather",
+   "required": false
+  },
+  {
+   "id": "minecraft:leather",
+   "required": false
+  },
+  {
+   "id": "minecraft:gunpowder",
+   "required": false
+  },
+  {
+   "id": "minecraft:slime_ball",
+   "required": false
+  },
+  {
+   "id": "minecraft:ender_pearl",
+   "required": false
+  },
+  {
+   "id": "minecraft:blaze_rod",
+   "required": false
+  },
+  {
+   "id": "minecraft:egg",
+   "required": false
+  }
+ ]
+}

@@ -433,6 +433,39 @@ public class AirainMod {
 		BLOCK_ENTITIES.register("desenchanteur",
 			() -> BlockEntityType.Builder.of(DesenchanteurBlockEntity::new, DESENCH.get()).build(null));
 
+	// ---- bornes de commande (fin de partie)
+	private static BlockBehaviour.Properties propBorne(boolean emp) {
+		return BlockBehaviour.Properties.of().mapColor(emp ? MapColor.GOLD : MapColor.COLOR_PURPLE).strength(5f, 1200f)
+			.sound(emp ? SoundType.METAL : SoundType.AMETHYST).noOcclusion().lightLevel(s -> 9);
+	}
+	public static final DeferredBlock<fr.chatmort.airain.borne.BorneBlock> BORNE_IMPERIALE = BLOCKS.register("borne_imperiale",
+		() -> new fr.chatmort.airain.borne.BorneBlock(true, propBorne(true)));
+	public static final DeferredBlock<fr.chatmort.airain.borne.BorneBlock> BORNE_ARCANIQUE = BLOCKS.register("borne_arcanique",
+		() -> new fr.chatmort.airain.borne.BorneBlock(false, propBorne(false)));
+	public static final DeferredBlock<fr.chatmort.airain.borne.BornePartieBlock> BORNE_PARTIE_IMPERIALE = BLOCKS.register("borne_partie_imperiale",
+		() -> new fr.chatmort.airain.borne.BornePartieBlock(true, propBorne(true).noLootTable()));
+	public static final DeferredBlock<fr.chatmort.airain.borne.BornePartieBlock> BORNE_PARTIE_ARCANIQUE = BLOCKS.register("borne_partie_arcanique",
+		() -> new fr.chatmort.airain.borne.BornePartieBlock(false, propBorne(false).noLootTable()));
+	public static final DeferredItem<BlockItem> BORNE_IMPERIALE_ITEM = ITEMS.register("borne_imperiale",
+		() -> new BlockItem(BORNE_IMPERIALE.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	public static final DeferredItem<BlockItem> BORNE_ARCANIQUE_ITEM = ITEMS.register("borne_arcanique",
+		() -> new BlockItem(BORNE_ARCANIQUE.get(), new Item.Properties().stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.EPIC)));
+	@SuppressWarnings("DataFlowIssue")
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.borne.BorneBlockEntity>> BORNE_BE =
+		BLOCK_ENTITIES.register("borne", () -> BlockEntityType.Builder.of(fr.chatmort.airain.borne.BorneBlockEntity::new,
+			BORNE_IMPERIALE.get(), BORNE_ARCANIQUE.get()).build(null));
+	/** Modèles de la caisse livrée et du parachute (dessinés par l'entité, jamais posés). */
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> CAISSE_IMPERIALE = BLOCKS.register("caisse_imperiale",
+		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().noLootTable().noOcclusion()));
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> CAISSE_ARCANIQUE = BLOCKS.register("caisse_arcanique",
+		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().noLootTable().noOcclusion()));
+	public static final DeferredBlock<net.minecraft.world.level.block.Block> PARACHUTE = BLOCKS.register("parachute",
+		() -> new net.minecraft.world.level.block.Block(BlockBehaviour.Properties.of().noLootTable().noOcclusion()));
+	public static final DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<fr.chatmort.airain.borne.CaisseEntity>> CAISSE =
+		ENTITES.register("caisse_livraison", () -> net.minecraft.world.entity.EntityType.Builder.<fr.chatmort.airain.borne.CaisseEntity>of(
+			fr.chatmort.airain.borne.CaisseEntity::new, net.minecraft.world.entity.MobCategory.MISC)
+			.sized(0.9f, 0.9f).noSummon().fireImmune().clientTrackingRange(10).updateInterval(2).build("caisse_livraison"));
+
 	public AirainMod(IEventBus bus) {
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
@@ -504,6 +537,10 @@ public class AirainMod {
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.tourbillon(m)))
 			.playToClient(fr.chatmort.airain.codex.OuvrirCodex.TYPE, fr.chatmort.airain.codex.OuvrirCodex.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.codex(m)))
+			.playToClient(fr.chatmort.airain.borne.PaquetsBorne.Ouvrir.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Ouvrir.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.borne(m)))
+			.playToServer(fr.chatmort.airain.borne.PaquetsBorne.Commander.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Commander.CODEC,
+				fr.chatmort.airain.borne.PaquetsBorne.Commander::traiter)
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.registre(m))));
 		bus.addListener(this::setup);

@@ -1,0 +1,45 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "#c:ores",
+   "required": false
+  },
+  {
+   "id": "#c:raw_materials",
+   "required": false
+  },
+  {
+   "id": "#c:ingots",
+   "required": false
+  },
+  {
+   "id": "#minecraft:coals",
+   "required": false
+  },
+  {
+   "id": "#c:dusts/redstone",
+   "required": false
+  },
+  {
+   "id": "#c:gems/quartz",
+   "required": false
+  },
+  {
+   "id": "#c:gems/lapis",
+   "required": false
+  },
+  {
+   "id": "#c:gems/amethyst",
+   "required": false
+  },
+  {
+   "id": "#c:obsidians",
+   "required": false
+  },
+  {
+   "id": "minecraft:amethyst_shard",
+   "required": false
+  }
+ ]
+}

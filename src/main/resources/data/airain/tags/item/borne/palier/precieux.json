@@ -1,0 +1,57 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "#c:ingots/gold",
+   "required": false
+  },
+  {
+   "id": "#c:raw_materials/gold",
+   "required": false
+  },
+  {
+   "id": "#c:ores/gold",
+   "required": false
+  },
+  {
+   "id": "#c:ender_pearls",
+   "required": false
+  },
+  {
+   "id": "#c:rods/blaze",
+   "required": false
+  },
+  {
+   "id": "#c:dusts/glowstone",
+   "required": false
+  },
+  {
+   "id": "#c:glass_blocks/tinted",
+   "required": false
+  },
+  {
+   "id": "minecraft:magma_cream",
+   "required": false
+  },
+  {
+   "id": "minecraft:phantom_membrane",
+   "required": false
+  },
+  {
+   "id": "minecraft:prismarine_shard",
+   "required": false
+  },
+  {
+   "id": "minecraft:prismarine_crystals",
+   "required": false
+  },
+  {
+   "id": "minecraft:blaze_powder",
+   "required": false
+  },
+  {
+   "id": "minecraft:crying_obsidian",
+   "required": false
+  }
+ ]
+}

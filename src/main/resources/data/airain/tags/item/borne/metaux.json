@@ -1,0 +1,65 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "#c:ores",
+   "required": false
+  },
+  {
+   "id": "#c:raw_materials",
+   "required": false
+  },
+  {
+   "id": "#c:ingots",
+   "required": false
+  },
+  {
+   "id": "#c:nuggets",
+   "required": false
+  },
+  {
+   "id": "#c:gems/diamond",
+   "required": false
+  },
+  {
+   "id": "#c:gems/emerald",
+   "required": false
+  },
+  {
+   "id": "#c:gems/lapis",
+   "required": false
+  },
+  {
+   "id": "#c:gems/quartz",
+   "required": false
+  },
+  {
+   "id": "#c:gems/amethyst",
+   "required": false
+  },
+  {
+   "id": "#c:dusts/redstone",
+   "required": false
+  },
+  {
+   "id": "#c:dusts/glowstone",
+   "required": false
+  },
+  {
+   "id": "#minecraft:coals",
+   "required": false
+  },
+  {
+   "id": "minecraft:ancient_debris",
+   "required": false
+  },
+  {
+   "id": "minecraft:netherite_scrap",
+   "required": false
+  },
+  {
+   "id": "minecraft:amethyst_shard",
+   "required": false
+  }
+ ]
+}

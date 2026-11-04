@@ -1,0 +1,165 @@
+{
+ "replace": false,
+ "values": [
+  {
+   "id": "#c:cobblestones",
+   "required": false
+  },
+  {
+   "id": "#c:stones",
+   "required": false
+  },
+  {
+   "id": "#c:sands",
+   "required": false
+  },
+  {
+   "id": "#c:gravels",
+   "required": false
+  },
+  {
+   "id": "#minecraft:dirt",
+   "required": false
+  },
+  {
+   "id": "#c:netherracks",
+   "required": false
+  },
+  {
+   "id": "#c:end_stones",
+   "required": false
+  },
+  {
+   "id": "#c:obsidians",
+   "required": false
+  },
+  {
+   "id": "#c:sandstone/blocks",
+   "required": false
+  },
+  {
+   "id": "minecraft:clay",
+   "required": false
+  },
+  {
+   "id": "minecraft:mud",
+   "required": false
+  },
+  {
+   "id": "minecraft:calcite",
+   "required": false
+  },
+  {
+   "id": "minecraft:dripstone_block",
+   "required": false
+  },
+  {
+   "id": "minecraft:blackstone",
+   "required": false
+  },
+  {
+   "id": "minecraft:basalt",
+   "required": false
+  },
+  {
+   "id": "minecraft:smooth_basalt",
+   "required": false
+  },
+  {
+   "id": "minecraft:soul_sand",
+   "required": false
+  },
+  {
+   "id": "minecraft:soul_soil",
+   "required": false
+  },
+  {
+   "id": "minecraft:snow_block",
+   "required": false
+  },
+  {
+   "id": "minecraft:ice",
+   "required": false
+  },
+  {
+   "id": "minecraft:packed_ice",
+   "required": false
+  },
+  {
+   "id": "minecraft:tuff",
+   "required": false
+  },
+  {
+   "id": "minecraft:deepslate",
+   "required": false
+  },
+  {
+   "id": "minecraft:cobbled_deepslate",
+   "required": false
+  },
+  {
+   "id": "minecraft:magma_block",
+   "required": false
+  },
+  {
+   "id": "minecraft:red_sand",
+   "required": false
+  },
+  {
+   "id": "minecraft:coarse_dirt",
+   "required": false
+  },
+  {
+   "id": "minecraft:podzol",
+   "required": false
+  },
+  {
+   "id": "minecraft:rooted_dirt",
+   "required": false
+  },
+  {
+   "id": "minecraft:mycelium",
+   "required": false
+  },
+  {
+   "id": "minecraft:grass_block",
+   "required": false
+  },
+  {
+   "id": "minecraft:clay_ball",
+   "required": false
+  },
+  {
+   "id": "minecraft:flint",
+   "required": false
+  },
+  {
+   "id": "create:limestone",
+   "required": false
+  },
+  {
+   "id": "create:scoria",
+   "required": false
+  },
+  {
+   "id": "create:scorchia",
+   "required": false
+  },
+  {
+   "id": "create:ochrum",
+   "required": false
+  },
+  {
+   "id": "create:veridium",
+   "required": false
+  },
+  {
+   "id": "create:crimsite",
+   "required": false
+  },
+  {
+   "id": "create:asurine",
+   "required": false
+  }
+ ]
+}

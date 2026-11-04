@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "key": {
+  "L": {
+   "item": "minecraft:lectern"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  },
+  "X": {
+   "item": "airain:bloc_echo_primordial"
+  },
+  "C": {
+   "item": "create:brass_casing"
+  },
+  "B": {
+   "item": "create:brass_block"
+  }
+ },
+ "pattern": [
+  " L ",
+  "PXP",
+  "CBC"
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:borne_arcanique"
+ }
+}
