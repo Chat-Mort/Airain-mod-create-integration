@@ -52,7 +52,7 @@ public class Gardiens extends SavedData {
 	}
 
 	/** Gardiens au plus pour cette fondation : 4, ou 6 si elle est sacrée. */
-	public static int limite(FondationRegistre.Fondation f) { return f != null && f.sacree() ? 6 : LIMITE; }
+	public static int limite(FondationRegistre.Fondation f) { return f != null && f.sacree() ? 6 + fr.chatmort.airain.fondation.Ameliorations.Type.AGRANDISSEMENT.de(f.amelio()) : LIMITE; }
 
 	public boolean lier(String cle, UUID g, int limite) {
 		Set<UUID> s = parBase.computeIfAbsent(cle, k -> new HashSet<>());

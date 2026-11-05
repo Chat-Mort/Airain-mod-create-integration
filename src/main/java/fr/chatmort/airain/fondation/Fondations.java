@@ -26,6 +26,7 @@ public final class Fondations {
 			FondationRegistre.Fondation f = reg.zone(p.level().dimension().location(), p.getX(), p.getZ());
 			String cle = f == null ? "" : f.dim() + "|" + f.pos().asLong();
 			if (f != null) occupees.add(cle);
+			if (f != null && serveur.getTickCount() % 100 == 0) Ameliorations.effets(p, f);
 			String avant = derniere.getOrDefault(p.getUUID(), "");
 			if (cle.equals(avant)) continue;
 			derniere.put(p.getUUID(), cle);

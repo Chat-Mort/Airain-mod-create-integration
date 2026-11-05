@@ -125,6 +125,10 @@ public class FondationBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack pile, BlockState state, Level level, BlockPos pos, Player joueur, InteractionHand main, BlockHitResult hit) {
 		if (pile.getItem() instanceof GabaritItem)
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
+		if (pile.getItem() instanceof PlanItem plan && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fp) {
+			Ameliorations.installer(level, bas(state, pos), fp, joueur, pile, plan.type);
+			return ItemInteractionResult.sidedSuccess(level.isClientSide);
+		}
 		if ((imperiale(pile) || echo(pile)) && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fs)
 			return sacrer(level, bas(state, pos), fs, joueur, pile);
 		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
@@ -184,6 +188,10 @@ public class FondationBlock extends Block implements EntityBlock {
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player joueur, BlockHitResult hit) {
 		BlockPos b = bas(state, pos);
+		if (joueur.isShiftKeyDown() && level.getBlockEntity(b) instanceof FondationBlockEntity fm && fm.niveau(Ameliorations.Type.METEO) > 0) {
+			Ameliorations.meteo(level, b, fm, joueur);
+			return InteractionResult.sidedSuccess(level.isClientSide);
+		}
 		if (level.isClientSide && FMLEnvironment.dist.isClient() && level.getBlockEntity(b) instanceof FondationBlockEntity f)
 			EcranClient.ouvrir(b, f.nom(), f.devise(), f.apparence());
 		return InteractionResult.sidedSuccess(level.isClientSide);

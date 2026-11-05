@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "GCG",
+  "CMC",
+  "GCG"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:gold_block"
+  },
+  "C": {
+   "item": "minecraft:compass"
+  },
+  "M": {
+   "item": "minecraft:map"
+  }
+ },
+ "result": {
+  "id": "airain:expansion_plans",
+  "count": 1
+ }
+}

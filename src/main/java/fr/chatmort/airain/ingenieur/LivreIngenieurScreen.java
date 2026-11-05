@@ -41,11 +41,11 @@ public class LivreIngenieurScreen extends Screen {
 		 {"encre", "airain:runic_ink"}, {"schemas", "kubejs:schema_cuivre"}, {"sceau", "kubejs:sceau_forge"},
 		 {"memoires", "kubejs:coeur_d_airain"}, {"resonance", "kubejs:fragment_resonance"}, {"recuperation", "kubejs:ferraille"},
 		 {"plaque_netherite", "kubejs:plaque_netherite"}},
-		{{"sacre", "airain:sacred_netherite_plate"}, {"couronne", "airain:airain_crown"}, {"capitale_sacree", "airain:foundation_stone"}, {"etoile", "airain:star_block"},
+		{{"sacre", "airain:sacred_netherite_plate"}, {"couronne", "airain:airain_crown"}, {"capitale_sacree", "airain:foundation_stone"}, {"ameliorations", "airain:expansion_plans"}, {"etoile", "airain:star_block"},
 		 {"armure_sacree", "airain:sacred_chestplate"}, {"armure_imperiale", "airain:imperial_chestplate"}, {"armes_sacrees", "airain:sacred_katana"},
 		 {"armes_imperiales", "airain:imperial_katana"}, {"sceptre_imperial", "airain:imperial_scepter"}, {"capitaine", "airain:imperial_plate"},
 		 {"trone", "airain:imperial_throne"}, {"borne_imperiale", "airain:difference_engine"}, {"charte", "airain:imperial_charter"}},
-		{{"diademe", "airain:echo_diadem"}, {"capitale_arcanique", "airain:foundation_stone"}, {"arcanium", "airain:arcanium_ingot"},
+		{{"diademe", "airain:echo_diadem"}, {"capitale_arcanique", "airain:foundation_stone"}, {"ameliorations", "airain:expansion_plans"}, {"arcanium", "airain:arcanium_ingot"},
 		 {"armure_runique", "airain:runic_chestplate"}, {"armure_arcanique", "airain:arcane_chestplate"}, {"armes_runiques", "airain:runic_katana"},
 		 {"armes_arcaniques", "airain:arcane_katana"}, {"sceptre_arcanique", "airain:arcane_scepter"}, {"gardien_echo", "airain:primordial_echo_block"},
 		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:resonant_archive"}, {"relais", "kubejs:diapason_echo"}}};

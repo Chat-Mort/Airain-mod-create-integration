@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "RDR",
+  "CPC",
+  "RDR"
+ ],
+ "key": {
+  "R": {
+   "item": "minecraft:lightning_rod"
+  },
+  "D": {
+   "item": "minecraft:daylight_detector"
+  },
+  "C": {
+   "item": "minecraft:clock"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  }
+ },
+ "result": {
+  "id": "airain:weather_station_plans",
+  "count": 1
+ }
+}

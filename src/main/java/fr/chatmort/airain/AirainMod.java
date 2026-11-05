@@ -392,6 +392,15 @@ public class AirainMod {
 			public boolean isFoil(net.minecraft.world.item.ItemStack st) { return true; }
 		});
 
+	/** Plans des améliorations de capitale. */
+	public static final DeferredItem<Item> PLAN_AGRANDISSEMENT = plan("expansion_plans", fr.chatmort.airain.fondation.Ameliorations.Type.AGRANDISSEMENT);
+	public static final DeferredItem<Item> PLAN_INFIRMERIE = plan("infirmary_plans", fr.chatmort.airain.fondation.Ameliorations.Type.INFIRMERIE);
+	public static final DeferredItem<Item> PLAN_METEO = plan("weather_station_plans", fr.chatmort.airain.fondation.Ameliorations.Type.METEO);
+	public static final DeferredItem<Item> PLAN_FORGE = plan("garrison_forge_plans", fr.chatmort.airain.fondation.Ameliorations.Type.FORGE);
+	private static DeferredItem<Item> plan(String id, fr.chatmort.airain.fondation.Ameliorations.Type t) {
+		return ITEMS.register(id, () -> new fr.chatmort.airain.fondation.PlanItem(t, new Item.Properties().stacksTo(16).rarity(net.minecraft.world.item.Rarity.EPIC)));
+	}
+
 	/** Chroniques oubliées : le livre de l'aventure. */
 	public static final DeferredItem<Item> CHRONIQUES = ITEMS.register("chronicles",
 		() -> new fr.chatmort.airain.chronique.ChroniquesItem(new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));

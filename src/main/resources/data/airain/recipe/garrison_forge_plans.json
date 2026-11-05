@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "IAI",
+  "NPN",
+  "IAI"
+ ],
+ "key": {
+  "I": {
+   "item": "minecraft:iron_block"
+  },
+  "A": {
+   "item": "minecraft:anvil"
+  },
+  "N": {
+   "item": "minecraft:netherite_ingot"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  }
+ },
+ "result": {
+  "id": "airain:garrison_forge_plans",
+  "count": 1
+ }
+}

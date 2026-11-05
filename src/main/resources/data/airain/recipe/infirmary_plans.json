@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "GBG",
+  "APA",
+  "GBG"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:glistering_melon_slice"
+  },
+  "B": {
+   "item": "minecraft:brewing_stand"
+  },
+  "A": {
+   "item": "minecraft:golden_apple"
+  },
+  "P": {
+   "item": "minecraft:paper"
+  }
+ },
+ "result": {
+  "id": "airain:infirmary_plans",
+  "count": 1
+ }
+}

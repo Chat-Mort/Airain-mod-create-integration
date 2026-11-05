@@ -42,7 +42,18 @@ public class FondationBlockEntity extends BlockEntity {
 	private boolean sacree;
 	public static final int RAYON_MAX_SACREE = 192;
 	public boolean sacree() { return sacree; }
-	public int rayonMax() { return sacree ? RAYON_MAX_SACREE : RAYON_MAX; }
+	public int rayonMax() { return sacree ? Ameliorations.RAYONS[Ameliorations.Type.AGRANDISSEMENT.de(amelio)] : RAYON_MAX; }
+	/** Améliorations de capitale (voir {@link Ameliorations}), et prochaine heure où la station météo répond. */
+	private int amelio; private long meteoPret;
+	public int amelio() { return amelio; }
+	public int niveau(Ameliorations.Type t) { return t.de(amelio); }
+	public void ameliorer(Ameliorations.Type t) {
+		amelio = t.avec(amelio, t.de(amelio) + 1);
+		if (t == Ameliorations.Type.AGRANDISSEMENT) rayon = rayonMax();
+		enregistrer(); maj();
+	}
+	public long meteoPret() { return meteoPret; }
+	public void meteoPret(long t) { meteoPret = t; setChanged(); }
 	/** Capitale arcanique (bloc d'écho primordial, fin Écho) : mêmes avantages, aux couleurs des arcanes. */
 	private boolean arcanique, plaque, imperiale;
 	public boolean arcanique() { return arcanique; }
@@ -182,7 +193,7 @@ public class FondationBlockEntity extends BlockEntity {
 
 	public void enregistrer() {
 		if (level instanceof ServerLevel sl && !murale())
-			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon, devise, apparence.pack(), apparence.packExt(), sacree, arcanique, imperiale);
+			FondationRegistre.de(sl.getServer()).mettre(level, worldPosition, nom, rayon, devise, apparence.pack(), apparence.packExt(), sacree, arcanique, imperiale, amelio);
 	}
 
 	@Override
@@ -203,14 +214,14 @@ public class FondationBlockEntity extends BlockEntity {
 	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.saveAdditional(tag, r);
 		tag.putString("nom", nom); tag.putString("devise", devise); tag.putInt("rayon", rayon); tag.putInt("apparence", apparence.pack()); tag.putInt("ext", apparence.packExt()); tag.putBoolean("berne", berne); tag.putFloat("manuelle", manuelle); tag.putBoolean("autoBas", autoBas); tag.putInt("hauteur", hauteur);
-		tag.putBoolean("sacree", sacree); tag.putBoolean("arcanique", arcanique); tag.putBoolean("plaque", plaque); tag.putBoolean("imperiale", imperiale);
+		tag.putBoolean("sacree", sacree); tag.putBoolean("arcanique", arcanique); tag.putBoolean("plaque", plaque); tag.putBoolean("imperiale", imperiale); tag.putInt("amelio", amelio); tag.putLong("meteoPret", meteoPret);
 	}
 
 	@Override
 	protected void loadAdditional(CompoundTag tag, HolderLookup.Provider r) {
 		super.loadAdditional(tag, r);
 		nom = tag.getString("nom"); devise = tag.getString("devise"); rayon = tag.contains("rayon") ? tag.getInt("rayon") : 48;
-		sacree = tag.getBoolean("sacree"); arcanique = tag.getBoolean("arcanique"); plaque = tag.contains("plaque") ? tag.getBoolean("plaque") : sacree; imperiale = tag.getBoolean("imperiale");
+		sacree = tag.getBoolean("sacree"); arcanique = tag.getBoolean("arcanique"); plaque = tag.contains("plaque") ? tag.getBoolean("plaque") : sacree; imperiale = tag.getBoolean("imperiale"); amelio = tag.getInt("amelio"); meteoPret = tag.getLong("meteoPret");
 		berne = tag.getBoolean("berne"); manuelle = tag.getFloat("manuelle"); autoBas = tag.getBoolean("autoBas");
 		hauteur = tag.contains("hauteur") ? tag.getInt("hauteur") : GrandEtendardBlock.MAT;
 		apparence = tag.contains("apparence") ? Apparence.unpack(tag.getInt("apparence"), tag.getInt("ext")) : Apparence.DEFAUT;

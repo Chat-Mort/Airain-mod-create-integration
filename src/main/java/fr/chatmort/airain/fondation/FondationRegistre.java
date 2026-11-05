@@ -17,7 +17,7 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 /** Toutes les fondations posées : dimension, position, nom, rayon. Persistant, indépendant des chunks chargés. */
 public class FondationRegistre extends SavedData {
-	public record Fondation(ResourceLocation dim, BlockPos pos, String nom, int rayon, String devise, int apparence, int ext, boolean sacree, boolean arcanique, boolean imperiale) {
+	public record Fondation(ResourceLocation dim, BlockPos pos, String nom, int rayon, String devise, int apparence, int ext, boolean sacree, boolean arcanique, boolean imperiale, int amelio) {
 		/** Grand étendard décoratif : pas de titre, pas de ligne dans le registre. */
 		public boolean decorative() { return Apparence.unpack(apparence, ext).estMasque(); }
 
@@ -44,9 +44,9 @@ public class FondationRegistre extends SavedData {
 		return dim + "|" + pos.asLong();
 	}
 
-	public void mettre(Level level, BlockPos pos, String nom, int rayon, String devise, int apparence, int ext, boolean sacree, boolean arcanique, boolean imperiale) {
+	public void mettre(Level level, BlockPos pos, String nom, int rayon, String devise, int apparence, int ext, boolean sacree, boolean arcanique, boolean imperiale, int amelio) {
 		ResourceLocation d = level.dimension().location();
-		fondations.put(cle(d, pos), new Fondation(d, pos.immutable(), nom, rayon, devise, apparence, ext, sacree, arcanique, imperiale)); setDirty();
+		fondations.put(cle(d, pos), new Fondation(d, pos.immutable(), nom, rayon, devise, apparence, ext, sacree, arcanique, imperiale, amelio)); setDirty();
 	}
 
 	public void retirer(Level level, BlockPos pos) {
@@ -91,7 +91,7 @@ public class FondationRegistre extends SavedData {
 		for (Fondation f : fondations.values()) {
 			CompoundTag c = new CompoundTag();
 			c.putString("dim", f.dim().toString()); c.putLong("pos", f.pos().asLong());
-			c.putString("nom", f.nom()); c.putInt("rayon", f.rayon()); c.putString("devise", f.devise()); c.putInt("apparence", f.apparence()); c.putInt("ext", f.ext()); c.putBoolean("sacree", f.sacree()); c.putBoolean("arcanique", f.arcanique()); c.putBoolean("imperiale", f.imperiale());
+			c.putString("nom", f.nom()); c.putInt("rayon", f.rayon()); c.putString("devise", f.devise()); c.putInt("apparence", f.apparence()); c.putInt("ext", f.ext()); c.putBoolean("sacree", f.sacree()); c.putBoolean("arcanique", f.arcanique()); c.putBoolean("imperiale", f.imperiale()); c.putInt("amelio", f.amelio());
 			l.add(c);
 		}
 		tag.put("fondations", l);
@@ -104,7 +104,7 @@ public class FondationRegistre extends SavedData {
 			CompoundTag c = (CompoundTag) t;
 			ResourceLocation d = ResourceLocation.parse(c.getString("dim"));
 			BlockPos p = BlockPos.of(c.getLong("pos"));
-			r.fondations.put(cle(d, p), new Fondation(d, p, c.getString("nom"), c.getInt("rayon"), c.getString("devise"), c.getInt("apparence"), c.getInt("ext"), c.getBoolean("sacree"), c.getBoolean("arcanique"), c.getBoolean("imperiale")));
+			r.fondations.put(cle(d, p), new Fondation(d, p, c.getString("nom"), c.getInt("rayon"), c.getString("devise"), c.getInt("apparence"), c.getInt("ext"), c.getBoolean("sacree"), c.getBoolean("arcanique"), c.getBoolean("imperiale"), c.getInt("amelio")));
 		}
 		return r;
 	}
