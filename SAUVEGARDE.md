@@ -44,8 +44,7 @@ Le mod lui-même (code Java, ressources) est sur la branche `main`.
 - `mcmeta-assets`, `mcmeta-data`, `mcmeta-reg` partiellement : ressources et données de Minecraft 1.21.1 (dépôt GitHub misode/mcmeta, branches `assets`, `data`, `registries`). Seuls la police `ascii.png` et `sounds.json` sont gardés.
 - Les sources d'autres mods décompressées pour étude (Create, Gunsmith, FTB, etc.).
 - `avant_poste_pieces.json` : cache régénéré par `avant_poste.py`.
-- Les zips livrés (`empire-airain-pack.zip`, `airain-serveur.zip`) : se refont depuis `pack/` avec
-  `zip -qr ../airain-serveur.zip kubejs config defaultconfigs mods schematics` et
+- Le zip livré (`empire-airain-pack.zip`, le même pour les joueurs et le serveur) : se refait depuis `pack/` avec
   `zip -qr ../empire-airain-pack.zip kubejs config defaultconfigs mods schematics`.
 
 - Les clones de dépôts externes (`ars`, `cj`, `kjsc`, `kjsrc`, `mcmeta-reg`, `sb`, `simproj`, `ss`) : sources d'autres mods et registres de Minecraft, à recloner si besoin.
