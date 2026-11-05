@@ -29,8 +29,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 - **Chroniques, archives** : un index complet des 51 écrits, rangé par camp puis par auteur. Les écrits pas encore trouvés apparaissent en « ?????????? », avec un compteur.
 
 - **Musique** :
-  - nouveau morceau de surface, Echoing Voices, en alternance avec le thème principal ;
-  - nouveau morceau pour l'End, Almost Safe ;
+  - deux nouveaux morceaux pour l'End, Almost Safe et Echoing Voices ;
   - tous les morceaux commencent par un court fondu d'entrée.
 - **Thème d'Ada et d'Elias**, Mechanical Love : il joue la première fois qu'on trouve la lettre jamais ouverte, puis la première fois qu'on trouve la dernière page d'Ada.
 - **Thème de la fin**, Epilogue : il joue au choix final, quelle que soit la fin.
