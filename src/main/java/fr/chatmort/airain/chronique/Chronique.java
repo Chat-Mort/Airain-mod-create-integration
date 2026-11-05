@@ -122,7 +122,7 @@ public class Chronique extends SavedData {
 			if (c == null) c = de(p.server);
 			String doc = cd.copyTag().getString("airain_doc");
 			if (!c.docs.add(doc)) continue;
-			if (doc.equals("lettre")) Theme.jouer(p.server, Theme.ADA_ELIAS);   // la première fois que la lettre d'Ada est trouvée
+			if (doc.equals("lettre") || doc.equals("ada_fin")) Theme.jouer(p.server, Theme.ADA_ELIAS);   // la lettre d'Ada, puis sa dernière page : une fois chacune
 			c.archives.add((CompoundTag) s.copyWithCount(1).save(p.registryAccess()));
 			var livre = s.get(DataComponents.WRITTEN_BOOK_CONTENT);
 			String titre = livre != null ? livre.title().raw() : s.getHoverName().getString();
