@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 5 novembre 2026 — versions 1.41.5 à 1.43.0
+## 5 novembre 2026 — versions 1.41.5 à 1.43.1
 
 **Ajouts**
 - **Améliorations de capitale**, après la fin. On pose des plans sur l'étendard de la capitale et on paie en soleils :
@@ -32,6 +32,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - nouveau morceau de surface, Echoing Voices, en alternance avec le thème principal ;
   - nouveau morceau pour l'End, Almost Safe ;
   - tous les morceaux commencent par un court fondu d'entrée.
+- **Thème d'Ada et d'Elias**, Mechanical Love : il joue une seule fois, la première fois qu'on trouve la lettre jamais ouverte, puis à la fin, quel que soit le choix.
 
 **Changements**
 - L'apprentie de Morgana a un nom : **Sybille Arden**. Ses carnets s'appellent maintenant « Carnet de Sybille Arden ».

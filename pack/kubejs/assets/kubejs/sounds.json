@@ -1,0 +1,10 @@
+{
+  "mechanical_love": {
+    "sounds": [
+      {
+        "name": "kubejs:music/mechanical_love",
+        "stream": true
+      }
+    ]
+  }
+}

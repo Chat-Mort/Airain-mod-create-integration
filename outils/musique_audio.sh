@@ -6,3 +6,8 @@ for f in "$H"/musique_in/*.ogg; do
   n=$(basename "$f")
   ffmpeg -hide_banner -loglevel error -y -i "$f" -af "afade=t=in:st=0:d=2.5,loudnorm=I=-19:TP=-1.5:LRA=11" -ar 44100 -c:a libvorbis -q:a 6 "$O/$n" && echo "$n"
 done
+# thèmes de l'histoire (joués par le mod à des moments précis, pas dans les listes du jeu)
+for f in "$H"/themes_in/*.ogg; do
+  n=$(basename "$f")
+  ffmpeg -hide_banner -loglevel error -y -i "$f" -af "afade=t=in:st=0:d=2.5,loudnorm=I=-19:TP=-1.5:LRA=11" -ar 44100 -c:a libvorbis -q:a 6 "$O/$n" && echo "$n (thème)"
+done
