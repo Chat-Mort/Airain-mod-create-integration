@@ -7,7 +7,8 @@ van = json.load(open(os.path.join(H, "mcmeta-assets/assets/minecraft/sounds.json
 SOUTERRAIN = {"music.overworld.deep_dark", "music.overworld.dripstone_caves", "music.overworld.lush_caves"}
 # morceau : (fichier, listes où il joue, part visée dans chaque liste)
 MORCEAUX = {
-    "main_theme": {"menu": True, "surface": 0.35},      # environ un morceau sur trois à la surface
+    "main_theme": {"menu": True, "surface": 0.25},      # à la surface : nos deux morceaux, un sur quatre chacun
+    "echoing_voices": {"surface": 0.25},
     "hells_guards": {"nether": 0.35},                    # Nether (tous les biomes)
 }
 S = {}

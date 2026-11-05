@@ -15,7 +15,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 12
+        "weight": 7
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 7
       }
     ]
   },
@@ -25,7 +30,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 4
+        "weight": 2
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 2
       }
     ]
   },
@@ -35,7 +45,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 8
+        "weight": 5
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 5
       }
     ]
   },
@@ -45,7 +60,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 6
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -55,7 +75,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 7
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -65,7 +90,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 5
+        "weight": 3
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 3
       }
     ]
   },
@@ -75,7 +105,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 6
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -85,7 +120,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 11
+        "weight": 7
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 7
       }
     ]
   },
@@ -95,7 +135,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 5
+        "weight": 3
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 3
       }
     ]
   },
@@ -105,7 +150,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 6
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -115,7 +165,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 7
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -125,7 +180,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 7
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -135,7 +195,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 4
+        "weight": 2
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 2
       }
     ]
   },
@@ -145,7 +210,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 27
+        "weight": 17
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 17
       }
     ]
   },
@@ -155,7 +225,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 4
+        "weight": 2
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 2
       }
     ]
   },
@@ -165,7 +240,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 6
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -175,7 +255,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 7
+        "weight": 4
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 4
       }
     ]
   },
@@ -185,7 +270,12 @@
       {
         "name": "kubejs:music/main_theme",
         "stream": true,
-        "weight": 2
+        "weight": 1
+      },
+      {
+        "name": "kubejs:music/echoing_voices",
+        "stream": true,
+        "weight": 1
       }
     ]
   },
