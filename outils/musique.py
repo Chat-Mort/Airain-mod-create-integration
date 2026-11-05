@@ -38,7 +38,7 @@ for nom, regle in MORCEAUX.items():
 d = os.path.join(sys.argv[1], "kubejs/assets/minecraft"); os.makedirs(d, exist_ok=True)
 json.dump(S, open(os.path.join(d, "sounds.json"), "w"), indent=2)
 # thèmes de l'histoire : un événement chacun dans l'espace kubejs (le mod les joue)
-THEMES = ["mechanical_love"]
+THEMES = ["mechanical_love", "epilogue"]
 json.dump({t: {"sounds": [{"name": "kubejs:music/" + t, "stream": True}]} for t in THEMES},
           open(os.path.join(sys.argv[1], "kubejs/assets/kubejs/sounds.json"), "w"), indent=2)
 print(len(S), "listes modifiées,", len(THEMES), "thème(s)")
