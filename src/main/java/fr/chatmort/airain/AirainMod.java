@@ -554,6 +554,8 @@ public class AirainMod {
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.tableau(m)))
 			.playToClient(fr.chatmort.airain.atlas.OuvrirAtlas.TYPE, fr.chatmort.airain.atlas.OuvrirAtlas.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.atlas(m)))
+			.playToClient(fr.chatmort.airain.chronique.Theme.TYPE, fr.chatmort.airain.chronique.Theme.CODEC,
+				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.theme(m)))
 			.playToClient(fr.chatmort.airain.chronique.OuvrirChroniques.TYPE, fr.chatmort.airain.chronique.OuvrirChroniques.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.chroniques(m)))
 			.playToClient(fr.chatmort.airain.armure.TourbillonPaquet.TYPE, fr.chatmort.airain.armure.TourbillonPaquet.CODEC,

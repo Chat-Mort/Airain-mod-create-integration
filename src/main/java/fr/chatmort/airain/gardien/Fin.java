@@ -108,6 +108,7 @@ public class Fin extends SavedData {
 		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket(Component.translatable("airain.fin." + v)));
 		p.level().playSound(null, p.blockPosition(), v.equals("empire") ? net.minecraft.sounds.SoundEvents.BEACON_ACTIVATE : net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_RESONATE,
 			net.minecraft.sounds.SoundSource.PLAYERS, 1f, v.equals("empire") ? 0.7f : 0.6f);
+		fr.chatmort.airain.chronique.Theme.jouer(p.server, fr.chatmort.airain.chronique.Theme.ADA_ELIAS);
 		fr.chatmort.airain.chronique.Chronique.premiere(p.server, "fin", "airain.chronique.j.fin_" + v, p.getGameProfile().getName());
 		fr.chatmort.airain.chronique.Chronique.de(p.server).debloquer(p.server, "fin_" + v);
 		if (v.equals("echo")) p.sendSystemMessage(Component.translatable("airain.fin.benediction").withStyle(net.minecraft.ChatFormatting.DARK_AQUA));

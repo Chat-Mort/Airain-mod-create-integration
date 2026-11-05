@@ -13,6 +13,14 @@ public final class EcranClient {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.codex.CodexScreen(m));
 	}
 
+	/** Un thème de l'histoire : coupe la musique en cours, joue sans position. */
+	public static void theme(fr.chatmort.airain.chronique.Theme m) {
+		var mc = Minecraft.getInstance();
+		mc.getMusicManager().stopPlaying();
+		mc.getSoundManager().play(net.minecraft.client.resources.sounds.SimpleSoundInstance.forMusic(
+			net.minecraft.sounds.SoundEvent.createVariableRangeEvent(net.minecraft.resources.ResourceLocation.parse(m.son()))));
+	}
+
 	public static void chroniques(fr.chatmort.airain.chronique.OuvrirChroniques m) {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.chronique.ChroniquesScreen(m.donnees()));
 	}
