@@ -28,7 +28,10 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   Les épilogues passent à 5 pages.
 - **Chroniques, archives** : un index complet des 51 écrits, rangé par camp puis par auteur. Les écrits pas encore trouvés apparaissent en « ?????????? », avec un compteur.
 
-- **Musique** : nouveau morceau de surface, Echoing Voices, en alternance avec le thème principal.
+- **Musique** :
+  - nouveau morceau de surface, Echoing Voices, en alternance avec le thème principal ;
+  - nouveau morceau pour l'End, Almost Safe ;
+  - tous les morceaux commencent par un court fondu d'entrée.
 
 **Changements**
 - L'apprentie de Morgana a un nom : **Sybille Arden**. Ses carnets s'appellent maintenant « Carnet de Sybille Arden ».

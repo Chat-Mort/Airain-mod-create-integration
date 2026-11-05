@@ -9,6 +9,7 @@ SOUTERRAIN = {"music.overworld.deep_dark", "music.overworld.dripstone_caves", "m
 MORCEAUX = {
     "main_theme": {"menu": True, "surface": 0.25},      # à la surface : nos deux morceaux, un sur quatre chacun
     "echoing_voices": {"surface": 0.25},
+    "almost_safe": {"end": 0.5},                         # End : un morceau sur deux
     "hells_guards": {"nether": 0.35},                    # Nether (tous les biomes)
 }
 S = {}
@@ -25,6 +26,12 @@ for nom, regle in MORCEAUX.items():
     part = regle.get("nether")
     if part:
         for ev in [k for k in van if k.startswith("music.nether.")]:
+            n = sum(s.get("weight", 1) if isinstance(s, dict) else 1 for s in van[ev]["sounds"])
+            poids = max(1, round(n * part / (1 - part)))
+            S.setdefault(ev, {"replace": False, "sounds": []})["sounds"].append(son(poids))
+    part = regle.get("end")
+    if part:
+        for ev in ["music.end"]:
             n = sum(s.get("weight", 1) if isinstance(s, dict) else 1 for s in van[ev]["sounds"])
             poids = max(1, round(n * part / (1 - part)))
             S.setdefault(ev, {"replace": False, "sounds": []})["sounds"].append(son(poids))

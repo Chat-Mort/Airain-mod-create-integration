@@ -33,6 +33,7 @@ Le mod lui-même (code Java, ressources) est sur la branche `main`.
 | `ecrits.py <pack>` | Écrits ajoutés le 5 novembre (Elias, Héléna, Ferrand, Morgana III, Ada) : textes dans `ecrits_textes.py`, quêtes dans `ecrits_quetes.py`. |
 | `carnet.py <pack>` | Pages du carnet de l'apprentie (butins + textes). |
 | `musique.py <pack>` | Musiques du pack (`kubejs/assets/minecraft/sounds.json`). |
+| `musique_audio.sh <pack>` | Prépare les morceaux de `musique_in/` (sources) : volume -19 LUFS et fondu d'entrée de 2,5 s. |
 | `echo_contenu.py`, `echo_structures.py`, `avant_poste.py`, `structures_plus.py`, `ruine.py`… | Contenu et structures (NBT) du pack. |
 | `borne/`, `trone/`, `balise7/` | Modèles 3D en voxels et leurs aperçus ; `borne/integrer.py` écrit les modèles des bornes dans le mod. |
 | `anglais/carte.py`, `anglais/appliquer.py` | Table français → anglais des identifiants et fichiers (passage en anglais du 4 novembre). |

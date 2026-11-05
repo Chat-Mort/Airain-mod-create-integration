@@ -279,6 +279,16 @@
       }
     ]
   },
+  "music.end": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/almost_safe",
+        "stream": true,
+        "weight": 1
+      }
+    ]
+  },
   "music.nether.basalt_deltas": {
     "replace": false,
     "sounds": [
