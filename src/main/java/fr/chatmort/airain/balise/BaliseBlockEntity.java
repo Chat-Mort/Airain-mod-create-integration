@@ -74,9 +74,7 @@ public class BaliseBlockEntity extends BlockEntity {
 		if (sacree && level != null && level.random.nextInt(alerte ? 4 : 30) == 0)   // éclats d'or autour du phare
 			level.addParticle(net.minecraft.core.particles.ParticleTypes.END_ROD, worldPosition.getX() + 0.5 + (level.random.nextDouble() - 0.5) * 1.6,
 				worldPosition.getY() + 5.5, worldPosition.getZ() + 0.5 + (level.random.nextDouble() - 0.5) * 1.6, 0, 0.02, 0);
-		if (alerte && level != null && level.getGameTime() % 80 == 0)
-			level.playLocalSound(worldPosition.getX() + 0.5, worldPosition.getY() + 3, worldPosition.getZ() + 0.5,
-				SoundEvents.GOAT_HORN_SOUND_VARIANTS.get(6).value(), SoundSource.BLOCKS, 4f, 0.55f, false);
+		// la sirène ne joue plus en continu : le script la fait sonner pendant les annonces de vague
 	}
 
 	@Override
