@@ -45,3 +45,5 @@ Le mod lui-même (code Java, ressources) est sur la branche `main`.
 - Les zips livrés (`empire-airain-pack.zip`, `airain-serveur.zip`) : se refont depuis `pack/` avec
   `zip -qr ../airain-serveur.zip kubejs config defaultconfigs mods schematics` et
   `zip -qr ../empire-airain-pack.zip LISEZMOI.md kubejs config defaultconfigs mods schematics`.
+
+- Les clones de dépôts externes (`ars`, `cj`, `kjsc`, `kjsrc`, `mcmeta-reg`, `sb`, `simproj`, `ss`) : sources d'autres mods et registres de Minecraft, à recloner si besoin.
