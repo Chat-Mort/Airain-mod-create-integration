@@ -271,7 +271,7 @@ for (x, z) in ((6, 6), (6, 10)):
     st.put(x, 1, z, "create:copper_casing"); st.put(x, 2, z, "minecraft:waxed_weathered_copper_bulb[lit=false,powered=false]")
 journal = Compound({"id": String("minecraft:written_book"), "count": Int(1), "components": Compound({
     "minecraft:written_book_content": Compound({"title": String("Rapport"), "author": String("Ing. E. Vael"),
-        "pages": List[String]([String(json.dumps({"translate": "airain.station.p%d" % i})) for i in (1, 2, 3, 4, 5, 6)])}), "minecraft:custom_data": Compound({"airain_doc": String("vael")})})})
+        "pages": List[String]([String(json.dumps({"translate": "airain.vael.p%d" % i})) for i in (1, 2, 3, 4, 5, 6)])}), "minecraft:custom_data": Compound({"airain_doc": String("vael")})})})
 st.put(9, 1, 11, "minecraft:lectern[facing=north,has_book=true,powered=false]",
        Compound({"id": String("minecraft:lectern"), "Book": journal, "Page": Int(0)}))
 st.put(*(13, 1, 11), *coffre("kubejs:chests/station_collecteur", "north"))     # la lettre d'Ada y est rangée
@@ -657,12 +657,12 @@ TX = {"fr_fr": {
   "airain.relais.p1": "Relais de transfert n°9 — rapport d'incident.\n\nPendant le cycle 212, la ligne s'est rompue en charge. Une partie du flux n'a jamais atteint le Cœur.",
   "airain.relais.p2": "Le flux perdu ne s'est pas dissipé. Il s'est répandu autour du relais.\n\nLes techniciens parlent d'un froid, de murmures, et de cristaux qui poussent sur le métal en une nuit.",
   "airain.relais.p3": "Décision de la chancelière Héléna Strass : le phénomène n'existe pas. Le mot « Écho » est interdit dans les rapports.\n\nLe relais n°9 est abandonné. Personne ne doit s'en approcher.",
-  "airain.station.p1": "Station de transfert n°4 — rapport de l'ingénieur Elias Vael.\n\nCycle 205. Toutes les capsules ont été vidées dans les délais. Aucune défaillance du collecteur.",
-  "airain.station.p2": "Les familles demandent où vont les corps. Le Conseil répond : « dans le Cœur ».\n\nJe vérifie les câbles. Ils ne transportent pas de matière. Ils transportent… autre chose.",
-  "airain.station.p3": "Note du cycle 209.\n\nAda a déserté cette nuit, avec vingt-trois ouvriers de la station. Le Conseil m'a demandé si je savais.\n\nAda ne m'a rien dit. Ada n'est plus rien pour l'Empire. Elle n'est plus rien pour moi.",
-  "airain.station.p4": "Les relevés du collecteur ne diminuent jamais. Ce qui entre ne ressort pas.\n\nLe Cœur ne garde pas les gens en mémoire. Il les garde, tout court.",
-  "airain.station.p5": "On a glissé une lettre sous ma porte. L'écriture d'Ada.\n\nJe ne l'ai pas ouverte. Je l'ai rangée dans le coffre du collecteur.\n\nJe ne sais pas pourquoi je ne l'ai pas brûlée.",
-  "airain.station.p6": "Cycle 211. Dernière entrée.\n\nMon tour de capsule est demain. J'ai demandé à passer le premier.\n\nSi quelqu'un trouve ce rapport : n'allumez jamais le Cœur. Ils attendent encore, là-dedans.",
+  "airain.vael.p1": "Station de transfert n°4 — rapport de l'ingénieur Elias Vael.\n\nCycle 205. Toutes les capsules ont été vidées dans les délais. Aucune défaillance du collecteur.",
+  "airain.vael.p2": "Les familles demandent où vont les corps. Le Conseil répond : « dans le Cœur ».\n\nJe vérifie les câbles. Ils ne transportent pas de matière. Ils transportent… autre chose.",
+  "airain.vael.p3": "Note du cycle 209.\n\nAda a déserté cette nuit, avec vingt-trois ouvriers de la station. Le Conseil m'a demandé si je savais.\n\nAda ne m'a rien dit. Ada n'est plus rien pour l'Empire. Elle n'est plus rien pour moi.",
+  "airain.vael.p4": "Les relevés du collecteur ne diminuent jamais. Ce qui entre ne ressort pas.\n\nLe Cœur ne garde pas les gens en mémoire. Il les garde, tout court.",
+  "airain.vael.p5": "On a glissé une lettre sous ma porte. L'écriture d'Ada.\n\nJe ne l'ai pas ouverte. Je l'ai rangée dans le coffre du collecteur.\n\nJe ne sais pas pourquoi je ne l'ai pas brûlée.",
+  "airain.vael.p6": "Cycle 211. Dernière entrée.\n\nMon tour de capsule est demain. J'ai demandé à passer le premier.\n\nSi quelqu'un trouve ce rapport : n'allumez jamais le Cœur. Ils attendent encore, là-dedans.",
   "airain.lettre.titre": "Lettre jamais ouverte",
   "airain.lettre.p1": "Elias,\n\nje sais que tu ne veux plus me parler. Lis quand même.\n\nJ'ai vu les plans complets du Transfert. Les capsules ne mènent nulle part où l'on vit.\n\nViens avec nous. Il est encore temps.",
   "airain.lettre.p2": "Je ne te demande pas de trahir l'Empire. Je te demande de vivre.\n\nTu es mon frère, quoi que tu en penses.\n\nJe t'attendrai au nord, aussi longtemps qu'il le faudra.\n\n— Ada"},
@@ -677,12 +677,12 @@ TX = {"fr_fr": {
   "airain.relais.p1": "Transfer relay no. 9 — incident report.\n\nDuring cycle 212, the line broke under load. Part of the flow never reached the Core.",
   "airain.relais.p2": "The lost flow did not dissipate. It spread around the relay.\n\nTechnicians speak of a chill, of whispers, and of crystals growing on the metal overnight.",
   "airain.relais.p3": "Decision of Chancellor Héléna Strass: the phenomenon does not exist. The word \"Echo\" is banned from all reports.\n\nRelay no. 9 is abandoned. Nobody is to approach it.",
-  "airain.station.p1": "Transfer station no. 4 — report by engineer Elias Vael.\n\nCycle 205. All capsules emptied on schedule. No failure of the collector.",
-  "airain.station.p2": "Families ask where the bodies go. The Council answers: \"into the Core\".\n\nI check the cables. They do not carry matter. They carry… something else.",
-  "airain.station.p3": "Note from cycle 209.\n\nAda deserted last night, with twenty-three of the station's workers. The Council asked me whether I knew.\n\nAda told me nothing. Ada is nothing to the Empire anymore. She is nothing to me.",
-  "airain.station.p4": "The collector readings never go down. What goes in never comes out.\n\nThe Core does not keep people's memories. It keeps the people.",
-  "airain.station.p5": "Someone slipped a letter under my door. Ada's handwriting.\n\nI did not open it. I put it away in the collector's chest.\n\nI do not know why I did not burn it.",
-  "airain.station.p6": "Cycle 211. Last entry.\n\nMy turn in the capsule is tomorrow. I asked to go first.\n\nIf anyone finds this report: never light the Core. They are still waiting, in there.",
+  "airain.vael.p1": "Transfer station no. 4 — report by engineer Elias Vael.\n\nCycle 205. All capsules emptied on schedule. No failure of the collector.",
+  "airain.vael.p2": "Families ask where the bodies go. The Council answers: \"into the Core\".\n\nI check the cables. They do not carry matter. They carry… something else.",
+  "airain.vael.p3": "Note from cycle 209.\n\nAda deserted last night, with twenty-three of the station's workers. The Council asked me whether I knew.\n\nAda told me nothing. Ada is nothing to the Empire anymore. She is nothing to me.",
+  "airain.vael.p4": "The collector readings never go down. What goes in never comes out.\n\nThe Core does not keep people's memories. It keeps the people.",
+  "airain.vael.p5": "Someone slipped a letter under my door. Ada's handwriting.\n\nI did not open it. I put it away in the collector's chest.\n\nI do not know why I did not burn it.",
+  "airain.vael.p6": "Cycle 211. Last entry.\n\nMy turn in the capsule is tomorrow. I asked to go first.\n\nIf anyone finds this report: never light the Core. They are still waiting, in there.",
   "airain.lettre.titre": "Letter Never Opened",
   "airain.lettre.p1": "Elias,\n\nI know you don't want to speak to me anymore. Read this anyway.\n\nI have seen the full Transfer blueprints. The capsules lead nowhere anyone lives.\n\nCome with us. There is still time.",
   "airain.lettre.p2": "I'm not asking you to betray the Empire. I'm asking you to live.\n\nYou are my brother, whatever you think.\n\nI will wait for you in the north, for as long as it takes.\n\n— Ada"}}

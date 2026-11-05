@@ -1569,6 +1569,7 @@ for _ch in chapters:
                     {"command": s("airain chronique recit " + _r), "permission_level": "2", "silent": "true"}))
 
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "passe_corrections.py"), encoding="utf-8").read())
+exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "ecrits_quetes.py"), encoding="utf-8").read())
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mise_en_page.py"), encoding="utf-8").read())
 
 # =============================================================================

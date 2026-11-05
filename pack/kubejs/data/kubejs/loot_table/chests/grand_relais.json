@@ -1,89 +1,123 @@
 {
-  "type": "minecraft:chest",
-  "pools": [
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": {
+    "type": "minecraft:uniform",
+    "min": 3,
+    "max": 5
+   },
+   "entries": [
     {
-      "rolls": {
+     "type": "minecraft:item",
+     "name": "minecraft:amethyst_shard",
+     "weight": 3,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 8,
+        "max": 20
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "ars_nouveau:source_gem",
+     "weight": 3,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
         "type": "minecraft:uniform",
         "min": 3,
+        "max": 8
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "kubejs:fragment_resonance",
+     "weight": 3,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 2,
         "max": 5
-      },
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:amethyst_shard",
-          "weight": 3,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 8,
-                "max": 20
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "ars_nouveau:source_gem",
-          "weight": 3,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 3,
-                "max": 8
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "kubejs:fragment_resonance",
-          "weight": 3,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 2,
-                "max": 5
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:experience_bottle",
-          "weight": 2,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 4,
-                "max": 10
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "numismatics:cog",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        }
-      ]
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:experience_bottle",
+     "weight": 2,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 4,
+        "max": 10
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "numismatics:cog",
+     "weight": 1,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+       }
+      }
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_written_book_pages",
+       "mode": "replace_all",
+       "pages": [
+        {
+         "translate": "airain.ada_fin.p1"
+        },
+        {
+         "translate": "airain.ada_fin.p2"
+        }
+       ]
+      },
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "airain.ada_fin.titre",
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_custom_data",
+       "tag": "{airain_doc:\"ada_fin\"}"
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

@@ -313,6 +313,13 @@
 					id: "1629AEDC821F0C1B"
 					type: "command"
 				}
+				{
+					command: "loot give @s loot kubejs:ecrits/ferrand3"
+					permission_level: 2
+					silent: true
+					id: "1EB98167635516C1"
+					type: "command"
+				}
 			]
 			tasks: [
 				{
@@ -332,6 +339,13 @@
 					item: { count: 1, id: "numismatics:crown" }
 					id: "65584479B1727234"
 					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:ecrits/helena7"
+					permission_level: 2
+					silent: true
+					id: "2566BC97D1E10F4C"
+					type: "command"
 				}
 			]
 			tasks: [

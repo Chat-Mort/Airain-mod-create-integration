@@ -1,0 +1,39 @@
+{
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_written_book_pages",
+       "mode": "replace_all",
+       "pages": [
+        {
+         "translate": "airain.helena5.p1"
+        },
+        {
+         "translate": "airain.helena5.p2"
+        }
+       ]
+      },
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "airain.helena5.titre",
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_custom_data",
+       "tag": "{airain_doc:\"helena5\"}"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

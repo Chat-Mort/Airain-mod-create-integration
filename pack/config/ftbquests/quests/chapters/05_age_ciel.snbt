@@ -98,6 +98,13 @@
 					id: "3C15334CEB2D8D69"
 					type: "xp"
 				}
+				{
+					command: "loot give @s loot kubejs:ecrits/helena3"
+					permission_level: 2
+					silent: true
+					id: "1A5EC54B0A0813B9"
+					type: "command"
+				}
 			]
 			tasks: [
 				{
@@ -174,6 +181,13 @@
 					permission_level: 2
 					silent: true
 					id: "468FD72AD6469403"
+					type: "command"
+				}
+				{
+					command: "loot give @s loot kubejs:ecrits/helena4"
+					permission_level: 2
+					silent: true
+					id: "18E62356BDAEC925"
 					type: "command"
 				}
 			]
@@ -291,6 +305,13 @@
 					permission_level: 2
 					silent: true
 					id: "47E571ACCB4BD6ED"
+					type: "command"
+				}
+				{
+					command: "loot give @s loot kubejs:ecrits/helena5"
+					permission_level: 2
+					silent: true
+					id: "4AB647B03B8DF10B"
 					type: "command"
 				}
 			]
@@ -419,6 +440,13 @@
 					id: "6D0E66979D29C3CC"
 					type: "item"
 				}
+				{
+					command: "loot give @s loot kubejs:ecrits/helena6"
+					permission_level: 2
+					silent: true
+					id: "18315332468C3C99"
+					type: "command"
+				}
 			]
 			tasks: [
 				{
@@ -478,6 +506,13 @@
 					permission_level: 2
 					silent: true
 					id: "613F4C68449E4DC0"
+					type: "command"
+				}
+				{
+					command: "loot give @s loot kubejs:ecrits/morgana3"
+					permission_level: 2
+					silent: true
+					id: "2B695A149EE597EF"
 					type: "command"
 				}
 			]

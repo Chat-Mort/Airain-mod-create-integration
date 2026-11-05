@@ -1,7 +1,7 @@
 # Sauvegarde du pack « L'Empire d'Airain »
 
 Branche à part du dépôt du mod : rien ici n'est compilé par la CI (elle ne tourne que sur `main`).
-Dernière sauvegarde : 5 novembre 2026, mod 1.42.0.
+Dernière sauvegarde : 5 novembre 2026, mod 1.43.0.
 
 ## Contenu
 
@@ -30,6 +30,7 @@ Le mod lui-même (code Java, ressources) est sur la branche `main`.
 | `diag_gen.py <pack>` | Met à jour la liste d'identifiants du diagnostic au démarrage (`airain_diagnostic.js`). |
 | `livre_audit/carte.py` | Dessine la carte de chaque chapitre (croisements, traits sur une quête). |
 | `titres/plaques.py` | Plaques des titres de section (police du jeu). |
+| `ecrits.py <pack>` | Écrits ajoutés le 5 novembre (Elias, Héléna, Ferrand, Morgana III, Ada) : textes dans `ecrits_textes.py`, quêtes dans `ecrits_quetes.py`. |
 | `carnet.py <pack>` | Pages du carnet de l'apprentie (butins + textes). |
 | `musique.py <pack>` | Musiques du pack (`kubejs/assets/minecraft/sounds.json`). |
 | `echo_contenu.py`, `echo_structures.py`, `avant_poste.py`, `structures_plus.py`, `ruine.py`… | Contenu et structures (NBT) du pack. |

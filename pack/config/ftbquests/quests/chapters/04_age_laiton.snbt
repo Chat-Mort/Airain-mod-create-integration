@@ -1000,6 +1000,13 @@
 					id: "50212C2B9CF9EEF8"
 					type: "xp"
 				}
+				{
+					command: "loot give @s loot kubejs:ecrits/helena1"
+					permission_level: 2
+					silent: true
+					id: "19E43F680BB56E04"
+					type: "command"
+				}
 			]
 			tasks: [
 				{
@@ -1075,6 +1082,13 @@
 					permission_level: 2
 					silent: true
 					id: "1331E86F73A434C0"
+					type: "command"
+				}
+				{
+					command: "loot give @s loot kubejs:ecrits/helena2"
+					permission_level: 2
+					silent: true
+					id: "26A2CF2C9155D9BE"
 					type: "command"
 				}
 			]

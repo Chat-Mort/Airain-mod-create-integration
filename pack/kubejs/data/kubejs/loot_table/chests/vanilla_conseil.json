@@ -1,94 +1,128 @@
 {
-  "type": "minecraft:chest",
-  "pools": [
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": {
+    "type": "minecraft:uniform",
+    "min": 1,
+    "max": 2
+   },
+   "entries": [
     {
-      "rolls": {
+     "type": "minecraft:item",
+     "name": "minecraft:paper",
+     "weight": 3,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 6
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "numismatics:sprocket",
+     "weight": 1,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
         "type": "minecraft:uniform",
         "min": 1,
         "max": 2
-      },
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:paper",
-          "weight": 3,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 2,
-                "max": 6
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "numismatics:sprocket",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:empty",
-          "weight": 2
-        }
-      ]
+       }
+      }
+     ]
     },
     {
-      "rolls": 1,
-      "conditions": [
-        {
-          "condition": "minecraft:random_chance",
-          "chance": 0.35
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:written_book",
-          "functions": [
-            {
-              "function": "minecraft:set_written_book_pages",
-              "mode": "replace_all",
-              "pages": [
-                {
-                  "translate": "airain.conseil.p1"
-                },
-                {
-                  "translate": "airain.conseil.p2"
-                },
-                {
-                  "translate": "airain.conseil.p3"
-                },
-                {
-                  "translate": "airain.conseil.p4"
-                }
-              ]
-            },
-            {
-              "function": "minecraft:set_name",
-              "name": {
-                "translate": "airain.conseil.titre",
-                "italic": false
-              }
-            },
-            {
-              "function": "minecraft:set_custom_data",
-              "tag": "{airain_doc:\"conseil\"}"
-            }
-          ]
-        }
-      ]
+     "type": "minecraft:empty",
+     "weight": 2
     }
-  ]
+   ]
+  },
+  {
+   "rolls": 1,
+   "conditions": [
+    {
+     "condition": "minecraft:random_chance",
+     "chance": 0.35
+    }
+   ],
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_written_book_pages",
+       "mode": "replace_all",
+       "pages": [
+        {
+         "translate": "airain.conseil.p1"
+        },
+        {
+         "translate": "airain.conseil.p2"
+        },
+        {
+         "translate": "airain.conseil.p3"
+        },
+        {
+         "translate": "airain.conseil.p4"
+        }
+       ]
+      },
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "airain.conseil.titre",
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_custom_data",
+       "tag": "{airain_doc:\"conseil\"}"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_written_book_pages",
+       "mode": "replace_all",
+       "pages": [
+        {
+         "translate": "airain.elias2.p1"
+        },
+        {
+         "translate": "airain.elias2.p2"
+        }
+       ]
+      },
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "airain.elias2.titre",
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_custom_data",
+       "tag": "{airain_doc:\"elias2\"}"
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

@@ -39,6 +39,13 @@
 					id: "301901BE86A5A6D3"
 					type: "item"
 				}
+				{
+					command: "loot give @s loot kubejs:ecrits/ferrand1"
+					permission_level: 2
+					silent: true
+					id: "12BDA2273A21AAD9"
+					type: "command"
+				}
 			]
 			tasks: [
 				{
@@ -238,6 +245,13 @@
 					permission_level: 2
 					silent: true
 					id: "1C308998BFAE0D67"
+					type: "command"
+				}
+				{
+					command: "loot give @s loot kubejs:ecrits/ferrand2"
+					permission_level: 2
+					silent: true
+					id: "66C4583F8926F8E2"
 					type: "command"
 				}
 			]

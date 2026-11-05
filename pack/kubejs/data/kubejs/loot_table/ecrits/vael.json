@@ -1,0 +1,51 @@
+{
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:written_book",
+     "functions": [
+      {
+       "function": "minecraft:set_written_book_pages",
+       "mode": "replace_all",
+       "pages": [
+        {
+         "translate": "airain.vael.p1"
+        },
+        {
+         "translate": "airain.vael.p2"
+        },
+        {
+         "translate": "airain.vael.p3"
+        },
+        {
+         "translate": "airain.vael.p4"
+        },
+        {
+         "translate": "airain.vael.p5"
+        },
+        {
+         "translate": "airain.vael.p6"
+        }
+       ]
+      },
+      {
+       "function": "minecraft:set_name",
+       "name": {
+        "translate": "airain.vael.titre",
+        "italic": false
+       }
+      },
+      {
+       "function": "minecraft:set_custom_data",
+       "tag": "{airain_doc:\"vael\"}"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
