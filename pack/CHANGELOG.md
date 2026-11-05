@@ -54,7 +54,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - groupes de chapitres (L'Empire, La voie de l'Écho, Annexes) ;
   - chapitres centrés ;
   - titres de section en plaques de laiton.
-- Textures retouchées par Liam : épées, plaques de fondation (rouage et cristal arcanique), motifs d'étendard. Le relief des motifs a été refait.
+- Textures retouchées : épées, plaques de fondation (rouage et cristal arcanique), motifs d'étendard (avec leur relief).
 
 **Corrections**
 - L'ancienne petite balise a été retirée.
@@ -92,7 +92,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 - Livre de l'ingénieur : quatre sommaires (blocs, objets, Empire, Écho), un chapitre par set.
 
 **Changements**
-- Nouvelles icônes d'armes. Textures de Liam : katanas, lingot d'arcanium.
+- Nouvelles icônes d'armes, nouvelles textures des katanas et du lingot d'arcanium.
 - Livres : signet de ruban pour revenir au sommaire, et touches Début / Retour arrière.
 
 **Corrections**
