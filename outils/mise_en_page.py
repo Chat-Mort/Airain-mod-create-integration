@@ -28,7 +28,7 @@ _deplacer({q for q in ("t_horaire", "t_portes", "t_observateur", "t_fret", "t_fl
 cBa = chapter("bases", "13_bases", ("&3Annexe&r · Bases et capitales", "&3Side&r · Bases and Capitals"),
               ("Fonder, pavoiser, exposer : faire d'un abri une base de l'Empire.", "Found, decorate, display: turn a shelter into an Empire base."),
               "airain:foundation_stone", 15)
-_deplacer({"e_fondation", "h_grand", "h_murale", "h_gabarit", "h_hissage", "h_pavoise", "b_socle", "b_trophees"}, cBa)
+_deplacer({"e_fondation", "h_grand", "h_murale", "h_gabarit", "h_hissage", "h_pavoise", "b_socle", "b_trophees", "c_agrandissement", "c_infirmerie", "c_meteo", "c_forge"}, cBa)
 # exploration et bestiaire
 _deplacer({_CLE[q["id"]] for q in _par_cle["bestiaire"]["quests"]}, _par_cle["exploration"])
 chapters[:] = [c for c in chapters if c["key"] not in ("echos", "trains", "bestiaire")]
@@ -123,6 +123,7 @@ ligne(2, ("a_silex", 0), ("a_revolver", 2), ("a_fusil", 4), ("a_gatling", 6)); l
 ligne(0, ("e_fondation", 0), ("h_grand", 2), ("h_murale", 4), ("h_pavoise", 8))
 ligne(-1, ("h_gabarit", 6)); ligne(1, ("h_hissage", 6))
 ligne(3, ("b_socle", 0), ("b_trophees", 2))
+ligne(5, ("c_agrandissement", 0), ("c_infirmerie", 2), ("c_meteo", 4), ("c_forge", 6))
 ligne(-3, ("e_pyramide", 0), ("e_fortin", 2), ("e_traces", 4))
 ligne(-2, ("e_archiviste", 6))
 ligne(-1, ("e_avantposte", 0), ("e_archives", 4))
@@ -170,6 +171,7 @@ TITRES = [
  ("arsenal", "Les armes à feu", "Firearms", 0, 2, "g", "empire"),
  ("bases", "Fonder et pavoiser", "Found and Decorate", 0, 0, "g", "empire"),
  ("bases", "Les trophées", "Trophies", 0, 3, "g", "empire"),
+ ("bases", "La capitale", "The Capital", 0, 5, "g", "empire"),
  ("exploration", "Ruines et vestiges", "Ruins and Remains", 0, -3, "g", "empire"),
  ("exploration", "Les cités perdues", "The Lost Cities", 0, 1.5, "g", "empire"),
  ("exploration", "Records d'ingénieur", "Engineer's Records", 0, 5, "g", "empire"),

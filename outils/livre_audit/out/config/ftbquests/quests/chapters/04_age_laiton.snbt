@@ -1,0 +1,1095 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "04_age_laiton"
+	group: "25F3599C6B050FF2"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "create:brass_casing" }
+	images: [
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_laiton_the_bastion_and_the_arsenal.png"
+			rotation: 0.0d
+			width: 5.953d
+			x: -3.727d
+			y: -6.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_laiton_the_imperial_workshop.png"
+			rotation: 0.0d
+			width: 4.453d
+			x: -2.977d
+			y: -4.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_laiton_brass.png"
+			rotation: 0.0d
+			width: 2.625d
+			x: -2.062d
+			y: -2.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_laiton_factories_and_trains.png"
+			rotation: 0.0d
+			width: 4.359d
+			x: -2.93d
+			y: 2.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_laiton_the_guardians.png"
+			rotation: 0.0d
+			width: 3.703d
+			x: -2.602d
+			y: 4.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_laiton_the_call_of_the_echo.png"
+			rotation: 0.0d
+			width: 4.547d
+			x: -3.023d
+			y: 6.0d
+		}
+	]
+	id: "3E6DF521B4BEF468"
+	order_index: 4
+	quests: [
+		{
+			dependencies: ["6DB0A3122C849921"]
+			id: "49E4BA6154AA295A"
+			rewards: [
+				{
+					xp: 200
+					id: "541DE113F99795DE"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					dimension: "minecraft:the_nether"
+					id: "700D65754D411B67"
+					type: "dimension"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "16F6CF9BF8AE44DC"
+			rewards: [
+				{
+					xp: 300
+					id: "277326D16866C8BD"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:blaze_burner" }
+					count: 1L
+					id: "3E36D43AC5B90AA1"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "2AB864DB22E2AED6"
+			rewards: [
+				{
+					xp: 200
+					id: "2D8864FCDCCD0B87"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:polished_rose_quartz" }
+					count: 16L
+					id: "427EDD2D55E18AC9"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:electron_tube" }
+					count: 8L
+					id: "5303850BDCC444FA"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["16F6CF9BF8AE44DC"]
+			id: "45CA43199084EBB5"
+			rewards: [
+				{
+					item: { count: 1, id: "create:zinc_ingot" }
+					count: 16
+					id: "5F9F858ED1583CCC"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_ingot" }
+					count: 32L
+					id: "1B78736034144C9F"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["45CA43199084EBB5"]
+			id: "1DE601252CF5A646"
+			rewards: [
+				{
+					xp: 200
+					id: "3BDA0A4CC0BB47CF"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_casing" }
+					count: 16L
+					id: "645622A48D363DAA"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["45CA43199084EBB5", "2AB864DB22E2AED6"]
+			id: "1FBF918B2C978F2C"
+			rewards: [
+				{
+					xp: 250
+					id: "2848E3A0E17B8A01"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:deployer" }
+					count: 2L
+					id: "1E6B5E1D42B7FC26"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1FBF918B2C978F2C"]
+			id: "187081628EA4ED2B"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "11FC2C81C5168EC4"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:precision_mechanism" }
+					count: 8L
+					id: "3D57DAF90CB71B37"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1FBF918B2C978F2C"]
+			id: "5E756F97CBFB58A5"
+			rewards: [
+				{
+					xp: 300
+					id: "4563D8C8488F452B"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:mechanical_crafter" }
+					count: 9L
+					id: "11773788B75BBE3E"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5E756F97CBFB58A5"]
+			id: "53673928BEED9E60"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "216A42778AD7747F"
+					type: "item"
+				}
+				{
+					xp: 300
+					id: "64328CCD3CE1D84A"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:crushing_wheel" }
+					count: 2L
+					id: "4DB41E5C5CF3C881"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:crushed_raw_iron" }
+					count: 64L
+					id: "1376804A6CCF810D"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["187081628EA4ED2B"]
+			id: "236F61406199A692"
+			rewards: [
+				{
+					xp: 300
+					id: "66AAA76F3666D242"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:mechanical_arm" }
+					count: 1L
+					id: "354C726226AD772C"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1DE601252CF5A646"]
+			id: "31D630A6895FF90A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "33A3CFBC6E0314D9"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_ingot" }
+					count: 500L
+					id: "490C86E20D0BEF2B"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["187081628EA4ED2B"]
+			id: "7FA88B2F63BC01DA"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:book" }
+					count: 8
+					id: "262DC3BC6C4FB5F7"
+					type: "item"
+				}
+				{
+					xp: 300
+					id: "604C74E18363414C"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:imperial_enchanting_table" }
+					count: 1L
+					id: "3B3A2A95B4D9DC41"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:chiseled_bookshelf" }
+					count: 4L
+					id: "60BF89517075817A"
+					type: "item"
+				}
+			]
+			x: 9.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["7FA88B2F63BC01DA"]
+			id: "284B486F1D112E1F"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:huile_machine" }
+					count: 8
+					id: "219DE359DA2A1A22"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:book" }
+					count: 4
+					id: "386195BFC460D4E6"
+					type: "item"
+				}
+				{
+					xp: 300
+					id: "33586BDD923B9921"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:disenchanter" }
+					count: 1L
+					id: "20D1B62E6B881347"
+					type: "item"
+				}
+			]
+			x: 10.75d
+			y: -4.0d
+		}
+		{
+			dependencies: ["284B486F1D112E1F"]
+			id: "62AA25CF72321165"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "3391EF24A24DD0D8"
+					type: "item"
+				}
+				{
+					xp: 300
+					id: "2079E16581C44A3F"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:runic_ink" }
+					count: 1L
+					id: "74F0A416E2BB8F98"
+					type: "item"
+				}
+				{
+					id: "2E52ED05EB5852B0"
+					type: "checkmark"
+				}
+			]
+			x: 12.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["19F9F56FA350AD47", "1DE601252CF5A646"]
+			id: "728A556CC3B52C43"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:huile_machine" }
+					count: 8
+					id: "4277567C530BACAD"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "49311BAEB89AEE49"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:fine_grindstone" }
+					count: 1L
+					id: "40A11A9759DA43E1"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:reduction_gear" }
+					count: 1L
+					id: "2C33D8F09861DDE6"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:grease_gun" }
+					count: 1L
+					id: "50ADEADAB8E4D24B"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["187081628EA4ED2B"]
+			id: "78BB158FFEA4A6B8"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "5DC02250123784AC"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:precision_mechanism" }
+					count: 64L
+					id: "39D2CB2799470EB5"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "30A89C3EB74F4D50"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:netherite_upgrade_smithing_template" }
+					id: "6E4C35D55629533B"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit bastion"
+					permission_level: 2
+					silent: true
+					id: "23655C5FFD1120CB"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:bastion_remnant"
+					id: "6E43CBBB2CE1ADA6"
+					type: "structure"
+				}
+			]
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["78BB158FFEA4A6B8"]
+			id: "31C724BE22F84506"
+			rewards: [
+				{
+					xp: 500
+					id: "5A7E51C21516F42D"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:plaque_netherite" }
+					count: 4L
+					id: "57991B6D51FF8141"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["31C724BE22F84506", "30A89C3EB74F4D50"]
+			id: "5DD61605A436607E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "419D7201BBBD718D"
+					type: "item"
+				}
+				{
+					xp: 800
+					id: "451BC20E3A76CFEC"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:netherite_helmet" }
+					count: 1L
+					id: "6D140EAC19A11E51"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:netherite_chestplate" }
+					count: 1L
+					id: "4889FE194283621C"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:netherite_leggings" }
+					count: 1L
+					id: "282E7CA8DB90F8B9"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:netherite_boots" }
+					count: 1L
+					id: "6F6DA020A413B10F"
+					type: "item"
+				}
+			]
+			x: 15.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["236F61406199A692", "53673928BEED9E60"]
+			id: "68203257D12F33AA"
+			rewards: [
+				{
+					xp: 300
+					id: "723E75D2B0A78F94"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:track" }
+					count: 128L
+					id: "289F01ABE3B3313A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:railway_casing" }
+					count: 16L
+					id: "10F7E909C55A9498"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["68203257D12F33AA"]
+			id: "5D4486926E02A87D"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "45BD7E7333326877"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:controls" }
+					count: 1L
+					id: "655FBBF540FB2007"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:track_station" }
+					count: 2L
+					id: "171480FC79DE061E"
+					type: "item"
+				}
+				{
+					id: "1C422FDC97C8423D"
+					type: "checkmark"
+				}
+			]
+			x: 14.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5D4486926E02A87D"]
+			id: "2F130DA613E8FEE3"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "326FDB4F2E2BF335"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:track_signal" }
+					count: 4L
+					id: "7CC0879065EB5245"
+					type: "item"
+				}
+				{
+					id: "10A90378AA85CDAE"
+					type: "checkmark"
+				}
+			]
+			x: 16.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["236F61406199A692"]
+			id: "20D678D8A2CEF427"
+			rewards: [
+				{
+					command: "tag @s add airain_waystones"
+					permission_level: 2
+					silent: true
+					id: "5A8D3FD7486685CD"
+					type: "command"
+				}
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "34102727D6BAF407"
+					type: "item"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_ingot" }
+					count: 64L
+					consume_items: true
+					id: "40A00230A9BCC63A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:ender_pearl" }
+					count: 16L
+					consume_items: true
+					id: "338514D515A25404"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["2F130DA613E8FEE3"]
+			id: "72573259B6EDF8F7"
+			rewards: [
+				{
+					command: "tag @s add airain_gare"
+					permission_level: 2
+					silent: true
+					id: "1D62506072A8EEC7"
+					type: "command"
+				}
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "72ADEC36FAA2DEE6"
+					type: "item"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "create:track" }
+					count: 256L
+					consume_items: true
+					id: "66E2DF9EC02F791B"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:railway_casing" }
+					count: 64L
+					consume_items: true
+					id: "7878830412C45CF6"
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["236F61406199A692"]
+			id: "6069B3B98BE0D757"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:ender_pearl" }
+					count: 8
+					id: "2919C762D025249D"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit capsules"
+					permission_level: 2
+					silent: true
+					id: "414F410E246FD8D7"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					id: "7521E2B537B1B2AB"
+					type: "checkmark"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5DD61605A436607E"]
+			id: "5A05D09AC645F0CD"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "3329F1983C787E57"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:cannon_mount" }
+					count: 4L
+					id: "422AE439E1E302FA"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createbigcannons:cast_iron_cannon_barrel" }
+					count: 8L
+					id: "4705D42E1977D3AA"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createbigcannons:cast_iron_sliding_breech" }
+					count: 4L
+					id: "7E2C649BC2B4C92D"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createbigcannons:powder_charge" }
+					count: 32L
+					id: "1CBE64C574DC5208"
+					type: "item"
+				}
+			]
+			x: 17.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["5A05D09AC645F0CD"]
+			id: "6B1A427C3921B026"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "3024995A63365F36"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:solid_shot" }
+					count: 32L
+					id: "3924C73C50EA1917"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createbigcannons:he_shell" }
+					count: 16L
+					id: "29C536136250011A"
+					type: "item"
+				}
+			]
+			x: 19.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "29E98529A035C62A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "1D22AA5C032D29F9"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit echo_refus"
+					permission_level: 2
+					silent: true
+					id: "2FFFB8F0D691AC66"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:avant_poste_refractaire"
+					id: "58C3DA09A9ECC116"
+					type: "structure"
+				}
+				{
+					id: "28BA0B06C42DAA92"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["29E98529A035C62A"]
+			id: "48FA53E37A178943"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "6D249609947056EE"
+					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:carnet/apprentie_1"
+					permission_level: 2
+					silent: true
+					id: "7D9319CB8803108D"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:imbuement_chamber" }
+					count: 1L
+					id: "7D5874C00E10D60E"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "ars_nouveau:source_gem" }
+					count: 4L
+					id: "77A93DBC11AFCA3A"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["48FA53E37A178943"]
+			id: "73B823D3D42DE379"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "76BAF0CA961D2C7E"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:novice_spell_book" }
+					count: 1L
+					id: "59242B171CDDC207"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "ars_nouveau:glyph_light" }
+					count: 1L
+					id: "27AB4B575217237E"
+					type: "item"
+				}
+			]
+			x: 19.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["6B1A427C3921B026", "73B823D3D42DE379"]
+			id: "6FDC2B7E31680DCF"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "647819BB71E1F393"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:potion" }
+					count: 4L
+					id: "62EA8CE1A882D1B4"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:golden_apple" }
+					count: 2L
+					id: "79EA36D8B15048E3"
+					type: "item"
+				}
+			]
+			x: 21.0d
+			y: 0.0d
+		}
+		{
+			icon: { count: 1, id: "airain:guardian_spawn_egg" }
+			id: "7334C891610A4015"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:huile_machine" }
+					count: 4
+					id: "6DDF7CA3D01E62FC"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					stage: "airain_gardien_repare"
+					id: "44602B734648E46F"
+					type: "gamestage"
+				}
+			]
+			x: 6.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7334C891610A4015", "5E756F97CBFB58A5"]
+			icon: { count: 1, id: "airain:lantern_module" }
+			id: "45908562924123FC"
+			rewards: [
+				{
+					xp: 500
+					id: "3355B8C142A3C2D0"
+					type: "xp"
+				}
+				{
+					item: { count: 1, id: "create:precision_mechanism" }
+					count: 2
+					id: "391B606C16E0CC48"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					stage: "airain_module_monte"
+					id: "18E4D60CDEB33534"
+					type: "gamestage"
+				}
+			]
+			x: 8.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["45908562924123FC", "31C724BE22F84506"]
+			hide_dependency_lines: true
+			id: "7E1047D9247BDB41"
+			rewards: [
+				{
+					xp: 800
+					id: "50212C2B9CF9EEF8"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:sacred_netherite_plate" }
+					count: 1L
+					id: "2AD5DA6E40D5B11E"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7E1047D9247BDB41"]
+			icon: { count: 1, id: "airain:cannon_module_2" }
+			id: "144C3DFF93A0364E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "3AFEC47B137386B2"
+					type: "item"
+				}
+				{
+					xp: 1000
+					id: "330835BB136A6327"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					stage: "airain_module_2"
+					id: "38E36F472E6325DA"
+					type: "gamestage"
+				}
+			]
+			x: 12.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["6FDC2B7E31680DCF"]
+			id: "139325E7E48DBC39"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:schema_ciel" }
+					id: "4BB68F616B5EA433"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_forge" }
+					id: "7A6FD239B41AF0CA"
+					type: "item"
+				}
+				{
+					command: "tag @s add airain_end"
+					permission_level: 2
+					silent: true
+					id: "13533635FFE282F2"
+					type: "command"
+				}
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "4120D32AC59AD787"
+					type: "item"
+				}
+				{
+					xp: 2000
+					id: "40D78BF6F8EF16EB"
+					type: "xp"
+				}
+				{
+					command: "airain chronique recit forge_ames"
+					permission_level: 2
+					silent: true
+					id: "1331E86F73A434C0"
+					type: "command"
+				}
+			]
+			shape: "hexagon"
+			size: 1.75d
+			tasks: [
+				{
+					entity: "cataclysm:netherite_monstrosity"
+					value: 1L
+					id: "17FF02194D04060F"
+					type: "kill"
+				}
+			]
+			x: 23.0d
+			y: 0.0d
+		}
+	]
+}

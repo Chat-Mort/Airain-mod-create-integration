@@ -1,0 +1,481 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "03_age_cuivre"
+	group: "25F3599C6B050FF2"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "create:copper_casing" }
+	id: "11FB7AD14478FD9E"
+	order_index: 3
+	quests: [
+		{
+			dependencies: ["47A90C9D840F46EF"]
+			id: "4FCBF12D61978F2E"
+			rewards: [
+				{
+					xp: 150
+					id: "76792A24E1F5E7AE"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:copper_casing" }
+					count: 8L
+					id: "251F882103487B61"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4FCBF12D61978F2E"]
+			id: "3683E03BE02A53FF"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:copper_ingot" }
+					count: 16
+					id: "36A446A83E6D5332"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:fluid_pipe" }
+					count: 32L
+					id: "5AA4FB288D116BEF"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3683E03BE02A53FF"]
+			id: "1BFEB1057231EE88"
+			rewards: [
+				{
+					xp: 200
+					id: "293A22D8D468E169"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:mechanical_pump" }
+					count: 2L
+					id: "54F4617E4DB2282D"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["4FCBF12D61978F2E"]
+			id: "53A08AFC6A48F66F"
+			rewards: [
+				{
+					xp: 150
+					id: "3B641F51BC91B21A"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:fluid_tank" }
+					count: 16L
+					id: "25F99B8E160E3D39"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["53A08AFC6A48F66F", "1BFEB1057231EE88"]
+			id: "315CF297898F138E"
+			rewards: [
+				{
+					xp: 200
+					id: "767C9087C6411CC0"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:spout" }
+					count: 1L
+					id: "72E2BD5438834165"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:item_drain" }
+					count: 1L
+					id: "1C712D2F667D56FA"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["315CF297898F138E"]
+			id: "19F9F56FA350AD47"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:huile_machine" }
+					count: 8
+					id: "4321232D7C963E0D"
+					type: "item"
+				}
+				{
+					xp: 200
+					id: "6D0D77FC77621FD6"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:maintenance_bench" }
+					count: 1L
+					id: "77A836789ACDEA18"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["19F9F56FA350AD47"]
+			id: "48FB591AC7A056F4"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "1425353FD1FA8464"
+					type: "item"
+				}
+				{
+					xp: 150
+					id: "4208FE21930BBB33"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "1D807A49B8A8B1F9"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["315CF297898F138E"]
+			id: "2C32E48616BB7DF5"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "63FEC7E6EA8B2F41"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:steam_engine" }
+					count: 1L
+					id: "426BC461385450F0"
+					type: "item"
+				}
+				{
+					id: "542E3EFBC2069AF5"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["1BFEB1057231EE88"]
+			id: "5F56E688DC1454DE"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "46D1287110A51397"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:copper_sheet" }
+					count: 256L
+					id: "269632163D629A3A"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["5F56E688DC1454DE"]
+			id: "79C3C6BDEB9D9F14"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:sceau_forge" }
+					id: "21CA4F31889F3B3B"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "2270A9B811267FDD"
+					type: "item"
+				}
+				{
+					xp: 500
+					id: "6B7CEDA0B6BCFA34"
+					type: "xp"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "create:iron_sheet" }
+					count: 128L
+					consume_items: true
+					id: "21B3B8D1BA8F81A7"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:copper_sheet" }
+					count: 128L
+					consume_items: true
+					id: "5689E6A8A3E0F72A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:golden_sheet" }
+					count: 32L
+					consume_items: true
+					id: "4700ED36ECB82EB2"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["79C3C6BDEB9D9F14"]
+			id: "1AC4C8BD4097E5BF"
+			rewards: [
+				{
+					xp: 500
+					id: "5CFFE70131372B01"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:diamond_helmet" }
+					count: 1L
+					id: "4AE9A71A787634F5"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:diamond_chestplate" }
+					count: 1L
+					id: "3640B42FB0A7029C"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:diamond_leggings" }
+					count: 1L
+					id: "5E6C5F39077FB5F5"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:diamond_boots" }
+					count: 1L
+					id: "6206CB3F4F0203E7"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["2C32E48616BB7DF5"]
+			id: "6BA5E8ED8CF404BA"
+			rewards: [
+				{
+					xp: 300
+					id: "282997998C6B227D"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:copper_diving_helmet" }
+					count: 1L
+					id: "5E5B07184A15DFBF"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:copper_backtank" }
+					count: 1L
+					id: "1F79103B4A9ADB98"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:copper_diving_boots" }
+					count: 1L
+					id: "72A0797EF64CCB4B"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["6BA5E8ED8CF404BA", "1AC4C8BD4097E5BF"]
+			id: "370DB6CD983FF0CC"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:conduit" }
+					id: "11BD28AEC4CD367F"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit inscriptions"
+					permission_level: 2
+					silent: true
+					id: "40810395323AAA76"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					id: "4F53F37618E04BAF"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["370DB6CD983FF0CC"]
+			id: "3B38C5096A245F19"
+			rewards: [
+				{
+					item: { components: { "minecraft:stored_enchantments": { levels: { "minecraft:respiration": 3 } } }, count: 1, id: "minecraft:enchanted_book" }
+					id: "1D647C77C6D744B5"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:stored_enchantments": { levels: { "minecraft:aqua_affinity": 1 } } }, count: 1, id: "minecraft:enchanted_book" }
+					id: "7196DB8B4A3DB780"
+					type: "item"
+				}
+				{
+					xp: 300
+					id: "1C6F48D151EA7D2C"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:monument"
+					id: "25ABDEA605F147A0"
+					type: "structure"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3B38C5096A245F19"]
+			id: "68BE2867F6DDB6F9"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "57FF52E68F3316BA"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:milk_bucket" }
+					count: 3L
+					id: "7BAAD80F0A1754EA"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:copper_backtank" }
+					count: 1L
+					id: "707CEAD4043EC236"
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["68BE2867F6DDB6F9"]
+			id: "6DB0A3122C849921"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:schema_laiton" }
+					id: "12D6F4D710D9DF09"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_marees" }
+					id: "3E5F7FC6E0629C4A"
+					type: "item"
+				}
+				{
+					command: "tag @s add airain_nether"
+					permission_level: 2
+					silent: true
+					id: "1183AB0FF930BCCA"
+					type: "command"
+				}
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "61BD3458D4BB0E10"
+					type: "item"
+				}
+				{
+					xp: 1000
+					id: "7642A679F8031D41"
+					type: "xp"
+				}
+				{
+					command: "airain chronique recit marees"
+					permission_level: 2
+					silent: true
+					id: "1875EF83902F3A75"
+					type: "command"
+				}
+			]
+			shape: "hexagon"
+			size: 1.75d
+			tasks: [
+				{
+					entity: "minecraft:elder_guardian"
+					value: 3L
+					id: "545F3906D4C9D994"
+					type: "kill"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+	]
+}

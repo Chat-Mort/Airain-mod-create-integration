@@ -1,0 +1,776 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "08_arcanes"
+	group: "160174A5E6BB3B2B"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "ars_nouveau:archmage_spell_book" }
+	images: [
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arcanes_the_first_whispers.png"
+			rotation: 0.0d
+			width: 6.141d
+			x: -3.82d
+			y: -6.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arcanes_the_spell_book.png"
+			rotation: 0.0d
+			width: 3.234d
+			x: -2.367d
+			y: -3.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arcanes_the_refractory_workshop.png"
+			rotation: 0.0d
+			width: 5.484d
+			x: -3.492d
+			y: -1.5d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arcanes_the_little_echoes.png"
+			rotation: 0.0d
+			width: 4.547d
+			x: -3.023d
+			y: 1.5d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arcanes_the_robe_of_the_arcana.png"
+			rotation: 0.0d
+			width: 5.672d
+			x: -3.586d
+			y: 4.5d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arcanes_the_lost_echoes.png"
+			rotation: 0.0d
+			width: 4.922d
+			x: 13.0d
+			y: -3.0d
+		}
+	]
+	id: "6C42785A50835ECA"
+	order_index: 8
+	quests: [
+		{
+			dependencies: ["73B823D3D42DE379"]
+			id: "40BA346F57FB7B3E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "6474D3C4D89EBF49"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:archwood_planks" }
+					count: 16L
+					id: "41A584FD76E53F05"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["40BA346F57FB7B3E"]
+			id: "76A72FC020B609BB"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "3B07344A70FD894A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:source_jar" }
+					count: 1L
+					id: "144D0059A8B579FB"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["40BA346F57FB7B3E"]
+			id: "6A249B856D1B3472"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "4358F804A05FA7C6"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:magebloom" }
+					count: 4L
+					id: "51AE4C259C83AB5A"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -7.5d
+		}
+		{
+			dependencies: ["76A72FC020B609BB"]
+			id: "2DEBFB7D2923CD45"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "4042A2A0233F548A"
+					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:carnet/apprentie_2"
+					permission_level: 2
+					silent: true
+					id: "1691264CAB77633E"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:agronomic_sourcelink" }
+					count: 1L
+					id: "6C2595093EF58BA3"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "ars_nouveau:volcanic_sourcelink" }
+					count: 1L
+					id: "3CC24D110DCAAC1C"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["2DEBFB7D2923CD45"]
+			id: "37F7CA7DE0411DCA"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "170156A4F2BAC808"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:relay" }
+					count: 2L
+					id: "2B8C91ABF9C89AC0"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["73B823D3D42DE379"]
+			id: "50BA89E70106AA5D"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "332F9F868026F286"
+					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:carnet/apprentie_3"
+					permission_level: 2
+					silent: true
+					id: "7EB8A24711E24A3E"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:scribes_table" }
+					count: 1L
+					id: "6E04693AAA3A3DF2"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["50BA89E70106AA5D"]
+			id: "7B1C7507CD43B59E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "5271EA18D2ED29BA"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:glyph_break" }
+					count: 1L
+					id: "303545BAB02E80AB"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "ars_nouveau:glyph_heal" }
+					count: 1L
+					id: "61E0798D5E713D56"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "ars_nouveau:glyph_light" }
+					count: 1L
+					id: "44B497FC1FC82CC2"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["50BA89E70106AA5D"]
+			id: "135B677FDE010CCD"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "3D796E93ADFF3F40"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:enchanting_apparatus" }
+					count: 1L
+					id: "1A872C942FD2D7E8"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "ars_nouveau:arcane_core" }
+					count: 1L
+					id: "2334962BA99D8BBB"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["135B677FDE010CCD"]
+			id: "16A3282CA5AB4ACA"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "32346101DA6DD7DB"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:ritual_brazier" }
+					count: 1L
+					id: "38099E06D5B7A73C"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["16A3282CA5AB4ACA"]
+			id: "526FC1E547AB0990"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2D5CD300071D8301"
+					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:carnet/apprentie_4"
+					permission_level: 2
+					silent: true
+					id: "24094B8FED50844A"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:ritual_cloudshaping" }
+					count: 1L
+					id: "47DDD12E23B2F235"
+					type: "item"
+				}
+				{
+					id: "722F181EEABFC4BE"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["135B677FDE010CCD"]
+			id: "26721FDF49DBAC1B"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "791C55C13761F17B"
+					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:carnet/apprentie_5"
+					permission_level: 2
+					silent: true
+					id: "1480BDE322DAB5E9"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:starbuncle_charm" }
+					count: 1L
+					id: "115170D09E2AF1D9"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["26721FDF49DBAC1B"]
+			id: "1B8D2D125236F20C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "155788D532111392"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:drygmy_charm" }
+					count: 1L
+					id: "3C05A223F7D0BDD3"
+					type: "item"
+				}
+			]
+			x: 5.54d
+			y: -0.21d
+		}
+		{
+			dependencies: ["26721FDF49DBAC1B"]
+			id: "2193D6B93C4D0569"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "519CFA8F832192D6"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:whirlisprig_charm" }
+					count: 1L
+					id: "4FF51B5D41E48E14"
+					type: "item"
+				}
+			]
+			x: 6.21d
+			y: 0.87d
+		}
+		{
+			dependencies: ["26721FDF49DBAC1B"]
+			id: "1B1BDBDB461DC54F"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "266FAD0D4FD8B944"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:wixie_charm" }
+					count: 1L
+					id: "3DF107F275CFA473"
+					type: "item"
+				}
+			]
+			x: 6.21d
+			y: 2.13d
+		}
+		{
+			dependencies: ["26721FDF49DBAC1B"]
+			id: "1430B27303EA7FED"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "1F8AC5537E6DE952"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:amethyst_golem_charm" }
+					count: 1L
+					id: "3F8E96B89B618F6B"
+					type: "item"
+				}
+			]
+			x: 5.54d
+			y: 3.21d
+		}
+		{
+			dependencies: ["135B677FDE010CCD"]
+			id: "5E6A2757F7E53E09"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "7C1E9D1D30FFDC94"
+					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:carnet/apprentie_6"
+					permission_level: 2
+					silent: true
+					id: "19343F3FF8BAB8D9"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:apprentice_spell_book" }
+					count: 1L
+					id: "6E7F6AD99ADCB709"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5E6A2757F7E53E09"]
+			id: "1DF1C682CA5AEA52"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "570BA7AA158D1698"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "5BF2BC61682E8867"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["1DF1C682CA5AEA52"]
+			id: "4F1E60398199317B"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "3B25C95DDCA6375F"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "7AFCEA471D670E12"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5E6A2757F7E53E09"]
+			id: "1CFBD49CF418919F"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "1720179174B0E5A2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "ars_nouveau:archmage_spell_book" }
+					count: 1L
+					id: "61EC00729617EF75"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["7B1C7507CD43B59E"]
+			id: "195F07572F5878D2"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "1310C67EAAFA55BE"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "ars_nouveau:wilden_hunter"
+					value: 1L
+					id: "11B472533D0C9955"
+					type: "kill"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["195F07572F5878D2"]
+			id: "433D57C46C36B83C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "5F4B2B00FB45DC50"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "ars_nouveau:wilden_stalker"
+					value: 1L
+					id: "289D00A07269C2C0"
+					type: "kill"
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["433D57C46C36B83C"]
+			id: "1347D975D0FDD40A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "538B4305236CA05F"
+					type: "item"
+				}
+				{
+					command: "loot give @s loot kubejs:carnet/apprentie_7"
+					permission_level: 2
+					silent: true
+					id: "4B2C583B86D28830"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					entity: "ars_nouveau:wilden_guardian"
+					value: 1L
+					id: "37D7A9BC9C6B5EF1"
+					type: "kill"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["3A95A67E6E76796D"]
+			id: "4B53300A90F22D2C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "274D0FA820469A9F"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit echo_vael"
+					permission_level: 2
+					silent: true
+					id: "5735EA23E2BDDE54"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:station_capsules"
+					id: "50B88DFB3E904F9E"
+					type: "structure"
+				}
+				{
+					id: "40E78E71B92E47CA"
+					type: "checkmark"
+				}
+			]
+			x: 12.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["4B53300A90F22D2C"]
+			id: "57CCAE32A34055EC"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "1F7CC3AF5A1EAE77"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:cite_mecanique"
+					id: "7FCDABCCB17C7AB5"
+					type: "structure"
+				}
+				{
+					id: "4E4204C109D3D537"
+					type: "checkmark"
+				}
+			]
+			x: 14.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["2635834C88309144"]
+			id: "577AA2DD38280354"
+			rewards: [
+				{
+					xp: 300
+					id: "184D482BBC7F2184"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:fragment_resonance" }
+					count: 4L
+					id: "2CDD04B0C9E37B13"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["577AA2DD38280354"]
+			id: "7CDE28D2D18A4436"
+			rewards: [
+				{
+					xp: 300
+					id: "29414A3973861244"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:diapason_echo" }
+					count: 1L
+					id: "3AF49DBF3B53AE7D"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7CDE28D2D18A4436"]
+			id: "1C87550C0BEA8CA7"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2448BC5C92F08C19"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:grand_relais"
+					id: "178D1B5BE8356DF7"
+					type: "structure"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1C87550C0BEA8CA7"]
+			id: "223174505C4CDFF6"
+			rewards: [
+				{
+					xp: 2000
+					id: "62C636D5EFFD25FA"
+					type: "xp"
+				}
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "5E01622AD44EC86D"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit echo_choeur"
+					permission_level: 2
+					silent: true
+					id: "2B699441A94A4E07"
+					type: "command"
+				}
+			]
+			shape: "hexagon"
+			size: 2.0d
+			tasks: [
+				{
+					entity: "ars_nouveau:wilden_boss"
+					value: 1L
+					id: "6C6D711638BAA6A5"
+					type: "kill"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["223174505C4CDFF6"]
+			id: "2543479E97C7BC7E"
+			rewards: [
+				{
+					xp: 1000
+					id: "1AC12EB8D088FF21"
+					type: "xp"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:echo_primordial" }
+					count: 1L
+					id: "1C2F42BA184B1CCA"
+					type: "item"
+				}
+			]
+			x: 18.0d
+			y: 0.0d
+		}
+	]
+}

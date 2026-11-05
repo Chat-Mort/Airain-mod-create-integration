@@ -1,0 +1,328 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "13_bases"
+	group: "2F4EAC3DE90A7B97"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "airain:foundation_stone" }
+	images: [
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_bases_found_and_decorate.png"
+			rotation: 0.0d
+			width: 5.203d
+			x: -3.352d
+			y: 0.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_bases_trophies.png"
+			rotation: 0.0d
+			width: 3.797d
+			x: -2.648d
+			y: 3.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_bases_the_capital.png"
+			rotation: 0.0d
+			width: 3.188d
+			x: -2.344d
+			y: 5.0d
+		}
+	]
+	id: "268936E7997482A8"
+	order_index: 14
+	quests: [
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "3BE4A51ACF80D7CB"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "4120B7701E48EE34"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:foundation_stone" }
+					count: 1L
+					id: "4ACCAADA9FCF0C06"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:foundation_registry" }
+					count: 1L
+					id: "2A52AFD0019B9FF6"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3BE4A51ACF80D7CB", "45CA43199084EBB5"]
+			id: "3AA9ACD7A616F854"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "23E58CDA527E81DB"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:great_standard" }
+					count: 1L
+					id: "144E580B815DC128"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3AA9ACD7A616F854"]
+			id: "757A48365022B721"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "6D12E7C7A9EE73B9"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:foundation_wall_banner" }
+					count: 2L
+					id: "7AB2FB02EF4286D3"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["757A48365022B721"]
+			id: "5CF7D5BC19E0C27E"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "1CBB3CAB05BB2177"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:banner_template" }
+					count: 1L
+					id: "36DD25F09B2FCD0D"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["757A48365022B721"]
+			id: "299A3CC737A4A7C2"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "4029DF4310BB21FB"
+					type: "item"
+				}
+				{
+					xp: 300
+					id: "4B51E089CE044CF9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "1CE89F85EAB84365"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["299A3CC737A4A7C2", "5CF7D5BC19E0C27E"]
+			id: "7D3B24521CD53A87"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "365E12E15C9E8968"
+					type: "item"
+				}
+				{
+					xp: 500
+					id: "231D94A01A9089B7"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "19F4625B777461F4"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "23562325F0DE1D91"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "43DEB7D219D30969"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:trophy_pedestal" }
+					count: 1L
+					id: "28E80361EA2FD4EF"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["23562325F0DE1D91"]
+			id: "6ADAF2C48DBFE7D4"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "611EF084A1FD2C58"
+					type: "item"
+				}
+				{
+					xp: 1000
+					id: "53575A84555AE1F9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "7C2659BDCC048104"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:expansion_plans" }
+			id: "1430CF30BA1BA02F"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "12839E54E20784B9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:expansion_plans" }
+					count: 1L
+					id: "5213A00B1C0A27CF"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:infirmary_plans" }
+			id: "5C2625C251D72B5E"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "634247DFF9FC191D"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:infirmary_plans" }
+					count: 1L
+					id: "7F6E95EB71E6F097"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:weather_station_plans" }
+			id: "24C369D29A77A8E3"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "2D6D010C5800CE7E"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:weather_station_plans" }
+					count: 1L
+					id: "6A4FABB4FB93E92C"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:garrison_forge_plans" }
+			id: "544B8F7D834DF698"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "46073788588D131E"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:garrison_forge_plans" }
+					count: 1L
+					id: "1B9F2DFA06574CC3"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 5.0d
+		}
+	]
+}

@@ -22,6 +22,14 @@
 			x: -2.648d
 			y: 3.0d
 		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_bases_the_capital.png"
+			rotation: 0.0d
+			width: 3.188d
+			x: -2.344d
+			y: 5.0d
+		}
 	]
 	id: "268936E7997482A8"
 	order_index: 14
@@ -219,6 +227,102 @@
 			]
 			x: 2.0d
 			y: 3.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:expansion_plans" }
+			id: "1430CF30BA1BA02F"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "12839E54E20784B9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:expansion_plans" }
+					count: 1L
+					id: "5213A00B1C0A27CF"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:infirmary_plans" }
+			id: "5C2625C251D72B5E"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "634247DFF9FC191D"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:infirmary_plans" }
+					count: 1L
+					id: "7F6E95EB71E6F097"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:weather_station_plans" }
+			id: "24C369D29A77A8E3"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "2D6D010C5800CE7E"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:weather_station_plans" }
+					count: 1L
+					id: "6A4FABB4FB93E92C"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2ABAD12CF77811C1", "3E8DC7B2286715F3"]
+			dependency_requirement: "one_completed"
+			icon: { count: 1, id: "airain:garrison_forge_plans" }
+			id: "544B8F7D834DF698"
+			optional: true
+			rewards: [
+				{
+					xp: 1500
+					id: "46073788588D131E"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:garrison_forge_plans" }
+					count: 1L
+					id: "1B9F2DFA06574CC3"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 5.0d
 		}
 	]
 }

@@ -1,0 +1,309 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "14_arsenal"
+	group: "2F4EAC3DE90A7B97"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "simplyswords:iron_longsword" }
+	images: [
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arsenal_blades.png"
+			rotation: 0.0d
+			width: 2.906d
+			x: -2.203d
+			y: -2.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arsenal_artillery.png"
+			rotation: 0.0d
+			width: 3.047d
+			x: -2.273d
+			y: 0.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_arsenal_firearms.png"
+			rotation: 0.0d
+			width: 4.5d
+			x: -3.0d
+			y: 2.0d
+		}
+	]
+	id: "6643CF10372B0A3C"
+	order_index: 13
+	quests: [
+		{
+			dependencies: ["45DA6B1623943C36"]
+			id: "38B2650A583B18EA"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "22CFC08849450F24"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "simplyswords:iron_spear" }
+					count: 1L
+					id: "1CB740ABE6CCDBD2"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["45DA6B1623943C36"]
+			id: "472B472777388071"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "7BFE5986FD168BC8"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "simplyswords:iron_katana" }
+					count: 1L
+					id: "2CB23E7A8CD58BE8"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["1AC4C8BD4097E5BF"]
+			id: "4DCBE77F930CEB10"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "10DDFE65FAA96B18"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "simplyswords:diamond_claymore" }
+					count: 1L
+					id: "4644F92AFA82AAA9"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["31C724BE22F84506", "30A89C3EB74F4D50"]
+			id: "43F9DDC4A4D5280C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "6360473FC1D7BAE9"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "simplyswords:netherite_longsword" }
+					count: 1L
+					id: "4ECE82D630E3DA00"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["43F9DDC4A4D5280C"]
+			id: "4DA9AA29C115DD53"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "2DF9A72563D59F86"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "3DCA9D48CBE729F7"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["6B1A427C3921B026"]
+			id: "64437A5B515F64EC"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "18A8D5D08C0990DD"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:ap_shot" }
+					count: 8L
+					id: "7B948199E9A2AB12"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createbigcannons:shrapnel_shell" }
+					count: 8L
+					id: "666C4FF429BBAE49"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createbigcannons:smoke_shell" }
+					count: 4L
+					id: "11F83A6E05C6B445"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["64437A5B515F64EC"]
+			id: "5690BF6C00E42CBE"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "657BF301CEFA2B93"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:drop_mortar_shell" }
+					count: 8L
+					id: "3546FB5E749C12CE"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4058125A46150053"]
+			id: "206485813AC811D6"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "41FDA99067F6DD38"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "cgs:flintlock" }
+					count: 1L
+					id: "47C8F5B1FF2034E4"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["206485813AC811D6", "5E756F97CBFB58A5"]
+			id: "6DA6D020B8F3F601"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "3857487EDB6AE09E"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "cgs:revolver" }
+					count: 1L
+					id: "291617608479468B"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["6DA6D020B8F3F601"]
+			id: "1872C8058F3E588C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "2E5C75395135F412"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "cgs:shotgun" }
+					count: 1L
+					id: "4FDDB7CD9BD12C97"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["1872C8058F3E588C", "187081628EA4ED2B"]
+			id: "567C5E9704837F57"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "208B15B3ECB6610D"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "cgs:gatling" }
+					count: 1L
+					id: "2E98905407BC1C3A"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["6DA6D020B8F3F601", "16F6CF9BF8AE44DC"]
+			id: "546D55D27972933A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "5B87EC2697C542F8"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "cgs:blazegun" }
+					count: 1L
+					id: "129BCBF02476D27A"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 3.5d
+		}
+	]
+}

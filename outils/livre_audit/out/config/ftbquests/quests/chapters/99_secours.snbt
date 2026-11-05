@@ -1,0 +1,199 @@
+{
+	always_invisible: true
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "99_secours"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "minecraft:command_block" }
+	id: "621611A59C993E9F"
+	order_index: 99
+	quests: [
+		{
+			id: "7A269F052587CB1A"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:schema_cuivre" }
+					id: "2C746A9EEF0583F9"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_rouages" }
+					id: "5DD48AB8FB1E7062"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "1F39B695A43FB717"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "769408885D0708A5"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:schema_laiton" }
+					id: "27779EA5012ED42E"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_marees" }
+					id: "4FAFC45B0AADFE6D"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:sceau_forge" }
+					id: "2763EE881E69C5A0"
+					type: "item"
+				}
+				{
+					command: "tag @s add airain_nether"
+					permission_level: 2
+					silent: true
+					id: "5BC9153C80DABC9F"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					id: "251045E96134C66A"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			id: "617C215FCC40D2A5"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:schema_ciel" }
+					id: "480AC57013DE9068"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_forge" }
+					id: "33F6D4D849AB48C0"
+					type: "item"
+				}
+				{
+					command: "tag @s add airain_end"
+					permission_level: 2
+					silent: true
+					id: "63FAF3FB3A691B9A"
+					type: "command"
+				}
+				{
+					command: "tag @s add airain_waystones"
+					permission_level: 2
+					silent: true
+					id: "4E0A24D4926A56CE"
+					type: "command"
+				}
+				{
+					command: "tag @s add airain_gare"
+					permission_level: 2
+					silent: true
+					id: "774EE277DBAA4FC8"
+					type: "command"
+				}
+				{
+					command: "tag @s add airain_pneumatique"
+					permission_level: 2
+					silent: true
+					id: "7E49CE00316D2319"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					id: "555BE1DE5AE52506"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			id: "7C784488716A8DAF"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:fragment_vide" }
+					id: "1EC3824EF2D5B397"
+					type: "item"
+				}
+				{
+					command: "tag @s add airain_atelier"
+					permission_level: 2
+					silent: true
+					id: "18964B17123976D8"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					id: "5374CA9A47AD8828"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			id: "66FAEDF5BE60EEE3"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:coeur_d_airain" }
+					id: "7C98EF332B0A1A2F"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:nether_star" }
+					id: "778B00F0C5868E48"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:defense_beacon" }
+					id: "232C6384643E1D76"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "235C9D9B0286A2C2"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			id: "189109008AF985AC"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:diapason_echo" }
+					id: "6E29A0CB8F5FBA5A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:echo_primordial" }
+					count: 8
+					id: "77BABB028CCC3BE5"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "790404DBA5C7CA7C"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+	]
+}

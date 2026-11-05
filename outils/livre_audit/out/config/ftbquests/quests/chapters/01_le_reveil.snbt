@@ -1,0 +1,461 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "01_le_reveil"
+	group: "25F3599C6B050FF2"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "minecraft:clock" }
+	id: "584D385E9D365F6E"
+	order_index: 1
+	quests: [
+		{
+			id: "35F93598035AE578"
+			rewards: [
+				{
+					item: { count: 1, id: "create:goggles" }
+					id: "44B08E818A086FF0"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:wrench" }
+					id: "6B6B6FCE7CC13CA7"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:codex" }
+					id: "6043EAF8D4287879"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:engineers_manual" }
+					id: "205A628D08290301"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:chronicles" }
+					id: "6CCDEB7CE0FACBF9"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:bread" }
+					count: 16
+					id: "28B73DE2D36C663A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:torch" }
+					count: 32
+					id: "60E2F374B1AC004F"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit reveil"
+					permission_level: 2
+					silent: true
+					id: "105B8ACE7F9FA97E"
+					type: "command"
+				}
+			]
+			shape: "gear"
+			size: 1.75d
+			tasks: [
+				{
+					stage: "airain_journal_lu"
+					id: "79CDBE37A27E7DDE"
+					type: "gamestage"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["35F93598035AE578"]
+			id: "605C7D0D8F9D52AD"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 2
+					id: "659F334AAE49F4B2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "271961B0151F7790"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["35F93598035AE578"]
+			id: "422022D7AAF0448C"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:iron_ingot" }
+					count: 8
+					id: "643E3F37008B5CDF"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:iron_pickaxe" }
+					count: 1L
+					id: "6242334C026B139B"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "7F005683914676AB"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 2
+					id: "5B8FEEB84D01CC9F"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit surface"
+					permission_level: 2
+					silent: true
+					id: "6D81DC9E3DF562DD"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					id: "6EE5EF6D0E7DA19B"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "66E7DFD4A54D2089"
+			rewards: [
+				{
+					xp: 50
+					id: "518CEA6CA62BA5F9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:andesite_alloy" }
+					count: 16L
+					id: "7E1B6ABE0B0311AB"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["66E7DFD4A54D2089"]
+			id: "39E9F1207BD8C9A9"
+			rewards: [
+				{
+					item: { count: 1, id: "create:cogwheel" }
+					count: 4
+					id: "66B6BA315178E834"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:water_wheel" }
+					count: 1L
+					id: "1A48E305F8E040D1"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:shaft" }
+					count: 8L
+					id: "5D6816FC7DE015BC"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["39E9F1207BD8C9A9"]
+			id: "564D3460A05544FE"
+			rewards: [
+				{
+					xp: 80
+					id: "7B6E598B3C5553EE"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:cogwheel" }
+					count: 8L
+					id: "26B5888C1D349FA8"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:large_cogwheel" }
+					count: 4L
+					id: "77935E679B40027A"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["66E7DFD4A54D2089"]
+			id: "1479F49A41F4DA32"
+			rewards: [
+				{
+					xp: 80
+					id: "60724BE08D76B56E"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:andesite_casing" }
+					count: 8L
+					id: "15A4320A45D4E4B9"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["1479F49A41F4DA32", "564D3460A05544FE"]
+			id: "23667A58FF83BC81"
+			rewards: [
+				{
+					xp: 100
+					id: "4AC90ADE3047FB1E"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:millstone" }
+					count: 1L
+					id: "490C2BC96DCA8D4B"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["23667A58FF83BC81"]
+			id: "315A19C157FEDB23"
+			rewards: [
+				{
+					xp: 100
+					id: "3CB426B6C6604554"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:belt_connector" }
+					count: 8L
+					id: "6BC9E02573ACECB8"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:depot" }
+					count: 2L
+					id: "61F740902979AEF3"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["315A19C157FEDB23"]
+			id: "175D62868380B4C5"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "604B5B549358B377"
+					type: "item"
+				}
+				{
+					xp: 150
+					id: "1BA83BE9244121BB"
+					type: "xp"
+				}
+			]
+			shape: "square"
+			tasks: [
+				{
+					id: "2C28D3D9AC3FEC8A"
+					type: "checkmark"
+				}
+			]
+			x: 12.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["564D3460A05544FE"]
+			id: "3DC7156494A0EA62"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 2
+					id: "4DB8C6FB8B70D90A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:andesite_alloy" }
+					count: 64L
+					id: "7F22E6D8AF23965F"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "7E5194BB3CA7ED58"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:bread" }
+					count: 8
+					id: "1568FFA9A8EC9969"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:iron_sword" }
+					count: 1L
+					id: "1B975C0450EE98B6"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["7E5194BB3CA7ED58"]
+			id: "1503E9BC853DDD58"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "14D3A8D22273FFA9"
+					type: "item"
+				}
+				{
+					command: "airain chronique recit avant_poste"
+					permission_level: 2
+					silent: true
+					id: "17E463C97A408DE9"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					structure: "#kubejs:avant_postes"
+					id: "41CFA13AFF28A3CF"
+					type: "structure"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["1503E9BC853DDD58"]
+			id: "5056F0EBCF563749"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:brush" }
+					id: "616208A3E986B9FF"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 2
+					id: "33BF6675C7C9053E"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:trail_ruins"
+					id: "21E50FEACDC9BDC0"
+					type: "structure"
+				}
+			]
+			x: 8.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["175D62868380B4C5", "3DC7156494A0EA62"]
+			id: "53B3D206C5511F69"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:iron_block" }
+					count: 2
+					id: "7144C25CFB0DA939"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "34922E328DC7758E"
+					type: "item"
+				}
+				{
+					xp: 300
+					id: "4D2B6EB57CBC6962"
+					type: "xp"
+				}
+				{
+					command: "airain chronique recit atelier"
+					permission_level: 2
+					silent: true
+					id: "3E570D6DEEE12C4C"
+					type: "command"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "create:andesite_alloy" }
+					count: 128L
+					consume_items: true
+					id: "4A8CC2CF7C4D095F"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:andesite_casing" }
+					count: 32L
+					consume_items: true
+					id: "390CFB5C15CD3D24"
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 0.0d
+		}
+	]
+}

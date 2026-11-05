@@ -1306,6 +1306,26 @@ quest(cB, "b_trophees", ("La salle des trophées", "The Trophy Room"), 2, 4, [T_
              ["&7Optional.&r The Empire's palaces displayed their trophies under their founders' banners. Display four different trophies in your base. Tick the box when done.",
               "&8The foundation register also lists your displayed trophies, and banners set to \"by trophies\" are hoisted when a trophy is displayed in their area.&r"]))
 
+# améliorations de capitale (après la fin, l'une ou l'autre)
+_CAP_FR = "&7Optionnel, après la fin.&r Posez les plans sur l'étendard de votre &6capitale&r (impériale ou arcanique) : le prix en &6soleils&r est prélevé dans votre inventaire, la monnaie est rendue. Un plan par niveau."
+_CAP_EN = "&7Optional, after the ending.&r Use the plans on your &6capital&r's standard (imperial or arcane): the price in &6suns&r is taken from your inventory, change is given back. One plan per level."
+for _k, _it, _t, _x, _fr, _en in [
+    ("c_agrandissement", "expansion_plans", ("Repousser les murs", "Pushing the Walls"), 1,
+     ["Une capitale ne tient jamais dans ses premières limites.", "&6Agrandissement&r, 3 niveaux (4, 8 puis 16 soleils) : zone de 224, 256 puis 320 blocs, et un gardien de plus à chaque niveau (jusqu'à 9)."],
+     ["A capital never fits within its first bounds.", "&6Expansion&r, 3 levels (4, 8 then 16 suns): 224, 256 then 320-block zone, and one more guardian per level (up to 9)."]),
+    ("c_infirmerie", "infirmary_plans", ("L'infirmerie", "The Infirmary"), 3,
+     ["Les médecins de l'Empire soignaient les ouvriers comme on huile une machine : souvent, et avant la panne.", "&6Infirmerie&r, 2 niveaux (3 puis 8 soleils) : Régénération I dans toute la zone et soin des gardiens, puis Régénération II qui chasse aussi poison et flétrissure."],
+     ["The Empire's physicians tended workers the way one oils a machine: often, and before it breaks.", "&6Infirmary&r, 2 levels (3 then 8 suns): Regeneration I across the zone and guardian healing, then Regeneration II that also clears poison and wither."]),
+    ("c_meteo", "weather_station_plans", ("La station météo", "The Weather Station"), 5,
+     ["Paratonnerres, girouettes et baromètres : la capitale ne subit plus le ciel, elle le règle.", "&6Station météo&r, 2 niveaux (2 puis 6 soleils) : &6accroupi + clic droit main vide&r sur l'étendard pour le beau temps ou la pluie, une fois par jour ; puis l'orage aussi, toutes les 5 minutes. Surface seulement."],
+     ["Lightning rods, weathervanes and barometers: the capital no longer suffers the sky, it sets it.", "&6Weather station&r, 2 levels (2 then 6 suns): &6sneak + right-click empty-handed&r on the standard for clear weather or rain, once a day; then thunder too, every 5 minutes. Overworld only."]),
+    ("c_forge", "garrison_forge_plans", ("La forge de garnison", "The Garrison Forge"), 7,
+     ["Une garnison qui rentre ébréchée repart affûtée.", "&6Forge de garnison&r, 2 niveaux (3 puis 8 soleils) : l'équipement porté se répare lentement dans la zone, puis trois fois plus vite, barre d'action comprise."],
+     ["A garrison that comes home chipped leaves sharpened.", "&6Garrison forge&r, 2 levels (3 then 8 suns): worn gear slowly repairs in the zone, then three times faster, hotbar included."]),
+]:
+    quest(cB, _k, _t, _x, 6, [T_item("airain:" + _it)], [R_xp(1500)], deps=["f_empire", "f_echo"], dep_un=True, optional=True,
+          icon="airain:" + _it, desc=D(_fr + [_CAP_FR], _en + [_CAP_EN]))
+
 # =============================================================================
 # LES ÉCHOS PERDUS (la voie de l'Écho : le lore, puis le boss)
 # =============================================================================

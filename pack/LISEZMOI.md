@@ -26,10 +26,10 @@ Les mods eux-mêmes sont à télécharger à part : voir la liste des mods.
 1. Dans Prism Launcher, crée une instance **Minecraft 1.21.1 + NeoForge** et installe les mods de la liste.
 
 2. Copie `config`, `defaultconfigs`, `kubejs` et `schematics` à la racine de l'instance (le dossier qui contient `mods`),
-   et mets `mods/airain-1.41.6.jar` (le mod du pack : banc d'entretien) dans le dossier `mods`. Supprime l'ancienne version du `.jar` s'il y en a une.
+   et mets `mods/airain-1.42.0.jar` (le mod du pack : banc d'entretien) dans le dossier `mods`. Supprime l'ancienne version du `.jar` s'il y en a une.
    Si une ancienne version du pack y est déjà, **supprime d'abord** `config/ftbquests/quests` et `kubejs`.
 
-3. Serveur : mêmes mods sauf ceux marqués « Client », plus `airain-1.41.6.jar`, et la même copie de `config`, `defaultconfigs`, `kubejs` et `schematics` (les plans de l'Empire, lus par le canon à schémas).
+3. Serveur : mêmes mods sauf ceux marqués « Client », plus `airain-1.42.0.jar`, et la même copie de `config`, `defaultconfigs`, `kubejs` et `schematics` (les plans de l'Empire, lus par le canon à schémas).
 
 4. Mémoire du serveur (`user_jvm_args.txt`) :
    - `-Xmx8G` sur une machine de 16 Go ;

@@ -142,6 +142,12 @@
 		"Un gardien de cristal qui fait pousser l'améthyste. Le seul golem que l'Empire n'a jamais construit."
 	]
 	"quest.1430B27303EA7FED.title": "Le golem d'améthyste"
+	"quest.1430CF30BA1BA02F.quest_desc": [
+		"Une capitale ne tient jamais dans ses premières limites."
+		"&6Agrandissement&r, 3 niveaux (4, 8 puis 16 soleils) : zone de 224, 256 puis 320 blocs, et un gardien de plus à chaque niveau (jusqu'à 9)."
+		"&7Optionnel, après la fin.&r Posez les plans sur l'étendard de votre &6capitale&r (impériale ou arcanique) : le prix en &6soleils&r est prélevé dans votre inventaire, la monnaie est rendue. Un plan par niveau."
+	]
+	"quest.1430CF30BA1BA02F.title": "Repousser les murs"
 	"quest.144C3DFF93A0364E.quest_desc": [
 		"À la &6table de forgeron&r : un modèle d'amélioration en netherite, un module, une plaque sacrée. Le laiton noircit, l'or remonte dans les rivets, et tout ce que fait le module est doublé."
 		"Montez un module de niveau II sur un de vos gardiens."
@@ -461,6 +467,12 @@
 	]
 	"quest.249F3A050A5A2692.quest_subtitle": "Débloque les entrées d'Hypertubes"
 	"quest.249F3A050A5A2692.title": "Grand Chantier : le réseau pneumatique"
+	"quest.24C369D29A77A8E3.quest_desc": [
+		"Paratonnerres, girouettes et baromètres : la capitale ne subit plus le ciel, elle le règle."
+		"&6Station météo&r, 2 niveaux (2 puis 6 soleils) : &6accroupi + clic droit main vide&r sur l'étendard pour le beau temps ou la pluie, une fois par jour ; puis l'orage aussi, toutes les 5 minutes. Surface seulement."
+		"&7Optionnel, après la fin.&r Posez les plans sur l'étendard de votre &6capitale&r (impériale ou arcanique) : le prix en &6soleils&r est prélevé dans votre inventaire, la monnaie est rendue. Un plan par niveau."
+	]
+	"quest.24C369D29A77A8E3.title": "La station météo"
 	"quest.24CC53E36E5B5F0A.quest_desc": [
 		"Avant les salles d'épreuve : un sac plus grand qui ramasse tout seul."
 		"L'amélioration de ramassage avale ce que vous touchez au sol ; son filtre choisit quoi garder."
@@ -1050,6 +1062,12 @@
 	]
 	"quest.53B3D206C5511F69.quest_subtitle": "Ouvre le chapitre II"
 	"quest.53B3D206C5511F69.title": "Grand Chantier : le premier atelier"
+	"quest.544B8F7D834DF698.quest_desc": [
+		"Une garnison qui rentre ébréchée repart affûtée."
+		"&6Forge de garnison&r, 2 niveaux (3 puis 8 soleils) : l'équipement porté se répare lentement dans la zone, puis trois fois plus vite, barre d'action comprise."
+		"&7Optionnel, après la fin.&r Posez les plans sur l'étendard de votre &6capitale&r (impériale ou arcanique) : le prix en &6soleils&r est prélevé dans votre inventaire, la monnaie est rendue. Un plan par niveau."
+	]
+	"quest.544B8F7D834DF698.title": "La forge de garnison"
 	"quest.546D55D27972933A.quest_desc": [
 		"Un brûleur à blaze dans une crosse de bois. Ce n'est pas prudent. C'est très efficace."
 		"Courte portée, dégâts de feu : redoutable de près, inutile contre ce qui vient du Nether."
@@ -1143,6 +1161,12 @@
 		"Les épaves cachent des cartes au trésor : le cœur de la mer est au bout. L'équipement de plongée rend la fouille bien plus facile."
 	]
 	"quest.5BCC503DB5D79A29.title": "L'épave"
+	"quest.5C2625C251D72B5E.quest_desc": [
+		"Les médecins de l'Empire soignaient les ouvriers comme on huile une machine : souvent, et avant la panne."
+		"&6Infirmerie&r, 2 niveaux (3 puis 8 soleils) : Régénération I dans toute la zone et soin des gardiens, puis Régénération II qui chasse aussi poison et flétrissure."
+		"&7Optionnel, après la fin.&r Posez les plans sur l'étendard de votre &6capitale&r (impériale ou arcanique) : le prix en &6soleils&r est prélevé dans votre inventaire, la monnaie est rendue. Un plan par niveau."
+	]
+	"quest.5C2625C251D72B5E.title": "L'infirmerie"
 	"quest.5C96E0E608B593DA.quest_desc": [
 		"&7Optionnel.&r Le sac de l'Empereur lui-même, dit-on. Il a survécu à la chute."
 		"Demande des cœurs du Gardien des enfers (étoiles du Nether) : le sac ne disparaît plus jamais, même dans la lave, et peut contenir d'autres sacs."

@@ -142,6 +142,12 @@
 		"A crystal guardian that grows amethyst. The only golem the Empire never built."
 	]
 	"quest.1430B27303EA7FED.title": "The Amethyst Golem"
+	"quest.1430CF30BA1BA02F.quest_desc": [
+		"A capital never fits within its first bounds."
+		"&6Expansion&r, 3 levels (4, 8 then 16 suns): 224, 256 then 320-block zone, and one more guardian per level (up to 9)."
+		"&7Optional, after the ending.&r Use the plans on your &6capital&r's standard (imperial or arcane): the price in &6suns&r is taken from your inventory, change is given back. One plan per level."
+	]
+	"quest.1430CF30BA1BA02F.title": "Pushing the Walls"
 	"quest.144C3DFF93A0364E.quest_desc": [
 		"At the &6smithing table&r: a netherite upgrade template, a module, a sacred plate. The brass blackens, gold rises in the rivets, and everything the module does is doubled."
 		"Mount a level II module on one of your guardians."
@@ -461,6 +467,12 @@
 	]
 	"quest.249F3A050A5A2692.quest_subtitle": "Unlocks Hypertube entrances"
 	"quest.249F3A050A5A2692.title": "Great Work: The Pneumatic Network"
+	"quest.24C369D29A77A8E3.quest_desc": [
+		"Lightning rods, weathervanes and barometers: the capital no longer suffers the sky, it sets it."
+		"&6Weather station&r, 2 levels (2 then 6 suns): &6sneak + right-click empty-handed&r on the standard for clear weather or rain, once a day; then thunder too, every 5 minutes. Overworld only."
+		"&7Optional, after the ending.&r Use the plans on your &6capital&r's standard (imperial or arcane): the price in &6suns&r is taken from your inventory, change is given back. One plan per level."
+	]
+	"quest.24C369D29A77A8E3.title": "The Weather Station"
 	"quest.24CC53E36E5B5F0A.quest_desc": [
 		"Before the trial chambers: a bigger pack that picks things up on its own."
 		"The pickup upgrade swallows what you walk over; its filter picks what to keep."
@@ -1050,6 +1062,12 @@
 	]
 	"quest.53B3D206C5511F69.quest_subtitle": "Opens chapter II"
 	"quest.53B3D206C5511F69.title": "Great Work: The First Workshop"
+	"quest.544B8F7D834DF698.quest_desc": [
+		"A garrison that comes home chipped leaves sharpened."
+		"&6Garrison forge&r, 2 levels (3 then 8 suns): worn gear slowly repairs in the zone, then three times faster, hotbar included."
+		"&7Optional, after the ending.&r Use the plans on your &6capital&r's standard (imperial or arcane): the price in &6suns&r is taken from your inventory, change is given back. One plan per level."
+	]
+	"quest.544B8F7D834DF698.title": "The Garrison Forge"
 	"quest.546D55D27972933A.quest_desc": [
 		"A blaze burner in a wooden stock. It isn't careful. It is very effective."
 		"Short range, fire damage: deadly up close, useless against anything from the Nether."
@@ -1143,6 +1161,12 @@
 		"Shipwrecks hide treasure maps: the heart of the sea is at the end. Diving gear makes the search much easier."
 	]
 	"quest.5BCC503DB5D79A29.title": "The Shipwreck"
+	"quest.5C2625C251D72B5E.quest_desc": [
+		"The Empire's physicians tended workers the way one oils a machine: often, and before it breaks."
+		"&6Infirmary&r, 2 levels (3 then 8 suns): Regeneration I across the zone and guardian healing, then Regeneration II that also clears poison and wither."
+		"&7Optional, after the ending.&r Use the plans on your &6capital&r's standard (imperial or arcane): the price in &6suns&r is taken from your inventory, change is given back. One plan per level."
+	]
+	"quest.5C2625C251D72B5E.title": "The Infirmary"
 	"quest.5C96E0E608B593DA.quest_desc": [
 		"&7Optional.&r The Emperor's own pack, they say. It survived the fall."
 		"Needs Infernal Guardian Cores (Nether stars): the pack never despawns, even in lava, and can hold other packs."
