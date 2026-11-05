@@ -141,19 +141,47 @@ public class ChroniquesScreen extends Screen {
 			}
 			texte(Component.literal("· ").append(entree(e)), ENCRE);
 		}
-		// les archives
+		// les archives : l'index complet, rangé par camp et par auteur ; les écrits pas encore trouvés restent masqués
 		titre(Component.translatable("airain.chronique.archives"));
 		sections[3] = pages.size() - 1;
-		var archives = d.getList("archives", Tag.TAG_COMPOUND);
-		if (archives.isEmpty()) texte(Component.translatable("airain.chronique.archives_vide"), SEPIA);
-		else texte(Component.translatable("airain.chronique.archives_aide").withStyle(ChatFormatting.ITALIC), SEPIA);
-		for (Tag t : archives) {
+		java.util.Map<String, ItemStack> trouves = new java.util.LinkedHashMap<>();
+		for (Tag t : d.getList("archives", Tag.TAG_COMPOUND)) {
 			ItemStack s = minecraft != null && minecraft.level != null
 				? ItemStack.parseOptional(minecraft.level.registryAccess(), (CompoundTag) t) : ItemStack.EMPTY;
 			if (s.isEmpty()) continue;
-			var livre = s.get(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT);
-			String nom = livre != null ? livre.title().raw() : s.getHoverName().getString();
-			ligne(new Ligne(Component.literal("✎ " + nom).getVisualOrderText(), BLEU, s, -1, false));
+			var cd = s.get(net.minecraft.core.component.DataComponents.CUSTOM_DATA);
+			String doc = cd != null ? cd.copyTag().getString("airain_doc") : "";
+			trouves.putIfAbsent(doc.isEmpty() ? "?" + trouves.size() : doc, s);
+		}
+		int total = 0, vus = 0;
+		for (String[][] g : Chronique.INDEX) for (int i = 1; i < g.length; i++) { total++; if (trouves.containsKey(g[i][0])) vus++; }
+		texte(Component.translatable("airain.chronique.archives_compte", vus, total).withStyle(ChatFormatting.BOLD), ENCRE);
+		texte(Component.translatable(vus == 0 ? "airain.chronique.archives_vide" : "airain.chronique.archives_aide").withStyle(ChatFormatting.ITALIC), SEPIA);
+		String camp = "";
+		java.util.Set<String> places = new java.util.HashSet<>();
+		for (String[][] g : Chronique.INDEX) {
+			String c = g[0][0];
+			if (!c.equals(camp)) {
+				camp = c;
+				int n = 0, v = 0;
+				for (String[][] h : Chronique.INDEX) if (h[0][0].equals(c)) for (int i = 1; i < h.length; i++) { n++; if (trouves.containsKey(h[i][0])) v++; }
+				vide();
+				ligne(new Ligne(Component.translatable("airain.chronique.camp." + c).append(" · " + v + "/" + n).withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
+			}
+			vide();
+			texte(Component.translatable("airain.chronique.auteur." + g[0][1]).withStyle(ChatFormatting.UNDERLINE), ENCRE);
+			for (int i = 1; i < g.length; i++) {
+				ItemStack s = trouves.get(g[i][0]);
+				places.add(g[i][0]);
+				if (s == null) { ligne(new Ligne(Component.literal("  ??????????").getVisualOrderText(), 0x9A8A78, null, -1, false)); continue; }
+				for (FormattedCharSequence l : font.split(Component.literal("✎ ").append(nomEcrit(g[i][1], s)), LARGE)) ligne(new Ligne(l, BLEU, s, -1, false));
+			}
+		}
+		boolean autres = false;   // écrits hors index (anciens, ou ajoutés par le pack) : à la fin
+		for (var e : trouves.entrySet()) {
+			if (places.contains(e.getKey())) continue;
+			if (!autres) { vide(); texte(Component.translatable("airain.chronique.auteur.autres").withStyle(ChatFormatting.UNDERLINE), ENCRE); autres = true; }
+			for (FormattedCharSequence l : font.split(Component.literal("✎ ").append(nomEcrit(null, e.getValue())), LARGE)) ligne(new Ligne(l, BLEU, e.getValue(), -1, false));
 		}
 		// sommaire
 		sommaire.add(new Ligne(Component.translatable("airain.chronique.sommaire").withStyle(ChatFormatting.BOLD).getVisualOrderText(), ROUGE, null, -1, true));
@@ -170,6 +198,14 @@ public class ChroniquesScreen extends Screen {
 		Object[] args = new Object[a.size()];
 		for (int i = 0; i < a.size(); i++) args[i] = arg(a.getString(i));
 		return Component.translatable(e.getString("cle"), args);
+	}
+
+	/** Titre d'un écrit : la clé de l'index si elle est traduite, sinon le nom de l'objet ou le titre du livre. */
+	private static Component nomEcrit(String cle, ItemStack s) {
+		if (cle != null && net.minecraft.client.resources.language.I18n.exists(cle)) return Component.translatable(cle);
+		if (s.has(net.minecraft.core.component.DataComponents.CUSTOM_NAME)) return s.getHoverName().copy().withStyle(st -> st.withItalic(false).withColor((net.minecraft.network.chat.TextColor) null));
+		var livre = s.get(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT);
+		return livre != null && !livre.title().raw().isBlank() ? Component.literal(livre.title().raw()) : s.getHoverName();
 	}
 
 	/** Petit accès indexé à une liste NBT. */

@@ -40,6 +40,25 @@ public class Chronique extends SavedData {
 	public record Entree(int jour, String cle, List<String> args) {}
 
 	private final List<Entree> journal = new ArrayList<>();
+
+	/**
+	 * Index des archives : camp, auteur, puis les écrits {id airain_doc, clé du titre}, dans l'ordre de lecture.
+	 * Les écrits hors index trouvés en jeu s'ajoutent à la fin.
+	 */
+	public static final String[][][] INDEX = {
+		{{"empire", "ferrand"}, {"ferrand1", "airain.ferrand1.titre"}, {"ferrand2", "airain.ferrand2.titre"}, {"ferrand3", "airain.ferrand3.titre"}, {"testament_ferrand", "airain.testament.titre"}},
+		{{"empire", "helena"}, {"helena1", "airain.helena1.titre"}, {"helena2", "airain.helena2.titre"}, {"helena3", "airain.helena3.titre"}, {"helena4", "airain.helena4.titre"},
+			{"helena5", "airain.helena5.titre"}, {"helena6", "airain.helena6.titre"}, {"helena7", "airain.helena7.titre"}},
+		{{"empire", "elias"}, {"elias1", "airain.elias1.titre"}, {"elias2", "airain.elias2.titre"}, {"elias3", "airain.elias3.titre"}, {"elias4", "airain.elias4.titre"}, {"vael", "airain.vael.titre"}},
+		{{"empire", "archives"}, {"conseil", "airain.conseil.titre"}, {"station", "airain.station.titre"}, {"essais", "airain.essais.titre"}, {"incident", "airain.relais.titre"},
+			{"mine", "airain.mine.titre"}, {"prospecteur", "airain.prospecteur.titre"}, {"cargaison", "airain.cargaison.titre"}, {"nether", "airain.nether.titre"},
+			{"profondeurs", "airain.profondeurs.titre"}, {"dirigeable", "airain.dirigeable.titre"}, {"ciel", "airain.ciel.titre"}},
+		{{"refractaires", "ada"}, {"ada", "airain.ada.titre"}, {"lettre", "airain.lettre.titre"}, {"ada_morgana", "airain.ada_morgana.titre"}, {"ada_fin", "airain.ada_fin.titre"}},
+		{{"refractaires", "morgana"}, {"morgana1", "airain.morgana1.titre"}, {"morgana2", "airain.morgana2.titre"}, {"morgana3", "airain.morgana3.titre"}, {"morgana_note", "airain.morgana.note.titre"}},
+		{{"refractaires", "sybille"}, {"apprentie1", "airain.apprentie1.titre"}, {"apprentie2", "airain.apprentie2.titre"}, {"apprentie3", "airain.apprentie3.titre"},
+			{"apprentie4", "airain.apprentie4.titre"}, {"apprentie5", "airain.apprentie5.titre"}, {"apprentie6", "airain.apprentie6.titre"}, {"apprentie7", "airain.apprentie7.titre"}},
+		{{"refractaires", "camps"}, {"refractaire", "airain.ruine.titre"}, {"cache", "airain.cache.titre"}, {"champ_bataille", "airain.champ_bataille.titre"}, {"abri_nether", "airain.abri_nether.titre"}}};
+
 	private final Set<String> recit = new LinkedHashSet<>();
 	private final Set<String> marques = new LinkedHashSet<>();       // « premières fois » déjà notées
 	private final List<CompoundTag> archives = new ArrayList<>();

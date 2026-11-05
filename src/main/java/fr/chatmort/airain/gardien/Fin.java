@@ -70,7 +70,7 @@ public class Fin extends SavedData {
 	/** Le livre d'épilogue (pages traduites) et, pour l'Empire, la couronne. */
 	private static void recompenser(ServerPlayer p, String v) {
 		java.util.List<net.minecraft.server.network.Filterable<Component>> pages = new java.util.ArrayList<>();
-		for (int i = 1; i <= 4; i++) pages.add(net.minecraft.server.network.Filterable.passThrough(Component.translatable("airain.epilogue." + v + ".p" + i)));
+		for (int i = 1; i <= 5; i++) pages.add(net.minecraft.server.network.Filterable.passThrough(Component.translatable("airain.epilogue." + v + ".p" + i)));
 		net.minecraft.world.item.ItemStack livre = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WRITTEN_BOOK);
 		livre.set(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT, new net.minecraft.world.item.component.WrittenBookContent(
 			net.minecraft.server.network.Filterable.passThrough(v.equals("empire") ? "L'Empire renaissant" : "Le dernier chant"), "Elias Vael", 0, pages, true));
@@ -79,6 +79,19 @@ public class Fin extends SavedData {
 		if (v.equals("empire")) p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(fr.chatmort.airain.AirainMod.COURONNE.get()));
 		if (v.equals("echo")) p.getInventory().placeItemBackInInventory(new net.minecraft.world.item.ItemStack(fr.chatmort.airain.AirainMod.DIADEME.get()));
 		p.getInventory().placeItemBackInInventory(livre);
+		if (v.equals("empire")) {                                              // le testament d'Auguste, glissé avec la couronne
+			net.minecraft.world.item.ItemStack t = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WRITTEN_BOOK);
+			t.set(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT, new net.minecraft.world.item.component.WrittenBookContent(
+				net.minecraft.server.network.Filterable.passThrough("Testament"), "Auguste Ferrand", 0,
+				java.util.List.of(net.minecraft.server.network.Filterable.passThrough(Component.translatable("airain.testament.p1")),
+					net.minecraft.server.network.Filterable.passThrough(Component.translatable("airain.testament.p2"))), true));
+			t.set(net.minecraft.core.component.DataComponents.CUSTOM_NAME, Component.translatable("airain.testament.titre")
+				.withStyle(s -> s.withItalic(false).withColor(net.minecraft.ChatFormatting.GOLD)));
+			net.minecraft.nbt.CompoundTag cd = new net.minecraft.nbt.CompoundTag();
+			cd.putString("airain_doc", "testament_ferrand");
+			t.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA, net.minecraft.world.item.component.CustomData.of(cd));
+			p.getInventory().placeItemBackInInventory(t);
+		}
 		if (v.equals("echo")) {                                                // le mot de Morgana, glissé avec le diadème
 			net.minecraft.world.item.ItemStack note = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WRITTEN_BOOK);
 			note.set(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT, new net.minecraft.world.item.component.WrittenBookContent(
