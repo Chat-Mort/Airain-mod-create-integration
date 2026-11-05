@@ -18,6 +18,8 @@ public record Theme(String son) implements CustomPacketPayload {
 
 	/** Thème d'Ada et d'Elias. */
 	public static final String ADA_ELIAS = "kubejs:mechanical_love";
+	/** La fin : la mélodie commune, renversée et descendante. */
+	public static final String EPILOGUE = "kubejs:epilogue";
 
 	@Override
 	public Type<? extends CustomPacketPayload> type() { return TYPE; }
