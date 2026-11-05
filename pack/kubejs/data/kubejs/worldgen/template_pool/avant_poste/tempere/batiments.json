@@ -1,0 +1,56 @@
+{
+  "fallback": "kubejs:avant_poste/tempere/petits",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/marche",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/entrepot",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/atelier",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/dortoir",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/kiosque",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:empty_pool_element"
+      }
+    }
+  ]
+}

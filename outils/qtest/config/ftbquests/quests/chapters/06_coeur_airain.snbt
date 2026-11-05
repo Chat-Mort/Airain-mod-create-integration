@@ -1,0 +1,278 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "06_coeur_airain"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "kubejs:coeur_d_airain" }
+	id: "793E4FE9A199F8DC"
+	order_index: 6
+	quests: [
+		{
+			dependencies: ["4C11C27421D7B2F4"]
+			id: "1C331299D7A13876"
+			rewards: [
+				{
+					xp: 500
+					id: "46533074AAD3E998"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:mechanical_crafter" }
+					count: 21L
+					id: "684DEA742E83C46E"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1C331299D7A13876"]
+			id: "1D6182D685EE0401"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "301901BE86A5A6D3"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "38D72615857E3A4E"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["1C331299D7A13876"]
+			id: "6FF5B231E6CCF065"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "25BBC11BF96EBC9B"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:precision_mechanism" }
+					count: 32L
+					id: "722E4C4C474F70C9"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:brass_casing" }
+					count: 64L
+					id: "7C99FDB244649AAF"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["6FF5B231E6CCF065"]
+			id: "1FCBD41B7D95520D"
+			rewards: [
+				{
+					xp: 300
+					id: "2DCDD803BD6CFFDD"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:heart_of_the_sea" }
+					count: 1L
+					id: "63A31065D7466619"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["1D6182D685EE0401"]
+			id: "65D3DED4428A3995"
+			rewards: [
+				{
+					xp: 500
+					id: "2DB696A3F2AD9731"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:fragment_rouages" }
+					count: 1L
+					id: "24D31B848C5C5969"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_marees" }
+					count: 1L
+					id: "1BDE0E2695E7BC9E"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_forge" }
+					count: 1L
+					id: "46BC62B05BADAA0A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_vide" }
+					count: 1L
+					id: "3B56D3083405FB25"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["65D3DED4428A3995", "1FCBD41B7D95520D"]
+			id: "2C3306FF10D176A1"
+			rewards: [
+				{
+					xp: 2000
+					id: "1A4B687D456F0D22"
+					type: "xp"
+				}
+			]
+			shape: "gear"
+			size: 1.75d
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:coeur_d_airain" }
+					count: 1L
+					id: "32EFA5BF8CAACEF4"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2C3306FF10D176A1"]
+			id: "11C988C0F5B9F881"
+			rewards: [
+				{
+					command: "locate structure cataclysm:ancient_factory"
+					permission_level: 2
+					silent: false
+					id: "511931B410E5A96B"
+					type: "command"
+				}
+				{
+					item: { count: 1, id: "minecraft:nether_star" }
+					id: "59D5B755498FB796"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					count: 2
+					id: "6A5455A68C18B2E5"
+					type: "item"
+				}
+			]
+			shape: "hexagon"
+			size: 2.0d
+			tasks: [
+				{
+					id: "2B7E0D8DECA7BD28"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["11C988C0F5B9F881"]
+			id: "308DA6D9FACBFFB4"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "561F0E9D6F68BA13"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:solid_shot" }
+					count: 128L
+					id: "5B7A581C3106C7CB"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createbigcannons:he_shell" }
+					count: 64L
+					id: "66F60C6C5F26FD3C"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["11C988C0F5B9F881"]
+			id: "7D567EF62083EB45"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "2FB7168A41D4205C"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:potion" }
+					count: 16L
+					id: "3C7B9D8FF5C67C36"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:golden_apple" }
+					count: 8L
+					id: "2BCC92B9A115A514"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["308DA6D9FACBFFB4", "7D567EF62083EB45"]
+			id: "1CB86E4CE793D650"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2B6540872CE63B04"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:cannon_mount" }
+					count: 3L
+					id: "26FB5C5543B2A565"
+					type: "item"
+				}
+				{
+					id: "2851688725755525"
+					type: "checkmark"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+	]
+}

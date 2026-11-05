@@ -1,0 +1,24 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": { "item": "minecraft:netherite_ingot" },
+  "loops": 1,
+  "results": [
+    { "id": "kubejs:plaque_netherite" }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        { "item": "kubejs:plaque_netherite_inachevee" },
+        { "item": "create:precision_mechanism" }
+      ],
+      "results": [ { "id": "kubejs:plaque_netherite_inachevee" } ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [ { "item": "kubejs:plaque_netherite_inachevee" } ],
+      "results": [ { "id": "kubejs:plaque_netherite_inachevee" } ]
+    }
+  ],
+  "transitional_item": { "id": "kubejs:plaque_netherite_inachevee" }
+}

@@ -1,0 +1,216 @@
+== reveil
+comprendre       (   0,   0)   Comprendre ce qui s'est pa <- 
+bienvenue        (   0,   2)   Règles de survie           <- comprendre
+outils           (   2,   0)   Des outils dignes de ce no <- comprendre
+surface          (   4,  -2)   Remonter à la surface      <- outils
+alliage          (   4,   0)   L'alliage d'andésite       <- outils
+roue             (   6,   0)   La première roue           <- alliage
+engrenages       (   8,   0)   Engrenages                 <- roue
+boitiers1        (   6,   2)   Boîtiers d'andésite        <- alliage
+meule            (   8,   2)   La meule                   <- boitiers1 engrenages
+tapis            (  10,   2)   Tapis et dépôt             <- meule
+moulin           (  12,   1)   Le moulin                  <- tapis
+q_alliage        (  10,   0)   Réserve d'alliage          <- engrenages
+cuir             (   2,   2)   Équipement de départ       <- outils
+village          (   4,   4)   Signes de vie              <- cuir
+ruines_piste     (   6,   4) o Les ruines enfouies        <- village
+atelier          (  14,   1)   Grand Chantier : le premie <- moulin q_alliage
+== andesite
+presse           (   0,   0)   La presse mécanique        <- atelier@reveil
+bureau_etudes    (   0,  -2)   Le bureau d'études         <- presse
+plaques          (   2,   0)   Plaques de fer             <- presse
+mixeur           (   2,  -2)   Le mixeur et le bassin     <- plaques
+ventilateur      (   4,  -2)   Le ventilateur             <- plaques
+outils_meca      (   4,   2)   Scie et perceuse           <- plaques
+goulottes        (   6,   2)   Goulottes et entonnoirs    <- outils_meca
+ferme            (   8,   2)   La ferme automatique       <- goulottes
+minerai          (   6,  -2)   La fonderie à ventilateur  <- ventilateur mixeur
+q_plaques        (   8,  -2)   Laminoir                   <- minerai
+armure_fer       (   4,   0)   L'armure de fer pressée    <- plaques
+arme_fer         (   6,   0)   Une vraie arme             <- armure_fer
+ruines_propres   (   8,   0)   Des ruines entretenues     <- arme_fer
+salles           (  10,   0)   Les salles d'épreuve       <- ruines_propres
+prepa2           (  10,   2)   Préparatifs                <- salles ferme
+presage          (  12,   0)   Le présage funeste         <- salles
+gardien_vent     (  14,   1)   Le gardien du vent         <- presage prepa2
+masse            (  14,   3) o Bonus : la masse d'armes   <- gardien_vent
+banque           (   2,   2) o La banque de l'Empire      <- plaques
+ars              (   0,   2) o L'Écho                     <- atelier@reveil
+== cuivre
+boitier_cuivre   (   0,   0)   Boîtier de cuivre          <- gardien_vent@andesite
+tuyaux           (   2,  -2)   Tuyauterie                 <- boitier_cuivre
+pompe            (   4,  -2)   La pompe mécanique         <- tuyaux
+reservoirs       (   2,   2)   Réservoirs                 <- boitier_cuivre
+bec              (   4,   2)   Bec verseur et égouttoir   <- reservoirs pompe
+banc             (   4,   4) o Le banc d'entretien        <- bec
+affutage         (   6,   4) o Le fil de la lame          <- banc
+vapeur           (   6,   2)   La machine à vapeur        <- bec
+q_cuivre         (   6,  -2)   Feuilles de cuivre         <- pompe
+forge            (   8,  -2)   Grand Chantier : la Forge  <- q_cuivre
+armure_diamant   (  10,  -2)   L'armure de diamant        <- forge
+plongee          (   8,   2)   L'équipement de plongée    <- vapeur
+inscriptions     (  10,   0)   Les inscriptions           <- plongee armure_diamant
+monument         (  12,   0)   Les ruines englouties      <- inscriptions
+prepa3           (  12,   2)   Préparatifs sous-marins    <- monument
+gardien_marees   (  14,   1)   Le gardien des marées      <- prepa3
+== ciel
+assembleur       (   0,   0)   L'assembleur physique      <- forge_ames@laiton
+helices          (   2,  -2)   Hélices                    <- assembleur
+ballon           (   2,   2)   Le ballon                  <- assembleur
+envol            (   4,   0)   Premier envol              <- helices ballon
+q_enveloppes     (   4,   2)   Chantier de toile          <- ballon
+navire           (   6,   0)   Le navire de guerre        <- envol
+station          (   4,  -2)   La station d'observation   <- envol
+naval            (   6,  -2)   Grand Chantier : le chanti <- envol
+end              (   8,   0)   Au-delà du portail         <- navire
+dragon           (  10,   0)   Le Gardien des Cieux       <- end
+cites            (  12,   0)   Les cités volantes         <- dragon
+jetpack          (  14,  -2)   Le jetpack                 <- cites
+atelier_ench     (   8,   2)   Grand Chantier : l'atelier <- envol
+mage             (  10,   2) o Robes d'Écho               <- atelier_ench
+prepa5           (  14,   2)   Préparatifs célestes       <- cites
+l_relais         (  16,   2)   La ligne rompue            <- l_refractaires@laiton
+bientot          (  16,   0)   Bientôt                    <- prepa5 jetpack l_relais
+citadelle        (  18,   0)   La citadelle en ruine      <- bientot
+fret             (   6,   2)   Le fret aérien             <- envol
+== coeur
+crafters21       (   0,   0)   La grille d'assemblage     <- citadelle@ciel
+salle            (   2,  -2)   La Salle du Cœur           <- crafters21
+mat_coeur        (   2,   2)   Les matériaux du Cœur      <- crafters21
+mer              (   4,   2)   Le cœur de la mer          <- mat_coeur
+memoires         (   4,  -2)   Les quatre mémoires        <- salle
+l_sanctuaire     (   4,   4)   Le journal d'Ada           <- l_relais@ciel
+forger           (   6,   0)   Forger le Cœur             <- memoires mer l_sanctuaire
+reactiver        (   8,   0)   Réactiver le Cœur          <- forger
+siege            (  10,  -1)   Préparer le siège          <- reactiver
+soins            (  10,   1)   La réserve de soins        <- reactiver
+remparts         (  12,   0)   Renforcer la base          <- siege soins
+== sacs
+sac1             (   0,   0)   Le premier sac             <- outils@reveil
+sac_cuivre       (   2,   0)   Sac de cuivre              <- sac1
+stock1           (   2,   2)   Tonneaux de l'Empire       <- sac1
+sac_fer          (   4,   0)   Sac de fer                 <- sac_cuivre plaques@andesite
+stock2           (   4,   2)   Le stockage s'organise     <- stock1
+sac_or           (   6,   0)   Sac d'or                   <- sac_fer boitier_cuivre@cuivre
+stock3           (   6,   2)   Liens de stockage          <- stock2
+sac_diamant      (   8,   0)   Sac de diamant             <- sac_or nether@laiton
+controleur       (   8,   2)   Le contrôleur de stockage  <- stock3 quartz@laiton
+sac_netherite    (  10,   0)   Sac de netherite           <- sac_diamant bastion@laiton
+sac_eternel      (  12,   0) o Bonus : le sac éternel     <- sac_netherite reactiver@coeur
+== commandes
+boutique         (   0,   0)   La boutique de l'Empire    <- bienvenue@reveil
+o_pain           (   2,  -3)   Commande : pain            <- boutique ferme@andesite
+o_alliage        (   4,  -3)   Commande : alliage         <- boutique q_alliage@reveil
+o_plaques        (   6,  -3)   Commande : plaques de fer  <- boutique q_plaques@andesite
+o_cuivre         (   8,  -3)   Commande : plaques de cuiv <- boutique q_cuivre@cuivre
+o_tuyaux         (   2,  -1)   Commande : tuyaux          <- boutique tuyaux@cuivre
+o_laiton         (   4,  -1)   Commande : laiton          <- boutique q_laiton@laiton
+o_precision      (   6,  -1)   Commande : mécanismes      <- boutique q_precision@laiton
+o_rails          (   8,  -1)   Commande : rails           <- boutique rails@laiton
+o_obus           (   2,   1)   Commande : boulets         <- boutique obus@laiton
+o_enveloppes     (   4,   1)   Commande : enveloppes      <- boutique q_enveloppes@ciel
+o_tubes          (   6,   1)   Commande : tubes électroni <- boutique quartz@laiton
+o_netherite      (   8,   1)   Commande : plaques de neth <- boutique netherite@laiton
+== ingenierie
+i_scierie        (   0,   0)   La scierie                 <- outils_meca@andesite
+i_cuisine        (   2,   0)   Cuisine au ventilateur     <- ventilateur@andesite
+i_tri            (   4,   0)   Le tri                     <- goulottes@andesite
+i_canne          (   0,   2)   Ferme à canne à sucre      <- ferme@andesite
+i_arbres         (   2,   2)   Ferme à arbres             <- i_scierie
+i_pierre         (   4,   2)   Générateur de pierre       <- outils_meca@andesite
+i_vapeur         (   6,   0)   La grande chaudière        <- blaze@laiton vapeur@cuivre
+i_entonnoirs     (   6,   2)   Entonnoirs de laiton       <- laiton@laiton quartz@laiton
+i_coffres        (   8,   0)   Coffres-forts              <- q_plaques@andesite
+i_gisement       (   8,   2)   Les gisements infinis      <- precision@laiton broyage@laiton
+== trains
+t_horaire        (   0,   0)   Les horaires               <- train@laiton
+t_portes         (   2,  -1)   Portes de train            <- t_horaire
+t_observateur    (   2,   1)   Observateurs de voie       <- t_horaire
+t_fret           (   4,   0)   Le train de marchandises   <- gare@laiton
+t_fluides        (   6,  -1)   Le train-citerne           <- t_fret
+t_triage         (   6,   1)   La gare de triage          <- t_fret
+t_long           (   8,   0)   La grande ligne            <- t_triage
+t_pneumatique    (   4,   3)   Grand Chantier : le réseau <- reseau@laiton
+t_tube           (   6,   3)   Le premier tube            <- t_pneumatique
+t_ligne          (   0,   3)   La ligne impériale         <- train@laiton
+== arsenal
+a_lance          (   0,  -2)   La lance                   <- arme_fer@andesite
+a_katana         (   2,  -2)   Le katana                  <- arme_fer@andesite
+a_claymore       (   4,  -2)   La claymore de diamant     <- armure_diamant@cuivre
+a_netherite      (   6,  -2)   Une arme de netherite      <- netherite@laiton bastion@laiton
+a_unique         (   8,  -2)   Une arme unique            <- a_netherite
+a_obus           (   0,   1)   Obus spéciaux              <- obus@laiton
+a_mortier        (   2,   1)   Le mortier                 <- a_obus
+a_silex          (   0,   5)   Le pistolet à silex        <- plaques@andesite
+a_revolver       (   2,   5)   Le revolver                <- a_silex crafter@laiton
+a_fusil          (   4,   5)   Le fusil à pompe           <- a_revolver
+a_gatling        (   6,   5)   La gatling                 <- a_fusil precision@laiton
+a_blazegun       (   8,   5)   Le lance-flammes à blaze   <- a_revolver blaze@laiton
+== arcanes
+ar_archebois     (   0,   0)   Les premiers murmures      <- a_ars_livre@laiton
+ar_bocal         (   2,   0)   Un bocal de source         <- ar_archebois
+ar_magebloom     (   4,   0)   La fleur des mages         <- ar_archebois
+ar_sourcelinks   (   2,   2)   Nourrir l'Écho             <- ar_bocal
+ar_relais        (   4,   2)   Des relais qui laissent pa <- ar_sourcelinks
+a_ars_table      (   0,   4)   La table du scribe         <- a_ars_livre@laiton
+ar_glyphes       (   2,   4)   Trois volontés             <- a_ars_table
+a_ars_appareil   (   0,   6)   L'appareil d'enchantement  <- a_ars_table
+ar_brasero       (   2,   6)   Le brasero rituel          <- a_ars_appareil
+ar_rituel        (   4,   6)   Ouvrir le ciel             <- ar_brasero
+ar_starbuncle    (   2,   8)   Le petit être jaune        <- a_ars_appareil
+ar_drygmy        (   4,   8)   Le Drygmy                  <- ar_starbuncle
+ar_whirlisprig   (   6,   8)   Le Whirlisprig             <- ar_starbuncle
+ar_wixie         (   8,   8)   Le Wixie                   <- ar_starbuncle
+ar_golem         (  10,   8)   Le golem d'améthyste       <- ar_starbuncle
+a_ars_apprenti   (   2,  10)   Le grimoire d'apprenti     <- a_ars_appareil
+ar_robe          (   4,  10)   La robe des Arcanes        <- a_ars_apprenti
+ar_fil           (   6,  10)   Un fil d'Écho              <- ar_robe
+a_ars_archimage  (   8,  10)   Le grimoire d'archimage    <- a_ars_apprenti
+ar_chasseur      (   2,  12)   Le chasseur                <- ar_glyphes
+ar_rodeur        (   4,  12)   Le rôdeur                  <- ar_chasseur
+ar_gardien       (   6,  12)   Le gardien wilden          <- ar_rodeur
+== exploration
+e_avantposte     (   0,   0)   Le camp réfractaire        <- outils@reveil
+e_pyramide       (   2,  -1)   Le temple du désert        <- outils@reveil
+e_epave          (   2,   1)   L'épave                    <- outils@reveil
+e_fortin         (   4,  -1)   Le fort souterrain         <- e_pyramide
+e_cite           (   4,   1)   La cité antique            <- e_epave
+e_forteresse     (   6,  -1)   La forteresse du Nether    <- nether@laiton
+e_manoir         (   6,   1) o La station de capsules     <- e_cite
+e_cite_meca      (   8,   2) o La cité mécanique          <- e_manoir
+e_donjons        (   8,   0)   Les donjons surgis         <- e_forteresse e_manoir
+e_archives       (  10,   1) o Les archives de l'Empire   <- e_avantposte
+e_traces         (  10,  -1) o Les traces du monde ancien <- e_fortin
+e_archiviste     (  12,   0) o L'Archiviste               <- e_archives e_traces
+e_front          (   2,   3) o Le front                   <- e_avantposte
+e_fuite          (   4,   3) o La route de la fuite       <- nether@laiton
+e_fondation      (   0,  -2) o La première fondation      <- outils@reveil
+h_grand          (   2,  -3) o Le grand étendard          <- e_fondation laiton@laiton
+h_murale         (   4,  -3) o La bannière murale         <- h_grand
+h_gabarit        (   6,  -3) o Le gabarit                 <- h_murale
+h_hissage        (   8,  -3) o Hisser les couleurs        <- h_murale
+h_pavoise        (  10,  -3) o Une base pavoisée          <- h_hissage h_gabarit
+r_ciel           (   0,   4) o Au-dessus de tout          <- outils@reveil
+r_abysses        (   2,   4) o Au fond du monde           <- outils@reveil
+r_toit           (   4,   4) o Le toit du Nether          <- nether@laiton
+r_vitesse        (   6,   4) o Pleine puissance           <- engrenages@reveil
+r_voyage         (   8,   4) o Le grand voyageur          <- cites@ciel
+== bestiaire
+b_araignee       (   0,   0) o L'araignée de bronze       <- nether@laiton
+b_sphere         (   2,   0) o La sphère                  <- nether@laiton
+b_gardienne      (   4,   0) o L'araignée gardienne       <- nether@laiton
+b_centurion      (   6,   0) o Le centurion               <- nether@laiton
+b_wroughtnaut    (   0,   2) o Le colosse de fer          <- nether@laiton
+b_golem          (   2,   2) o Le golem de l'End          <- nether@laiton
+b_rodeur         (   4,   2) o Le rôdeur                  <- nether@laiton
+b_veilleur       (   6,   2) o Le veilleur                <- nether@laiton
+b_socle          (   0,   4) o Le socle de l'Empire       <- nether@laiton
+b_trophees       (   2,   4) o La salle des trophées      <- b_socle
+== echos
+l_vael           (   4,   0)   Le rapport de Vael         <- l_relais@ciel
+l_essai          (   6,   0)   L'essai 41                 <- l_vael
+l_resonance      (   8,   2)   Résonance                  <- l_sanctuaire@coeur
+l_diapason       (   6,   2)   Le diapason                <- l_resonance
+l_grand_relais   (   4,   2)   Le Grand Relais            <- l_diapason
+l_choeur         (   2,   2)   Le Chœur des Égarés        <- l_grand_relais
+l_primordial     (   0,   2)   L'Écho primordial          <- l_choeur

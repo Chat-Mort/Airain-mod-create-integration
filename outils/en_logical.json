@@ -1,0 +1,314 @@
+{
+"ch:reveil.title": "&6I&r · The Awakening",
+"ch:reveil.subtitle": ["An empty world. Not a grave, not a skeleton."],
+"bienvenue.title": "Welcome to the Airain Empire",
+"bienvenue.subtitle": "Click here to begin",
+"bienvenue.desc": [
+"Long ago, the &6Airain Empire&r mastered a mechanical technology like no other.",
+"Then it vanished, overnight.",
+"",
+"Its ruins are still here, guarded by its old creations. Every guardian you defeat will give you back a piece of their knowledge.",
+"",
+"&ePlaying together:&r join the same team (/ftbteams) to share quest book progress.",
+"&eSchematics&r unlock the key machines. They are never consumed: keep them safe."
+],
+"outils.title": "Proper Tools",
+"outils.desc": ["The world is dangerous. Start by gearing up properly."],
+"journal1.title": "The Engineer's Journal",
+"journal1.desc": [
+"In a collapsed ruin, under mossy stones, you find a copper-bound notebook.",
+"Most pages are unreadable. Not the last ones.",
+"",
+"&6&lEngineer's Journal&r",
+"&oDay 412. The orders have come: everyone to the Core.&r",
+"&oI am leaving this journal for those who come after.&r",
+"&oWe are not leaving. &lWe are waiting.&r&o&r",
+"",
+"&8Strange: no graves anywhere nearby. No bones.&r"
+],
+"alliage.title": "Andesite Alloy",
+"alliage.desc": [
+"The basis of all Airain mechanics: &6andesite alloy&r.",
+"Andesite + iron (or zinc) nugget in a crafting table."
+],
+"roue.title": "The First Wheel",
+"roue.desc": [
+"Place a water wheel in a stream: your first source of rotational force.",
+"Wear the Engineer's Goggles to read speed and stress."
+],
+"engrenages.title": "Cogwheels",
+"engrenages.desc": [
+"Small and large cogwheels: combine them to change rotation speed.",
+"The faster it spins, the more stress it uses."
+],
+"ch:andesite.title": "&6II&r · The Andesite Age",
+"ch:andesite.subtitle": ["The first machines. And ruins that are strangely clean."],
+"boitier_andesite.title": "Andesite Casing",
+"boitier_andesite.desc": ["Apply andesite alloy to a stripped log to get a casing."],
+"presse.title": "The Mechanical Press",
+"presse.desc": ["The press flattens ingots into sheets. Essential for what comes next."],
+"mixeur.title": "Mixer and Basin",
+"mixeur.desc": ["A mixer above a basin combines ingredients. Later, with heat, it will work wonders."],
+"broyeur.title": "Grinding Stone",
+"broyeur.desc": ["The millstone grinds ores and gravel and doubles your ore yield."],
+"ventilateur.title": "The Encased Fan",
+"ventilateur.desc": ["A fan blowing through water washes items. Through fire, it smokes or smelts them."],
+"ruines_propres.title": "Well-Kept Ruins",
+"ruines_propres.desc": [
+"The more you explore, the more one detail bothers you: some ruins are &oclean&r.",
+"The mechanisms are oiled. The corridors, swept.",
+"",
+"Maybe the guardians are not malfunctioning. They are doing maintenance.",
+"&oBut for whom?&r",
+"",
+"&6&lEngineer's Journal&r",
+"&oThe copper sentinels will watch over the trial chambers.&r",
+"&oThey know what they are protecting.&r"
+],
+"salles_epreuve.title": "The Trial Chambers",
+"salles_epreuve.desc": [
+"Underground, halls of copper and tuff: the Empire's &6trial chambers&r.",
+"They are guarded. Be ready."
+],
+"gardien_vent.title": "The Wind Guardian",
+"gardien_vent.subtitle": "Unlocks the Copper Schematic",
+"gardien_vent.desc": [
+"The wind guardians protect the trial chambers. Defeat three of them.",
+"",
+"&eReward:&r the &6Copper Schematic&r, which unlocks the mechanical pump, the spout and the item drain.",
+"",
+"&8As it falls, the last guardian drops a shard of warm metal. A memory.&r"
+],
+"ch:cuivre.title": "&6III&r · The Copper Age",
+"ch:cuivre.subtitle": ["Fluids, the depths, and the inscriptions."],
+"boitier_cuivre.title": "Copper Casing",
+"boitier_cuivre.desc": ["Copper applied to a stripped log makes the casing for fluid machines."],
+"tuyaux.title": "Plumbing",
+"tuyaux.desc": ["Pipes carry water, lava and every fluid of the Empire."],
+"pompe.title": "The Mechanical Pump",
+"pompe.desc": [
+"Cogwheel + fluid pipe + &6Copper Schematic&r (not consumed).",
+"The pump moves fluids in the direction of rotation."
+],
+"reservoir.title": "Fluid Tanks",
+"reservoir.desc": ["Fluid tanks combine into large volumes."],
+"bec_verseur.title": "Spout and Item Drain",
+"bec_verseur.desc": ["The spout fills items, the item drain empties them. Both require the &6Copper Schematic&r."],
+"vapeur.title": "The Steam Engine",
+"vapeur.desc": ["&7Optional.&r A boiler made of fluid tanks, water and fire: a lot of power."],
+"inscriptions.title": "The Inscriptions",
+"inscriptions.desc": [
+"On the walls of a drowned ruin, inscriptions repeated hundreds of times:",
+"",
+"&o\"We sleep in the metal.\"&r",
+"&o\"The great transfer approaches.\"&r",
+"",
+"Still no graves. Where did the inhabitants go?",
+"",
+"&6&lEngineer's Journal&r",
+"&oThe tide guardians will keep the secret of the alloy.&r",
+"&oNo one must find it before the time comes.&r"
+],
+"monument.title": "The Sunken Ruins",
+"monument.desc": [
+"At the bottom of the ocean, a prismarine temple. The Empire hid the secret of brass here.",
+"&eBring water breathing potions, and use the pump to drain rooms.&r"
+],
+"gardien_marees.title": "The Tide Guardian",
+"gardien_marees.subtitle": "Unlocks the Brass Schematic",
+"gardien_marees.desc": [
+"An elder guardian watches over the temple.",
+"",
+"&eReward:&r the &6Brass Schematic&r, which unlocks the blaze burner. No heat, no brass."
+],
+"ch:laiton.title": "&6IV&r · The Brass Age",
+"ch:laiton.subtitle": ["The heart of the Empire's technology. And a hall full of empty capsules."],
+"bruleur.title": "The Blaze Burner",
+"bruleur.desc": [
+"Craft an empty blaze burner (with the &6Brass Schematic&r), then trap a blaze inside.",
+"Placed under a basin, it heats the mixer."
+],
+"laiton.title": "The Imperial Alloy",
+"laiton.desc": ["Copper + zinc in a heated basin: &6brass&r, the sacred metal of the Empire."],
+"boitier_laiton.title": "Brass Casing",
+"precision.title": "Precision Mechanism",
+"precision.desc": [
+"Sequenced assembly: a chain of deployers and presses that builds piece by piece.",
+"&eTip:&r open the recipe in EMI and hold W over a machine to watch its Ponder tutorial."
+],
+"bras.title": "The Mechanical Arm",
+"bras.desc": ["The arm moves items between machines. The deployer acts like a player."],
+"rails.title": "Laying Track",
+"rails.desc": ["The ruins are far apart. Time to connect the world."],
+"train.title": "The First Train",
+"train.desc": [
+"Controls, bogeys, assembly at a station: build a train and have it complete a full route.",
+"Tick the checkbox when your train runs on its own."
+],
+"capsules.title": "The Capsule Hall",
+"capsules.desc": [
+"Deep inside a ruin, a vast hall.",
+"Thousands of brass capsules, lined up. &lAll empty.&r",
+"",
+"Cables run out of them, all in the same direction: down.",
+"",
+"&6&lEngineer's Journal&r",
+"&oThe transfer has begun. We enter the metal one by one.&r",
+"&oI will be the last. I must finish this journal.&r"
+],
+"canons.title": "Imperial Artillery",
+"canons.desc": [
+"A Nether fortress guards the next secret. It will not fall to a sword.",
+"Build a complete cannon: mount, barrels, breech, powder charges and shot.",
+"&eTip:&r barrels are cast in molds, then bored out with the cannon drill."
+],
+"nether.title": "Into the Nether",
+"forge_ames.title": "The Soul Forge",
+"forge_ames.subtitle": "Unlocks the Sky Schematic",
+"forge_ames.desc": [
+"Deep in a soul forge sleeps a &cNetherite Monstrosity&r. It wakes when you approach.",
+"Bombard it, then finish the job.",
+"",
+"&eReward:&r the &6Sky Schematic&r, which unlocks the physics assembler and the propeller bearing: the key to flying ships."
+],
+"ch:ciel.title": "&6V&r · The Sky Age",
+"ch:ciel.subtitle": ["The Empire had flying cities."],
+"envol.title": "First Flight",
+"envol.desc": [
+"With Create Aeronautics, build your first flying machine and take off.",
+"The &6physics assembler&r (crafted with the Sky Schematic) turns your build into a vehicle.",
+"Tick the checkbox once you have flown above the clouds."
+],
+"navire_arme.title": "The Warship",
+"navire_arme.desc": [
+"Mount at least one cannon on your flying machine.",
+"The sky is not empty: things may get rough from here."
+],
+"end.title": "Beyond the Portal",
+"dragon.title": "The Gatekeeper",
+"dragon.desc": ["The dragon guards the way to the outer islands."],
+"cite_volante.title": "The Floating Cities",
+"cite_volante.desc": ["Towers hanging over the void. The architecture is strangely reminiscent of the Empire's."],
+"bientot.title": "Soon",
+"bientot.desc": [
+"Wherever you go, machines switch on by themselves. Gears turn with no power.",
+"",
+"The last journal entry is a single line, in a shaky hand:",
+"",
+"&6&lEngineer's Journal&r",
+"&oIt answered. It knows someone is coming.&r"
+],
+"citadelle.title": "The Ruined Citadel",
+"citadelle.subtitle": "The last fragment",
+"citadelle.desc": [
+"On the third floor of a ruined citadel in the End stands the &5Altar of Void&r. Approach it and the guardian awakens.",
+"",
+"&8It does not die screaming. It whispers: \"Soon.\"&r"
+],
+"ch:coeur.title": "&6VI&r · Airain's Core",
+"ch:coeur.subtitle": ["Gather the memories. Rekindle the Core."],
+"assembleurs.title": "The Mechanical Crafter",
+"assembleurs.desc": [
+"The Core is forged on a 5×5 grid of mechanical crafters: you need 21 of them.",
+"Connect them with the wrench so they work together."
+],
+"memoires.title": "The Four Memories",
+"memoires.desc": [
+"Gears, Tides, Forge, Void. Each of the four guardians gave you back a memory.",
+"Placed side by side, the fragments answer each other: their inscriptions form a single sentence.",
+"",
+"&o\"Give us back our Core.\"&r"
+],
+"forger.title": "Forge the Core",
+"forger.desc": [
+"Brass casings, precision mechanisms, a heart of the sea and the four fragments.",
+"Check the recipe in EMI for the layout."
+],
+"reactiver.title": "Reawaken the Core",
+"reactiver.subtitle": "&cThe twist&r",
+"reactiver.desc": [
+"You hold the Core in both hands. It pulses. It grows warm.",
+"And far beneath your feet, something answers.",
+"",
+"The journal opens by itself to a page that had stayed blank until now. Letters carve themselves into it, as if burned from within:",
+"",
+"&6&o\"Thank you.",
+"These pages, these guardians, these schematics: we placed them on your path.",
+"We needed living hands to rekindle the Core.",
+"We never vanished. We were waiting in the metal.",
+"Now we return. And this world becomes ours again.\"&r",
+"",
+"&cThe Airain Empire awakens.&r",
+"",
+"&8The reward shows you the direction of its cradle, and gives you the spark that will wake its master.&r"
+],
+"ch:reconquete.title": "&4VII&r · The Reconquest",
+"ch:reconquete.subtitle": ["The Empire is back. It wants its world."],
+"eveil.title": "The Empire Awakens",
+"eveil.desc": [
+"The ruins no longer sleep. Mechanisms turn, sentinels patrol.",
+"You gave the Empire back its Core. Now you must stop it.",
+"",
+"Everything you built, the factory, the trains, the warship, is about to matter."
+],
+"rempart.title": "Fortify the Base",
+"rempart.desc": ["Before you strike, protect what you have built: three cannon mounts around your base."],
+"berceau.title": "Cradle of the Empire",
+"berceau.desc": [
+"An &6ancient factory&r buried around Y -30. The Core showed you the way.",
+"This is where it all began. This is where it must end."
+],
+"sentinelle.title": "The Sentinel",
+"sentinelle.desc": ["A mechanical sentinel guards the factory. Bring it down to clear the way."],
+"etincelle.title": "The Spark",
+"etincelle.desc": [
+"The Emperor still sleeps inside his machine. A Nether Star is enough to wake him.",
+"The Core gave you one. If it is lost, you will have to defeat a Wither."
+],
+"empereur.title": "The Airain Emperor",
+"empereur.subtitle": "&4Final boss&r",
+"empereur.desc": [
+"At the center of the factory, a huge machine, motionless. The Emperor, fused with what he built.",
+"Right-click it with the Nether Star to wake him.",
+"",
+"&cHe is extremely dangerous.&r Gear up as best you can and fight together."
+],
+"epilogue.title": "Epilogue",
+"epilogue.desc": [
+"Silence returns. The Empire's machines stop one by one, for good this time.",
+"",
+"Airain's Core still pulses in your inventory. More gently.",
+"It answers to no one anymore. It is yours.",
+"",
+"&6Thank you for playing The Airain Empire.&r"
+],
+"ch:arsenal.title": "&3Side&r · Arsenal and Magic",
+"ch:arsenal.subtitle": ["Airain technology so advanced it looks like spells."],
+"a_table.title": "The Inscription Table",
+"a_table.desc": ["The Empire's &6scrolls&r are miniaturized circuits. The inscription table lets you engrave them into a spell book."],
+"a_journal.title": "First Spell Book",
+"a_essence.title": "Arcane Essence",
+"a_forge.title": "The Scroll Forge",
+"a_forge.desc": ["Craft your own spell scrolls."],
+"a_tome.title": "The Ironbound Tome",
+"a_mithril.title": "Mithril",
+"a_codex.title": "The Ancient Codex",
+"a_codex.desc": ["The ultimate spell book. A true mage of the Empire."],
+"ch:production.title": "&3Side&r · Production Challenges",
+"ch:production.subtitle": ["The Empire produced without rest. Do better."],
+"p_alliage.title": "A Thousand Alloys",
+"p_alliage.desc": ["Fully automate andesite alloy."],
+"p_plaques.title": "Rolling Mill",
+"p_laiton.title": "Brass Foundry",
+"p_precision.title": "Precision Line",
+"p_rails.title": "The Great Network",
+"ch:exploration.title": "&3Side&r · Exploration",
+"ch:exploration.subtitle": ["Mapping what the Empire left behind."],
+"e_cite.title": "The Ancient City",
+"e_cite.desc": ["A city swallowed by darkness. &cTotal silence recommended.&r"],
+"e_bastion.title": "The Bastion",
+"e_fortin.title": "The Stronghold",
+"e_pyramide.title": "The Desert Temple",
+"e_manoir.title": "The Woodland Mansion",
+"file.title": "The Airain Empire"
+}

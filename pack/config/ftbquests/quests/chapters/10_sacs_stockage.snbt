@@ -1,0 +1,322 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "10_sacs_stockage"
+	group: "2F4EAC3DE90A7B97"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "sophisticatedbackpacks:backpack" }
+	id: "42528709A15A648C"
+	order_index: 10
+	quests: [
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "50D4055059B84939"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:leather" }
+					count: 8
+					id: "47AD1E9204E1B953"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:backpack" }
+					count: 1L
+					id: "7B820E7DF7F83D42"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["50D4055059B84939"]
+			id: "76BF387EB0CFFC46"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 3
+					id: "38405EB3B6A4EA70"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:copper_backpack" }
+					count: 1L
+					id: "7D7BDBDE6B1D09DB"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:tool_swapper_upgrade" }
+					count: 1L
+					id: "232D3CCCE293848B"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["50D4055059B84939"]
+			id: "2CB5DA93642E7418"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 3
+					id: "3D2EFEC35FA39DB3"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedstorage:barrel" }
+					count: 4L
+					id: "1FB5AB3A40846F2B"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedstorage:chest" }
+					count: 2L
+					id: "4F55E4EBE6090437"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["76BF387EB0CFFC46", "4058125A46150053"]
+			id: "24CC53E36E5B5F0A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "7602ED9C978086AF"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:iron_backpack" }
+					count: 1L
+					id: "25E2FAD9E3432F28"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:pickup_upgrade" }
+					count: 1L
+					id: "3B0DAE3AA22572CA"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:stack_upgrade_tier_1" }
+					count: 1L
+					id: "27B12B0C3307FA4D"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["2CB5DA93642E7418"]
+			id: "49C49B3652FB243A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "433C268842CA900E"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedstorage:iron_barrel" }
+					count: 4L
+					id: "33A7D0FE153B56C1"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedstorage:storage_tool" }
+					count: 1L
+					id: "4BC8F14874BB72FD"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["24CC53E36E5B5F0A", "4FCBF12D61978F2E"]
+			id: "3BA0D7C84446401F"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "7EF43E67C65D09CB"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:gold_backpack" }
+					count: 1L
+					id: "5D7839FE7AAE9A7D"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:magnet_upgrade" }
+					count: 1L
+					id: "78E21C9DCA6C8673"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:feeding_upgrade" }
+					count: 1L
+					id: "6A0202DE78FAC408"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:refill_upgrade" }
+					count: 1L
+					id: "3E1B16BDE94996F8"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["49C49B3652FB243A"]
+			id: "62B49B400243E47C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "27CCF4C585A8367E"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedstorage:gold_chest" }
+					count: 2L
+					id: "697F064CABD8F171"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedstorage:storage_link" }
+					count: 4L
+					id: "40113565E97DA81A"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["3BA0D7C84446401F", "49E4BA6154AA295A"]
+			id: "6744DC79A58ED05B"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "2F0C8EE2D63E3BF0"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:diamond_backpack" }
+					count: 1L
+					id: "2D9A4DB5B748BC2A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:auto_smelting_upgrade" }
+					count: 1L
+					id: "6F9B26B1D02D1B00"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["62B49B400243E47C", "2AB864DB22E2AED6"]
+			id: "5A88FC3E3D161C0E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "6EA35C92C7B38D25"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedstorage:controller" }
+					count: 1L
+					id: "3217C896B65BE953"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["6744DC79A58ED05B", "30A89C3EB74F4D50"]
+			id: "1F033FEA83391D5C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "30F46C72C0F27875"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:netherite_backpack" }
+					count: 1L
+					id: "28D5286CC557844A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:tank_upgrade" }
+					count: 1L
+					id: "724EBADC25E1B31C"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["1F033FEA83391D5C", "11C988C0F5B9F881"]
+			id: "5C96E0E608B593DA"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "2B6D9891AD2FB3E7"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:everlasting_upgrade" }
+					count: 1L
+					id: "7C6F8F3D3E74C180"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "sophisticatedbackpacks:inception_upgrade" }
+					count: 1L
+					id: "55711B992681FCFB"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -1.0d
+		}
+	]
+}

@@ -1,0 +1,72 @@
+{
+ "plains": {
+  "Ciel": "#9FA8BE",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#839C55",
+  "Feuillage": "#70893E"
+ },
+ "desert": {
+  "Ciel": "#9AABBC",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#9D9953",
+  "Feuillage": "#8A853C"
+ },
+ "savanna": {
+  "Ciel": "#9AABBC",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#9D9953",
+  "Feuillage": "#8A853C"
+ },
+ "taiga": {
+  "Ciel": "#A1A8BF",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#7E9C6E",
+  "Feuillage": "#6C8C5C"
+ },
+ "snowy_plains": {
+  "Ciel": "#A3A7C0",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#7B9A7A",
+  "Feuillage": "#698868"
+ },
+ "forest": {
+  "Ciel": "#9FA8BE",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#769F55",
+  "Feuillage": "#628B40"
+ },
+ "swamp": {
+  "Ciel": "#9FA8BE",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#40675A",
+  "Herbe": "#65673E",
+  "Feuillage": "#65673E"
+ },
+ "jungle": {
+  "Ciel": "#9FA8BE",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#659E48",
+  "Feuillage": "#4C8F2B"
+ },
+ "cherry_grove": {
+  "Ciel": "#9FA8BE",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#3E7C8A",
+  "Herbe": "#9BB25A",
+  "Feuillage": "#9BB25A"
+ },
+ "badlands": {
+  "Ciel": "#9AABBC",
+  "Brouillard": "#C4C0BD",
+  "Eau": "#346586",
+  "Herbe": "#7C764E",
+  "Feuillage": "#84774F"
+ }
+}

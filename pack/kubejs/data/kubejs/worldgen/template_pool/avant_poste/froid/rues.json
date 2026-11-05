@@ -1,0 +1,50 @@
+{
+  "fallback": "kubejs:avant_poste/froid/fins",
+  "elements": [
+    {
+      "weight": 4,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/rue_rails",
+        "processors": "kubejs:avant_poste_rue",
+        "projection": "terrain_matching"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/rue_pavee",
+        "processors": "kubejs:avant_poste_rue",
+        "projection": "terrain_matching"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/rue_courte",
+        "processors": "kubejs:avant_poste_rue",
+        "projection": "terrain_matching"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/carrefour",
+        "processors": "kubejs:avant_poste_rue",
+        "projection": "terrain_matching"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/barricade",
+        "processors": "kubejs:avant_poste_rue",
+        "projection": "terrain_matching"
+      }
+    }
+  ]
+}

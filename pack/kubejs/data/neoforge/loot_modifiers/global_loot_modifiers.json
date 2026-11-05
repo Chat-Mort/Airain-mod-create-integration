@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "entries": [
+    "kubejs:vanilla_abandoned_mineshaft",
+    "kubejs:vanilla_simple_dungeon",
+    "kubejs:vanilla_desert_pyramid",
+    "kubejs:vanilla_jungle_temple",
+    "kubejs:vanilla_igloo_chest",
+    "kubejs:vanilla_shipwreck_supply",
+    "kubejs:vanilla_shipwreck_treasure",
+    "kubejs:vanilla_buried_treasure",
+    "kubejs:vanilla_underwater_ruin_big",
+    "kubejs:vanilla_underwater_ruin_small",
+    "kubejs:vanilla_stronghold_library",
+    "kubejs:vanilla_stronghold_corridor",
+    "kubejs:vanilla_stronghold_crossing",
+    "kubejs:vanilla_ancient_city",
+    "kubejs:vanilla_nether_bridge",
+    "kubejs:vanilla_bastion_bridge",
+    "kubejs:vanilla_bastion_other",
+    "kubejs:vanilla_bastion_treasure",
+    "kubejs:vanilla_bastion_hoglin_stable",
+    "kubejs:vanilla_end_city_treasure"
+  ]
+}

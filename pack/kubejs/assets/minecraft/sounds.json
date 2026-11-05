@@ -1,0 +1,242 @@
+{
+  "music.menu": {
+    "replace": true,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 1
+      }
+    ]
+  },
+  "music.game": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 12
+      }
+    ]
+  },
+  "music.creative": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 4
+      }
+    ]
+  },
+  "music.overworld.badlands": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 8
+      }
+    ]
+  },
+  "music.overworld.bamboo_jungle": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 6
+      }
+    ]
+  },
+  "music.overworld.cherry_grove": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 7
+      }
+    ]
+  },
+  "music.overworld.desert": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 5
+      }
+    ]
+  },
+  "music.overworld.flower_forest": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 6
+      }
+    ]
+  },
+  "music.overworld.forest": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 11
+      }
+    ]
+  },
+  "music.overworld.frozen_peaks": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 5
+      }
+    ]
+  },
+  "music.overworld.grove": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 6
+      }
+    ]
+  },
+  "music.overworld.jagged_peaks": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 7
+      }
+    ]
+  },
+  "music.overworld.jungle": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 7
+      }
+    ]
+  },
+  "music.overworld.meadow": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 4
+      }
+    ]
+  },
+  "music.overworld.old_growth_taiga": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 27
+      }
+    ]
+  },
+  "music.overworld.snowy_slopes": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 4
+      }
+    ]
+  },
+  "music.overworld.sparse_jungle": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 6
+      }
+    ]
+  },
+  "music.overworld.stony_peaks": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 7
+      }
+    ]
+  },
+  "music.overworld.swamp": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/main_theme",
+        "stream": true,
+        "weight": 2
+      }
+    ]
+  },
+  "music.nether.basalt_deltas": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/hells_guards",
+        "stream": true,
+        "weight": 6
+      }
+    ]
+  },
+  "music.nether.crimson_forest": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/hells_guards",
+        "stream": true,
+        "weight": 6
+      }
+    ]
+  },
+  "music.nether.nether_wastes": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/hells_guards",
+        "stream": true,
+        "weight": 5
+      }
+    ]
+  },
+  "music.nether.soul_sand_valley": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/hells_guards",
+        "stream": true,
+        "weight": 6
+      }
+    ]
+  },
+  "music.nether.warped_forest": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "kubejs:music/hells_guards",
+        "stream": true,
+        "weight": 1
+      }
+    ]
+  }
+}

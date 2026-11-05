@@ -1,0 +1,26 @@
+{
+  "structures": [
+    {
+      "structure": "kubejs:ruine_atelier",
+      "weight": 2
+    },
+    {
+      "structure": "kubejs:ruine_reservoir",
+      "weight": 1
+    },
+    {
+      "structure": "kubejs:ruine_conduite",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 26,
+    "separation": 10,
+    "salt": 1793462,
+    "exclusion_zone": {
+      "other_set": "kubejs:avant_postes",
+      "chunk_count": 4
+    }
+  }
+}

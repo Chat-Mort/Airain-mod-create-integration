@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "F F",
+    "FSF",
+    " G "
+  ],
+  "key": {
+    "F": {
+      "item": "kubejs:fragment_resonance"
+    },
+    "S": {
+      "item": "ars_nouveau:source_gem"
+    },
+    "G": {
+      "tag": "c:ingots/gold"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "kubejs:diapason_echo"
+  }
+}

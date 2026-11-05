@@ -1,0 +1,26 @@
+{
+  "values": [
+    "minecraft:tuff_bricks",
+    "minecraft:polished_tuff",
+    "minecraft:cut_sandstone",
+    "minecraft:smooth_sandstone",
+    "minecraft:stone_bricks",
+    "minecraft:polished_andesite",
+    "minecraft:mud_bricks",
+    "minecraft:packed_mud",
+    "minecraft:jungle_planks",
+    "minecraft:acacia_planks",
+    "minecraft:spruce_planks",
+    "minecraft:cobweb",
+    "minecraft:moss_carpet",
+    "minecraft:weathered_copper",
+    "minecraft:oxidized_copper",
+    "minecraft:weathered_cut_copper",
+    "create:weathered_iron_block",
+    "create:copper_bars",
+    "create:industrial_iron_window",
+    "create:weathered_copper_shingle_slab",
+    "create:oxidized_copper_shingle_slab",
+    "create:exposed_copper_shingle_slab"
+  ]
+}

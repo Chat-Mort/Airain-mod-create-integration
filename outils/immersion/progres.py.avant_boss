@@ -1,0 +1,168 @@
+"""Progrès vanilla renommés à la manière de l'Empire (FR / EN), et progrès impossibles masqués.
+Usage : python3 progres.py <dossier du pack>"""
+import json, os, sys, copy
+
+# clé : (titre FR, description FR, titre EN, description EN)
+P = {
+ # ---------------------------------------------------------------- histoire
+ "story.root": ("L'Empire d'Airain", "Le cœur et l'histoire de l'Empire", "The Airain Empire", "The heart and story of the Empire"),
+ "story.mine_stone": ("Premier coup de pioche", "Extraire de la pierre avec votre nouvelle pioche", "First Strike", "Mine stone with your new pickaxe"),
+ "story.upgrade_tools": ("Outillage de fortune", "Fabriquer une meilleure pioche", "Makeshift Tooling", "Craft a better pickaxe"),
+ "story.smelt_iron": ("Le fer de l'Empire", "Fondre un lingot de fer", "Iron of the Empire", "Smelt an iron ingot"),
+ "story.obtain_armor": ("Plaques d'acier", "Se protéger avec une pièce d'armure en fer", "Plated", "Protect yourself with a piece of iron armor"),
+ "story.lava_bucket": ("Métal en fusion", "Remplir un seau de lave", "Molten Stock", "Fill a bucket with lava"),
+ "story.iron_tools": ("Pioche d'ingénieur", "Améliorer votre pioche en fer", "Engineer's Pick", "Upgrade your pickaxe to iron"),
+ "story.deflect_arrow": ("Blindage", "Renvoyer un projectile avec un bouclier", "Armor Plating", "Deflect a projectile with a shield"),
+ "story.form_obsidian": ("Trempe à froid", "Obtenir un bloc d'obsidienne", "Cold Quench", "Obtain a block of obsidian"),
+ "story.mine_diamond": ("Pierres de précision", "Trouver des diamants", "Precision Stones", "Acquire diamonds"),
+ "story.enter_the_nether": ("Les forges d'en bas", "Construire, allumer et franchir un portail du Nether", "The Lower Forges", "Build, light and enter a Nether portal"),
+ "story.shiny_gear": ("Blindage de diamant", "L'armure de diamant sauve des vies", "Diamond Plating", "Diamond armor saves lives"),
+ "story.enchant_item": ("Écho gravé", "Enchanter un objet sur une table d'enchantement", "Engraved Echo", "Enchant an item at an enchanting table"),
+ "story.cure_zombie_villager": ("Médecin des disparus", "Affaiblir puis soigner un zombie villageois", "Doctor of the Lost", "Weaken and then cure a zombie villager"),
+ "story.follow_ender_eye": ("Le regard du Vide", "Suivre un œil de l'Ender", "The Void's Gaze", "Follow an eye of Ender"),
+ "story.enter_the_end": ("Aux portes du Vide", "Franchir le portail de l'End", "At the Void's Gates", "Enter the End portal"),
+ # ---------------------------------------------------------------- Nether
+ "nether.root": ("Le Nether", "Prévoyez des vêtements légers : les forges ne s'éteignent jamais", "The Nether", "Pack light clothes: the forges never go out"),
+ "nether.return_to_sender": ("Retour à l'envoyeur", "Abattre une âme sans repos avec sa propre boule de feu", "Return to Sender", "Destroy a Restless Soul with its own fireball"),
+ "nether.find_bastion": ("L'ancien temps", "Entrer dans les vestiges d'un bastion", "The Old Days", "Enter a bastion remnant"),
+ "nether.obtain_ancient_debris": ("Enfoui dans les profondeurs", "Obtenir des débris antiques", "Buried in the Depths", "Obtain ancient debris"),
+ "nether.fast_travel": ("Réseau souterrain", "Voyager de 7 km dans le monde normal en passant par le Nether", "Underground Network", "Use the Nether to travel 7 km in the Overworld"),
+ "nether.find_fortress": ("Forteresse des fondeurs", "Pénétrer dans une forteresse du Nether", "Smelters' Fortress", "Break your way into a Nether fortress"),
+ "nether.obtain_crying_obsidian": ("La pierre qui pleure", "Obtenir de l'obsidienne pleureuse", "The Weeping Stone", "Obtain crying obsidian"),
+ "nether.distract_piglin": ("L'or des forgerons", "Distraire des forgerons de l'abîme avec de l'or", "Smiths' Gold", "Distract Abyss Smiths with gold"),
+ "nether.ride_strider": ("Ce bateau a des jambes", "Chevaucher un arpenteur avec un champignon biscornu sur un bâton", "This Boat Has Legs", "Ride a strider with a warped fungus on a stick"),
+ "nether.uneasy_alliance": ("Alliance précaire", "Ramener une âme sans repos du Nether jusque dans le monde normal… puis l'abattre", "Uneasy Alliance", "Bring a Restless Soul safely home to the Overworld… and then kill it"),
+ "nether.loot_bastion": ("Pillage de forge", "Piller un coffre dans les vestiges d'un bastion", "Forge Raid", "Loot a chest in a bastion remnant"),
+ "nether.use_lodestone": ("Pôle magnétique", "Utiliser une boussole sur une magnétite", "Magnetic Pole", "Use a compass on a lodestone"),
+ "nether.netherite_armor": ("Blindage intégral", "Porter une armure complète en netherite", "Full Plating", "Get a full suit of netherite armor"),
+ "nether.get_wither_skull": ("Le masque du fondeur", "Obtenir le crâne d'un fondeur", "The Smelter's Mask", "Obtain a Smelter's skull"),
+ "nether.obtain_blaze_rod": ("Au cœur de la lanterne", "Prendre son bâton à une lanterne de forge", "Into the Lantern", "Relieve a Forge Lantern of its rod"),
+ "nether.charge_respawn_anchor": ("Neuf vies, ou presque", "Charger une ancre de réapparition au maximum", "Not Quite Nine Lives", "Charge a respawn anchor to the maximum"),
+ "nether.ride_strider_in_overworld_lava": ("Comme à la maison", "Faire une longue promenade en arpenteur sur un lac de lave du monde normal", "Feels Like Home", "Take a strider for a long ride on a lava lake in the Overworld"),
+ "nether.explore_nether": ("Tournée des fonderies", "Explorer tous les biomes du Nether", "Foundry Tour", "Explore all Nether biomes"),
+ "nether.summon_wither": ("Allumage du Triple Moteur", "Invoquer le Triple Moteur", "Igniting the Triple Engine", "Summon the Triple Engine"),
+ "nether.brew_potion": ("Laboratoire de campagne", "Préparer une potion", "Field Laboratory", "Brew a potion"),
+ "nether.create_beacon": ("Phare de l'Empire", "Construire et poser une balise", "Beacon of the Empire", "Construct and place a beacon"),
+ "nether.all_potions": ("Cocktail explosif", "Être sous l'effet de toutes les potions en même temps", "A Furious Cocktail", "Have every potion effect applied at the same time"),
+ "nether.create_full_beacon": ("Phare à pleine pression", "Amener une balise à pleine puissance", "Beacon at Full Pressure", "Bring a beacon to full power"),
+ "nether.all_effects": ("Mais comment en est-on arrivé là ?", "Être sous l'effet de tous les effets en même temps", "How Did We Get Here?", "Have every effect applied at the same time"),
+ # ---------------------------------------------------------------- End
+ "end.root": ("L'End", "Ou le commencement ?", "The End", "Or the beginning?"),
+ "end.kill_dragon": ("Les portes sont ouvertes", "Abattre le Gardien des portes", "The Gates Are Open", "Defeat the Gatekeeper"),
+ "end.dragon_egg": ("La relève", "Tenir l'œuf du Gardien des portes", "The Next Generation", "Hold the Gatekeeper's egg"),
+ "end.enter_end_gateway": ("Fuite par la passerelle", "Quitter l'île principale", "Gateway Escape", "Escape the island"),
+ "end.respawn_dragon": ("La fin… encore", "Rappeler le Gardien des portes", "The End… Again", "Respawn the Gatekeeper"),
+ "end.dragon_breath": ("Souffle en bouteille", "Recueillir le souffle du Gardien des portes dans une fiole", "Bottled Breath", "Collect the Gatekeeper's breath in a glass bottle"),
+ "end.find_end_city": ("La cité des tourelles", "Entrez donc, que pourrait-il arriver ?", "City of Turrets", "Go on in, what could happen?"),
+ "end.elytra": ("Ailes d'ingénieur", "Trouver des élytres", "Engineer's Wings", "Find elytra"),
+ "end.levitate": ("Belle vue d'en haut", "S'élever de 50 blocs sous les tirs d'une tourelle", "Great View From Up Here", "Levitate up 50 blocks from a Turret's shots"),
+ # ---------------------------------------------------------------- aventure
+ "adventure.root": ("Expéditions", "Exploration, aventure et combat", "Expeditions", "Exploration, adventure and combat"),
+ "adventure.voluntary_exile": ("Exil volontaire", "Abattre un capitaine de raid", "Voluntary Exile", "Kill a raid captain"),
+ "adventure.spyglass_at_parrot": ("C'est un oiseau ?", "Observer un perroquet à la longue-vue", "Is It a Bird?", "Look at a parrot through a spyglass"),
+ "adventure.kill_a_mob": ("Chasseur de machines", "Abattre un automate hostile", "Machine Hunter", "Kill any hostile automaton"),
+ "adventure.trade": ("Quelle affaire !", "Commercer avec un villageois", "What a Deal!", "Trade with a villager"),
+ "adventure.honey_block_slide": ("Situation collante", "Sauter sur un bloc de miel pour amortir sa chute", "Sticky Situation", "Jump into a honey block to break your fall"),
+ "adventure.ol_betsy": ("Première arbalète", "Tirer à l'arbalète", "First Crossbow", "Shoot a crossbow"),
+ "adventure.lightning_rod_with_villager_no_fire": ("Parafoudre", "Protéger un villageois de la foudre sans déclencher d'incendie", "Surge Protector", "Protect a villager from lightning without starting a fire"),
+ "adventure.fall_from_world_height": ("Essai de chute libre", "Tomber du sommet du monde jusqu'en bas, et survivre", "Free-Fall Trial", "Free fall from the top of the world to the bottom and survive"),
+ "adventure.salvage_sherd": ("Respect des vestiges", "Brosser un bloc suspect pour obtenir un tesson", "Respecting the Remnants", "Brush a suspicious block to obtain a pottery sherd"),
+ "adventure.avoid_vibration": ("Pas feutrés", "S'accroupir près d'un capteur sculk ou d'un gardien des profondeurs pour ne pas être repéré", "Muffled Steps", "Sneak near a sculk sensor or a Depths Warden to avoid detection"),
+ "adventure.sleep_in_bed": ("Repos de l'ingénieur", "Dormir dans un lit pour changer de point de réapparition", "Engineer's Rest", "Sleep in a bed to change your respawn point"),
+ "adventure.hero_of_the_village": ("Héros du village", "Défendre un village d'un raid", "Hero of the Village", "Defend a village from a raid"),
+ "adventure.spyglass_at_ghast": ("C'est un ballon ?", "Observer une âme sans repos à la longue-vue", "Is It a Balloon?", "Look at a Restless Soul through a spyglass"),
+ "adventure.throw_trident": ("Harpon perdu", "Lancer un harpon sur quelque chose.\nNote : jeter sa seule arme n'est pas une bonne idée.", "Lost Harpoon", "Throw a harpoon at something.\nNote: throwing away your only weapon is not a good idea."),
+ "adventure.kill_mob_near_sculk_catalyst": ("La contagion", "Abattre une créature près d'un catalyseur sculk", "The Contagion", "Kill a mob near a sculk catalyst"),
+ "adventure.shoot_arrow": ("En joue", "Toucher quelque chose avec un carreau", "Take Aim", "Shoot something with a bolt"),
+ "adventure.kill_all_mobs": ("Démantèlement complet", "Abattre un exemplaire de chaque automate hostile", "Full Dismantling", "Kill one of every hostile automaton"),
+ "adventure.totem_of_undying": ("Cœur de rechange", "Utiliser un cœur de secours pour tromper la mort", "Spare Parts", "Use a Spare Heart to cheat death"),
+ "adventure.summon_iron_golem": ("Main-d'œuvre", "Construire un golem de fer", "Hired Help", "Build an iron golem"),
+ "adventure.trade_at_world_height": ("Marchand des cimes", "Commercer avec un villageois à la hauteur maximale", "Star Trader", "Trade with a villager at the build height limit"),
+ "adventure.trim_with_all_exclusive_armor_patterns": ("Forgé avec style", "Appliquer au moins une fois les gabarits Flèche, Groin, Côte, Gardien, Silence, Vex, Marée et Éclaireur", "Smithing with Style", "Apply these smithing templates at least once: Spire, Snout, Rib, Ward, Silence, Vex, Tide, Wayfinder"),
+ "adventure.trim_with_any_armor_pattern": ("Nouvelle livrée", "Fabriquer une armure ornée à une table de forgeron", "New Livery", "Craft a trimmed armor at a smithing table"),
+ "adventure.two_birds_one_arrow": ("Deux dirigeables, un carreau", "Abattre deux dirigeables fantômes avec un carreau perforant", "Two Airships, One Bolt", "Kill two Ghost Airships with a piercing bolt"),
+ "adventure.whos_the_pillager_now": ("Qui pille qui ?", "Rendre la monnaie de sa pièce à un pillard", "Who's the Pillager Now?", "Give a pillager a taste of their own medicine"),
+ "adventure.arbalistic": ("Tir groupé", "Abattre cinq créatures différentes d'un seul tir d'arbalète", "Grouped Fire", "Kill five unique mobs with one crossbow shot"),
+ "adventure.adventuring_time": ("Cartographe impérial", "Découvrir tous les biomes", "Imperial Cartographer", "Discover every biome"),
+ "adventure.play_jukebox_in_meadows": ("Fanfare des prairies", "Animer une prairie avec la musique d'un jukebox", "Meadow Band", "Make the meadows come alive with the sound of music from a jukebox"),
+ "adventure.walk_on_powder_snow_with_leather_boots": ("Léger comme une plume", "Marcher sur de la neige poudreuse… sans s'y enfoncer", "Light as a Feather", "Walk on powder snow… without sinking in it"),
+ "adventure.spyglass_at_dragon": ("C'est un avion ?", "Observer le Gardien des portes à la longue-vue", "Is It a Plane?", "Look at the Gatekeeper through a spyglass"),
+ "adventure.very_very_frightening": ("Très, très effrayant", "Foudroyer un villageois", "Very Very Frightening", "Strike a villager with lightning"),
+ "adventure.sniper_duel": ("Duel de tireurs", "Abattre un arbalétrier à au moins 50 mètres", "Sharpshooters' Duel", "Kill a Crossbowman from at least 50 meters away"),
+ "adventure.bullseye": ("Dans le mille", "Toucher le centre d'une cible à au moins 30 mètres", "Bullseye", "Hit the bullseye of a target block from at least 30 meters away"),
+ "adventure.read_power_from_chiseled_bookshelf": ("Le savoir est une force", "Lire le signal d'une bibliothèque sculptée avec un comparateur", "Knowledge Is Power", "Read the power signal of a chiseled bookshelf using a comparator"),
+ "adventure.craft_decorated_pot_using_only_sherds": ("Restauration minutieuse", "Fabriquer un pot décoré avec 4 tessons", "Careful Restoration", "Make a decorated pot out of 4 pottery sherds"),
+ "adventure.brush_armadillo": ("Récolte d'écailles", "Brosser un tatou pour obtenir des écailles", "Scute Harvest", "Get armadillo scutes from an armadillo using a brush"),
+ "adventure.minecraft_trials_edition": ("Salle des épreuves", "Mettre les pieds dans une salle des épreuves", "Trial Hall", "Step foot in a trial chamber"),
+ "adventure.crafters_crafting_crafters": ("Automatisation de l'automatisation", "Être près d'un fabricant quand il fabrique un fabricant", "Automating Automation", "Be near a crafter when it crafts a crafter"),
+ "adventure.lighten_up": ("Coup de polish", "Gratter une ampoule en cuivre à la hache pour qu'elle brille davantage", "A Bit of Polish", "Scrape a copper bulb with an axe to make it brighter"),
+ "adventure.who_needs_rockets": ("Qui a besoin de fusées ?", "Se propulser de 8 blocs vers le haut avec une charge de vent", "Who Needs Rockets?", "Use a wind charge to launch yourself upward 8 blocks"),
+ "adventure.under_lock_and_key": ("Sous clé", "Ouvrir un coffre-fort avec une clé d'épreuve", "Under Lock and Key", "Unlock a vault with a trial key"),
+ "adventure.revaulting": ("Coffre funeste", "Ouvrir un coffre-fort funeste avec une clé funeste", "Ominous Vault", "Unlock an ominous vault with an ominous trial key"),
+ "adventure.blowback": ("Retour de souffle", "Abattre un gardien du vent avec sa propre charge de vent renvoyée", "Blowback", "Kill a Wind Guardian with a deflected wind charge"),
+ "adventure.overoverkill": ("Marteau-pilon", "Infliger 50 cœurs de dégâts en un seul coup de masse", "Steam Hammer", "Deal 50 hearts of damage in a single hit using the mace"),
+ # ---------------------------------------------------------------- élevage
+ "husbandry.root": ("Ravitaillement", "Le monde regorge d'amis et de provisions", "Supplies", "The world is full of friends and food"),
+ "husbandry.safely_harvest_honey": ("Récolte sous fumée", "Récolter du miel avec une fiole en apaisant les abeilles d'un feu de camp", "Smoked Harvest", "Use a campfire to collect honey from a beehive with a glass bottle without angering the bees"),
+ "husbandry.breed_an_animal": ("Élevage", "Faire se reproduire deux animaux", "Breeding", "Breed two animals together"),
+ "husbandry.allay_deliver_item_to_player": ("Coursier ailé", "Se faire livrer des objets par un allay", "Winged Courier", "Have an allay deliver items to you"),
+ "husbandry.ride_a_boat_with_a_goat": ("Chèvre à bord", "Monter en bateau avec une chèvre", "Goat on Board", "Get in a boat and float with a goat"),
+ "husbandry.tame_an_animal": ("Compagnon fidèle", "Apprivoiser un animal", "Loyal Companion", "Tame an animal"),
+ "husbandry.make_a_sign_glow": ("Enseigne lumineuse", "Faire briller le texte d'un panneau", "Glowing Sign", "Make the text of any kind of sign glow"),
+ "husbandry.fishy_business": ("Pêche à la ligne", "Attraper un poisson", "Line Fishing", "Catch a fish"),
+ "husbandry.silk_touch_nest": ("Déménagement de ruche", "Déplacer un nid d'abeilles avec 3 abeilles dedans grâce au Toucher de soie", "Hive Relocation", "Move a bee nest with 3 bees inside using Silk Touch"),
+ "husbandry.tactical_fishing": ("Pêche tactique", "Attraper un poisson… sans canne à pêche", "Tactical Fishing", "Catch a fish… without a fishing rod"),
+ "husbandry.wax_off": ("Décapage", "Retirer la cire d'un bloc de cuivre", "Stripping", "Scrape wax off a copper block"),
+ "husbandry.wax_on": ("Protection anticorrosion", "Cirer un bloc de cuivre avec un rayon de miel", "Corrosion Proofing", "Apply honeycomb to a copper block"),
+ "husbandry.plant_seed": ("Potager de campagne", "Planter une graine et la regarder pousser", "Field Garden", "Plant a seed and watch it grow"),
+ "husbandry.balanced_diet": ("Ration complète", "Manger tout ce qui se mange, même ce qui n'est pas bon pour vous", "Full Ration", "Eat everything that is edible, even if it's not good for you"),
+ "husbandry.breed_all_animals": ("Deux par deux", "Faire se reproduire tous les animaux", "Two by Two", "Breed all the animals"),
+ "husbandry.complete_catalogue": ("Catalogue complet", "Apprivoiser toutes les variantes de chat", "A Complete Catalogue", "Tame all cat variants"),
+ "husbandry.whole_pack": ("Toute la meute", "Apprivoiser une variante de chaque loup", "The Whole Pack", "Tame one of each wolf variant"),
+ "husbandry.netherite_hoe": ("Dévouement absolu", "Améliorer une houe avec un lingot de netherite… puis remettre en question vos choix de vie", "Serious Dedication", "Upgrade a hoe with a netherite ingot… then reevaluate your life choices"),
+ "husbandry.axolotl_in_a_bucket": ("Le plus mignon des prédateurs", "Attraper un axolotl dans un seau", "The Cutest Predator", "Catch an axolotl in a bucket"),
+ "husbandry.kill_axolotl_target": ("La force de l'amitié", "Gagner un combat aux côtés d'un axolotl", "The Power of Friendship", "Team up with an axolotl and win a fight"),
+ "husbandry.tadpole_in_a_bucket": ("Têtard en seau", "Attraper un têtard dans un seau", "Bucketed Tadpole", "Catch a tadpole in a bucket"),
+ "husbandry.leash_all_frog_variants": ("La bande des grenouilles", "Mettre une laisse à chaque variante de grenouille", "Frog Squad", "Get each frog variant on a lead"),
+ "husbandry.froglights": ("Lumières combinées", "Avoir toutes les grenoullumières dans son inventaire", "Combined Lights", "Have all froglights in your inventory"),
+ "husbandry.allay_deliver_cake_to_note_block": ("Joyeux anniversaire", "Faire déposer un gâteau près d'un bloc musical par un allay", "Birthday Song", "Have an allay drop a cake at a note block"),
+ "husbandry.obtain_sniffer_egg": ("Ça sent bon", "Obtenir un œuf de renifleur", "Smells Interesting", "Obtain a sniffer egg"),
+ "husbandry.feed_snifflet": ("Petit renifleur", "Nourrir un renifleur bébé", "Little Sniffs", "Feed a snifflet"),
+ "husbandry.plant_any_sniffer_seed": ("Planter le passé", "Planter une graine de renifleur", "Planting the Past", "Plant any sniffer seed"),
+ "husbandry.remove_wolf_armor": ("Démontage", "Retirer l'armure d'un loup avec des cisailles", "Dismantling", "Remove wolf armor from a wolf using shears"),
+ "husbandry.repair_wolf_armor": ("Comme neuf", "Réparer une armure de loup avec des écailles de tatou", "Good as New", "Repair a damaged wolf armor using armadillo scutes"),
+}
+# Progrès impossibles dans l'Empire : pas de villageois, de raids, de pillards ni de zombies villageois (voir la Bible).
+MASQUES = ["adventure.trade", "adventure.trade_at_world_height", "adventure.hero_of_the_village", "adventure.voluntary_exile",
+           "adventure.whos_the_pillager_now", "adventure.very_very_frightening", "adventure.lightning_rod_with_villager_no_fire",
+           "story.cure_zombie_villager"]
+# Mobs retirés de « Démantèlement complet » (sinon impossible à terminer)
+RETIRES = {"minecraft:evoker", "minecraft:pillager", "minecraft:ravager", "minecraft:vex", "minecraft:vindicator", "minecraft:witch", "minecraft:zombie_villager", "minecraft:illusioner"}
+
+def main(pack):
+    V = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "mcmeta-data", "data", "minecraft", "advancement")
+    A = os.path.join(pack, "kubejs", "assets", "minecraft", "lang")
+    D = os.path.join(pack, "kubejs", "data", "minecraft", "advancement")
+    for code, k in (("fr_fr", 0), ("en_us", 2)):
+        p = os.path.join(A, code + ".json"); j = json.load(open(p)) if os.path.exists(p) else {}
+        for cle, v in P.items():
+            j[f"advancements.{cle}.title"] = v[k]; j[f"advancements.{cle}.description"] = v[k + 1]
+        json.dump(j, open(p, "w"), ensure_ascii=False, indent=2)
+    # masquer : on garde le progrès (les autres peuvent en dépendre) mais sans affichage ni critère atteignable
+    for cle in MASQUES:
+        cat, nom = cle.split(".")
+        src = json.load(open(os.path.join(V, cat, nom + ".json")))
+        src.pop("display", None)
+        os.makedirs(os.path.join(D, cat), exist_ok=True)
+        json.dump(src, open(os.path.join(D, cat, nom + ".json"), "w"), indent=2)
+    # démantèlement complet : sans les humains retirés
+    src = json.load(open(os.path.join(V, "adventure", "kill_all_mobs.json")))
+    for c in list(src["criteria"]):
+        if c in RETIRES: del src["criteria"][c]
+    src["requirements"] = [[c] for c in src["criteria"]]
+    os.makedirs(os.path.join(D, "adventure"), exist_ok=True)
+    json.dump(src, open(os.path.join(D, "adventure", "kill_all_mobs.json"), "w"), indent=2)
+    print(len(P), "progrès renommés,", len(MASQUES), "masqués,", "démantèlement :", len(src["criteria"]), "automates")
+
+if __name__ == "__main__":
+    main(sys.argv[1])

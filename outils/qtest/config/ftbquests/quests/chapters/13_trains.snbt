@@ -1,0 +1,266 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "13_trains"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "create:controls" }
+	id: "6D69E3E3CC19B49C"
+	order_index: 13
+	quests: [
+		{
+			dependencies: ["5D4486926E02A87D"]
+			id: "2BF0E7162C817443"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "30897D6568A8EB7A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:schedule" }
+					count: 1L
+					id: "2D8ED2AC13310C86"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2BF0E7162C817443"]
+			id: "4AC816ED3CDE8C53"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "6729D6E6D6FD3424"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:train_door" }
+					count: 4L
+					id: "2FDCDA1FBD65B07D"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["2BF0E7162C817443"]
+			id: "2D3AA9AFE58CD8BE"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "49B390A197AA07B1"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:track_observer" }
+					count: 2L
+					id: "577A4C8A421CF945"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["72573259B6EDF8F7"]
+			id: "131E638BEA368FF3"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2333C898B44C2E88"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:portable_storage_interface" }
+					count: 2L
+					id: "4E8F8A7A2761F104"
+					type: "item"
+				}
+				{
+					id: "2C090F15C189EF52"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["131E638BEA368FF3"]
+			id: "573BB19942AFDDDC"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "38178052CD51BB53"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:portable_fluid_interface" }
+					count: 2L
+					id: "4C59ACE2F76D41D5"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["131E638BEA368FF3"]
+			id: "2D44DCFA9C18E918"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "4327CB2C938E162F"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "42A88D9AC7329613"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["2D44DCFA9C18E918"]
+			id: "193619FED2D8E2B8"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "28361B5940F47E83"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:track" }
+					count: 1024L
+					id: "18D8974550FDE960"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2F130DA613E8FEE3"]
+			id: "249F3A050A5A2692"
+			rewards: [
+				{
+					command: "tag @s add airain_pneumatique"
+					permission_level: 2
+					silent: true
+					id: "43863E57EDF78F2B"
+					type: "command"
+				}
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "5D9F8C2E0E2EC4BD"
+					type: "item"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_sheet" }
+					count: 64L
+					consume_items: true
+					id: "61DD134D9E491969"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:smart_chute" }
+					count: 8L
+					consume_items: true
+					id: "10E4A0D81E9BE7B8"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "create:precision_mechanism" }
+					count: 4L
+					consume_items: true
+					id: "4C196BEF64E1BEC4"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["249F3A050A5A2692"]
+			id: "3EA8884EEA45169F"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "70C479BF2ACE2795"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create_hypertube:hypertube_entrance" }
+					count: 2L
+					id: "46AA7DD580717D26"
+					type: "item"
+				}
+				{
+					id: "423B0F148F830B56"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["5D4486926E02A87D"]
+			id: "7FB1F721F1B934FC"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "56D63546B11EC35A"
+					type: "item"
+				}
+				{
+					xp: 500
+					id: "3BEC8D9E9DD36CA7"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:cite_mecanique"
+					id: "732F9A880672A80D"
+					type: "structure"
+				}
+				{
+					id: "43B4570673B9D1AA"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: 3.0d
+		}
+	]
+}

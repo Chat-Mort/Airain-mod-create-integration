@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:woodland_mansion",
+  "biomes": "#kubejs:aucun",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}

@@ -1,0 +1,14 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/desert/centre_fontaine",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

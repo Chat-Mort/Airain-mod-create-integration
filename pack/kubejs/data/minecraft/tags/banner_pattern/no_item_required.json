@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "kubejs:roue_couronnee",
+    "kubejs:eclat_echo",
+    "kubejs:bordure_fine",
+    "kubejs:franges"
+  ]
+}

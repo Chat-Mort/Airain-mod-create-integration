@@ -1,0 +1,1698 @@
+
+######## &6I&r · Le Réveil — Un monde vide. Pas une tombe, pas un squelette.
+
+[comprendre] Comprendre ce qui s'est passé  <- 
+  T: gamestage:"airain_journal_lu"
+  R: item:{ count: 1, id: "create:goggles" }; item:{ count: 1, id: "create:wrench" }; item:{ count: 1, id: "airain:codex" }; item:{ count: 1, id: "airain:engineers_manual" }; item:{ count: 1, id: "airain:chronicles" }; item:{ count: 1, id: "minecraft:bread" }x16; item:{ count: 1, id: "minecraft:torch" }x32; command:"airain chronique recit reveil"
+  S: Lisez le journal de l'ingénieur
+  D: Vous vous réveillez dans une salle sans aucun souvenir. Une lampe grésille, une horloge s'est arrêtée. Sur la table, un carnet attend qu'on l'ouvre. / Cherchez des indices : le carnet de l'ingénieur raconte ce qui s'est passé ici. /  / &8La quête se valide en refermant le carnet, à la dernière page.&r
+
+[bienvenue] Règles de survie  <- comprendre
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:bevel" }x2
+  S: 
+  D: &eÀ deux :&r rejoignez la même équipe (/ftbteams party create, puis invite) pour partager le livre. / &eLes Schémas&r et &eles Sceaux&r débloquent les machines clés. Ils ne sont jamais consommés. / &eChaque joueur&r doit réclamer lui-même les récompenses qui ouvrent un portail ou un chantier. / &eLe comptoir&r du laboratoire échange vos pièces contre ce qu'on ne trouve nulle part. Payez avec les pièces exactes, ou par carte (quête « La banque de l'Empire »).
+
+[outils] Des outils dignes de ce nom  <- comprendre
+  T: item:{ count: 1, id: "minecraft:iron_pickaxe" }
+  R: item:{ count: 1, id: "minecraft:iron_ingot" }x8
+  S: 
+  D: L'Empire a laissé ses machines, pas ses outils. Il faudra commencer comme ses premiers ingénieurs : à la main. / Les outils et l'épée de fer se fabriquent toujours à l'établi. Les autres armes et les armures passeront par les machines : la presse, puis la forge.
+
+[surface] Remonter à la surface  <- outils
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:bevel" }x2; command:"airain chronique recit surface"
+  S: 
+  D: Le laboratoire reste votre base. Dehors, le monde est vide : pas une tombe, pas un squelette. Comme si tout le monde était parti en même temps. / Repérez l'eau courante pour une roue, l'andésite pour l'alliage, et les ruines à l'horizon. / Validez quand vous avez exploré les alentours.
+
+[alliage] L'alliage d'andésite  <- outils
+  T: item:{ count: 1, id: "create:andesite_alloy" }
+  R: xp:50
+  S: 
+  D: Tout ce que l'Empire a construit commence ici : un métal gris, solide, humble. / Andésite + pépite de fer ou de zinc, à l'établi. Bientôt, le mixeur le fera pour vous, par piles entières.
+
+[roue] La première roue  <- alliage
+  T: item:{ count: 1, id: "create:water_wheel" }; item:{ count: 1, id: "create:shaft" }
+  R: item:{ count: 1, id: "create:cogwheel" }x4
+  S: 
+  D: La première roue de l'Empire tournait dans un ruisseau, derrière la maison de son fondateur. On la montre encore aux enfants. / Une roue à eau dans un courant : votre première force mécanique. Les arbres la transmettent. Portez les lunettes pour lire vitesse et contrainte.
+
+[engrenages] Engrenages  <- roue
+  T: item:{ count: 1, id: "create:cogwheel" }; item:{ count: 1, id: "create:large_cogwheel" }
+  R: xp:80
+  S: 
+  D: Un ingénieur de l'Empire ne disait pas « plus vite » : il disait « quel rapport ? ». / Petit et grand engrenage : en les combinant, on double ou on divise la vitesse. Plus vite, c'est aussi plus de contrainte : les lunettes montrent ce que la source peut encore fournir.
+
+[boitiers1] Boîtiers d'andésite  <- alliage
+  T: item:{ count: 1, id: "create:andesite_casing" }
+  R: xp:80
+  S: 
+  D: Une machine nue s'use vite. L'Empire habillait tout. / Alliage d'andésite appliqué sur un tronc écorcé, à la main ou plus tard au déployeur. Le boîtier sert à fabriquer presse, perceuse, ventilateur et la plupart des machines du chapitre suivant.
+
+[meule] La meule  <- boitiers1, engrenages
+  T: item:{ count: 1, id: "create:millstone" }
+  R: xp:100
+  S: 
+  D: Le premier moulin de l'Empire ne moulait que du grain. Le reste est venu après. / La meule broie gravier, fleurs, céréales… Farine, silex et colorants sans effort. Les lunettes montrent ce qu'elle est en train de moudre.
+
+[tapis] Tapis et dépôt  <- meule
+  T: item:{ count: 1, id: "create:belt_connector" }; item:{ count: 1, id: "create:depot" }
+  R: xp:100
+  S: 
+  D: Les ateliers de l'Empire ne se traversaient pas à pied : tout y roulait. / Le tapis roulant (fait de varech séché) relie deux arbres et transporte les objets entre les machines. Le dépôt garde un objet sous une machine, le temps qu'elle travaille.
+
+[moulin] Le moulin  <- tapis
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:bevel" }x4; xp:150
+  S: 
+  D: Votre premier atelier : une seule source, plusieurs machines, et rien à faire à la main. / Construisez un moulin qui alimente en même temps une meule, un tapis roulant et un dépôt. Validez la coche quand tout tourne.
+
+[q_alliage] Réserve d'alliage  <- engrenages
+  T: item:{ count: 1, id: "create:andesite_alloy" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x2
+  S: 
+  D: L'alliage est le pain des machines. Il en faudra beaucoup, et longtemps. / Faites-en une réserve. Un mixeur, au chapitre suivant, saura bientôt le produire pour vous.
+
+[cuir] Équipement de départ  <- outils
+  T: item:{ count: 1, id: "minecraft:iron_sword" }
+  R: item:{ count: 1, id: "minecraft:bread" }x8
+  S: 
+  D: Une épée de fer, forgée à la main avec les lingots du laboratoire : avec la pioche, c'est tout ce qu'il faut pour sortir. / L'armure de fer arrivera au chapitre II, avec la presse.
+
+[village] Signes de vie  <- cuir
+  T: structure:"#kubejs:avant_postes"
+  R: item:{ count: 1, id: "numismatics:bevel" }x4; command:"airain chronique recit avant_poste"
+  S: 
+  D: Trouvez un avant-poste de l'Empire. Personne ne vous y attend, mais ses machines fonctionnent encore : on y achète ce qui manque contre des pièces. / Une salle y est restée scellée. Revenez quand vous aurez le bon Schéma.
+
+[ruines_piste] Les ruines enfouies (opt) <- village
+  T: structure:"minecraft:trail_ruins"
+  R: item:{ count: 1, id: "minecraft:brush" }; item:{ count: 1, id: "numismatics:bevel" }x2
+  S: 
+  D: &7Optionnel.&r Des ruines à moitié enterrées, plus anciennes que l'Empire lui-même. Ses archéologues les fouillaient déjà. / Un pinceau sur le sable ou le gravier suspect révèle ce que la terre cache : poteries, gabarits, et parfois mieux.
+
+[atelier] Grand Chantier : le premier atelier  <- moulin, q_alliage
+  T: item:{ count: 1, id: "create:andesite_alloy" }; item:{ count: 1, id: "create:andesite_casing" }
+  R: item:{ count: 1, id: "minecraft:iron_block" }x2; item:{ count: 1, id: "numismatics:sprocket" }x2; xp:300; command:"airain chronique recit atelier"
+  S: Ouvre le chapitre II
+  D: Le premier atelier impérial est là, sous la poussière. Il ne demande que des matériaux pour reprendre vie. / Livrez les matériaux : ils sont consommés. En échange, de quoi fabriquer votre première presse, et la suite du chapitre.
+
+######## &6II&r · L'Âge de l'Andésite — Les premières machines. Et des ruines étrangement propres.
+
+[presse] La presse mécanique  <- atelier@reveil
+  T: item:{ count: 1, id: "create:mechanical_press" }
+  R: xp:150
+  S: 
+  D: Le bruit de la presse était celui des cités de l'Empire : un battement, jour et nuit. / Bloc de fer + boîtier d'andésite. La presse aplatit les lingots en plaques : tout le chapitre en dépend. Posée au-dessus d'un bassin, elle sert aussi à compacter.
+
+[bureau_etudes] Le bureau d'études  <- presse
+  T: item:{ count: 1, id: "create:schematic_table" }; item:{ count: 1, id: "create:schematicannon" }
+  R: command:"give @s airain:blueprint[minecraft:custom_data={p; item:{ count: 1, id: "minecraft:gunpowder" }x16
+  S: 
+  D: Les ingénieurs de l'Empire ne montaient jamais une machine deux fois à la main : ils dessinaient un plan, et le canon le posait. / Les &6bureaux d'études&r des avant-postes vendent des &6plans de l'Empire&r (moulin à vent, centrale à roues, meunerie…). Clic droit sur un plan : il devient un schéma. / Posez le schéma au sol (clic droit pour le placer, il apparaît en fantôme), puis donnez-le au &6canon à schémas&r avec de la poudre à canon et un coffre de matériaux à côté : il construit tout seul. / &8Le pack doit contenir son dossier « schematics » (voir le LISEZMOI).&r
+
+[plaques] Plaques de fer  <- presse
+  T: item:{ count: 1, id: "create:iron_sheet" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x3
+  S: 
+  D: L'Empire était bâti de tôle. Chaque machine, chaque coque, chaque armure commence par une plaque. / Posez les lingots sur un dépôt ou un tapis, sous la presse : elle les aplatit un par un. Gardez-en d'avance, le reste du chapitre en dévore.
+
+[mixeur] Le mixeur et le bassin  <- plaques
+  T: item:{ count: 1, id: "create:mechanical_mixer" }; item:{ count: 1, id: "create:basin" }
+  R: xp:150
+  S: 
+  D: Les alchimistes avaient leurs chaudrons. Les ingénieurs ont eu le mixeur. / Le mixeur au-dessus d'un bassin mélange les ingrédients. Automatisez l'alliage d'andésite avec : un entonnoir pour remplir, un autre pour vider.
+
+[ventilateur] Le ventilateur  <- plaques
+  T: item:{ count: 1, id: "create:encased_fan" }
+  R: xp:150
+  S: 
+  D: Un ventilateur, de l'eau, du feu : la moitié des ateliers de l'Empire tenait là-dedans. / Soufflé à travers l'eau : lavage. À travers le feu : cuisson. À travers la lave : fonte. Les objets doivent passer devant, au sol ou sur un tapis.
+
+[outils_meca] Scie et perceuse  <- plaques
+  T: item:{ count: 1, id: "create:mechanical_saw" }; item:{ count: 1, id: "create:mechanical_drill" }
+  R: xp:150
+  S: 
+  D: Plus personne pour couper le bois et creuser les galeries ? Les machines n'ont jamais eu besoin de personne. / La scie coupe le bois et taille les planches, la perceuse brise ce qu'elle a devant elle. Montées sur un engin mobile, elles abattent et creusent sans fatigue.
+
+[goulottes] Goulottes et entonnoirs  <- outils_meca
+  T: item:{ count: 1, id: "create:chute" }; item:{ count: 1, id: "create:andesite_funnel" }
+  R: xp:100
+  S: 
+  D: Les ateliers de l'Empire ne portaient rien à la main : tout tombait, glissait, filait d'une machine à l'autre. / Une &6goulotte&r laisse tomber les objets vers le bas, d'étage en étage. Un &6entonnoir&r les prend dans un coffre ou les dépose sur un tapis ; une clé inverse son sens. / &8Un filtre posé sur l'entonnoir choisit ce qui passe.&r
+
+[ferme] La ferme automatique  <- goulottes
+  T: item:{ count: 1, id: "create:mechanical_harvester" }; item:{ count: 1, id: "minecraft:bread" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }; xp:200
+  S: 
+  D: Les greniers de l'Empire ne désemplissaient jamais. Personne ne se souvient avoir vu un paysan. / Une moissonneuse sur un engin qui va et vient récolte et replante. Le pain servira de provisions, et la boutique en achète.
+
+[minerai] La fonderie à ventilateur  <- ventilateur, mixeur
+  T: item:{ count: 1, id: "minecraft:iron_ingot" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2; xp:300
+  S: 
+  D: Le fer brut sur un tapis roulant, un ventilateur soufflant à travers la lave : des lingots à la chaîne, sans four. Validez quand la ligne tourne sans vous. / &8Les roues de broyage, plus rentables, arriveront au chapitre IV.&r
+
+[q_plaques] Laminoir  <- minerai
+  T: item:{ count: 1, id: "create:iron_sheet" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: Un laminoir digne de ce nom ne s'arrête jamais. / Une presse au-dessus d'un tapis qui défile, nourri par entonnoir : les plaques s'empilent seules. Elles serviront pour l'armure, les hélices, les goulottes et les commandes de l'Empire.
+
+[armure_fer] L'armure de fer pressée  <- plaques
+  T: item:{ count: 1, id: "minecraft:iron_helmet" }; item:{ count: 1, id: "minecraft:iron_chestplate" }; item:{ count: 1, id: "minecraft:iron_leggings" }; item:{ count: 1, id: "minecraft:iron_boots" }
+  R: xp:250
+  S: 
+  D: Les gardes de l'Empire ne portaient pas de fer forgé : leur armure sortait de la presse, pièce par pièce. / Les armures de fer se fabriquent avec des &6plaques de fer&r au lieu des lingots.
+
+[arme_fer] Une vraie arme  <- armure_fer
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: Une épée de fer, c'est bien. L'arsenal de l'Empire avait mieux. / Forgez une arme de fer de Simply Swords (épée longue, katana, lance…). Elles demandent aussi des plaques. Validez quand c'est fait. / &8Le chapitre « Arsenal et Écho » détaille toutes les armes.&r
+
+[ruines_propres] Des ruines entretenues  <- arme_fer
+  T: checkmark:
+  R: item:{ count: 1, id: "minecraft:golden_carrot" }x8; command:"airain chronique recit entretien"
+  S: 
+  D: Certaines ruines sont &opropres&r. Les mécanismes sont huilés, les couloirs balayés. Les gardiens ne sont peut-être pas déréglés… / &oMais pour qui font-ils la maintenance ?&r /  / &6&lJournal d'ingénieur&r / &oLes sentinelles de cuivre veilleront sur les salles d'épreuve.&r
+
+[salles] Les salles d'épreuve  <- ruines_propres
+  T: structure:"minecraft:trial_chambers"; item:{ count: 1, id: "minecraft:trial_key" }
+  R: xp:300
+  S: 
+  D: Sous terre, des salles de cuivre et de tuf. L'Empire y éprouvait ses soldats ; elles continuent sans eux. / Videz quelques générateurs d'épreuve pour récupérer des clés : elles ouvrent les coffres-forts des salles.
+
+[prepa2] Préparatifs  <- salles, ferme
+  T: item:{ count: 1, id: "minecraft:shield" }; item:{ count: 1, id: "minecraft:arrow" }; item:{ count: 1, id: "minecraft:bread" }
+  R: item:{ count: 1, id: "minecraft:cooked_beef" }x16
+  S: 
+  D: L'épreuve funeste ne pardonne pas. Les vétérans de l'Empire n'y descendaient jamais les mains vides. / Bouclier, flèches et provisions. Le gardien du vent frappe de loin et renvoie les projectiles : le bouclier compte plus que l'arc.
+
+[presage] Le présage funeste  <- salles
+  T: item:{ count: 1, id: "minecraft:ominous_bottle" }
+  R: xp:200; command:"airain chronique recit refractaires"
+  S: 
+  D: Les Réfractaires, ceux qui ont refusé le Transfert, vivent dans des camps de fortune. Environ un camp sur trois tient un étal qui vend la &6fiole funeste&r. / Buvez-la avant d'entrer dans une salle d'épreuve : elle devient funeste.
+
+[gardien_vent] Le gardien du vent  <- presage, prepa2
+  T: item:{ count: 1, id: "minecraft:ominous_trial_key" }; kill:"minecraft:breeze"
+  R: item:{ count: 1, id: "kubejs:schema_cuivre" }; item:{ count: 1, id: "kubejs:fragment_rouages" }; item:{ count: 1, id: "numismatics:cog" }; xp:800; command:"airain chronique recit gardien_vent"
+  S: Débloque le Schéma du Cuivre
+  D: Obtenez une &6clé funeste&r et abattez 10 gardiens de vent. /  / &eRécompense :&r le &6Schéma du Cuivre&r (pompe, bec verseur, égouttoir). / &8En tombant, le dernier gardien laisse échapper un éclat de métal tiède. Un souvenir.&r
+
+[masse] Bonus : la masse d'armes (opt) <- gardien_vent
+  T: item:{ count: 1, id: "minecraft:heavy_core" }; item:{ count: 1, id: "minecraft:mace" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: &7Optionnel.&r La masse des gardes d'élite : plus on tombe de haut, plus elle frappe fort. / Le noyau lourd tombe rarement des coffres funestes. Il faut aussi une tige de breeze pour l'assembler.
+
+[banque] La banque de l'Empire (opt) <- plaques
+  T: item:{ count: 1, id: "numismatics:white_card" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: Quête secondaire : payer par carte
+  D: &7Optionnel.&r Les distributeurs demandent les pièces exactes et ne rendent pas la monnaie. La banque règle ce problème. /  / 1. Fabriquez une &6carte bancaire&r : plaque de fer, plaque d'or et colorant blanc. / 2. Clic droit avec la carte en main : elle se lie à votre compte. / 3. Déposez vos pièces au &6terminal bancaire&r du comptoir. / 4. Achetez aux distributeurs en tenant la carte : la valeur totale est débitée, quelles que soient vos pièces.
+
+[ars] L'Écho (opt) <- atelier@reveil
+  T: item:{ count: 1, id: "minecraft:amethyst_shard" }; item:{ count: 1, id: "minecraft:lapis_lazuli" }
+  R: item:{ count: 1, id: "ars_nouveau:worn_notebook" }; xp:150
+  S: Quête secondaire : la magie de l'Écho
+  D: &7Optionnel.&r Pendant le Transfert, tous les esprits ne sont pas arrivés jusqu'au Cœur. Ceux qui se sont perdus flottent encore dans le monde : les Réfractaires appellent cela l'&dÉcho&r. / L'Empire l'avait interdit. Les Réfractaires, eux, ont appris à s'en servir. L'améthyste résonne avec lui. / Rapportez des éclats d'améthyste et du lapis-lazuli : un carnet réfractaire vous apprendra à capter l'Écho. / &8Récompense : le carnet d'Ars Nouveau, le guide de toute la magie de l'Écho.&r
+
+######## &6III&r · L'Âge du Cuivre — Les fluides, les profondeurs, et les inscriptions.
+
+[boitier_cuivre] Boîtier de cuivre  <- gardien_vent@andesite
+  T: item:{ count: 1, id: "create:copper_casing" }
+  R: xp:150
+  S: 
+  D: Le cuivre gardait les fluides de l'Empire : vapeur, huile, eau des chaudières. / Comme l'andésite, le boîtier de cuivre s'obtient en appliquant le matériau sur du bois écorcé, à la main ou au déployeur. Il habille tout ce qui touche aux fluides.
+
+[tuyaux] Tuyauterie  <- boitier_cuivre
+  T: item:{ count: 1, id: "create:fluid_pipe" }
+  R: item:{ count: 1, id: "minecraft:copper_ingot" }x16
+  S: 
+  D: Sous chaque cité courait un second réseau, plus discret que le rail : la tuyauterie. / Les tuyaux mènent les fluides, mais ne poussent rien seuls : il leur faut une pompe. Une clé sur un tuyau droit y pose une fenêtre ; un tuyau peut aussi recevoir une vanne.
+
+[pompe] La pompe mécanique  <- tuyaux
+  T: item:{ count: 1, id: "create:mechanical_pump" }
+  R: xp:200
+  S: 
+  D: Sans pompe, un tuyau n'est qu'un tube. L'Empire en a fait des veines. / Engrenage + tuyau + &6Schéma du Cuivre&r (non consommé). La flèche sur la pompe montre le sens : une clé l'inverse. Plus elle tourne vite, plus elle débite.
+
+[reservoirs] Réservoirs  <- boitier_cuivre
+  T: item:{ count: 1, id: "create:fluid_tank" }
+  R: xp:150
+  S: 
+  D: Une chaudière de l'Empire buvait plus d'eau qu'un village entier. / Les réservoirs posés côte à côte ou empilés fusionnent en une seule cuve, jusqu'à 3 blocs de large. Les lunettes d'ingénieur montrent leur contenu.
+
+[bec] Bec verseur et égouttoir  <- reservoirs, pompe
+  T: item:{ count: 1, id: "create:spout" }; item:{ count: 1, id: "create:item_drain" }
+  R: xp:200
+  S: 
+  D: Remplir, vider : la moitié du travail d'un atelier de l'Empire tenait à ces deux gestes. / Le &6bec verseur&r remplit ce qui passe dessous (bouteilles, seaux, burettes) sur un dépôt ou un tapis. L'&6égouttoir&r fait l'inverse : il vide les objets dans son réservoir. / &8C'est par l'égouttoir que l'huile des burettes rejoint vos tuyaux.&r
+
+[banc] Le banc d'entretien (opt) <- bec
+  T: item:{ count: 1, id: "airain:maintenance_bench" }
+  R: item:{ count: 1, id: "kubejs:huile_machine" }x8; xp:200
+  S: Quête secondaire : réparer sans expérience
+  D: &7Optionnel.&r Les automates ne saignent pas : ils fuient. Leur &6huile de machine&r fait tourner le banc d'entretien. / Il répare comme une enclume (mêmes matériaux, mêmes quantités) mais brûle de l'huile au lieu de l'expérience : 1 000 mB, soit deux burettes, par lingot ou par fusion. / C'est une vraie machine, montée comme la meule à farine : un rouage voisin ou un arbre par-dessous l'entraîne, et elle consomme du stress. Plus elle tourne vite (16 tr/min au moins), plus elle travaille vite ; les objets très enchantés prennent bien plus longtemps. / &6Clic droit main vide&r : l'écran du banc. L'objet abîmé en haut, le matériau en dessous, l'objet réparé sort à droite. La cuve d'huile est à gauche, les trois emplacements de &6modules&r tout à droite. / Un outil ou une arme réparé ressort &6affûté&r pour un temps (voir « Le fil de la lame »). / &8Une burette ou un seau se verse d'un clic droit ; l'huile passe aussi au tuyau, après un égouttoir. Entonnoirs et tapis l'alimentent et récupèrent l'objet réparé. Les lunettes d'ingénieur montrent l'avancement et le temps restant.&r
+
+[affutage] Le fil de la lame (opt) <- banc
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:sprocket" }; xp:150
+  S: 
+  D: &7Optionnel.&r Les ingénieurs de l'Empire ne rendaient jamais un outil sans l'avoir passé à la meule. / Tout outil ou arme qui sort du banc d'entretien est &6affûté&r pendant 10 minutes : +10 % de vitesse de minage pour un outil, +10 % de dégâts pour une arme. Si la cuve d'huile est pleine aux trois quarts au moment de la réparation, l'effet dure 15 minutes. / L'infobulle de l'objet affiche le temps qui reste. Validez après votre première réparation.
+
+[vapeur] La machine à vapeur  <- bec
+  T: item:{ count: 1, id: "create:steam_engine" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Réservoirs + eau + un feu dessous : la chaleur passive fait tourner une petite machine à vapeur. / &8Les brûleurs à blaze du chapitre IV la rendront bien plus puissante.&r
+
+[q_cuivre] Feuilles de cuivre  <- pompe
+  T: item:{ count: 1, id: "create:copper_sheet" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: Le cuivre verdit, mais il ne trahit jamais. / Une presse sur un tapis, comme pour le fer. Ces plaques serviront aux tuyaux, à l'équipement de plongée et à l'armure de diamant.
+
+[forge] Grand Chantier : la Forge impériale  <- q_cuivre
+  T: item:{ count: 1, id: "create:iron_sheet" }; item:{ count: 1, id: "create:copper_sheet" }; item:{ count: 1, id: "create:golden_sheet" }
+  R: item:{ count: 1, id: "kubejs:sceau_forge" }; item:{ count: 1, id: "numismatics:cog" }; xp:500
+  S: Débloque l'armure de diamant
+  D: La Forge impériale a forgé les armures de trois générations de gardes. Elle est froide depuis la chute. / Rallumez-la : les plaques sont consommées. / &eRécompense :&r le &6Sceau de la Forge&r, exigé (sans être consommé) par l'armure de diamant.
+
+[armure_diamant] L'armure de diamant  <- forge
+  T: item:{ count: 1, id: "minecraft:diamond_helmet" }; item:{ count: 1, id: "minecraft:diamond_chestplate" }; item:{ count: 1, id: "minecraft:diamond_leggings" }; item:{ count: 1, id: "minecraft:diamond_boots" }
+  R: xp:500
+  S: 
+  D: Les officiers de l'Empire portaient le diamant serti dans le cuivre : plus léger, aussi solide. / Diamants + plaques de cuivre + Sceau de la Forge (non consommé), à l'établi.
+
+[plongee] L'équipement de plongée  <- vapeur
+  T: item:{ count: 1, id: "create:copper_diving_helmet" }; item:{ count: 1, id: "create:copper_backtank" }; item:{ count: 1, id: "create:copper_diving_boots" }
+  R: xp:300
+  S: 
+  D: Les scaphandriers de l'Empire réparaient les quais sans jamais remonter. / Le réservoir dorsal se recharge en air quand on le pose sur une source de rotation. Avec le casque, on respire sous l'eau ; les bottes vous gardent au fond, sans flotter.
+
+[inscriptions] Les inscriptions  <- plongee, armure_diamant
+  T: checkmark:
+  R: item:{ count: 1, id: "minecraft:conduit" }; command:"airain chronique recit inscriptions"
+  S: 
+  D: Sur les murs d'une ruine noyée, répétées des centaines de fois : / &o« Nous dormons dans le métal. »&r / &o« Le grand transfert approche. »&r /  / &6&lJournal d'ingénieur&r / &oLes gardiens des marées garderont le secret de l'alliage.&r
+
+[monument] Les ruines englouties  <- inscriptions
+  T: structure:"minecraft:monument"
+  R: item:{ components: { "minecraft:stored_enchantments": {; item:{ components: { "minecraft:stored_enchantments": {; xp:300
+  S: 
+  D: Le temple de prismarine où l'Empire cachait le secret du laiton. Repérez-le avant de l'attaquer. / &8Récompense : les livres Respiration III et Affinité aquatique, pour le casque de plongée.&r
+
+[prepa3] Préparatifs sous-marins  <- monument
+  T: item:{ count: 1, id: "minecraft:milk_bucket" }; item:{ count: 1, id: "create:copper_backtank" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }
+  S: 
+  D: Le gardien des marées attend au fond du monument. Ses servants vous ralentiront avant. / Le lait annule la fatigue de minage des gardiens. Un réservoir d'air chargé, et c'est parti.
+
+[gardien_marees] Le gardien des marées  <- prepa3
+  T: kill:"minecraft:elder_guardian"
+  R: item:{ count: 1, id: "kubejs:schema_laiton" }; item:{ count: 1, id: "kubejs:fragment_marees" }; command:"tag @s add airain_nether"; item:{ count: 1, id: "numismatics:cog" }x2; xp:1000; command:"airain chronique recit marees"
+  S: Schéma du Laiton, ouverture du Nether
+  D: Les trois gardiens anciens du monument. /  / &eRécompenses :&r le &6Schéma du Laiton&r (brûleur à blaze), et le &cNether&r s'ouvre pour vous. / &8Chaque joueur doit réclamer sa propre récompense pour pouvoir passer le portail.&r
+
+######## &6IV&r · L'Âge du Laiton — Le cœur de la technologie d'Airain. Et une salle pleine de capsules vides.
+
+[nether] Vers le Nether  <- gardien_marees@cuivre
+  T: dimension:"minecraft:the_nether"
+  R: xp:200
+  S: 
+  D: Les forges d'en bas n'ont jamais cessé de brûler. Le portail ne s'allume qu'après le Gardien des marées. / Partez armé, nourri, avec de quoi boucher un passage et rentrer vite. Les blazes de ses forteresses donnent le feu qui fait le laiton.
+
+[blaze] Capturer un blaze  <- nether
+  T: item:{ count: 1, id: "create:blaze_burner" }
+  R: xp:300
+  S: 
+  D: L'Empire n'a jamais su allumer un feu qui ne s'éteigne pas. Alors il a capturé ceux du Nether. / Brûleur vide (avec le Schéma du Laiton), puis clic droit sur une lanterne de forge (un blaze). Placé sous un bassin, il chauffe le mixeur ; nourri au charbon, il tient longtemps.
+
+[quartz] Quartz et tubes  <- nether
+  T: item:{ count: 1, id: "create:polished_rose_quartz" }; item:{ count: 1, id: "create:electron_tube" }
+  R: xp:200
+  S: 
+  D: Les tubes électroniques ont donné aux machines de l'Empire ce qui leur manquait : du jugement. / Quartz du Nether + redstone = quartz rose. Poli à la ponceuse ou au tapis, il devient le cœur des tubes électroniques.
+
+[laiton] L'alliage impérial  <- blaze
+  T: item:{ count: 1, id: "create:brass_ingot" }
+  R: item:{ count: 1, id: "create:zinc_ingot" }x16
+  S: 
+  D: Le laiton est le métal de l'Empire : celui de ses mécanismes, de ses insignes, de son nom. / Cuivre et zinc fondus ensemble au mixeur, sur un bassin chauffé par un brûleur à blaze. Sans chaleur, pas de laiton.
+
+[boitier_laiton] Boîtier de laiton  <- laiton
+  T: item:{ count: 1, id: "create:brass_casing" }
+  R: xp:200
+  S: 
+  D: Le boîtier de laiton habille les machines de précision : on ne le donnait pas aux apprentis. / Il s'obtient comme les autres, en appliquant le laiton sur du bois écorcé. Bras mécaniques, assembleurs et entonnoirs de laiton en dépendent.
+
+[deployeur] Le déployeur  <- laiton, quartz
+  T: item:{ count: 1, id: "create:deployer" }
+  R: xp:250
+  S: 
+  D: Le déployeur a une main, et il s'en sert mieux que bien des ouvriers. / Il agit comme un joueur : il pose, utilise, assemble. Il rend possible l'assemblage en séquence. Mettez-lui l'objet en main d'un clic droit.
+
+[precision] Mécanisme de précision  <- deployeur
+  T: item:{ count: 1, id: "create:precision_mechanism" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: Le mécanisme de précision est la signature de l'Empire : rien d'important ne fonctionnait sans lui. / Une chaîne de déployeurs et de presses le construit pièce par pièce. Maintenez W sur une machine pour son tutoriel ; EMI montre chaque étape.
+
+[crafter] L'assembleur mécanique  <- deployeur
+  T: item:{ count: 1, id: "create:mechanical_crafter" }
+  R: xp:300
+  S: 
+  D: Ce que l'établi ne sait pas faire, l'Empire le faisait à neuf mains. / Les &6assembleurs mécaniques&r se posent en grille, se relient à la clé et fabriquent les recettes trop grandes pour l'établi, jusqu'à 5×5 et plus. Ils ont besoin de rotation. / &8Le Cœur d'Airain, plus tard, sortira d'une telle grille.&r
+
+[broyage] La ligne de minerai  <- crafter
+  T: item:{ count: 1, id: "create:crushing_wheel" }; item:{ count: 1, id: "create:crushed_raw_iron" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2; xp:300
+  S: 
+  D: Les roues de broyage se fabriquent à l'assembleur mécanique. Roues → lavage au ventilateur → fonte : de l'expérience et des sous-produits en plus (de la redstone avec le fer). / &8Broyez des blocs de minerai minés avec Toucher de soie : près de deux fois plus de métal.&r
+
+[bras] Le bras mécanique  <- precision
+  T: item:{ count: 1, id: "create:mechanical_arm" }
+  R: xp:300
+  S: 
+  D: Le bras mécanique a remplacé plus d'ouvriers que toutes les autres machines réunies. / Avant de le poser, clic droit avec le bras en main sur les blocs où il doit prendre (bleu) et déposer (orange). Il sert tapis, dépôts, coffres, presses et brûleurs.
+
+[q_laiton] Fonderie de laiton  <- boitier_laiton
+  T: item:{ count: 1, id: "create:brass_ingot" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Cinq cents lingots : de quoi rendre à une cité son éclat. / Un mixeur nourri en continu par entonnoirs, un brûleur toujours alimenté, et la fonderie tourne seule. Le minerai broyé et lavé donne plus de cuivre et de zinc.
+
+[table_empire] La bibliothèque impériale (opt) <- precision
+  T: item:{ count: 1, id: "airain:imperial_enchanting_table" }; item:{ count: 1, id: "minecraft:chiseled_bookshelf" }
+  R: item:{ count: 1, id: "minecraft:book" }x8; xp:300
+  S: Quête secondaire : enchanter sur mesure
+  D: &7Optionnel.&r La vieille table d'enchantement ne répond plus. Celle de l'Empire ne devine rien : elle lit. / Rangez des &6livres enchantés&r dans des &6bibliothèques sculptées&r à moins de 3 blocs : la table propose ces enchantements, et vous choisissez le niveau, sans dépasser celui du livre. Les livres restent en place. / Coût : de l'expérience (3 niveaux par niveau, plus selon la rareté, 30 au plus) et un lapis par niveau. / &6Tomes anciens&r : rangé à côté d'un livre du même enchantement, un tome ancien ouvre le niveau suivant celui du livre (bouton doré), même au-delà du maximum. Le tome reste en place, mais appliquer ce niveau consomme une &6encre runique&r (troisième case). Un seul tome compte par enchantement. Au-delà du maximum, le coût passe à 40 niveaux et au double de lapis. / &8Encre runique : au mélangeur chauffé, un éclat d'écho, un fragment de résonance, 4 lapis et 1 000 mB d'eau (un seau) donnent 2 encres.&r
+
+[desenchanteur] Le désenchanteur (opt) <- table_empire
+  T: item:{ count: 1, id: "airain:disenchanter" }
+  R: item:{ count: 1, id: "kubejs:huile_machine" }x8; item:{ count: 1, id: "minecraft:book" }x4; xp:300
+  S: Quête secondaire : remplir la bibliothèque
+  D: &7Optionnel.&r Plus de marchands pour vendre des livres : il faut les arracher aux objets. / Le désenchanteur détruit un objet enchanté et en tire &cun seul&r enchantement, au hasard, dans un livre vierge. Monté comme la meule à farine, il tourne au rouage et brûle 500 mB d'huile par niveau. / &8Clic droit avec l'objet, puis avec des livres ; main vide pour reprendre le livre enchanté. Entonnoirs et tapis fonctionnent aussi. Les lunettes d'ingénieur montrent l'opération en cours.&r
+
+[purge] La purge (opt) <- desenchanteur
+  T: item:{ count: 1, id: "airain:runic_ink" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }; xp:300
+  S: 
+  D: &7Optionnel.&r Certaines armes trouvées dans les ruines portent une malédiction. L'Empire savait la défaire sans briser l'objet. / Donnez de l'&6encre runique&r au désenchanteur (clic droit). Un objet maudit qu'on lui confie n'est alors plus détruit : il perd &6une malédiction par passage&r, contre une encre et 500 mB d'huile, puis ressort avec ses autres enchantements intacts. / &8Sans encre, un objet maudit est désenchanté comme les autres. Encre runique : au mélangeur chauffé, un éclat d'écho, un fragment de résonance, 4 lapis et un seau d'eau donnent 2 encres.&r
+
+[banc_modules] Les modules du banc (opt) <- banc@cuivre, boitier_laiton
+  T: item:{ count: 1, id: "airain:fine_grindstone" }; item:{ count: 1, id: "airain:reduction_gear" }; item:{ count: 1, id: "airain:grease_gun" }
+  R: item:{ count: 1, id: "kubejs:huile_machine" }x8; item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: &7Optionnel.&r Avec le laiton, le banc d'entretien peut enfin être réglé comme ceux des ateliers de la capitale. / Trois modules, à poser dans les emplacements à droite de son écran (un exemplaire de chaque compte) : / • &6Meule fine&r : 30 % d'huile en moins par réparation ; / • &6Démultiplicateur&r : 60 % plus rapide, mais demande deux fois plus de stress ; / • &6Graisseur&r : pompe l'huile d'un réservoir voisin, 250 mB par seconde. Plus besoin de burettes. / &8Les modules se voient sur le banc, et les lunettes d'ingénieur les listent.&r
+
+[q_precision] Chaîne de précision  <- precision
+  T: item:{ count: 1, id: "create:precision_mechanism" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: La capitale en produisait des milliers par jour. Il en faudra beaucoup pour le Cœur. / Une plaque d'or passe trois déployeurs (rouage, grand rouage, pépite de fer), cinq fois de suite. Un tapis qui boucle devant les trois déployeurs fait toute la chaîne seul.
+
+[bastion] Le bastion  <- nether
+  T: structure:"minecraft:bastion_remnant"
+  R: item:{ count: 1, id: "minecraft:netherite_upgrade_smith; command:"airain chronique recit bastion"
+  S: 
+  D: Avant l'Empire, le peuple du Nether vivait dans ces forteresses. Asservi aux forges, rongé par les fumées d'âmes, il les a reprises quand l'Empire est parti. / Les bastions cachent les gabarits d'amélioration en netherite, et l'or du tribut qu'ils accumulent encore. Ne cassez pas l'or sous leurs yeux.
+
+[netherite] Plaques de netherite  <- q_precision
+  T: item:{ count: 1, id: "kubejs:plaque_netherite" }
+  R: xp:500
+  S: 
+  D: La netherite de l'Empire ne sortait jamais brute des forges : elle était laminée, plaque par plaque. / Lingot de netherite → déployeur (mécanisme de précision) → presse. Ces plaques remplacent le lingot à la table de forgeron, pour l'armure comme pour les armes.
+
+[armure_netherite] L'armure de netherite  <- netherite, bastion
+  T: item:{ count: 1, id: "minecraft:netherite_helmet" }; item:{ count: 1, id: "minecraft:netherite_chestplate" }; item:{ count: 1, id: "minecraft:netherite_leggings" }; item:{ count: 1, id: "minecraft:netherite_boots" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2; xp:800
+  S: 
+  D: Les gardes de la forge des âmes portaient celle-ci. Il en restera peu, après vous. / Plaques de netherite et gabarit d'amélioration à la table de forgeron, sur l'armure de diamant. Les plaques remplacent le lingot.
+
+[rails] Poser les rails  <- bras, broyage
+  T: item:{ count: 1, id: "create:track" }; item:{ count: 1, id: "create:railway_casing" }
+  R: xp:300
+  S: 
+  D: La première ligne de l'Empire reliait la mine à la forge. Le reste du réseau en est né. / Les rails se fabriquent par assemblage en séquence. Les ruines sont loin : reliez le monde.
+
+[train] Le premier train  <- rails
+  T: item:{ count: 1, id: "create:controls" }; item:{ count: 1, id: "create:track_station" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Le premier train de l'Empire n'avait qu'un wagon. Il a pourtant changé le monde. / Des commandes, un boîtier de voie, deux gares. Assemblez le train à la gare, posez un conducteur, et donnez-lui un horaire. / Validez quand un train fait seul l'aller-retour entre deux gares.
+
+[reseau] Deux lignes  <- train
+  T: item:{ count: 1, id: "create:track_signal" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Une ligne, c'est un trajet. Deux lignes, c'est un réseau. / Un réseau d'au moins deux lignes, avec des signaux pour éviter les collisions. Validez quand deux trains circulent sans se gêner.
+
+[waystones] Grand Chantier : le réseau des Waystones  <- bras
+  T: item:{ count: 1, id: "create:brass_ingot" }; item:{ count: 1, id: "minecraft:ender_pearl" }
+  R: command:"tag @s add airain_waystones"; item:{ count: 1, id: "numismatics:cog" }
+  S: Débloque la pose des Waystones
+  D: Les pierres de passage reliaient les cités de l'Empire en un clin d'œil. Elles se sont tues avec lui. / Remettez le réseau en marche : les matériaux sont consommés. Ensuite, chacun pourra poser ses propres Waystones.
+
+[gare] Grand Chantier : la gare impériale  <- reseau
+  T: item:{ count: 1, id: "create:track" }; item:{ count: 1, id: "create:railway_casing" }
+  R: command:"tag @s add airain_gare"; item:{ count: 1, id: "numismatics:cog" }x2
+  S: Débloque les interfaces de stockage portables
+  D: La gare impériale voyait passer cent trains par jour. Ses quais attendent encore. / Livrez les matériaux. La gare débloque les interfaces portables, pour charger et décharger les trains sans personne.
+
+[capsules] La salle des capsules  <- bras
+  T: checkmark:
+  R: item:{ count: 1, id: "minecraft:ender_pearl" }x8; command:"airain chronique recit capsules"
+  S: 
+  D: Une salle immense. Des milliers de capsules de laiton, alignées. &lToutes vides.&r Des câbles en sortent, tous vers le bas. /  / &6&lJournal d'ingénieur&r / &oLe transfert a commencé. Nous entrons dans le métal un par un.&r / &oJe serai le dernier.&r
+
+[canons] Une batterie de canons  <- armure_netherite
+  T: item:{ count: 1, id: "createbigcannons:cannon_mount" }; item:{ count: 1, id: "createbigcannons:cast_iron_cannon_barrel" }; item:{ count: 1, id: "createbigcannons:cast_iron_sliding_breech" ; item:{ count: 1, id: "createbigcannons:powder_charge" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Quatre canons complets. Le fer devient de la fonte (presse sur bassin chauffé), la fonte fond dans un bassin chauffé et se coule dans un moule à canon, puis le fût se perce. Détails dans EMI.
+
+[obus] Munitions  <- canons
+  T: item:{ count: 1, id: "createbigcannons:solid_shot" }; item:{ count: 1, id: "createbigcannons:he_shell" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Les remparts de l'Empire ne se défendaient pas à l'épée. / Les &6boulets pleins&r percent ; les &6obus explosifs&r ont besoin d'une fusée posée sur leur nez pour éclater. Chaque tir demande aussi des charges de poudre derrière le projectile.
+
+[l_refractaires] Ceux qui ont dit non  <- nether
+  T: structure:"kubejs:avant_poste_refractaire"; checkmark:
+  R: item:{ count: 1, id: "numismatics:bevel" }x4; command:"airain chronique recit echo_refus"
+  S: L'appel de l'Écho
+  D: Tous n'ont pas voulu du Transfert. Ils ont vu revenir les capsules vides, et ils sont partis la nuit même. Leurs camps tiennent encore, quelque part. / Trouvez un camp réfractaire et lisez l'un de leurs écrits (dans leurs coffres). Validez quand c'est fait.
+
+[a_ars_source] Un froid dans l'améthyste  <- l_refractaires
+  T: item:{ count: 1, id: "ars_nouveau:imbuement_chamber" }; item:{ count: 1, id: "ars_nouveau:source_gem" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2; command:"loot give @s loot kubejs:carnet/apprentie_1"
+  S: L'appel de l'Écho
+  D: &7La voie de l'Écho.&r L'archebois pousse là où l'Écho est fort. La chambre d'imprégnation fixe l'Écho dans l'améthyste : des gemmes d'Écho. / Posez de l'améthyste dans la chambre et laissez-la se charger. Les camps réfractaires vendent pousses et éclats.
+
+[a_ars_livre] Une volonté confiée  <- a_ars_source
+  T: item:{ count: 1, id: "ars_nouveau:novice_spell_book" }; item:{ count: 1, id: "ars_nouveau:glyph_light" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: L'appel de l'Écho
+  D: &7La voie de l'Écho.&r Un grimoire réfractaire : l'Écho y est écrit, puis relâché en sorts. / Ouvrez-le pour composer vos sorts à partir de glyphes ; ils consomment la réserve d'Écho du lanceur.
+
+[prepa4] Préparatifs infernaux  <- obus, a_ars_livre
+  T: item:{ count: 1, id: "minecraft:potion" }; item:{ count: 1, id: "minecraft:golden_apple" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: La monstruosité de la forge des âmes ne s'est jamais refroidie. Vous non plus, si vous n'êtes pas prêts. / Des potions (résistance au feu conseillée) et des pommes dorées : la monstruosité frappe fort, et la lave est partout.
+
+[gardien_debout] Un gardien sur pied  <- 
+  T: gamestage:"airain_gardien_repare"
+  R: item:{ count: 1, id: "kubejs:huile_machine" }x4
+  S: 
+  D: Dans les ruines de l'Empire, des &6gardiens d'airain&r attendent, assis, couverts de mousse. / Clé de Create en main, avec &616 ferrailles, 4 huiles et 2 rouages brisés&r sur vous : clic droit, et il se relève. Il garde la fondation la plus proche (4 par base). / &8Le livre de l'ingénieur a tout le détail.&r
+
+[garnison] Les ateliers de garnison  <- gardien_debout, crafter
+  T: gamestage:"airain_module_monte"
+  R: xp:500; item:{ count: 1, id: "create:precision_mechanism" }x2
+  S: 
+  D: Les ateliers de l'Empire équipaient leurs gardiens selon la garnison : lanternes pour les mines, canons pour les remparts, chaudières pour les postes isolés. / Trois emplacements, un module chacun : / &6Tête&r : tête-lanterne (lumière, monstres en surbrillance) ou longue-vue (dégâts, voit les invisibles). / &6Épaules&r : canon d'épaule ou bobine Tesla. / &6Torse&r : blindage riveté ou chaudière de secours (il se relève au lieu d'être détruit). / Ils se fabriquent à l'&6assembleur mécanique&r. Clic droit sur un gardien en marche pour en monter un ; accroupi, main vide, pour tout démonter. / &8La bobine et la chaudière demandent un fragment de résonance.&r
+
+[netherite_sacree] La netherite sacrée  <- garnison, netherite
+  T: item:{ count: 1, id: "airain:sacred_netherite_plate" }
+  R: xp:800
+  S: 
+  D: Une plaque de netherite, et au centre, serti dans l'or, le cœur d'un Gardien des enfers. / Posez la plaque sur un dépôt ou un tapis, et faites-y enfoncer le &6Cœur du Gardien des enfers&r par un &6déployeur&r.
+
+[gardien_elite] Un gardien d'élite  <- netherite_sacree
+  T: gamestage:"airain_module_2"
+  R: item:{ count: 1, id: "numismatics:cog" }x2; xp:1000
+  S: 
+  D: À la &6table de forgeron&r : un modèle d'amélioration en netherite, un module, une plaque sacrée. Le laiton noircit, l'or remonte dans les rivets, et tout ce que fait le module est doublé. / Montez un module de niveau II sur un de vos gardiens.
+
+[forge_ames] La forge des âmes  <- prepa4
+  T: kill:"cataclysm:netherite_monstrosity"
+  R: item:{ count: 1, id: "kubejs:schema_ciel" }; item:{ count: 1, id: "kubejs:fragment_forge" }; command:"tag @s add airain_end"; item:{ count: 1, id: "numismatics:crown" }; xp:2000; command:"airain chronique recit forge_ames"
+  S: Schéma du Ciel, ouverture de l'End
+  D: Au fond d'une forge des âmes dort une &cmonstruosité de netherite&r. Bombardez-la, puis finissez le travail. /  / &eRécompenses :&r le &6Schéma du Ciel&r (assembleur physique, roulement d'hélice), et l'&5End&r s'ouvre pour vous.
+
+######## &6V&r · L'Âge du Ciel — L'Empire avait des cités volantes.
+
+[assembleur] L'assembleur physique  <- forge_ames@laiton
+  T: item:{ count: 1, id: "simulated:physics_assembler" }
+  R: xp:300
+  S: 
+  D: Ce qui vole, ce qui flotte, ce qui roule : tout passait par l'assembleur physique. / Avec le Schéma du Ciel. Il transforme une construction en véhicule qui obéit à la physique : poids, poussée, inertie.
+
+[helices] Hélices  <- assembleur
+  T: item:{ count: 1, id: "aeronautics:propeller_bearing" }; item:{ count: 1, id: "aeronautics:andesite_propeller" }
+  R: xp:300
+  S: 
+  D: Les navires de l'Empire ne connaissaient ni voile ni rame : seulement le bruit des hélices. / Le roulement d'hélice demande le Schéma du Ciel. Plus il tourne vite, plus il pousse ; le sens de rotation choisit le sens de la poussée.
+
+[ballon] Le ballon  <- assembleur
+  T: item:{ count: 1, id: "aeronautics:white_envelope" }; item:{ count: 1, id: "aeronautics:adjustable_burner" }
+  R: xp:300
+  S: 
+  D: Avant les hélices, l'Empire volait à l'air chaud. / Des enveloppes au-dessus d'un brûleur à air chaud réglable : la portance. Plus le brûleur chauffe, plus on monte.
+
+[envol] Premier envol  <- helices, ballon
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2; xp:500
+  S: 
+  D: Le jour du premier vol, toute la capitale avait levé la tête. / Faites décoller votre premier engin et volez au-dessus des nuages. Prévoyez des élytres ou un seau d'eau, au cas où.
+
+[q_enveloppes] Chantier de toile  <- ballon
+  T: item:{ count: 1, id: "aeronautics:white_envelope" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Les chantiers de toile de la capitale tissaient jour et nuit. / Les enveloppes retiennent l'air chaud : plus il y en a, plus l'engin soulève lourd. Les teinturiers les coloraient aux couleurs de la cité.
+
+[navire] Le navire de guerre  <- envol
+  T: item:{ count: 1, id: "createbigcannons:cannon_mount" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: La flotte du ciel de l'Empire n'a jamais perdu une bataille. Elle a seulement été oubliée. / Montez au moins deux canons sur votre engin volant. Le ciel n'est pas vide.
+
+[station] La station d'observation  <- envol
+  T: structure:"kubejs:station_observation"
+  R: item:{ count: 1, id: "numismatics:cog" }; item:{ count: 1, id: "minecraft:spyglass" }; command:"airain chronique recit station"
+  S: 
+  D: Haut dans le ciel, au-dessus des plaines, une île flotte avec une coupole de cuivre. L'Empire y observait les étoiles. / Le pupitre garde les relevés de l'ingénieur en chef Octave Lanfrey. &8Il faut voler pour l'atteindre : vers la hauteur 170.&r
+
+[naval] Grand Chantier : le chantier naval  <- envol
+  T: item:{ count: 1, id: "create:brass_casing" }; item:{ count: 1, id: "aeronautics:white_envelope" }
+  R: item:{ count: 1, id: "kubejs:schema_ciel" }; item:{ count: 1, id: "numismatics:cog" }
+  S: Un second Schéma du Ciel
+  D: Le chantier naval de la capitale lançait un navire par semaine. / Un second Schéma du Ciel, pour que chacun puisse construire de son côté. Les matériaux sont consommés.
+
+[end] Au-delà du portail  <- navire
+  T: dimension:"minecraft:the_end"
+  R: xp:300
+  S: 
+  D: Au-delà du portail, pas une cité de l'Empire. Des tours d'un violet étrange, une lumière qui chante. Quelqu'un a vécu ici, loin des machines. / Il ne s'ouvre qu'après la forge des âmes. Prévoyez de quoi revenir : il n'y a pas d'autre chemin que le gardien.
+
+[dragon] Le Gardien des Cieux  <- end
+  T: kill:"minecraft:ender_dragon"
+  R: item:{ count: 1, id: "numismatics:crown" }; xp:1500; command:"airain chronique recit gardien_cieux"
+  S: 
+  D: Le Gardien des Cieux n'est pas une machine. Il a été appelé, et ceux qui l'ont appelé l'ont lié aux tours d'obsidienne. / Brisez d'abord les cristaux qui le nourrissent, sur les piliers. Il laisse un œuf : posé sur un socle de l'Empire, il protège toute l'équipe des chutes.
+
+[cites] Les cités volantes  <- dragon
+  T: structure:"minecraft:end_city"; item:{ count: 1, id: "minecraft:elytra" }
+  R: item:{ count: 1, id: "minecraft:shulker_box" }x2; command:"airain chronique recit cites"
+  S: 
+  D: Des tours suspendues dans le vide, faites d'Écho devenu pierre. Ce ne sont pas des cités de l'Empire : ce sont des refuges. / Aux quais, des navires impériaux échoués : des chasseurs venus traquer ceux qui vivaient là. On y trouve les élytres de leurs équipages. Gare aux sentinelles du refuge : leurs projectiles font léviter.
+
+[jetpack] Le jetpack  <- cites
+  T: item:{ count: 1, id: "create_jetpack:jetpack" }
+  R: xp:800
+  S: 
+  D: Les messagers de l'Empire ne prenaient jamais l'escalier. / Votre réservoir d'air dorsal, des élytres et du laiton, assemblés à l'assembleur mécanique. Il vole à l'air comprimé : rechargez-le comme le réservoir.
+
+[atelier_ench] Grand Chantier : l'atelier d'enchantement  <- envol
+  T: item:{ count: 1, id: "minecraft:book" }; item:{ count: 1, id: "minecraft:lapis_lazuli" }; xp:30L
+  R: command:"tag @s add airain_atelier"; item:{ count: 1, id: "numismatics:cog" }x2
+  S: Débloque les machines d'enchantement
+  D: L'atelier d'enchantement de l'Empire fondait l'expérience comme on fond le métal. / Rouvrez-le : vous pourrez poser l'enchanteur à blaze, la forge à blaze et l'imprimante d'Enchantment Industry. Les matériaux et l'expérience sont consommés.
+
+[mage] Robes d'Écho (opt) <- atelier_ench
+  T: checkmark:
+  R: xp:500
+  S: 
+  D: &7Optionnel.&r Pour celui de l'équipe qui suit la voie de l'Écho : une pièce d'armure d'Ars Nouveau (sorcier, arcaniste ou mage de bataille). Validez quand elle est portée.
+
+[prepa5] Préparatifs célestes  <- cites
+  T: item:{ count: 1, id: "minecraft:ender_pearl" }; item:{ count: 1, id: "minecraft:potion" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: La citadelle en ruine flotte au-dessus du vide. Une chute, et c'est fini. / Perles et potions (chute lente conseillée) pour la citadelle. Un sac avec le réapprovisionnement peut vous sauver.
+
+[l_relais] La ligne rompue  <- l_refractaires@laiton
+  T: structure:"kubejs:relais_brise"; checkmark:
+  R: item:{ count: 1, id: "numismatics:sprocket" }; item:{ count: 1, id: "kubejs:fragment_resonance" }x2
+  S: L'appel de l'Écho
+  D: Les relais portaient l'Écho d'une cité à l'autre. L'un d'eux a cédé. / Trouvez un relais brisé et lisez le rapport d'incident sur le pupitre. C'est là que l'Écho s'est échappé.
+
+[bientot] Bientôt  <- prepa5, jetpack, l_relais
+  T: checkmark:
+  R: item:{ count: 1, id: "minecraft:totem_of_undying" }
+  S: 
+  D: Partout où vous passez, des machines s'allument seules. Des engrenages tournent sans force. /  / &6&lJournal d'ingénieur&r / &oIl a répondu. Il sait que quelqu'un vient.&r
+
+[citadelle] La citadelle en ruine  <- bientot
+  T: kill:"cataclysm:ender_guardian"
+  R: item:{ count: 1, id: "kubejs:fragment_vide" }; item:{ count: 1, id: "numismatics:crown" }x2; xp:3000; command:"airain chronique recit citadelle"
+  S: Le dernier fragment
+  D: Au troisième étage d'une citadelle en ruine de l'End, l'&5autel du vide&r. Les chasseurs de l'Empire en avaient fait leur tête de pont ; l'Écho, trop dense ici, les a dévorés. Approchez et leur chef s'éveille. / &8Il ne meurt pas en hurlant. Il murmure : « Bientôt. »&r
+
+[fret] Le fret aérien  <- envol
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x3; xp:500
+  S: 
+  D: Les cités volantes de l'Empire ne vivaient que du fret. Construisez un engin volant avec une cale (coffres, tonneaux ou coffres-forts), chargez-le dans une de vos bases et livrez la cargaison dans une autre. / Validez après une livraison complète.
+
+######## &6VI&r · Le Cœur d'Airain — Rassembler les mémoires. Rallumer le Cœur.
+
+[crafters21] La grille d'assemblage  <- citadelle@ciel
+  T: item:{ count: 1, id: "create:mechanical_crafter" }
+  R: xp:500
+  S: 
+  D: Le Cœur d'Airain ne tient dans aucun établi. / Il se forge sur une grille 5 × 5 d'assembleurs : il en faut 21 (les coins restent vides). Reliez-les à la clé et alimentez-les en rotation.
+
+[salle] La Salle du Cœur  <- crafters21
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Le Cœur battait jadis dans une salle que nul n'avait le droit de voir. Le vôtre mérite au moins un écrin. / Construisez une salle d'au moins 9 × 9 avec la grille au centre. Validez quand c'est fait.
+
+[mat_coeur] Les matériaux du Cœur  <- crafters21
+  T: item:{ count: 1, id: "create:precision_mechanism" }; item:{ count: 1, id: "create:brass_casing" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Le Cœur d'Airain ne se forge qu'une fois. Ses matériaux, eux, se rassemblent longtemps à l'avance. / Mécanismes de précision et boîtiers de laiton : relancez vos chaînes avant de partir chercher le reste.
+
+[mer] Le cœur de la mer  <- mat_coeur
+  T: item:{ count: 1, id: "minecraft:heart_of_the_sea" }
+  R: xp:300
+  S: 
+  D: La mer garde ses cœurs au fond de ses coffres. / Dans les trésors enfouis (cartes au trésor des épaves), ou au comptoir du laboratoire, contre une couronne.
+
+[memoires] Les quatre mémoires  <- salle
+  T: item:{ count: 1, id: "kubejs:fragment_rouages" }; item:{ count: 1, id: "kubejs:fragment_marees" }; item:{ count: 1, id: "kubejs:fragment_forge" }; item:{ count: 1, id: "kubejs:fragment_vide" }
+  R: xp:500; command:"airain chronique recit memoires"
+  S: 
+  D: Quatre gardiens, quatre fragments. Côte à côte, les fragments se répondent. Leurs inscriptions forment une seule phrase : / &o« Rendez-nous notre Cœur. »&r
+
+[l_sanctuaire] Le journal d'Ada  <- l_relais@ciel
+  T: structure:"kubejs:sanctuaire_refractaire"; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }; command:"locate structure kubejs:grand_relais"; command:"airain chronique recit echo_ada"
+  S: L'appel de l'Écho
+  D: Elle a signé les plans des capsules. Puis elle a pris ceux qui voulaient vivre, et elle est partie vers le nord. Avant de rallumer quoi que ce soit, lisez ce qu'elle a laissé. / Quelque part dans le nord froid, le sanctuaire réfractaire garde le journal d'&dAda Vesper&r. Lisez-le jusqu'au bout : la récompense indique où se trouve le Grand Relais.
+
+[forger] Forger le Cœur  <- memoires, mer, l_sanctuaire
+  T: item:{ count: 1, id: "kubejs:coeur_d_airain" }
+  R: xp:2000
+  S: 
+  D: Tout ce que vous avez construit menait ici. / Consultez la recette dans EMI, catégorie assembleur mécanique. Remplissez la grille, et le Cœur d'Airain battra de nouveau.
+
+[reactiver] Réactiver le Cœur  <- forger
+  T: checkmark:
+  R: command:"locate structure cataclysm:ancient_factory"; item:{ count: 1, id: "minecraft:nether_star" }; item:{ count: 1, id: "numismatics:crown" }x2; command:"tag @s add airain_coeur_reveille"; command:"airain chronique recit coeur"
+  S: &cLe retournement&r
+  D: Vous tenez le Cœur à deux mains. Il bat. Il chauffe. Et très loin sous vos pieds, quelque chose répond. /  / Le carnet s'ouvre tout seul à une page restée blanche. Des lettres s'y gravent, comme brûlées de l'intérieur : /  / &6&o« Merci. / Ces pages, ces gardiens, ces schémas : c'est nous qui les avons placés sur votre route. / Il nous fallait des mains vivantes pour rallumer le Cœur. / Nous n'avons jamais disparu. Nous attendions dans le métal. / Maintenant, nous revenons. Et ce monde redevient le nôtre. »&r /  / En dessous, d'une autre main, plus petite, à l'encre ordinaire : / &7&o« Ne les crois pas. Ils ne dorment pas : ils brûlent. Je vous ai gardés à part pour ce jour-là. Quand tout sera fini, c'est vous qui choisirez. — O. L. »&r /  / &cL'Empire d'Airain se réveille.&r
+
+[siege] Préparer le siège  <- reactiver
+  T: item:{ count: 1, id: "createbigcannons:solid_shot" }; item:{ count: 1, id: "createbigcannons:he_shell" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Quand le Cœur battra de nouveau, ce qui reste de l'Empire viendra le reprendre. / Remplissez les soutes de vos canons : boulets pour percer, obus explosifs pour les groupes. Mieux vaut trop que pas assez.
+
+[soins] La réserve de soins  <- reactiver
+  T: item:{ count: 1, id: "minecraft:potion" }; item:{ count: 1, id: "minecraft:golden_apple" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Ce qui reste de l'Empire ne fera pas de quartier. / Des potions de soin, de force, de résistance au feu. Rangez-les dans un sac avec réapprovisionnement : on n'a pas le temps de fouiller en plein assaut.
+
+[remparts] Renforcer la base  <- siege, soins
+  T: item:{ count: 1, id: "createbigcannons:cannon_mount" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Une base qui abrite le Cœur doit tenir. / Trois affûts de canon autour de la base, orientés vers les accès. Validez quand ils sont en place.
+
+######## &4VII&r · La Reconquête — L'Empire est revenu. Il veut son monde.
+
+[eveil] L'Empire s'éveille  <- remparts@coeur
+  T: checkmark:
+  R: item:{ count: 1, id: "airain:defense_beacon" }; xp:500; command:"airain chronique recit eveil"
+  S: 
+  D: Les ruines ne dorment plus. Vous avez rendu son Cœur à l'Empire. À vous de l'arrêter. /  / &eRécompense :&r la &cBalise de défense&r, une tour-phare à sirène. Posez-la dans votre base (3 × 3 blocs au sol, 8 de haut) : c'est vous qui choisissez quand l'Empire attaque. Pendant l'assaut, sa sirène hurle et son phare balaie la base. / &8Chaque joueur réclame sa propre balise.&r /  / &cDésormais, des patrouilles d'automates viennent à votre rencontre en surface, et certaines tombent du ciel.&r Elles cessent quand l'Empereur tombe.
+
+[assaut] Tenir la position  <- eveil
+  T: gamestage:"airain_assaut"
+  R: item:{ count: 1, id: "numismatics:cog" }x3; xp:1000
+  S: 
+  D: Posez la balise de défense dans votre base et repoussez un assaut complet de l'Empire : quatre vagues, la dernière menée par un centurion à vapeur. /  / &eClic droit&r sur la balise : l'assaut commence après un compte à rebours. / &eAccroupi + clic droit&r (balise au repos) : règle le rayon d'arrivée (48, 64, 96 ou 128 blocs) et montre le cercle rouge où ils apparaîtront. Placez-le au-delà de vos murailles. / Les ennemis n'apparaissent que sur du sol naturel à ciel ouvert : jamais sur vos sols, toits ou chemins. / Entre deux vagues, 30 secondes de répit. Si vous tombez tous les deux, seule la vague en cours recommence à votre retour. /  / La balise ne s'use jamais. Chaque assaut repoussé rapporte des engrenages et un objet rare, et le suivant sera un peu plus fort.
+
+[vague1] Première vague  <- eveil
+  T: kill:"mebahelcreaturesdwarven:dwarven_spider"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Les vieilles usines de bronze de l'Empire se sont rallumées. Leurs araignées mécaniques patrouillent de nouveau. / Abattez-en vingt (le compteur avance à chaque machine détruite).
+
+[vague2] Deuxième vague  <- vague1
+  T: kill:"mebahelcreaturesdwarven:dwarven_sphere"
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: Repliées, elles roulent comme des boulets. Déployées, ce sont des soldats. / Détruisez douze sphères. Elles arrivent vite et en nombre : tenez un passage étroit.
+
+[vague3] Troisième vague  <- vague2
+  T: kill:"minecraft:wither_skeleton"; kill:"minecraft:blaze"
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: Dans le Nether aussi, les forges de l'Empire se sont rallumées. Leurs gardiens avec. / Trente wither squelettes et trente blazes. Résistance au feu, bouclier contre les boules de feu, et du lait contre le flétrissement.
+
+[flotte] La flotte du ciel  <- eveil
+  T: structure:"kubejs:dirigeable"
+  R: item:{ count: 1, id: "numismatics:crown" }; xp:800
+  S: 
+  D: Des croiseurs de l'Empire n'ont jamais atterri. Ils tournent encore au-dessus des nuages, vers la hauteur 150, tenus par leur équipage d'automates. / Abordez-en un avec votre propre engin volant. Le livre de bord du capitaine est dans sa cabine, à la poupe ; la soute est sous le pont. / &8C'est d'eux que tombent parfois des automates, quand une patrouille est larguée.&r
+
+[cite1] La cité de bronze  <- eveil
+  T: kill:"mebahelcreaturesdwarven:dwarven_spider_guardian"
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: Une cité de l'Empire bâtie dans le bronze, bien avant l'âge du laiton. Ses grandes araignées gardiennes veillent encore. / Abattez-en trois. Elles gardent les portes : forcez-en une, les autres viendront.
+
+[cite2] Les profondeurs  <- cite1
+  T: kill:"mebahelcreaturesdwarven:dwarven_centurion"
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: Sous terre, une ville entière éclairée par des lampes qui n'ont jamais faibli. Au fond, un centurion de bronze, haut comme une maison, à vapeur. Abattez-le.
+
+[cite3] Le colosse de fer  <- cite2
+  T: kill:"mowziesmobs:ferrous_wroughtnaut"
+  R: item:{ count: 1, id: "numismatics:crown" }; command:"airain chronique recit colosse"
+  S: 
+  D: Dans une salle souterraine fermée, une armure vide, plus grande qu'un homme, tient encore sa hache. Elle attend un ordre depuis des siècles. / &8Frappez-la dans le dos, quand elle se fige après un coup.&r
+
+[wither] L'étincelle de secours (opt) <- eveil
+  T: kill:"minecraft:wither"
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: &7Optionnel.&r Si le cœur du Gardien des enfers offert par le Cœur d'Airain est perdu, le Gardien des enfers (le Wither) en donne un autre. / &8Invoquez-le loin de la base, sous terre de préférence : il détruit tout autour de lui.&r
+
+[berceau] Le berceau de l'Empire  <- vague3, cite3
+  T: structure:"cataclysm:ancient_factory"
+  R: xp:800; command:"airain chronique recit berceau"
+  S: 
+  D: Le berceau de l'Empire : là où Auguste Ferrand a forgé ses premières machines, et où il dort encore. / Une usine ancienne enfouie vers Y -30. Le Cœur vous en a donné la direction.
+
+[sentinelle] La sentinelle  <- berceau
+  T: kill:"cataclysm:the_prowler"
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: Elle garde l'usine ancienne depuis que plus personne n'y travaille. Elle n'a jamais reçu l'ordre d'arrêter. / Ses tirs portent loin : approchez à couvert et ne restez pas dans son axe.
+
+[etincelle] L'étincelle  <- berceau
+  T: item:{ count: 1, id: "minecraft:nether_star" }
+  R: xp:500
+  S: 
+  D: Une machine qui dort depuis si longtemps a besoin d'une étincelle pour se réveiller. / Un cœur du Gardien des enfers réveillera l'Empereur endormi dans sa machine. Ne l'utilisez qu'une fois prêts.
+
+[empereur] L'Empereur d'Airain  <- sentinelle, etincelle
+  T: kill:"cataclysm:the_harbinger"
+  R: item:{ count: 1, id: "numismatics:sun" }; item:{ count: 1, id: "minecraft:netherite_ingot" }x4; xp:5000; command:"tag @s add airain_fin"; command:"airain chronique recit empereur"
+  S: &4Boss final&r
+  D: Au centre de l'usine, une machine immense, immobile. L'Empereur, fusionné avec ce qu'il a construit : Auguste Ferrand, le fondateur, transféré dans sa propre usine bien avant tous les autres. / Clic droit avec le cœur du Gardien des enfers pour le réveiller. &cIl est extrêmement dangereux.&r
+
+[coeur_eteint] Le Cœur éteint  <- empereur
+  T: checkmark:
+  R: xp:1000
+  S: 
+  D: Le silence revient. Dans votre sac, le Cœur d'Airain ne bat plus. Il contient encore toutes les âmes que l'Empire a fait brûler, et une voix que vous connaissez : celle d'Elias Vael. / Deux gestes sont possibles. &6Rallumer le Cœur&r, avec un cœur du Gardien des enfers : l'Empire repart, et il vous obéit. &3Libérer les âmes&r, avec le diapason d'Ada et un Écho primordial : le Cœur se brise, et tout s'arrête. / &cUn seul choix pour tout le monde. Le Cœur est consommé, il n'y a pas de retour.&r
+
+[deux_voix] Les deux voix  <- coeur_eteint
+  T: checkmark:
+  R: xp:500
+  S: 
+  D: L'Empire dort dans le Cœur et promet l'éternité à ceux qui le servent. / Ada, Morgana et Octave disent autre chose : le Transfert ne tue pas, il enferme, et des milliers de voix attendent encore. / &6Rallumer le Cœur&r, c'est rendre l'Empire au monde. &3Le briser&r, c'est rendre les âmes à elles-mêmes. / Il n'y a pas de bonne réponse. Seulement la vôtre.
+
+[f_empire] Rallumer le Cœur  <- deux_voix
+  T: item:{ count: 1, id: "kubejs:coeur_d_airain" }; item:{ count: 1, id: "minecraft:nether_star" }
+  R: command:"airain fin empire"; item:{ count: 1, id: "airain:imperial_charter" }x3
+  S: &6Fin de l'Empire&r
+  D: Remettez le Cœur en marche. Les automates se tairont, puis vous obéiront : vous serez les nouveaux souverains. / &8Un cœur du Gardien des enfers : battez de nouveau le Wither s'il le faut.&r / Récompenses : la &6couronne d'airain&r (les automates ne vous attaquent plus d'eux-mêmes, vos gardiens proches sont plus forts), des gardiens réparés plus robustes, et le livre « L'Empire renaissant ».
+
+[f_echo] Libérer les âmes  <- deux_voix
+  T: item:{ count: 1, id: "kubejs:diapason_echo" }; item:{ count: 1, id: "kubejs:coeur_d_airain" }; item:{ count: 1, id: "kubejs:echo_primordial" }
+  R: command:"airain fin echo"
+  S: &3Fin de l'Écho&r
+  D: Frappez le diapason d'Ada sur le Cœur. Il se fendra, et les âmes s'en iront. Les automates s'arrêteront pour de bon. / &8L'Écho primordial vient de l'annexe « Les Échos perdus ».&r / Récompenses : la &3bénédiction de l'Écho&r (vision dans le noir, moitié plus d'expérience, le sculk ne vous entend plus, et accroupi immobile un instant, une onde révèle les créatures à 24 blocs), les âmes sans repos ne reviennent plus, et le livre « Le dernier chant ».
+
+[capitaine] Le Capitaine impérial (opt) <- f_empire
+  T: gamestage:"airain_gardien_elite"
+  R: item:{ count: 1, id: "numismatics:crown" }; xp:2000
+  S: 
+  D: L'Empire rallumé a de nouveau besoin d'officiers. Une plaque impériale, rivée sur le torse d'un gardien, en fait un capitaine. / Clic droit avec une &6plaque impériale&r sur un gardien rattaché à une base. Un seul capitaine par base. / Plus grand et plus robuste, il porte &6deux modules par emplacement&r, et les gardiens à 16 blocs gagnent Force et Résistance.
+
+[gardien_echo] Le Gardien d'Écho (opt) <- f_echo
+  T: gamestage:"airain_gardien_elite"
+  R: item:{ count: 1, id: "kubejs:echo_primordial" }x2; xp:2000
+  S: 
+  D: Les âmes sont parties, mais l'Écho reste dans le laiton. Un bloc d'écho primordial suffit à le réveiller dans un gardien. / Clic droit avec un &3bloc d'écho primordial&r sur un gardien rattaché à une base. Un seul gardien d'Écho par base. / Il frappe ses cibles d'une &3onde sonique&r jusqu'à 16 blocs et soigne les gardiens qui l'entourent.
+
+[trone] Le Trône impérial (opt) <- f_empire
+  T: item:{ count: 1, id: "airain:imperial_throne" }
+  R: item:{ count: 1, id: "numismatics:crown" }x2; xp:3000
+  S: 
+  D: Un Empire a besoin d'un trône. Un seul, dressé dans la &6capitale impériale&r : un étendard de fondation sur lequel on a posé une plaque impériale. / Assis, l'Empereur promulgue un &6décret&r pour une heure : &6guerre&r (gardiens renforcés, et au lieu de mourir on est ramené au trône), &6forge&r (concasseurs, meule, lavage et cuisson au ventilateur rendent le double dans les bases) ou &6prospérité&r (commandes +50 %). On peut en changer au bout de 15 minutes. / Dans sa base, la couronne commande tous les gardiens, et l'on réapparaît devant le trône.
+
+[solium] Le Solium de la Prêtresse (opt) <- f_echo
+  T: item:{ count: 1, id: "airain:solium" }
+  R: item:{ count: 1, id: "kubejs:echo_primordial" }x2; xp:3000
+  S: 
+  D: Morgana chantait assise. Son siège, rebâti à l'appareil d'enchantement, se dresse dans une &3capitale arcanique&r (un étendard de fondation sur lequel on a posé un bloc d'écho primordial), et il n'y en a qu'un. / Assise, la Prêtresse entonne un &3chant&r pour une heure : &3âmes&r (expérience doublée), &3croissance&r (plantes trois fois plus rapides dans les bases) ou &3résonance&r (sourcelinks doublés). On peut en changer au bout de 15 minutes. / Dans sa base, le mana se régénère bien plus vite, et l'on réapparaît devant le solium.
+
+[borne_empire] La Machine différentielle (opt) <- f_empire
+  T: item:{ count: 1, id: "airain:difference_engine" }
+  R: item:{ count: 1, id: "numismatics:crown" }x2; xp:2000
+  S: 
+  D: Les entrepôts de l'Empire n'ont jamais été vides ; il suffisait de savoir compter. Une &6machine différentielle&r, montée à l'établi mécanique autour d'une plaque impériale, les rouvre. / Elle se pose avec ses décors et une &6zone d'arrivage&r de 3 x 3 devant elle. Clic droit : choisissez des matières premières par lots de 1, 32 ou 64, payées en pièces. / Une minute plus tard, la caisse descend en &6parachute&r sur la zone. Clic droit dessus pour la vider.
+
+[borne_echo] L'Archive résonante (opt) <- f_echo
+  T: item:{ count: 1, id: "airain:resonant_archive" }
+  R: item:{ count: 1, id: "numismatics:crown" }x2; xp:2000
+  S: 
+  D: L'Écho se souvient de tout ce qui a existé. Une &3archive résonante&r, éveillée à l'appareil d'enchantement autour d'un bloc d'écho primordial, le lui fait rendre. / Elle se pose avec ses obélisques et un &3cercle d'arrivée&r de 3 x 3 devant elle. Clic droit : choisissez des matières premières par lots de 1, 32 ou 64, payées en pièces. / Une minute plus tard, un passage s'ouvre et la caisse &3apparaît&r sur le cercle. Clic droit dessus pour la vider.
+
+[epilogue] Épilogue  <- f_empire, f_echo
+  T: checkmark:
+  R: item:{ count: 1, id: "minecraft:beacon" }
+  S: 
+  D: Le choix est fait. Lisez le livre qu'il vous a laissé : c'est la fin de l'histoire, la vôtre. /  / &6Merci d'avoir joué à L'Empire d'Airain.&r
+
+[r1] Rebâtir l'Empire (opt) <- f_empire
+  T: gamestage:"airain_poste_1"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "airain:imperial_charter" }x2
+  S: 
+  D: &7Après la fin de l'Empire.&r Couronne sur la tête, entrez dans un avant-poste (ou une cité mécanique) et utilisez une &6charte impériale&r (clic droit). / L'avant-poste se rallume : ses bannières prennent les couleurs de votre base la plus proche, plus aucun monstre n'y apparaît, ses comptoirs baissent leurs prix d'un quart, et un gardien réparé y monte la garde. / &8Charte : 6 lingots de laiton, 2 mécanismes de précision, 1 papier.&r
+
+[a1] Apaiser l'Écho (opt) <- f_echo
+  T: gamestage:"airain_relais_1"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "kubejs:fragment_resonance" }x8
+  S: 
+  D: &7Après la fin de l'Écho.&r Dans un relais brisé (ou au Grand Relais), accroupi, frappez le diapason d'Ada (clic droit) avec &d8 fragments de résonance&r sur vous. / Le relais s'apaise : plus aucun monstre n'apparaît à moins de 64 blocs, et un Écho tranquille flotte autour. / &8Les âmes sans repos ne venant plus, les fragments se trouvent dans les relais, le sanctuaire et les cités antiques.&r
+
+[r3] Rebâtir : 3 avant-postes (opt) <- r1
+  T: gamestage:"airain_poste_3"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "airain:imperial_charter" }x2
+  S: 
+  D: Rallumez 3 avant-postes en tout.
+
+[a3] Apaiser : 3 relais (opt) <- a1
+  T: gamestage:"airain_relais_3"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "kubejs:fragment_resonance" }x8
+  S: 
+  D: Apaisez 3 relais en tout.
+
+[r5] Rebâtir : 5 avant-postes (opt) <- r3
+  T: gamestage:"airain_poste_5"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "airain:imperial_charter" }x2
+  S: 
+  D: Rallumez 5 avant-postes en tout.
+
+[a5] Apaiser : 5 relais (opt) <- a3
+  T: gamestage:"airain_relais_5"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "kubejs:fragment_resonance" }x8
+  S: 
+  D: Apaisez 5 relais en tout.
+
+[r10] Rebâtir : 10 avant-postes (opt) <- r5
+  T: gamestage:"airain_poste_10"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "numismatics:sun" }
+  S: 
+  D: Rallumez 10 avant-postes en tout.
+
+[a10] Apaiser : 10 relais (opt) <- a5
+  T: gamestage:"airain_relais_10"
+  R: item:{ count: 1, id: "numismatics:crown" }; item:{ count: 1, id: "numismatics:sun" }
+  S: 
+  D: Apaisez 10 relais en tout.
+
+[defi] Défi final : la garde de bronze (opt) <- epilogue
+  T: kill:"mebahelcreaturesdwarven:dwarven_centurion"
+  R: item:{ count: 1, id: "numismatics:sun" }x2
+  S: 
+  D: &7Optionnel.&r Pour ceux qui en veulent encore : trois centurions de plus. Ils ne se sont pas tous arrêtés. / &8Ils crachent de la vapeur brûlante avant de frapper : reculez quand ils sifflent.&r
+
+######## &3Annexe&r · Sacs et stockage — Avant chaque expédition, un sac plus grand.
+
+[sac1] Le premier sac  <- outils@reveil
+  T: item:{ count: 1, id: "sophisticatedbackpacks:backpack" }
+  R: item:{ count: 1, id: "minecraft:leather" }x8
+  S: 
+  D: Un ingénieur de l'Empire ne sortait jamais sans son sac. / Cuir, ficelle et un coffre. Clic droit pour l'ouvrir, accroupi + clic droit sur le sol pour le poser. Équipé sur le dos, il s'ouvre d'une touche (B par défaut).
+
+[sac_cuivre] Sac de cuivre  <- sac1
+  T: item:{ count: 1, id: "sophisticatedbackpacks:copper_backpack" }; item:{ count: 1, id: "sophisticatedbackpacks:tool_swapper_upgrade
+  R: item:{ count: 1, id: "numismatics:bevel" }x3
+  S: 
+  D: Le sac de cuivre sert l'ingénieur comme un apprenti attentif. / L'échangeur d'outils prend tout seul dans le sac le bon outil pour le bloc visé, et le range ensuite.
+
+[stock1] Tonneaux de l'Empire  <- sac1
+  T: item:{ count: 1, id: "sophisticatedstorage:barrel" }; item:{ count: 1, id: "sophisticatedstorage:chest" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x3
+  S: 
+  D: Les entrepôts de l'Empire ne se vidaient jamais pour être agrandis. / Ces tonneaux et coffres montent en gamme sur place, avec un kit d'amélioration, sans perdre leur contenu. Un tonneau affiche ce qu'il contient sur sa face.
+
+[sac_fer] Sac de fer  <- sac_cuivre, plaques@andesite
+  T: item:{ count: 1, id: "sophisticatedbackpacks:iron_backpack" }; item:{ count: 1, id: "sophisticatedbackpacks:pickup_upgrade" }; item:{ count: 1, id: "sophisticatedbackpacks:stack_upgrade_tier_1
+  R: item:{ count: 1, id: "numismatics:sprocket" }
+  S: 
+  D: Avant les salles d'épreuve : un sac plus grand qui ramasse tout seul. / L'amélioration de ramassage avale ce que vous touchez au sol ; son filtre choisit quoi garder.
+
+[stock2] Le stockage s'organise  <- stock1
+  T: item:{ count: 1, id: "sophisticatedstorage:iron_barrel" }; item:{ count: 1, id: "sophisticatedstorage:storage_tool" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }
+  S: 
+  D: Un entrepôt sans ordre n'est qu'un tas. / L'&6outil de stockage&r relie tonneaux et coffres à un contrôleur, et règle ce qu'ils affichent. Les tonneaux de fer gardent plus de piles.
+
+[sac_or] Sac d'or  <- sac_fer, boitier_cuivre@cuivre
+  T: item:{ count: 1, id: "sophisticatedbackpacks:gold_backpack" }; item:{ count: 1, id: "sophisticatedbackpacks:magnet_upgrade" }; item:{ count: 1, id: "sophisticatedbackpacks:feeding_upgrade" }; item:{ count: 1, id: "sophisticatedbackpacks:refill_upgrade" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Avant le monument : aimant, nourriture et réapprovisionnement automatiques. / L'aimant attire les objets proches, la nourriture vous nourrit quand vous avez faim, le réapprovisionnement remplit votre main quand une pile s'épuise.
+
+[stock3] Liens de stockage  <- stock2
+  T: item:{ count: 1, id: "sophisticatedstorage:gold_chest" }; item:{ count: 1, id: "sophisticatedstorage:storage_link" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Dans la capitale, un seul guichet servait tous les entrepôts d'un quartier. / Un &6lien de stockage&r rattache au contrôleur des coffres qui ne le touchent pas. Les coffres d'or gardent encore plus de place.
+
+[sac_diamant] Sac de diamant  <- sac_or, nether@laiton
+  T: item:{ count: 1, id: "sophisticatedbackpacks:diamond_backpack" }; item:{ count: 1, id: "sophisticatedbackpacks:auto_smelting_upgrad
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Avant le Nether : un sac qui fond le minerai pendant que vous marchez. / L'amélioration de fonte automatique cuit ce que vous ramassez. Gardez du combustible dans son emplacement.
+
+[controleur] Le contrôleur de stockage  <- stock3, quartz@laiton
+  T: item:{ count: 1, id: "sophisticatedstorage:controller" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Il relie tous vos coffres et tonneaux en un seul inventaire. Demande un comparateur, donc du quartz du Nether. / Ouvrez-le pour chercher, ranger et prendre dans tout l'entrepôt à la fois. Les entonnoirs qui le servent servent tout l'entrepôt.
+
+[sac_netherite] Sac de netherite  <- sac_diamant, bastion@laiton
+  T: item:{ count: 1, id: "sophisticatedbackpacks:netherite_backpack" ; item:{ count: 1, id: "sophisticatedbackpacks:tank_upgrade" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Le sac des officiers de l'Empire. Il ne craint ni la lave ni le feu. / L'amélioration de réservoir lui ajoute une citerne : eau, lave ou huile de machine, prête à verser.
+
+[sac_eternel] Bonus : le sac éternel (opt) <- sac_netherite, reactiver@coeur
+  T: item:{ count: 1, id: "sophisticatedbackpacks:everlasting_upgrade"; item:{ count: 1, id: "sophisticatedbackpacks:inception_upgrade" }
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: &7Optionnel.&r Le sac de l'Empereur lui-même, dit-on. Il a survécu à la chute. / Demande des cœurs du Gardien des enfers (étoiles du Nether) : le sac ne disparaît plus jamais, même dans la lave, et peut contenir d'autres sacs.
+
+######## &3Annexe&r · Commandes de l'Empire — La production se paie en pièces. Les pièces achètent ce qu'on ne trouve nulle part.
+
+[boutique] La boutique de l'Empire  <- bienvenue@reveil
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: Les commandes se répètent : livrez, encaissez, recommencez. / Valeurs : éperon 1, biseau 8, pignon 16, engrenage 64, couronne 512, soleil 4096. / Le comptoir du laboratoire vend bois, fer brut, lapis, netherrack, perles de l'Ender et cœurs de la mer. Les avant-postes ont leurs propres machines, et leurs salles scellées vendent livres d'enchantement, totems et bien plus.
+
+[o_pain] Commande : pain  <- boutique, ferme@andesite
+  T: item:{ count: 1, id: "minecraft:bread" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4; command:"pouvoir prime bevel 4"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_alliage] Commande : alliage  <- boutique, q_alliage@reveil
+  T: item:{ count: 1, id: "create:andesite_alloy" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4; command:"pouvoir prime bevel 4"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_plaques] Commande : plaques de fer  <- boutique, q_plaques@andesite
+  T: item:{ count: 1, id: "create:iron_sheet" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x4; command:"pouvoir prime sprocket 4"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_cuivre] Commande : plaques de cuivre  <- boutique, q_cuivre@cuivre
+  T: item:{ count: 1, id: "create:copper_sheet" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3; command:"pouvoir prime sprocket 3"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_tuyaux] Commande : tuyaux  <- boutique, tuyaux@cuivre
+  T: item:{ count: 1, id: "create:fluid_pipe" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2; command:"pouvoir prime sprocket 2"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_laiton] Commande : laiton  <- boutique, q_laiton@laiton
+  T: item:{ count: 1, id: "create:brass_ingot" }
+  R: item:{ count: 1, id: "numismatics:cog" }; command:"pouvoir prime cog 1"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_precision] Commande : mécanismes  <- boutique, q_precision@laiton
+  T: item:{ count: 1, id: "create:precision_mechanism" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"pouvoir prime cog 2"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_rails] Commande : rails  <- boutique, rails@laiton
+  T: item:{ count: 1, id: "create:track" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"pouvoir prime cog 2"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_obus] Commande : boulets  <- boutique, obus@laiton
+  T: item:{ count: 1, id: "createbigcannons:solid_shot" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"pouvoir prime cog 2"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_enveloppes] Commande : enveloppes  <- boutique, q_enveloppes@ciel
+  T: item:{ count: 1, id: "aeronautics:white_envelope" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"pouvoir prime cog 2"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_tubes] Commande : tubes électroniques  <- boutique, quartz@laiton
+  T: item:{ count: 1, id: "create:electron_tube" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"pouvoir prime cog 2"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+[o_netherite] Commande : plaques de netherite  <- boutique, netherite@laiton
+  T: item:{ count: 1, id: "kubejs:plaque_netherite" }
+  R: item:{ count: 1, id: "numismatics:crown" }; command:"pouvoir prime crown 1"
+  S: 
+  D: &7Répétable.&r Les objets livrés sont consommés.
+
+######## &3Annexe&r · Ingénierie et logistique — Faire travailler les machines à votre place.
+
+[i_scierie] La scierie  <- outils_meca@andesite
+  T: item:{ count: 1, id: "minecraft:oak_planks" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Les cités de l'Empire consommaient des forêts entières en charpentes. / Une scie mécanique sous un tapis : les bûches passent et ressortent en planches, à l'infini. Un filtre sur la scie choisit ce qu'elle taille.
+
+[i_cuisine] Cuisine au ventilateur  <- ventilateur@andesite
+  T: item:{ count: 1, id: "minecraft:cooked_beef" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }
+  S: 
+  D: La cantine d'une cité nourrissait des milliers d'ouvriers. Personne n'y retournait les steaks à la main. / Un ventilateur qui souffle à travers un feu de camp ou du feu cuit la viande qui passe devant, sur un tapis ou un dépôt.
+
+[i_tri] Le tri  <- goulottes@andesite
+  T: item:{ count: 1, id: "create:filter" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Chaque objet à sa place : la règle d'or des magasiniers de l'Empire. / Des filtres sur les entonnoirs : chaque objet dans le bon coffre. Les entonnoirs de laiton et les goulottes intelligentes trient plus finement.
+
+[i_canne] Ferme à canne à sucre  <- ferme@andesite
+  T: item:{ count: 1, id: "minecraft:sugar_cane" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }
+  S: 
+  D: Sans papier, pas de cartes, pas de livres, pas de cartouches. / Des pistons coupent la canne au-dessus du premier bloc, déclenchés par des observateurs ; elle repousse seule. Un tapis sous la rangée ramasse la récolte.
+
+[i_arbres] Ferme à arbres  <- i_scierie
+  T: item:{ count: 1, id: "minecraft:oak_log" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Une cité entière a été bâtie en bois de chêne. Il a bien fallu le couper. / Une scie mécanique sur un engin mobile abat l'arbre entier d'un coup. Un déployeur peut replanter les pousses derrière elle.
+
+[i_pierre] Générateur de pierre  <- outils_meca@andesite
+  T: item:{ count: 1, id: "minecraft:cobblestone" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: La pierre ne manque jamais. Encore faut-il l'extraire sans s'user les bras. / Lave et eau qui se rencontrent, une perceuse mécanique en face : de la roche sans fin. Broyée, elle devient gravier puis sable.
+
+[i_vapeur] La grande chaudière  <- blaze@laiton, vapeur@cuivre
+  T: item:{ count: 1, id: "create:blaze_burner" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: La grande chaudière d'une cité faisait trembler les vitres de tout le quartier. / Une machine à vapeur chauffée par au moins quatre brûleurs à blaze. Plus la chaudière est grande et chaude, plus elle fait tourner de machines ; les lunettes affichent son niveau.
+
+[i_entonnoirs] Entonnoirs de laiton  <- laiton@laiton, quartz@laiton
+  T: item:{ count: 1, id: "create:brass_funnel" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Les entonnoirs de laiton comptaient chaque pièce : rien ne sortait de l'entrepôt sans être pesé. / Ils filtrent directement et règlent la quantité exacte prise à chaque fois (molette sur leur face).
+
+[i_coffres] Coffres-forts  <- q_plaques@andesite
+  T: item:{ count: 1, id: "create:item_vault" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Les coffres-forts de la banque impériale n'ont jamais été forcés. / Posés côte à côte, ils fusionnent en un seul grand coffre. Ils ne s'ouvrent pas à la main : entonnoirs, bras et tapis les remplissent et les vident.
+
+[i_gisement] Les gisements infinis  <- precision@laiton, broyage@laiton
+  T: item:{ count: 1, id: "createoreexcavation:vein_finder" }; item:{ count: 1, id: "createoreexcavation:drilling_machine" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Trouvez un filon caché avec le détecteur, puis forez-le à l'infini. / &8Le détecteur demande un bloc de minerai de redstone intact (pioche Toucher de soie) ; la foreuse, des plaques renforcées (obsidienne broyée aux roues).&r
+
+[t_horaire] Les horaires  <- train@laiton
+  T: item:{ count: 1, id: "create:schedule" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Les trains de l'Empire partaient à la minute près. On réglait sa montre sur eux. / Remplissez l'horaire (destinations, attentes, conditions de départ), puis donnez-le au conducteur assis aux commandes, d'un clic droit.
+
+[t_portes] Portes de train  <- t_horaire
+  T: item:{ count: 1, id: "create:train_door" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }
+  S: 
+  D: Un vrai train a des portes. Les voyageurs de l'Empire n'ont jamais sauté d'un wagon en marche. / Les portes de train s'ouvrent seules à l'arrêt en gare, du côté du quai, et se referment au départ.
+
+[t_observateur] Observateurs de voie  <- t_horaire
+  T: item:{ count: 1, id: "create:track_observer" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: Les aiguilleurs savaient toujours où était chaque train. / Posé sur la voie, l'observateur émet un signal de redstone quand un train passe. Son filtre peut ne réagir qu'à une cargaison précise.
+
+[t_fret] Le train de marchandises  <- gare@laiton
+  T: item:{ count: 1, id: "create:portable_storage_interface" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Un train qui charge et décharge seul à deux gares, grâce aux interfaces portables. / Une interface sur le train, une autre en face sur le quai : à l'arrêt, elles se rejoignent et vident ou remplissent les coffres. Elles demandent le Grand Chantier de la gare impériale.
+
+[t_fluides] Le train-citerne  <- t_fret
+  T: item:{ count: 1, id: "create:portable_fluid_interface" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: L'huile de l'Empire voyageait par wagons-citernes. / Les interfaces de fluides font comme celles des objets, pour les réservoirs du train. Elles aussi demandent le Grand Chantier de la gare impériale.
+
+[t_triage] La gare de triage  <- t_fret
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: Au moins trois trains qui partagent les mêmes voies sans collision. / Des signaux de voie découpent le réseau en tronçons : un train n'entre pas dans un tronçon occupé. Placez-en à chaque croisement.
+
+[t_long] La grande ligne  <- t_triage
+  T: item:{ count: 1, id: "create:track" }
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: La ligne impériale traversait le continent d'un bout à l'autre. / Mille rails : de quoi relier vos bases entre elles, et rejoindre les cités mécaniques.
+
+[t_pneumatique] Grand Chantier : le réseau pneumatique  <- reseau@laiton
+  T: item:{ count: 1, id: "create:brass_sheet" }; item:{ count: 1, id: "create:smart_chute" }; item:{ count: 1, id: "create:precision_mechanism" }
+  R: command:"tag @s add airain_pneumatique"; item:{ count: 1, id: "numismatics:cog" }x2
+  S: Débloque les entrées d'Hypertubes
+  D: Sous les cités, l'Empire envoyait ses ingénieurs d'un atelier à l'autre par des tubes de verre et de laiton. Rouvrez le réseau. / Les tubes se fabriquent dès maintenant ; seules les entrées attendent ce chantier.
+
+[t_tube] Le premier tube  <- t_pneumatique
+  T: item:{ count: 1, id: "create_hypertube:hypertube_entrance" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Un ingénieur pressé passait d'un atelier à l'autre en quelques secondes, aspiré dans un tube de verre. / Deux entrées alimentées par un engrenage, reliées par des tubes. Validez quand vous avez fait le trajet.
+
+[t_ligne] La ligne impériale  <- train@laiton
+  T: structure:"kubejs:cite_mecanique"; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x3; xp:500
+  S: 
+  D: Les cités de l'Empire étaient reliées par le rail. Rétablissez une ligne : un train qui relie votre base à une cité mécanique, avec une gare à chaque bout. / Validez après le premier aller-retour.
+
+######## &3Annexe&r · Arsenal — Les armes de l'Empire, et sa technologie qui ressemble à des sorts.
+
+[a_lance] La lance  <- arme_fer@andesite
+  T: item:{ count: 1, id: "simplyswords:iron_spear" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: Les gardes des remparts tenaient l'ennemi à distance de lance. / Les armes de fer de l'arsenal se forgent avec des plaques de fer au lieu de lingots. Comme les autres, elles se réparent au banc d'entretien.
+
+[a_katana] Le katana  <- arme_fer@andesite
+  T: item:{ count: 1, id: "simplyswords:iron_katana" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: Une lame venue des forges de l'Est, adoptée par les officiers de l'Empire. / Rapide et tranchant. Comme la lance, il se forge avec des plaques de fer.
+
+[a_claymore] La claymore de diamant  <- armure_diamant@cuivre
+  T: item:{ count: 1, id: "simplyswords:diamond_claymore" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: L'arme des champions de l'arène impériale. Lourde, lente, sans pitié. / Le manche est désormais une plaque de cuivre au lieu d'un bâton. Elle frappe large : idéale contre les groupes.
+
+[a_netherite] Une arme de netherite  <- netherite@laiton, bastion@laiton
+  T: item:{ count: 1, id: "simplyswords:netherite_longsword" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: L'arme des gardes de la forge des âmes. / Plaques de netherite et gabarit d'amélioration à la table de forgeron, sur l'arme de diamant. Les plaques remplacent le lingot, comme pour l'armure.
+
+[a_unique] Une arme unique  <- a_netherite
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: Certaines armes n'ont jamais été fabriquées en série : on les trouve dans les coffres des donjons et des forteresses. Mettez la main sur une arme unique de Simply Swords, puis validez.
+
+[a_obus] Obus spéciaux  <- obus@laiton
+  T: item:{ count: 1, id: "createbigcannons:ap_shot" }; item:{ count: 1, id: "createbigcannons:shrapnel_shell" }; item:{ count: 1, id: "createbigcannons:smoke_shell" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Chaque situation a son obus. / Le boulet &6perforant&r traverse les blocs, l'obus à &6shrapnels&r crible une zone d'éclats, l'obus &6fumigène&r masque un assaut. Les obus demandent une fusée pour éclater.
+
+[a_mortier] Le mortier  <- a_obus
+  T: item:{ count: 1, id: "createbigcannons:drop_mortar_shell" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Par-dessus les remparts, là où les canons ne voient pas. / Les obus de mortier partent en cloche et retombent derrière les murs. Pratique contre un ennemi retranché.
+
+[a_silex] Le pistolet à silex  <- plaques@andesite
+  T: item:{ count: 1, id: "cgs:flintlock" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: La première arme à feu de l'Empire : plaques de fer, alliage d'andésite, un briquet. Elle tire des cartouches de papier (balles de plomb, poudre, papier).
+
+[a_revolver] Le revolver  <- a_silex, crafter@laiton
+  T: item:{ count: 1, id: "cgs:revolver" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Se fabrique à l'assembleur mécanique avec des plaques de laiton et de l'acier. / L'acier se mélange au malaxeur sur un brûleur surchauffé (gâteau de blaze) : fer et poussière de charbon de bois.
+
+[a_fusil] Le fusil à pompe  <- a_revolver
+  T: item:{ count: 1, id: "cgs:shotgun" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Pour les couloirs des cités mécaniques, rien ne vaut le fusil à pompe. / Redoutable de près, inutile de loin. Gardez une autre arme pour la distance.
+
+[a_gatling] La gatling  <- a_fusil, precision@laiton
+  T: item:{ count: 1, id: "cgs:gatling" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Un mécanisme de précision, un tambour, et l'Empire n'a plus besoin de soldats. / Elle tire tant qu'on tient la détente et qu'il reste des munitions. Gardez-en une réserve dans votre sac.
+
+[a_blazegun] Le lance-flammes à blaze  <- a_revolver, blaze@laiton
+  T: item:{ count: 1, id: "cgs:blazegun" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Un brûleur à blaze dans une crosse de bois. Ce n'est pas prudent. C'est très efficace. / Courte portée, dégâts de feu : redoutable de près, inutile contre ce qui vient du Nether.
+
+######## &dVoie de l'Écho&r · Les Arcanes — Ce que les Réfractaires ont appris, à l'écart de l'Empire.
+
+[ar_archebois] Les premiers murmures  <- a_ars_livre@laiton
+  T: item:{ count: 1, id: "ars_nouveau:archwood_planks" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: I · Les premiers murmures
+  D: « L'Écho est plus fort là où les arbres changent de couleur. » Trouvez une forêt d'archebois : bleu, rouge, vert ou violet, chaque teinte chante autrement.
+
+[ar_bocal] Un bocal de source  <- ar_archebois
+  T: item:{ count: 1, id: "ars_nouveau:source_jar" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: L'Écho qu'on capte doit bien aller quelque part. Les Réfractaires le gardaient dans des bocaux, comme on garde une braise.
+
+[ar_magebloom] La fleur des mages  <- ar_archebois
+  T: item:{ count: 1, id: "ars_nouveau:magebloom" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: La magebloom ne pousse que sur une terre imprégnée. Ses fibres tissent les robes des Arcanes.
+
+[ar_sourcelinks] Nourrir l'Écho  <- ar_bocal
+  T: item:{ count: 1, id: "ars_nouveau:agronomic_sourcelink" }; item:{ count: 1, id: "ars_nouveau:volcanic_sourcelink" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2; command:"loot give @s loot kubejs:carnet/apprentie_2"
+  S: II · Nourrir l'Écho
+  D: On ne prend pas l'Écho, on le nourrit : les plantes qui poussent, la lave qui brûle. Ce qui vit lui rend un peu de ce que l'Empire lui a volé. / &8Récompense : une page du carnet de l'apprentie.&r
+
+[ar_relais] Des relais qui laissent partir  <- ar_sourcelinks
+  T: item:{ count: 1, id: "ars_nouveau:relay" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: « Nos relais ne retiennent personne. Ils transmettent, puis ils laissent partir. » Ceux de l'Empire, eux, n'ont jamais rendu ce qu'ils portaient.
+
+[a_ars_table] La table du scribe  <- a_ars_livre@laiton
+  T: item:{ count: 1, id: "ars_nouveau:scribes_table" }
+  R: item:{ count: 1, id: "numismatics:cog" }; command:"loot give @s loot kubejs:carnet/apprentie_3"
+  S: III · Le grimoire
+  D: &7La voie de l'Écho.&r Pour inscrire de nouveaux sorts dans votre grimoire. / Chaque glyphe se grave une fois pour toutes, contre des matériaux. Les réfractaires gardaient leurs tables loin des yeux de l'Empire.
+
+[ar_glyphes] Trois volontés  <- a_ars_table
+  T: item:{ count: 1, id: "ars_nouveau:glyph_break" }; item:{ count: 1, id: "ars_nouveau:glyph_heal" }; item:{ count: 1, id: "ars_nouveau:glyph_light" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Briser, soigner, éclairer. « Morgana disait qu'on juge un mage à son premier sort de soin. »
+
+[a_ars_appareil] L'appareil d'enchantement  <- a_ars_table
+  T: item:{ count: 1, id: "ars_nouveau:enchanting_apparatus" }; item:{ count: 1, id: "ars_nouveau:arcane_core" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: IV · L'atelier réfractaire
+  D: &7La voie de l'Écho.&r Le cœur de tout atelier réfractaire : il lie l'Écho aux objets. / Le noyau arcanique dessous, l'appareil dessus, des socles autour avec les ingrédients. EMI montre chaque recette.
+
+[ar_brasero] Le brasero rituel  <- a_ars_appareil
+  T: item:{ count: 1, id: "ars_nouveau:ritual_brazier" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Certaines volontés sont trop grandes pour un grimoire. On les confie au feu.
+
+[ar_rituel] Ouvrir le ciel  <- ar_brasero
+  T: item:{ count: 1, id: "ars_nouveau:ritual_cloudshaping" }; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"loot give @s loot kubejs:carnet/apprentie_4"
+  S: 
+  D: Un rituel des nuages, posé sur le brasero. Validez une fois le ciel changé. / &8Récompense : une page du carnet de l'apprentie.&r
+
+[ar_starbuncle] Le petit être jaune  <- a_ars_appareil
+  T: item:{ count: 1, id: "ars_nouveau:starbuncle_charm" }
+  R: item:{ count: 1, id: "numismatics:cog" }; command:"loot give @s loot kubejs:carnet/apprentie_5"
+  S: V · Les petits Échos
+  D: « Certains égarés étaient trop petits pour garder une forme humaine. Ils ont pris celle qu'ils ont pu. » / Le Starbuncle porte les objets d'un coffre à l'autre. Il fera ça très bien pour vos machines. / &8Récompense : une page du carnet de l'apprentie.&r
+
+[ar_drygmy] Le Drygmy  <- ar_starbuncle
+  T: item:{ count: 1, id: "ars_nouveau:drygmy_charm" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Il récolte ce que laissent les bêtes, sans leur faire de mal. Les Réfractaires ne tuaient pas pour manger quand ils pouvaient l'éviter.
+
+[ar_whirlisprig] Le Whirlisprig  <- ar_starbuncle
+  T: item:{ count: 1, id: "ars_nouveau:whirlisprig_charm" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Là où il danse, les plantes poussent. Il nourrit l'Écho en retour.
+
+[ar_wixie] Le Wixie  <- ar_starbuncle
+  T: item:{ count: 1, id: "ars_nouveau:wixie_charm" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Un petit alchimiste au chaudron. Il se souvient de recettes que personne ne lui a apprises.
+
+[ar_golem] Le golem d'améthyste  <- ar_starbuncle
+  T: item:{ count: 1, id: "ars_nouveau:amethyst_golem_charm" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Un gardien de cristal qui fait pousser l'améthyste. Le seul golem que l'Empire n'a jamais construit.
+
+[a_ars_apprenti] Le grimoire d'apprenti  <- a_ars_appareil
+  T: item:{ count: 1, id: "ars_nouveau:apprentice_spell_book" }
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"loot give @s loot kubejs:carnet/apprentie_6"
+  S: VI · La robe des Arcanes
+  D: &7La voie de l'Écho.&r Les apprentis réfractaires recevaient ce grimoire après leur première année. / Plus de pages de sorts, et l'accès aux glyphes du deuxième cercle.
+
+[ar_robe] La robe des Arcanes  <- a_ars_apprenti
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Une armure de mage complète (sorcier, arcaniste ou mage de bataille). Validez une fois vêtu. / « On ne porte pas la robe pour se protéger. On la porte pour que les égarés nous reconnaissent. »
+
+[ar_fil] Un fil d'Écho  <- ar_robe
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Glissez un fil d'amélioration dans une pièce de votre robe (à l'appareil d'enchantement). Validez quand c'est fait.
+
+[a_ars_archimage] Le grimoire d'archimage  <- a_ars_apprenti
+  T: item:{ count: 1, id: "ars_nouveau:archmage_spell_book" }
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: &7La voie de l'Écho.&r Les chefs réfractaires en portaient un. Avec lui, on parle presque aux esprits perdus. / Toutes les pages, tous les cercles de glyphes. Contre le Chœur des Égarés, mieux vaut l'avoir.
+
+[ar_chasseur] Le chasseur  <- ar_glyphes
+  T: kill:"ars_nouveau:wilden_hunter"
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: VII · Les bêtes de l'Écho
+  D: Les Wildens sont des égarés qui ont trop longtemps erré dans la nature. Ils ne reconnaissent plus personne.
+
+[ar_rodeur] Le rôdeur  <- ar_chasseur
+  T: kill:"ars_nouveau:wilden_stalker"
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Il attaque en piqué, depuis les hauteurs. Gardez un sort prêt.
+
+[ar_gardien] Le gardien wilden  <- ar_rodeur
+  T: kill:"ars_nouveau:wilden_guardian"
+  R: item:{ count: 1, id: "numismatics:cog" }x2; command:"loot give @s loot kubejs:carnet/apprentie_7"
+  S: 
+  D: Couvert d'épines, il les lance en se roulant en boule. Le plus grand d'entre eux, le &5Chœur des Égarés&r, attend au Grand Relais (Échos perdus). / &8Récompense : la dernière page du carnet de l'apprentie.&r
+
+[l_vael] Le rapport de Vael  <- l_relais@ciel
+  T: structure:"kubejs:station_capsules"; checkmark:
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2; command:"airain chronique recit echo_vael"
+  S: 
+  D: Descendez au fond d'une station de capsules et lisez le rapport de l'ingénieur Elias Vael. / Dans le coffre du collecteur, une lettre attend toujours d'être ouverte.
+
+[l_essai] L'essai 41  <- l_vael
+  T: structure:"kubejs:cite_mecanique"; checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Quarante essais ont échoué. Le quarante et unième a réussi. C'est bien le problème. / Dans une cité mécanique, trouvez un laboratoire d'essais et lisez le journal de sa salle souterraine.
+
+[l_resonance] Résonance  <- l_sanctuaire@coeur
+  T: item:{ count: 1, id: "kubejs:fragment_resonance" }
+  R: xp:300
+  S: 
+  D: Les âmes sans repos (les fantômes des nuits sans sommeil) laissent parfois un &dfragment de résonance&r. Les relais brisés et le sanctuaire en cachent aussi.
+
+[l_diapason] Le diapason  <- l_resonance
+  T: item:{ count: 1, id: "kubejs:diapason_echo" }
+  R: xp:300
+  S: 
+  D: Ada Vesper avait trouvé la note qui apaise l'Écho. Elle n'a jamais pu la jouer. / La recette d'Ada : quatre fragments de résonance, une gemme d'Écho et un lingot d'or.
+
+[l_grand_relais] Le Grand Relais  <- l_diapason
+  T: structure:"kubejs:grand_relais"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: Là où la ligne principale du Transfert a cédé. Le résonateur, une pierre d'aimant posée sur de l'ardoise renforcée, se dresse près du pylône effondré. / &cPréparez-vous avant de frapper le diapason : le Chœur est redoutable. Équipement du chapitre V conseillé, à deux.&r
+
+[l_choeur] Le Chœur des Égarés  <- l_grand_relais
+  T: kill:"ars_nouveau:wilden_boss"
+  R: xp:2000; item:{ count: 1, id: "numismatics:crown" }; command:"airain chronique recit echo_choeur"
+  S: &5Boss de l'Écho&r
+  D: Frappez le diapason sur le résonateur (clic droit). Des milliers d'esprits fusionnés dans la douleur se réveillent. / Les vaincre, c'est les libérer. Venez avec un grimoire bien garni : l'épée seule ne suffira pas.
+
+[l_primordial] L'Écho primordial  <- l_choeur
+  T: item:{ count: 1, id: "kubejs:echo_primordial" }
+  R: xp:1000
+  S: 
+  D: Ils vous ont confié ce qu'ils étaient. / &dL'Écho primordial&r entre dans la fabrication des sorts les plus puissants : explosion, foudre, maléfice, flétrissement, persistance, mur et rafale. / Et les machines ne le sentent pas : vos sorts infligent &650 % de dégâts en plus&r aux machines de l'Empire, même les plus grandes.
+
+######## &3Annexe&r · Exploration et bestiaire — Cartographier ce que l'Empire a laissé derrière lui.
+
+[e_avantposte] Le camp réfractaire  <- outils@reveil
+  T: structure:"kubejs:avant_poste_refractaire"
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: Une palissade, des tentes rouges, un automate abattu exposé comme un trophée. Ici, on n'aime pas l'Empire. / Leurs coffres gardent des écrits et des cartes, et leurs machines vendent ce que l'Empire leur refusait.
+
+[e_pyramide] Le temple du désert  <- outils@reveil
+  T: structure:"minecraft:desert_pyramid"
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: L'Empire a fouillé ces temples avant vous. Il n'a pas tout emporté. / Méfiez-vous de la plaque de pression au fond de la salle : elle est reliée à des explosifs.
+
+[e_epave] L'épave  <- outils@reveil
+  T: structure:"minecraft:shipwreck"
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: Les navires marchands de l'Empire ont sombré avec leur cargaison. Personne n'est venu la chercher. / Les épaves cachent des cartes au trésor : le cœur de la mer est au bout. L'équipement de plongée rend la fouille bien plus facile.
+
+[e_fortin] Le fort souterrain  <- e_pyramide
+  T: structure:"minecraft:stronghold"
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: La salle secrète du Conseil, bâtie autour d'une porte que personne ne devait franchir. C'est d'ici que l'Empire a lancé sa traque. / Les yeux de l'Ender, lancés en l'air, vous y mènent. La porte vers l'End ne s'ouvrira qu'après la forge des âmes.
+
+[e_cite] La cité antique  <- e_epave
+  T: structure:"minecraft:ancient_city"
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: Une cité engloutie dans les ténèbres, plus ancienne que tout. Quelque chose y écoute encore. / &cSilence absolu recommandé.&r Accroupissez-vous, évitez les capteurs sculk et ne réveillez pas le gardien. La laine étouffe les bruits.
+
+[e_forteresse] La forteresse du Nether  <- nether@laiton
+  T: structure:"minecraft:fortress"
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: Les fondeurs de l'Empire y avaient leurs quartiers. Il n'en reste que des squelettes. / Les blazes donnent les bâtonnets des brûleurs ; les wither squelettes, leur crâne : le Masque des enfers, un trophée pour votre socle.
+
+[e_manoir] La station de capsules (opt) <- e_cite
+  T: structure:"kubejs:station_capsules"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: &7Optionnel.&r Un hall plein de capsules vides, et des câbles qui plongent dans un puits. / Descendez lire le rapport de l'ingénieur, sur le pupitre au fond. Le coffre du collecteur garde une lettre.
+
+[e_cite_meca] La cité mécanique (opt) <- e_manoir
+  T: structure:"kubejs:cite_mecanique"
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: &7Optionnel.&r Rare et immense : une ville entière de l'Empire, sa tour d'horloge, plusieurs marchés et les trois salles scellées. / Ses marchés vendent contre des pièces, et son laboratoire d'essais cache un journal.
+
+[e_donjons] Les donjons surgis  <- e_forteresse, e_manoir
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x3
+  S: 
+  D: L'Empire n'est pas le seul à avoir laissé de grandes ruines. D'autres ont surgi depuis. / Explorez trois grandes structures de When Dungeons Arise (forteresses volantes, cités en ruine…). Validez à la troisième.
+
+[e_archives] Les archives de l'Empire (opt) <- e_avantposte
+  T: item:{ components: { "minecraft:custom_data": { airain_doc: "vael; item:{ components: { "minecraft:custom_data": { airain_doc: "lett; item:{ components: { "minecraft:custom_data": { airain_doc: "inci; item:{ components: { "minecraft:custom_data": { airain_doc: "essa; item:{ components: { "minecraft:custom_data": { airain_doc: "ada"; item:{ components: { "minecraft:custom_data": { airain_doc: "refr; item:{ components: { "minecraft:custom_data": { airain_doc: "cach
+  R: item:{ count: 1, id: "numismatics:crown" }; xp:1000
+  S: Rassembler tous les écrits
+  D: &7Optionnel.&r Ceux qui ont vécu la fin de l'Empire ont laissé des écrits. Rassemblez-les tous dans votre inventaire (ils ne sont pas consommés) : / • le rapport de Vael, sur le pupitre d'une station de capsules ; / • la lettre d'Ada, dans le coffre du collecteur de la même station ; / • le rapport d'incident, sur le pupitre d'un relais brisé ; / • le journal d'essais, dans le laboratoire d'une cité mécanique ; / • le journal d'Ada Vesper, dans le sanctuaire réfractaire ; / • un écrit réfractaire, dans les coffres des camps ; / • l'inventaire d'une cache, enterrée sous la croix d'une carte réfractaire (cartes trouvées dans les camps). / &8Les structures générées avant cette mise à jour gardent d'anciens exemplaires, non reconnus : cherchez-en de nouvelles.&r
+
+[e_traces] Les traces du monde ancien (opt) <- e_fortin
+  T: item:{ components: { "minecraft:custom_data": { airain_doc: "mine; item:{ components: { "minecraft:custom_data": { airain_doc: "pros; item:{ components: { "minecraft:custom_data": { airain_doc: "carg; item:{ components: { "minecraft:custom_data": { airain_doc: "cons; item:{ components: { "minecraft:custom_data": { airain_doc: "prof; item:{ components: { "minecraft:custom_data": { airain_doc: "neth; item:{ components: { "minecraft:custom_data": { airain_doc: "ciel
+  R: item:{ count: 1, id: "numismatics:crown" }; xp:1500
+  S: Les écrits cachés dans les ruines d'avant
+  D: &7Optionnel.&r L'Empire est passé partout, même dans les ruines plus anciennes que lui. Ses écrits dorment au fond de leurs coffres. Rassemblez-les dans votre inventaire (ils ne sont pas consommés) : / • le carnet de mineur : puits de mine abandonnés et donjons ; / • la lettre d'un prospecteur : temples du désert et de la jungle, igloos ; / • le manifeste de cargaison : épaves, trésors enfouis, ruines sous-marines ; / • le registre du Conseil : forts souterrains ; / • le rapport des profondeurs : cités antiques ; / • le journal du Nether : forteresses du Nether et bastions ; / • le dernier message : cités de l'End. / &8Le dernier ne se trouve qu'au bout du voyage.&r
+
+[e_archiviste] L'Archiviste (opt) <- e_archives, e_traces
+  T: item:{ components: { "minecraft:custom_data": { airain_doc: "stat; item:{ components: { "minecraft:custom_data": { airain_doc: "abri; item:{ components: { "minecraft:custom_data": { airain_doc: "cham; item:{ components: { "minecraft:custom_data": { airain_doc: "diri
+  R: item:{ count: 1, id: "numismatics:crown" }x2; xp:2000; command:"airain chronique note archiviste"
+  S: Tous les écrits du monde
+  D: &7Optionnel.&r Il ne manque que les écrits les plus difficiles à atteindre : / • les relevés de la station d'observation, sur une île volante ; / • le carnet de route d'un abri réfractaire, sur un îlot du lac de lave du Nether ; / • la lettre jamais envoyée, dans la caisse d'une barricade du champ de bataille ; / • le livre de bord d'un dirigeable de la flotte du ciel. / Tous ces écrits se relisent dans les archives des Chroniques oubliées.
+
+[e_front] Le front (opt) <- e_avantposte
+  T: structure:"kubejs:champ_bataille"
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: &7Optionnel.&r Dans les savanes brûlées et les collines battues, la guerre s'est arrêtée net. Un marcheur de l'Empire gît encore devant une barricade réfractaire, au milieu d'un cratère où l'Écho a fait pousser du cristal. / &8La caisse de la barricade garde parfois une lettre jamais envoyée.&r
+
+[e_fuite] La route de la fuite (opt) <- nether@laiton
+  T: structure:"kubejs:abri_nether"
+  R: item:{ count: 1, id: "numismatics:sprocket" }x3
+  S: 
+  D: &7Optionnel.&r Sur un îlot du lac de lave, une palissade de bois de l'Écho et un feu d'âmes. Des Réfractaires se sont arrêtés ici, sur la route de leur fuite. / &8Leur carnet de route dit où ils allaient.&r
+
+[r_ciel] Au-dessus de tout (opt) <- outils@reveil
+  T: location:"minecraft:overworld"
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: &7Record d'ingénieur, optionnel.&r Montez au-dessus de Y 330, plus haut que tout ce qu'on peut construire. En élytres ou en engin volant. / &8Le record de l'Empire tenait à Y 400. Personne n'est redescendu pour le confirmer.&r
+
+[r_abysses] Au fond du monde (opt) <- outils@reveil
+  T: location:"minecraft:overworld"
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: &7Record d'ingénieur, optionnel.&r Descendez sous Y -59, tout contre la bedrock. / &8Les mineurs de l'Empire disaient qu'on y entend battre le monde.&r
+
+[r_toit] Le toit du Nether (opt) <- nether@laiton
+  T: location:"minecraft:the_nether"
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: &7Record d'ingénieur, optionnel.&r Passez au-dessus du plafond de bedrock du Nether. Une perle de l'Ender bien lancée peut aider. / &8Personne ne sait ce que les ingénieurs de l'Empire allaient y chercher.&r
+
+[r_vitesse] Pleine puissance (opt) <- engrenages@reveil
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: &7Record d'ingénieur, optionnel.&r Faites tourner une machine à 256 tours/minute, la vitesse maximale. Les lunettes affichent la vitesse. Validez quand c'est fait.
+
+[r_voyage] Le grand voyageur (opt) <- cites@ciel
+  T: stat:1000000
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: &7Record d'ingénieur, optionnel.&r Parcourez 10 km en élytres. Des fusées, ou un jetpack pour repartir. / &8Les messagers de l'Empire faisaient le tour du continent en une journée.&r
+
+[b_araignee] L'araignée de bronze (opt) <- nether@laiton
+  T: kill:"mebahelcreaturesdwarven:dwarven_spider"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: &7Optionnel.&r Le modèle le plus répandu des vieilles usines de bronze. Il en sort encore de partout. / &8Seule, elle n'est rien. Elles ne sont jamais seules.&r
+
+[b_sphere] La sphère (opt) <- nether@laiton
+  T: kill:"mebahelcreaturesdwarven:dwarven_sphere"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: &7Optionnel.&r Repliée, elle roule. Déployée, elle se bat. / &8Elles arrivent vite et en nombre : tenez un passage étroit.&r
+
+[b_gardienne] L'araignée gardienne (opt) <- nether@laiton
+  T: kill:"mebahelcreaturesdwarven:dwarven_spider_guardian"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: &7Optionnel.&r Elle garde les portes des cités de bronze. Son ordre n'a jamais été levé. / &8Plus lente que ses petites sœurs, mais bien plus solide. Ne la laissez pas vous acculer.&r
+
+[b_centurion] Le centurion (opt) <- nether@laiton
+  T: kill:"mebahelcreaturesdwarven:dwarven_centurion"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: &7Optionnel.&r Un colosse à vapeur. Il crache de la vapeur brûlante avant de frapper. / &8Reculez quand il siffle, frappez quand il recharge.&r
+
+[b_wroughtnaut] Le colosse de fer (opt) <- nether@laiton
+  T: kill:"mowziesmobs:ferrous_wroughtnaut"
+  R: item:{ count: 1, id: "numismatics:cog" }x2
+  S: 
+  D: &7Optionnel.&r Une armure vide qui attend un ordre. Elle garde sa salle depuis la chute. / &8Il ne craint presque rien de face : esquivez sa hache, puis frappez-le dans le dos.&r
+
+[b_golem] Le golem de l'End (opt) <- nether@laiton
+  T: kill:"cataclysm:ender_golem"
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: &7Optionnel.&r Un gardien de pierre et de vide, qui ne dort jamais. / &8Ses coups au sol portent loin : ne restez pas au contact quand il lève les bras.&r
+
+[b_rodeur] Le rôdeur (opt) <- nether@laiton
+  T: kill:"cataclysm:the_prowler"
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: &7Optionnel.&r Une machine de guerre de l'usine ancienne. On l'appelle aussi la Sentinelle. / &8Ses tirs portent loin : approchez à couvert, et ne restez jamais dans son axe.&r
+
+[b_veilleur] Le veilleur (opt) <- nether@laiton
+  T: kill:"cataclysm:the_watcher"
+  R: item:{ count: 1, id: "numismatics:crown" }
+  S: 
+  D: &7Optionnel.&r Un drone de surveillance. Il ne vient jamais seul. / &8Abattez-le vite : là où il passe, d'autres machines suivent.&r
+
+######## &3Annexe&r · Bases et capitales — Fonder, pavoiser, exposer : faire d'un abri une base de l'Empire.
+
+[e_fondation] La première fondation (opt) <- outils@reveil
+  T: item:{ count: 1, id: "airain:foundation_stone" }; item:{ count: 1, id: "airain:foundation_registry" }
+  R: item:{ count: 1, id: "numismatics:bevel" }x4
+  S: 
+  D: &7Optionnel.&r Plantez un &6étendard de fondation&r au cœur de votre base et donnez-lui un nom et une devise : chaque fois qu'un de vous deux entrera dans sa zone, ils s'afficheront à l'écran, encadrés de sa bannière. / Clic droit pour tout régler. Page « Général » : nom, devise, style du mât (potence, vexillum, cérémonie). Page « Toile » : couleurs, partition et seconde couleur, motif et sa couleur, forme du bas, usure (neuve, usée, déchirée), broderie lumineuse. / Clic droit avec une clé de Create pour agrandir la zone (16 à 128 blocs, accroupi pour réduire). Un comparateur contre l'étendard donne un signal plein tant que l'un de vous est dans la zone. / Le &6registre des fondations&r liste toutes vos bases (nom, coordonnées, dimension, distance), puis vos trophées exposés. / &8L'étendard de fondation est le maître de sa zone : les grands étendards et bannières qui s'y trouvent peuvent suivre sa présence (voir « Hisser les couleurs »).&r
+
+[h_grand] Le grand étendard (opt) <- e_fondation, laiton@laiton
+  T: item:{ count: 1, id: "airain:great_standard" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: &7Optionnel.&r Les places de l'Empire se reconnaissaient de loin : un mât de cinq à huit blocs, et une toile qui claquait au vent. / Le &6grand étendard&r fait tout ce que fait l'étendard de fondation, en plus grand. Une troisième page, « Mât », règle la hauteur, la longueur et la largeur de la toile, le vent, les franges, le fleuron du sommet (le rouage tourne), la double bannière et les lanternes. / Mode &6décoratif&r (page « Général ») : pas de titre à l'écran, pas de place dans le registre. Parfait pour orner une base qui a déjà sa fondation. / &8Un signal de redstone le met en berne. La météo fait claquer la toile ; l'option « Vent commun » fait onduler ensemble toutes les bannières qui l'ont.&r
+
+[h_murale] La bannière murale (opt) <- h_grand
+  T: item:{ count: 1, id: "airain:foundation_wall_banner" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }x2
+  S: 
+  D: &7Optionnel.&r Dans les halls de l'Empire, les couleurs tombaient des murs jusqu'au sol. / La &6bannière murale&r se pose contre un mur, sur sa tringle. Mêmes réglages de toile que les étendards ; sa page « Taille » choisit la longueur (2 à 4 blocs) et la largeur. / &8Un signal de redstone l'enroule. Les camps réfractaires ont aussi les leurs, à leurs propres couleurs.&r
+
+[h_gabarit] Le gabarit (opt) <- h_murale
+  T: item:{ count: 1, id: "airain:banner_template" }
+  R: item:{ count: 1, id: "numismatics:sprocket" }
+  S: 
+  D: &7Optionnel.&r Les drapiers de l'Empire travaillaient sur patron : toutes les bannières d'une cité se ressemblaient au fil près. / Accroupi + clic droit avec le &6gabarit&r sur un étendard ou une bannière : il en copie l'apparence (couleurs, motif, mât, mode décoratif). Clic droit sur une autre : il l'applique. Le nom et la devise restent. / &8Il copie aussi l'apparence d'un socle de l'Empire, pour l'appliquer à un autre socle.&r
+
+[h_hissage] Hisser les couleurs (opt) <- h_murale
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }; xp:300
+  S: 
+  D: &7Optionnel.&r Quand l'Empereur entrait dans une cité, toutes ses bannières montaient ensemble. / Grands étendards et bannières murales ont un réglage « Hissage » : / • &6Manuel&r : un arbre de Create qui tourne contre le pied du mât, ou contre la bannière, la hisse ou l'abaisse selon le sens ; / • &6Selon présence&r : les bannières montent dès que l'un de vous entre dans la zone de l'étendard de fondation, et redescendent quand le dernier la quitte. Toutes celles de la zone bougent ensemble ; / • &6Selon trophées&r : elles montent tant qu'un trophée est exposé dans la zone. / Réglez une bannière « selon présence » dans votre base, sortez de la zone puis revenez. Validez quand vous l'avez vue se hisser.
+
+[h_pavoise] Une base pavoisée (opt) <- h_hissage, h_gabarit
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:cog" }x2; xp:500
+  S: 
+  D: &7Optionnel.&r Une fondation digne de l'Empire : au moins quatre grands étendards ou bannières murales dans la zone d'un même étendard de fondation, aux mêmes couleurs, qui se hissent tous ensemble à votre arrivée. / Validez quand c'est fait.
+
+[b_socle] Le socle de l'Empire (opt) <- nether@laiton
+  T: item:{ count: 1, id: "airain:trophy_pedestal" }
+  R: item:{ count: 1, id: "numismatics:cog" }
+  S: 
+  D: &7Optionnel.&r Exposez un trophée de boss sur un socle : tant qu'il y reste, son effet profite à &6toute l'équipe&r, où que vous soyez. / • Masque des enfers : résistance au feu ; / • Cœur du Gardien des enfers : régénération ; / • Œuf du Gardien des Cieux : aucun dégât de chute ; / • Écho primordial : vision nocturne. / &6Accroupi + clic droit main vide&r : les réglages du socle. Matériau, velours et capitonnage, garnitures, colonne haute, présentation du trophée (lévitation, posé, chevalet, sous cloche), éclairage, particules et plaque gravée. La plaque se grave seule, au nom du trophée et au jour de la victoire. / &8Deux trophées identiques ne cumulent pas. Clic droit main vide pour reprendre le trophée. Un comparateur lit le socle : plus le trophée donne d'effets, plus le signal est fort. Un gabarit de bannière copie aussi l'apparence d'un socle.&r
+
+[b_trophees] La salle des trophées (opt) <- b_socle
+  T: checkmark:
+  R: item:{ count: 1, id: "numismatics:crown" }; xp:1000
+  S: 
+  D: &7Optionnel.&r Les palais de l'Empire exposaient leurs trophées sous les bannières de leurs fondateurs. Exposez quatre trophées différents dans votre base. Validez quand c'est fait. / &8Le registre des fondations recense aussi vos trophées exposés, et les bannières réglées « selon trophées » se hissent quand un trophée est exposé dans leur zone.&r
+
+######## &cSecours administrateur&r — Ne pas montrer aux joueurs.
+
+[x_cuivre] Secours : chapitre II  <- 
+  T: checkmark:
+  R: item:{ count: 1, id: "kubejs:schema_cuivre" }; item:{ count: 1, id: "kubejs:fragment_rouages" }
+  S: 
+  D: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+
+[x_laiton] Secours : chapitre III  <- 
+  T: checkmark:
+  R: item:{ count: 1, id: "kubejs:schema_laiton" }; item:{ count: 1, id: "kubejs:fragment_marees" }; item:{ count: 1, id: "kubejs:sceau_forge" }; command:"tag @s add airain_nether"
+  S: 
+  D: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+
+[x_ciel] Secours : chapitre IV  <- 
+  T: checkmark:
+  R: item:{ count: 1, id: "kubejs:schema_ciel" }; item:{ count: 1, id: "kubejs:fragment_forge" }; command:"tag @s add airain_end"; command:"tag @s add airain_waystones"; command:"tag @s add airain_gare"; command:"tag @s add airain_pneumatique"
+  S: 
+  D: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+
+[x_vide] Secours : chapitre V  <- 
+  T: checkmark:
+  R: item:{ count: 1, id: "kubejs:fragment_vide" }; command:"tag @s add airain_atelier"
+  S: 
+  D: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+
+[x_coeur] Secours : chapitre VI  <- 
+  T: checkmark:
+  R: item:{ count: 1, id: "kubejs:coeur_d_airain" }; item:{ count: 1, id: "minecraft:nether_star" }; item:{ count: 1, id: "airain:defense_beacon" }
+  S: 
+  D: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+
+[x_echo] Secours : l'Écho  <- 
+  T: checkmark:
+  R: item:{ count: 1, id: "kubejs:diapason_echo" }; item:{ count: 1, id: "kubejs:echo_primordial" }x8
+  S: 
+  D: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.

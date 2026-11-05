@@ -1,0 +1,269 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "kubejs:block/balise_corps_nord",
+    "socle": "kubejs:block/balise_socle",
+    "nord": "kubejs:block/balise_corps_nord",
+    "sud": "kubejs:block/balise_corps_sud",
+    "est": "kubejs:block/balise_corps_est",
+    "ouest": "kubejs:block/balise_corps_ouest",
+    "dessus": "kubejs:block/balise_corps_dessus",
+    "lampe": "kubejs:block/balise_lampe"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        1,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#socle",
+          "uv": [
+            0,
+            1,
+            14,
+            2
+          ]
+        },
+        "south": {
+          "texture": "#socle",
+          "uv": [
+            0,
+            1,
+            14,
+            2
+          ]
+        },
+        "east": {
+          "texture": "#socle",
+          "uv": [
+            0,
+            1,
+            14,
+            2
+          ]
+        },
+        "west": {
+          "texture": "#socle",
+          "uv": [
+            0,
+            1,
+            14,
+            2
+          ]
+        },
+        "up": {
+          "texture": "#socle",
+          "uv": [
+            0,
+            2,
+            14,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#socle",
+          "uv": [
+            0,
+            2,
+            14,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        1,
+        2
+      ],
+      "to": [
+        14,
+        9,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#nord",
+          "uv": [
+            0,
+            0,
+            12,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#sud",
+          "uv": [
+            0,
+            0,
+            12,
+            8
+          ]
+        },
+        "east": {
+          "texture": "#est",
+          "uv": [
+            0,
+            0,
+            12,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#ouest",
+          "uv": [
+            0,
+            0,
+            12,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#dessus",
+          "uv": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        7,
+        9,
+        7
+      ],
+      "to": [
+        9,
+        12,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#lampe",
+          "uv": [
+            8,
+            0,
+            10,
+            3
+          ]
+        },
+        "south": {
+          "texture": "#lampe",
+          "uv": [
+            8,
+            0,
+            10,
+            3
+          ]
+        },
+        "east": {
+          "texture": "#lampe",
+          "uv": [
+            8,
+            0,
+            10,
+            3
+          ]
+        },
+        "west": {
+          "texture": "#lampe",
+          "uv": [
+            8,
+            0,
+            10,
+            3
+          ]
+        },
+        "up": {
+          "texture": "#lampe",
+          "uv": [
+            8,
+            3,
+            10,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        5,
+        12,
+        5
+      ],
+      "to": [
+        11,
+        16,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#lampe",
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ]
+        },
+        "south": {
+          "texture": "#lampe",
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ]
+        },
+        "east": {
+          "texture": "#lampe",
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ]
+        },
+        "west": {
+          "texture": "#lampe",
+          "uv": [
+            0,
+            0,
+            6,
+            4
+          ]
+        },
+        "up": {
+          "texture": "#lampe",
+          "uv": [
+            0,
+            4,
+            6,
+            10
+          ]
+        },
+        "down": {
+          "texture": "#lampe",
+          "uv": [
+            0,
+            10,
+            6,
+            16
+          ]
+        }
+      }
+    }
+  ]
+}

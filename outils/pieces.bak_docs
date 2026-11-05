@@ -1,0 +1,174 @@
+"""Outils communs pour écrire des pièces de structure (.nbt) et leurs blocs puzzle (jigsaw)."""
+import json, os, random
+import nbtlib
+from nbtlib import Compound, List, Int, String, Byte
+
+VOID = "minecraft:structure_void"
+AIR = "minecraft:air"
+NON_PLEINS = ("ladder", "rail", "torch", "lantern", "chain", "lightning_rod", "carpet", "slab", "stairs", "trapdoor", "_door",
+              "sign", "campfire", "fluid_pipe", "cogwheel", "shaft", "bell", "lever", "button", "flower", "sapling", "cobweb",
+              "amethyst_cluster", "_bud", "candle", "snow[", "fence", "bush", "grass[", "short_grass", "fern", "lectern", "depot")
+
+
+class Piece:
+    def __init__(self, nom, sx, sy, sz, fond=VOID):
+        self.nom, self.size = nom, (sx, sy, sz)
+        self.B = {}
+        self.jig = []           # (x, y, z, face, nom, cible, pool, final)
+        for x in range(sx):
+            for y in range(sy):
+                for z in range(sz):
+                    self.B[(x, y, z)] = (fond, None)
+
+    def put(self, x, y, z, s, nbt=None):
+        if (x, y, z) in self.B:
+            self.B[(x, y, z)] = (s, nbt)
+
+    def get(self, x, y, z):
+        return self.B.get((x, y, z), (None, None))[0]
+
+    def box(self, x1, y1, z1, x2, y2, z2, s):
+        for x in range(min(x1, x2), max(x1, x2) + 1):
+            for y in range(min(y1, y2), max(y1, y2) + 1):
+                for z in range(min(z1, z2), max(z1, z2) + 1):
+                    self.put(x, y, z, s() if callable(s) else s)
+
+    def jigsaw(self, x, y, z, face, nom, cible, pool, final):
+        """face : north / south / east / west (horizontal) ; le bloc est remplacé par `final` à la génération."""
+        self.jig.append((x, y, z, face, nom, cible, pool, final))
+
+    # ------------------------------------------------------------------ écriture
+    def ecrire(self, racine):
+        palette, pidx, blocks = [], {}, []
+        def idx(state):
+            if state not in pidx:
+                if "[" in state:
+                    name, props = state[:-1].split("[")
+                    e = Compound({"Name": String(name), "Properties": Compound(
+                        {k: String(v) for k, v in (kv.split("=") for kv in props.split(","))})})
+                else:
+                    e = Compound({"Name": String(state)})
+                pidx[state] = len(palette); palette.append(e)
+            return pidx[state]
+        jpos = {(j[0], j[1], j[2]): j for j in self.jig}
+        self.relier_barreaux()
+        for (x, y, z), (s, nbt) in sorted(self.B.items(), key=lambda kv: (kv[0][1], kv[0][2], kv[0][0])):
+            if (x, y, z) in jpos:
+                _, _, _, face, nom, cible, pool, final = jpos[(x, y, z)]
+                st = "minecraft:jigsaw[orientation=%s_up]" % face
+                nbt = Compound({"id": String("minecraft:jigsaw"), "name": String(nom), "target": String(cible),
+                                "pool": String(pool), "final_state": String(final), "joint": String("aligned"),
+                                "selection_priority": Int(0), "placement_priority": Int(0)})
+                b = Compound({"pos": List[Int]([Int(x), Int(y), Int(z)]), "state": Int(idx(st)), "nbt": nbt})
+                blocks.append(b); continue
+            if s == VOID:
+                continue
+            b = Compound({"pos": List[Int]([Int(x), Int(y), Int(z)]), "state": Int(idx(s))})
+            if nbt is not None:
+                b["nbt"] = nbt
+            blocks.append(b)
+        sx, sy, sz = self.size
+        root = Compound({"DataVersion": Int(3955), "size": List[Int]([Int(sx), Int(sy), Int(sz)]),
+                         "palette": List[Compound](palette), "blocks": List[Compound](blocks),
+                         "entities": List[Compound]([])})
+        f = os.path.join(racine, self.nom.split(":", 1)[-1] + ".nbt")
+        os.makedirs(os.path.dirname(f), exist_ok=True)
+        nbtlib.File(root, root_name="").save(f, gzipped=True)
+        return len(blocks)
+
+    def relier_barreaux(self):
+        """Les barreaux sans propriétés se posent en tiges isolées : on les relie à leurs voisins pleins ou barreaux."""
+        def plein(s):
+            if s is None or s in (VOID, AIR) or s.startswith("minecraft:jigsaw"):
+                return False
+            if s.split("[")[0].endswith("_bars") or "pane" in s:
+                return True
+            return not any(k in s for k in NON_PLEINS)
+        for (x, y, z), (s, nbt) in list(self.B.items()):
+            if s.split("[")[0].endswith("_bars") and "[" not in s:
+                v = {f: plein(self.get(x + dx, y, z + dz)) for f, dx, dz in
+                     (("north", 0, -1), ("south", 0, 1), ("east", 1, 0), ("west", -1, 0))}
+                self.B[(x, y, z)] = (s + "[east=%s,north=%s,south=%s,waterlogged=false,west=%s]" % tuple(
+                    str(v[f]).lower() for f in ("east", "north", "south", "west")), nbt)
+
+    def apercu(self):
+        """Description JSON (pour les rendus)."""
+        return {"size": list(self.size),
+                "blocks": {f"{x},{y},{z}": s for (x, y, z), (s, n) in self.B.items()},
+                "jigsaws": [list(j) for j in self.jig]}
+
+
+# ---------------------------------------------------------------------- blocs à contenu
+def coffre(table, face="south"):
+    return ("lootr:lootr_chest[facing=%s,type=single,waterlogged=false]" % face,
+            Compound({"id": String("lootr:lootr_chest"), "LootTable": String(table)}))
+
+
+PIECES = dict(spur=0, bevel=0, sprocket=0, cog=0, crown=0, sun=0)
+
+
+def distributeur(objet, n, face="north", composants=None, **prix):
+    p = dict(PIECES); p.update(prix)
+    sel = Compound({"id": String(objet), "count": Int(n)})
+    if composants:
+        sel["components"] = composants
+    return ("numismatics:creative_vendor[facing=%s]" % face,
+            Compound({"id": String("numismatics:vendor"), "Mode": Int(0),
+                      "Prices": Compound({k: Int(v) for k, v in p.items()}), "Selling": sel}))
+
+
+def panneau(cle, face="north", couleur="black", bois="spruce", lignes=None):
+    """Panneau mural traduit : la clé va sur la 2e ligne (ou `lignes` = 4 composants JSON)."""
+    if lignes is None:
+        lignes = ['""', json.dumps({"translate": cle}), '""', '""']
+    txt = lambda L: Compound({"messages": List[String]([String(l) for l in L]),
+                              "color": String(couleur), "has_glowing_text": Byte(1)})
+    return ("minecraft:%s_wall_sign[facing=%s,waterlogged=false]" % (bois, face),
+            Compound({"id": String("minecraft:sign"), "is_waxed": Byte(1),
+                      "front_text": txt(lignes), "back_text": txt(['""'] * 4)}))
+
+
+def livre_enchante(ench, niv):
+    return Compound({"minecraft:stored_enchantments": Compound({
+        "levels": Compound({ench: Int(niv)}), "show_in_tooltip": Byte(1)})})
+
+
+# ---------------------------------------------------------------------- retouches faites à la main par Liam
+RETOUCHES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "retouches_liam")
+
+
+def appliquer_retouches(pieces, filtre=lambda nom: True):
+    """Remplace le contenu des pièces par les fichiers retouchés en jeu (même nom court, même taille).
+    L'air sauvegardé là où la pièce d'origine était vide redevient vide, pour ne pas creuser le terrain autour."""
+    faites = []
+    for pc in pieces:
+        court = pc.nom.split("/")[-1]
+        f = os.path.join(RETOUCHES, court + ".nbt")
+        if not filtre(pc.nom) or not os.path.exists(f):
+            continue
+        n = nbtlib.load(f)
+        if tuple(int(v) for v in n["size"]) != pc.size:
+            print("retouche ignorée (taille différente) :", court); continue
+        etats = []
+        for e in n["palette"]:
+            s = str(e["Name"])
+            if "Properties" in e:
+                s += "[" + ",".join("%s=%s" % (k, v) for k, v in e["Properties"].items()) + "]"
+            etats.append(s)
+        origine = pc.B
+        B = {p: (VOID, None) for p in origine}
+        jig = []
+        for b in n["blocks"]:
+            p = tuple(int(v) for v in b["pos"]); s = etats[int(b["state"])]
+            if s.startswith("minecraft:jigsaw"):
+                t = b["nbt"]; face = s.split("orientation=")[1].split("_")[0]
+                jig.append((p[0], p[1], p[2], face, str(t["name"]), str(t["target"]), str(t["pool"]), str(t["final_state"])))
+                continue
+            if origine.get(p, (VOID, None))[0] == VOID and s.split("[")[0] in (AIR, "minecraft:dirt", "minecraft:grass_block", "minecraft:short_grass"):
+                continue                                   # air ou terrain du monde de test : on laisse le vrai terrain
+            if s == "minecraft:dirt" and origine.get(p, (VOID, None))[0] == "minecraft:dirt_path":
+                s = "minecraft:dirt_path"                  # un chemin redevient terre dès qu'on pose un bloc dessus en jeu
+            B[p] = (s, b["nbt"] if "nbt" in b else None)
+        pc.B, pc.jig = B, jig
+        faites.append(court)
+    return faites

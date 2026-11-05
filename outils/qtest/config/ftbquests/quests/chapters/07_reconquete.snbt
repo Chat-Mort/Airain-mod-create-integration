@@ -1,0 +1,360 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "07_reconquete"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "minecraft:nether_star" }
+	id: "35BF15091D15D650"
+	order_index: 7
+	quests: [
+		{
+			dependencies: ["1CB86E4CE793D650"]
+			id: "3F70267359AFD16A"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:balise_defense" }
+					id: "79C81770387D1D79"
+					type: "item"
+				}
+				{
+					xp: 500
+					id: "536D79A626D346F9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "41E47EDB1412B2C3"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3F70267359AFD16A"]
+			id: "4A9B3A221345EC1C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "1FE8DEA2F86BE043"
+					type: "item"
+				}
+				{
+					xp: 1000
+					id: "4A44311A79EC60C7"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					stage: "airain_assaut"
+					id: "6FFE5028C89CFE19"
+					type: "gamestage"
+				}
+			]
+			x: 0.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3F70267359AFD16A"]
+			id: "71DF30C0262B65CA"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "45EE1265F0A82F5B"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_spider"
+					value: 20L
+					id: "44A2E9155DE9303B"
+					type: "kill"
+				}
+			]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["71DF30C0262B65CA"]
+			id: "7ED07D538A789774"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "6318ACAF83DBCAFB"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_sphere"
+					value: 12L
+					id: "4E015EFB857AF7F2"
+					type: "kill"
+				}
+			]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["7ED07D538A789774"]
+			id: "5B3EC0CEF0830078"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "7E81327FD6755C1D"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "minecraft:wither_skeleton"
+					value: 30L
+					id: "129F0B65DABD6F0D"
+					type: "kill"
+				}
+				{
+					entity: "minecraft:blaze"
+					value: 30L
+					id: "6F98002327429C2C"
+					type: "kill"
+				}
+			]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3F70267359AFD16A"]
+			id: "211383434933E242"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "449BEFEE1AE2D7B3"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_spider_guardian"
+					value: 3L
+					id: "2CEA3C78CC824AE1"
+					type: "kill"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["211383434933E242"]
+			id: "71C1917F8DAC3905"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "3EA883F7B5938C77"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_centurion"
+					value: 1L
+					id: "60C86A717A187681"
+					type: "kill"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["71C1917F8DAC3905"]
+			id: "58D982FE0CA0F710"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "700BDBE92DC93BF7"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:ferrous_wroughtnaut"
+					value: 1L
+					id: "715602E8F779274B"
+					type: "kill"
+				}
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["3F70267359AFD16A"]
+			id: "6581B56BF39E0D5F"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "252D9E96BBBF85F2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "minecraft:wither"
+					value: 1L
+					id: "6C8F8862EDBD258C"
+					type: "kill"
+				}
+			]
+			x: 8.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["5B3EC0CEF0830078", "58D982FE0CA0F710"]
+			id: "173E532804C19AAB"
+			rewards: [
+				{
+					xp: 800
+					id: "4C1EB69691F824C7"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					structure: "cataclysm:ancient_factory"
+					id: "55E93105C1F0EFB7"
+					type: "structure"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["173E532804C19AAB"]
+			id: "18B5F8ACE26BB5D7"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "65584479B1727234"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:the_prowler"
+					value: 1L
+					id: "644A3AB72CCBAD40"
+					type: "kill"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["173E532804C19AAB"]
+			id: "5BC8E9FED58E5BF5"
+			rewards: [
+				{
+					xp: 500
+					id: "5F877B887283CD38"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:nether_star" }
+					count: 1L
+					id: "4A8E5DFEADC4C128"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["18B5F8ACE26BB5D7", "5BC8E9FED58E5BF5"]
+			id: "1B424BE661BF65B3"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sun" }
+					id: "588A4B1F83AC6EDA"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:netherite_ingot" }
+					count: 4
+					id: "5C1E42ECCA3997D2"
+					type: "item"
+				}
+				{
+					xp: 5000
+					id: "5BFFEF762C40C8C5"
+					type: "xp"
+				}
+			]
+			shape: "hexagon"
+			size: 2.5d
+			tasks: [
+				{
+					entity: "cataclysm:the_harbinger"
+					value: 1L
+					id: "500EA4429B5EC908"
+					type: "kill"
+				}
+			]
+			x: 12.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["1B424BE661BF65B3"]
+			id: "1EAB9C7B77E4AB38"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:beacon" }
+					id: "253A3CE6E911FBB8"
+					type: "item"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					id: "65277992C4AEA180"
+					type: "checkmark"
+				}
+			]
+			x: 14.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["1EAB9C7B77E4AB38"]
+			id: "52FA0BE465BA921D"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sun" }
+					count: 2
+					id: "407E4C317662EA1D"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_centurion"
+					value: 3L
+					id: "4122F797DF0A5C15"
+					type: "kill"
+				}
+			]
+			x: 16.0d
+			y: 1.0d
+		}
+	]
+}

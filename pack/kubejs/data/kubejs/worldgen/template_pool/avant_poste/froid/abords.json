@@ -1,0 +1,77 @@
+{
+  "fallback": "kubejs:avant_poste/froid/abords_petits",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/entrepot",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/atelier",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/dortoir",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/tour",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/chateau_eau",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/depot_caisses",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/ferraille",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/abri",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

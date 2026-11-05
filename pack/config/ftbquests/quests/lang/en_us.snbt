@@ -1,0 +1,1634 @@
+{
+	"chapter.1172B9D9F1004842.chapter_subtitle": [
+		"Make the machines work for you."
+	]
+	"chapter.1172B9D9F1004842.title": "&3Side&r · Engineering and Logistics"
+	"chapter.11FB7AD14478FD9E.chapter_subtitle": [
+		"Fluids, the depths, and the inscriptions."
+	]
+	"chapter.11FB7AD14478FD9E.title": "&6III&r · The Copper Age"
+	"chapter.1CD639A08966078F.chapter_subtitle": [
+		"What the Empire tried to silence. And those still waiting to be freed."
+	]
+	"chapter.1CD639A08966078F.title": "&dSide&r · The Lost Echoes"
+	"chapter.1F79C3CBBD28C61C.chapter_subtitle": [
+		"Production pays in coins. Coins buy what you can't find anywhere."
+	]
+	"chapter.1F79C3CBBD28C61C.title": "&3Side&r · Empire Orders"
+	"chapter.268936E7997482A8.chapter_subtitle": [
+		"Found, decorate, display: turn a shelter into an Empire base."
+	]
+	"chapter.268936E7997482A8.title": "&3Side&r · Bases and Capitals"
+	"chapter.35BF15091D15D650.chapter_subtitle": [
+		"The Empire is back. It wants its world."
+	]
+	"chapter.35BF15091D15D650.title": "&4VII&r · The Reconquest"
+	"chapter.3E6DF521B4BEF468.chapter_subtitle": [
+		"The heart of Airain technology. And a hall full of empty capsules."
+	]
+	"chapter.3E6DF521B4BEF468.title": "&6IV&r · The Brass Age"
+	"chapter.42528709A15A648C.chapter_subtitle": [
+		"Before each expedition, a bigger backpack."
+	]
+	"chapter.42528709A15A648C.title": "&3Side&r · Backpacks and Storage"
+	"chapter.4703C8C5F5EB4F30.chapter_subtitle": [
+		"The Empire had flying cities."
+	]
+	"chapter.4703C8C5F5EB4F30.title": "&6V&r · The Sky Age"
+	"chapter.584D385E9D365F6E.chapter_subtitle": [
+		"An empty world. Not a grave, not a skeleton."
+	]
+	"chapter.584D385E9D365F6E.title": "&6I&r · The Awakening"
+	"chapter.5F04DE91C92B78B2.chapter_subtitle": [
+		"The Empire's machines, as optional challenges."
+	]
+	"chapter.5F04DE91C92B78B2.title": "&3Side&r · Bestiary"
+	"chapter.61CC052BF462CBD1.chapter_subtitle": [
+		"Mapping what the Empire left behind."
+	]
+	"chapter.61CC052BF462CBD1.title": "&3Side&r · Exploration and Bestiary"
+	"chapter.621611A59C993E9F.chapter_subtitle": [
+		"Do not show to players."
+	]
+	"chapter.621611A59C993E9F.title": "&cAdmin rescue&r"
+	"chapter.6643CF10372B0A3C.chapter_subtitle": [
+		"The Empire's weapons: blades, artillery and firearms."
+	]
+	"chapter.6643CF10372B0A3C.title": "&3Side&r · Arsenal"
+	"chapter.6C42785A50835ECA.chapter_subtitle": [
+		"What the Refractories learned, far from the Empire."
+	]
+	"chapter.6C42785A50835ECA.title": "&dEcho Path&r · The Arcana"
+	"chapter.6D69E3E3CC19B49C.chapter_subtitle": [
+		"Connect the ruins, haul the production."
+	]
+	"chapter.6D69E3E3CC19B49C.title": "&3Side&r · Trains and Logistics"
+	"chapter.793E4FE9A199F8DC.chapter_subtitle": [
+		"Gather the memories. Rekindle the Core."
+	]
+	"chapter.793E4FE9A199F8DC.title": "&6VI&r · Airain's Core"
+	"chapter.7D072E5709492909.chapter_subtitle": [
+		"The first machines. And ruins that are strangely clean."
+	]
+	"chapter.7D072E5709492909.title": "&6II&r · The Andesite Age"
+	"chapter_group.160174A5E6BB3B2B.title": "The Echo Path"
+	"chapter_group.25F3599C6B050FF2.title": "The Empire"
+	"chapter_group.2F4EAC3DE90A7B97.title": "Side Chapters"
+	"file.0000000000000001.title": "The Airain Empire"
+	"quest.1190B3F329729E07.quest_desc": [
+		"An Empire needs a throne. Only one, raised in the &6imperial capital&r: a foundation banner given an imperial plate."
+		"Seated, the Emperor issues a &6decree&r for an hour: &6war&r (stronger guardians, and instead of dying you are brought back to the throne), &6forge&r (crushers, millstones, fan washing and cooking yield double in bases) or &6prosperity&r (orders +50%). It can be changed after 15 minutes."
+		"In its base, the crown commands every guardian, and you respawn before the throne."
+	]
+	"quest.1190B3F329729E07.title": "The Imperial Throne"
+	"quest.119561AB3FC3C71C.quest_desc": [
+		"&7Optional.&r Folded, it rolls. Unfolded, it fights."
+		"&8They come fast and in numbers: hold a narrow passage.&r"
+	]
+	"quest.119561AB3FC3C71C.title": "The Sphere"
+	"quest.11C988C0F5B9F881.quest_desc": [
+		"You hold the Core in both hands. It pulses. It grows warm. And far beneath your feet, something answers."
+		""
+		"The journal opens by itself to a page that had stayed blank. Letters carve themselves into it, as if burned from within:"
+		""
+		"&6&o\"Thank you."
+		"These pages, these guardians, these schematics: we placed them on your path."
+		"We needed living hands to rekindle the Core."
+		"We never vanished. We were waiting in the metal."
+		"Now we return. And this world becomes ours again.\"&r"
+		""
+		"Below, in another hand, smaller, in ordinary ink:"
+		"&7&o\"Do not believe them. They are not sleeping: they are burning. I kept you apart for this day. When it is all over, you will be the ones to choose. — O. L.\"&r"
+		""
+		"&cThe Airain Empire awakens.&r"
+	]
+	"quest.11C988C0F5B9F881.quest_subtitle": "&cThe twist&r"
+	"quest.11C988C0F5B9F881.title": "Reawaken the Core"
+	"quest.12774D49FDCC5AA1.quest_desc": [
+		"A rolling mill worthy of the name never stops."
+		"A press above a running belt, fed by a funnel: sheets pile up on their own. They will go into armour, propellers, chutes and the Empire's orders."
+	]
+	"quest.12774D49FDCC5AA1.title": "Rolling Mill"
+	"quest.12DA5A8CE065BE11.quest_desc": [
+		"The souls are gone, but the Echo lingers in the brass. A primordial echo block is enough to wake it inside a guardian."
+		"Right-click a guardian bound to a base with a &3primordial echo block&r. One Echo guardian per base."
+		"It strikes its targets with a &3sonic wave&r up to 16 blocks away and heals the guardians around it."
+	]
+	"quest.12DA5A8CE065BE11.title": "The Echo Guardian"
+	"quest.131E638BEA368FF3.quest_desc": [
+		"A train that loads and unloads itself at two stations, thanks to portable interfaces."
+		"One interface on the train, another facing it on the platform: when stopped, they connect and empty or fill the chests. They need the Imperial Station Great Work."
+	]
+	"quest.131E638BEA368FF3.title": "The Freight Train"
+	"quest.1347D975D0FDD40A.quest_desc": [
+		"Covered in spines, it hurls them as it curls up. The greatest of them, the &5Choir of the Lost&r, waits at the Great Relay (\"The Lost Echoes\" section of this chapter)."
+		"&8Reward: the last page of the apprentice's notebook.&r"
+	]
+	"quest.1347D975D0FDD40A.title": "The Wilden Guardian"
+	"quest.135B677FDE010CCD.quest_desc": [
+		"&7The Echo path.&r The heart of every Refractory workshop: it binds the Echo to objects."
+		"The arcane core below, the apparatus on top, pedestals around it with the ingredients. EMI shows every recipe."
+	]
+	"quest.135B677FDE010CCD.quest_subtitle": "IV · The Refractory Workshop"
+	"quest.135B677FDE010CCD.title": "The Enchanting Apparatus"
+	"quest.139325E7E48DBC39.quest_desc": [
+		"Deep in a soul forge sleeps a &cNetherite Monstrosity&r. Bombard it, then finish the job."
+		""
+		"&eRewards:&r the &6Sky Schematic&r (physics assembler, propeller bearing), and the &5End&r opens for you."
+	]
+	"quest.139325E7E48DBC39.quest_subtitle": "Sky Schematic, the End opens"
+	"quest.139325E7E48DBC39.title": "The Soul Forge"
+	"quest.1430B27303EA7FED.quest_desc": [
+		"A crystal guardian that grows amethyst. The only golem the Empire never built."
+	]
+	"quest.1430B27303EA7FED.title": "The Amethyst Golem"
+	"quest.144C3DFF93A0364E.quest_desc": [
+		"At the &6smithing table&r: a netherite upgrade template, a module, a sacred plate. The brass blackens, gold rises in the rivets, and everything the module does is doubled."
+		"Mount a level II module on one of your guardians."
+	]
+	"quest.144C3DFF93A0364E.title": "An Elite Guardian"
+	"quest.146CEF081856F7C6.quest_desc": [
+		"The Empire's cities consumed whole forests in timber."
+		"A mechanical saw under a belt: logs pass over and come out as planks, endlessly. A filter on the saw picks what it cuts."
+	]
+	"quest.146CEF081856F7C6.title": "The Sawmill"
+	"quest.1479F49A41F4DA32.quest_desc": [
+		"A bare machine wears out fast. The Empire dressed everything."
+		"Andesite alloy applied to a stripped log, by hand or later with a deployer. Casing goes into the press, drill, fan and most machines of the next chapter."
+	]
+	"quest.1479F49A41F4DA32.title": "Andesite Casing"
+	"quest.14B5ABF61C3CBA18.quest_desc": [
+		"&7Optional.&r Rare and huge: a whole city of the Empire, its clock tower, several markets and the three sealed rooms."
+		"Its markets sell for coins, and its trial laboratory hides a journal."
+	]
+	"quest.14B5ABF61C3CBA18.title": "The Mechanical City"
+	"quest.1503E9BC853DDD58.quest_desc": [
+		"Find an Empire outpost. Nobody is waiting for you there, but its machines still work: you can buy what you lack with coins."
+		"One room there is still sealed. Come back when you have the right Schematic."
+	]
+	"quest.1503E9BC853DDD58.title": "Signs of Life"
+	"quest.1564E6748941BD57.quest_desc": [
+		"&7Optional.&r The Empire went everywhere, even into ruins older than itself. Its writings sleep at the bottom of their chests. Gather them in your inventory (they are not consumed):"
+		"• the miner's notebook: abandoned mineshafts and dungeons;"
+		"• a prospector's letter: desert and jungle temples, igloos;"
+		"• the cargo manifest: shipwrecks, buried treasure, ocean ruins;"
+		"• the Council register: strongholds;"
+		"• the deep expedition report: ancient cities;"
+		"• the Nether log: Nether fortresses and bastions;"
+		"• the last message: End cities."
+		"&8The last one is only found at the end of the journey.&r"
+	]
+	"quest.1564E6748941BD57.quest_subtitle": "The writings hidden in older ruins"
+	"quest.1564E6748941BD57.title": "Traces of the Old World"
+	"quest.1605A034446002D5.quest_desc": [
+		"The Empire's ships knew neither sail nor oar: only the sound of propellers."
+		"The propeller bearing needs the Sky Schematic. The faster it spins, the harder it pushes; the direction of rotation picks the direction of thrust."
+	]
+	"quest.1605A034446002D5.title": "Propellers"
+	"quest.16093FB4B909B8E5.quest_desc": [
+		"The Empire's messengers never took the stairs."
+		"Your backtank, elytra and brass, put together at the mechanical crafter. It flies on compressed air: refill it like the backtank."
+	]
+	"quest.16093FB4B909B8E5.title": "The Jetpack"
+	"quest.16A3282CA5AB4ACA.quest_desc": [
+		"Some wills are too great for a spell book. They are entrusted to the fire."
+	]
+	"quest.16A3282CA5AB4ACA.title": "The Ritual Brazier"
+	"quest.16EDC0C6EDFC4901.quest_desc": [
+		"A palisade, red tents, a destroyed automaton displayed like a trophy. Here, they don't like the Empire."
+		"Their chests hold writings and maps, and their machines sell what the Empire refused them."
+	]
+	"quest.16EDC0C6EDFC4901.title": "The Refractory Camp"
+	"quest.16F6CF9BF8AE44DC.quest_desc": [
+		"The Empire never learned to light a fire that wouldn't go out. So it captured the Nether's."
+		"Empty burner (with the Brass Schematic), then right-click a forge lantern (a blaze). Placed under a basin, it heats the mixer; fed with coal, it lasts a long time."
+	]
+	"quest.16F6CF9BF8AE44DC.title": "Catch a Blaze"
+	"quest.173E532804C19AAB.quest_desc": [
+		"The cradle of the Empire: where Auguste Ferrand forged his first machines, and where he still sleeps."
+		"An ancient factory buried around Y -30. The Core gave you its direction."
+	]
+	"quest.173E532804C19AAB.title": "Cradle of the Empire"
+	"quest.175D62868380B4C5.quest_desc": [
+		"Your first workshop: a single source, several machines, and nothing to do by hand."
+		"Build a mill that powers a millstone, a conveyor belt and a depot at the same time. Tick the box when everything turns."
+	]
+	"quest.175D62868380B4C5.title": "The Mill"
+	"quest.17DC1C655AD476A4.quest_desc": [
+		"&7Optional.&r Those who lived through the end of the Empire left writings behind. Gather them all in your inventory (they are not consumed):"
+		"• Vael's report, on the lectern of a capsule station;"
+		"• Ada's letter, in the collector's chest of the same station;"
+		"• the incident report, on the lectern of a broken relay;"
+		"• the trial log, in the laboratory of a mechanical city;"
+		"• Ada Vesper's journal, in the Refractory sanctuary;"
+		"• a Refractory writing, in the camps' chests;"
+		"• a cache inventory, buried under the cross of a Refractory map (maps found in the camps)."
+		"&8Structures generated before this update keep older copies that are not recognized: look for new ones.&r"
+	]
+	"quest.17DC1C655AD476A4.quest_subtitle": "Gather every writing"
+	"quest.17DC1C655AD476A4.title": "The Empire's Archives"
+	"quest.187081628EA4ED2B.quest_desc": [
+		"The precision mechanism is the Empire's signature: nothing important worked without it."
+		"A line of deployers and presses builds it piece by piece. Hold W over a machine for its tutorial; EMI shows every step."
+	]
+	"quest.187081628EA4ED2B.title": "Precision Mechanism"
+	"quest.1872C8058F3E588C.quest_desc": [
+		"For the corridors of mechanical cities, nothing beats the shotgun."
+		"Deadly up close, useless at range. Keep another weapon for distance."
+	]
+	"quest.1872C8058F3E588C.title": "The Shotgun"
+	"quest.189109008AF985AC.quest_desc": [
+		"Complete this quest in edit mode to unblock a player stuck because of a bug."
+	]
+	"quest.189109008AF985AC.title": "Rescue: the Echo"
+	"quest.18B5F8ACE26BB5D7.quest_desc": [
+		"It has guarded the ancient factory since no one worked there any more. It was never ordered to stop."
+		"Its shots carry far: approach under cover and stay out of its line."
+	]
+	"quest.18B5F8ACE26BB5D7.title": "The Sentinel"
+	"quest.193619FED2D8E2B8.quest_desc": [
+		"The imperial line crossed the continent from end to end."
+		"A thousand tracks: enough to link your bases together, and reach the mechanical cities."
+	]
+	"quest.193619FED2D8E2B8.title": "The Main Line"
+	"quest.195F07572F5878D2.quest_desc": [
+		"Wildens are lost minds that wandered the wild for too long. They no longer recognise anyone."
+	]
+	"quest.195F07572F5878D2.quest_subtitle": "VII · The Beasts of the Echo"
+	"quest.195F07572F5878D2.title": "The Hunter"
+	"quest.19F9F56FA350AD47.quest_desc": [
+		"&7Optional.&r Automatons don't bleed: they leak. Their &6machine oil&r powers the maintenance bench."
+		"It repairs like an anvil (same materials, same amounts) but burns oil instead of experience: 1,000 mB, two oil cans, per ingot or per merge."
+		"It is a real machine, set up like the millstone: a neighbouring cogwheel or a shaft from below drives it, and it uses stress. The faster it turns (16 RPM at least), the faster it works; heavily enchanted items take much longer."
+		"&6Right-click empty-handed&r: the bench screen. The damaged item on top, the material below, the repaired item comes out on the right. The oil tank is on the left, the three &6module&r slots on the far right."
+		"A repaired tool or weapon comes out &6sharpened&r for a while (see \"The Edge of the Blade\")."
+		"&8An oil can or a bucket pours in with a right-click; oil also flows through pipes, after an item drain. Funnels and belts feed it and collect the repaired item. Engineer's goggles show the progress and the time left.&r"
+	]
+	"quest.19F9F56FA350AD47.quest_subtitle": "Side quest: repair without experience"
+	"quest.19F9F56FA350AD47.title": "The Maintenance Bench"
+	"quest.1AC4C8BD4097E5BF.quest_desc": [
+		"The Empire's officers wore diamond set in copper: lighter, just as strong."
+		"Diamonds + copper sheets + Forge Seal (not consumed), at the crafting table."
+	]
+	"quest.1AC4C8BD4097E5BF.title": "Diamond Armor"
+	"quest.1B1BDBDB461DC54F.quest_desc": [
+		"A small alchemist at the cauldron. It remembers recipes no one ever taught it."
+	]
+	"quest.1B1BDBDB461DC54F.title": "The Wixie"
+	"quest.1B424BE661BF65B3.quest_desc": [
+		"At the center of the factory, a huge motionless machine. The Emperor, fused with what he built: Auguste Ferrand, the founder, transferred into his own factory long before everyone else."
+		"Right-click it with the Infernal Guardian Core to wake him. &cHe is extremely dangerous.&r"
+	]
+	"quest.1B424BE661BF65B3.quest_subtitle": "&4Final boss&r"
+	"quest.1B424BE661BF65B3.title": "The Airain Emperor"
+	"quest.1B5DBF55A3EA9939.quest_desc": [
+		"The ominous trial forgives nothing. The Empire's veterans never went down empty-handed."
+		"Shield, arrows and provisions. The wind guardian strikes from afar and deflects projectiles: the shield matters more than the bow."
+	]
+	"quest.1B5DBF55A3EA9939.title": "Preparations"
+	"quest.1B8D2D125236F20C.quest_desc": [
+		"It gathers what animals leave behind, without harming them. The Refractories did not kill to eat when they could avoid it."
+	]
+	"quest.1B8D2D125236F20C.title": "The Drygmy"
+	"quest.1BFEB1057231EE88.quest_desc": [
+		"Without a pump, a pipe is just a tube. The Empire turned them into veins."
+		"Cogwheel + pipe + &6Copper Schematic&r (not consumed). The arrow on the pump shows the direction: a wrench flips it. The faster it spins, the more it pumps."
+	]
+	"quest.1BFEB1057231EE88.title": "The Mechanical Pump"
+	"quest.1C331299D7A13876.quest_desc": [
+		"Airain's Core fits in no crafting table."
+		"It is forged on a 5 × 5 grid of crafters: you need 21 (the corners stay empty). Link them with the wrench and give them rotation."
+	]
+	"quest.1C331299D7A13876.title": "The Assembly Grid"
+	"quest.1C5B176D24E37BD9.quest_desc": [
+		"The Empire's engineers never built a machine twice by hand: they drew a plan, and the cannon placed it."
+		"Outpost &6design offices&r sell &6Empire plans&r (windmill, water wheel plant, mill…). Right-click a plan: it becomes a schematic."
+		"Deploy the schematic (right-click to place it, it shows as a ghost), then give it to the &6schematicannon&r with gunpowder and a chest of materials next to it: it builds by itself."
+		"&8The pack must include its \"schematics\" folder (see the README).&r"
+	]
+	"quest.1C5B176D24E37BD9.title": "The Design Office"
+	"quest.1C87550C0BEA8CA7.quest_desc": [
+		"Where the Transfer's main line gave way. The resonator, a lodestone set on reinforced deepslate, stands near the collapsed pylon."
+		"&cPrepare before striking the fork: the Choir is formidable. Chapter V gear recommended, as a pair.&r"
+	]
+	"quest.1C87550C0BEA8CA7.title": "The Great Relay"
+	"quest.1CA0FA6F8952E2D7.quest_desc": [
+		"Nothing important works without them. The Empire orders them without counting."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.1CA0FA6F8952E2D7.title": "Order: Mechanisms"
+	"quest.1CB86E4CE793D650.quest_desc": [
+		"A base that shelters the Core has to hold."
+		"Three cannon mounts around the base, facing the approaches. Tick the box when they are in place."
+	]
+	"quest.1CB86E4CE793D650.title": "Fortify the Base"
+	"quest.1CFBD49CF418919F.quest_desc": [
+		"&7The Echo path.&r The Refractory leaders carried one. With it, you almost speak to the lost spirits."
+		"Every page, every glyph tier. Against the Choir of the Lost, you'd better have it."
+	]
+	"quest.1CFBD49CF418919F.title": "The Archmage Spell Book"
+	"quest.1D19C2609F2DC9FE.quest_desc": [
+		"The Empire's flying cities lived on freight. Build a flying craft with a hold (chests, barrels or item vaults), load it at one of your bases and deliver the cargo to another."
+		"Tick the box after a complete delivery."
+	]
+	"quest.1D19C2609F2DC9FE.title": "Air Freight"
+	"quest.1D5897A82AAC331E.quest_desc": [
+		"The Empire searched these temples before you. It did not take everything."
+		"Beware of the pressure plate at the bottom of the chamber: it is wired to explosives."
+	]
+	"quest.1D5897A82AAC331E.title": "The Desert Temple"
+	"quest.1D6182D685EE0401.quest_desc": [
+		"The Core once beat in a hall no one was allowed to see. Yours deserves at least a setting."
+		"Build a room of at least 9 × 9 with the grid at its centre. Tick the box when done."
+	]
+	"quest.1D6182D685EE0401.title": "The Core Chamber"
+	"quest.1DE601252CF5A646.quest_desc": [
+		"Brass casing dresses precision machines: apprentices were not given it."
+		"It is made like the others, by applying brass to stripped wood. Mechanical arms, crafters and brass funnels depend on it."
+	]
+	"quest.1DE601252CF5A646.title": "Brass Casing"
+	"quest.1DF1C682CA5AEA52.quest_desc": [
+		"A full set of mage armor (sorcerer, arcanist or battlemage). Tick once you wear it."
+		"\"You don't wear the robe to protect yourself. You wear it so the lost recognise you.\""
+	]
+	"quest.1DF1C682CA5AEA52.title": "The Robe of the Arcana"
+	"quest.1EAB9C7B77E4AB38.quest_desc": [
+		"The choice is made. Read the book it left you: this is the end of the story, yours."
+		""
+		"&6Thank you for playing The Airain Empire.&r"
+	]
+	"quest.1EAB9C7B77E4AB38.title": "Epilogue"
+	"quest.1F033FEA83391D5C.quest_desc": [
+		"The Empire officers' pack. It fears neither lava nor fire."
+		"The tank upgrade adds a cistern to it: water, lava or machine oil, ready to pour."
+	]
+	"quest.1F033FEA83391D5C.title": "Netherite Backpack"
+	"quest.1FBF918B2C978F2C.quest_desc": [
+		"The deployer has one hand, and uses it better than many workers."
+		"It acts like a player: it places, uses, assembles. It makes sequenced assembly possible. Give it an item to hold with a right-click."
+	]
+	"quest.1FBF918B2C978F2C.title": "The Deployer"
+	"quest.1FCBD41B7D95520D.quest_desc": [
+		"The sea keeps its hearts at the bottom of its chests."
+		"In buried treasure (treasure maps from shipwrecks), or at the laboratory counter, for one crown."
+	]
+	"quest.1FCBD41B7D95520D.title": "Heart of the Sea"
+	"quest.1FD1EF651A408D3E.quest_desc": [
+		"Rekindle 10 outposts in all."
+	]
+	"quest.1FD1EF651A408D3E.title": "Rebuild: 10 outposts"
+	"quest.202B5ED65D83F0DE.quest_desc": [
+		"The Refractories, those who refused the Transfer, lived in makeshift camps. They are gone, but in about one camp in three a stall still sells the &6ominous bottle&r."
+		"Drink it before entering a trial chamber: it turns ominous."
+	]
+	"quest.202B5ED65D83F0DE.title": "The Ominous Omen"
+	"quest.206485813AC811D6.quest_desc": [
+		"The Empire's first firearm: iron sheets, andesite alloy, a flint and steel. It fires paper shots (lead balls, gunpowder, paper)."
+	]
+	"quest.206485813AC811D6.title": "The Flintlock"
+	"quest.20736FBF273C7E22.quest_desc": [
+		"A city canteen fed thousands of workers. Nobody flipped the steaks by hand."
+		"A fan blowing through a campfire or fire cooks the meat passing in front of it, on a belt or a depot."
+	]
+	"quest.20736FBF273C7E22.title": "Fan Cooking"
+	"quest.20B07BC03DA5FDE0.quest_desc": [
+		"Underground, halls of copper and tuff. The Empire tested its soldiers there; they carry on without them."
+		"Clear a few trial spawners to collect keys: they open the chambers' vaults."
+	]
+	"quest.20B07BC03DA5FDE0.title": "The Trial Chambers"
+	"quest.20D678D8A2CEF427.quest_desc": [
+		"The waystones linked the Empire's cities in the blink of an eye. They fell silent with it."
+		"Restart the network: the materials are consumed. Afterwards, each player can place their own Waystones."
+	]
+	"quest.20D678D8A2CEF427.quest_subtitle": "Unlocks placing Waystones"
+	"quest.20D678D8A2CEF427.title": "Great Work: The Waystone Network"
+	"quest.211383434933E242.quest_desc": [
+		"A city of the Empire built in bronze, long before the brass age. Its great guardian spiders still keep watch."
+		"Destroy three. They guard the gates: force one, the others will come."
+	]
+	"quest.211383434933E242.title": "The Bronze City"
+	"quest.2193D6B93C4D0569.quest_desc": [
+		"Where it dances, plants grow. It feeds the Echo in return."
+	]
+	"quest.2193D6B93C4D0569.title": "The Whirlisprig"
+	"quest.2194169FD04FE59B.quest_desc": [
+		"Rekindle 5 outposts in all."
+	]
+	"quest.2194169FD04FE59B.title": "Rebuild: 5 outposts"
+	"quest.223174505C4CDFF6.quest_desc": [
+		"Strike the tuning fork on the resonator (right-click). Thousands of spirits fused in pain awaken."
+		"Defeating them is freeing them. Come with a well-stocked spell book: the sword alone won't be enough."
+	]
+	"quest.223174505C4CDFF6.quest_subtitle": "&5Echo boss&r"
+	"quest.223174505C4CDFF6.title": "The Choir of the Lost"
+	"quest.225937F4E9E720B6.quest_desc": [
+		"The ruined citadel floats above the void. One fall and it's over."
+		"Pearls and potions (slow falling recommended) for the citadel. A pack with the refill upgrade can save you."
+	]
+	"quest.225937F4E9E720B6.title": "Celestial Preparations"
+	"quest.2290363A0D1E891A.quest_desc": [
+		"A whole city was built of oak. It had to be cut down."
+		"A mechanical saw on a moving contraption fells the whole tree at once. A deployer can replant saplings behind it."
+	]
+	"quest.2290363A0D1E891A.title": "Tree Farm"
+	"quest.23562325F0DE1D91.quest_desc": [
+		"&7Optional.&r Display a boss trophy on a pedestal: as long as it stays there, its effect benefits &6the whole team&r, wherever you are."
+		"• Infernal Mask: fire resistance; Infernal Guardian Core: regeneration; Sky Guardian's Egg: no fall damage; Primordial Echo: night vision;"
+		"• Colossus Visor: strength; Magma Heart: resistance; Prowler's Gear: haste; Guardian's Eye: absorption; Centurion's Seal: saturation."
+		"&6Engraving&r: right-click the pedestal with &62 crowns&r, and the displayed trophy gains a second effect. A sacred netherite plate raises its effect to level II."
+		"&6Sneak + right-click empty-handed&r: the pedestal settings (material, velvet, trims, column, display, lighting, particles, plaque engraved with the trophy's name and the day of the victory)."
+		"&8Identical trophies don't stack. Right-click empty-handed to take the trophy back. A comparator reads the pedestal; a banner template copies its look.&r"
+	]
+	"quest.23562325F0DE1D91.title": "The Empire Pedestal"
+	"quest.23667A58FF83BC81.quest_desc": [
+		"The Empire's first mill only ground grain. The rest came later."
+		"The millstone grinds gravel, flowers, grain… Flour, flint and dyes with no effort. The goggles show what it is grinding."
+	]
+	"quest.23667A58FF83BC81.title": "The Millstone"
+	"quest.236F61406199A692.quest_desc": [
+		"The mechanical arm replaced more workers than every other machine combined."
+		"Before placing it, right-click with the arm in hand on the blocks it should take from (blue) and drop onto (orange). It serves belts, depots, chests, presses and burners."
+	]
+	"quest.236F61406199A692.title": "The Mechanical Arm"
+	"quest.23E3A6500C449AEB.quest_desc": [
+		"The great line must reopen: every rail delivered brings it closer to a city."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.23E3A6500C449AEB.title": "Order: Track"
+	"quest.249F3A050A5A2692.quest_desc": [
+		"Beneath its cities, the Empire sent its engineers from one workshop to the next through tubes of glass and brass. Reopen the network."
+		"Tubes can be crafted already; only the entrances wait for this work."
+	]
+	"quest.249F3A050A5A2692.quest_subtitle": "Unlocks Hypertube entrances"
+	"quest.249F3A050A5A2692.title": "Great Work: The Pneumatic Network"
+	"quest.24CC53E36E5B5F0A.quest_desc": [
+		"Before the trial chambers: a bigger pack that picks things up on its own."
+		"The pickup upgrade swallows what you walk over; its filter picks what to keep."
+	]
+	"quest.24CC53E36E5B5F0A.title": "Iron Backpack"
+	"quest.2543479E97C7BC7E.quest_desc": [
+		"They entrusted you with what they were."
+		"&dThe Primordial Echo&r is needed to craft the most powerful spells: explosion, lightning, hex, wither, linger, wall and burst."
+		"And machines cannot feel it: your spells deal &650% more damage&r to the Empire's machines, even the greatest."
+	]
+	"quest.2543479E97C7BC7E.title": "The Primordial Echo"
+	"quest.2616FA2DD6124E22.quest_desc": [
+		"The rekindled outposts' canteens ask for bread: guardians don't eat, but their workshops remember those who did."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.2616FA2DD6124E22.title": "Order: Bread"
+	"quest.2635834C88309144.quest_desc": [
+		"She signed the capsule blueprints. Then she took those who wanted to live, and went north. Before you rekindle anything, read what she left behind."
+		"Somewhere in the cold north, the Refractory sanctuary keeps &dAda Vesper&r's journal. Read it to the end: the reward tells you where the Great Relay is."
+	]
+	"quest.2635834C88309144.quest_subtitle": "The Call of the Echo"
+	"quest.2635834C88309144.title": "Ada's Journal"
+	"quest.26721FDF49DBAC1B.quest_desc": [
+		"\"Some of the lost were too small to keep a human shape. They took whatever shape they could.\""
+		"The Starbuncle carries items from one chest to another. It will do that very well for your machines."
+		"&8Reward: a page of the apprentice's notebook.&r"
+	]
+	"quest.26721FDF49DBAC1B.quest_subtitle": "V · The Little Echoes"
+	"quest.26721FDF49DBAC1B.title": "The Little Yellow One"
+	"quest.26EEACC9EDD1822F.quest_desc": [
+		"Rekindle 3 outposts in all."
+	]
+	"quest.26EEACC9EDD1822F.title": "Rebuild: 3 outposts"
+	"quest.27C73491488EF22F.quest_desc": [
+		"The Soul Forge guards want their armor. They pay in crowns."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.27C73491488EF22F.title": "Order: Netherite Plates"
+	"quest.282F0B189F106A12.quest_desc": [
+		"Morgana sang seated. Her seat, rebuilt at the enchanting apparatus, stands in an &3arcane capital&r (a foundation banner given a primordial echo block), and there is only one."
+		"Seated, the Priestess intones a &3chant&r for an hour: &3souls&r (double experience), &3growth&r (plants three times faster in bases) or &3resonance&r (double sourcelinks). It can be changed after 15 minutes."
+		"In its base, mana regenerates much faster, and you respawn before the solium."
+	]
+	"quest.282F0B189F106A12.title": "The Priestess's Solium"
+	"quest.284B486F1D112E1F.quest_desc": [
+		"&7Optional.&r No more merchants to sell books: you have to tear them out of items."
+		"The disenchanter destroys an enchanted item and pulls &conly one&r enchantment out of it, at random, into a blank book. Built like the millstone, it runs on a cogwheel and burns 500 mB of oil per level."
+		"&8Right-click with the item, then with books; empty-handed to take the enchanted book. Funnels and belts work too. Engineer's goggles show the current operation.&r"
+	]
+	"quest.284B486F1D112E1F.quest_subtitle": "Side quest: filling the library"
+	"quest.284B486F1D112E1F.title": "The Disenchanter"
+	"quest.299A3CC737A4A7C2.quest_desc": [
+		"&7Optional.&r When the Emperor entered a city, all its banners rose together."
+		"Great standards and wall banners have a \"Hoisting\" setting:"
+		"• &6Manual&r: a Create shaft turning against the foot of the mast, or against the banner, raises or lowers it depending on the direction;"
+		"• &6By presence&r: banners rise as soon as one of you enters the foundation standard's area, and come down when the last one leaves. All those in the area move together;"
+		"• &6By trophies&r: they stay up while a trophy is displayed in the area."
+		"Set a banner to \"by presence\" in your base, leave the area and come back. Tick the box once you have seen it rise."
+	]
+	"quest.299A3CC737A4A7C2.title": "Raise the Colours"
+	"quest.29E98529A035C62A.quest_desc": [
+		"Not everyone wanted the Transfer. They saw the capsules come back empty, and they left that very night. Their camps still stand, somewhere."
+		"Find a Refractory camp and read one of their writings (in their chests). Tick when done."
+	]
+	"quest.29E98529A035C62A.quest_subtitle": "The Call of the Echo"
+	"quest.29E98529A035C62A.title": "Those Who Said No"
+	"quest.2A6746E2E9BA639E.quest_desc": [
+		"The Empire's workshops carried nothing by hand: everything fell, slid and ran from one machine to the next."
+		"A &6chute&r drops items downwards, floor by floor. A &6funnel&r takes them from a chest or puts them on a belt; a wrench flips its direction."
+		"&8A filter on the funnel picks what goes through.&r"
+	]
+	"quest.2A6746E2E9BA639E.title": "Chutes and Funnels"
+	"quest.2AB864DB22E2AED6.quest_desc": [
+		"Electron tubes gave the Empire's machines what they lacked: judgement."
+		"Nether quartz + redstone = rose quartz. Polished with sandpaper or on a belt, it becomes the heart of electron tubes."
+	]
+	"quest.2AB864DB22E2AED6.title": "Quartz and Tubes"
+	"quest.2ABAD12CF77811C1.quest_desc": [
+		"Start the Heart again. The automatons will fall silent, then obey you: you will be the new sovereigns."
+		"&8An Infernal Guardian Core: beat the Wither again if you must.&r"
+		"Rewards: the &6Airain Crown&r (automatons no longer attack you on their own, your nearby guardians grow stronger), sturdier repaired guardians, and the book \"The Empire Reborn\"."
+	]
+	"quest.2ABAD12CF77811C1.quest_subtitle": "&6Empire ending&r"
+	"quest.2ABAD12CF77811C1.title": "Rekindle the Heart"
+	"quest.2ADA37E3BDA2E081.quest_desc": [
+		"Some Empire cruisers never landed. They still circle above the clouds, around height 150, held by their automaton crews."
+		"Board one with your own flying machine. The captain's log is in his cabin at the stern; the hold is under the deck."
+		"&8They are where automatons sometimes drop from, when a patrol is airdropped.&r"
+	]
+	"quest.2ADA37E3BDA2E081.title": "The Sky Fleet"
+	"quest.2B1CA1C84EB763C4.quest_desc": [
+		"Some ruins are &oclean&r. Mechanisms oiled, corridors swept. Maybe the guardians are not malfunctioning…"
+		"&oBut who are they maintaining it for?&r"
+		""
+		"&6&lOctave Lanfrey's Journal&r"
+		"&oThe copper sentinels will watch over the trial chambers.&r"
+	]
+	"quest.2B1CA1C84EB763C4.title": "Well-Kept Ruins"
+	"quest.2BB788600A03C295.quest_desc": [
+		"&7Optional.&r On an islet of the lava lake, a palisade of Echo wood and a soul fire. Refractories stopped here, on the road of their escape."
+		"&8Their road notebook tells where they were going.&r"
+	]
+	"quest.2BB788600A03C295.title": "The Road of Escape"
+	"quest.2BF0E7162C817443.quest_desc": [
+		"The Empire's trains left to the minute. People set their watches by them."
+		"Fill in the schedule (destinations, waits, departure conditions), then give it to the conductor seated at the controls, with a right-click."
+	]
+	"quest.2BF0E7162C817443.title": "Schedules"
+	"quest.2C2F9AA5E91C8AA7.quest_desc": [
+		"Soothe 5 relays in all."
+	]
+	"quest.2C2F9AA5E91C8AA7.title": "Soothe: 5 relays"
+	"quest.2C32E48616BB7DF5.quest_desc": [
+		"Tanks + water + a fire underneath: passive heat runs a small steam engine."
+		"&8Chapter IV's blaze burners will make it far more powerful.&r"
+	]
+	"quest.2C32E48616BB7DF5.title": "The Steam Engine"
+	"quest.2C3306FF10D176A1.quest_desc": [
+		"Everything you have built led here."
+		"Look up the recipe in EMI, mechanical crafter category. Fill the grid, and Airain's Core will beat again."
+	]
+	"quest.2C3306FF10D176A1.title": "Forge the Core"
+	"quest.2CB5DA93642E7418.quest_desc": [
+		"The Empire's warehouses were never emptied to be enlarged."
+		"These barrels and chests upgrade in place, with an upgrade kit, without losing their contents. A barrel shows what it holds on its front."
+	]
+	"quest.2CB5DA93642E7418.title": "Empire Barrels"
+	"quest.2D2D133F3E4B2039.quest_desc": [
+		"&7Engineer's record, optional.&r Run a machine at 256 RPM, the maximum speed. The goggles show the speed. Tick the box when done."
+	]
+	"quest.2D2D133F3E4B2039.title": "Full Power"
+	"quest.2D3AA9AFE58CD8BE.quest_desc": [
+		"The signalmen always knew where every train was."
+		"Placed on the track, the observer emits a redstone signal when a train passes. Its filter can react only to a specific cargo."
+	]
+	"quest.2D3AA9AFE58CD8BE.title": "Track Observers"
+	"quest.2D44DCFA9C18E918.quest_desc": [
+		"At least three trains sharing the same tracks without collision."
+		"Track signals split the network into sections: a train won't enter an occupied section. Place them at every junction."
+	]
+	"quest.2D44DCFA9C18E918.title": "The Rail Yard"
+	"quest.2D595A10D32FC61D.quest_desc": [
+		"The second network, the one beneath the streets, is being repaired section by section."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.2D595A10D32FC61D.title": "Order: Pipes"
+	"quest.2DEBFB7D2923CD45.quest_desc": [
+		"You don't take the Echo, you feed it: growing plants, burning lava. What lives gives back a little of what the Empire stole from it."
+		"&8Reward: a page of the apprentice's notebook.&r"
+	]
+	"quest.2DEBFB7D2923CD45.quest_subtitle": "II · Feeding the Echo"
+	"quest.2DEBFB7D2923CD45.title": "Feeding the Echo"
+	"quest.2DFFED2A5E3EF921.quest_desc": [
+		"The Empire's sky fleet never lost a battle. It was only forgotten."
+		"Mount at least two cannons on your flying craft. The sky is not empty."
+	]
+	"quest.2DFFED2A5E3EF921.title": "The Warship"
+	"quest.2E4723BB5AA601A2.quest_desc": [
+		"Soothe 10 relays in all."
+	]
+	"quest.2E4723BB5AA601A2.title": "Soothe: 10 relays"
+	"quest.2E75045EF91CE45C.quest_desc": [
+		"&7Optional.&r In the burned savannas and battered hills, the war stopped dead. An Empire walker still lies before a Refractory barricade, in a crater where the Echo grew crystal."
+		"&8The barricade's crate sometimes holds a letter never sent.&r"
+	]
+	"quest.2E75045EF91CE45C.title": "The Front"
+	"quest.2EF37A4DD7D32352.quest_desc": [
+		"The cities' boilers are leaking. They need copper, a lot of copper."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.2EF37A4DD7D32352.title": "Order: Copper Sheets"
+	"quest.2F130DA613E8FEE3.quest_desc": [
+		"One line is a route. Two lines are a network."
+		"A network of at least two lines, with signals to avoid collisions. Tick the box when two trains run without getting in each other's way."
+	]
+	"quest.2F130DA613E8FEE3.title": "Two Lines"
+	"quest.303C4600D2F40D99.quest_desc": [
+		"No paper, no maps, no books, no cartridges."
+		"Pistons cut the cane above the first block, triggered by observers; it grows back on its own. A belt under the row collects the harvest."
+	]
+	"quest.303C4600D2F40D99.title": "Sugar Cane Farm"
+	"quest.308DA6D9FACBFFB4.quest_desc": [
+		"When the Core beats again, what remains of the Empire will come to take it back."
+		"Fill your cannons' magazines: solid shot to pierce, high-explosive shells for groups. Better too much than too little."
+	]
+	"quest.308DA6D9FACBFFB4.title": "Prepare for the Siege"
+	"quest.30A89C3EB74F4D50.quest_desc": [
+		"Before the Empire, the people of the Nether lived in these fortresses. Enslaved to the forges, eaten away by soul fumes, they took them back when the Empire left."
+		"Bastions hide the netherite upgrade templates, and the tribute gold they still hoard. Don't break gold in front of them."
+	]
+	"quest.30A89C3EB74F4D50.title": "The Bastion"
+	"quest.315A19C157FEDB23.quest_desc": [
+		"Nobody walked across the Empire's workshops: everything rolled."
+		"The conveyor belt (made of dried kelp) joins two shafts and carries items between machines. The depot holds an item under a machine while it works."
+	]
+	"quest.315A19C157FEDB23.title": "Belts and Depot"
+	"quest.315CF297898F138E.quest_desc": [
+		"Filling and emptying: half the work of an Empire workshop came down to those two gestures."
+		"The &6spout&r fills whatever passes beneath it (bottles, buckets, oil cans) on a depot or a belt. The &6item drain&r does the opposite: it empties items into its tank."
+		"&8The item drain is how oil from cans reaches your pipes.&r"
+	]
+	"quest.315CF297898F138E.title": "Spout and Item Drain"
+	"quest.31AFBCA2E8ACAA09.quest_desc": [
+		"High in the sky above the plains, an island floats with a copper dome. The Empire watched the stars from there."
+		"The lectern keeps the readings of Engineer-in-Chief Octave Lanfrey. &8You need to fly to reach it: around height 170.&r"
+	]
+	"quest.31AFBCA2E8ACAA09.title": "The Observation Station"
+	"quest.31C724BE22F84506.quest_desc": [
+		"The Empire's netherite never left the forges raw: it was rolled, plate by plate."
+		"Netherite ingot → deployer (precision mechanism) → press. These plates replace the ingot at the smithing table, for armour and weapons alike."
+	]
+	"quest.31C724BE22F84506.title": "Netherite Plates"
+	"quest.31D630A6895FF90A.quest_desc": [
+		"Five hundred ingots: enough to give a city back its shine."
+		"A mixer fed continuously by funnels, a burner always supplied, and the foundry runs on its own. Crushed and washed ore yields more copper and zinc."
+	]
+	"quest.31D630A6895FF90A.title": "Brass Foundry"
+	"quest.337B0BA5127D891F.quest_desc": [
+		"The imperial bank's vaults were never broken into."
+		"Placed side by side, they merge into one big vault. They don't open by hand: funnels, arms and belts fill and empty them."
+	]
+	"quest.337B0BA5127D891F.title": "Item Vaults"
+	"quest.33A63A2740A53798.quest_desc": [
+		"&7After the Empire ending.&r Crown on your head, enter an outpost (or a mechanical city) and use an &6imperial charter&r (right-click)."
+		"The outpost comes back to life: its banners take your nearest base's colors, no more monsters spawn there, its counters lower their prices by a quarter, and a repaired guardian stands watch."
+		"&8Charter: 6 brass ingots, 2 precision mechanisms, 1 paper.&r"
+	]
+	"quest.33A63A2740A53798.title": "Rebuild the Empire"
+	"quest.349D5216D8932504.quest_desc": [
+		"The Council's secret hall, built around a gate no one was meant to cross. This is where the Empire launched its hunt."
+		"Eyes of Ender, thrown into the air, lead you there. The gate to the End only opens after the Soul Forge."
+	]
+	"quest.349D5216D8932504.title": "The Stronghold"
+	"quest.35F93598035AE578.quest_desc": [
+		"You wake up in a room with no memory at all. A lamp crackles, a clock has stopped. On the table, a notebook waits to be opened."
+		"Look for clues: the engineer's notebook tells what happened here."
+		""
+		"&8The quest completes when you close the notebook, on its last page.&r"
+	]
+	"quest.35F93598035AE578.quest_subtitle": "Read the engineer's journal"
+	"quest.35F93598035AE578.title": "Understand What Happened"
+	"quest.3683E03BE02A53FF.quest_desc": [
+		"Beneath every city ran a second network, quieter than the rails: the plumbing."
+		"Pipes carry fluids but push nothing on their own: they need a pump. A wrench on a straight pipe adds a window; a pipe can also take a valve."
+	]
+	"quest.3683E03BE02A53FF.title": "Plumbing"
+	"quest.370DB6CD983FF0CC.quest_desc": [
+		"On the walls of a drowned ruin, repeated hundreds of times:"
+		"&o\"We sleep in the metal.\"&r"
+		"&o\"The great transfer approaches.\"&r"
+		""
+		"&6&lOctave Lanfrey's Journal&r"
+		"&oThe tide guardians will keep the secret of the alloy.&r"
+	]
+	"quest.370DB6CD983FF0CC.title": "The Inscriptions"
+	"quest.37B3F0D4305E4904.quest_desc": [
+		"&7Optional.&r Vendors ask for the exact coins and give no change. The bank solves that."
+		""
+		"1. Craft a &6bank card&r: iron sheet, gold sheet and white dye."
+		"2. Right-click with the card in hand: it binds to your account."
+		"3. Deposit your coins at the counter's &6bank terminal&r."
+		"4. Buy from vendors while holding the card: the total value is charged, whatever your coins."
+	]
+	"quest.37B3F0D4305E4904.quest_subtitle": "Side quest: pay by card"
+	"quest.37B3F0D4305E4904.title": "The Empire Bank"
+	"quest.37F7CA7DE0411DCA.quest_desc": [
+		"\"Our relays hold no one. They pass things on, then they let go.\" The Empire's never gave back what they carried."
+	]
+	"quest.37F7CA7DE0411DCA.title": "Relays That Let Go"
+	"quest.38B2650A583B18EA.quest_desc": [
+		"The rampart guards kept the enemy at spear's length."
+		"The arsenal's iron weapons are forged with iron sheets instead of ingots. Like the others, they are repaired at the maintenance bench."
+	]
+	"quest.38B2650A583B18EA.title": "The Spear"
+	"quest.38C137BD563DC81F.quest_desc": [
+		"The Echo remembers everything that ever existed. A &3resonant archive&r, awakened at the enchanting apparatus around a primordial echo block, makes it give things back."
+		"It is placed with its obelisks and a 3 x 3 &3arrival circle&r in front. Right-click: pick raw materials in lots of 1, 32 or 64, paid in coins."
+		"One minute later, a passage opens and the crate &3appears&r on the circle. Right-click it to empty it."
+	]
+	"quest.38C137BD563DC81F.title": "The Resonant Archive"
+	"quest.39E9F1207BD8C9A9.quest_desc": [
+		"The Empire's first wheel turned in a stream behind its founder's house. Children are still shown it."
+		"A water wheel in a current: your first mechanical power. Shafts carry it. Wear the goggles to read speed and stress."
+	]
+	"quest.39E9F1207BD8C9A9.title": "The First Wheel"
+	"quest.3A95A67E6E76796D.quest_desc": [
+		"On cycle 212 the line gave way under full load. Part of the flow never reached the Heart. The Empire banned the word. The crystals kept growing anyway."
+		"Find a broken relay and read the incident report on the lectern. This is where the Echo escaped."
+	]
+	"quest.3A95A67E6E76796D.quest_subtitle": "The Call of the Echo"
+	"quest.3A95A67E6E76796D.title": "The Broken Line"
+	"quest.3AA9ACD7A616F854.quest_desc": [
+		"&7Optional.&r The Empire's squares could be recognised from afar: a mast five to eight blocks tall, and a cloth snapping in the wind."
+		"The &6great standard&r does everything the foundation standard does, only bigger. A third page, \"Mast\", sets the height, the cloth's length and width, the wind, fringes, the finial (the gear turns), a single banner (left or right) or a double one, and the lanterns."
+		"&6Decorative&r mode (\"General\" page): no title on screen, no entry in the register. Ideal to adorn a base that already has its foundation."
+		"&8A redstone signal lowers it to half-mast. Weather makes the cloth snap; the \"Shared wind\" option makes every banner that has it wave together.&r"
+	]
+	"quest.3AA9ACD7A616F854.title": "The Great Standard"
+	"quest.3B38C5096A245F19.quest_desc": [
+		"The prismarine temple where the Empire hid the secret of brass. Scout it before you attack."
+		"&8Reward: Respiration III and Aqua Affinity books, for the diving helmet.&r"
+	]
+	"quest.3B38C5096A245F19.title": "The Sunken Ruins"
+	"quest.3B5B4C7E5A9E504E.quest_desc": [
+		"&7Optional.&r For the one on the team who follows the Echo path: a piece of Ars Nouveau armor (sorcerer, arcanist or battlemage). Tick the box once it is worn."
+	]
+	"quest.3B5B4C7E5A9E504E.title": "Echo Robes"
+	"quest.3BA0D7C84446401F.quest_desc": [
+		"Before the monument: automatic magnet, feeding and refill."
+		"The magnet draws nearby items, feeding feeds you when you are hungry, refill tops up your hand when a stack runs out."
+	]
+	"quest.3BA0D7C84446401F.title": "Gold Backpack"
+	"quest.3BE4A51ACF80D7CB.quest_desc": [
+		"&7Optional.&r Plant a &6foundation standard&r at the heart of your base and give it a name and a motto: each time one of you enters its area, they show on screen, framed by its banner."
+		"Right-click to set it all. \"General\" page: name, motto, mast style (gallows, vexillum, ceremonial). \"Cloth\" page: colours, division and second colour, emblem and its colour, bottom shape, wear (new, worn, torn), glowing embroidery."
+		"Right-click with a Create wrench to enlarge the area (16 to 128 blocks, sneak to shrink). A comparator against the standard gives a full signal while one of you is in the area."
+		"The &6foundation register&r lists all your bases (name, coordinates, dimension, distance), then your displayed trophies."
+		"&8The foundation standard is the master of its area: the great standards and banners in it can follow its presence (see \"Raise the Colours\").&r"
+	]
+	"quest.3BE4A51ACF80D7CB.title": "The First Foundation"
+	"quest.3D95E57BC7AAF705.quest_desc": [
+		"Brass funnels counted every piece: nothing left the warehouse unweighed."
+		"They filter directly and set the exact amount taken each time (scroll on their face)."
+	]
+	"quest.3D95E57BC7AAF705.title": "Brass Funnels"
+	"quest.3DC7156494A0EA62.quest_desc": [
+		"Alloy is the machines' bread. You will need a lot, for a long time."
+		"Build up a stock. A mixer, in the next chapter, will soon produce it for you."
+	]
+	"quest.3DC7156494A0EA62.title": "Alloy Stockpile"
+	"quest.3E42AFB5B4ED0540.quest_desc": [
+		"The Empire's metal, the one of its insignia: its warehouses pay well for it."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.3E42AFB5B4ED0540.title": "Order: Brass"
+	"quest.3E8DC7B2286715F3.quest_desc": [
+		"Strike Ada's tuning fork against the Heart. It will crack, and the souls will leave. The automatons will stop for good."
+		"&8The Primordial Echo is earned on the Echo path, in \"The Lost Echoes\" section.&r"
+		"Rewards: the &3Echo's blessing&r (sight in the dark, half again as much experience, the sculk no longer hears you, and crouching still for a moment sends a wave revealing creatures within 24 blocks), restless souls never return, and the book \"The Last Song\"."
+	]
+	"quest.3E8DC7B2286715F3.quest_subtitle": "&3Echo ending&r"
+	"quest.3E8DC7B2286715F3.title": "Free the Souls"
+	"quest.3EA8884EEA45169F.quest_desc": [
+		"An engineer in a hurry went from one workshop to another in seconds, sucked through a glass tube."
+		"Two entrances powered by a cogwheel, linked by tubes. Tick the box when you have made the trip."
+	]
+	"quest.3EA8884EEA45169F.title": "The First Tube"
+	"quest.3F70267359AFD16A.quest_desc": [
+		"The ruins no longer sleep. You gave the Empire back its Core. Now you must stop it."
+		""
+		"&eReward:&r the &cDefense Beacon&r, a siren lighthouse tower. Place it in your base (3 × 3 blocks of ground, 8 high): you choose when the Empire attacks. During the assault, its light sweeps the base, and its siren announces each wave."
+		"&8Each player claims their own beacon.&r"
+		""
+		"&cFrom now on, automaton patrols come for you on the surface, and some drop from the sky.&r They stop when the Emperor falls."
+	]
+	"quest.3F70267359AFD16A.title": "The Empire Awakens"
+	"quest.3FC181E6EAD2F9AB.quest_desc": [
+		"Stone never runs out. You still have to extract it without wearing out your arms."
+		"Lava and water meeting, a mechanical drill facing them: endless cobblestone. Crushed, it becomes gravel then sand."
+	]
+	"quest.3FC181E6EAD2F9AB.title": "Cobblestone Generator"
+	"quest.4058125A46150053.quest_desc": [
+		"The Empire was built from sheet metal. Every machine, every hull, every armour starts with a sheet."
+		"Put the ingots on a depot or a belt, under the press: it flattens them one by one. Keep a stock ready, the rest of the chapter devours them."
+	]
+	"quest.4058125A46150053.title": "Iron Sheets"
+	"quest.40BA346F57FB7B3E.quest_desc": [
+		"\"The Echo is strongest where the trees change colour.\" Find an archwood forest: blue, red, green or purple, each hue sings differently."
+	]
+	"quest.40BA346F57FB7B3E.quest_subtitle": "I · The First Whispers"
+	"quest.40BA346F57FB7B3E.title": "The First Whispers"
+	"quest.422022D7AAF0448C.quest_desc": [
+		"The Empire left its machines, not its tools. You will have to start like its first engineers: by hand."
+		"Iron tools and the iron sword are still made at the crafting table. Other weapons and armour will go through the machines: the press, then the forge."
+	]
+	"quest.422022D7AAF0448C.title": "Proper Tools"
+	"quest.42E914B06EF601A5.quest_desc": [
+		"&7Optional.&r It guards the gates of the bronze cities. Its orders were never lifted."
+		"&8Slower than its little sisters, but much tougher. Don't let it corner you.&r"
+	]
+	"quest.42E914B06EF601A5.title": "The Guardian Spider"
+	"quest.42F7136AFE2BDD6A.quest_desc": [
+		"&7Optional.&r The elite guards' mace: the higher you fall from, the harder it hits."
+		"The heavy core rarely drops from ominous vaults. You also need a breeze rod to assemble it."
+	]
+	"quest.42F7136AFE2BDD6A.title": "Bonus: The Mace"
+	"quest.433D57C46C36B83C.quest_desc": [
+		"It dives from above. Keep a spell ready."
+	]
+	"quest.433D57C46C36B83C.title": "The Stalker"
+	"quest.43F9DDC4A4D5280C.quest_desc": [
+		"The weapon of the Soul Forge guards."
+		"Netherite plates and an upgrade template at the smithing table, on the diamond weapon. The plates replace the ingot, as for armour."
+	]
+	"quest.43F9DDC4A4D5280C.title": "A Netherite Weapon"
+	"quest.44080B72B3CD942B.quest_desc": [
+		"The press's noise was the sound of the Empire's cities: a beat, day and night."
+		"Iron block + andesite casing. The press flattens ingots into sheets: the whole chapter depends on it. Placed above a basin, it also compacts."
+	]
+	"quest.44080B72B3CD942B.title": "The Mechanical Press"
+	"quest.45908562924123FC.quest_desc": [
+		"The Empire's workshops fitted their guardians to the garrison: lanterns for the mines, cannons for the ramparts, boilers for remote posts."
+		"Three slots, one module each:"
+		"&6Head&r: lantern head (light, glowing monsters) or spyglass lens (damage, sees the invisible)."
+		"&6Shoulders&r: shoulder cannon or Tesla coil."
+		"&6Torso&r: riveted plating or emergency boiler (it gets back up instead of being destroyed)."
+		"They are made at the &6mechanical crafter&r. Right-click a working guardian to mount one; sneak with an empty hand to remove them all."
+		"&8The coil and the boiler need a resonance fragment.&r"
+	]
+	"quest.45908562924123FC.title": "The Garrison Workshops"
+	"quest.45CA43199084EBB5.quest_desc": [
+		"Brass is the Empire's metal: that of its mechanisms, its insignia, its name."
+		"Copper and zinc melted together in the mixer, over a basin heated by a blaze burner. No heat, no brass."
+	]
+	"quest.45CA43199084EBB5.title": "The Imperial Alloy"
+	"quest.45DA6B1623943C36.quest_desc": [
+		"An iron sword is fine. The Empire's arsenal had better."
+		"Forge an iron Simply Swords weapon (longsword, katana, spear…). They need sheets too. Tick the box when done."
+		"&8The \"Arsenal\" side chapter covers every weapon.&r"
+	]
+	"quest.45DA6B1623943C36.title": "A Real Weapon"
+	"quest.46882C5D681F223B.quest_desc": [
+		"&7Engineer's record, optional.&r Go below Y -59, right against the bedrock."
+		"&8The Empire's miners said you could hear the world's heartbeat down there.&r"
+	]
+	"quest.46882C5D681F223B.title": "The Bottom of the World"
+	"quest.472B472777388071.quest_desc": [
+		"A blade from the Eastern forges, adopted by the Empire's officers."
+		"Fast and sharp. Like the spear, it is forged with iron sheets."
+	]
+	"quest.472B472777388071.title": "The Katana"
+	"quest.47A90C9D840F46EF.quest_desc": [
+		"Get an &6ominous trial key&r and bring down 10 wind guardians."
+		""
+		"&eReward:&r the &6Copper Schematic&r (pump, spout, item drain)."
+		"&8As it falls, the last guardian drops a shard of warm metal. A memory.&r"
+	]
+	"quest.47A90C9D840F46EF.quest_subtitle": "Unlocks the Copper Schematic"
+	"quest.47A90C9D840F46EF.title": "The Wind Guardian"
+	"quest.47ADCC0B3FAD7F28.quest_desc": [
+		"The capital's shipyard launched a ship a week."
+		"A second Sky Schematic, so that each of you can build on your own. The materials are consumed."
+	]
+	"quest.47ADCC0B3FAD7F28.quest_subtitle": "A second Sky Schematic"
+	"quest.47ADCC0B3FAD7F28.title": "Great Work: The Shipyard"
+	"quest.484751AF0234DDF5.quest_desc": [
+		"&7Optional.&r During the Transfer, not every mind made it to the Core. The lost ones still drift through the world: the Refractories call it the &dEcho&r."
+		"The Empire had forbidden it. The Refractories learned to use it. Amethyst resonates with it."
+		"Bring amethyst shards and lapis lazuli: a Refractory notebook will teach you how to capture the Echo."
+		"&8Reward: the Ars Nouveau notebook, the guide to all Echo magic.&r"
+	]
+	"quest.484751AF0234DDF5.quest_subtitle": "Side quest: the magic of the Echo"
+	"quest.484751AF0234DDF5.title": "The Echo"
+	"quest.48A453D94E21691C.quest_desc": [
+		"&7Optional.&r A hall full of empty capsules, and cables plunging into a shaft."
+		"Go down and read the engineer's report, on the lectern at the bottom. The collector's chest holds a letter."
+	]
+	"quest.48A453D94E21691C.title": "The Capsule Station"
+	"quest.48FA53E37A178943.quest_desc": [
+		"Near the crystals the air turns cold, as if someone were passing by. The Refractories had learned to hold that chill in amethyst. They called it the &dEcho&r."
+		"The imbuement chamber binds the Echo into amethyst: source gems. Put amethyst in it and let it charge; its recipe is in EMI."
+		"&8Reward: the first page of a Refractory apprentice's notebook.&r"
+	]
+	"quest.48FA53E37A178943.quest_subtitle": "The Call of the Echo"
+	"quest.48FA53E37A178943.title": "A Chill in the Amethyst"
+	"quest.48FB591AC7A056F4.quest_desc": [
+		"&7Optional.&r The Empire's engineers never handed a tool back without running it over the grindstone."
+		"Any tool or weapon that leaves the maintenance bench is &6sharpened&r for 10 minutes: +10% mining speed for a tool, +10% damage for a weapon. If the oil tank is at least three-quarters full when the repair is done, it lasts 15 minutes."
+		"The item's tooltip shows the time left. Tick the box after your first repair."
+	]
+	"quest.48FB591AC7A056F4.title": "The Edge of the Blade"
+	"quest.492C9807A7C2C221.quest_desc": [
+		"The Empire's warehouses were never empty; you only had to know how to count. A &6difference engine&r, built at the mechanical crafter around an imperial plate, opens them again."
+		"It is placed with its decorations and a 3 x 3 &6arrival pad&r in front. Right-click: pick raw materials in lots of 1, 32 or 64, paid in coins."
+		"One minute later, the crate &6parachutes&r onto the pad. Right-click it to empty it."
+	]
+	"quest.492C9807A7C2C221.title": "The Difference Engine"
+	"quest.49BEC3C1141BEF65.quest_desc": [
+		"&7Engineer's record, optional.&r Get above the Nether's bedrock ceiling. A well-thrown ender pearl can help."
+		"&8Nobody knows what the Empire's engineers went looking for up there.&r"
+	]
+	"quest.49BEC3C1141BEF65.title": "The Nether Roof"
+	"quest.49C49B3652FB243A.quest_desc": [
+		"A warehouse without order is just a heap."
+		"The &6storage tool&r links barrels and chests to a controller, and sets what they display. Iron barrels hold more stacks."
+	]
+	"quest.49C49B3652FB243A.title": "Storage Gets Organized"
+	"quest.49E4BA6154AA295A.quest_desc": [
+		"The lower forges never stopped burning. The portal only lights once the Tide Guardian has fallen."
+		"Go armed, fed, with something to block a passage and a quick way home. The blazes of its fortresses give the fire that makes brass."
+	]
+	"quest.49E4BA6154AA295A.title": "Into the Nether"
+	"quest.4A9B3A221345EC1C.quest_desc": [
+		"Place the defense beacon in your base and repel a full Empire assault: four waves, the last one led by a steam centurion."
+		""
+		"&eRight-click&r the beacon: the assault starts after a countdown."
+		"&eSneak + right-click&r (beacon idle): sets the arrival radius (48, 64, 96 or 128 blocks) and shows the red circle where they will appear. Put it beyond your walls."
+		"Enemies only appear on natural ground under open sky: never on your floors, roofs or paths."
+		"Between waves, 30 seconds of respite. If you both fall, only the current wave starts again when you come back."
+		""
+		"The beacon never wears out. Every assault repelled pays cogs and a rare item, and the next one will be a little stronger."
+	]
+	"quest.4A9B3A221345EC1C.title": "Hold the Line"
+	"quest.4AC816ED3CDE8C53.quest_desc": [
+		"A real train has doors. The Empire's travellers never jumped off a moving car."
+		"Train doors open on their own when stopped at a station, on the platform side, and close again on departure."
+	]
+	"quest.4AC816ED3CDE8C53.title": "Train Doors"
+	"quest.4B53300A90F22D2C.quest_desc": [
+		"Go down to the bottom of a capsule station and read engineer Elias Vael's report."
+		"In the collector's chest, a letter is still waiting to be opened."
+	]
+	"quest.4B53300A90F22D2C.title": "Vael's Report"
+	"quest.4C11C27421D7B2F4.quest_desc": [
+		"On the third floor of a ruined citadel in the End, the &5void altar&r. The Empire's hunters made it their beachhead; the Echo, too dense here, devoured them. Come close and their leader awakens."
+		"&8It does not die screaming. It whispers: \"Soon.\"&r"
+	]
+	"quest.4C11C27421D7B2F4.quest_subtitle": "The last fragment"
+	"quest.4C11C27421D7B2F4.title": "The Ruined Citadel"
+	"quest.4DA9AA29C115DD53.quest_desc": [
+		"Some weapons were never mass-produced: they are found in the chests of dungeons and fortresses. Get your hands on a unique Simply Swords weapon, then tick the box."
+	]
+	"quest.4DA9AA29C115DD53.title": "A Unique Weapon"
+	"quest.4DCBE77F930CEB10.quest_desc": [
+		"The weapon of the imperial arena's champions. Heavy, slow, merciless."
+		"The grip is now a copper sheet instead of a stick. It strikes wide: ideal against groups."
+	]
+	"quest.4DCBE77F930CEB10.title": "The Diamond Claymore"
+	"quest.4F1E60398199317B.quest_desc": [
+		"Slip an upgrade thread into a piece of your robe (at the enchanting apparatus). Tick when done."
+	]
+	"quest.4F1E60398199317B.title": "A Thread of Echo"
+	"quest.4FCBF12D61978F2E.quest_desc": [
+		"Copper held the Empire's fluids: steam, oil, boiler water."
+		"Like andesite, copper casing is made by applying the material to stripped wood, by hand or with a deployer. It dresses everything that deals with fluids."
+	]
+	"quest.4FCBF12D61978F2E.title": "Copper Casing"
+	"quest.504C64579D0C97F8.quest_desc": [
+		"&7Engineer's record, optional.&r Fly 10 km with elytra. Rockets, or a jetpack to take off again."
+		"&8The Empire's messengers circled the continent in a day.&r"
+	]
+	"quest.504C64579D0C97F8.title": "The Great Traveller"
+	"quest.5051FDBC40E9057C.quest_desc": [
+		"The Empire isn't the only one to have left great ruins. Others have risen since."
+		"Explore three large When Dungeons Arise structures (flying fortresses, ruined cities…). Tick the box at the third."
+	]
+	"quest.5051FDBC40E9057C.title": "The Risen Dungeons"
+	"quest.5056F0EBCF563749.quest_desc": [
+		"&7Optional.&r Half-buried ruins, older than the Empire itself. Its archaeologists were already digging them."
+		"A brush on suspicious sand or gravel reveals what the earth hides: pottery, templates, and sometimes better."
+	]
+	"quest.5056F0EBCF563749.title": "Buried Ruins"
+	"quest.50BA89E70106AA5D.quest_desc": [
+		"&7The Echo path.&r To inscribe new spells into your spell book."
+		"Each glyph is engraved once and for all, for materials. The Refractories kept their tables far from the Empire's eyes."
+	]
+	"quest.50BA89E70106AA5D.quest_subtitle": "III · The Spell Book"
+	"quest.50BA89E70106AA5D.title": "The Scribe's Table"
+	"quest.50D4055059B84939.quest_desc": [
+		"An Empire engineer never went out without a pack."
+		"Leather, string and a chest. Right-click to open it, sneak + right-click on the ground to place it. Worn on the back, it opens with a key (B by default)."
+	]
+	"quest.50D4055059B84939.title": "The First Backpack"
+	"quest.526FC1E547AB0990.quest_desc": [
+		"A cloudshaping ritual, placed on the brazier. Tick once the sky has changed."
+		"&8Reward: a page of the apprentice's notebook.&r"
+	]
+	"quest.526FC1E547AB0990.title": "Opening the Sky"
+	"quest.52FA0BE465BA921D.quest_desc": [
+		"&7Optional.&r For those who want more: three more centurions. Not all of them stopped."
+		"&8They spit scalding steam before striking: back off when they hiss.&r"
+	]
+	"quest.52FA0BE465BA921D.title": "Final Challenge: The Bronze Guard"
+	"quest.53673928BEED9E60.quest_desc": [
+		"Crushing wheels are made in the mechanical crafter. Wheels → fan washing → smelting: extra experience and by-products (redstone from iron)."
+		"&8Crush ore blocks mined with Silk Touch: nearly twice the metal.&r"
+	]
+	"quest.53673928BEED9E60.title": "The Ore Line"
+	"quest.53A08AFC6A48F66F.quest_desc": [
+		"One of the Empire's boilers drank more water than a whole village."
+		"Tanks placed side by side or stacked merge into a single vessel, up to 3 blocks wide. Engineer's goggles show what they hold."
+	]
+	"quest.53A08AFC6A48F66F.title": "Fluid Tanks"
+	"quest.53B3D206C5511F69.quest_desc": [
+		"The first imperial workshop is there, under the dust. It only needs materials to come back to life."
+		"Deliver the materials: they are consumed. In exchange, what you need to build your first press, and the rest of the chapter."
+	]
+	"quest.53B3D206C5511F69.quest_subtitle": "Opens chapter II"
+	"quest.53B3D206C5511F69.title": "Great Work: The First Workshop"
+	"quest.546D55D27972933A.quest_desc": [
+		"A blaze burner in a wooden stock. It isn't careful. It is very effective."
+		"Short range, fire damage: deadly up close, useless against anything from the Nether."
+	]
+	"quest.546D55D27972933A.title": "The Blazegun"
+	"quest.54AD56ABAB892175.quest_desc": [
+		"&7Optional.&r The most common model of the old bronze factories. They still come out from everywhere."
+		"&8Alone, it is nothing. They are never alone.&r"
+	]
+	"quest.54AD56ABAB892175.title": "The Bronze Spider"
+	"quest.5625831E74A2BFCD.quest_desc": [
+		"&7Optional.&r A war machine from the ancient factory. It is also called the Sentinel."
+		"&8Its shots carry far: approach under cover, and never stay in its line.&r"
+	]
+	"quest.5625831E74A2BFCD.title": "The Prowler"
+	"quest.5645B33FC3535356.quest_desc": [
+		"On the day of the first flight, the whole capital looked up."
+		"Get your first craft off the ground and fly above the clouds. Bring elytra or a water bucket, just in case."
+	]
+	"quest.5645B33FC3535356.title": "First Flight"
+	"quest.564D3460A05544FE.quest_desc": [
+		"An Empire engineer never said \"faster\": they said \"what ratio?\"."
+		"Small and large cogwheels: combined, they double or halve the speed. Faster also means more stress: the goggles show what the source can still provide."
+	]
+	"quest.564D3460A05544FE.title": "Cogwheels"
+	"quest.567C5E9704837F57.quest_desc": [
+		"A precision mechanism, a drum, and the Empire no longer needs soldiers."
+		"It fires as long as you hold the trigger and have ammunition. Keep a reserve in your pack."
+	]
+	"quest.567C5E9704837F57.title": "The Gatling"
+	"quest.5690BF6C00E42CBE.quest_desc": [
+		"Over the ramparts, where cannons cannot see."
+		"Mortar shells fly in an arc and fall behind walls. Handy against an entrenched enemy."
+	]
+	"quest.5690BF6C00E42CBE.title": "The Mortar"
+	"quest.56C0BFD4CD51AFFC.quest_desc": [
+		"&7Optional.&r An empty suit of armour waiting for an order. It has guarded its hall since the fall."
+		"&8It fears almost nothing from the front: dodge its axe, then strike its back.&r"
+	]
+	"quest.56C0BFD4CD51AFFC.title": "The Iron Colossus"
+	"quest.573BB19942AFDDDC.quest_desc": [
+		"The Empire's oil travelled by tank car."
+		"Fluid interfaces work like item ones, for the train's tanks. They too need the Imperial Station Great Work."
+	]
+	"quest.573BB19942AFDDDC.title": "The Tanker Train"
+	"quest.577AA2DD38280354.quest_desc": [
+		"Restless souls (the phantoms of sleepless nights) sometimes drop a &dresonance fragment&r. Broken relays and the sanctuary hide some too."
+	]
+	"quest.577AA2DD38280354.title": "Resonance"
+	"quest.57CCAE32A34055EC.quest_desc": [
+		"Forty trials failed. The forty-first succeeded. That is precisely the problem."
+		"In a mechanical city, find a trial laboratory and read the journal in its underground room."
+	]
+	"quest.57CCAE32A34055EC.title": "Trial 41"
+	"quest.57F64A3976275B83.quest_desc": [
+		"Before propellers, the Empire flew on hot air."
+		"Envelopes above an adjustable hot-air burner: lift. The hotter the burner, the higher you go."
+	]
+	"quest.57F64A3976275B83.title": "The Balloon"
+	"quest.58D982FE0CA0F710.quest_desc": [
+		"In a sealed underground hall, an empty suit of armor, taller than a man, still holds its axe. It has waited centuries for an order."
+		"&8Strike its back when it freezes after a blow.&r"
+	]
+	"quest.58D982FE0CA0F710.title": "The Iron Colossus"
+	"quest.5A05D09AC645F0CD.quest_desc": [
+		"Four complete cannons. Iron becomes cast iron (press over a heated basin), cast iron melts in a heated basin and is poured into a cannon cast, then the barrel is bored. Details in EMI."
+	]
+	"quest.5A05D09AC645F0CD.title": "A Cannon Battery"
+	"quest.5A88FC3E3D161C0E.quest_desc": [
+		"It links all your chests and barrels into a single inventory. Needs a comparator, so Nether quartz."
+		"Open it to search, store and take from the whole warehouse at once. Funnels serving it serve the whole warehouse."
+	]
+	"quest.5A88FC3E3D161C0E.title": "The Storage Controller"
+	"quest.5B3EC0CEF0830078.quest_desc": [
+		"In the Nether too, the Empire's forges have relit. Their guardians with them."
+		"Thirty wither skeletons and thirty blazes. Fire resistance, a shield against fireballs, and milk against withering."
+	]
+	"quest.5B3EC0CEF0830078.title": "The Rekindled Forges"
+	"quest.5B8A28AB21830019.quest_desc": [
+		"The Empire's guards didn't wear wrought iron: their armour came out of the press, piece by piece."
+		"Iron armour is made with &6iron sheets&r instead of ingots."
+	]
+	"quest.5B8A28AB21830019.title": "Pressed Iron Armor"
+	"quest.5BC8E9FED58E5BF5.quest_desc": [
+		"A machine that has slept so long needs a spark to wake up."
+		"An Infernal Guardian Core will wake the Emperor sleeping in his machine. Only use it once you are ready."
+	]
+	"quest.5BC8E9FED58E5BF5.title": "The Spark"
+	"quest.5BCC503DB5D79A29.quest_desc": [
+		"The Empire's merchant ships sank with their cargo. Nobody came to fetch it."
+		"Shipwrecks hide treasure maps: the heart of the sea is at the end. Diving gear makes the search much easier."
+	]
+	"quest.5BCC503DB5D79A29.title": "The Shipwreck"
+	"quest.5C96E0E608B593DA.quest_desc": [
+		"&7Optional.&r The Emperor's own pack, they say. It survived the fall."
+		"Needs Infernal Guardian Cores (Nether stars): the pack never despawns, even in lava, and can hold other packs."
+	]
+	"quest.5C96E0E608B593DA.title": "Bonus: The Everlasting Backpack"
+	"quest.5CF7D5BC19E0C27E.quest_desc": [
+		"&7Optional.&r The Empire's drapers worked from patterns: every banner in a city matched to the thread."
+		"Sneak + right-click with the &6template&r on a standard or banner: it copies its look (colours, emblem, mast, decorative mode). Right-click another: it applies it. Name and motto are kept."
+		"&8It also copies the look of an Empire pedestal, to apply it to another pedestal.&r"
+	]
+	"quest.5CF7D5BC19E0C27E.title": "The Template"
+	"quest.5D4486926E02A87D.quest_desc": [
+		"The Empire's first train had a single car. It still changed the world."
+		"Controls, railway casing, two stations. Assemble the train at a station, seat a conductor, and give it a schedule."
+		"Tick the box when a train runs a round trip between two stations on its own."
+	]
+	"quest.5D4486926E02A87D.title": "The First Train"
+	"quest.5DD61605A436607E.quest_desc": [
+		"The Soul Forge guards wore this. Few will be left after you."
+		"Netherite plates and an upgrade template at the smithing table, on diamond armour. The plates replace the ingot."
+	]
+	"quest.5DD61605A436607E.title": "Netherite Armor"
+	"quest.5E3B48DAED62091C.quest_desc": [
+		"A city swallowed by darkness, older than everything. Something there is still listening."
+		"&cAbsolute silence recommended.&r Sneak, avoid sculk sensors and don't wake the warden. Wool muffles sounds."
+	]
+	"quest.5E3B48DAED62091C.title": "The Ancient City"
+	"quest.5E5F8A3BE04D22CA.quest_desc": [
+		"Nobody left to cut wood and dig tunnels? Machines never needed anybody."
+		"The saw cuts wood and planks, the drill breaks whatever is in front of it. Mounted on a moving contraption, they fell and dig tirelessly."
+	]
+	"quest.5E5F8A3BE04D22CA.title": "Saw and Drill"
+	"quest.5E6A2757F7E53E09.quest_desc": [
+		"&7The Echo path.&r Refractory apprentices received this book after their first year."
+		"More spell pages, and access to the second-tier glyphs."
+	]
+	"quest.5E6A2757F7E53E09.quest_subtitle": "VI · The Robe of the Arcana"
+	"quest.5E6A2757F7E53E09.title": "The Apprentice Spell Book"
+	"quest.5E756F97CBFB58A5.quest_desc": [
+		"What the crafting table cannot do, the Empire did with nine hands."
+		"&6Mechanical crafters&r are placed in a grid, linked with the wrench, and make recipes too big for the crafting table, up to 5×5 and beyond. They need rotation."
+		"&8Airain's Core will one day come out of such a grid.&r"
+	]
+	"quest.5E756F97CBFB58A5.title": "The Mechanical Crafter"
+	"quest.5EC88E01813B9167.quest_desc": [
+		"A city's great boiler rattled the windows of the whole district."
+		"A steam engine heated by at least four blaze burners. The bigger and hotter the boiler, the more engines it drives; goggles show its level."
+	]
+	"quest.5EC88E01813B9167.title": "The Great Boiler"
+	"quest.5F56E688DC1454DE.quest_desc": [
+		"Copper turns green, but it never betrays you."
+		"A press over a belt, like for iron. These sheets go into pipes, diving gear and diamond armour."
+	]
+	"quest.5F56E688DC1454DE.title": "Copper Sheets"
+	"quest.605C7D0D8F9D52AD.quest_desc": [
+		"&ePlaying together:&r join the same team (/ftbteams party create, then invite) to share the book."
+		"&eSchematics&r and &eSeals&r unlock the key machines. They are never consumed."
+		"&eEach player&r must claim the rewards that open a portal or a Great Work themselves."
+		"&eThe counter&r in the lab trades your coins for things you can't find anywhere. Pay with the exact coins, or by card (\"The Empire Bank\" quest)."
+	]
+	"quest.605C7D0D8F9D52AD.title": "Survival Rules"
+	"quest.6069B3B98BE0D757.quest_desc": [
+		"A vast hall. Thousands of brass capsules, lined up. &lAll empty.&r Cables run out of them, all going down."
+		""
+		"&6&lOctave Lanfrey's Journal&r"
+		"&oThe transfer has begun. We enter the metal one by one.&r"
+		"&oI will be the last.&r"
+	]
+	"quest.6069B3B98BE0D757.title": "The Capsule Hall"
+	"quest.61675AD339969EEC.quest_desc": [
+		"Wherever you go, machines switch on by themselves. Gears turn with no power."
+		""
+		"&6&lOctave Lanfrey's Journal&r"
+		"&oIf the Heart ever answers, it means someone is coming. It will be you.&r"
+	]
+	"quest.61675AD339969EEC.title": "Soon"
+	"quest.617C215FCC40D2A5.quest_desc": [
+		"Complete this quest in edit mode to unblock a player stuck because of a bug."
+	]
+	"quest.617C215FCC40D2A5.title": "Rescue: chapter IV"
+	"quest.618F5BC2D53A0570.quest_desc": [
+		"The capital's canvas yards wove day and night."
+		"Envelopes hold the hot air: the more there are, the heavier the craft can lift. Dyers coloured them in the city's colours."
+	]
+	"quest.618F5BC2D53A0570.title": "Canvas Yard"
+	"quest.62AA25CF72321165.quest_desc": [
+		"&7Optional.&r Some weapons found in the ruins carry a curse. The Empire knew how to undo it without breaking the item."
+		"Give &6rune ink&r to the disenchanter (right-click). A cursed item fed to it is then no longer destroyed: it loses &6one curse per pass&r, for one ink and 500 mB of oil, and comes out with its other enchantments intact."
+		"&8Without ink, a cursed item is disenchanted like any other. Rune ink: in a heated mixer, an echo shard, a resonance fragment, 4 lapis and a bucket of water make 2 inks.&r"
+	]
+	"quest.62AA25CF72321165.title": "The Purge"
+	"quest.62B49B400243E47C.quest_desc": [
+		"In the capital, a single counter served every warehouse in a district."
+		"A &6storage link&r connects chests that don't touch the controller. Gold chests hold even more."
+	]
+	"quest.62B49B400243E47C.title": "Storage Links"
+	"quest.64437A5B515F64EC.quest_desc": [
+		"Every situation has its shell."
+		"&6Armour-piercing&r shot goes through blocks, the &6shrapnel&r shell riddles an area, the &6smoke&r shell hides an assault. Shells need a fuze to burst."
+	]
+	"quest.64437A5B515F64EC.title": "Special Shells"
+	"quest.6581B56BF39E0D5F.quest_desc": [
+		"&7Optional.&r If the Infernal Guardian Core given by Airain's Core is lost, the Infernal Guardian (the Wither) gives another."
+		"&8Summon it far from your base, preferably underground: it destroys everything around it.&r"
+	]
+	"quest.6581B56BF39E0D5F.title": "The Spare Spark"
+	"quest.65D3DED4428A3995.quest_desc": [
+		"Four guardians, four fragments. Side by side, the fragments answer each other. Their inscriptions form a single sentence:"
+		"&o\"Give us back our Core.\"&r"
+	]
+	"quest.65D3DED4428A3995.title": "The Four Memories"
+	"quest.66621D64DAA04B1F.quest_desc": [
+		"&7After the Echo ending.&r In a broken relay (or the Great Relay), sneak and strike Ada's tuning fork (right-click) with &d8 resonance fragments&r on you."
+		"The relay grows calm: no more monsters spawn within 64 blocks, and a quiet Echo drifts around it."
+		"&8With the restless souls gone, fragments are found in relays, the sanctuary and ancient cities.&r"
+	]
+	"quest.66621D64DAA04B1F.title": "Soothe the Echo"
+	"quest.668C71D348398E06.quest_desc": [
+		"&7Optional.&r A steam colossus. It spits scalding steam before striking."
+		"&8Back off when it hisses, strike while it recharges.&r"
+	]
+	"quest.668C71D348398E06.title": "The Centurion"
+	"quest.66BDF063180A33F3.quest_desc": [
+		"Orders repeat: deliver, get paid, start again."
+		"Values: spur 1, bevel 8, sprocket 16, cog 64, crown 512, sun 4096."
+		"The lab counter sells logs, raw iron, lapis, netherrack, ender pearls and hearts of the sea. Outposts have their own machines, and their sealed rooms sell enchanted books, totems and more."
+	]
+	"quest.66BDF063180A33F3.title": "The Empire Shop"
+	"quest.66E7DFD4A54D2089.quest_desc": [
+		"Everything the Empire built starts here: a grey metal, solid, humble."
+		"Andesite + an iron or zinc nugget, at the crafting table. Soon the mixer will make it for you, by the stack."
+	]
+	"quest.66E7DFD4A54D2089.title": "Andesite Alloy"
+	"quest.66FAEDF5BE60EEE3.quest_desc": [
+		"Complete this quest in edit mode to unblock a player stuck because of a bug."
+	]
+	"quest.66FAEDF5BE60EEE3.title": "Rescue: chapter VI"
+	"quest.671D029F4D599454.quest_desc": [
+		"A fan, water, fire: half the Empire's workshops came down to that."
+		"Blowing through water: washing. Through fire: smoking. Through lava: smelting. Items must pass in front of it, on the ground or on a belt."
+	]
+	"quest.671D029F4D599454.title": "The Encased Fan"
+	"quest.6744DC79A58ED05B.quest_desc": [
+		"Before the Nether: a pack that smelts ore as you walk."
+		"The auto-smelting upgrade cooks what you pick up. Keep fuel in its slot."
+	]
+	"quest.6744DC79A58ED05B.title": "Diamond Backpack"
+	"quest.68203257D12F33AA.quest_desc": [
+		"The Empire's first line linked the mine to the forge. The whole network grew from it."
+		"Tracks are made by sequenced assembly. The ruins are far away: link the world."
+	]
+	"quest.68203257D12F33AA.title": "Laying Track"
+	"quest.685E510A3BD4D040.quest_desc": [
+		"The sky fleet's balloons are torn. The canvas yards can't keep up."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.685E510A3BD4D040.title": "Order: Envelopes"
+	"quest.687DE16EA4871143.quest_desc": [
+		"The garrison workshops want sheet metal to patch up their guardians."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.687DE16EA4871143.title": "Order: Iron Sheets"
+	"quest.68A1EAD2EBC7AD8C.quest_desc": [
+		"Beyond the portal, no city of the Empire. Towers of a strange violet, a light that sings. Someone lived here, far from the machines."
+		"It only opens after the Soul Forge. Plan a way back: there is no other road than the guardian."
+	]
+	"quest.68A1EAD2EBC7AD8C.title": "Beyond the Portal"
+	"quest.68BE2867F6DDB6F9.quest_desc": [
+		"The tide guardian waits at the bottom of the monument. Its servants will slow you down first."
+		"Milk cancels the guardians' mining fatigue. A charged air tank, and off you go."
+	]
+	"quest.68BE2867F6DDB6F9.title": "Underwater Preparations"
+	"quest.6A249B856D1B3472.quest_desc": [
+		"Magebloom only grows on imbued soil. Its fibres weave the robes of the Arcana."
+	]
+	"quest.6A249B856D1B3472.title": "The Mage's Flower"
+	"quest.6ADAF2C48DBFE7D4.quest_desc": [
+		"&7Optional.&r The Empire's palaces displayed their trophies under their founders' banners. Display four different trophies in your base. Tick the box when done."
+		"&8The foundation register also lists your displayed trophies, and banners set to \"by trophies\" are hoisted when a trophy is displayed in their area.&r"
+	]
+	"quest.6ADAF2C48DBFE7D4.title": "The Trophy Room"
+	"quest.6B1A427C3921B026.quest_desc": [
+		"The Empire's ramparts were not defended with swords."
+		"&6Solid shot&r pierces; &6high-explosive shells&r need a fuze on their nose to burst. Every shot also needs powder charges behind the projectile."
+	]
+	"quest.6B1A427C3921B026.title": "Ammunition"
+	"quest.6B69D38F6FEEAF3D.quest_desc": [
+		"Everything in its place: the golden rule of the Empire's storekeepers."
+		"Filters on funnels: each item in the right chest. Brass funnels and smart chutes sort more finely."
+	]
+	"quest.6B69D38F6FEEAF3D.title": "Sorting"
+	"quest.6BA5E8ED8CF404BA.quest_desc": [
+		"The Empire's divers repaired the docks without ever coming up."
+		"The backtank refills with air when placed on a rotation source. With the helmet, you breathe underwater; the boots keep you on the bottom, without floating."
+	]
+	"quest.6BA5E8ED8CF404BA.title": "Diving Gear"
+	"quest.6CB81EFFB7F0CBB5.quest_desc": [
+		"The machines that think need new tubes: the old ones burned out during the long sleep."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.6CB81EFFB7F0CBB5.title": "Order: Electron Tubes"
+	"quest.6CE0A52059FD47C2.quest_desc": [
+		"The Empire sleeps in the Heart and promises eternity to those who serve it."
+		"Ada, Morgana and Octave say otherwise: the Transfer does not kill, it imprisons, and thousands of voices are still waiting."
+		"&6Rekindling the Heart&r gives the Empire back to the world. &3Breaking it&r gives the souls back to themselves."
+		"There is no right answer. Only yours."
+	]
+	"quest.6CE0A52059FD47C2.title": "The Two Voices"
+	"quest.6DA6D020B8F3F601.quest_desc": [
+		"Made in the mechanical crafter with brass sheets and steel."
+		"Steel is mixed on a superheated blaze burner (blaze cake): iron and charcoal dust."
+	]
+	"quest.6DA6D020B8F3F601.title": "The Revolver"
+	"quest.6DB0A3122C849921.quest_desc": [
+		"The monument's three elder guardians."
+		""
+		"&eRewards:&r the &6Brass Schematic&r (blaze burner), and the &cNether&r opens for you."
+		"&8Each player must claim their own reward to pass through the portal.&r"
+	]
+	"quest.6DB0A3122C849921.quest_subtitle": "Brass Schematic, Nether opens"
+	"quest.6DB0A3122C849921.title": "The Tide Guardian"
+	"quest.6E108C45FF1015DD.quest_desc": [
+		"The Empire's granaries were never empty. Nobody remembers seeing a farmer."
+		"A harvester on a contraption going back and forth harvests and replants. The bread will be your provisions, and the shop buys it."
+	]
+	"quest.6E108C45FF1015DD.title": "The Automatic Farm"
+	"quest.6EC3CFDAA91A4268.quest_desc": [
+		"The rampart batteries have nothing left to fire. Fill their magazines."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.6EC3CFDAA91A4268.title": "Order: Shot"
+	"quest.6FDC2B7E31680DCF.quest_desc": [
+		"The Soul Forge monstrosity never cooled down. Neither will you, if you aren't ready."
+		"Potions (fire resistance recommended) and golden apples: the monstrosity hits hard, and lava is everywhere."
+	]
+	"quest.6FDC2B7E31680DCF.title": "Infernal Preparations"
+	"quest.6FF5B231E6CCF065.quest_desc": [
+		"Airain's Core is forged only once. Its materials are gathered long in advance."
+		"Precision mechanisms and brass casings: restart your production lines before going after the rest."
+	]
+	"quest.6FF5B231E6CCF065.title": "Core Materials"
+	"quest.71C1917F8DAC3905.quest_desc": [
+		"Underground, a whole city lit by lamps that never dimmed. At its heart, a steam-powered bronze centurion as tall as a house. Destroy it."
+	]
+	"quest.71C1917F8DAC3905.title": "The Depths"
+	"quest.71DF30C0262B65CA.quest_desc": [
+		"The Empire's old bronze works have lit up again. Their mechanical spiders are back on patrol."
+		"Destroy twenty of them (the counter goes up with each machine destroyed)."
+	]
+	"quest.71DF30C0262B65CA.title": "The Bronze Spiders"
+	"quest.72464843991ABAFB.quest_desc": [
+		"Every repair of the Empire starts with andesite alloy. There is never enough."
+		"&7Repeatable.&r Delivered items are consumed."
+	]
+	"quest.72464843991ABAFB.title": "Order: Alloy"
+	"quest.72573259B6EDF8F7.quest_desc": [
+		"The imperial station saw a hundred trains a day. Its platforms are still waiting."
+		"Deliver the materials. The station unlocks portable interfaces, to load and unload trains with nobody around."
+	]
+	"quest.72573259B6EDF8F7.quest_subtitle": "Unlocks portable storage interfaces"
+	"quest.72573259B6EDF8F7.title": "Great Work: The Imperial Station"
+	"quest.72883D4BEEF6D72B.quest_desc": [
+		"The rekindled Empire needs officers again. An imperial plate, riveted onto a guardian's chest, makes it a captain."
+		"Right-click a guardian bound to a base with an &6imperial plate&r. One captain per base."
+		"Taller and sturdier, it carries &6two modules per slot&r, and guardians within 16 blocks gain Strength and Resistance."
+	]
+	"quest.72883D4BEEF6D72B.title": "The Imperial Captain"
+	"quest.728A556CC3B52C43.quest_desc": [
+		"&7Optional.&r With brass, the maintenance bench can finally be tuned like the ones in the capital's workshops."
+		"Three modules, placed in the slots on the right of its screen (one of each counts):"
+		"• &6Fine Grindstone&r: 30% less oil per repair;"
+		"• &6Reduction Gear&r: 60% faster, but needs twice the stress;"
+		"• &6Greaser&r: pumps oil from a neighbouring tank, 250 mB per second. No more oil cans."
+		"&8Modules show on the bench, and engineer's goggles list them.&r"
+	]
+	"quest.728A556CC3B52C43.title": "Bench Modules"
+	"quest.7307282B5DF56B0D.quest_desc": [
+		"Silence returns. In your pack, Airain's Core no longer beats. It still holds every soul the Empire burned, and a voice you know: Elias Vael's, Ada's brother."
+		"Two gestures are possible. &6Rekindle the Heart&r with an Infernal Guardian Core: the Empire starts again, and obeys you. &3Free the souls&r with Ada's tuning fork and a Primordial Echo: the Heart breaks, and everything stops."
+		"&cOne choice for the whole world. The Core is consumed; there is no going back.&r"
+	]
+	"quest.7307282B5DF56B0D.title": "The Silent Heart"
+	"quest.7334C891610A4015.quest_desc": [
+		"In the Empire's ruins, &6brass guardians&r wait, seated, covered in moss."
+		"Create wrench in hand, with &616 scrap, 4 oils and 2 broken cogs&r on you: right-click, and it stands up. It guards the nearest foundation (4 per base)."
+		"&8The engineer's book has all the details.&r"
+	]
+	"quest.7334C891610A4015.title": "A Guardian on Its Feet"
+	"quest.73796EB7BAF6E4A1.quest_desc": [
+		"What flies, what floats, what rolls: everything went through the physics assembler."
+		"With the Sky Schematic. It turns a build into a vehicle that obeys physics: weight, thrust, inertia."
+	]
+	"quest.73796EB7BAF6E4A1.title": "The Physics Assembler"
+	"quest.739C8164C9982BC6.quest_desc": [
+		"The Empire's enchanting workshop melted experience the way you melt metal."
+		"Reopen it: you'll be able to place the blaze enchanter, the blaze forger and the printer from Enchantment Industry. Materials and experience are consumed."
+	]
+	"quest.739C8164C9982BC6.quest_subtitle": "Unlocks the enchanting machines"
+	"quest.739C8164C9982BC6.title": "Great Work: The Enchanting Workshop"
+	"quest.73B823D3D42DE379.quest_desc": [
+		"A spell is a will entrusted to the Echo. Start small: light in the mine, a rock that gives way. The lost like to be useful."
+		"A novice spell book and the light glyph. Open the book to compose spells from glyphs; they draw on your Echo reserve."
+		"&8Opens the &dThe Arcana&8 chapter, the story's second path.&r"
+	]
+	"quest.73B823D3D42DE379.quest_subtitle": "The Call of the Echo"
+	"quest.73B823D3D42DE379.title": "An Entrusted Will"
+	"quest.7530670FBF04DB70.quest_desc": [
+		"&7Optional.&r Only the hardest writings to reach are missing:"
+		"• the readings of the observation station, on a floating island;"
+		"• the road notebook of a Refractory shelter, on an islet in the Nether's lava lake;"
+		"• the letter never sent, in the crate of a battlefield barricade;"
+		"• the log of a sky fleet airship."
+		"All these writings can be read again in the Forgotten Chronicles' archives."
+	]
+	"quest.7530670FBF04DB70.quest_subtitle": "Every writing in the world"
+	"quest.7530670FBF04DB70.title": "The Archivist"
+	"quest.757A48365022B721.quest_desc": [
+		"&7Optional.&r In the Empire's halls, the colours fell from the walls to the floor."
+		"The &6wall banner&r is placed against a wall, on its rod. Same cloth settings as the standards; its \"Size\" page picks the length (2 to 4 blocks) and the width."
+		"&8A redstone signal rolls it up. The Refractory camps have their own too, in their own colours.&r"
+	]
+	"quest.757A48365022B721.title": "The Wall Banner"
+	"quest.769408885D0708A5.quest_desc": [
+		"Complete this quest in edit mode to unblock a player stuck because of a bug."
+	]
+	"quest.769408885D0708A5.title": "Rescue: chapter III"
+	"quest.76A72FC020B609BB.quest_desc": [
+		"The Echo you capture has to go somewhere. The Refractories kept it in jars, the way you keep an ember."
+	]
+	"quest.76A72FC020B609BB.title": "A Source Jar"
+	"quest.76BF387EB0CFFC46.quest_desc": [
+		"The copper pack serves the engineer like an attentive apprentice."
+		"The tool swapper picks the right tool from the pack for the targeted block, and puts it back afterwards."
+	]
+	"quest.76BF387EB0CFFC46.title": "Copper Backpack"
+	"quest.781B4AE91894BA53.quest_desc": [
+		"Towers hanging in the void, made of Echo turned to stone. These are not cities of the Empire: they are refuges."
+		"At the docks, stranded imperial ships: hunters sent after those who lived here. Their crews' elytra are still aboard. Beware of the refuge sentinels: their projectiles make you levitate."
+	]
+	"quest.781B4AE91894BA53.title": "The Floating Cities"
+	"quest.781FE5FC0EF77559.quest_desc": [
+		"Alchemists had their cauldrons. Engineers had the mixer."
+		"The mixer above a basin combines ingredients. Use it to automate andesite alloy: one funnel to fill, another to empty."
+	]
+	"quest.781FE5FC0EF77559.title": "Mixer and Basin"
+	"quest.78688D0CBE6C5DD1.quest_desc": [
+		"Soothe 3 relays in all."
+	]
+	"quest.78688D0CBE6C5DD1.title": "Soothe: 3 relays"
+	"quest.78BB158FFEA4A6B8.quest_desc": [
+		"The capital produced thousands a day. The Core will need many."
+		"A golden sheet goes past three deployers (cogwheel, large cogwheel, iron nugget), five times over. A belt looping past the three deployers does the whole line on its own."
+	]
+	"quest.78BB158FFEA4A6B8.title": "Precision Line"
+	"quest.79C3C6BDEB9D9F14.quest_desc": [
+		"The Imperial Forge made the armour of three generations of guards. It has been cold since the fall."
+		"Relight it: the sheets are consumed."
+		"&eReward:&r the &6Forge Seal&r, required (but not consumed) by diamond armour."
+	]
+	"quest.79C3C6BDEB9D9F14.quest_subtitle": "Unlocks diamond armor"
+	"quest.79C3C6BDEB9D9F14.title": "Great Work: The Imperial Forge"
+	"quest.7A1EE1657346F1A8.quest_desc": [
+		"Raw iron on a belt, a fan blowing through lava: ingots in bulk, no furnace. Tick the box when the line runs without you."
+		"&8Crushing wheels, more profitable, arrive in chapter IV.&r"
+	]
+	"quest.7A1EE1657346F1A8.title": "The Fan Smeltery"
+	"quest.7A269F052587CB1A.quest_desc": [
+		"Complete this quest in edit mode to unblock a player stuck because of a bug."
+	]
+	"quest.7A269F052587CB1A.title": "Rescue: chapter II"
+	"quest.7B1C7507CD43B59E.quest_desc": [
+		"Break, heal, light. \"Morgana used to say you judge a mage by their first healing spell.\""
+	]
+	"quest.7B1C7507CD43B59E.title": "Three Wills"
+	"quest.7BD013E33BBE2173.quest_desc": [
+		"&7Optional.&r A surveillance drone. It never comes alone."
+		"&8Bring it down fast: where it goes, other machines follow.&r"
+	]
+	"quest.7BD013E33BBE2173.title": "The Watcher"
+	"quest.7C784488716A8DAF.quest_desc": [
+		"Complete this quest in edit mode to unblock a player stuck because of a bug."
+	]
+	"quest.7C784488716A8DAF.title": "Rescue: chapter V"
+	"quest.7CAC6244231575FB.quest_desc": [
+		"&7Optional.&r A guardian of stone and void that never sleeps."
+		"&8Its ground slams carry far: don't stay close when it raises its arms.&r"
+	]
+	"quest.7CAC6244231575FB.title": "The Ender Golem"
+	"quest.7CDE28D2D18A4436.quest_desc": [
+		"Ada Vesper had found the note that soothes the Echo. She never got to play it."
+		"Ada's recipe: four resonance fragments, an echo gem and a gold ingot."
+	]
+	"quest.7CDE28D2D18A4436.title": "The Tuning Fork"
+	"quest.7D319DB84563FF59.quest_desc": [
+		"The Empire's smelters had their quarters there. Only skeletons remain."
+		"Blazes give the rods for burners; wither skeletons, their skull: the Infernal Mask, a trophy for your pedestal."
+	]
+	"quest.7D319DB84563FF59.title": "The Nether Fortress"
+	"quest.7D3B24521CD53A87.quest_desc": [
+		"&7Optional.&r A foundation worthy of the Empire: at least four great standards or wall banners within the area of a single foundation standard, in the same colours, all rising together when you arrive."
+		"Tick the box when done."
+	]
+	"quest.7D3B24521CD53A87.title": "A Bedecked Base"
+	"quest.7D567EF62083EB45.quest_desc": [
+		"What remains of the Empire will give no quarter."
+		"Healing, strength and fire resistance potions. Keep them in a pack with refill: there's no time to dig through bags mid-assault."
+	]
+	"quest.7D567EF62083EB45.title": "The Healing Stock"
+	"quest.7D7CCDE15946F46E.quest_desc": [
+		"Find a hidden vein with the finder, then drill it forever."
+		"&8The finder needs an intact redstone ore block (Silk Touch pickaxe); the drilling machine needs sturdy sheets (obsidian crushed by the wheels).&r"
+	]
+	"quest.7D7CCDE15946F46E.title": "Infinite Veins"
+	"quest.7E1047D9247BDB41.quest_desc": [
+		"A netherite plate and, set in gold at its centre, the core of an Infernal Guardian."
+		"Put the plate on a depot or a belt, and have a &6deployer&r press the &6Infernal Guardian Core&r into it."
+	]
+	"quest.7E1047D9247BDB41.title": "Sacred Netherite"
+	"quest.7E5194BB3CA7ED58.quest_desc": [
+		"An iron sword, forged by hand with the ingots from the laboratory: together with the pickaxe, it's all you need to head out."
+		"Iron armor comes in chapter II, with the press."
+	]
+	"quest.7E5194BB3CA7ED58.title": "Starting Gear"
+	"quest.7ED07D538A789774.quest_desc": [
+		"Folded, they roll like cannonballs. Unfolded, they are soldiers."
+		"Destroy twelve spheres. They come fast and in numbers: hold a narrow passage."
+	]
+	"quest.7ED07D538A789774.title": "The Spheres"
+	"quest.7F005683914676AB.quest_desc": [
+		"The laboratory remains your base. Outside, the world is empty: not a grave, not a skeleton. As if everyone had left at the same time."
+		"Look for running water for a wheel, andesite for the alloy, and the ruins on the horizon."
+		"Tick the box when you have explored the surroundings."
+	]
+	"quest.7F005683914676AB.title": "Back to the Surface"
+	"quest.7F01288868696FF3.quest_desc": [
+		"The Sky Guardian is neither a machine nor a beast of the End. &dMorgana Dalmont&r called it with her own hands and bound it to the obsidian towers, to guard her people's gates. Her pages can still be found in the End cities."
+		"First break the crystals that feed it, on the pillars. It leaves an egg: displayed on an Empire pedestal, it protects the whole team from falls."
+	]
+	"quest.7F01288868696FF3.title": "The Sky Guardian"
+	"quest.7FA88B2F63BC01DA.quest_desc": [
+		"&7Optional.&r The old enchanting table no longer answers. The Empire's one guesses nothing: it reads."
+		"Shelve &6enchanted books&r in &6chiseled bookshelves&r within 3 blocks: the table offers those enchantments, and you pick the level, up to the book's. The books stay put."
+		"Cost: experience (3 levels per level, more for rarer ones, 30 at most) and one lapis per level."
+		"&6Ancient tomes&r: shelved next to a book of the same enchantment, an ancient tome unlocks the level after the book's (gold button), even beyond the maximum. The tome stays put, but applying that level consumes one &6rune ink&r (third slot). Only one tome counts per enchantment. Beyond the maximum, the cost rises to 40 levels and double lapis."
+		"&8Rune ink: in a heated mixer, an echo shard, a resonance fragment, 4 lapis and 1,000 mB of water (one bucket) make 2 inks.&r"
+	]
+	"quest.7FA88B2F63BC01DA.quest_subtitle": "Side quest: enchanting to order"
+	"quest.7FA88B2F63BC01DA.title": "The Imperial Library"
+	"quest.7FB1F721F1B934FC.quest_desc": [
+		"The Empire's cities were linked by rail. Restore a line: a train linking your base to a mechanical city, with a station at each end."
+		"Tick the box after the first round trip."
+	]
+	"quest.7FB1F721F1B934FC.title": "The Imperial Line"
+	"quest.7FF957863CC019F2.quest_desc": [
+		"&7Engineer's record, optional.&r Climb above Y 330, higher than anything can be built. With elytra or a flying craft."
+		"&8The Empire's record stood at Y 400. Nobody came back down to confirm it.&r"
+	]
+	"quest.7FF957863CC019F2.title": "Above Everything"
+	"task.10BBCA124564623E.title": "A cache inventory"
+	"task.15624E864CACC031.title": "The deep expedition report"
+	"task.16B479B7CD564FB9.title": "Airain's Core"
+	"task.19F4625B777461F4.title": "Four banners raised together"
+	"task.1B426C4864E1D67A.title": "A prospector's letter"
+	"task.1CE89F85EAB84365.title": "See a banner rise when you return"
+	"task.1D807A49B8A8B1F9.title": "Repair a tool or weapon at the bench"
+	"task.1DB4FBADCF620731.title": "The letter never sent"
+	"task.1E0596A41C93E9C4.title": "The road notebook"
+	"task.1ECF1DAF8C615CE9.title": "A Refractory writing"
+	"task.1F1E46E8DBEE6DD0.title": "The trial log"
+	"task.2DA794549CA0C0A2.title": "The Nether log"
+	"task.2E52ED05EB5852B0.title": "Purge a cursed item"
+	"task.2F273B2C478004C2.title": "The incident report"
+	"task.318ED45DF4C4F2CE.title": "Ada Vesper's journal"
+	"task.325DF823FB0D6363.title": "The cargo manifest"
+	"task.370CC98FB9CA0995.title": "The schematic table"
+	"task.376FE865A8FDD474.title": "Station no. 2 readings"
+	"task.43B4570673B9D1AA.title": "A base ↔ city round trip"
+	"task.47BF9C61D2CF7484.title": "A Primordial Echo"
+	"task.486D87C9A0C36D3F.title": "An Infernal Guardian Core"
+	"task.5165EFD936C30A7F.title": "The miner's notebook"
+	"task.52579755FEE910DF.title": "Ada's tuning fork"
+	"task.52764CA4B15EF784.title": "Ada's letter"
+	"task.5A7970D0A5CC27A8.title": "The last message"
+	"task.5D9954971B83AC92.title": "The schematicannon"
+	"task.6819B23AAE4D8E59.title": "The ship's log"
+	"task.6B9352AA5523AC15.title": "Engineer Vael's report"
+	"task.6DE383629AD5C303.title": "Airain's Core"
+	"task.71ECC9B6560D6FF8.title": "The Council register"
+}

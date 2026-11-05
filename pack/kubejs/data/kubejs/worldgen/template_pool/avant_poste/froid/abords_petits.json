@@ -1,0 +1,50 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/depot_caisses",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/ferraille",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/abri",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/chateau_eau",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/kiosque",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

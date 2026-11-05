@@ -1,0 +1,21 @@
+{
+ "quests": {
+  "reveil": 16,
+  "andesite": 19,
+  "cuivre": 15,
+  "laiton": 27,
+  "ciel": 17,
+  "coeur": 10,
+  "reconquete": 15,
+  "sacs": 11,
+  "commandes": 13,
+  "ingenierie": 10,
+  "trains": 10,
+  "arsenal": 18,
+  "exploration": 15,
+  "bestiaire": 8,
+  "echos": 10,
+  "secours": 6
+ },
+ "total": 220
+}

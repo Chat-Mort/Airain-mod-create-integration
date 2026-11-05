@@ -1,0 +1,68 @@
+{
+  "fallback": "kubejs:avant_poste/tempere/petits_cite",
+  "elements": [
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/marche_c",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/grand_marche_c",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/stand_tir_c",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/laboratoire_c",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/entrepot_c",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/atelier_c",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/dortoir_c",
+        "processors": "kubejs:avant_poste_usure",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

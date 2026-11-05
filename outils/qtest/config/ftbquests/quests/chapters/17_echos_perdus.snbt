@@ -1,0 +1,261 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "17_echos_perdus"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "kubejs:echo_primordial" }
+	id: "1CD639A08966078F"
+	order_index: 17
+	quests: [
+		{
+			dependencies: ["484751AF0234DDF5"]
+			id: "29E98529A035C62A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "1D22AA5C032D29F9"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:avant_poste_refractaire"
+					id: "58C3DA09A9ECC116"
+					type: "structure"
+				}
+				{
+					id: "28BA0B06C42DAA92"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["29E98529A035C62A"]
+			id: "3A95A67E6E76796D"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "53198F1CACE81715"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "kubejs:fragment_resonance" }
+					count: 2
+					id: "6D0E66979D29C3CC"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:relais_brise"
+					id: "1DCC8E3023DF21D9"
+					type: "structure"
+				}
+				{
+					id: "189B31147027D528"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3A95A67E6E76796D"]
+			id: "4B53300A90F22D2C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "274D0FA820469A9F"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:station_capsules"
+					id: "50B88DFB3E904F9E"
+					type: "structure"
+				}
+				{
+					id: "40E78E71B92E47CA"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4B53300A90F22D2C"]
+			id: "57CCAE32A34055EC"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "1F7CC3AF5A1EAE77"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:cite_mecanique"
+					id: "7FCDABCCB17C7AB5"
+					type: "structure"
+				}
+				{
+					id: "4E4204C109D3D537"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["57CCAE32A34055EC"]
+			id: "2635834C88309144"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "394A203DD8E37349"
+					type: "item"
+				}
+				{
+					command: "locate structure kubejs:grand_relais"
+					permission_level: 2
+					silent: false
+					id: "4C9C49E64C1ACEEB"
+					type: "command"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:sanctuaire_refractaire"
+					id: "1B0C8A65E5EAE121"
+					type: "structure"
+				}
+				{
+					id: "19256755BB4A2FD6"
+					type: "checkmark"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2635834C88309144"]
+			id: "577AA2DD38280354"
+			rewards: [
+				{
+					xp: 300
+					id: "184D482BBC7F2184"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:fragment_resonance" }
+					count: 4L
+					id: "2CDD04B0C9E37B13"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["577AA2DD38280354"]
+			id: "7CDE28D2D18A4436"
+			rewards: [
+				{
+					xp: 300
+					id: "29414A3973861244"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:diapason_echo" }
+					count: 1L
+					id: "3AF49DBF3B53AE7D"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["7CDE28D2D18A4436"]
+			id: "1C87550C0BEA8CA7"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2448BC5C92F08C19"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:grand_relais"
+					id: "178D1B5BE8356DF7"
+					type: "structure"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["1C87550C0BEA8CA7"]
+			id: "223174505C4CDFF6"
+			rewards: [
+				{
+					xp: 2000
+					id: "62C636D5EFFD25FA"
+					type: "xp"
+				}
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "5E01622AD44EC86D"
+					type: "item"
+				}
+			]
+			shape: "hexagon"
+			size: 2.0d
+			tasks: [
+				{
+					entity: "ars_nouveau:wilden_boss"
+					value: 1L
+					id: "6C6D711638BAA6A5"
+					type: "kill"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["223174505C4CDFF6"]
+			id: "2543479E97C7BC7E"
+			rewards: [
+				{
+					xp: 1000
+					id: "1AC12EB8D088FF21"
+					type: "xp"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:echo_primordial" }
+					count: 1L
+					id: "1C2F42BA184B1CCA"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 2.0d
+		}
+	]
+}

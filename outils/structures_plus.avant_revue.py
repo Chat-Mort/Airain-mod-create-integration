@@ -1,0 +1,544 @@
+#!/usr/bin/env python3
+"""Avant-postes réfractaires, station de capsules, ruines isolées supplémentaires : pièces + génération + butin + textes.
+usage : structures_plus.py <dossier du pack>"""
+import json, os, random, sys
+from nbtlib import Compound, Int, String, List
+from pieces import Piece, VOID, AIR, coffre, distributeur, panneau
+from style import *
+
+P = sys.argv[1]
+D = os.path.join(P, "kubejs/data")
+HERE = os.path.dirname(os.path.abspath(__file__))
+STRUCT = os.path.join(D, "kubejs/structure")
+pieces = []
+def w(rel, obj):
+    f = os.path.join(D, rel); os.makedirs(os.path.dirname(f), exist_ok=True)
+    json.dump(obj, open(f, "w"), indent=2, ensure_ascii=False)
+
+# =====================================================================================================
+# AVANT-POSTES RÉFRACTAIRES — les humains qui ont refusé le Transfert.
+# Style à part : tout est bricolé. Palissade de rondins, sacs de sable, tentes de laine rouge et blanche,
+# tôles de cuivre ARRACHÉES à l'Empire et clouées n'importe comment, un automate abattu exposé en trophée.
+# =====================================================================================================
+SAC = lambda r: r.choice(("minecraft:packed_mud", "minecraft:packed_mud", "minecraft:mud_bricks"))
+SAC_HAUT = "minecraft:mud_brick_slab[type=bottom,waterlogged=false]"
+RONDIN = "minecraft:spruce_log[axis=y]"
+PIQUE = "minecraft:spruce_fence[east=false,north=false,south=false,waterlogged=false,west=false]"
+FERRAILLE = lambda r: r.choice(("minecraft:weathered_copper", "minecraft:oxidized_copper", "create:weathered_iron_block", "minecraft:exposed_cut_copper"))
+
+def tente(c, x0, z0, long_, couleur, axe_x=True):
+    """Tente en A : deux pans de laine et un faîte, longue de `long_`."""
+    for i in range(long_):
+        for (d, y) in ((0, 1), (0, 2), (2, 1), (2, 2), (1, 3)):          # pans de 2 de haut, faîte au 3e bloc
+            x, z = (x0 + i, z0 + d) if axe_x else (x0 + d, z0 + i)
+            c.put(x, y, z, "minecraft:%s_wool" % (couleur if (i + d + y) % 3 else "white"))
+        x, z = (x0 + i, z0 + 1) if axe_x else (x0 + 1, z0 + i)
+        c.put(x, 1, z, AIR); c.put(x, 2, z, AIR)
+    x, z = (x0, z0 + 1) if axe_x else (x0 + 1, z0)
+    c.put(x, 1, z, "minecraft:white_carpet")
+
+def camp(nom, graine):
+    r = random.Random(graine)
+    S = 27
+    c = Piece("kubejs:refractaires/" + nom, S, 10, S, fond=VOID); pieces.append(c)
+    for x in range(S):
+        for z in range(S):
+            c.put(x, 0, z, r.choice(("minecraft:coarse_dirt", "minecraft:dirt_path", "minecraft:coarse_dirt", "minecraft:podzol", "minecraft:gravel")))
+            if 1 < x < S - 2 and 1 < z < S - 2:
+                for y in range(1, 6):
+                    c.put(x, y, z, AIR)
+    # palissade : rondins de 3 à 4, pointes, trouée rapiécée de tôles volées
+    for x in range(1, S - 1):
+        for z in range(1, S - 1):
+            if min(x, z, S - 1 - x, S - 1 - z) != 1:
+                continue
+            if 12 <= x <= 14 and z == S - 2:                 # entrée au sud
+                continue
+            if r.random() < 0.08:
+                continue                                       # trou dans la palissade
+            hh = r.choice((3, 3, 4))
+            archebois = r.random() < 0.12                       # bois qui a poussé dans l'Écho
+            for y in range(1, hh + 1):
+                c.put(x, y, z, FERRAILLE(r) if r.random() < 0.15 else
+                      ("ars_nouveau:blue_archwood_log[axis=y]" if archebois else RONDIN))
+            t = r.random()
+            if t < 0.1:
+                c.put(x, hh + 1, z, "minecraft:amethyst_cluster[facing=up,waterlogged=false]")
+            elif t < 0.55:
+                c.put(x, hh + 1, z, PIQUE)
+    # chicane de sacs de sable devant l'entrée
+    for x in range(10, 17):
+        c.put(x, 1, S - 4, SAC(r)); c.put(x, 2, S - 4, SAC_HAUT if x % 2 else AIR)
+    for x in (10, 16):
+        c.put(x, 1, S - 3, SAC(r))
+    # tentes
+    tente(c, 3, 3, 5, "red"); tente(c, 3, 8, 4, "red"); tente(c, 18, 3, 5, "red")
+    tente(c, 19, 9, 5, "brown", axe_x=False)
+    # feu de camp et bancs de rondins
+    c.put(13, 1, 12, "minecraft:campfire[facing=north,lit=true,signal_fire=false,waterlogged=false]")
+    for (x, z, ax) in ((11, 12, "z"), (15, 12, "z"), (13, 10, "x"), (13, 14, "x")):
+        c.put(x, 1, z, "minecraft:stripped_spruce_log[axis=%s]" % ax)
+    # mât à étendard rouge déchiré
+    for y in range(1, 7):
+        c.put(5, y, 15, PIQUE)
+    c.put(6, 6, 15, "minecraft:red_wool"); c.put(7, 6, 15, "minecraft:red_wool"); c.put(6, 5, 15, "minecraft:red_wool")
+    c.put(5, 1, 16, "minecraft:red_banner[rotation=8]")
+    # tour de guet : quatre rondins, plateforme, échelle
+    for (x, z) in ((21, 18), (23, 18), (21, 20), (23, 20)):
+        for y in range(1, 5):
+            c.put(x, y, z, RONDIN)
+    for x in range(21, 24):
+        for z in range(18, 21):
+            c.put(x, 5, z, "minecraft:spruce_planks")
+    for x in range(21, 24):
+        for z in (18, 20):
+            c.put(x, 6, z, PIQUE)
+    for y in range(1, 5):
+        c.put(22, y, 21, "minecraft:ladder[facing=south,waterlogged=false]")
+    c.put(22, 5, 20, "minecraft:spruce_trapdoor[facing=south,half=top,open=false,powered=false,waterlogged=false]")
+    # l'automate abattu, exposé en trophée
+    c.put(8, 1, 21, "minecraft:weathered_copper"); c.put(8, 2, 21, "minecraft:oxidized_copper")
+    c.put(8, 3, 21, "minecraft:oxidized_copper_bulb[lit=false,powered=false]")      # la « tête », éteinte
+    c.put(7, 2, 21, "create:cogwheel[axis=x]"); c.put(9, 1, 21, "create:large_cogwheel[axis=z]")
+    for y in range(1, 5):
+        c.put(8, y, 22, RONDIN)
+    # atelier de fortune : établi, tonneaux, coffre
+    c.put(17, 1, 15, "minecraft:crafting_table"); c.put(18, 1, 15, "minecraft:barrel[facing=up,open=false]")
+    c.put(18, 2, 15, "minecraft:barrel[facing=up,open=false]"); c.put(16, 1, 16, "minecraft:smoker[facing=north,lit=false]")
+    c.put(*(19, 1, 15), *coffre("kubejs:chests/refractaires", "north"))
+    c.put(*(4, 1, 6), *coffre("kubejs:chests/refractaires", "south"))
+    for (x, z, ame) in ((10, 6, True), (16, 20, False), (6, 12, True)):
+        c.put(x, 1, z, "minecraft:soul_lantern[hanging=false,waterlogged=false]" if ame else "minecraft:lantern[hanging=false,waterlogged=false]")
+    # le cercle d'Écho : feu d'âmes, améthyste et bougies, là où les Réfractaires captent l'Écho
+    ox, oz = 4, 19
+    c.put(ox, 0, oz, "minecraft:soul_soil"); c.put(ox, 1, oz, "minecraft:soul_campfire[facing=north,lit=true,signal_fire=false,waterlogged=false]")
+    for (dx, dz) in ((-2, 0), (2, 0), (0, -2), (0, 2)):
+        c.put(ox + dx, 0, oz + dz, "minecraft:calcite")
+        c.put(ox + dx, 1, oz + dz, "ars_nouveau:sourcestone")
+        c.put(ox + dx, 2, oz + dz, "minecraft:amethyst_cluster[facing=up,waterlogged=false]")
+    for (dx, dz) in ((-1, -1), (1, -1), (-1, 1), (1, 1)):
+        c.put(ox + dx, 0, oz + dz, "minecraft:amethyst_block")
+        c.put(ox + dx, 1, oz + dz, "minecraft:purple_candle[candles=3,lit=true,waterlogged=false]")
+    for (dx, dz) in ((-2, -1), (-1, -2), (2, 1), (1, 2), (2, -1), (-2, 1)):
+        c.put(ox + dx, 0, oz + dz, "minecraft:calcite")
+    # l'étal (1 camp sur 3 seulement : tiré par le pool)
+    c.jigsaw(13, 0, 18, "north", "kubejs:etal", "kubejs:etal", "kubejs:refractaires/etals", "minecraft:coarse_dirt")
+    # l'étal d'Écho : toujours présent (l'Empire ne vend plus rien de magique, ce sont les Réfractaires)
+    c.jigsaw(9, 0, 17, "north", "kubejs:etal", "kubejs:etal", "kubejs:refractaires/etals_echo", "minecraft:coarse_dirt")
+    return c
+
+camp("camp_a", 401); camp("camp_b", 9302)
+
+et = Piece("kubejs:refractaires/etal_fiole", 3, 4, 3, fond=AIR); pieces.append(et)
+for x in range(3):
+    for z in range(3):
+        et.put(x, 0, z, "minecraft:coarse_dirt")
+    et.put(x, 1, 0, "minecraft:spruce_slab[type=top,waterlogged=false]")      # comptoir
+    et.put(x, 3, 0, "minecraft:red_wool"); et.put(x, 3, 1, "minecraft:red_wool"); et.put(x, 3, 2, "minecraft:white_wool")
+for (x, z) in ((0, 0), (2, 0)):
+    et.put(x, 2, z, PIQUE)
+et.put(0, 1, 0, PIQUE); et.put(2, 1, 0, PIQUE)
+fiole = Compound({"minecraft:ominous_bottle_amplifier": Int(0)})
+et.put(*(1, 1, 1), *distributeur("minecraft:ominous_bottle", 1, "north", composants=fiole, sprocket=2))
+et.put(1, 2, 1, "minecraft:spruce_planks")
+et.put(*(1, 2, 0), *panneau("airain.refractaire.etal", face="north", couleur="red"))
+et.put(0, 1, 2, "minecraft:barrel[facing=up,open=false]")
+et.jigsaw(1, 0, 2, "south", "kubejs:etal", "kubejs:etal", "minecraft:empty", "minecraft:coarse_dirt")
+
+ee = Piece("kubejs:refractaires/etal_echo", 3, 4, 3, fond=AIR); pieces.append(ee)       # l'étal d'Écho
+for x in range(3):
+    for z in range(3):
+        ee.put(x, 0, z, "minecraft:coarse_dirt" if (x + z) % 2 else "minecraft:calcite")
+    ee.put(x, 3, 0, "minecraft:purple_wool"); ee.put(x, 3, 1, "minecraft:purple_wool"); ee.put(x, 3, 2, "minecraft:white_wool")
+for x in (0, 2):
+    ee.put(x, 1, 0, "ars_nouveau:blue_archwood_log[axis=y]"); ee.put(x, 2, 0, "ars_nouveau:blue_archwood_log[axis=y]")
+for i, (o, n, prix) in enumerate((("minecraft:amethyst_shard", 8, dict(bevel=1)), ("ars_nouveau:blue_archwood_sapling", 2, dict(bevel=2)),
+                                  ("ars_nouveau:sourceberry_bush", 4, dict(bevel=1)))):
+    ee.put(*(i, 1, 1), *distributeur(o, n, "north", **prix))
+    ee.put(i, 2, 1, "minecraft:amethyst_block" if i != 1 else "ars_nouveau:sourcestone")
+ee.put(*(1, 2, 0), *panneau("airain.refractaire.etal_echo", face="north", couleur="light_purple"))
+ee.put(1, 1, 2, "minecraft:soul_lantern[hanging=false,waterlogged=false]")
+ee.jigsaw(1, 0, 2, "south", "kubejs:etal", "kubejs:etal", "minecraft:empty", "minecraft:coarse_dirt")
+
+# =====================================================================================================
+# STATION DE CAPSULES — un hall de l'Empire avec des rangées de capsules vides, et des câbles qui
+# descendent dans un puits vers... quelque part en dessous. Le malaise avant le retournement.
+# =====================================================================================================
+SX, SY, SZ, F = 23, 22, 17, 9          # F = niveau du rez-de-chaussée (8 blocs de sous-sol en dessous)
+st = Piece("kubejs:station/station_capsules", SX, SY, SZ, fond=VOID); pieces.append(st)
+R = random.Random(5)
+style_graine(R)
+for x in range(SX):
+    for z in range(SZ):
+        st.put(x, F, z, "minecraft:tuff_bricks" if x in (0, SX - 1) or z in (0, SZ - 1) else SOL())
+        bord = x in (0, SX - 1) or z in (0, SZ - 1)
+        for y in range(F + 1, F + 9):
+            if bord:
+                coin = x in (0, SX - 1) and z in (0, SZ - 1)
+                nerv = (x % 4 == 0 and z in (0, SZ - 1)) or (z % 4 == 0 and x in (0, SX - 1))
+                st.put(x, y, z, MUR_SOCLE() if y <= F + 2 else ("create:industrial_iron_block" if coin or nerv else
+                       (FENETRE if y in (F + 4, F + 5) and (x + z) % 3 == 1 else PLAQUE())))
+            else:
+                st.put(x, y, z, AIR)
+        st.put(x, F + 9, z, TOLE_DALLE() if R.random() > 0.15 else ("create:framed_glass" if 3 < x < SX - 4 else AIR))
+for y in (F + 1, F + 2):                                     # portes au nord et au sud
+    st.put(11, y, 0, AIR); st.put(11, y, SZ - 1, AIR)
+st.put(11, F + 3, 0, "create:copper_casing"); st.put(11, F + 3, SZ - 1, "create:copper_casing")
+for (cx, cz) in ((2, 2), (SX - 3, SZ - 3)):                  # deux cheminées
+    for y in range(F + 1, F + 14):
+        st.put(cx, y, cz, "minecraft:bricks")
+    st.put(cx, F + 14, cz, VAPEUR)
+def capsule(x, z, face):
+    """Capsule vide, ouverte vers l'allée centrale (face = +1 : ouverture vers +z)."""
+    dos = z - face
+    st.put(x, F, z, "minecraft:waxed_oxidized_copper_grate[waterlogged=false]")
+    for y in (F + 1, F + 2):
+        st.put(x, y, dos, "minecraft:waxed_weathered_copper_grate[waterlogged=false]")
+        for dx in (-1, 1):
+            st.put(x + dx, y, z, "minecraft:glass" if R.random() < 0.6 else AIR)
+    st.put(x, F + 3, z, "minecraft:waxed_weathered_copper_bulb[lit=false,powered=false]")
+    for dx in (-1, 1):
+        st.put(x + dx, F + 3, z, "minecraft:waxed_cut_copper")
+    for y in range(F + 4, F + 8):                              # câble qui monte vers le plafond
+        st.put(x, y, z, "minecraft:chain[axis=y,waterlogged=false]")
+for x in (3, 6, 9, 13, 16, 19):
+    capsule(x, 3, 1); capsule(x, SZ - 4, -1)
+for x in range(3, 20):                                       # câbles sous le plafond, qui convergent vers le puits
+    for z in (3, SZ - 4):
+        st.put(x, F + 8, z, "minecraft:chain[axis=x,waterlogged=false]")
+for z in range(4, SZ - 4):
+    st.put(11, F + 8, z, "minecraft:chain[axis=z,waterlogged=false]")
+# le puits : garde-corps, câbles qui plongent, échelle
+for x in range(10, 13):
+    for z in range(7, 10):
+        for y in range(1, F + 1):
+            st.put(x, y, z, AIR)
+for x in range(9, 14):
+    for z in range(6, 11):
+        if x in (9, 13) or z in (6, 10):
+            st.put(x, F + 1, z, "create:copper_bars")
+            for y in range(1, F + 1):
+                st.put(x, y, z, "create:industrial_iron_block")
+for y in range(1, F + 8):
+    st.put(10, y, 7, "minecraft:chain[axis=y,waterlogged=false]"); st.put(12, y, 9, "minecraft:chain[axis=y,waterlogged=false]")
+for y in range(1, F + 1):
+    st.put(11, y, 9, "create:copper_ladder[facing=north,waterlogged=false]")
+st.put(11, F + 1, 10, AIR)
+# la salle du collecteur, au fond du puits
+for x in range(7, 16):
+    for z in range(4, 13):
+        bord = x in (7, 15) or z in (4, 12)
+        st.put(x, 0, z, "create:industrial_iron_block")
+        for y in range(1, 5):
+            if not (9 < x < 13 and 6 < z < 10):
+                st.put(x, y, z, "create:industrial_iron_block" if bord else AIR)
+        st.put(x, 5, z, "create:industrial_iron_block" if not (9 < x < 13 and 6 < z < 10) else st.get(x, 5, z))
+for (x, z) in ((8, 5), (14, 5), (8, 11), (14, 11)):          # le collecteur : bobines de cuivre où finissent les câbles
+    st.put(x, 1, z, "minecraft:copper_block"); st.put(x, 2, z, "minecraft:lightning_rod[facing=up,powered=false,waterlogged=false]")
+    st.put(x, 3, z, AMPOULE)
+st.put(13, 1, 8, "create:large_cogwheel[axis=x]")
+journal = Compound({"id": String("minecraft:written_book"), "count": Int(1), "components": Compound({
+    "minecraft:written_book_content": Compound({"title": String("Rapport"), "author": String("Ing. E. Vael"),
+        "pages": List[String]([String(json.dumps({"translate": "airain.station.p%d" % i})) for i in (1, 2, 3, 4, 5, 6)])}), "minecraft:custom_data": Compound({"airain_doc": String("vael")})})})
+st.put(9, 1, 11, "minecraft:lectern[facing=north,has_book=true,powered=false]",
+       Compound({"id": String("minecraft:lectern"), "Book": journal, "Page": Int(0)}))
+st.put(*(13, 1, 11), *coffre("kubejs:chests/station_collecteur", "north"))     # la lettre d'Ada y est rangée
+st.put(*(20, F + 1, 8), *coffre("kubejs:chests/station_capsules", "west"))
+for (x, y, z) in ((1, F + 7, 1), (21, F + 7, 15), (7, 4, 5), (15, 4, 11)):
+    st.put(x, y, z, TOILE)
+
+# =====================================================================================================
+# RUINES ISOLÉES SUPPLÉMENTAIRES
+# =====================================================================================================
+def ruine_reservoir(nom, avec_coffre):
+    """Château d'eau effondré : deux pieds encore debout avec un morceau de cuve, deux pieds pliés,
+    la cuve couchée et éventrée dans une flaque de boue, débris projetés tout autour."""
+    r = random.Random(77)
+    rv = Piece("kubejs:ruines/" + nom, 15, 13, 15, fond=VOID); pieces.append(rv)
+    # sol marqué par la chute : boue, gravier, terre retournée
+    for x in range(15):
+        for z in range(15):
+            d = ((x - 8) ** 2 + (z - 9) ** 2) ** 0.5
+            if d < 6.5 and r.random() < 1.1 - d / 6.5:
+                rv.put(x, 0, z, r.choice(("minecraft:mud", "minecraft:coarse_dirt", "minecraft:gravel", "minecraft:coarse_dirt")))
+    # les deux pieds debout (côté nord), reliés par leurs entretoises, et le morceau de cuve resté accroché
+    for x in (3, 9):
+        rv.put(x, 0, 3, "minecraft:tuff_bricks")
+        for y in range(1, 10):
+            rv.put(x, y, 3, "create:industrial_iron_block")
+    for x in range(4, 9):
+        rv.put(x, 4, 3, "create:copper_bars"); rv.put(x, 8, 3, "create:weathered_iron_block")
+    for (x, z) in ((3, 4), (4, 4), (5, 4), (8, 4), (9, 4), (3, 5), (9, 5)):          # plancher de la cuve, arraché
+        rv.put(x, 9, z, "create:weathered_iron_block")
+    for x in range(3, 10):                                                            # paroi de la cuve, déchirée
+        for y in (10, 11):
+            if not (y == 11 and x in (5, 6, 7)) and x != 6:
+                rv.put(x, y, 3, "minecraft:oxidized_copper" if y == 10 else GRILLE_CUIVRE)
+    rv.put(3, 10, 4, "minecraft:oxidized_copper"); rv.put(9, 10, 4, "minecraft:oxidized_copper")
+    rv.put(9, 12, 3, VAPEUR)                                                          # une soupape fume encore
+    rv.put(5, 8, 4, "minecraft:chain[axis=y,waterlogged=false]"); rv.put(5, 7, 4, "minecraft:chain[axis=y,waterlogged=false]")
+    # les deux pieds pliés (côté sud) : un tronçon debout, le reste couché au sol
+    for (x, z, dx) in ((3, 11, -1), (11, 11, 1)):
+        rv.put(x, 0, z, "minecraft:tuff_bricks")
+        for y in (1, 2):
+            rv.put(x, y, z, "create:industrial_iron_block")
+        for i in range(1, 4):
+            rv.put(x + dx * i, 1, z + i // 2, "create:industrial_iron_block")
+    # la cuve couchée : un cylindre de cuivre de 5 de long, éventré sur le dessus
+    for z in range(6, 12):
+        for (dx, dy) in ((-2, 1), (-2, 2), (2, 1), (2, 2), (-1, 0), (0, 0), (1, 0), (-1, 3), (1, 3), (0, 3)):
+            x, y = 8 + dx, max(dy, 1)
+            if dy == 3 and z in (8, 9, 10):
+                continue                                                                  # la déchirure
+            rv.put(x, y, z, r.choice(("minecraft:oxidized_copper", "minecraft:oxidized_copper", "minecraft:weathered_copper", GRILLE_CUIVRE)))
+    for (dx, dy) in ((-1, 1), (0, 1), (1, 1), (-1, 2), (0, 2), (1, 2), (-1, 3), (0, 3), (1, 3)):     # fond de cuve, encore entier
+        rv.put(8 + dx, dy, 12, "minecraft:weathered_copper")
+    for x in range(7, 10):
+        rv.put(x, 1, 8, "minecraft:mud"); rv.put(x, 1, 9, "minecraft:mud")              # la vase restée dedans
+    # débris projetés, conduite arrachée, roue de vanne tombée
+    for _ in range(18):
+        x, z = r.randint(1, 13), r.randint(4, 14)
+        if rv.get(x, 1, z) == VOID:
+            rv.put(x, 1, z, r.choice(("minecraft:oxidized_copper", "create:weathered_iron_block", "minecraft:weathered_cut_copper_slab[type=bottom,waterlogged=false]",
+                                      "minecraft:oxidized_copper_grate[waterlogged=false]", "minecraft:cobbled_deepslate")))
+    for z in range(0, 6):
+        if z != 2:
+            rv.put(6, 1, z, tuyau("z"))
+    rv.put(6, 0, 0, "minecraft:tuff_bricks")
+    rv.put(12, 1, 6, "create:large_cogwheel[axis=y]")
+    for (x, z) in ((2, 8), (12, 13), (1, 5), (13, 9)):
+        if rv.get(x, 1, z) == VOID:
+            rv.put(x, 1, z, MOUSSE)
+    if avec_coffre:
+        rv.put(*(10, 1, 13), *coffre("kubejs:chests/ruine_atelier", "north"))
+
+def ruine_conduite(nom):
+    r = random.Random(13)
+    cd = Piece("kubejs:ruines/" + nom, 23, 7, 5, fond=VOID); pieces.append(cd)
+    for x in range(0, 23, 5):                                              # tréteaux de fonte
+        cd.put(x, 0, 2, "minecraft:tuff_bricks")
+        for y in range(1, 4):
+            cd.put(x, y, 1, "create:industrial_iron_block"); cd.put(x, y, 3, "create:industrial_iron_block")
+        cd.put(x, 4, 1, "create:weathered_iron_block"); cd.put(x, 4, 3, "create:weathered_iron_block")
+    casse = range(11, 16)
+    for x in range(23):
+        if x in casse:
+            continue
+        for (y, z) in ((5, 1), (5, 2), (5, 3), (4, 2), (6, 2)):            # la grosse conduite (section en croix)
+            cd.put(x, y, z, "minecraft:weathered_copper" if (x % 6) else "create:copper_casing")
+        cd.put(x, 5, 2, "minecraft:oxidized_copper_grate[waterlogged=false]" if x % 6 == 3 else cd.get(x, 5, 2))
+    # le tronçon tombé
+    for (x, y, z) in ((11, 1, 2), (12, 1, 2), (12, 1, 3), (13, 2, 3), (13, 1, 3), (14, 1, 4), (15, 1, 4)):
+        cd.put(x, y, z, r.choice(("minecraft:weathered_copper", "minecraft:oxidized_copper", "create:copper_casing")))
+    cd.put(20, 6, 2, "create:large_cogwheel[axis=x]")                      # vanne
+    cd.put(4, 6, 2, VAPEUR)                                                # une fuite fume encore
+
+# =====================================================================================================
+# LE RELAIS BRISÉ — un pylône du réseau de Transfert, tombé. C'est par ces brèches que les esprits
+# perdus se sont échappés : l'Écho y est si dense que l'améthyste a poussé sur le métal.
+# =====================================================================================================
+def relais(nom):
+    r = random.Random(1212)
+    rl = Piece("kubejs:ruines/" + nom, 15, 12, 15, fond=VOID); pieces.append(rl)
+    for x in range(15):
+        for z in range(15):
+            d = max(abs(x - 7), abs(z - 7))
+            if d <= 6 and r.random() < 0.9 - d * 0.08:           # sol brûlé, de plus en plus cristallisé vers le centre
+                rl.put(x, 0, z, r.choice(("minecraft:calcite", "minecraft:smooth_basalt", "minecraft:calcite", "minecraft:tuff")
+                                         if d > 2 else ("minecraft:amethyst_block", "minecraft:calcite", "minecraft:soul_soil")))
+                for y in range(1, 5):
+                    rl.put(x, y, z, AIR)
+    # le moignon du pylône
+    for x in range(6, 9):
+        for z in range(6, 9):
+            for y in range(1, 4 if (x, z) != (6, 8) else 6):
+                rl.put(x, y, z, "create:industrial_iron_block" if (x + z) % 2 == 0 else "create:weathered_iron_block")
+    rl.put(7, 4, 7, "minecraft:copper_block"); rl.put(7, 5, 7, "minecraft:amethyst_block")
+    rl.put(7, 6, 7, "minecraft:amethyst_cluster[facing=up,waterlogged=false]")
+    # la partie haute, tombée sur le côté, avec sa bobine de cuivre
+    for x in range(9, 15):
+        rl.put(x, 1, 7, "create:industrial_iron_block"); rl.put(x, 1, 8, "create:weathered_iron_block")
+        if x in (11, 12):
+            for (dy, dz) in ((2, 7), (2, 8), (1, 6), (1, 9)):
+                rl.put(x, dy, dz, "minecraft:weathered_copper")
+    rl.put(14, 2, 7, "minecraft:lightning_rod[facing=east,powered=false,waterlogged=false]")
+    # l'améthyste qui a poussé sur le métal, et des feux d'âmes
+    for (x, y, z) in ((9, 2, 7), (10, 2, 8), (13, 2, 8), (6, 4, 6), (8, 4, 8), (8, 4, 6), (5, 1, 5), (9, 1, 10), (4, 1, 9)):
+        rl.put(x, y, z, "minecraft:amethyst_cluster[facing=up,waterlogged=false]" if r.random() < 0.6 else "minecraft:large_amethyst_bud[facing=up,waterlogged=false]")
+    for (x, z) in ((3, 4), (10, 3), (4, 11)):
+        rl.put(x, 0, z, "minecraft:soul_soil"); rl.put(x, 1, z, "minecraft:soul_fire")
+    for (x, z) in ((2, 7), (7, 2), (12, 12)):
+        rl.put(x, 1, z, "ars_nouveau:sourcestone")
+    # rapport d'incident, sur un pupitre renversé, et un coffre
+    rapport = Compound({"id": String("minecraft:written_book"), "count": Int(1), "components": Compound({
+        "minecraft:written_book_content": Compound({"title": String("Incident"), "author": String("Contrôle"),
+            "pages": List[String]([String(json.dumps({"translate": "airain.relais.p%d" % i})) for i in (1, 2, 3)])}), "minecraft:custom_data": Compound({"airain_doc": String("incident")})})})
+    rl.put(4, 1, 6, "minecraft:lectern[facing=east,has_book=true,powered=false]",
+           Compound({"id": String("minecraft:lectern"), "Book": rapport, "Page": Int(0)}))
+    rl.put(*(10, 1, 11), *coffre("kubejs:chests/relais_brise", "west"))
+relais("relais_brise")
+
+ruine_reservoir("reservoir_tombe", True); ruine_reservoir("reservoir_tombe_vide", False)
+ruine_conduite("conduite_rompue")
+
+from pieces import appliquer_retouches
+print("retouches :", appliquer_retouches(pieces))
+for pc in pieces:
+    pc.ecrire(STRUCT)
+
+# =====================================================================================================
+# GÉNÉRATION
+# =====================================================================================================
+el = lambda loc, poids=1, proc="minecraft:empty", proj="rigid": {"weight": poids, "element": {
+    "element_type": "minecraft:single_pool_element", "location": loc, "processors": proc, "projection": proj}}
+VIDE = lambda poids: {"weight": poids, "element": {"element_type": "minecraft:empty_pool_element"}}
+def pool(nom, elements): w("kubejs/worldgen/template_pool/%s.json" % nom, {"fallback": "minecraft:empty", "elements": elements})
+def structure(nom, start, biomes, adapt="beard_thin", hauteur=0, size=1):
+    w("kubejs/worldgen/structure/%s.json" % nom, {"type": "minecraft:jigsaw", "biomes": biomes, "step": "surface_structures",
+      "spawn_overrides": {}, "terrain_adaptation": adapt, "start_pool": start, "size": size,
+      "start_height": {"absolute": hauteur}, "project_start_to_heightmap": "WORLD_SURFACE_WG",
+      "max_distance_from_center": 80, "use_expansion_hack": False})
+
+# réfractaires : 1 étal de fiole funeste sur 3
+pool("refractaires/camps", [el("kubejs:refractaires/camp_a"), el("kubejs:refractaires/camp_b")])
+pool("refractaires/etals", [el("kubejs:refractaires/etal_fiole", 1), VIDE(2)])
+pool("refractaires/etals_echo", [el("kubejs:refractaires/etal_echo", 1)])
+w("kubejs/tags/worldgen/biome/refractaires.json", {"values": ["minecraft:" + b for b in (
+  "plains", "sunflower_plains", "meadow", "taiga", "snowy_plains", "snowy_taiga", "savanna")]})
+structure("avant_poste_refractaire", "kubejs:refractaires/camps", "#kubejs:refractaires", size=2)
+w("kubejs/worldgen/structure_set/refractaires.json", {"structures": [{"structure": "kubejs:avant_poste_refractaire", "weight": 1}],
+  "placement": {"type": "minecraft:random_spread", "spacing": 50, "separation": 18, "salt": 61803398,
+                "exclusion_zone": {"other_set": "kubejs:avant_postes", "chunk_count": 5}}})
+
+# station de capsules : remplace le manoir ; posée telle quelle, son sous-sol s'enfonce dans le terrain
+pool("station/depart", [el("kubejs:station/station_capsules")])
+w("kubejs/tags/worldgen/biome/stations.json", {"values": ["minecraft:" + b for b in (
+  "dark_forest", "forest", "birch_forest", "old_growth_birch_forest", "flower_forest", "taiga", "plains", "meadow")]})
+structure("station_capsules", "kubejs:station/depart", "#kubejs:stations", adapt="none", hauteur=-F)
+w("kubejs/worldgen/structure_set/stations.json", {"structures": [{"structure": "kubejs:station_capsules", "weight": 1}],
+  "placement": {"type": "minecraft:random_spread", "spacing": 70, "separation": 26, "salt": 31415926,
+                "exclusion_zone": {"other_set": "kubejs:avant_postes", "chunk_count": 5}}})
+
+# ruines : trois sortes dans le même ensemble
+pool("ruines/reservoir", [el("kubejs:ruines/reservoir_tombe", 1, "kubejs:ruine_usure"), el("kubejs:ruines/reservoir_tombe_vide", 1, "kubejs:ruine_usure")])
+pool("ruines/conduite", [el("kubejs:ruines/conduite_rompue", 1, "kubejs:ruine_usure")])
+structure("ruine_reservoir", "kubejs:ruines/reservoir", "#kubejs:ruines_isolees", hauteur=-1)
+structure("ruine_conduite", "kubejs:ruines/conduite", "#kubejs:ruines_isolees", hauteur=-1)
+w("kubejs/worldgen/structure_set/ruines_isolees.json", {"structures": [
+  {"structure": "kubejs:ruine_atelier", "weight": 2}, {"structure": "kubejs:ruine_reservoir", "weight": 1},
+  {"structure": "kubejs:ruine_conduite", "weight": 1}],
+  "placement": {"type": "minecraft:random_spread", "spacing": 26, "separation": 10, "salt": 1793462,
+                "exclusion_zone": {"other_set": "kubejs:avant_postes", "chunk_count": 4}}})
+
+# le relais brisé : rare, là où l'Écho est le plus fort
+pool("ruines/relais", [el("kubejs:ruines/relais_brise")])
+structure("relais_brise", "kubejs:ruines/relais", "#kubejs:ruines_isolees", hauteur=-1)
+w("kubejs/worldgen/structure_set/relais_brises.json", {"structures": [{"structure": "kubejs:relais_brise", "weight": 1}],
+  "placement": {"type": "minecraft:random_spread", "spacing": 40, "separation": 14, "salt": 27182818,
+                "exclusion_zone": {"other_set": "kubejs:ruines_isolees", "chunk_count": 4}}})
+
+# ce qui disparaît en plus : avant-postes pillards et manoirs
+VAN = os.path.join(HERE, "mcmeta-data/data/minecraft/worldgen/structure")
+for s in ("pillager_outpost", "mansion"):
+    j = json.load(open(os.path.join(VAN, s + ".json"))); j["biomes"] = "#kubejs:aucun"
+    w("minecraft/worldgen/structure/%s.json" % s, j)
+
+# =====================================================================================================
+# BUTIN
+# =====================================================================================================
+def n(item, a, b, poids=1):
+    return {"type": "minecraft:item", "name": item, "weight": poids,
+            "functions": [{"function": "minecraft:set_count", "count": {"type": "minecraft:uniform", "min": a, "max": b}}]}
+def page(k):
+    return {"type": "minecraft:item", "name": "minecraft:written_book", "functions": [
+        {"function": "minecraft:set_written_book_pages", "mode": "replace_all", "pages": [{"translate": k}]},
+        {"function": "minecraft:set_name", "name": {"translate": "airain.ruine.titre", "italic": False}},
+        {"function": "minecraft:set_custom_data", "tag": "{airain_doc:\"refractaire\"}"}]}
+w("kubejs/loot_table/chests/refractaires.json", {"type": "minecraft:chest", "pools": [
+  {"rolls": {"type": "minecraft:uniform", "min": 3, "max": 6}, "entries": [
+    n("minecraft:arrow", 6, 16, 3), n("minecraft:bread", 2, 6, 3), n("minecraft:cooked_mutton", 1, 4, 2),
+    n("minecraft:gunpowder", 1, 4, 2), n("minecraft:string", 2, 5, 2), n("minecraft:leather", 1, 3, 2),
+    n("minecraft:crossbow", 1, 1, 1), n("minecraft:iron_ingot", 1, 3, 1), n("numismatics:spur", 4, 12, 2),
+    n("numismatics:bevel", 1, 3, 1)]},
+  {"rolls": 1, "conditions": [{"condition": "minecraft:random_chance", "chance": 0.7}],
+   "entries": [page("airain.refractaire.page%d" % i) for i in (1, 2, 3, 4, 5)]},
+  # carte vers une cache réfractaire enterrée (cache_refractaire.py)
+  {"rolls": 1, "conditions": [{"condition": "minecraft:random_chance", "chance": 0.4}],
+   "entries": [{"type": "minecraft:item", "name": "minecraft:map", "functions": [
+     {"function": "minecraft:exploration_map", "destination": "kubejs:caches_refractaires", "decoration": "minecraft:red_x",
+      "zoom": 1, "search_radius": 50, "skip_existing_chunks": False},
+     {"function": "minecraft:set_name", "name": {"translate": "airain.carte_refractaire", "italic": False}}]}]}]})
+w("kubejs/loot_table/chests/relais_brise.json", {"type": "minecraft:chest", "pools": [
+  {"rolls": {"type": "minecraft:uniform", "min": 3, "max": 5}, "entries": [
+    n("minecraft:amethyst_shard", 4, 12, 3), n("minecraft:lapis_lazuli", 4, 10, 2), n("minecraft:experience_bottle", 2, 6, 2),
+    n("ars_nouveau:source_gem", 1, 3, 2), n("minecraft:copper_ingot", 2, 6, 2), n("minecraft:soul_sand", 2, 6, 1),
+    n("numismatics:bevel", 1, 3, 1)]},
+  {"rolls": 1, "conditions": [{"condition": "minecraft:random_chance", "chance": 0.6}],
+   "entries": [page("airain.refractaire.page%d" % i) for i in (4, 5)]}]})
+# le coffre du collecteur : toujours la lettre d'Ada, jamais ouverte
+w("kubejs/loot_table/chests/station_collecteur.json", {"type": "minecraft:chest", "pools": [
+  {"rolls": 1, "entries": [{"type": "minecraft:item", "name": "minecraft:written_book", "functions": [
+     {"function": "minecraft:set_written_book_pages", "mode": "replace_all",
+      "pages": [{"translate": "airain.lettre.p1"}, {"translate": "airain.lettre.p2"}]},
+     {"function": "minecraft:set_name", "name": {"translate": "airain.lettre.titre", "italic": False}},
+     {"function": "minecraft:set_custom_data", "tag": "{airain_doc:\"lettre\"}"}]}]},
+  {"rolls": {"type": "minecraft:uniform", "min": 2, "max": 4}, "entries": [
+    n("minecraft:copper_ingot", 4, 12, 3), n("minecraft:redstone", 4, 10, 2), n("minecraft:experience_bottle", 2, 5, 2),
+    n("numismatics:bevel", 2, 4, 2)]}]})
+w("kubejs/loot_table/chests/station_capsules.json", {"type": "minecraft:chest", "pools": [
+  {"rolls": {"type": "minecraft:uniform", "min": 3, "max": 5}, "entries": [
+    n("minecraft:copper_ingot", 4, 12, 3), n("create:brass_nugget", 2, 6, 2), n("minecraft:redstone", 4, 10, 2),
+    n("create:electron_tube", 1, 2, 1), n("minecraft:glass", 4, 8, 2), n("minecraft:experience_bottle", 2, 5, 2),
+    n("numismatics:bevel", 2, 4, 2), n("numismatics:sprocket", 1, 1, 1)]},
+  {"rolls": 1, "entries": [{"type": "minecraft:item", "name": "minecraft:totem_of_undying", "weight": 1},
+                           {"type": "minecraft:empty", "weight": 4}]}]})
+
+# =====================================================================================================
+# TEXTES
+# =====================================================================================================
+TX = {"fr_fr": {
+  "airain.refractaire.etal": "Fioles",
+  "airain.refractaire.page1": "Ils disaient que le Transfert était un honneur. Une place dans le Cœur, pour toujours.\n\nNous, on a vu revenir les capsules vides. Pas un corps. Pas une cendre.\n\nOn est partis la nuit même.",
+  "airain.refractaire.page2": "Règle du camp : on ne touche à aucune machine de l'Empire qui tourne encore.\n\nOn les démonte quand elles sont mortes, pour la tôle. Jamais avant.\n\nCertaines se réveillent quand on s'approche.",
+  "airain.refractaire.page3": "La fiole sombre, on la vend à ceux qui veulent descendre dans les salles d'épreuve.\n\nElle attire le mauvais œil. Les salles le sentent, et deviennent pires.\n\nMais ce qu'on y trouve vaut le prix.",
+  "airain.refractaire.etal_echo": "Écho",
+  "airain.refractaire.page4": "L'Écho, ce n'est pas de la magie. Ce sont eux. Ceux qui ne sont jamais arrivés au Cœur.\n\nQuand tu sens le froid près d'un cristal d'améthyste, c'est quelqu'un qui passe.\n\nSois poli.",
+  "airain.refractaire.page5": "On a appris à capter l'Écho dans l'améthyste. Un sort, c'est une volonté qu'on lui confie.\n\nLes machines de l'Empire ne le sentent pas. C'est pour ça qu'on gagne, parfois.",
+  "airain.relais.p1": "Relais de transfert n°9 — rapport d'incident.\n\nPendant le cycle 212, la ligne s'est rompue en charge. Une partie du flux n'a jamais atteint le Cœur.",
+  "airain.relais.p2": "Le flux perdu ne s'est pas dissipé. Il s'est répandu autour du relais.\n\nLes techniciens parlent d'un froid, de murmures, et de cristaux qui poussent sur le métal en une nuit.",
+  "airain.relais.p3": "Décision du Conseil : le phénomène n'existe pas. Le mot « Écho » est interdit dans les rapports.\n\nLe relais n°9 est abandonné. Personne ne doit s'en approcher.",
+  "airain.station.p1": "Station de transfert n°4 — rapport de l'ingénieur Elias Vael.\n\nCycle 205. Toutes les capsules ont été vidées dans les délais. Aucune défaillance du collecteur.",
+  "airain.station.p2": "Les familles demandent où vont les corps. Le Conseil répond : « dans le Cœur ».\n\nJe vérifie les câbles. Ils ne transportent pas de matière. Ils transportent… autre chose.",
+  "airain.station.p3": "Note du cycle 209.\n\nAda a déserté cette nuit, avec vingt-trois ouvriers de la station. Le Conseil m'a demandé si je savais.\n\nAda ne m'a rien dit. Ada n'est plus rien pour l'Empire. Elle n'est plus rien pour moi.",
+  "airain.station.p4": "Les relevés du collecteur ne diminuent jamais. Ce qui entre ne ressort pas.\n\nLe Cœur ne garde pas les gens en mémoire. Il les garde, tout court.",
+  "airain.station.p5": "On a glissé une lettre sous ma porte. L'écriture d'Ada.\n\nJe ne l'ai pas ouverte. Je l'ai rangée dans le coffre du collecteur.\n\nJe ne sais pas pourquoi je ne l'ai pas brûlée.",
+  "airain.station.p6": "Cycle 211. Dernière entrée.\n\nMon tour de capsule est demain. J'ai demandé à passer le premier.\n\nSi quelqu'un trouve ce rapport : n'allumez jamais le Cœur. Ils attendent encore, là-dedans.",
+  "airain.lettre.titre": "Lettre jamais ouverte",
+  "airain.lettre.p1": "Elias,\n\nje sais que tu ne veux plus me parler. Lis quand même.\n\nJ'ai vu les plans complets du Transfert. Les capsules ne mènent nulle part où l'on vit.\n\nViens avec nous. Il est encore temps.",
+  "airain.lettre.p2": "Je ne te demande pas de trahir l'Empire. Je te demande de vivre.\n\nTu es mon frère, quoi que tu en penses.\n\nJe t'attendrai au nord, aussi longtemps qu'il le faudra.\n\n— Ada"},
+ "en_us": {
+  "airain.refractaire.etal": "Vials",
+  "airain.refractaire.page1": "They said the Transfer was an honour. A place inside the Core, forever.\n\nWe saw the capsules come back empty. Not a body. Not a speck of ash.\n\nWe left that very night.",
+  "airain.refractaire.page2": "Camp rule: we never touch an Empire machine that still runs.\n\nWe strip them when they're dead, for the plating. Never before.\n\nSome of them wake up when you come close.",
+  "airain.refractaire.page3": "The dark vial, we sell it to those who want to go down into the trial chambers.\n\nIt draws the evil eye. The chambers can feel it, and grow worse.\n\nBut what you find there is worth the price.",
+  "airain.refractaire.etal_echo": "Echo",
+  "airain.refractaire.page4": "The Echo isn't magic. It's them. The ones who never reached the Core.\n\nWhen you feel a chill near an amethyst crystal, someone is passing by.\n\nBe polite.",
+  "airain.refractaire.page5": "We learned to capture the Echo in amethyst. A spell is a will you entrust to it.\n\nThe Empire's machines can't feel it. That's why we sometimes win.",
+  "airain.relais.p1": "Transfer relay no. 9 — incident report.\n\nDuring cycle 212, the line broke under load. Part of the flow never reached the Core.",
+  "airain.relais.p2": "The lost flow did not dissipate. It spread around the relay.\n\nTechnicians speak of a chill, of whispers, and of crystals growing on the metal overnight.",
+  "airain.relais.p3": "Council decision: the phenomenon does not exist. The word \"Echo\" is banned from all reports.\n\nRelay no. 9 is abandoned. Nobody is to approach it.",
+  "airain.station.p1": "Transfer station no. 4 — report by engineer Elias Vael.\n\nCycle 205. All capsules emptied on schedule. No failure of the collector.",
+  "airain.station.p2": "Families ask where the bodies go. The Council answers: \"into the Core\".\n\nI check the cables. They do not carry matter. They carry… something else.",
+  "airain.station.p3": "Note from cycle 209.\n\nAda deserted last night, with twenty-three of the station's workers. The Council asked me whether I knew.\n\nAda told me nothing. Ada is nothing to the Empire anymore. She is nothing to me.",
+  "airain.station.p4": "The collector readings never go down. What goes in never comes out.\n\nThe Core does not keep people's memories. It keeps the people.",
+  "airain.station.p5": "Someone slipped a letter under my door. Ada's handwriting.\n\nI did not open it. I put it away in the collector's chest.\n\nI do not know why I did not burn it.",
+  "airain.station.p6": "Cycle 211. Last entry.\n\nMy turn in the capsule is tomorrow. I asked to go first.\n\nIf anyone finds this report: never light the Core. They are still waiting, in there.",
+  "airain.lettre.titre": "Letter Never Opened",
+  "airain.lettre.p1": "Elias,\n\nI know you don't want to speak to me anymore. Read this anyway.\n\nI have seen the full Transfer blueprints. The capsules lead nowhere anyone lives.\n\nCome with us. There is still time.",
+  "airain.lettre.p2": "I'm not asking you to betray the Empire. I'm asking you to live.\n\nYou are my brother, whatever you think.\n\nI will wait for you in the north, for as long as it takes.\n\n— Ada"}}
+L = os.path.join(P, "kubejs/assets/kubejs/lang")
+for code, t in TX.items():
+    f = os.path.join(L, code + ".json"); j = json.load(open(f)); j.update(t)
+    json.dump(j, open(f, "w"), indent=2, ensure_ascii=False)
+json.dump({pc.nom: pc.apercu() for pc in pieces}, open(os.path.join(HERE, "plus_pieces.json"), "w"))
+print(len(pieces), "pièces")

@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "kubejs:cache_refractaire",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 34,
+    "separation": 12,
+    "salt": 14142135,
+    "exclusion_zone": {
+      "other_set": "kubejs:avant_postes",
+      "chunk_count": 3
+    }
+  }
+}

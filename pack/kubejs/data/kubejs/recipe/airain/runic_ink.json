@@ -1,0 +1,16 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {"item": "minecraft:echo_shard"},
+    {"item": "kubejs:fragment_resonance"},
+    {"item": "minecraft:lapis_lazuli"},
+    {"item": "minecraft:lapis_lazuli"},
+    {"item": "minecraft:lapis_lazuli"},
+    {"item": "minecraft:lapis_lazuli"},
+    {"type": "neoforge:single", "amount": 1000, "fluid": "minecraft:water"}
+  ],
+  "results": [
+    {"id": "airain:runic_ink", "count": 2}
+  ]
+}

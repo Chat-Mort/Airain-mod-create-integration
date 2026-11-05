@@ -1,0 +1,23 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/enceinte_cite_a",
+        "processors": "kubejs:avant_poste_enceinte",
+        "projection": "terrain_matching"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/tempere/enceinte_cite_b",
+        "processors": "kubejs:avant_poste_enceinte",
+        "projection": "terrain_matching"
+      }
+    }
+  ]
+}

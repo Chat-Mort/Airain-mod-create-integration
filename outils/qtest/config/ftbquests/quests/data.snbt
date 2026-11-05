@@ -1,0 +1,7 @@
+{
+	default_consume_items: false
+	default_quest_shape: "circle"
+	default_reward_team: false
+	fallback_locale: "en_us"
+	version: 13
+}

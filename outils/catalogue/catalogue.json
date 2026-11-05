@@ -1,0 +1,3044 @@
+{
+"paliers": {
+"commun": [
+64,
+8
+],
+"courant": [
+64,
+16
+],
+"travaille": [
+64,
+32
+],
+"minerai": [
+16,
+32
+],
+"precieux": [
+16,
+64
+],
+"rare": [
+4,
+64
+],
+"tres_rare": [
+1,
+128
+]
+},
+"items": [
+{
+"id": "minecraft:acacia_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:acacia_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:acacia_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:acacia_sapling",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:acacia_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:allium",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:amethyst_block",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:amethyst_cluster",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:amethyst_shard",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:andesite",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:apple",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:azalea",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:azalea_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:azure_bluet",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bamboo",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bamboo_block",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bamboo_mosaic",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bamboo_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:basalt",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:beef",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:beetroot",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:beetroot_seeds",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:big_dripleaf",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:birch_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:birch_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:birch_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:birch_sapling",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:birch_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:black_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:black_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:black_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:black_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:black_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:black_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:black_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blackstone",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:blaze_powder",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:blaze_rod",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:blue_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blue_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blue_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blue_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blue_ice",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:blue_orchid",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blue_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blue_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:blue_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bone",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bone_block",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bone_meal",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brain_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:brain_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:brain_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:brick",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_mushroom",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_mushroom_block",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:brown_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:bubble_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:bubble_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:bubble_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:cactus",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:calcite",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:carrot",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:carved_pumpkin",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:charcoal",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:cherry_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cherry_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cherry_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cherry_sapling",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cherry_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:chicken",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:chorus_fruit",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:chorus_plant",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:clay",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:clay_ball",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:coal",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:coal_block",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:coal_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:coarse_dirt",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:cobbled_deepslate",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:cobblestone",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:cobweb",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:cocoa_beans",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:cod",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:copper_block",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:copper_ingot",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:copper_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:cornflower",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cracked_deepslate_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cracked_deepslate_tiles",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:cracked_nether_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cracked_stone_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:crimson_fungus",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:crimson_hyphae",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:crimson_nylium",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:crimson_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:crimson_roots",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:crimson_stem",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cyan_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cyan_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cyan_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cyan_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cyan_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cyan_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:cyan_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dandelion",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dark_oak_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dark_oak_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dark_oak_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dark_oak_sapling",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dark_oak_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dark_prismarine",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:dead_brain_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_brain_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_brain_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_bubble_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_bubble_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_bubble_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_bush",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:dead_fire_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_fire_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_fire_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_horn_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_horn_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_horn_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_tube_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_tube_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:dead_tube_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:deepslate",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:deepslate_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:deepslate_coal_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:deepslate_copper_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:deepslate_diamond_ore",
+"cat": "Minerais et métaux",
+"palier": "rare",
+"qte": 4,
+"prix": 64
+},
+{
+"id": "minecraft:deepslate_emerald_ore",
+"cat": "Minerais et métaux",
+"palier": "rare",
+"qte": 4,
+"prix": 64
+},
+{
+"id": "minecraft:deepslate_gold_ore",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:deepslate_iron_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:deepslate_lapis_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:deepslate_redstone_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:deepslate_tiles",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:diamond",
+"cat": "Minerais et métaux",
+"palier": "rare",
+"qte": 4,
+"prix": 64
+},
+{
+"id": "minecraft:diamond_block",
+"cat": "Minerais et métaux",
+"palier": "tres_rare",
+"qte": 1,
+"prix": 128
+},
+{
+"id": "minecraft:diamond_ore",
+"cat": "Minerais et métaux",
+"palier": "rare",
+"qte": 4,
+"prix": 64
+},
+{
+"id": "minecraft:diorite",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:dirt",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:dripstone_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:emerald",
+"cat": "Minerais et métaux",
+"palier": "rare",
+"qte": 4,
+"prix": 64
+},
+{
+"id": "minecraft:emerald_block",
+"cat": "Minerais et métaux",
+"palier": "tres_rare",
+"qte": 1,
+"prix": 128
+},
+{
+"id": "minecraft:emerald_ore",
+"cat": "Minerais et métaux",
+"palier": "rare",
+"qte": 4,
+"prix": 64
+},
+{
+"id": "minecraft:end_stone",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:end_stone_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:ender_pearl",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:feather",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:fermented_spider_eye",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:fern",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:fire_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:fire_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:fire_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:flint",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:flowering_azalea",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:flowering_azalea_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gilded_blackstone",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:glow_berries",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:glow_ink_sac",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:glow_lichen",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:glowstone",
+"cat": "Pierres et terrains",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:glowstone_dust",
+"cat": "Pierres et terrains",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:gold_block",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:gold_ingot",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:gold_nugget",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:gold_ore",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:granite",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:grass_block",
+"cat": "Bois et plantes",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:gravel",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:gray_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gray_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gray_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gray_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gray_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gray_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gray_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:green_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:green_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:green_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:green_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:green_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:green_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:green_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:gunpowder",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:hanging_roots",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:hay_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:honey_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:honeycomb",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:honeycomb_block",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:horn_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:horn_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:horn_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:ice",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:ink_sac",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:iron_block",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:iron_ingot",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:iron_nugget",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:iron_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:jungle_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:jungle_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:jungle_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:jungle_sapling",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:jungle_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:kelp",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lapis_block",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:lapis_lazuli",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:lapis_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:large_amethyst_bud",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:large_fern",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:leather",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lilac",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lily_of_the_valley",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lily_pad",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lime_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lime_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lime_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lime_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lime_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lime_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:lime_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magenta_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magenta_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magenta_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magenta_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magenta_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magenta_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magenta_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:magma_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:magma_cream",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:mangrove_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:mangrove_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:mangrove_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:mangrove_propagule",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:mangrove_roots",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:mangrove_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:medium_amethyst_bud",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:melon",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:melon_seeds",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:melon_slice",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:moss_block",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:mossy_cobblestone",
+"cat": "Bois et plantes",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:mossy_stone_bricks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:mud",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:mud_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:muddy_mangrove_roots",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:mushroom_stem",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:mutton",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:mycelium",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:nether_brick",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:nether_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:nether_gold_ore",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:nether_quartz_ore",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:nether_sprouts",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:nether_wart",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:nether_wart_block",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:netherrack",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:oak_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:oak_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:oak_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:oak_sapling",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:oak_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:obsidian",
+"cat": "Pierres et terrains",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:orange_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:orange_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:orange_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:orange_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:orange_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:orange_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:orange_tulip",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:orange_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:oxeye_daisy",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:packed_ice",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:packed_mud",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:peony",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_petals",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:pink_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_tulip",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pink_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pitcher_plant",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:pitcher_pod",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:podzol",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:poisonous_potato",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:popped_chorus_fruit",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:poppy",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:porkchop",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:potato",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:prismarine",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:prismarine_bricks",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:prismarine_crystals",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:prismarine_shard",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:pufferfish",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:pumpkin",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:pumpkin_seeds",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purple_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purple_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purple_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purple_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purple_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purple_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purple_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:purpur_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:purpur_pillar",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:quartz",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:quartz_block",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:quartz_bricks",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:quartz_pillar",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:rabbit",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:rabbit_hide",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:raw_copper",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:raw_copper_block",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:raw_gold",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:raw_gold_block",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:raw_iron",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:raw_iron_block",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:red_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_mushroom",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_mushroom_block",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_nether_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_sand",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:red_sandstone",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:red_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_tulip",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:red_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:redstone",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:redstone_block",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:redstone_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "minecraft:rooted_dirt",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:rose_bush",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:rotten_flesh",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:salmon",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:sand",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:sandstone",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:sculk",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:sculk_vein",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:sea_pickle",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:seagrass",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:short_grass",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:slime_ball",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:slime_block",
+"cat": "Butin de créatures",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:small_amethyst_bud",
+"cat": "Minerais et métaux",
+"palier": "precieux",
+"qte": 16,
+"prix": 64
+},
+{
+"id": "minecraft:small_dripleaf",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:snow",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:snow_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:snowball",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:soul_sand",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:soul_soil",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:spider_eye",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:spore_blossom",
+"cat": "Minerais et métaux",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:spruce_leaves",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:spruce_log",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:spruce_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:spruce_sapling",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:spruce_wood",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:stone",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:stone_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:string",
+"cat": "Butin de créatures",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:sugar",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:sugar_cane",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:sunflower",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:sweet_berries",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:tall_grass",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:tinted_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:tropical_fish",
+"cat": "Butin de créatures",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:tube_coral",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:tube_coral_block",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:tube_coral_fan",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:tuff",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "minecraft:tuff_bricks",
+"cat": "Pierres et terrains",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:twisting_vines",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:vine",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:warped_fungus",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:warped_hyphae",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:warped_nylium",
+"cat": "Pierres et terrains",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:warped_planks",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:warped_roots",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:warped_stem",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:warped_wart_block",
+"cat": "Bois et plantes",
+"palier": "travaille",
+"qte": 64,
+"prix": 32
+},
+{
+"id": "minecraft:weeping_vines",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:wheat",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:wheat_seeds",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_tulip",
+"cat": "Bois et plantes",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:white_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:yellow_concrete",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:yellow_concrete_powder",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:yellow_dye",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:yellow_glazed_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:yellow_stained_glass",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:yellow_terracotta",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "minecraft:yellow_wool",
+"cat": "Couleurs et décoration",
+"palier": "courant",
+"qte": 64,
+"prix": 16
+},
+{
+"id": "create:raw_zinc",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "create:zinc_ingot",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "create:zinc_nugget",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "create:zinc_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "create:deepslate_zinc_ore",
+"cat": "Minerais et métaux",
+"palier": "minerai",
+"qte": 16,
+"prix": 32
+},
+{
+"id": "create:limestone",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "create:scoria",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "create:scorchia",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "create:ochrum",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "create:veridium",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "create:crimsite",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "create:asurine",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+},
+{
+"id": "create:cut_granite",
+"cat": "Pierres et terrains",
+"palier": "commun",
+"qte": 64,
+"prix": 8
+}
+]
+}

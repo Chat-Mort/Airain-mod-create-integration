@@ -1,0 +1,117 @@
+fondation.histoire : « Une cité sans couleurs n'est qu'un chantier. » Chaque base de l'Empire plantait le sien au cœur de ses murs.
+fondation.usage : Clic droit : nom, devise, bannière. Clé de Create : agrandir la zone (accroupi pour réduire). Le titre s'affiche en entrant. Comparateur : signal plein si quelqu'un est dans la zone.
+grand_etendard.histoire : Le même, pour les places. Cinq à huit blocs de mât, et une toile qui claque au vent.
+grand_etendard.usage : Pages Général, Toile, Mât : hauteur, taille, vent, franges, fleuron, lanternes. Mode décoratif : sans titre ni registre. Redstone : en berne. Hissage manuel, selon présence ou selon trophées.
+banniere_murale.histoire : Dans les halls, les couleurs tombaient des murs jusqu'au sol.
+banniere_murale.usage : À poser contre un mur. Mêmes réglages de toile ; longueur de 2 à 4 blocs. Redstone : elle s'enroule. Elle suit le hissage de la fondation si on le lui demande.
+gabarit.histoire : Les drapiers travaillaient sur patron : toutes les bannières d'une cité se ressemblaient au fil près.
+gabarit.usage : Accroupi + clic droit : copie l'apparence d'un étendard, d'une bannière ou d'un socle. Clic droit sur un autre : l'applique. Nom et devise restent.
+registre.histoire : Le Conseil tenait le compte de chaque cité. Celui-ci ne tient plus que les vôtres.
+registre.usage : Clic droit : une page par base (bannière, devise, position, distance et flèche vers elle), puis les trophées exposés. Molette ou flèches pour tourner les pages.
+socle.histoire : Les palais exposaient les trophées de leurs victoires. Leur gloire profitait à tous.
+socle.usage : Clic droit avec un trophée : son effet profite à toute l'équipe. Accroupi, main vide : matériau, velours, présentation, lumière, plaque gravée. Deux trophées identiques ne cumulent pas. Gravure : clic droit avec 2 couronnes, le trophée gagne un second effet.
+banc.histoire : Les automates ne saignent pas : ils fuient. Leur huile répare ce que l'expérience réparait.
+banc.usage : Entraîné par un rouage. Main vide : l'écran. Objet, matériau, huile (1 000 mB par lingot). Les outils et armes réparés sortent affûtés 10 minutes (+10 %).
+modules.histoire : Les ateliers de la capitale réglaient leurs bancs comme des montres.
+modules.usage : Trois emplacements à droite de l'écran du banc. Meule fine : −30 % d'huile. Démultiplicateur : +60 % de vitesse, deux fois plus de stress. Graisseur : pompe l'huile d'un réservoir voisin.
+table.histoire : Elle ne devine rien : elle lit. Ce que vos bibliothèques savent, elle l'enseigne.
+table.usage : Livres enchantés dans des bibliothèques sculptées à 3 blocs. Choisissez l'enchantement et le niveau. Un tome ancien ouvre le niveau suivant, contre une encre runique. Lunettes : livres lus.
+desenchanteur.histoire : Plus de marchands pour vendre des livres : il faut les arracher aux objets.
+desenchanteur.usage : Entraîné par un rouage, 500 mB d'huile par niveau. Détruit l'objet et tire un seul enchantement au hasard. Avec de l'encre runique : il purge les malédictions sans rien détruire.
+balise.histoire : La tour-phare des garnisons : sa sirène appelait les gardes, son feu guidait les renforts.
+balise.usage : 3 × 3 au sol, 8 de haut. Clic droit : lance un assaut de 4 vagues. Accroupi : règle le rayon et montre le cercle. En alerte, la sirène tourne et le phare balaie la base.
+codex.histoire : Tout ce que l'Empire a laissé, et tout ce qui s'est levé contre lui.
+codex.usage : Une page par créature, ouverte à la première victoire. Dix victoires : la note d'ingénieur. Un boss se dévoile entièrement dès la première. Une force complète : son emblème.
+gardien.histoire : Les golems de garde de l'Empire. Quand le Cœur a faibli, ils se sont assis là où ils veillaient, et la mousse a fait le reste.
+gardien.usage : Réveil : clé de Create, avec 16 ferrailles, 4 huiles et 2 rouages brisés sur soi. Il garde la fondation où il se trouve (4 par base). Accroupi + clé : il vous suit ; clé sur un étendard : il y prend son poste. Une huile le soigne.
+reliure.histoire : Un ingénieur ne voyageait jamais sans ses manuels, sanglés ensemble.
+reliure.usage : Huit livres : Chroniques, registre, codex, ce manuel, livre de quêtes, carnet d'Ars Nouveau. Clic droit pour lire, accroupi + clic droit pour ranger, touche K depuis n'importe où. Rangée dans un sac, ses livres apparaissent en onglets à gauche du sac.
+tableau.histoire : Dans chaque atelier, un panneau de liège : le contremaître y épinglait les ordres ; les ouvriers, leurs excuses.
+tableau.usage : Accroché au mur d'une base : jusqu'à six notes de quatre lignes, avec une punaise rouge, jaune ou verte. Clic : fait / à faire ; clic droit : retirer. À la connexion, on est prévenu des notes non lues.
+atlas.histoire : Les cartographes de l'Empire ne dessinaient que ce qu'ils avaient vu de leurs yeux. Le reste restait blanc.
+atlas.usage : Livre + carte + boussole. Clair là où vous êtes passés ; vos bases, les lieux visités et vos morts s'y notent seuls. Glisser pour se déplacer, molette pour le zoom, filtres en bas.
+affiches.histoire : La Chancellerie imprimait ses affiches ; les Réfractaires peignaient les leurs, la nuit.
+affiches.usage : Affiche vierge (3 papiers + colorant noir) au déployeur avec un symbole : colorant rouge, rouage, éclat d'améthyste, pépite d'or, pépite de laiton. Côté réfractaire : fragment de résonance, éclat d'écho, diapason (gardé).
+modules_gardien.histoire : Les ateliers équipaient chaque gardien selon sa garnison : lanternes pour les mines, canons pour les remparts.
+modules_gardien.usage : Tête, épaules, torse : un module chacun (deux pour le Capitaine impérial). Clic droit pour monter ; accroupi, main vide : tout démonter. Niveau II : table de forgeron, modèle en netherite + plaque sacrée.
+sacre.histoire : Une plaque de netherite, et au centre, serti dans l'or, le cœur d'un Gardien des enfers.
+sacre.usage : Sur une balise de défense : pendant les assauts, elle foudroie les assaillants. Sur un socle à trophée : l'effet du trophée passe au niveau II. À la table de forgeron : modules de gardien de niveau II, couronne sacrée, armes et armures sacrées. Rendue si le bloc est cassé.
+chroniques.histoire : Le livre de votre aventure. Il s'écrit seul, au fil de la partie.
+chroniques.usage : Clic droit pour lire. Récit : chaque grand pas de l'histoire. Journal : les premières fois (un boss vaincu, une dimension). Archives : les lettres et journaux trouvés, dès qu'on les a sur soi.
+cartes.histoire : Les cartographes de l'Empire vendaient le chemin ; ses ingénieurs, les plans.
+cartes.usage : Carte de l'Empire (cartographe) : clic droit, elle devient une carte au trésor vers la structure de ce type la plus proche. Plan de l'Empire : clic droit, il devient un schéma pour le canon à schémas (moulin à vent, centrale à roues, meunerie).
+encre.histoire : Une encre qui garde la mémoire de l'Écho : elle défait ce qui a été lié.
+encre.usage : Mélangeur chauffé : un éclat d'écho, un fragment de résonance, 4 lapis et un seau d'eau donnent 2 encres. Désenchanteur : retire une malédiction par passage. Table d'enchantement : un tome ancien ouvre le niveau suivant, contre une encre.
+couronne.histoire : Rallumer le Cœur, c'est en hériter.
+couronne.usage : Couronne d'airain : les automates de l'Empire ne vous attaquent plus d'eux-mêmes, vos gardiens proches frappent plus fort et encaissent mieux, et la loupe (touche H) zoome. Montée sur un casque de netherite, elle devient le casque couronné, que l'on peut détacher (accroupi + clic droit).
+capitale_sacree.histoire : L'Empire n'avait qu'une capitale. À vous de la choisir.
+capitale_sacree.usage : Après la fin Empire, une plaque impériale posée sur un étendard de fondation (ou un grand étendard) en fait la capitale impériale : zone jusqu'à 192 blocs, 6 gardiens, et la base prend le blanc, le rouge et l'or. Seule la capitale accueille le trône. La plaque est rendue si l'on casse la base.
+etoile.histoire : Forgée pour l'Empereur, et pour lui seul.
+etoile.usage : Reliquaire infernal : un Cœur du Gardien des enfers serti de netherite. Le Wither en donne un à chaque joueur à 64 blocs. Plaque impériale : forgée avec cinq reliquaires. Elle donne les armes et armures impériales, le sceptre, le Capitaine impérial et la capitale impériale.
+armure_sacree.histoire : Le noir de la netherite, l'or des rivets.
+armure_sacree.usage : Plastron, jambières et bottes sacrés, avec la couronne sacrée pour casque. Ensemble complet : insensible au Wither.
+armure_imperiale.histoire : Blanc et or, cape rouge : l'Empereur ne se cache pas.
+armure_imperiale.usage : Couronne, Cuirasse, Cuissards et Solerets de l'Empereur. Ensemble complet : insensible au Wither, Résistance I, et les automates de l'Empire vous obéissent toujours.
+armes_sacrees.histoire : Chaque lame a son geste.
+armes_sacrees.usage : Épée, Jugement : le 5e coup sur une même cible la foudroie. Katana, Iai : clic droit, une ruée qui tranche tout sur son passage (recharge 5 s) ; le coup suivant est critique. Espadon, Fracas : maintenir puis relâcher, onde de choc à 4 blocs (recharge 7 s).
+armes_imperiales.histoire : Verdict, Aube, Rempart : des noms pour être entendus.
+armes_imperiales.usage : Verdict : le 4e coup foudroie la cible et deux ennemis proches. Aube : longue ruée (recharge 3 s) ; un ennemi achevé la recharge aussitôt. Rempart : onde de choc à 6 blocs (recharge 5 s).
+sceptre_imperial.histoire : Le rouage et l'étoile : l'Empire ordonne, l'Empire avance.
+sceptre_imperial.usage : Clic droit : vos gardiens à 256 blocs accourent. Accroupi + clic droit : ordre de charge, Force II et Vitesse II aux gardiens à 32 blocs pendant 30 s (recharge 2 min).
+capitaine.histoire : Chaque garnison avait son officier.
+capitaine.usage : Clic droit avec une plaque impériale sur un gardien rattaché à une base, un par base. Plus grand et plus robuste, il porte deux modules par emplacement, et les gardiens à 16 blocs gagnent Force et Résistance.
+trone.histoire : Un seul trône par monde.
+trone.usage : À poser dans la capitale impériale ; il devient le point de réapparition. Dans sa base, la couronne commande tous les gardiens. Assis, cliquez sur un décret dans le tchat : il dure une heure de jeu, et peut être changé au bout de 15 minutes.
+charte.histoire : Les avant-postes attendaient un ordre. Le voici.
+charte.usage : Après la fin Empire, couronne sur la tête, dans un avant-poste ou une cité de l'Empire : clic droit. L'avant-poste se rallume : bannières aux couleurs de votre base, comptoirs à prix réduit, un gardien en faction.
+diademe.histoire : Porté par Morgana Dalmont, Haute-Prêtresse.
+diademe.usage : Diadème d'Écho : le Warden vous ignore, le sonar porte à 40 blocs (recharge moitié), et le mana se régénère. Monté sur un casque de netherite, il devient le casque au diadème, que l'on peut détacher (accroupi + clic droit).
+capitale_arcanique.histoire : Là où chante le Chœur, la Prêtresse établit son siège.
+capitale_arcanique.usage : Après la fin Écho, un bloc d'écho primordial posé sur un étendard de fondation (ou un grand étendard) en fait la capitale arcanique : zone jusqu'à 192 blocs, 6 gardiens, et la base prend le noir et le violet. Seule la capitale accueille le solium.
+arcanium.histoire : L'Écho, figé dans la matière.
+arcanium.usage : Lingot d'arcanium et bloc d'écho primordial : les matériaux des armes et armures de l'Écho, du sceptre et du solium. Le bloc d'écho éveille aussi le Gardien d'Écho et fonde la capitale arcanique. Le Chœur des Égarés donne 8 échos primordiaux à chaque joueur.
+armure_runique.histoire : Encore de la netherite, déjà de l'Écho.
+armure_runique.usage : Tiare, plastron, jambières et bottes runiques. Ensemble complet : mana +200, régénération +3, sorts plus puissants ; ni cécité ni obscurité. La tiare garde les dons du diadème.
+armure_arcanique.histoire : Une robe de mage, noire et violette, et un halo.
+armure_arcanique.usage : Nimbe, Redingote, Chausses et Bottines. Ensemble complet : mana +500, régénération +6, sorts bien plus puissants ; ni cécité ni obscurité.
+armes_runiques.histoire : L'Écho se souvient de chaque coup.
+armes_runiques.usage : Épée, Onde sonique : le 5e coup déclenche une onde qui traverse les armures. Katana, Écho de lame : ruée ; une seconde après, l'écho refrappe ce qu'elle a tranché (50 %). Espadon, Résonance : onde de choc, et une zone de sculk qui ralentit les ennemis.
+armes_arcaniques.histoire : Lame de la Prêtresse, Crépuscule, Glas.
+armes_arcaniques.usage : Lame de la Prêtresse : le 4e coup, une onde de 12 blocs qui traverse les armures. Crépuscule : longue ruée (recharge 3 s) ; l'écho refrappe à 80 %, critique après la ruée. Glas : onde de choc à 6 blocs, zone qui ralentit et aveugle.
+sceptre_arcanique.histoire : Le croissant et le cristal : la Prêtresse écoute, puis répond.
+sceptre_arcanique.usage : En main : sorts plus puissants et mana régénéré plus vite. Clic droit : une onde sonique droit devant (16 blocs, 10 dégâts, recharge 3 s).
+gardien_echo.histoire : Les âmes sont parties ; l'Écho reste dans le laiton.
+gardien_echo.usage : Clic droit avec un bloc d'écho primordial sur un gardien rattaché à une base, un par base. Il frappe ses cibles d'une onde sonique jusqu'à 16 blocs, et soigne les gardiens à 12 blocs.
+solium.histoire : Morgana chantait assise.
+solium.usage : À poser dans la capitale arcanique ; il devient le point de réapparition. Dans sa base, le mana se régénère bien plus vite. Assise, cliquez sur un chant dans le tchat : il dure une heure de jeu, et peut être changé au bout de 15 minutes.
+relais.histoire : Le diapason d'Ada accorde ce que l'Empire a brisé.
+relais.usage : Après la fin Écho, dans un relais brisé ou au Grand Relais : diapason d'Écho en main, accroupi + clic droit, avec 8 fragments de résonance. Le relais s'apaise : l'Écho ne rôde plus autour.
+schemas.histoire : Les plans que l'Empire gardait sous clé.
+schemas.usage : Schéma du Cuivre, du Laiton, du Ciel : récompenses des chapitres. Ils restent dans la grille de craft, jamais consommés, et débloquent les machines de leur âge. En main, clic droit sur la porte d'une salle scellée à la bonne marque : elle s'ouvre pour de bon.
+sceau.histoire : Rallumé par le Grand Chantier de la Forge.
+sceau.usage : Récompense du Grand Chantier de la Forge. Il reste dans la grille de craft, jamais consommé, et permet de forger l'armure de diamant.
+memoires.histoire : « Nous ne partons pas. Nous attendons. »
+memoires.usage : Quatre fragments de mémoire (Rouages, Marées, Forge, Vide), un par grand chapitre. À l'assembleur mécanique, avec un cœur de la mer, des mécanismes de précision et des boîtiers en laiton, ils forment le Cœur d'Airain. Il réveille l'Empereur, puis décide de la fin.
+resonance.histoire : Un peu de ce que furent les égarés. Il vibre encore.
+resonance.usage : Fragments de résonance : relais brisés, Grand Relais, sanctuaire, profondeurs. Diapason d'Écho : 4 fragments, une gemme de source, un lingot d'or. Au Grand Relais, il éveille le Chœur des Égarés, qui donne les échos primordiaux.
+recuperation.histoire : Ce que laissent les automates de l'Empire.
+recuperation.usage : Ferraille : se refond au four ou se broie. Huile de machine : banc d'entretien, ou égouttoir. Rouage brisé : une presse le remet d'aplomb. 16 ferrailles, 4 huiles et 2 rouages brisés réparent un gardien.
+plaque_netherite.histoire : Le lingot ne suffisait plus : l'Empire le renforçait.
+plaque_netherite.usage : Assemblage séquencé sur un lingot de netherite : un mécanisme de précision au déployeur, puis la presse. Elle remplace le lingot de netherite pour l'armure et les armes, et sert de base à la netherite sacrée.
+couronne.usage2 : Couronne sacrée : vos gardiens à 32 blocs gagnent Force II et Résistance II ; elle ne se détache plus. Couronne de l'Empereur : pièce de l'armure impériale ; portée, elle vous fait voler.
+armure_imperiale.usage2 : La Couronne de l'Empereur commande vos gardiens à 32 blocs (Force II et Résistance II), garde la loupe (touche H), et vous fait voler.
+armes_sacrees.usage2 : Twinblade, Double tranchant : chaque coup frappe une seconde fois (25 %). Pioche, Filon : accroupi, elle extrait tout le filon de minerai (12 blocs au plus).
+armes_imperiales.usage2 : Jumelles d'airain : chaque coup frappe une seconde fois (50 %) ; clic droit, un tourbillon frappe tout autour de vous (recharge 4 s). Forge-filon : extrait un filon de 32 blocs.
+trone.usage2 : Guerre : gardiens renforcés ; au lieu de mourir, on revient au trône (une fois par minute). Forge : dans les bases, concasseurs, meule, lavage et cuisson rendent le double. Prospérité : les commandes de l'Empire rapportent 50 % de plus.
+diademe.usage2 : Tiare runique : pièce de l'armure runique. Nimbe de la Haute-Prêtresse : pièce de l'armure arcanique, couronne à branches et halo lumineux ; porté, il vous fait voler.
+armure_arcanique.usage2 : Le Nimbe de la Haute-Prêtresse garde les dons du diadème (le Warden vous ignore, sonar renforcé) et vous fait voler.
+armes_runiques.usage2 : Twinblade : chaque coup frappe une seconde fois (25 %) et fait luire la cible. Pioche, Écholocation : accroupi + clic droit, les minerais à 8 blocs luisent à travers la roche.
+armes_arcaniques.usage2 : Jumelles d'Écho : second coup (50 %), la cible luit ; clic droit, tourbillon. Sonde arcanique : les minerais à 16 blocs luisent.
+solium.usage2 : Âmes : expérience doublée (triplée avec la bénédiction de l'Écho). Croissance : dans les bases, les plantes poussent trois fois plus vite. Résonance : les sourcelinks d'Ars Nouveau produisent le double.
+socle.usage2 : Trophées : œuf de dragon (chute), crâne de wither squelette (feu), Cœur du Gardien des enfers (régénération), écho primordial (vision), Visière du Colosse (force), Cœur de magma (résistance), Engrenage du Rôdeur (célérité), Œil du Gardien (absorption), Sceau du Centurion (satiété).
+borne_imperiale.histoire : Les entrepôts de l'Empire n'ont jamais été vides ; il suffisait de savoir compter.
+borne_imperiale.usage : Après la fin Empire. Se pose avec ses décors et une zone d'arrivage de 3 x 3 devant elle. Clic droit : catalogue de matières premières par rayon, avec recherche. Ajoutez des lots de 1, 32 ou 64 (les blocs communs par 64 seulement), puis commandez : le prix est prélevé en pièces, monnaie rendue.
+borne_imperiale.usage2 : Le prix monte avec la rareté. Une minute plus tard (barre en haut de l'écran), la caisse descend en parachute sur la zone ; clic droit dessus pour la vider. Une commande à la fois, 27 piles au plus, et la zone doit être libre.
+borne_arcanique.histoire : L'Écho se souvient de tout ce qui a existé. Il suffit de le lui demander.
+borne_arcanique.usage : Après la fin de l'Écho. Se pose avec ses obélisques et un cercle d'arrivée de 3 x 3 devant elle. Clic droit : catalogue de matières premières par rayon, avec recherche. Ajoutez des lots de 1, 32 ou 64 (les blocs communs par 64 seulement), puis commandez : le prix est prélevé en pièces, monnaie rendue.
+borne_arcanique.usage2 : Le prix monte avec la rareté. Une minute plus tard (barre en haut de l'écran), un passage s'ouvre et la caisse apparaît sur le cercle ; clic droit dessus pour la vider. Une commande à la fois, 27 piles au plus, et le cercle doit être libre.

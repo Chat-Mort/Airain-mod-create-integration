@@ -1,0 +1,240 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "16_bestiaire"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "create:brass_casing" }
+	id: "5F04DE91C92B78B2"
+	order_index: 16
+	quests: [
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "54AD56ABAB892175"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "69C6DA59EB5C8C3A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_spider"
+					value: 1L
+					id: "31E49CB3841E7D63"
+					type: "kill"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "119561AB3FC3C71C"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "19D935C3C837A71B"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_sphere"
+					value: 1L
+					id: "76B33DE11BEBDE4E"
+					type: "kill"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "42E914B06EF601A5"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "7ACBEF3296708CB2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_spider_guardian"
+					value: 1L
+					id: "21642788A45B2139"
+					type: "kill"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "668C71D348398E06"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "1D0D747822117691"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_centurion"
+					value: 1L
+					id: "4D9F4D6C2CF274A3"
+					type: "kill"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "56C0BFD4CD51AFFC"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2F47A49061931539"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:ferrous_wroughtnaut"
+					value: 1L
+					id: "19E8C9A7E3C63499"
+					type: "kill"
+				}
+			]
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "7CAC6244231575FB"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "728F6E7252FA00A3"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:ender_golem"
+					value: 1L
+					id: "2B7E897E353B63E1"
+					type: "kill"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "5625831E74A2BFCD"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "474694FB17AF4EDD"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:the_prowler"
+					value: 1L
+					id: "19A3CFDF4701CED8"
+					type: "kill"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "7BD013E33BBE2173"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "3C080740D2AC8D46"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:the_watcher"
+					value: 1L
+					id: "7CCA0DFC57D4886B"
+					type: "kill"
+				}
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "23562325F0DE1D91"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "43DEB7D219D30969"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:socle_trophee" }
+					count: 1L
+					id: "28E80361EA2FD4EF"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["23562325F0DE1D91"]
+			id: "6ADAF2C48DBFE7D4"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "611EF084A1FD2C58"
+					type: "item"
+				}
+				{
+					xp: 1000
+					id: "53575A84555AE1F9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "7C2659BDCC048104"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 4.0d
+		}
+	]
+}

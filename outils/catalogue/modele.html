@@ -1,0 +1,129 @@
+<title>Catalogue de la borne</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@500;700&family=Alegreya+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Registre de commande de l'Empire : une colonne de rubriques, chaque objet une ligne de registre, la grille des tarifs épinglée en tête. */
+:root{
+  --papier:#eceee8; --feuille:#f8f9f5; --encre:#1f2733; --gris:#5d6672; --filet:#cdd2c9;
+  --laiton:#9a6a1c; --laiton-pale:#efe1c2; --rouge:#a3342a;
+  --titre:"Alegreya SC", Georgia, serif; --texte:"Alegreya Sans", "Segoe UI", sans-serif; --code:"JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --papier:#171c24; --feuille:#1f2631; --encre:#e6e8e3; --gris:#9aa3ae; --filet:#334050; --laiton:#d9a54a; --laiton-pale:#3a3020; --rouge:#e07a6c; color-scheme:dark}}
+:root[data-theme="dark"]{--papier:#171c24; --feuille:#1f2631; --encre:#e6e8e3; --gris:#9aa3ae; --filet:#334050; --laiton:#d9a54a; --laiton-pale:#3a3020; --rouge:#e07a6c; color-scheme:dark}
+body{background:var(--papier);color:var(--encre);font-family:var(--texte);font-size:15px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 60px}
+.page{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--titre);font-weight:700;font-size:2rem;margin:0;letter-spacing:.02em;text-wrap:balance}
+h2{font-family:var(--titre);font-weight:500;font-size:1.25rem;margin:0}
+.chapo{color:var(--gris);max-width:65ch;margin:4px 0 0}
+.tarifs{background:var(--feuille);border:1px solid var(--filet);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.tarifs table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+.tarifs th{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gris);text-align:left;font-weight:500;padding:4px 6px}
+.tarifs td{padding:4px 6px;border-top:1px solid var(--filet)}
+.tarifs input{width:5.2em;font:inherit;background:var(--papier);color:var(--encre);border:1px solid var(--filet);border-radius:4px;padding:2px 6px}
+.valeur{color:var(--gris);font-size:.85rem}
+.outils{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--papier);padding-block:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-bottom:1px solid var(--filet)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--papier)}
+.outils input[type=search]{flex:1 1 220px;min-width:0;font:inherit;padding:6px 10px;border:1px solid var(--filet);border-radius:4px;background:var(--feuille);color:var(--encre)}
+.compte{font-variant-numeric:tabular-nums;color:var(--gris)}
+button{font:inherit;font-weight:700;border:1px solid var(--laiton);background:var(--laiton);color:var(--feuille);border-radius:4px;padding:6px 14px;cursor:pointer}
+button.sec{background:transparent;color:var(--laiton)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--laiton);outline-offset:2px}
+section.rub{display:flex;flex-direction:column;gap:6px}
+.rub-tete{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--laiton);padding-bottom:4px}
+.rub-tete .act{display:flex;gap:6px}
+.rub-tete .act button{padding:2px 8px;font-size:.8rem}
+.lignes{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:2px 18px}
+.ligne{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:3px 2px;border-bottom:1px dotted var(--filet);min-width:0}
+.ligne.non{opacity:.45}
+.ligne.non .nom{text-decoration:line-through}
+.nom{min-width:0;overflow-wrap:anywhere}
+.nom small{display:block;font-family:var(--code);font-size:.68rem;color:var(--gris)}
+select{font:inherit;font-size:.82rem;background:var(--feuille);color:var(--encre);border:1px solid var(--filet);border-radius:4px;padding:1px 4px;max-width:9.5em}
+select.change{border-color:var(--laiton);background:var(--laiton-pale)}
+.sortie{background:var(--feuille);border:1px solid var(--filet);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+textarea{width:100%;box-sizing:border-box;min-height:7em;font-family:var(--code);font-size:.75rem;background:var(--papier);color:var(--encre);border:1px solid var(--filet);border-radius:4px;padding:8px}
+.etat{color:var(--laiton);font-weight:700;min-height:1.2em}
+</style>
+<div class="page">
+  <header>
+    <h1>Catalogue de la borne</h1>
+    <p class="chapo">Ce que la borne de commande pourra livrer. Décochez ce qui vous paraît trop fort, changez le palier d'un objet si son prix ne convient pas, ajustez les tarifs. Puis copiez vos choix et renvoyez-les dans la conversation.</p>
+  </header>
+  <div class="tarifs">
+    <h2>Tarifs par palier</h2>
+    <div style="overflow-x:auto"><table id="tarifs"><thead><tr><th>Palier</th><th>Quantité</th><th>Prix (éperons)</th><th>En pièces</th></tr></thead><tbody></tbody></table></div>
+    <p class="valeur">Éperon 1 · biseau 8 · pignon 16 · engrenage 64 · couronne 512 · soleil 4 096.</p>
+  </div>
+  <div class="outils">
+    <input type="search" id="cherche" placeholder="Chercher un objet (nom ou identifiant)" aria-label="Chercher un objet">
+    <span class="compte" id="compte"></span>
+    <button id="copier">Copier mes choix</button>
+    <button id="remise" class="sec">Tout remettre</button>
+  </div>
+  <main id="rubriques" style="display:flex;flex-direction:column;gap:22px"></main>
+  <div class="sortie">
+    <h2>Vos choix</h2>
+    <textarea id="texte" readonly aria-label="Vos choix à copier"></textarea>
+    <div class="etat" id="etat" aria-live="polite"></div>
+  </div>
+</div>
+<script>
+const ITEMS = __ITEMS__;
+const PALIERS = {commun:["Commun",64,8],courant:["Courant",64,16],travaille:["Travaillé",64,32],minerai:["Minerai",16,32],precieux:["Précieux",16,64],rare:["Rare",4,64],tres_rare:["Très rare",1,128]};
+const BASE = JSON.parse(JSON.stringify(PALIERS));
+const CLE = "airain-catalogue-v1";
+let etat = {exclus:{}, paliers:{}, tarifs:{}};
+try { const s = localStorage.getItem(CLE); if (s) etat = Object.assign(etat, JSON.parse(s)); } catch (e) {}
+for (const k in etat.tarifs) if (PALIERS[k]) { PALIERS[k][1] = etat.tarifs[k][0]; PALIERS[k][2] = etat.tarifs[k][1]; }
+function sauver(){ try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) {} majTexte(); }
+function pieces(n){ const v=[[4096,"soleil"],[512,"couronne"],[64,"engrenage"],[16,"pignon"],[8,"biseau"],[1,"éperon"]]; const o=[]; for (const [x,nom] of v){ const q=Math.floor(n/x); if(q){o.push(q+" "+nom+(q>1?"s":"")); n-=q*x;} } return o.join(" + ")||"0"; }
+function tarifs(){
+  const tb=document.querySelector("#tarifs tbody"); tb.innerHTML="";
+  for (const k in PALIERS){ const [nom,q,p]=PALIERS[k]; const tr=document.createElement("tr");
+    tr.innerHTML=`<td>${nom}</td><td><input type="number" min="1" id="q-${k}" value="${q}"></td><td><input type="number" min="1" id="p-${k}" value="${p}"></td><td class="valeur" id="v-${k}">${q} pour ${pieces(p)}</td>`;
+    tb.appendChild(tr);
+    for (const c of ["q","p"]) tr.querySelector(`#${c}-${k}`).addEventListener("input",()=>{ PALIERS[k][1]=+document.getElementById("q-"+k).value||1; PALIERS[k][2]=+document.getElementById("p-"+k).value||1;
+      document.getElementById("v-"+k).textContent=PALIERS[k][1]+" pour "+pieces(PALIERS[k][2]); etat.tarifs[k]=[PALIERS[k][1],PALIERS[k][2]];
+      if (BASE[k][1]===PALIERS[k][1] && BASE[k][2]===PALIERS[k][2]) delete etat.tarifs[k]; sauver(); });
+  }
+}
+function rubriques(){
+  const m=document.getElementById("rubriques"); m.innerHTML="";
+  const cats=[...new Set(ITEMS.map(i=>i[2]))];
+  for (const c of cats){
+    const s=document.createElement("section"); s.className="rub"; s.dataset.cat=c;
+    s.innerHTML=`<div class="rub-tete"><h2>${c}</h2><div class="act"><button class="sec" data-t="1">Tout cocher</button><button class="sec" data-t="0">Tout décocher</button></div></div><div class="lignes"></div>`;
+    const l=s.querySelector(".lignes");
+    ITEMS.filter(i=>i[2]===c).forEach(([id,nom,,pal])=>{
+      const d=document.createElement("div"); d.className="ligne"; d.dataset.id=id; d.dataset.txt=(nom+" "+id).toLowerCase();
+      const sid="c-"+id.replace(/[^a-z0-9]/g,"-");
+      d.innerHTML=`<input type="checkbox" id="${sid}"><label class="nom" for="${sid}">${nom}<small>${id}</small></label><select id="s-${sid}" aria-label="Palier de ${nom}"></select>`;
+      const cb=d.querySelector("input"), se=d.querySelector("select");
+      for (const k in PALIERS){ const o=document.createElement("option"); o.value=k; o.textContent=PALIERS[k][0]; se.appendChild(o); }
+      cb.checked=!etat.exclus[id]; se.value=etat.paliers[id]||pal; d.classList.toggle("non",!cb.checked); se.classList.toggle("change",se.value!==pal);
+      cb.addEventListener("change",()=>{ if(cb.checked) delete etat.exclus[id]; else etat.exclus[id]=1; d.classList.toggle("non",!cb.checked); compte(); sauver(); });
+      se.addEventListener("change",()=>{ if(se.value===pal) delete etat.paliers[id]; else etat.paliers[id]=se.value; se.classList.toggle("change",se.value!==pal); sauver(); });
+      l.appendChild(d);
+    });
+    s.querySelectorAll(".act button").forEach(b=>b.addEventListener("click",()=>{ const oui=b.dataset.t==="1";
+      s.querySelectorAll(".ligne").forEach(d=>{ if(d.hidden) return; const cb=d.querySelector("input"); if(cb.checked!==oui){ cb.checked=oui; cb.dispatchEvent(new Event("change")); } }); }));
+    m.appendChild(s);
+  }
+}
+function compte(){ const n=ITEMS.length-Object.keys(etat.exclus).length; document.getElementById("compte").textContent=n+" / "+ITEMS.length+" objets en vente"; }
+function majTexte(){
+  const t={exclus:Object.keys(etat.exclus).sort(), paliers:etat.paliers, tarifs:etat.tarifs};
+  document.getElementById("texte").value="Catalogue de la borne : "+JSON.stringify(t);
+}
+document.getElementById("cherche").addEventListener("input",e=>{ const q=e.target.value.trim().toLowerCase();
+  document.querySelectorAll(".ligne").forEach(d=>d.hidden=!!q && !d.dataset.txt.includes(q));
+  document.querySelectorAll("section.rub").forEach(s=>s.hidden=![...s.querySelectorAll(".ligne")].some(d=>!d.hidden)); });
+document.getElementById("copier").addEventListener("click",()=>{ const ta=document.getElementById("texte"); majTexte();
+  navigator.clipboard.writeText(ta.value).then(()=>{document.getElementById("etat").textContent="Copié. Collez-le dans la conversation.";})
+    .catch(()=>{ ta.focus(); ta.select(); document.getElementById("etat").textContent="Le texte est sélectionné : copiez-le avec Ctrl+C."; }); });
+document.getElementById("remise").addEventListener("click",()=>{ etat={exclus:{},paliers:{},tarifs:{}}; for(const k in BASE) PALIERS[k]=BASE[k].slice(); sauver(); tarifs(); rubriques(); compte(); });
+tarifs(); rubriques(); compte(); majTexte();
+</script>

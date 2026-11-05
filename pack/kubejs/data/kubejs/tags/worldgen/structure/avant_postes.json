@@ -1,0 +1,9 @@
+{
+  "values": [
+    "kubejs:avant_poste_tempere",
+    "kubejs:avant_poste_desert",
+    "kubejs:avant_poste_froid",
+    "kubejs:avant_poste_savane",
+    "kubejs:cite_mecanique"
+  ]
+}

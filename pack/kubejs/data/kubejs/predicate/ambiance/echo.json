@@ -1,0 +1,10 @@
+{
+  "condition": "minecraft:location_check",
+  "predicate": {
+    "structures": [
+      "kubejs:relais_brise",
+      "kubejs:grand_relais",
+      "kubejs:sanctuaire_refractaire"
+    ]
+  }
+}

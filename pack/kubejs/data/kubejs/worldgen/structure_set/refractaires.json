@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "kubejs:avant_poste_refractaire",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 50,
+    "separation": 18,
+    "salt": 61803398,
+    "exclusion_zone": {
+      "other_set": "kubejs:avant_postes",
+      "chunk_count": 5
+    }
+  }
+}

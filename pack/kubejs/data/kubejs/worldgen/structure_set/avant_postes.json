@@ -1,0 +1,26 @@
+{
+  "structures": [
+    {
+      "structure": "kubejs:avant_poste_tempere",
+      "weight": 1
+    },
+    {
+      "structure": "kubejs:avant_poste_desert",
+      "weight": 1
+    },
+    {
+      "structure": "kubejs:avant_poste_froid",
+      "weight": 1
+    },
+    {
+      "structure": "kubejs:avant_poste_savane",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 44,
+    "separation": 14,
+    "salt": 20251023
+  }
+}

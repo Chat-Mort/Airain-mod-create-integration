@@ -1,0 +1,734 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "15_exploration"
+	group: "2F4EAC3DE90A7B97"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "minecraft:filled_map" }
+	images: [
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_exploration_ruins_and_remains.png"
+			rotation: 0.0d
+			width: 4.922d
+			x: -3.211d
+			y: -3.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_exploration_the_lost_cities.png"
+			rotation: 0.0d
+			width: 4.922d
+			x: -3.211d
+			y: 1.5d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_exploration_engineer_s_records.png"
+			rotation: 0.0d
+			width: 5.297d
+			x: -3.398d
+			y: 5.0d
+		}
+		{
+			height: 0.75d
+			image: "kubejs:textures/quests/title_exploration_bestiary.png"
+			rotation: 0.0d
+			width: 2.672d
+			x: -2.086d
+			y: 7.0d
+		}
+	]
+	id: "61CC052BF462CBD1"
+	order_index: 15
+	quests: [
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "1D5897A82AAC331E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "5010204DA8942DF5"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:desert_pyramid"
+					id: "4910C432CF13561E"
+					type: "structure"
+				}
+			]
+			x: 0.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "5BCC503DB5D79A29"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "140E46F428EBFD41"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:shipwreck"
+					id: "27FCBE14A9739110"
+					type: "structure"
+				}
+			]
+			x: 0.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["1D5897A82AAC331E"]
+			id: "349D5216D8932504"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "112704B3437A00B8"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:stronghold"
+					id: "669BDB0179229748"
+					type: "structure"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["5BCC503DB5D79A29"]
+			id: "5E3B48DAED62091C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "1D37D93D23680BD4"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:ancient_city"
+					id: "2CFE5DE9999932D0"
+					type: "structure"
+				}
+			]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "7D319DB84563FF59"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "5B2011038A1119A4"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:fortress"
+					id: "5248B69838342E14"
+					type: "structure"
+				}
+			]
+			x: 2.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["5E3B48DAED62091C"]
+			id: "14B5ABF61C3CBA18"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "6989F38EA3DF9493"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:cite_mecanique"
+					id: "28995689FA61E5D3"
+					type: "structure"
+				}
+			]
+			x: 4.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["7D319DB84563FF59", "5E3B48DAED62091C"]
+			id: "5051FDBC40E9057C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "3441A6161E2ED312"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "4C1620371C92B30D"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["29E98529A035C62A"]
+			id: "17DC1C655AD476A4"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "2B6EDCC4EE2CA5E6"
+					type: "item"
+				}
+				{
+					xp: 1000
+					id: "6EFA9155936D50C5"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "vael" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "6B9352AA5523AC15"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "lettre" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "52764CA4B15EF784"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "incident" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "2F273B2C478004C2"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "essais" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "1F1E46E8DBEE6DD0"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "ada" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "318ED45DF4C4F2CE"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "refractaire" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "1ECF1DAF8C615CE9"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "cache" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "10BBCA124564623E"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["349D5216D8932504"]
+			id: "1564E6748941BD57"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "6D3C293B091BF8DE"
+					type: "item"
+				}
+				{
+					xp: 1500
+					id: "636A8CC3231E01A9"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "mine" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "5165EFD936C30A7F"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "prospecteur" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "1B426C4864E1D67A"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "cargaison" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "325DF823FB0D6363"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "conseil" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "71ECC9B6560D6FF8"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "profondeurs" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "15624E864CACC031"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "nether" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "2DA794549CA0C0A2"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "ciel" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "5A7970D0A5CC27A8"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["17DC1C655AD476A4", "1564E6748941BD57"]
+			id: "7530670FBF04DB70"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					count: 2
+					id: "307539819ADB5C4A"
+					type: "item"
+				}
+				{
+					xp: 2000
+					id: "6A2A3D372F1561C5"
+					type: "xp"
+				}
+				{
+					command: "airain chronique note archiviste"
+					permission_level: 2
+					silent: true
+					id: "5D6B9B4012583BA2"
+					type: "command"
+				}
+			]
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "station" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "376FE865A8FDD474"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "abri_nether" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "1E0596A41C93E9C4"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "champ_bataille" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "1DB4FBADCF620731"
+					type: "item"
+				}
+				{
+					item: { components: { "minecraft:custom_data": { airain_doc: "dirigeable" } }, count: 1, id: "minecraft:written_book" }
+					count: 1L
+					match_components: "fuzzy"
+					id: "6819B23AAE4D8E59"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["29E98529A035C62A"]
+			id: "2E75045EF91CE45C"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "6B2988678D229CC2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:champ_bataille"
+					id: "1638B5B7CF47D913"
+					type: "structure"
+				}
+			]
+			x: 0.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "2BB788600A03C295"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "18F9A519FAB0268C"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "kubejs:abri_nether"
+					id: "5F61299204D06B93"
+					type: "structure"
+				}
+			]
+			x: 0.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "7FF957863CC019F2"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "3653A2FB9E969D51"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					dimension: "minecraft:overworld"
+					ignore_dimension: false
+					position: [I; -30000000, 330, -30000000]
+					size: [I; 60000000, 4000, 60000000]
+					id: "2A3220EEFD4781EA"
+					type: "location"
+				}
+			]
+			x: 0.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["422022D7AAF0448C"]
+			id: "46882C5D681F223B"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "26DAD53E61971724"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					dimension: "minecraft:overworld"
+					ignore_dimension: false
+					position: [I; -30000000, -64, -30000000]
+					size: [I; 60000000, 5, 60000000]
+					id: "70E202E55152DB33"
+					type: "location"
+				}
+			]
+			x: 2.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "49BEC3C1141BEF65"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "3C22EA041520BA92"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					dimension: "minecraft:the_nether"
+					ignore_dimension: false
+					position: [I; -30000000, 128, -30000000]
+					size: [I; 60000000, 4000, 60000000]
+					id: "2F80E59A418D84B3"
+					type: "location"
+				}
+			]
+			x: 4.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["564D3460A05544FE"]
+			id: "2D2D133F3E4B2039"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "6CDF4432062DEC1C"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "23679D82AB8FCD82"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["781B4AE91894BA53"]
+			id: "504C64579D0C97F8"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "731CFBD86669FA50"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					stat: "minecraft:aviate_one_cm"
+					value: 1000000
+					id: "66126DBE58A0E42A"
+					type: "stat"
+				}
+			]
+			x: 8.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "54AD56ABAB892175"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "69C6DA59EB5C8C3A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_spider"
+					value: 1L
+					id: "31E49CB3841E7D63"
+					type: "kill"
+				}
+			]
+			x: 0.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "119561AB3FC3C71C"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "19D935C3C837A71B"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_sphere"
+					value: 1L
+					id: "76B33DE11BEBDE4E"
+					type: "kill"
+				}
+			]
+			x: 2.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "42E914B06EF601A5"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "7ACBEF3296708CB2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_spider_guardian"
+					value: 1L
+					id: "21642788A45B2139"
+					type: "kill"
+				}
+			]
+			x: 4.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "668C71D348398E06"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "1D0D747822117691"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mebahelcreaturesdwarven:dwarven_centurion"
+					value: 1L
+					id: "4D9F4D6C2CF274A3"
+					type: "kill"
+				}
+			]
+			x: 6.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "56C0BFD4CD51AFFC"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2F47A49061931539"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "mowziesmobs:ferrous_wroughtnaut"
+					value: 1L
+					id: "19E8C9A7E3C63499"
+					type: "kill"
+				}
+			]
+			x: 0.0d
+			y: 8.5d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "7CAC6244231575FB"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "728F6E7252FA00A3"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:ender_golem"
+					value: 1L
+					id: "2B7E897E353B63E1"
+					type: "kill"
+				}
+			]
+			x: 2.0d
+			y: 8.5d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "5625831E74A2BFCD"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "474694FB17AF4EDD"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:the_prowler"
+					value: 1L
+					id: "19A3CFDF4701CED8"
+					type: "kill"
+				}
+			]
+			x: 4.0d
+			y: 8.5d
+		}
+		{
+			dependencies: ["49E4BA6154AA295A"]
+			id: "7BD013E33BBE2173"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "3C080740D2AC8D46"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					entity: "cataclysm:the_watcher"
+					value: 1L
+					id: "7CCA0DFC57D4886B"
+					type: "kill"
+				}
+			]
+			x: 6.0d
+			y: 8.5d
+		}
+	]
+}

@@ -1,0 +1,9 @@
+kubejs:airain
+kubejs:coeur_d_airain
+kubejs:fragment_forge
+kubejs:fragment_marees
+kubejs:fragment_rouages
+kubejs:fragment_vide
+kubejs:schema_ciel
+kubejs:schema_cuivre
+kubejs:schema_laiton

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "#kubejs:station_observation",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "none",
+  "start_pool": "kubejs:station/station_observation",
+  "size": 1,
+  "start_height": {
+    "absolute": 170
+  },
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false
+}

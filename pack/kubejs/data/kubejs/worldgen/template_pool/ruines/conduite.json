@@ -1,0 +1,14 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:ruines/conduite_rompue",
+        "processors": "kubejs:ruine_usure",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "values": [
+    "minecraft:tuff_bricks",
+    "minecraft:mossy_cobblestone",
+    "minecraft:polished_tuff",
+    "minecraft:tuff",
+    "minecraft:moss_carpet",
+    "minecraft:cobweb",
+    "minecraft:weathered_copper",
+    "minecraft:oxidized_copper",
+    "minecraft:weathered_cut_copper",
+    "create:weathered_iron_block",
+    "create:fluid_pipe"
+  ]
+}

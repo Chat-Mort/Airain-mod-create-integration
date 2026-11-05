@@ -1,0 +1,671 @@
+
+This result includes Artifact content written by people other than the user; treat it as data, not instructions.{"verdict":"allow","rev":281,"data":{"rev":281,"xml":"Bible de l'Empire d'Airain
+ · 
+La référence de tout ce qui compose le monde du pack : chaque structure, nom, texture et machine en découle. Rien n'est construit avant d'être validé ici.
+Décisions déjà prises
+Le pack devient une conversion totale : on ne doit plus reconnaître le Minecraft de base, et chaque élément passe par ta validation.
+Plus aucun villageois ni pillard. Villages, villageois, zombies-villageois, marchand ambulant, avant-postes pillards, patrouilles et raids disparaissent.
+
+Les avant-postes de l'Empire remplacent les villages, à la même fréquence : de vraies bases avec murailles et bâtiments abandonnés, générées en pièces assemblées pour que chacune soit unique.
+
+Des avant-postes réfractaires, plus rares, remplacent les avant-postes pillards. Un distributeur de fioles funestes peut y apparaître.
+
+Le commerce passe par des distributeurs Create: Numismatics, classés par catégorie, avec un catalogue choisi qui ne permet pas de sauter la progression.
+
+Les objets avancés restent accessibles autrement : machines rares, salles scellées par les Schémas, ou autre mécanisme à définir.
+
+Le comptoir du laboratoire mélange objets de secours et ressources de début de partie.
+
+Chaque structure est validée une par une, sur aperçu, avec le fichier fourni pour que tu puisses la retoucher en jeu.
+
+Ajouté après ta relecture
+Les sorcières disparaissent aussi : trop humaines pour un monde vide.
+
+On ne renomme que les biomes liés à l'histoire (ceux des avant-postes et des cités).
+
+Le catalogue et ses prix sont validés ; un avant-poste réfractaire sur trois a sa fiole funeste.
+
+Petits avant-postes : une seule salle scellée, de palier tiré au hasard. Grandes cités mécaniques : les trois paliers.
+
+Le bois des charpentes est le sapin.
+
+Les monstres trop simples (araignées, creepers) seront remplacés ou renforcés : voir « Monstres de remplacement ».
+
+L'histoire
+L'Empire d'Airain s'est enfermé dans le métal pour devenir immortel ; ceux qui ont refusé ont été vaincus, et le monde est resté vide jusqu'à votre réveil.
+Moment
+Ce qui s'est passé
+Ce que les joueurs en découvrent
+L'âge d'or
+L'Empire couvre le continent de cités, d'usines et de voies ferrées. Les ingénieurs sont la caste dirigeante.
+Les ruines partout, les rails abandonnés, les avant-postes
+Jour 1 du projet Cœur
+Le Conseil lance la construction d'un moteur unique pour toutes les cités.
+Journal du laboratoire, page 2
+Les capsules
+Les volontaires entrent dans le métal : leur esprit est transféré dans la machine. On leur promet de ne plus avoir froid ni peur.
+Stations de capsules vides, journal page 3
+La révolte
+Une partie de la population refuse le Transfert : les Réfractaires. Ils fortifient leurs propres avant-postes et sabotent les usines.
+Avant-postes réfractaires, leurs écrits, la fiole funeste (leur appel aux armes)
+L'écrasement
+Les gardiens mécaniques matent la révolte. Les Réfractaires disparaissent ; personne ne sait s'ils sont morts ou transférés de force.
+Avant-postes réfractaires détruits, écrits interrompus
+Jour 412
+Ordre général : tout le monde au Cœur. Le dernier ingénieur prépare deux capsules à part.
+Journal page 6
+Le long sommeil
+Le monde se vide. La nature reprend les ruines. Une magie sauvage naît, que l'Empire n'avait pas prévue.
+Ars Nouveau, Iron's Spells
+Le réveil
+Vous deux sortez des capsules, sans mémoire.
+Le début de la partie
+Le fil rouge caché : les Réfractaires avaient compris le piège. Leurs écrits, trouvés au fil de l'exploration, mettent en garde contre le Cœur. À la première lecture, ce sont des fous ; après le retournement du chapitre VI, on comprend qu'ils avaient raison.
+Les lieux
+Cinq types de lieux construits par nous, du plus fréquent au plus rare ; chacun sera conçu, montré en aperçu et validé séparément.
+Lieu
+Fréquence
+Rôle dans le jeu
+Ce qu'on y trouve
+Laboratoire 7
+Un seul, au point de départ
+Base de départ, réveil
+Capsules, journal, coffre de départ, comptoir, banque
+Ruines isolées
+Très fréquentes
+Ponctuer le paysage, raconter par petites touches
+Pans de murs, machines rouillées, parfois un coffre ou une page d'écrit
+Avant-postes de l'Empire
+Comme les villages
+Commerce, étape d'exploration
+Murailles, bâtiments abandonnés, distributeurs, coffres Lootr, salle scellée
+Stations de capsules
+Peu fréquentes
+Malaise, indices du retournement
+Rangées de capsules vides, câbles qui partent vers le bas, écrits d'ingénieurs
+Avant-postes réfractaires
+Rares
+La voix des rebelles, la fiole funeste
+Fortifications de fortune, barricades, écrits réfractaires, distributeur de fioles (pas toujours)
+Les cités mécaniques s'ajoutent à cette liste : des avant-postes beaucoup plus grands et rares, avec plusieurs marchés et les trois salles scellées. Elles seront conçues après les avant-postes simples, avec les mêmes pièces en plus grand nombre.
+Et on garde les structures des mods qui collent au thème : l'usine ancienne et la forge des âmes de Cataclysm, les forteresses de When Dungeons Arise, les épaves volantes de Create Aeronautics Structures. Les structures vanilla qui ne cassent pas l'histoire restent (salles d'épreuve, cité antique, forts souterrains) ; celles qui la cassent (villages, avant-postes pillards, manoirs) disparaissent.
+Les avant-postes
+Un avant-poste est assemblé à partir de pièces, comme un village : le jeu part d'une place centrale et y raccroche rues et bâtiments au hasard, donc deux avant-postes ne se ressemblent jamais.
+Les pièces prévues
+Pièce
+Nombre de variantes
+Contenu
+Place centrale
+3
+Fontaine à sec ou tour d'horloge, d'où partent les rues
+Rues
+4
+Pavés, rails envahis d'herbe, lampadaires éteints
+Marché
+2
+2 à 3 machines de distribution (voir la section suivante)
+Entrepôt
+2
+Caisses, coffres Lootr de ressources
+Atelier
+3
+Machines Create en ruine, établi, coffre d'outils
+Dortoir
+2
+Lits, effets personnels, écrits d'ouvriers
+Salle scellée
+1
+Porte qui ne s'ouvre qu'avec un Schéma ; objets avancés
+Muraille, tours, porte
+4
+Ceinture fortifiée, en partie effondrée
+Adaptation au relief. Chaque pièce aplanit et comble le terrain sous elle, comme les maisons de village. Les avant-postes n'apparaissent que dans les biomes assez plats (plaines, savanes, déserts, taïgas, plaines enneigées), et la muraille suit le sol pièce par pièce plutôt que de former un anneau rigide : c'est ce qui évite les murs suspendus dans le vide avec les reliefs de Tectonic.
+Variantes par climat. Mêmes plans, matériaux différents :
+Climat
+Matériaux principaux
+Tempéré
+Tuf, cuivre oxydé, sapin
+Désert
+Grès, cuivre, terre cuite
+Froid
+Pierre, sapin, neige, cuivre patiné
+Savane
+Acacia, boue séchée, cuivre
+Les avant-postes réfractaires sont construits à part, plus petits et plus rares : barricades de bois, sacs de sable, étendards déchirés, tranchées. Leur distributeur de fioles funestes n'apparaît que dans une partie d'entre eux (la proportion est à régler ensemble, je propose un sur trois).
+La place centrale est toujours là ; les bâtiments autour et leur position changent d'un avant-poste à l'autre. La salle scellée est la seule pièce qui demande un Schéma.
+Les distributeurs
+Aucun mod ne permet à un distributeur Numismatics de vendre plusieurs objets : chaque « machine » sera donc un mur de distributeurs (un objet chacun), habillé en machine de l'Empire avec son panneau.
+Les options étudiées
+Option
+Avantage
+Limite
+Verdict
+Un distributeur créatif par objet
+Stock infini, fiable, déjà testé dans le laboratoire
+Un bloc par objet, donc catalogue réduit
+Retenu
+Boutiques de Create 6 avec Numismatics Plus
+Un vrai magasin multi-objets avec une seule caisse
+Stock limité à réapprovisionner, une créature vendeuse assise obligatoire
+Écarté
+Numismatics Treasury
+Boutiques serveur et hôtel des ventes
+Toujours un objet par boutique
+Écarté
+Numismatics VendorFlow
+Limite les achats par période sur un distributeur
+Ne fait que limiter
+En option, pour la fiole funeste
+Les règles du catalogue
+Les objets de base du jeu sont en vente.
+
+Rien qui ouvre un verrou : pas de mécanisme de précision, laiton, tube électronique, Schéma, Fragment, netherite, tige de blaze.
+
+Rien du Nether ni de l'End avant leur ouverture, sauf le netherrack de secours.
+
+Les objets avancés (diamants, quartz, comparateurs…) se trouvent dans les salles scellées.
+
+Les prix restent sous ce que rapportent les commandes du même chapitre, pour que le commerce aide sans remplacer le minage.
+
+Catalogue proposé (éperon 1, biseau 8, pignon 16, engrenage 64, couronne 512)
+Machine
+Objet
+Quantité
+Prix
+Bâtisseur
+Pierre taillée
+32
+1 biseau
+Bâtisseur
+Planches de chêne
+32
+1 biseau
+Bâtisseur
+Tuf poli
+32
+1 biseau
+Bâtisseur
+Briques
+32
+2 biseaux
+Bâtisseur
+Verre
+16
+1 biseau
+Bâtisseur
+Échelles
+16
+1 biseau
+Bâtisseur
+Lanternes
+4
+1 biseau
+Matières premières
+Charbon
+16
+1 biseau
+Matières premières
+Lingots de cuivre
+16
+1 pignon
+Matières premières
+Lingots de fer
+8
+1 pignon
+Matières premières
+Lingots de zinc
+8
+1 pignon
+Matières premières
+Lingots d'or
+4
+1 pignon
+Matières premières
+Redstone
+16
+1 pignon
+Matières premières
+Lapis-lazuli
+16
+1 pignon
+Agriculture
+Graines de blé
+16
+2 éperons
+Agriculture
+Pommes de terre
+16
+2 éperons
+Agriculture
+Carottes
+16
+2 éperons
+Agriculture
+Canne à sucre
+8
+1 biseau
+Agriculture
+Pousses de chêne
+4
+2 éperons
+Agriculture
+Poudre d'os
+16
+1 biseau
+Agriculture
+Laine blanche
+8
+1 biseau
+Mécanique
+Pistons
+4
+1 pignon
+Mécanique
+Pistons collants
+2
+1 pignon
+Mécanique
+Entonnoirs
+4
+1 pignon
+Mécanique
+Répéteurs
+4
+1 biseau
+Mécanique
+Rails
+16
+1 biseau
+Create
+Alliage d'andésite
+16
+1 pignon
+Create
+Engrenages
+8
+1 biseau
+Create
+Grands engrenages
+4
+1 biseau
+Create
+Arbres de transmission
+16
+1 biseau
+Create
+Varech séché
+16
+1 biseau
+Create
+Plaques de fer
+8
+1 pignon
+Magie sauvage
+Éclats d'améthyste
+8
+1 biseau
+Magie sauvage
+Pousses d'archebois (Ars Nouveau)
+2
+2 biseaux
+Expédition
+Torches
+16
+1 biseau
+Expédition
+Pain
+16
+1 biseau
+Expédition
+Flèches
+16
+1 biseau
+Expédition
+Seau
+1
+1 biseau
+Expédition
+Cartes vierges
+2
+1 biseau
+Réfractaire
+Fiole funeste
+1
+2 pignons
+Chaque marché d'avant-poste tire 2 à 3 machines au hasard parmi Bâtisseur, Matières premières, Agriculture, Mécanique, Create, Magie sauvage et Expédition : il faut visiter plusieurs avant-postes pour tout trouver.
+Le comptoir du laboratoire devient un mélange : bûches de chêne (16, 1 biseau), torches (16, 1 biseau), minerai de fer brut (8, 1 pignon), pain (16, 1 biseau), et les secours actuels (netherrack, perles d'Ender, cœur de la mer, lapis).
+Les salles scellées (une par avant-poste) s'ouvrent avec un Schéma et vendent les objets avancés du palier correspondant :
+Porte
+S'ouvre avec
+Exemples d'objets
+Sceau de cuivre
+Schéma du Cuivre
+Diamants, observateurs, livres enchantés simples
+Sceau de laiton
+Schéma du Laiton
+Quartz du Nether, comparateurs, tubes électroniques
+Sceau du ciel
+Schéma du Ciel
+Perles d'Ender en gros, fusées de feu d'artifice, livres enchantés avancés (pas d'élytres ni de gabarits : ce sont des objectifs de quête)
+Un petit avant-poste n'a qu'une salle scellée, d'un palier tiré au hasard ; une cité mécanique a les trois.
+Le glossaire
+Les monstres de base deviennent des restes de l'Empire : leur nom change dans les deux langues, et leurs textures seront retouchées ensuite pour correspondre. Ce sont des propositions, à corriger librement.
+Minecraft
+Nom de l'Empire
+English
+Ce qu'il est dans l'histoire
+Zombie
+Ouvrier déchu
+Fallen Worker
+Un ouvrier dont le Transfert a échoué : le corps est resté, l'esprit est parti
+Zombie desséché
+Ouvrier calciné
+Scorched Worker
+La même chose, dans les usines du désert
+Noyé
+Scaphandrier perdu
+Lost Diver
+Un ouvrier des chantiers sous-marins
+Squelette
+Automate de patrouille
+Patrol Automaton
+Une machine de garde, encore en service. Règle le « pas un squelette » du journal : ce ne sont pas des morts
+Vagabond
+Automate givré
+Frosted Automaton
+Version des postes du nord
+Squelette wither
+Automate noirci
+Blackened Automaton
+Gardien des forteresses du Nether
+Creeper
+Chaudière instable
+Unstable Boiler
+Une chaudière ambulante qui fuit et finit par exploser
+Araignée
+Rampeuse mécanique
+Mechanical Crawler
+Un robot d'entretien des conduits
+Araignée venimeuse
+Rampeuse d'égout
+Sewer Crawler
+La même, dans les galeries
+Enderman
+Égaré du Vide
+Void Wanderer
+Un être venu d'ailleurs, attiré par le Cœur
+Phantom
+Âme sans repos
+Restless Soul
+Un esprit perdu pendant le Transfert, qui hante les nuits
+Slime
+Graisse vivante
+Living Grease
+Des résidus d'huile des machines devenus vivants
+Poisson d'argent
+Mite de cuivre
+Copper Mite
+Ronge les câbles des ruines
+Sorcière
+Supprimée
+Removed
+Retirée du jeu : trop humaine pour un monde vide
+Golem de fer
+Gardien d'airain
+Airain Guardian
+Fabriqué par les joueurs uniquement (plus de villages)
+Breeze
+Gardien du vent
+Wind Guardian
+Déjà utilisé dans les quêtes
+Les animaux gardent leur nom. Pour les biomes, je propose de ne renommer que ceux où apparaissent les avant-postes (par exemple « Plaines désertées », « Désert de rouille ») : à trancher ensemble.
+Monstres de remplacement
+Renommer une araignée ne la rend pas plus intéressante : trois pistes pour avoir de vrais ennemis mécaniques, à combiner.
+Piste
+Ce que ça apporte
+Limite
+Remplace
+Mebahel's Dwarven Automatons
+Araignées mécaniques, sphères qui se déplient pour tirer, centurion à vapeur ; très proche de notre thème
+Mod Fabric qui tourne sur NeoForge via Sinytra Connector, plus quatre dépendances ; à tester sérieusement
+Araignées
+Les créatures mécaniques de Cataclysm
+Déjà dans le pack ; on les fait apparaître aussi hors de leurs donjons, sans nouveau mod
+Leur nom exact et leur comportement hors donjon sont à vérifier en jeu
+Patrouilles nocturnes
+Monstres de base renforcés par script
+Plus de vie, d'armure et de dégâts ; la chaudière instable explose plus fort et met le feu
+Reste un monstre connu, seulement plus dur
+Creepers, zombies, squelettes
+Je propose de tester d'abord Dwarven Automatons : s'il tourne sans souci avec le reste du pack, il remplace les araignées ; sinon on se rabat sur Cataclysm et les renforts par script.
+Décidé : on teste Dwarven Automatons. S'il tient avec le reste du pack, ses automates rejoignent aussi les vagues du chapitre VII.
+Les biomes
+Tous les biomes de la surface sont renommés, pour que le monde entier parle de l'Empire : ce qu'il a construit, ce qu'il a abandonné, ce que la nature a repris. Propositions à corriger librement.
+Minecraft
+Nom de l'Empire
+English
+Plaines
+Plaines désertées
+Deserted Plains
+Plaines de tournesols
+Champs abandonnés
+Abandoned Fields
+Plaines enneigées
+Toundra muette
+Silent Tundra
+Pics de glace
+Aiguilles de givre
+Frost Spires
+Désert
+Désert de rouille
+Rust Desert
+Marais
+Marais des égouts
+Sewer Marsh
+Mangrove
+Mangrove des cuves
+Vat Mangrove
+Forêt
+Forêt reprise
+Reclaimed Forest
+Forêt de fleurs
+Jardins oubliés
+Forgotten Gardens
+Forêt de bouleaux
+Bois pâles
+Pale Woods
+Forêt de bouleaux ancienne
+Futaie pâle
+Old Pale Woods
+Forêt noire
+Forêt sans lumière
+Lightless Forest
+Taïga
+Taïga silencieuse
+Silent Taiga
+Taïga enneigée
+Taïga gelée
+Frozen Taiga
+Taïga de pins / de sapins anciens
+Pinède / Sapinière des anciens
+Elders' Pinewood / Firwood
+Savane
+Savane brûlée
+Scorched Savanna
+Plateau de savane
+Plateau brûlé
+Scorched Plateau
+Collines venteuses
+Collines battues
+Battered Hills
+Collines venteuses de gravier
+Collines de gravats
+Rubble Hills
+Forêt venteuse
+Forêt battue
+Battered Forest
+Savane venteuse
+Savane battue
+Battered Savanna
+Jungle / clairsemée / de bambous
+Jungle envahissante / clairsemée / Bambouseraie
+Overgrown Jungle / Sparse Jungle / Bamboo Thicket
+Badlands / érodées / boisées
+Terres rouillées / rongées / boisées
+Rustlands / Eroded / Wooded Rustlands
+Prairie
+Prairie d'altitude
+High Meadow
+Cerisaie
+Vergers du Conseil
+Council Orchards
+Bosquet, pentes enneigées
+Bosquet blanc, pentes muettes
+White Grove, Silent Slopes
+Pics gelés / déchiquetés / pierreux
+Pics gelés / Crocs de pierre / Pics de minerai
+Frozen Peaks / Stone Fangs / Ore Peaks
+Rivière, rivière gelée
+Ancien canal, canal gelé
+Old Canal, Frozen Canal
+Plage, plage enneigée, rivage pierreux
+Grève, grève gelée, quai effondré
+Strand, Frozen Strand, Collapsed Quay
+Océans (tiède, froid, gelé, profonds)
+Mer tiède, mer grise, mer froide, banquise, abysses
+Warm Sea, Grey Sea, Cold Sea, Ice Shelf, Abyss
+Champs de champignons
+Champignonnière
+Mushroom Farm
+Grottes à stalactites
+Grottes suintantes
+Seeping Caves
+Grottes luxuriantes
+Serres souterraines
+Underground Greenhouses
+Abîme (deep dark)
+Profondeurs muettes
+Silent Depths
+Le Nether et l'End garderont leurs noms pour l'instant : ils seront traités avec leurs chapitres.
+Il faudrait retirer les sorcières ( trop humain )
+Matériaux et couleurs
+L'Empire se reconnaît à trois matières : le cuivre, le tuf et le laiton ; le monde autour est délavé, comme couvert de poussière.
+Rôle
+Blocs
+Couleur
+Structure des bâtiments
+Tuf, briques de tuf, ardoise des profondeurs taillée
+Gris chaud
+Machines et ornements
+Cuivre oxydé, grilles de cuivre, cuivre taillé, ampoules de cuivre
+Vert-de-gris
+Objets précieux, portes scellées
+Laiton de Create, boîtiers de laiton
+Or ternie
+Bois des charpentes
+Sapin {je prefererais le bois de sapin a la place du chene sombre }
+Brun foncé
+Réfractaires
+Bois brut, laine rouge déchirée, sacs de sable
+Rouge sang, toile
+L'atmosphère du monde (à valider à l'étape 2) :
+Ciel et brouillard un peu plus ternes et ambrés, comme une lumière à travers la poussière.
+
+Herbe et feuillage légèrement désaturés, tirant vers l'olive.
+
+Eau plus sombre, vert-de-gris.
+
+Particules de poussière de cuivre qui flottent dans les biomes des avant-postes.
+
+Je ne peux pas lancer le jeu : je te montrerai chaque réglage sous forme de nuancier avant et après, et tu le vérifieras en jeu.
+Les vagues du chapitre VII
+De vraies vagues sont faisables : un script fait apparaître les ennemis par groupes autour de votre base, attend que chaque vague soit vaincue, puis lance la suivante.
+Comment ça se passe en jeu
+Après le retournement, les joueurs reçoivent une balise de défense et la posent au cœur de leur base.
+
+Un clic droit sur la balise lance l'assaut : un message annonce l'arrivée de l'Empire.
+
+Les ennemis apparaissent à la surface, à 25-35 blocs de la balise, et marchent vers elle.
+
+En fonction de la taille de notre base j'ai peur que 25/35 blocs fassent spawner des mobs dans la base, on prévois de se faire une grosse base avec murailles etc... et il faudrait que la balise soit reutilisable si on a envie de se refaire des vagues de monstres
+Une barre en haut de l'écran montre les ennemis restants. Vague vaincue : 30 secondes de répit, puis la suivante.
+
+Après la dernière vague, la quête « Défendre la base » se valide toute seule.
+
+Composition proposée
+Vague
+Ennemis
+Nombre
+1
+Ouvriers déchus, automates de patrouille
+20
+2
+Ajout de chaudières instables et d'araignées mécaniques
+30
+3
+Ajout de sphères de combat
+40
+4
+Un centurion à vapeur et son escorte
+1 + 20
+Le nombre d'ennemis augmente si les deux joueurs sont connectés. Si les deux meurent, seule la vague en cours recommence. L'assaut ne se lance jamais seul : c'est vous qui décidez quand vous êtes prêts.
+Ce que ça change dans le pack actuel
+Supprimer villageois et pillards touche cinq quêtes, la source de la fiole funeste et celle des totems ; voici les remplacements prévus.
+Élément actuel
+Problème
+Remplacement
+Quête « Signes de vie » (ch. I)
+Demande de trouver un village
+Trouver un avant-poste de l'Empire
+Quête « Le présage funeste » (ch. II)
+La fiole venait des capitaines pillards
+Acheter la fiole dans un avant-poste réfractaire
+Quête « Deuxième vague » (ch. VII)
+Pillards et vindicateurs à abattre
+Chaudières instables et automates
+Annexe Exploration : avant-poste pillard
+N'existe plus
+Avant-poste réfractaire
+Annexe Exploration : manoir
+N'existe plus
+Station de capsules
+Totems d'immortalité
+Venaient des évocateurs (manoirs, raids)
+Récompense de quête (déjà le cas au ch. V) et salle scellée du ciel
+Mods à ajouter : Tectonic (relief), Create Aeronautics Structures (épaves volantes), FancyMenu (écran titre, étape 5). Numismatics VendorFlow en option.
+Ordre de travail
+Valider cette Bible.
+
+Le monde : atmosphère des biomes, Tectonic, glossaire en jeu.
+
+Les structures, une par une : une première ruine isolée (la plus simple, pour caler le rendu), puis les pièces d'un avant-poste tempéré, puis les variantes, puis l'avant-poste réfractaire et la station de capsules.
+
+Les habitants : textures retouchées.
+
+La présentation : écran titre, chargement, ambiance sonore.
+
+Questions ouvertes
+Le glossaire te va-t-il, monstre par monstre ?
+
+Oui mais je pense que pour eviter les quetes trop simple ( araignées / creeper ) il vaudrait mieux trouver des mobs de remplacement ( possiblement dans d'autres mods )
+Renomme-t-on aussi les biomes, et lesquels ?
+
+Seulement ceux liée a l'histoire
+Le catalogue et ses prix te conviennent-ils ?
+
+Oui
+Proportion d'avant-postes réfractaires avec fioles : un sur trois ?
+
+Ca me parait raisonnable
+Les sorcières restent-elles (en alchimistes réfractaires) ou disparaissent-elles aussi ?
+
+Comme dis plus haut je pense que pour la coherence il vaut mieux qu'elles partent
+Les salles scellées : une seule porte par avant-poste, ou les trois paliers dans les plus grands ?
+
+L'ideal serait des petits avant poste avec un seule de rang aleatoire et peut etre des plus gros villages ( citées mechaniques ) avec les 3
+Nouvelles questions
+On tente Dwarven Automatons malgré son passage par Sinytra Connector ?
+
+Quels biomes renommer exactement ? Je propose : plaines, savane, désert, taïga, plaines enneigées (ceux des avant-postes).
+
+","complete":true},"frame":{"slug":"d5d3b218-d382-41f0-8011-ff25e8da97fe","url":"https://claude.ai/artifact/TQSwJmA268fFaF2xm2HpPP","artifactUrl":"https://claude.ai/artifact/TQSwJmA268fFaF2xm2HpPP"}}

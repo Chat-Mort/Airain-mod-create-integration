@@ -1,0 +1,460 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "05_age_ciel"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "minecraft:elytra" }
+	id: "4703C8C5F5EB4F30"
+	order_index: 5
+	quests: [
+		{
+			dependencies: ["139325E7E48DBC39"]
+			id: "73796EB7BAF6E4A1"
+			rewards: [
+				{
+					xp: 300
+					id: "6513F5194DE5AF13"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "simulated:physics_assembler" }
+					count: 1L
+					id: "15938BE2A9FA1D82"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["73796EB7BAF6E4A1"]
+			id: "1605A034446002D5"
+			rewards: [
+				{
+					xp: 300
+					id: "5620E4956AEE6A9B"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "aeronautics:propeller_bearing" }
+					count: 2L
+					id: "1FC0CDEC45B65918"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "aeronautics:andesite_propeller" }
+					count: 2L
+					id: "319768004DF2ECCF"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["73796EB7BAF6E4A1"]
+			id: "57F64A3976275B83"
+			rewards: [
+				{
+					xp: 300
+					id: "62D7B6D741391622"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "aeronautics:white_envelope" }
+					count: 64L
+					id: "66345E10A78D01F7"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "aeronautics:adjustable_burner" }
+					count: 1L
+					id: "5A19CC58B8D445D9"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["1605A034446002D5", "57F64A3976275B83"]
+			id: "5645B33FC3535356"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "61618D0587056446"
+					type: "item"
+				}
+				{
+					xp: 500
+					id: "3C15334CEB2D8D69"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "6D28C15D9B56B3C8"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["57F64A3976275B83"]
+			id: "618F5BC2D53A0570"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "2FC2CC47E83422E8"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "aeronautics:white_envelope" }
+					count: 256L
+					id: "17E1A8DB9AA85BB6"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5645B33FC3535356"]
+			id: "2DFFED2A5E3EF921"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "7E6B2B1201FEC4BC"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:cannon_mount" }
+					count: 2L
+					id: "1CA72AD8735E9DB3"
+					type: "item"
+				}
+				{
+					id: "1E4194C485B7F2CA"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5645B33FC3535356"]
+			id: "47ADCC0B3FAD7F28"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:schema_ciel" }
+					id: "4BAB6F0D5A613BB4"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "59C8B6CDAB3FC18D"
+					type: "item"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_casing" }
+					count: 64L
+					consume_items: true
+					id: "1C4159FFF4DCC9FF"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "aeronautics:white_envelope" }
+					count: 128L
+					consume_items: true
+					id: "709F8E1FDFFFF4BD"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["2DFFED2A5E3EF921"]
+			id: "68A1EAD2EBC7AD8C"
+			rewards: [
+				{
+					xp: 300
+					id: "2B44DB4045E33928"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					dimension: "minecraft:the_end"
+					id: "508C08142AEC33B2"
+					type: "dimension"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["68A1EAD2EBC7AD8C"]
+			id: "7F01288868696FF3"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "286E171CAF03EBBE"
+					type: "item"
+				}
+				{
+					xp: 1500
+					id: "60A97B0F6913AEC8"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					entity: "minecraft:ender_dragon"
+					value: 1L
+					id: "57D7F8B45A0BAFC8"
+					type: "kill"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7F01288868696FF3"]
+			id: "781B4AE91894BA53"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:shulker_box" }
+					count: 2
+					id: "53A7333AFB0F3CBE"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					structure: "minecraft:end_city"
+					id: "62050247282B24AA"
+					type: "structure"
+				}
+				{
+					item: { count: 1, id: "minecraft:elytra" }
+					count: 1L
+					id: "42EB0CF62948C7D2"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["781B4AE91894BA53"]
+			id: "16093FB4B909B8E5"
+			rewards: [
+				{
+					xp: 800
+					id: "746F83ECF298564D"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create_jetpack:jetpack" }
+					count: 1L
+					id: "3137271C9547E126"
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["5645B33FC3535356"]
+			id: "739C8164C9982BC6"
+			rewards: [
+				{
+					command: "tag @s add airain_atelier"
+					permission_level: 2
+					silent: true
+					id: "3CF03D2E4AB40E50"
+					type: "command"
+				}
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "674D51FAF9953D82"
+					type: "item"
+				}
+			]
+			shape: "hexagon"
+			size: 1.5d
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:book" }
+					count: 64L
+					consume_items: true
+					id: "164077FF10187B36"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:lapis_lazuli" }
+					count: 64L
+					consume_items: true
+					id: "40A3EE05B5A788FB"
+					type: "item"
+				}
+				{
+					value: 30L
+					points: false
+					id: "2A31EBF14A69C3D8"
+					type: "xp"
+				}
+			]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["739C8164C9982BC6"]
+			id: "3B5B4C7E5A9E504E"
+			optional: true
+			rewards: [
+				{
+					xp: 500
+					id: "3308530464F1EFFC"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "41C252E79D478015"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["781B4AE91894BA53"]
+			id: "225937F4E9E720B6"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "2265AA917F3515FE"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:ender_pearl" }
+					count: 32L
+					id: "203DC040A0FA7BC2"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "minecraft:potion" }
+					count: 4L
+					id: "564BA80465C9A3F3"
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["225937F4E9E720B6", "16093FB4B909B8E5"]
+			id: "61675AD339969EEC"
+			rewards: [
+				{
+					item: { count: 1, id: "minecraft:totem_of_undying" }
+					id: "1F32FE8A1F663911"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "3FC6B54732611E6B"
+					type: "checkmark"
+				}
+			]
+			x: 16.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["61675AD339969EEC"]
+			id: "4C11C27421D7B2F4"
+			rewards: [
+				{
+					item: { count: 1, id: "kubejs:fragment_vide" }
+					id: "30536C66CE82A2BB"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					count: 2
+					id: "7E72CCAA33A37948"
+					type: "item"
+				}
+				{
+					xp: 3000
+					id: "4219C8C675456D6A"
+					type: "xp"
+				}
+			]
+			shape: "hexagon"
+			size: 1.75d
+			tasks: [
+				{
+					entity: "cataclysm:ender_guardian"
+					value: 1L
+					id: "4E63B8F8098C1E23"
+					type: "kill"
+				}
+			]
+			x: 18.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5645B33FC3535356"]
+			id: "1D19C2609F2DC9FE"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "2C9E8B17650576FC"
+					type: "item"
+				}
+				{
+					xp: 500
+					id: "340A4B2F93527F7A"
+					type: "xp"
+				}
+			]
+			tasks: [
+				{
+					id: "3ECABC6BB57075F8"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+	]
+}

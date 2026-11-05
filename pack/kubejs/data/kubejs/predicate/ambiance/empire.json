@@ -1,0 +1,16 @@
+{
+  "condition": "minecraft:location_check",
+  "predicate": {
+    "structures": [
+      "kubejs:avant_poste_tempere",
+      "kubejs:avant_poste_desert",
+      "kubejs:avant_poste_froid",
+      "kubejs:avant_poste_savane",
+      "kubejs:cite_mecanique",
+      "kubejs:station_capsules",
+      "kubejs:ruine_atelier",
+      "kubejs:ruine_conduite",
+      "kubejs:ruine_reservoir"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/enceinte_a",
+        "processors": "kubejs:avant_poste_enceinte",
+        "projection": "terrain_matching"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/enceinte_b",
+        "processors": "kubejs:avant_poste_enceinte",
+        "projection": "terrain_matching"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:avant_poste/froid/enceinte_c",
+        "processors": "kubejs:avant_poste_enceinte",
+        "projection": "terrain_matching"
+      }
+    }
+  ]
+}

@@ -1,0 +1,318 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "11_commandes"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "numismatics:cog" }
+	id: "1F79C3CBBD28C61C"
+	order_index: 11
+	quests: [
+		{
+			dependencies: ["605C7D0D8F9D52AD"]
+			id: "66BDF063180A33F3"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "3CC0D4654DE41690"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "1270D746021228DD"
+					type: "checkmark"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "6E108C45FF1015DD"]
+			id: "2616FA2DD6124E22"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "2960169BC8F8FF9F"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:bread" }
+					count: 64L
+					consume_items: true
+					id: "1B528A56D1F63BE3"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -3.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "3DC7156494A0EA62"]
+			id: "72464843991ABAFB"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:bevel" }
+					count: 4
+					id: "26ACD71C03347895"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:andesite_alloy" }
+					count: 128L
+					consume_items: true
+					id: "1C1F4972ECE94EAE"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -3.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "12774D49FDCC5AA1"]
+			id: "687DE16EA4871143"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 4
+					id: "6E007D36259794A0"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:iron_sheet" }
+					count: 128L
+					consume_items: true
+					id: "2A714F274EFC00D6"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "5F56E688DC1454DE"]
+			id: "2EF37A4DD7D32352"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "19852B2A133ED561"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:copper_sheet" }
+					count: 128L
+					consume_items: true
+					id: "642A67BEC15D7959"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -3.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "3683E03BE02A53FF"]
+			id: "2D595A10D32FC61D"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "1BB9694FA346AF01"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:fluid_pipe" }
+					count: 64L
+					consume_items: true
+					id: "28585B9741F23A59"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "31D630A6895FF90A"]
+			id: "3E42AFB5B4ED0540"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "4955A23C84CBC02A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_ingot" }
+					count: 128L
+					consume_items: true
+					id: "5904A7C38E961239"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "78BB158FFEA4A6B8"]
+			id: "1CA0FA6F8952E2D7"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "5071370E6416854C"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:precision_mechanism" }
+					count: 32L
+					consume_items: true
+					id: "2E6FA61222F7F2AF"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "68203257D12F33AA"]
+			id: "23E3A6500C449AEB"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "1A73AA90E56A28F2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:track" }
+					count: 256L
+					consume_items: true
+					id: "6A8FCDC6DCD7D864"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "6B1A427C3921B026"]
+			id: "6EC3CFDAA91A4268"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2BA2F2F6DC813035"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createbigcannons:solid_shot" }
+					count: 32L
+					consume_items: true
+					id: "2FC1EC3215F7239B"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "618F5BC2D53A0570"]
+			id: "685E510A3BD4D040"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "3349D5194D3603F7"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "aeronautics:white_envelope" }
+					count: 128L
+					consume_items: true
+					id: "7DD1ED66DCE4DB72"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "2AB864DB22E2AED6"]
+			id: "6CB81EFFB7F0CBB5"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "48A171774E15C210"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:electron_tube" }
+					count: 64L
+					consume_items: true
+					id: "1AD22D250268FBB1"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["66BDF063180A33F3", "31C724BE22F84506"]
+			id: "27C73491488EF22F"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:crown" }
+					id: "298E428E2623F9F0"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "kubejs:plaque_netherite" }
+					count: 4L
+					consume_items: true
+					id: "4995CA5122D6CE0F"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.0d
+		}
+	]
+}

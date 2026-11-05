@@ -1,0 +1,89 @@
+"""Plans v7 : registre des sujets et génération des 46 tableaux."""
+import os
+from PIL import Image
+from plans7 import planche
+from plans import PLANCHES, CONSERVES, AUTEURS_PLANS
+import sujets_a as A, sujets_b as B, sujets_c as C, sujets_d as D
+
+SUJETS = {
+ "engrenage": ("COGWHEEL", 1, A.rouage, [], None), "vanne": ("VALVE", 1, A.vanne, [], None), "manometre": ("GAUGE", 0.9, A.manometre, [], None),
+ "ampoule": ("BULB", 0.75, A.ampoule, [], None), "ressort": ("SPRING", 0.75, A.ressort, [], None), "lunettes": ("GOGGLES", 1.6, A.lunettes, [], None),
+ "cle": ("KEY", 0.7, A.cle, [], None), "boulon": ("BOLT", 0.7, A.boulon, [], None),
+ "reverbere": ("LAMP POST", 0.4, A.reverbere, [], None), "tesla": ("TESLA COIL", 0.42, A.tesla, [], None), "automate": ("AUTOMATON", 0.42, A.automate, [], None),
+ "locomotive": ("LOCOMOTIVE", 2.2, A.locomotive, [], None), "voiture": ("STEAM CAR", 2.1, A.voiture, [], None), "sousmarin": ("SUBMARINE", 2.6, A.sousmarin, [], None),
+ "velocipede": ("VELOCIPEDE", 1.9, A.velocipede, [], None), "lunette": ("TELESCOPE", 2.0, A.lunette, [], None),
+ "balancier": ("BEAM ENGINE", 1.1, B.balancier, [(0.5, 0.22, "PIVOT"), (0.2, 0.68, "CYLINDER"), (0.8, 0.66, "FLYWHEEL"), (0.62, 0.42, "GOVERNOR")], None),
+ "tete": ("AUTOMATON HEAD", 1, B.tete, [(0.37, 0.44, "OPTIC"), (0.77, 0.48, "EAR GEAR"), (0.5, 0.66, "GRILLE"), (0.5, 0.9, "NECK")], None),
+ "scaphandre": ("DIVING HELMET", 1, B.scaphandre, [(0.5, 0.44, "VISOR"), (0.76, 0.42, "PORT"), (0.28, 0.88, "WING NUT"), (0.8, 0.27, "AIR")], None),
+ "chaudiere": ("BOILER", 1.15, B.chaudiere, [(0.24, 0.08, "STACK"), (0.84, 0.12, "GAUGE"), (0.84, 0.72, "FIREBOX"), (0.4, 0.58, "SHELL")], None),
+ "dirigeable": ("AIRSHIP", 1.3, B.dirigeable, [(0.5, 0.36, "ENVELOPE"), (0.48, 0.8, "GONDOLA"), (0.81, 0.71, "ENGINE"), (0.92, 0.18, "FIN")], None),
+ "montre": ("POCKET WATCH", 0.85, B.montre, [(0.5, 0.13, "CROWN"), (0.47, 0.44, "MOVEMENT"), (0.5, 0.75, "SECONDS"), (0.86, 0.58, "CASE")], None),
+ "bras": ("MECHANICAL ARM", 1.1, B.bras, [(0.21, 0.68, "SHOULDER"), (0.47, 0.3, "ELBOW"), (0.92, 0.27, "CLAW"), (0.33, 0.75, "PISTON")], None),
+ "capsule": ("CAPSULE", 0.85, B.capsule, [(0.5, 0.34, "WINDOW"), (0.5, 0.695, "PLATE"), (0.86, 0.75, "FEED"), (0.5, 0.92, "BASE")], None),
+ "turbine": ("STEAM TURBINE", 1.2, B.turbine, [(0.33, 0.25, "INLET"), (0.55, 0.45, "BLADES"), (0.67, 0.92, "EXHAUST"), (0.92, 0.56, "BEARING")], None),
+ "cloche": ("DIVING BELL", 0.95, B.cloche, [(0.5, 0.3, "PORTHOLE"), (0.5, 0.84, "SKIRT"), (0.5, 0.1, "LIFT EYE"), (0.16, 0.96, "BALLAST")], None),
+ "moulin": ("WINDMILL", 0.95, B.moulin, [(0.42, 0.32, "HUB"), (0.2, 0.12, "SAIL"), (0.5, 0.73, "GALLERY"), (0.83, 0.4, "FANTAIL")], None),
+ "triple": ("TRIPLE ENGINE", 1, B.triple, [(0.5, 0.28, "BOILER"), (0.5, 0.78, "SPINE"), (0.5, 0.55, "BEAM"), (0.22, 0.34, "HEAD")], None),
+ "ornithoptere": ("ORNITHOPTER", 1.15, C.ornithoptere, [(0.48, 0.58, "DRIVE"), (0.56, 0.3, "WING"), (0.04, 0.5, "TAIL"), (0.64, 0.46, "CANOPY")], A.rouage),
+ "oiseau": ("CLOCKWORK BIRD", 1.1, C.oiseau, [(0.69, 0.32, "EYE"), (0.46, 0.27, "KEY"), (0.36, 0.56, "WING"), (0.5, 0.91, "PERCH")], A.cle),
+ "marcheur": ("STEAM WALKER", 1.1, C.marcheur, [(0.5, 0.3, "CABIN"), (0.75, 0.04, "STACK"), (0.8, 0.66, "KNEE"), (0.92, 0.34, "LAMP")], A.ressort),
+ "diapason": ("ECHO TUNING FORK", 0.9, C.diapason, [(0.36, 0.2, "PRONG"), (0.5, 0.53, "CRYSTAL"), (0.5, 0.88, "RESONATOR"), (0.82, 0.26, "WAVE")], A.ampoule),
+ "presse": ("MECHANICAL PRESS", 1.1, C.presse, [(0.5, 0.13, "SHAFT"), (0.5, 0.62, "HEAD"), (0.5, 0.735, "SHEET"), (0.16, 0.5, "FRAME")], A.rouage),
+ "foreuse": ("DRILL HEAD", 0.9, C.foreuse, [(0.5, 0.17, "MOTOR"), (0.5, 0.36, "GEARBOX"), (0.5, 0.75, "BIT"), (0.86, 0.4, "COOLANT")], A.engrenage if hasattr(A, "engrenage") else A.rouage),
+ "roue": ("WATER WHEEL", 1.15, C.roue, [(0.52, 0.5, "AXLE"), (0.3, 0.3, "BUCKET"), (0.2, 0.15, "FLUME"), (0.58, 0.8, "PIER")], A.boulon),
+ "lanterne": ("LIGHTHOUSE LAMP", 1, C.lanterne, [(0.5, 0.52, "LENS"), (0.3, 0.6, "GLAZING"), (0.5, 0.72, "GALLERY"), (0.5, 0.08, "VENT")], A.ampoule),
+ "horloge": ("CLOCK TOWER", 0.6, C.horloge, [(0.5, 0.21, "DIAL"), (0.5, 0.04, "SPIRE"), (0.5, 0.64, "PENDULUM"), (0.5, 0.92, "DOOR")], A.rouage),
+ "jetpack": ("JETPACK", 0.8, C.jetpack, [(0.3, 0.42, "TANK"), (0.5, 0.34, "GAUGE"), (0.7, 0.78, "NOZZLE"), (0.9, 0.36, "STRAP")], A.manometre),
+ "bateau": ("PADDLE STEAMER", 2.6, C.bateau, [(0.72, 0.48, "PADDLE"), (0.37, 0.12, "STACKS"), (0.54, 0.34, "WHEELHOUSE"), (0.5, 0.78, "HULL")], None),
+ "aeroplane": ("STEAM BIPLANE", 2.4, C.aeroplane, [(0.9, 0.43, "PROP"), (0.69, 0.42, "BOILER"), (0.48, 0.15, "WING"), (0.03, 0.28, "RUDDER")], None),
+ "grue": ("HARBOUR CRANE", 2.4, C.grue, [(0.2, 0.6, "TOWER"), (0.6, 0.15, "JIB"), (0.06, 0.2, "WEIGHT"), (0.74, 0.65, "HOOK")], None),
+ "tramway": ("STEAM TRAM", 2.6, C.tramway, [(0.3, 0.42, "WINDOWS"), (0.5, 0.46, "DOOR"), (0.88, 0.06, "STACK"), (0.16, 0.88, "BOGIE")], None),
+ "excavatrice": ("STEAM SHOVEL", 2.2, C.excavatrice, [(0.17, 0.2, "STACK"), (0.6, 0.26, "BOOM"), (0.9, 0.66, "DIPPER"), (0.27, 0.87, "TRACKS")], None),
+ "colosse": ("IRON COLOSSUS", 1.25, C.colosse, [(0.5, 0.1, "HEAD"), (0.5, 0.34, "CORE"), (0.82, 0.69, "FIST"), (0.4, 0.86, "LEG")], A.rouage),
+ "cuirasse": ("SKY DREADNOUGHT", 1.45, C.cuirasse, [(0.5, 0.3, "ENVELOPE"), (0.46, 0.56, "TURRET"), (0.5, 0.75, "HULL"), (0.92, 0.75, "ENGINE")], A.vanne),
+ "marteau": ("STEAM HAMMER", 1.05, C.marteau, [(0.5, 0.13, "CYLINDER"), (0.5, 0.54, "TUP"), (0.5, 0.82, "ANVIL"), (0.86, 0.5, "LEVER")], A.manometre),
+
+ # ---- machines de Create
+ "manivelle": ("HAND CRANK", 1, D.manivelle, [], None), "bruleur": ("BLAZE BURNER", 0.9, D.bruleur, [], None),
+ "boite": ("GEARBOX", 1, D.boite_vitesses, [], None), "cle_create": ("WRENCH", 0.6, D.cle_create, [], None),
+ "ventilo": ("ENCASED FAN", 1, D.ventilateur, [], None),
+ "tapis": ("MECHANICAL BELT", 2.4, D.tapis, [], None), "scie": ("MECHANICAL SAW", 2.0, D.scie, [], None),
+ "moteur": ("STEAM ENGINE", 1.1, D.moteur_vapeur, [(0.35, 0.5, "TANK"), (0.35, 0.92, "BURNER"), (0.7, 0.52, "ENGINE"), (0.88, 0.42, "COG")], None),
+ "coucou": ("CUCKOO CLOCK", 0.9, D.coucou, [(0.5, 0.48, "DIAL"), (0.5, 0.2, "BIRD DOOR"), (0.5, 0.9, "PENDULUM"), (0.36, 0.9, "WEIGHT")], None),
+ "meule": ("MILLSTONE", 1, D.meule, [(0.5, 0.34, "STONES"), (0.5, 0.76, "CASING"), (0.5, 0.96, "COG"), (0.5, 0.06, "INPUT")], None),
+ "mixeur": ("MECHANICAL MIXER", 1, D.mixeur, [(0.5, 0.25, "HEAD"), (0.5, 0.48, "SHAFT"), (0.64, 0.72, "WHISK"), (0.5, 0.92, "BASIN")], A.rouage),
+ "concasseur": ("CRUSHING WHEELS", 1.2, D.concasseur, [(0.28, 0.56, "WHEEL L"), (0.72, 0.56, "WHEEL R"), (0.5, 0.2, "ORE IN"), (0.5, 0.9, "CRUSHED")], A.rouage),
+ "presse_create": ("MECHANICAL PRESS", 1.1, D.presse_create, [(0.5, 0.2, "CASING"), (0.86, 0.2, "COG"), (0.5, 0.62, "HEAD"), (0.5, 0.84, "DEPOT")], A.rouage),
+ "foreuse_create": ("MECHANICAL DRILL", 1.4, D.foreuse_create, [(0.3, 0.5, "CASING"), (0.7, 0.5, "BIT"), (0.06, 0.5, "SHAFT"), (0.97, 0.5, "TIP")], A.rouage),
+}
+
+# tableaux convertis en machines de Create : (sujet, titre FR, titre EN)
+CREATE = {
+ "aztec": ("manivelle", "Manivelle", "Hand Crank"), "bomb": ("bruleur", "Brûleur à blaze", "Blaze Burner"),
+ "kebab": ("boite", "Boîte à engrenages", "Gearbox"), "plant": ("cle_create", "Clé de l'ingénieur", "Engineer's Wrench"),
+ "wasteland": ("ventilo", "Ventilateur à carter", "Encased Fan"),
+ "sunset": ("tapis", "Tapis roulant", "Mechanical Belt"), "sea": ("scie", "Scie mécanique", "Mechanical Saw"),
+ "void": ("moteur", "Moteur à vapeur", "Steam Engine"), "match": ("coucou", "Horloge à coucou", "Cuckoo Clock"),
+ "wind": ("meule", "Meule", "Millstone"),
+ "tides": ("mixeur", "Mélangeur mécanique", "Mechanical Mixer"), "cotan": ("concasseur", "Roues de concassage", "Crushing Wheels"),
+ "fern": ("presse_create", "Presse mécanique", "Mechanical Press"), "owlemons": ("foreuse_create", "Perceuse mécanique", "Mechanical Drill"),
+}
+PLANCHES.update(CREATE)
+
+def generer(nom, w, h):
+    return planche(w*64, h*64, SUJETS, PLANCHES[nom][0], graine=sum(map(ord, nom)))
+
+if __name__ == "__main__":
+    from tableaux4 import SPEC
+    os.makedirs("painting7", exist_ok=True); ims = []
+    for nom in PLANCHES:
+        w, h = SPEC[nom][:2]; im = generer(nom, w, h); im.save(f"painting7/{nom}.png"); ims.append((w*h, w, im))
+    for nom in CONSERVES: os.system(f"cp painting4/{nom}.png painting7/{nom}.png")
+    ims.sort(key=lambda t: (t[0], t[1]))
+    W = 1500; x = y = 10; rowh = 0; c = Image.new("RGB", (W, 5000), (36, 34, 38))
+    for _, _, im in ims:
+        z = 2 if im.width <= 128 and im.height <= 128 else 1
+        im = im.resize((im.width*z, im.height*z), Image.NEAREST)
+        if x + im.width > W - 10: x = 10; y += rowh + 10; rowh = 0
+        c.paste(im, (x, y)); x += im.width + 10; rowh = max(rowh, im.height)
+    c.crop((0, 0, W, y + rowh + 10)).save("/home/claude/apercus/plans_v7.png")

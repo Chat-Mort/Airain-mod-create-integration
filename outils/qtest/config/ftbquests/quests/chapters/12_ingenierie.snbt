@@ -1,0 +1,243 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "12_ingenierie"
+	group: ""
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "create:mechanical_harvester" }
+	id: "1172B9D9F1004842"
+	order_index: 12
+	quests: [
+		{
+			dependencies: ["5E5F8A3BE04D22CA"]
+			id: "146CEF081856F7C6"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "73597DA14E40E231"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:oak_planks" }
+					count: 512L
+					id: "14514EC42FD0D126"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["671D029F4D599454"]
+			id: "20736FBF273C7E22"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "34B251D096C0E2B7"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:cooked_beef" }
+					count: 64L
+					id: "76DD8561C8117144"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2A6746E2E9BA639E"]
+			id: "6B69D38F6FEEAF3D"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "1CDB49CD99592601"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:filter" }
+					count: 4L
+					id: "4D19BE9471F3E607"
+					type: "item"
+				}
+				{
+					id: "5844E32B2AF5012D"
+					type: "checkmark"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6E108C45FF1015DD"]
+			id: "303C4600D2F40D99"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "753157AB1CB0A4AD"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:sugar_cane" }
+					count: 256L
+					id: "20D4BFE5BBA92B1B"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["146CEF081856F7C6"]
+			id: "2290363A0D1E891A"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "234EBF47F7B01C92"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:oak_log" }
+					count: 256L
+					id: "2F6A483FCAB9C8F0"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5E5F8A3BE04D22CA"]
+			id: "3FC181E6EAD2F9AB"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "1226FE63EDE232A9"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "minecraft:cobblestone" }
+					count: 1024L
+					id: "26B6768339834887"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["16F6CF9BF8AE44DC", "2C32E48616BB7DF5"]
+			id: "5EC88E01813B9167"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "7A5771D1C86C797F"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:blaze_burner" }
+					count: 4L
+					id: "1942A9E4B97A2745"
+					type: "item"
+				}
+				{
+					id: "188780D48AC150A4"
+					type: "checkmark"
+				}
+			]
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["45CA43199084EBB5", "2AB864DB22E2AED6"]
+			id: "3D95E57BC7AAF705"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "2D2B403B0A42D8F2"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:brass_funnel" }
+					count: 8L
+					id: "2A83F8C8E7016013"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["12774D49FDCC5AA1"]
+			id: "337B0BA5127D891F"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "31F1AAE395736A4A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "create:item_vault" }
+					count: 8L
+					id: "271F37B99D2A81CA"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["187081628EA4ED2B", "53673928BEED9E60"]
+			id: "7D7CCDE15946F46E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "36433072821FBF93"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "createoreexcavation:vein_finder" }
+					count: 1L
+					id: "2A00A9E583A1E00B"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "createoreexcavation:drilling_machine" }
+					count: 1L
+					id: "73CA5F371E8AD407"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 2.0d
+		}
+	]
+}

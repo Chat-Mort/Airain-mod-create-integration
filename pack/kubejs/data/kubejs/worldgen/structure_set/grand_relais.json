@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "kubejs:grand_relais",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 90,
+    "separation": 35,
+    "salt": 57721566,
+    "exclusion_zone": {
+      "other_set": "kubejs:avant_postes",
+      "chunk_count": 6
+    }
+  }
+}

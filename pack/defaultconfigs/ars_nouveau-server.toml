@@ -1,0 +1,4 @@
+# Ars Nouveau : le carnet n'est plus donné à la connexion.
+# On l'obtient avec la quête « Une autre force » (chapitre II, optionnelle).
+[general]
+	spawnBook = false

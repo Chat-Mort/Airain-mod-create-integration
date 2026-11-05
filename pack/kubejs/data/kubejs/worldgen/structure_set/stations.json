@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "kubejs:station_capsules",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 70,
+    "separation": 26,
+    "salt": 31415926,
+    "exclusion_zone": {
+      "other_set": "kubejs:avant_postes",
+      "chunk_count": 5
+    }
+  }
+}

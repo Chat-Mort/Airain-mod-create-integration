@@ -1,0 +1,256 @@
+#!/usr/bin/env python3
+"""La voie de l'Écho : le Sanctuaire réfractaire (refuge d'Ada Vesper) et le Grand Relais (arène du Chœur des Égarés).
+usage : echo_structures.py <dossier du pack>"""
+import json, math, os, random, sys
+from nbtlib import Compound, Int, String, List
+from pieces import Piece, VOID, AIR, coffre, panneau
+from style import *
+
+P = sys.argv[1]; D = os.path.join(P, "kubejs/data"); HERE = os.path.dirname(os.path.abspath(__file__))
+pieces = []
+def w(rel, obj):
+    f = os.path.join(D, rel); os.makedirs(os.path.dirname(f), exist_ok=True)
+    json.dump(obj, open(f, "w"), indent=2, ensure_ascii=False)
+
+RONDIN = "minecraft:spruce_log[axis=y]"
+ARCHE = "ars_nouveau:blue_archwood_log[axis=y]"
+FEUILLE = "ars_nouveau:blue_archwood_leaves[distance=1,persistent=true,waterlogged=false]"
+CRISTAL = "minecraft:amethyst_cluster[facing=up,waterlogged=false]"
+BOUGIE = "minecraft:purple_candle[candles=3,lit=true,waterlogged=false]"
+PIERRE_ECHO = "ars_nouveau:sourcestone"
+FEU_AME = "minecraft:soul_campfire[facing=north,lit=true,signal_fire=false,waterlogged=false]"
+LANTERNE_AME = "minecraft:soul_lantern[hanging=false,waterlogged=false]"
+
+def livre(titre_cle, auteur, cles):
+    return Compound({"id": String("minecraft:written_book"), "count": Int(1), "components": Compound({
+        "minecraft:written_book_content": Compound({"title": String(auteur), "author": String(auteur),
+            "pages": List[String]([String(json.dumps({"translate": k})) for k in cles])}),
+        "minecraft:custom_name": String(json.dumps({"translate": titre_cle, "italic": False}))})})
+
+def cercle_echo(pc, cx, cz, rayon):
+    """Cercle d'Écho : sol de calcite, améthyste, piliers de pierre d'Écho, feu d'âmes au centre."""
+    for x in range(cx - rayon, cx + rayon + 1):
+        for z in range(cz - rayon, cz + rayon + 1):
+            d = math.hypot(x - cx, z - cz)
+            if d <= rayon + 0.3:
+                pc.put(x, 0, z, "minecraft:amethyst_block" if abs(d - rayon + 1) < 0.6 else "minecraft:calcite")
+    pc.put(cx, 0, cz, "minecraft:soul_soil"); pc.put(cx, 1, cz, FEU_AME)
+    for a in range(0, 360, 90):
+        x = cx + round(math.cos(math.radians(a)) * rayon); z = cz + round(math.sin(math.radians(a)) * rayon)
+        for y in (1, 2):
+            pc.put(x, y, z, PIERRE_ECHO)
+        pc.put(x, 3, z, CRISTAL)
+    for a in range(45, 360, 90):
+        x = cx + round(math.cos(math.radians(a)) * (rayon - 1)); z = cz + round(math.sin(math.radians(a)) * (rayon - 1))
+        pc.put(x, 1, z, BOUGIE)
+
+def arbre_echo(pc, x, z, h=5):
+    for y in range(1, h + 1):
+        pc.put(x, y, z, ARCHE)
+    for dx in range(-2, 3):
+        for dz in range(-2, 3):
+            for y in (h - 1, h, h + 1):
+                if abs(dx) + abs(dz) <= (3 if y < h + 1 else 1) and not (dx == 0 and dz == 0 and y <= h):
+                    if pc.get(x + dx, y, z + dz) in (AIR, VOID):
+                        pc.put(x + dx, y, z + dz, FEUILLE)
+
+# =====================================================================================================
+# LE SANCTUAIRE RÉFRACTAIRE — le refuge d'Ada Vesper. Rapiécé comme les camps, mais l'Écho y est partout.
+# =====================================================================================================
+S = 33
+sa = Piece("kubejs:refractaires/sanctuaire", S, 12, S, fond=VOID); pieces.append(sa)
+r = random.Random(808)
+for x in range(S):
+    for z in range(S):
+        sa.put(x, 0, z, r.choice(("minecraft:podzol", "minecraft:coarse_dirt", "minecraft:moss_block", "minecraft:calcite", "minecraft:podzol")))
+        if 1 < x < S - 2 and 1 < z < S - 2:
+            for y in range(1, 8):
+                sa.put(x, y, z, AIR)
+for x in range(1, S - 1):                                     # palissade d'archebois et de sapin, couronnée de cristaux
+    for z in range(1, S - 1):
+        if min(x, z, S - 1 - x, S - 1 - z) != 1 or (14 <= x <= 18 and z == S - 2):
+            continue
+        hh = r.choice((3, 4, 4))
+        bois = ARCHE if r.random() < 0.45 else RONDIN
+        for y in range(1, hh + 1):
+            sa.put(x, y, z, bois)
+        if r.random() < 0.3:
+            sa.put(x, hh + 1, z, CRISTAL)
+cercle_echo(sa, 16, 14, 5)
+# la bibliothèque d'Ada : une grande tente de laine violette, bibliothèques, pupitre
+for x in range(4, 13):
+    for z in range(4, 11):
+        bord = x in (4, 12) or z in (4, 10)
+        sa.put(x, 0, z, "minecraft:spruce_planks")
+        if bord:
+            for y in (1, 2, 3):
+                sa.put(x, y, z, "minecraft:purple_wool" if (x + z + y) % 4 else "minecraft:white_wool")
+        sa.put(x, 4, z, "minecraft:purple_wool" if z in (6, 7, 8) or x in (5, 11) else AIR)
+    sa.put(x, 5, 7, "minecraft:purple_wool")
+for z in range(5, 10):
+    sa.put(5, 4, z, "minecraft:purple_wool"); sa.put(11, 4, z, "minecraft:purple_wool")
+for y in (1, 2):
+    sa.put(8, y, 10, AIR)                                     # entrée côté cercle
+for z in (5, 6, 8, 9):
+    for y in (1, 2):
+        sa.put(5, y, z, "minecraft:bookshelf"); sa.put(11, y, z, "minecraft:bookshelf" if z != 9 else "minecraft:chiseled_bookshelf[facing=west,slot_0_occupied=false,slot_1_occupied=false,slot_2_occupied=false,slot_3_occupied=false,slot_4_occupied=false,slot_5_occupied=false]")
+cles = ["airain.ada.p%d" % i for i in range(1, 7)]
+sa.put(8, 1, 6, "minecraft:lectern[facing=south,has_book=true,powered=false]",
+       Compound({"id": String("minecraft:lectern"), "Book": livre("airain.ada.titre", "Ada Vesper", cles), "Page": Int(0)}))
+sa.put(*(7, 1, 5), *coffre("kubejs:chests/sanctuaire", "south"))
+sa.put(9, 1, 5, PIERRE_ECHO); sa.put(9, 2, 5, LANTERNE_AME); sa.put(6, 1, 8, BOUGIE); sa.put(10, 1, 8, BOUGIE)
+# arbres d'archebois, jardin d'améthyste, tentes, tour de guet
+for (x, z) in ((25, 6), (27, 12), (6, 24), (25, 25)):
+    arbre_echo(sa, x, z, r.choice((4, 5)))
+for (x, z) in ((20, 22), (21, 23), (22, 22), (19, 24), (23, 24), (21, 21)):
+    sa.put(x, 0, z, "minecraft:amethyst_block"); sa.put(x, 1, z, CRISTAL if r.random() < 0.6 else "minecraft:large_amethyst_bud[facing=up,waterlogged=false]")
+for (x0, z0, coul) in ((18, 4, "red"), (13, 22, "purple")):
+    for i in range(5):
+        for (d, y) in ((0, 1), (0, 2), (2, 1), (2, 2), (1, 3)):
+            sa.put(x0 + i, y, z0 + d, "minecraft:%s_wool" % (coul if (i + d + y) % 3 else "white"))
+        sa.put(x0 + i, 1, z0 + 1, AIR); sa.put(x0 + i, 2, z0 + 1, AIR)
+for (x, z) in ((27, 27), (29, 27), (27, 29), (29, 29)):
+    for y in range(1, 6):
+        sa.put(x, y, z, ARCHE)
+for x in range(27, 30):
+    for z in range(27, 30):
+        sa.put(x, 6, z, "minecraft:spruce_planks")
+for y in range(1, 6):
+    sa.put(28, y, 26, "minecraft:ladder[facing=north,waterlogged=false]")
+sa.put(28, 6, 27, AIR); sa.put(28, 7, 28, LANTERNE_AME)
+for (x, z) in ((3, 16), (29, 16), (16, 3), (10, 20), (22, 10)):
+    sa.put(x, 1, z, LANTERNE_AME)
+sa.jigsaw(16, 0, 26, "north", "kubejs:etal", "kubejs:etal", "kubejs:refractaires/etals_echo", "minecraft:coarse_dirt")
+
+# =====================================================================================================
+# LE GRAND RELAIS — là où la ligne principale du Transfert a cédé. Un pylône géant effondré,
+# l'Écho cristallisé partout, et au sud, le résonateur où l'on frappe le diapason.
+# =====================================================================================================
+G = 45; C = G // 2
+gr = Piece("kubejs:ruines/grand_relais", G, 26, G, fond=VOID); pieces.append(gr)
+r = random.Random(4242)
+for x in range(G):
+    for z in range(G):
+        d = math.hypot(x - C, z - C)
+        if d <= 21:
+            gr.put(x, 0, z, "minecraft:calcite" if d < 17 else r.choice(("minecraft:calcite", "minecraft:smooth_basalt", "minecraft:tuff")))
+            if d > 15 and r.random() < 0.08:
+                gr.put(x, 0, z, "minecraft:amethyst_block")
+            for y in range(1, 6):
+                gr.put(x, y, z, AIR)
+for a in range(0, 360, 30):                                   # couronne de piliers de pierre d'Écho autour de l'arène
+    x = C + round(math.cos(math.radians(a)) * 18); z = C + round(math.sin(math.radians(a)) * 18)
+    h = r.choice((2, 3, 4))
+    for y in range(1, h + 1):
+        gr.put(x, y, z, PIERRE_ECHO if y < h else "minecraft:amethyst_block")
+    gr.put(x, h + 1, z, CRISTAL)
+# le pylône : base 7×7 de fonte, brisé à 18 de haut, bobines de cuivre
+for x in range(C - 3, C + 4):
+    for z in range(C - 3, C + 4):
+        bord = x in (C - 3, C + 3) or z in (C - 3, C + 3)
+        coin = x in (C - 3, C + 3) and z in (C - 3, C + 3)
+        haut = 18 - (abs(x - C) + abs(z - C)) // 2 - r.randint(0, 3)
+        for y in range(1, haut + 1):
+            if bord:
+                gr.put(x, y, z, "create:industrial_iron_block" if coin else ("minecraft:weathered_copper" if y % 6 == 3 else "create:weathered_iron_block"))
+for y in (4, 10, 16):                                         # anneaux de bobine
+    for x in range(C - 4, C + 5):
+        for z in range(C - 4, C + 5):
+            if max(abs(x - C), abs(z - C)) == 4 and r.random() < 0.8:
+                gr.put(x, y, z, "minecraft:copper_block")
+# l'Écho jaillit du cœur du pylône : colonne d'améthyste
+for y in range(1, 15):
+    gr.put(C, y, C, "minecraft:amethyst_block")
+    if y % 3 == 0:
+        for (dx, dz) in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            gr.put(C + dx, y, C + dz, CRISTAL.replace("facing=up", "facing=" + {(1, 0): "east", (-1, 0): "west", (0, 1): "south", (0, -1): "north"}[(dx, dz)]))
+gr.put(C, 15, C, CRISTAL)
+# la partie haute, tombée vers l'est
+for i in range(12):
+    x = C + 5 + i; y = 1 + (1 if i < 4 else 0)
+    for dz in (-1, 0, 1):
+        gr.put(x, y, C + dz, "create:weathered_iron_block" if dz else "create:industrial_iron_block")
+    if i % 4 == 1:
+        for dz in (-2, 2):
+            gr.put(x, y, C + dz, "minecraft:copper_block")
+    if r.random() < 0.4:
+        gr.put(x, y + 1, C + r.choice((-1, 0, 1)), CRISTAL)
+gr.put(C + 17, 2, C, "minecraft:lightning_rod[facing=east,powered=false,waterlogged=false]")
+# grandes excroissances d'améthyste sur l'arène
+for _ in range(14):
+    a = r.uniform(0, 2 * math.pi); d = r.uniform(7, 15)
+    x = C + round(math.cos(a) * d); z = C + round(math.sin(a) * d)
+    if z > C + 9 and abs(x - C) < 4:
+        continue                                              # on garde le chemin du résonateur dégagé
+    h = r.choice((1, 2, 3))
+    for y in range(1, h + 1):
+        gr.put(x, y, z, "minecraft:amethyst_block")
+    gr.put(x, h + 1, z, CRISTAL)
+for (x, z) in ((C - 9, C - 6), (C + 8, C - 9), (C - 12, C + 5), (C + 11, C + 7)):
+    gr.put(x, 0, z, "minecraft:soul_soil"); gr.put(x, 1, z, "minecraft:soul_fire")
+# le résonateur : magnétite sur ardoise renforcée (introuvable en survie), sur une estrade au sud du pylône
+RZ = C + 12
+for x in range(C - 2, C + 3):
+    for z in range(RZ - 2, RZ + 3):
+        gr.put(x, 0, z, "minecraft:polished_deepslate" if max(abs(x - C), abs(z - RZ)) == 2 else "minecraft:deepslate_tiles")
+gr.put(C, 0, RZ, "minecraft:reinforced_deepslate"); gr.put(C, 1, RZ, "minecraft:lodestone")
+for (dx, dz) in ((-2, -2), (2, -2), (-2, 2), (2, 2)):
+    gr.put(C + dx, 1, RZ + dz, PIERRE_ECHO); gr.put(C + dx, 2, RZ + dz, "minecraft:soul_lantern[hanging=false,waterlogged=false]")
+gr.put(*(C, 2, RZ - 3), *panneau("", face="south", couleur="light_purple", lignes=[
+    '""', json.dumps({"translate": "airain.grand_relais.panneau1"}), json.dumps({"translate": "airain.grand_relais.panneau2"}), '""']))
+gr.put(C, 1, RZ - 3, PIERRE_ECHO); gr.put(C, 2, RZ - 4, PIERRE_ECHO)
+gr.put(*(C + 5, 1, RZ + 3), *coffre("kubejs:chests/grand_relais", "north"))
+from pieces import appliquer_retouches
+print("retouches :", appliquer_retouches(pieces))
+
+for pc in pieces:
+    pc.ecrire(os.path.join(D, "kubejs/structure"))
+
+# =====================================================================================================
+# GÉNÉRATION, BUTIN, TEXTES
+# =====================================================================================================
+el = lambda loc: {"weight": 1, "element": {"element_type": "minecraft:single_pool_element", "location": loc,
+                                           "processors": "minecraft:empty", "projection": "rigid"}}
+def pool(nom, elements): w("kubejs/worldgen/template_pool/%s.json" % nom, {"fallback": "minecraft:empty", "elements": elements})
+def structure(nom, start, biomes, size=1, hauteur=0):
+    w("kubejs/worldgen/structure/%s.json" % nom, {"type": "minecraft:jigsaw", "biomes": biomes, "step": "surface_structures",
+      "spawn_overrides": {}, "terrain_adaptation": "beard_thin", "start_pool": start, "size": size,
+      "start_height": {"absolute": hauteur}, "project_start_to_heightmap": "WORLD_SURFACE_WG",
+      "max_distance_from_center": 80, "use_expansion_hack": False})
+pool("refractaires/sanctuaire", [el("kubejs:refractaires/sanctuaire")])
+w("kubejs/tags/worldgen/biome/sanctuaires.json", {"values": ["minecraft:" + b for b in ("taiga", "snowy_taiga", "snowy_plains", "old_growth_spruce_taiga", "meadow")]})
+structure("sanctuaire_refractaire", "kubejs:refractaires/sanctuaire", "#kubejs:sanctuaires", size=2)
+w("kubejs/worldgen/structure_set/sanctuaires.json", {"structures": [{"structure": "kubejs:sanctuaire_refractaire", "weight": 1}],
+  "placement": {"type": "minecraft:random_spread", "spacing": 64, "separation": 22, "salt": 16180339,
+                "exclusion_zone": {"other_set": "kubejs:avant_postes", "chunk_count": 6}}})
+pool("ruines/grand_relais", [el("kubejs:ruines/grand_relais")])
+w("kubejs/tags/worldgen/biome/grand_relais.json", {"values": ["minecraft:" + b for b in ("plains", "sunflower_plains", "meadow", "savanna", "snowy_plains", "taiga")]})
+structure("grand_relais", "kubejs:ruines/grand_relais", "#kubejs:grand_relais")
+w("kubejs/worldgen/structure_set/grand_relais.json", {"structures": [{"structure": "kubejs:grand_relais", "weight": 1}],
+  "placement": {"type": "minecraft:random_spread", "spacing": 90, "separation": 35, "salt": 14142135,
+                "exclusion_zone": {"other_set": "kubejs:avant_postes", "chunk_count": 6}}})
+
+def n(item, a, b, poids=1):
+    return {"type": "minecraft:item", "name": item, "weight": poids,
+            "functions": [{"function": "minecraft:set_count", "count": {"type": "minecraft:uniform", "min": a, "max": b}}]}
+w("kubejs/loot_table/chests/sanctuaire.json", {"type": "minecraft:chest", "pools": [
+  {"rolls": {"type": "minecraft:uniform", "min": 4, "max": 6}, "entries": [
+    n("minecraft:amethyst_shard", 6, 16, 3), n("ars_nouveau:source_gem", 2, 5, 3), n("minecraft:lapis_lazuli", 6, 14, 2),
+    n("kubejs:fragment_resonance", 1, 3, 2), n("minecraft:experience_bottle", 3, 8, 2), n("minecraft:book", 2, 5, 1),
+    n("numismatics:bevel", 2, 4, 1)]}]})
+w("kubejs/loot_table/chests/grand_relais.json", {"type": "minecraft:chest", "pools": [
+  {"rolls": {"type": "minecraft:uniform", "min": 3, "max": 5}, "entries": [
+    n("minecraft:amethyst_shard", 8, 20, 3), n("ars_nouveau:source_gem", 3, 8, 3), n("kubejs:fragment_resonance", 2, 5, 3),
+    n("minecraft:experience_bottle", 4, 10, 2), n("numismatics:cog", 1, 2, 1)]}]})
+# le relais brisé donne aussi quelques fragments
+rb = os.path.join(D, "kubejs/loot_table/chests/relais_brise.json")
+j = json.load(open(rb)); j["pools"][0]["entries"].append(n("kubejs:fragment_resonance", 1, 3, 3)); json.dump(j, open(rb, "w"), indent=2)
+
+TX = {"fr_fr": {"airain.grand_relais.panneau1": "Résonateur", "airain.grand_relais.panneau2": "Ligne principale"},
+      "en_us": {"airain.grand_relais.panneau1": "Resonator", "airain.grand_relais.panneau2": "Main line"}}
+L = os.path.join(P, "kubejs/assets/kubejs/lang")
+for code, t in TX.items():
+    f = os.path.join(L, code + ".json"); jj = json.load(open(f)); jj.update(t)
+    json.dump(jj, open(f, "w"), indent=2, ensure_ascii=False)
+json.dump({pc.nom: pc.apercu() for pc in pieces}, open(os.path.join(HERE, "echo_pieces.json"), "w"))
+print(len(pieces), "pièces")

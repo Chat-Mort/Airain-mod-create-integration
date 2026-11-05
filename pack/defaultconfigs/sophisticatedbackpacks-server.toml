@@ -1,0 +1,5 @@
+# L'Empire d'Airain : un monstre qui porte un sac le lâche toujours quand un joueur l'abat,
+# y compris par une machine de Create (perceuse, déployeur…). Les autres réglages gardent leur valeur par défaut.
+[server.entityBackpackAdditions]
+	dropToFakePlayers = true
+	backpackDropChance = 1.0

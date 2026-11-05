@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""Étape 2 : couleurs des biomes (datapack) + noms des biomes et des monstres (lang)."""
+import json, os, sys, colorsys
+from PIL import Image
+S=os.path.dirname(os.path.abspath(__file__)); PACK=sys.argv[1]
+BIO=os.path.join(S,"mcmeta-data/data/minecraft/worldgen/biome")
+CM=os.path.join(S,"mcmeta-assets/assets/minecraft/textures/colormap")
+grass=Image.open(os.path.join(CM,"grass.png")).convert("RGB"); foli=Image.open(os.path.join(CM,"foliage.png")).convert("RGB")
+NOMS={ # id: (fr, en)
+ "plains":("Plaines désertées","Deserted Plains"),"sunflower_plains":("Champs abandonnés","Abandoned Fields"),
+ "snowy_plains":("Toundra muette","Silent Tundra"),"ice_spikes":("Aiguilles de givre","Frost Spires"),
+ "desert":("Désert de rouille","Rust Desert"),"swamp":("Marais des égouts","Sewer Marsh"),
+ "mangrove_swamp":("Mangrove des cuves","Vat Mangrove"),"forest":("Forêt reprise","Reclaimed Forest"),
+ "flower_forest":("Jardins oubliés","Forgotten Gardens"),"birch_forest":("Bois pâles","Pale Woods"),
+ "old_growth_birch_forest":("Futaie pâle","Old Pale Woods"),"dark_forest":("Forêt sans lumière","Lightless Forest"),
+ "taiga":("Taïga silencieuse","Silent Taiga"),"snowy_taiga":("Taïga gelée","Frozen Taiga"),
+ "old_growth_pine_taiga":("Pinède des anciens","Elders' Pinewood"),"old_growth_spruce_taiga":("Sapinière des anciens","Elders' Firwood"),
+ "savanna":("Savane brûlée","Scorched Savanna"),"savanna_plateau":("Plateau brûlé","Scorched Plateau"),
+ "windswept_hills":("Collines battues","Battered Hills"),"windswept_gravelly_hills":("Collines de gravats","Rubble Hills"),
+ "windswept_forest":("Forêt battue","Battered Forest"),"windswept_savanna":("Savane battue","Battered Savanna"),
+ "jungle":("Jungle envahissante","Overgrown Jungle"),"sparse_jungle":("Jungle clairsemée","Sparse Jungle"),
+ "bamboo_jungle":("Bambouseraie","Bamboo Thicket"),"badlands":("Terres rouillées","Rustlands"),
+ "eroded_badlands":("Terres rongées","Eroded Rustlands"),"wooded_badlands":("Terres rouillées boisées","Wooded Rustlands"),
+ "meadow":("Prairie d'altitude","High Meadow"),"cherry_grove":("Vergers du Conseil","Council Orchards"),
+ "grove":("Bosquet blanc","White Grove"),"snowy_slopes":("Pentes muettes","Silent Slopes"),
+ "frozen_peaks":("Pics gelés","Frozen Peaks"),"jagged_peaks":("Crocs de pierre","Stone Fangs"),"stony_peaks":("Pics de minerai","Ore Peaks"),
+ "river":("Ancien canal","Old Canal"),"frozen_river":("Canal gelé","Frozen Canal"),
+ "beach":("Grève","Strand"),"snowy_beach":("Grève gelée","Frozen Strand"),"stony_shore":("Quai effondré","Collapsed Quay"),
+ "ocean":("Mer grise","Grey Sea"),"deep_ocean":("Abysses","Abyss"),"warm_ocean":("Mer tiède","Warm Sea"),
+ "lukewarm_ocean":("Mer douce","Mild Sea"),"deep_lukewarm_ocean":("Abysses douces","Mild Abyss"),
+ "cold_ocean":("Mer froide","Cold Sea"),"deep_cold_ocean":("Abysses froides","Cold Abyss"),
+ "frozen_ocean":("Banquise","Ice Shelf"),"deep_frozen_ocean":("Abysses gelées","Frozen Abyss"),
+ "mushroom_fields":("Champignonnière","Mushroom Farm"),"dripstone_caves":("Grottes suintantes","Seeping Caves"),
+ "lush_caves":("Serres souterraines","Underground Greenhouses"),"deep_dark":("Profondeurs muettes","Silent Depths"),
+}
+OBJETS={'arrow': ('Carreau', 'Bolt'), 'trident': ('Harpon', 'Harpoon'), 'fire_charge': ('Boulet incandescent', 'Glowing Shot')}
+MOBS={ # entité: (fr, en)
+ "zombie":('Chauffeur','Stoker'),
+ "husk":('Prospecteur','Prospector'),
+ "drowned":('Scaphandrier perdu','Lost Diver'),
+ "skeleton":('Arbalétrier','Crossbowman'),
+ "stray":('Veilleur des glaces','Ice Watcher'),
+ "bogged":('Drainier','Drainer'),
+ "wither_skeleton":('Fondeur','Smelter'),
+ "creeper":('Chaudière instable','Unstable Boiler'),
+ "spider":('Rampeuse mécanique','Mechanical Crawler'),
+ "cave_spider":('Rampeuse de réparation','Repair Crawler'),
+ "enderman":('Égaré du Vide','Void Wanderer'),
+ "endermite":('Puce du vide','Void Flea'),
+ "phantom":('Âme sans repos','Restless Soul'),
+ "slime":('Graisse vivante','Living Grease'),
+ "magma_cube":('Creuset vivant','Living Crucible'),
+ "silverfish":('Ver de forage','Drill Worm'),
+ "iron_golem":("Gardien d'airain",'Airain Guardian'),
+ "breeze":('Gardien du vent','Wind Guardian'),
+ "guardian":('Torpilleur','Torpedo Boat'),
+ "elder_guardian":('Gardien des marées','Tide Guardian'),
+ "blaze":('Lanterne de forge','Forge Lantern'),
+ "shulker":('Tourelle','Turret'),
+ "ghast":('Dirigeable fantôme','Ghost Airship'),
+ "piglin":("Forgeron de l'abîme",'Abyss Smith'),
+ "piglin_brute":('Garde de la forge','Forge Guard'),
+ "zombified_piglin":('Forgeron calciné','Charred Smith'),
+ "hoglin":('Bélier-locomotive','Locomotive Ram'),
+ "zoglin":('Épave','Wreck'),
+ "ender_dragon":('Gardien des portes','The Gatekeeper'),
+ "wither":('Triple Moteur','Triple Engine'),
+ "warden":('Gardien des profondeurs','Depths Warden'),
+}
+# ---------------------------------------------------------------- couleurs (même règle que le nuancier validé)
+def hls(c): return colorsys.rgb_to_hls(*[x/255 for x in c])
+def rgb(H,L,S): return tuple(round(x*255) for x in colorsys.hls_to_rgb(H%1,max(0,min(1,L)),max(0,min(1,S))))
+def mix(a,b,t): return tuple(round(x*(1-t)+y*t) for x,y in zip(a,b))
+AMBRE=(214,170,110); OLIVE=(128,128,70); VDG=(46,92,84); VDG_SOMBRE=(10,30,28)
+def ciel(c):  H,L,S=hls(c); return mix(rgb(H,L*0.95,S*0.45),AMBRE,0.22)
+def brume(c): H,L,S=hls(c); return mix(rgb(H,L*0.92,S*0.35),AMBRE,0.30)
+def eau(c):   return mix(c,VDG,0.65)
+def eau_brume(c): return mix(c,VDG_SOMBRE,0.6)
+def vert(c):  H,L,S=hls(c); return mix(rgb(H,L*0.92,S*0.70),OLIVE,0.25)
+t2=lambda v:((v>>16)&255,(v>>8)&255,v&255); i2=lambda c:(c[0]<<16)|(c[1]<<8)|c[2]
+def colormap(img,temp,down):
+    t=max(0,min(1,temp)); d=max(0,min(1,down))*t
+    return img.getpixel((int((1-t)*255),int((1-d)*255)))
+out=os.path.join(PACK,"kubejs/data/minecraft/worldgen/biome"); os.makedirs(out,exist_ok=True)
+for b in NOMS:
+    j=json.load(open(os.path.join(BIO,b+".json"))); e=j["effects"]
+    e["sky_color"]=i2(ciel(t2(e["sky_color"]))); e["fog_color"]=i2(brume(t2(e["fog_color"])))
+    e["water_color"]=i2(eau(t2(e["water_color"]))); e["water_fog_color"]=i2(eau_brume(t2(e["water_fog_color"])))
+    g=t2(e["grass_color"]) if "grass_color" in e else colormap(grass,j["temperature"],j["downfall"])
+    f=t2(e["foliage_color"]) if "foliage_color" in e else colormap(foli,j["temperature"],j["downfall"])
+    e["grass_color"]=i2(vert(g)); e["foliage_color"]=i2(vert(f))
+    json.dump(j,open(os.path.join(out,b+".json"),"w"),indent=2)
+# ---------------------------------------------------------------- noms (pack de ressources KubeJS, clés Minecraft)
+lang=os.path.join(PACK,"kubejs/assets/minecraft/lang"); os.makedirs(lang,exist_ok=True)
+for code,k in (("fr_fr",0),("en_us",1)):
+    L={}
+    for b,n in NOMS.items(): L["biome.minecraft."+b]=n[k]
+    for m,n in MOBS.items():
+        L["entity.minecraft."+m]=n[k]
+        if m!="breeze" or True:
+            L["item.minecraft.%s_spawn_egg"%m]=("Œuf d'apparition : "+n[0]) if k==0 else (n[1]+" Spawn Egg")
+    for o,n in OBJETS.items(): L["item.minecraft."+o]=n[k]
+    json.dump(L,open(os.path.join(lang,code+".json"),"w"),ensure_ascii=False,indent=2)
+# ---------------------------------------------------------------- plus de sorcières
+bm=os.path.join(PACK,"kubejs/data/kubejs/neoforge/biome_modifier"); os.makedirs(bm,exist_ok=True)
+json.dump({"type":"neoforge:remove_spawns","biomes":"#minecraft:is_overworld","entity_types":"minecraft:witch"},
+          open(os.path.join(bm,"sans_sorcieres.json"),"w"),indent=2)
+print(len(NOMS),"biomes,",len(MOBS),"monstres")

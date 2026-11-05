@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "kubejs:rouage_brise"
+    }
+  ],
+  "results": [
+    {
+      "id": "create:cogwheel"
+    }
+  ]
+}

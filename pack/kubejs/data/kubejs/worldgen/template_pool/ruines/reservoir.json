@@ -1,0 +1,23 @@
+{
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:ruines/reservoir_tombe",
+        "processors": "kubejs:ruine_usure",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "kubejs:ruines/reservoir_tombe_vide",
+        "processors": "kubejs:ruine_usure",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+
+######## 01_le_reveil.snbt — &6I&r · Le Réveil | Un monde vide. Pas une tombe, pas un squelette.
+[35F93598035AE578] title: Comprendre ce qui s'est passé
+[35F93598035AE578] quest_subtitle: Lisez le journal de l'ingénieur
+[35F93598035AE578] quest_desc: Vous vous réveillez dans une salle sans aucun souvenir. Cherchez des indices. /  / &8La quête se valide en refermant le carnet, à la dernière page.&r
+[605C7D0D8F9D52AD] title: Règles de survie
+[605C7D0D8F9D52AD] quest_desc: &eÀ deux :&r rejoignez la même équipe (/ftbteams party create, puis invite) pour partager le livre. / &eLes Schémas&r et &eles Sceaux&r débloquent les machines clés. Ils ne sont jamais consommés. / &eChaque joueur&r doit réclamer lui-même les récompenses qui ouvrent un portail ou un chantier. / &eLe comptoir&r du laboratoire échange vos pièces contre ce qu'on ne trouve nulle part. Payez avec les pièces exactes, ou par carte (quête « La banque de l'Empire »).
+[422022D7AAF0448C] title: Des outils dignes de ce nom
+[422022D7AAF0448C] quest_desc: Les outils se fabriquent toujours à la main. Seules les armes et armures passeront par les machines.
+[7F005683914676AB] title: Remonter à la surface
+[7F005683914676AB] quest_desc: Le laboratoire reste votre base. Dehors, le monde est vide : pas une tombe, pas un squelette. / Validez quand vous avez exploré les alentours.
+[66E7DFD4A54D2089] title: L'alliage d'andésite
+[66E7DFD4A54D2089] quest_desc: La base de toute la mécanique d'Airain. Andésite + pépite de fer ou de zinc.
+[39E9F1207BD8C9A9] title: La première roue
+[39E9F1207BD8C9A9] quest_desc: Une roue à eau dans un courant : votre première source de force mécanique. Portez les lunettes pour lire vitesse et contrainte.
+[564D3460A05544FE] title: Engrenages
+[564D3460A05544FE] quest_desc: Petit et grand engrenage : en les combinant, on change la vitesse. Plus vite = plus de contrainte.
+[1479F49A41F4DA32] title: Boîtiers d'andésite
+[1479F49A41F4DA32] quest_desc: Alliage d'andésite appliqué sur un tronc écorcé.
+[23667A58FF83BC81] title: La meule
+[23667A58FF83BC81] quest_desc: La meule broie gravier, fleurs, céréales… et les minerais bruts, avec un petit bonus.
+[315A19C157FEDB23] title: Tapis et dépôt
+[315A19C157FEDB23] quest_desc: Le tapis roulant (fait de varech séché) transporte les objets entre les machines.
+[175D62868380B4C5] title: Le moulin
+[175D62868380B4C5] quest_desc: Construisez un moulin qui alimente en même temps une meule, un tapis roulant et un dépôt. Validez la coche quand tout tourne.
+[3DC7156494A0EA62] title: Réserve d'alliage
+[3DC7156494A0EA62] quest_desc: Il en faudra beaucoup. Un mixeur saura bientôt le faire pour vous.
+[7E5194BB3CA7ED58] title: Équipement de départ
+[7E5194BB3CA7ED58] quest_desc: Armure de cuir et bouclier. L'armure de fer arrivera au chapitre II, avec la presse.
+[1503E9BC853DDD58] title: Signes de vie
+[1503E9BC853DDD58] quest_desc: Trouvez un avant-poste de l'Empire. Personne ne vous y attend, mais ses machines fonctionnent encore : on y achète ce qui manque contre des pièces. / Une salle y est restée scellée. Revenez quand vous aurez le bon Schéma.
+[5056F0EBCF563749] title: Les ruines enfouies
+[5056F0EBCF563749] quest_desc: &7Optionnel.&r Des ruines à moitié enterrées. Un pinceau révèle ce que la terre cache.
+[53B3D206C5511F69] title: Grand Chantier : le premier atelier
+[53B3D206C5511F69] quest_subtitle: Ouvre le chapitre II
+[53B3D206C5511F69] quest_desc: Livrez les matériaux pour remettre en état un atelier impérial. Ils sont consommés. / En échange : de quoi fabriquer votre première presse.
+
+######## 02_age_andesite.snbt — &6II&r · L'Âge de l'Andésite | Les premières machines. Et des ruines étrangement propres.
+[44080B72B3CD942B] title: La presse mécanique
+[44080B72B3CD942B] quest_desc: Bloc de fer + boîtier d'andésite. La presse aplatit les lingots en plaques : tout le chapitre en dépend.
+[4058125A46150053] title: Plaques de fer
+[781FE5FC0EF77559] title: Le mixeur et le bassin
+[781FE5FC0EF77559] quest_desc: Le mixeur au-dessus d'un bassin mélange les ingrédients. Automatisez l'alliage d'andésite avec.
+[671D029F4D599454] title: Le ventilateur
+[671D029F4D599454] quest_desc: Soufflé à travers l'eau : lavage. À travers le feu : cuisson ou fonte.
+[5E5F8A3BE04D22CA] title: Scie et perceuse
+[5E5F8A3BE04D22CA] quest_desc: Pour couper le bois et miner sans fatigue.
+[2A6746E2E9BA639E] title: Goulottes et entonnoirs
+[6E108C45FF1015DD] title: La ferme automatique
+[6E108C45FF1015DD] quest_desc: Une moissonneuse sur un engin qui va et vient récolte et replante. Le pain servira de provisions.
+[7A1EE1657346F1A8] title: La ligne de minerai
+[7A1EE1657346F1A8] quest_desc: Meule → lavage au ventilateur → cuisson. Validez quand la ligne tourne sans vous. / &8Les roues de broyage, plus rentables, arriveront au chapitre IV.&r
+[12774D49FDCC5AA1] title: Laminoir
+[12774D49FDCC5AA1] quest_desc: Elles serviront pour l'armure, les hélices, les goulottes et les commandes de l'Empire.
+[5B8A28AB21830019] title: L'armure de fer pressée
+[5B8A28AB21830019] quest_desc: Les armures de fer se fabriquent avec des &6plaques de fer&r au lieu des lingots.
+[45DA6B1623943C36] title: Une vraie arme
+[45DA6B1623943C36] quest_desc: Forgez une arme de fer de Simply Swords (épée longue, katana, lance…). Elles demandent aussi des plaques. Validez quand c'est fait.
+[2B1CA1C84EB763C4] title: Des ruines entretenues
+[2B1CA1C84EB763C4] quest_desc: Certaines ruines sont &opropres&r. Les mécanismes sont huilés, les couloirs balayés. Les gardiens ne sont peut-être pas déréglés… / &oMais pour qui font-ils la maintenance ?&r /  / &6&lJournal d'ingénieur&r / &oLes sentinelles de cuivre veilleront sur les salles d'épreuve.&r
+[20B07BC03DA5FDE0] title: Les salles d'épreuve
+[20B07BC03DA5FDE0] quest_desc: Sous terre, des salles de cuivre et de tuf. Videz quelques générateurs d'épreuve pour récupérer des clés.
+[1B5DBF55A3EA9939] title: Préparatifs
+[1B5DBF55A3EA9939] quest_desc: Bouclier, flèches et provisions avant l'épreuve funeste.
+[202B5ED65D83F0DE] title: Le présage funeste
+[202B5ED65D83F0DE] quest_desc: Les Réfractaires, ceux qui ont refusé le Transfert, vivent dans des camps de fortune. Environ un camp sur trois tient un étal qui vend la &6fiole funeste&r. / Buvez-la avant d'entrer dans une salle d'épreuve : elle devient funeste.
+[47A90C9D840F46EF] title: Le gardien du vent
+[47A90C9D840F46EF] quest_subtitle: Débloque le Schéma du Cuivre
+[47A90C9D840F46EF] quest_desc: Obtenez une &6clé funeste&r et abattez 10 gardiens de vent. /  / &eRécompense :&r le &6Schéma du Cuivre&r (pompe, bec verseur, égouttoir). / &8En tombant, le dernier gardien laisse échapper un éclat de métal tiède. Un souvenir.&r
+[42F7136AFE2BDD6A] title: Bonus : la masse d'armes
+[42F7136AFE2BDD6A] quest_desc: &7Optionnel.&r Le noyau lourd tombe rarement des coffres funestes.
+[37B3F0D4305E4904] title: La banque de l'Empire
+[37B3F0D4305E4904] quest_subtitle: Quête secondaire : payer par carte
+[37B3F0D4305E4904] quest_desc: &7Optionnel.&r Les distributeurs demandent les pièces exactes et ne rendent pas la monnaie. La banque règle ce problème. /  / 1. Fabriquez une &6carte bancaire&r : plaque de fer, plaque d'or et colorant blanc. / 2. Clic droit avec la carte en main : elle se lie à votre compte. / 3. Déposez vos pièces au &6terminal bancaire&r du comptoir. / 4. Achetez aux distributeurs en tenant la carte : la valeur totale est débitée, quelles que soient vos pièces.
+[484751AF0234DDF5] title: L'Écho
+[484751AF0234DDF5] quest_subtitle: Quête secondaire : la magie de l'Écho
+[484751AF0234DDF5] quest_desc: &7Optionnel.&r Pendant le Transfert, tous les esprits ne sont pas arrivés jusqu'au Cœur. Ceux qui se sont perdus flottent encore dans le monde : les Réfractaires appellent cela l'&dÉcho&r. / L'Empire l'avait interdit. Les Réfractaires, eux, ont appris à s'en servir. L'améthyste résonne avec lui. / Rapportez des éclats d'améthyste et du lapis-lazuli : un carnet réfractaire vous apprendra à capter l'Écho. / &8Récompense : le carnet d'Ars Nouveau, le guide de toute la magie de l'Écho.&r
+
+######## 03_age_cuivre.snbt — &6III&r · L'Âge du Cuivre | Les fluides, les profondeurs, et les inscriptions.
+[4FCBF12D61978F2E] title: Boîtier de cuivre
+[3683E03BE02A53FF] title: Tuyauterie
+[1BFEB1057231EE88] title: La pompe mécanique
+[1BFEB1057231EE88] quest_desc: Engrenage + tuyau + &6Schéma du Cuivre&r (non consommé).
+[53A08AFC6A48F66F] title: Réservoirs
+[315CF297898F138E] title: Bec verseur et égouttoir
+[2C32E48616BB7DF5] title: La machine à vapeur
+[2C32E48616BB7DF5] quest_desc: Réservoirs + eau + un feu dessous : la chaleur passive fait tourner une petite machine à vapeur. / &8Les brûleurs à blaze du chapitre IV la rendront bien plus puissante.&r
+[5F56E688DC1454DE] title: Feuilles de cuivre
+[5F56E688DC1454DE] quest_desc: Pour les tuyaux, l'équipement de plongée et l'armure de diamant.
+[79C3C6BDEB9D9F14] title: Grand Chantier : la Forge impériale
+[79C3C6BDEB9D9F14] quest_subtitle: Débloque l'armure de diamant
+[79C3C6BDEB9D9F14] quest_desc: Rallumez la forge de l'Empire. Les plaques sont consommées. / &eRécompense :&r le &6Sceau de la Forge&r, exigé (sans être consommé) par l'armure de diamant.
+[1AC4C8BD4097E5BF] title: L'armure de diamant
+[1AC4C8BD4097E5BF] quest_desc: Diamants + plaques de cuivre + Sceau de la Forge.
+[6BA5E8ED8CF404BA] title: L'équipement de plongée
+[6BA5E8ED8CF404BA] quest_desc: Le réservoir dorsal se recharge en air quand on le pose sur une source de rotation. Avec le casque, on respire sous l'eau.
+[370DB6CD983FF0CC] title: Les inscriptions
+[370DB6CD983FF0CC] quest_desc: Sur les murs d'une ruine noyée, répétées des centaines de fois : / &o« Nous dormons dans le métal. »&r / &o« Le grand transfert approche. »&r /  / &6&lJournal d'ingénieur&r / &oLes gardiens des marées garderont le secret de l'alliage.&r
+[3B38C5096A245F19] title: Les ruines englouties
+[3B38C5096A245F19] quest_desc: Le temple de prismarine où l'Empire cachait le secret du laiton. Repérez-le avant de l'attaquer. / &8Récompense : les livres Respiration III et Affinité aquatique, pour le casque de plongée.&r
+[68BE2867F6DDB6F9] title: Préparatifs sous-marins
+[68BE2867F6DDB6F9] quest_desc: Le lait annule la fatigue de minage des gardiens. Un réservoir d'air chargé, et c'est parti.
+[6DB0A3122C849921] title: Le gardien des marées
+[6DB0A3122C849921] quest_subtitle: Schéma du Laiton, ouverture du Nether
+[6DB0A3122C849921] quest_desc: Les trois gardiens anciens du monument. /  / &eRécompenses :&r le &6Schéma du Laiton&r (brûleur à blaze), et le &cNether&r s'ouvre pour vous. / &8Chaque joueur doit réclamer sa propre récompense pour pouvoir passer le portail.&r
+
+######## 04_age_laiton.snbt — &6IV&r · L'Âge du Laiton | Le cœur de la technologie d'Airain. Et une salle pleine de capsules vides.
+[49E4BA6154AA295A] title: Vers le Nether
+[16F6CF9BF8AE44DC] title: Capturer un blaze
+[16F6CF9BF8AE44DC] quest_desc: Brûleur vide (avec le Schéma du Laiton), puis clic droit sur un blaze. Placé sous un bassin, il chauffe le mixeur.
+[2AB864DB22E2AED6] title: Quartz et tubes
+[2AB864DB22E2AED6] quest_desc: Quartz du Nether + redstone = quartz rose. Poli, il devient le cœur des tubes électroniques.
+[45CA43199084EBB5] title: L'alliage impérial
+[1DE601252CF5A646] title: Boîtier de laiton
+[1FBF918B2C978F2C] title: Le déployeur
+[1FBF918B2C978F2C] quest_desc: Il agit comme un joueur : il pose, utilise, assemble. Il rend possible l'assemblage en séquence.
+[187081628EA4ED2B] title: Mécanisme de précision
+[187081628EA4ED2B] quest_desc: Une chaîne de déployeurs et de presses construit pièce par pièce. Maintenez W sur une machine pour son tutoriel.
+[5E756F97CBFB58A5] title: L'assembleur mécanique
+[53673928BEED9E60] title: Les roues de broyage
+[53673928BEED9E60] quest_desc: Fabriquées à l'assembleur mécanique. Environ deux fois plus de métal par minerai.
+[236F61406199A692] title: Le bras mécanique
+[31D630A6895FF90A] title: Fonderie de laiton
+[78BB158FFEA4A6B8] title: Chaîne de précision
+[30A89C3EB74F4D50] title: Le bastion
+[30A89C3EB74F4D50] quest_desc: Les bastions cachent les gabarits d'amélioration en netherite.
+[31C724BE22F84506] title: Plaques de netherite
+[31C724BE22F84506] quest_desc: Lingot de netherite → déployeur (mécanisme de précision) → presse. Ces plaques remplacent le lingot à la table de forgeron.
+[5DD61605A436607E] title: L'armure de netherite
+[68203257D12F33AA] title: Poser les rails
+[68203257D12F33AA] quest_desc: Les rails se fabriquent par assemblage en séquence. Les ruines sont loin : reliez le monde.
+[5D4486926E02A87D] title: Le premier train
+[5D4486926E02A87D] quest_desc: Validez quand un train fait seul l'aller-retour entre deux gares.
+[2F130DA613E8FEE3] title: Deux lignes
+[2F130DA613E8FEE3] quest_desc: Un réseau d'au moins deux lignes, avec des signaux pour éviter les collisions.
+[20D678D8A2CEF427] title: Grand Chantier : le réseau des Waystones
+[20D678D8A2CEF427] quest_subtitle: Débloque la pose des Waystones
+[20D678D8A2CEF427] quest_desc: Remettez en marche le réseau de téléportation de l'Empire. Ensuite, vous pourrez poser vos propres Waystones.
+[72573259B6EDF8F7] title: Grand Chantier : la gare impériale
+[72573259B6EDF8F7] quest_subtitle: Débloque les interfaces de stockage portables
+[72573259B6EDF8F7] quest_desc: Une gare digne de l'Empire. Elle débloque les interfaces portables, pour charger et décharger les trains.
+[6069B3B98BE0D757] title: La salle des capsules
+[6069B3B98BE0D757] quest_desc: Une salle immense. Des milliers de capsules de laiton, alignées. &lToutes vides.&r Des câbles en sortent, tous vers le bas. /  / &6&lJournal d'ingénieur&r / &oLe transfert a commencé. Nous entrons dans le métal un par un.&r / &oJe serai le dernier.&r
+[5A05D09AC645F0CD] title: Une batterie de canons
+[5A05D09AC645F0CD] quest_desc: Quatre canons complets. Le fer se fond dans un bassin chauffé, puis se coule dans un moule.
+[6B1A427C3921B026] title: Munitions
+[6FDC2B7E31680DCF] title: Préparatifs infernaux
+[6FDC2B7E31680DCF] quest_desc: Des potions (résistance au feu conseillée) et des pommes dorées : la monstruosité frappe fort.
+[139325E7E48DBC39] title: La forge des âmes
+[139325E7E48DBC39] quest_subtitle: Schéma du Ciel, ouverture de l'End
+[139325E7E48DBC39] quest_desc: Au fond d'une forge des âmes dort une &cmonstruosité de netherite&r. Bombardez-la, puis finissez le travail. /  / &eRécompenses :&r le &6Schéma du Ciel&r (assembleur physique, roulement d'hélice), et l'&5End&r s'ouvre pour vous.
+
+######## 05_age_ciel.snbt — &6V&r · L'Âge du Ciel | L'Empire avait des cités volantes.
+[73796EB7BAF6E4A1] title: L'assembleur physique
+[73796EB7BAF6E4A1] quest_desc: Avec le Schéma du Ciel. Il transforme une construction en véhicule qui obéit à la physique.
+[1605A034446002D5] title: Hélices
+[57F64A3976275B83] title: Le ballon
+[57F64A3976275B83] quest_desc: Des enveloppes au-dessus d'un brûleur à air chaud : la portance.
+[5645B33FC3535356] title: Premier envol
+[5645B33FC3535356] quest_desc: Faites décoller votre premier engin et volez au-dessus des nuages.
+[618F5BC2D53A0570] title: Chantier de toile
+[2DFFED2A5E3EF921] title: Le navire de guerre
+[2DFFED2A5E3EF921] quest_desc: Montez au moins deux canons sur votre engin volant. Le ciel n'est pas vide.
+[47ADCC0B3FAD7F28] title: Grand Chantier : le chantier naval
+[47ADCC0B3FAD7F28] quest_subtitle: Un second Schéma du Ciel
+[47ADCC0B3FAD7F28] quest_desc: Un second Schéma du Ciel, pour que chacun puisse construire de son côté.
+[68A1EAD2EBC7AD8C] title: Au-delà du portail
+[7F01288868696FF3] title: Le gardien des portes
+[781B4AE91894BA53] title: Les cités volantes
+[781B4AE91894BA53] quest_desc: Des tours suspendues dans le vide. L'architecture rappelle étrangement celle de l'Empire.
+[16093FB4B909B8E5] title: Le jetpack
+[16093FB4B909B8E5] quest_desc: Votre réservoir d'air dorsal, des élytres et du laiton, assemblés à l'assembleur mécanique.
+[739C8164C9982BC6] title: Grand Chantier : l'atelier d'enchantement
+[739C8164C9982BC6] quest_subtitle: Débloque les machines d'enchantement
+[739C8164C9982BC6] quest_desc: Rouvrez l'atelier : vous pourrez poser l'enchanteur à blaze, la forge à blaze et l'imprimante d'Enchantment Industry.
+[3B5B4C7E5A9E504E] title: Robes d'Écho
+[3B5B4C7E5A9E504E] quest_desc: &7Optionnel.&r Pour celui de l'équipe qui suit la voie de l'Écho : une pièce d'armure d'Ars Nouveau (sorcier, arcaniste ou mage de bataille). Validez quand elle est portée.
+[225937F4E9E720B6] title: Préparatifs célestes
+[225937F4E9E720B6] quest_desc: Perles et potions (chute lente conseillée) pour la citadelle.
+[61675AD339969EEC] title: Bientôt
+[61675AD339969EEC] quest_desc: Partout où vous passez, des machines s'allument seules. Des engrenages tournent sans force. /  / &6&lJournal d'ingénieur&r / &oIl a répondu. Il sait que quelqu'un vient.&r
+[4C11C27421D7B2F4] title: La citadelle en ruine
+[4C11C27421D7B2F4] quest_subtitle: Le dernier fragment
+[4C11C27421D7B2F4] quest_desc: Au troisième étage d'une citadelle en ruine de l'End, l'&5autel du vide&r. Approchez et le gardien s'éveille. / &8Il ne meurt pas en hurlant. Il murmure : « Bientôt. »&r
+
+######## 06_coeur_airain.snbt — &6VI&r · Le Cœur d'Airain | Rassembler les mémoires. Rallumer le Cœur.
+[1C331299D7A13876] title: La grille d'assemblage
+[1C331299D7A13876] quest_desc: Le Cœur se forge sur une grille 5 × 5 d'assembleurs : il en faut 21. Reliez-les à la clé.
+[1D6182D685EE0401] title: La Salle du Cœur
+[1D6182D685EE0401] quest_desc: Construisez une salle d'au moins 9 × 9 avec la grille au centre. L'Empire mérite un écrin.
+[6FF5B231E6CCF065] title: Les matériaux du Cœur
+[1FCBD41B7D95520D] title: Le cœur de la mer
+[1FCBD41B7D95520D] quest_desc: Dans les trésors enfouis (cartes au trésor des épaves), ou à la boutique.
+[65D3DED4428A3995] title: Les quatre mémoires
+[65D3DED4428A3995] quest_desc: Côte à côte, les fragments se répondent. Leurs inscriptions forment une seule phrase : / &o« Rendez-nous notre Cœur. »&r
+[2C3306FF10D176A1] title: Forger le Cœur
+[2C3306FF10D176A1] quest_desc: Consultez la recette dans EMI, catégorie assembleur mécanique.
+[11C988C0F5B9F881] title: Réactiver le Cœur
+[11C988C0F5B9F881] quest_subtitle: &cLe retournement&r
+[11C988C0F5B9F881] quest_desc: Vous tenez le Cœur à deux mains. Il bat. Il chauffe. Et très loin sous vos pieds, quelque chose répond. /  / Le carnet s'ouvre tout seul à une page restée blanche. Des lettres s'y gravent, comme brûlées de l'intérieur : /  / &6&o« Merci. / Ces pages, ces gardiens, ces schémas : c'est nous qui les avons placés sur votre route. / Il nous fallait des mains vivantes pour rallumer le Cœur. / Nous n'avons jamais disparu. Nous attendions dans le métal. / Maintenant, nous revenons. Et ce monde redevient le nôtre. »&r /  / &cL'Empire d'Airain se réveille.&r
+[308DA6D9FACBFFB4] title: Préparer le siège
+[7D567EF62083EB45] title: La réserve de soins
+[7D567EF62083EB45] quest_desc: Des potions de soin, de force, de résistance au feu. L'Empire ne fera pas de quartier.
+[1CB86E4CE793D650] title: Renforcer la base
+[1CB86E4CE793D650] quest_desc: Trois affûts de canon autour de la base. Validez quand ils sont en place.
+
+######## 07_reconquete.snbt — &4VII&r · La Reconquête | L'Empire est revenu. Il veut son monde.
+[3F70267359AFD16A] title: L'Empire s'éveille
+[3F70267359AFD16A] quest_desc: Les ruines ne dorment plus. Vous avez rendu son Cœur à l'Empire. À vous de l'arrêter.
+[71DF30C0262B65CA] title: Première vague
+[71DF30C0262B65CA] quest_desc: Les morts se lèvent autour des ruines. Abattez-les (le compteur avance à chaque ennemi tué).
+[7ED07D538A789774] title: Deuxième vague
+[5B3EC0CEF0830078] title: Troisième vague
+[211383434933E242] title: La cité brûlée
+[211383434933E242] quest_desc: Une ancienne cité de l'Empire, gardée par des revenants embrasés.
+[71C1917F8DAC3905] title: La cité des sables
+[58D982FE0CA0F710] title: La cité du serpent
+[6581B56BF39E0D5F] title: L'étincelle de secours
+[6581B56BF39E0D5F] quest_desc: &7Optionnel.&r Si l'étoile du Nether offerte par le Cœur est perdue, le Wither en donne une autre.
+[173E532804C19AAB] title: Le berceau de l'Empire
+[173E532804C19AAB] quest_desc: Une usine ancienne enfouie vers Y -30. Le Cœur vous en a donné la direction.
+[18B5F8ACE26BB5D7] title: La sentinelle
+[5BC8E9FED58E5BF5] title: L'étincelle
+[5BC8E9FED58E5BF5] quest_desc: Une étoile du Nether réveillera l'Empereur endormi dans sa machine.
+[1B424BE661BF65B3] title: L'Empereur d'Airain
+[1B424BE661BF65B3] quest_subtitle: &4Boss final&r
+[1B424BE661BF65B3] quest_desc: Au centre de l'usine, une machine immense, immobile. L'Empereur, fusionné avec ce qu'il a construit. / Clic droit avec l'étoile du Nether pour le réveiller. &cIl est extrêmement dangereux.&r
+[1EAB9C7B77E4AB38] title: Épilogue
+[1EAB9C7B77E4AB38] quest_desc: Le silence revient. Les machines de l'Empire s'arrêtent une à une, pour de bon. / Le Cœur d'Airain bat encore dans votre inventaire. Plus doucement. Il ne répond plus à personne. Il est à vous. /  / &6Merci d'avoir joué à L'Empire d'Airain.&r
+[52FA0BE465BA921D] title: Défi final : les autres boss
+[52FA0BE465BA921D] quest_desc: &7Optionnel.&r Pour ceux qui en veulent encore.
+
+######## 10_sacs_stockage.snbt — &3Annexe&r · Sacs et stockage | Avant chaque expédition, un sac plus grand.
+[50D4055059B84939] title: Le premier sac
+[50D4055059B84939] quest_desc: Cuir, ficelle et un coffre. Clic droit pour l'ouvrir, et il peut se poser au sol.
+[76BF387EB0CFFC46] title: Sac de cuivre
+[76BF387EB0CFFC46] quest_desc: L'échangeur d'outils prend tout seul le bon outil dans le sac.
+[2CB5DA93642E7418] title: Tonneaux de l'Empire
+[24CC53E36E5B5F0A] title: Sac de fer
+[24CC53E36E5B5F0A] quest_desc: Avant les salles d'épreuve : un sac plus grand qui ramasse tout seul.
+[49C49B3652FB243A] title: Le stockage s'organise
+[3BA0D7C84446401F] title: Sac d'or
+[3BA0D7C84446401F] quest_desc: Avant le monument : aimant, nourriture et réapprovisionnement automatiques.
+[62B49B400243E47C] title: Liens de stockage
+[6744DC79A58ED05B] title: Sac de diamant
+[6744DC79A58ED05B] quest_desc: Avant le Nether : un sac qui fond le minerai pendant que vous marchez.
+[5A88FC3E3D161C0E] title: Le contrôleur de stockage
+[5A88FC3E3D161C0E] quest_desc: Il relie tous vos coffres et tonneaux en un seul inventaire. Demande un comparateur, donc du quartz du Nether.
+[1F033FEA83391D5C] title: Sac de netherite
+[5C96E0E608B593DA] title: Bonus : le sac éternel
+[5C96E0E608B593DA] quest_desc: &7Optionnel.&r Demande des étoiles du Nether : le sac ne disparaît plus jamais, et peut contenir d'autres sacs.
+
+######## 11_commandes.snbt — &3Annexe&r · Commandes de l'Empire | La production se paie en pièces. Les pièces achètent ce qu'on ne trouve nulle part.
+[66BDF063180A33F3] title: La boutique de l'Empire
+[66BDF063180A33F3] quest_desc: Les commandes se répètent : livrez, encaissez, recommencez. / Valeurs : éperon 1, biseau 8, pignon 16, engrenage 64, couronne 512, soleil 4096. / La boutique (distributeurs posés par l'administrateur au spawn) vend livres d'enchantement, cartes de structures, netherrack, cœurs de la mer…
+[2616FA2DD6124E22] title: Commande : pain
+[2616FA2DD6124E22] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[72464843991ABAFB] title: Commande : alliage
+[72464843991ABAFB] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[687DE16EA4871143] title: Commande : plaques de fer
+[687DE16EA4871143] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[2EF37A4DD7D32352] title: Commande : plaques de cuivre
+[2EF37A4DD7D32352] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[2D595A10D32FC61D] title: Commande : tuyaux
+[2D595A10D32FC61D] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[3E42AFB5B4ED0540] title: Commande : laiton
+[3E42AFB5B4ED0540] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[1CA0FA6F8952E2D7] title: Commande : mécanismes
+[1CA0FA6F8952E2D7] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[23E3A6500C449AEB] title: Commande : rails
+[23E3A6500C449AEB] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[6EC3CFDAA91A4268] title: Commande : boulets
+[6EC3CFDAA91A4268] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[685E510A3BD4D040] title: Commande : enveloppes
+[685E510A3BD4D040] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[6CB81EFFB7F0CBB5] title: Commande : tubes électroniques
+[6CB81EFFB7F0CBB5] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+[27C73491488EF22F] title: Commande : plaques de netherite
+[27C73491488EF22F] quest_desc: &7Répétable.&r Les objets livrés sont consommés.
+
+######## 12_ingenierie.snbt — &3Annexe&r · Ingénierie | Faire travailler les machines à votre place.
+[146CEF081856F7C6] title: La scierie
+[146CEF081856F7C6] quest_desc: Une scie mécanique sur un tapis : des planches à l'infini.
+[20736FBF273C7E22] title: Cuisine au ventilateur
+[20736FBF273C7E22] quest_desc: Un ventilateur soufflant à travers un feu de camp cuit la viande à la chaîne.
+[6B69D38F6FEEAF3D] title: Le tri
+[6B69D38F6FEEAF3D] quest_desc: Des filtres dans des entonnoirs : chaque objet dans le bon coffre.
+[303C4600D2F40D99] title: Ferme à canne à sucre
+[2290363A0D1E891A] title: Ferme à arbres
+[3FC181E6EAD2F9AB] title: Générateur de pierre
+[5EC88E01813B9167] title: La grande chaudière
+[5EC88E01813B9167] quest_desc: Une machine à vapeur chauffée par au moins quatre brûleurs à blaze.
+[3D95E57BC7AAF705] title: Entonnoirs de laiton
+[337B0BA5127D891F] title: Coffres-forts
+[7D7CCDE15946F46E] title: Les gisements infinis
+[7D7CCDE15946F46E] quest_desc: Trouvez un filon caché avec le détecteur, puis forez-le à l'infini.
+
+######## 13_trains.snbt — &3Annexe&r · Trains et logistique | Relier les ruines, transporter la production.
+[2BF0E7162C817443] title: Les horaires
+[4AC816ED3CDE8C53] title: Portes de train
+[2D3AA9AFE58CD8BE] title: Observateurs de voie
+[131E638BEA368FF3] title: Le train de marchandises
+[131E638BEA368FF3] quest_desc: Un train qui charge et décharge seul à deux gares, grâce aux interfaces portables.
+[573BB19942AFDDDC] title: Le train-citerne
+[2D44DCFA9C18E918] title: La gare de triage
+[2D44DCFA9C18E918] quest_desc: Au moins trois trains qui partagent les mêmes voies sans collision.
+[193619FED2D8E2B8] title: La grande ligne
+
+######## 14_arsenal.snbt — &3Annexe&r · Arsenal et Écho | Les armes de l'Empire, et sa technologie qui ressemble à des sorts.
+[38B2650A583B18EA] title: La lance
+[472B472777388071] title: Le katana
+[4DCBE77F930CEB10] title: La claymore de diamant
+[4DCBE77F930CEB10] quest_desc: Le manche est désormais une plaque de cuivre.
+[43F9DDC4A4D5280C] title: Une arme de netherite
+[4DA9AA29C115DD53] title: Une arme unique
+[4DA9AA29C115DD53] quest_desc: Certaines armes n'ont jamais été fabriquées en série : on les trouve dans les coffres des donjons et des forteresses. Mettez la main sur une arme unique de Simply Swords, puis validez.
+[64437A5B515F64EC] title: Obus spéciaux
+[5690BF6C00E42CBE] title: Le mortier
+[73B823D3D42DE379] title: Le grimoire d'Écho
+[73B823D3D42DE379] quest_desc: &7La voie de l'Écho.&r Un grimoire réfractaire : l'Écho y est écrit, puis relâché en sorts.
+[48FA53E37A178943] title: Capter l'Écho
+[48FA53E37A178943] quest_desc: &7La voie de l'Écho.&r L'archebois pousse là où l'Écho est fort. La chambre d'imprégnation fixe l'Écho dans l'améthyste : des gemmes d'Écho.
+[50BA89E70106AA5D] title: La table du scribe
+[50BA89E70106AA5D] quest_desc: &7La voie de l'Écho.&r Pour inscrire de nouveaux sorts dans votre grimoire.
+[135B677FDE010CCD] title: L'appareil d'enchantement
+[135B677FDE010CCD] quest_desc: &7La voie de l'Écho.&r Le cœur de tout atelier réfractaire : il lie l'Écho aux objets.
+[5E6A2757F7E53E09] title: Le grimoire d'apprenti
+[1CFBD49CF418919F] title: Le grimoire d'archimage
+[1CFBD49CF418919F] quest_desc: &7La voie de l'Écho.&r Les chefs réfractaires en portaient un. Avec lui, on parle presque aux esprits perdus.
+
+######## 15_exploration.snbt — &3Annexe&r · Exploration | Cartographier ce que l'Empire a laissé derrière lui.
+[16EDC0C6EDFC4901] title: Le camp réfractaire
+[16EDC0C6EDFC4901] quest_desc: Une palissade, des tentes rouges, un automate abattu exposé comme un trophée. Ici, on n'aime pas l'Empire.
+[1D5897A82AAC331E] title: Le temple du désert
+[5BCC503DB5D79A29] title: L'épave
+[5BCC503DB5D79A29] quest_desc: Les épaves cachent des cartes au trésor : le cœur de la mer est au bout.
+[349D5216D8932504] title: Le fort souterrain
+[5E3B48DAED62091C] title: La cité antique
+[5E3B48DAED62091C] quest_desc: Une cité engloutie dans les ténèbres. &cSilence absolu recommandé.&r
+[7D319DB84563FF59] title: La forteresse du Nether
+[48A453D94E21691C] title: La station de capsules
+[48A453D94E21691C] quest_desc: Un hall plein de capsules vides, et des câbles qui plongent dans un puits. Descendez lire le rapport de l'ingénieur.
+[14B5ABF61C3CBA18] title: La cité mécanique
+[14B5ABF61C3CBA18] quest_desc: Rare et immense : une ville entière de l'Empire, sa tour d'horloge, plusieurs marchés et les trois salles scellées.
+[5051FDBC40E9057C] title: Les donjons surgis
+[5051FDBC40E9057C] quest_desc: Explorez trois grandes structures de When Dungeons Arise (forteresses volantes, cités en ruine…). Validez à la troisième.
+
+######## 16_bestiaire.snbt — &3Annexe&r · Bestiaire | Les créatures de Cataclysm, en défi facultatif.
+[7CAC6244231575FB] title: Le golem de l'End
+[45C2F2088978A35D] title: Le crabe d'améthyste
+[67DC8F0A56DA9802] title: Le colosse de corail
+[1D5FC797DB70E1D4] title: L'Aptrgangr
+[23448D60BF7AD86E] title: Maledictus
+[3CF83F8B933F1A21] title: Scylla
+
+######## 17_echos_perdus.snbt — &dAnnexe&r · Les Échos perdus | Ce que l'Empire a voulu taire. Et ceux qui attendent encore d'être libérés.
+[29E98529A035C62A] title: Ceux qui ont dit non
+[29E98529A035C62A] quest_desc: Trouvez un camp réfractaire et lisez l'un de leurs écrits (dans leurs coffres). Validez quand c'est fait. / Ils ont vu revenir les capsules vides. Ils sont partis la nuit même.
+[3A95A67E6E76796D] title: La ligne rompue
+[3A95A67E6E76796D] quest_desc: Trouvez un relais brisé et lisez le rapport d'incident sur le pupitre. C'est là que l'Écho s'est échappé.
+[4B53300A90F22D2C] title: Le rapport de Vael
+[4B53300A90F22D2C] quest_desc: Descendez au fond d'une station de capsules et lisez le rapport de l'ingénieur Elias Vael. / Dans le coffre du collecteur, une lettre attend toujours d'être ouverte.
+[57CCAE32A34055EC] title: L'essai 41
+[57CCAE32A34055EC] quest_desc: Dans une cité mécanique, trouvez un laboratoire d'essais et lisez le journal de sa salle souterraine.
+[2635834C88309144] title: Le sanctuaire
+[2635834C88309144] quest_subtitle: Le journal d'Ada Vesper
+[2635834C88309144] quest_desc: Quelque part dans le nord froid, les Réfractaires ont un refuge où l'Écho est partout. Leur cheffe, &dAda Vesper&r, y a laissé son journal. / Lisez-le jusqu'au bout. La récompense vous indique où se trouve le Grand Relais.
+[577AA2DD38280354] title: Résonance
+[577AA2DD38280354] quest_desc: Les âmes sans repos (les fantômes des nuits sans sommeil) laissent parfois un &dfragment de résonance&r. Les relais brisés et le sanctuaire en cachent aussi.
+[7CDE28D2D18A4436] title: Le diapason
+[7CDE28D2D18A4436] quest_desc: La recette d'Ada : cinq fragments de résonance, une gemme d'Écho et un lingot d'or.
+[1C87550C0BEA8CA7] title: Le Grand Relais
+[1C87550C0BEA8CA7] quest_desc: Là où la ligne principale du Transfert a cédé. Le résonateur est au sud du pylône effondré. / &cPréparez-vous avant de frapper le diapason : le Chœur est redoutable. Équipement du chapitre V conseillé, à deux.&r
+[223174505C4CDFF6] title: Le Chœur des Égarés
+[223174505C4CDFF6] quest_subtitle: &5Boss de l'Écho&r
+[223174505C4CDFF6] quest_desc: Frappez le diapason sur le résonateur (clic droit). Des milliers d'esprits fusionnés dans la douleur se réveillent. / Les vaincre, c'est les libérer.
+[2543479E97C7BC7E] title: L'Écho primordial
+[2543479E97C7BC7E] quest_desc: Ils vous ont confié ce qu'ils étaient. / &dL'Écho primordial&r entre dans la fabrication des sorts les plus puissants : explosion, foudre, maléfice, flétrissement, persistance, mur et rafale. / Et les machines ne le sentent pas : vos sorts infligent &650 % de dégâts en plus&r aux créatures de l'Empire, Empereur compris.
+
+######## 99_secours.snbt — &cSecours administrateur&r | Ne pas montrer aux joueurs.
+[7A269F052587CB1A] title: Secours : chapitre II
+[7A269F052587CB1A] quest_desc: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+[769408885D0708A5] title: Secours : chapitre III
+[769408885D0708A5] quest_desc: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+[617C215FCC40D2A5] title: Secours : chapitre IV
+[617C215FCC40D2A5] quest_desc: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+[7C784488716A8DAF] title: Secours : chapitre V
+[7C784488716A8DAF] quest_desc: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+[66FAEDF5BE60EEE3] title: Secours : chapitre VI
+[66FAEDF5BE60EEE3] quest_desc: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.
+[189109008AF985AC] title: Secours : l'Écho
+[189109008AF985AC] quest_desc: Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug.

@@ -1,0 +1,1634 @@
+{
+	"chapter.1172B9D9F1004842.chapter_subtitle": [
+		"Faire travailler les machines à votre place."
+	]
+	"chapter.1172B9D9F1004842.title": "&3Annexe&r · Ingénierie et logistique"
+	"chapter.11FB7AD14478FD9E.chapter_subtitle": [
+		"Les fluides, les profondeurs, et les inscriptions."
+	]
+	"chapter.11FB7AD14478FD9E.title": "&6III&r · L'Âge du Cuivre"
+	"chapter.1CD639A08966078F.chapter_subtitle": [
+		"Ce que l'Empire a voulu taire. Et ceux qui attendent encore d'être libérés."
+	]
+	"chapter.1CD639A08966078F.title": "&dAnnexe&r · Les Échos perdus"
+	"chapter.1F79C3CBBD28C61C.chapter_subtitle": [
+		"La production se paie en pièces. Les pièces achètent ce qu'on ne trouve nulle part."
+	]
+	"chapter.1F79C3CBBD28C61C.title": "&3Annexe&r · Commandes de l'Empire"
+	"chapter.268936E7997482A8.chapter_subtitle": [
+		"Fonder, pavoiser, exposer : faire d'un abri une base de l'Empire."
+	]
+	"chapter.268936E7997482A8.title": "&3Annexe&r · Bases et capitales"
+	"chapter.35BF15091D15D650.chapter_subtitle": [
+		"L'Empire est revenu. Il veut son monde."
+	]
+	"chapter.35BF15091D15D650.title": "&4VII&r · La Reconquête"
+	"chapter.3E6DF521B4BEF468.chapter_subtitle": [
+		"Le cœur de la technologie d'Airain. Et une salle pleine de capsules vides."
+	]
+	"chapter.3E6DF521B4BEF468.title": "&6IV&r · L'Âge du Laiton"
+	"chapter.42528709A15A648C.chapter_subtitle": [
+		"Avant chaque expédition, un sac plus grand."
+	]
+	"chapter.42528709A15A648C.title": "&3Annexe&r · Sacs et stockage"
+	"chapter.4703C8C5F5EB4F30.chapter_subtitle": [
+		"L'Empire avait des cités volantes."
+	]
+	"chapter.4703C8C5F5EB4F30.title": "&6V&r · L'Âge du Ciel"
+	"chapter.584D385E9D365F6E.chapter_subtitle": [
+		"Un monde vide. Pas une tombe, pas un squelette."
+	]
+	"chapter.584D385E9D365F6E.title": "&6I&r · Le Réveil"
+	"chapter.5F04DE91C92B78B2.chapter_subtitle": [
+		"Les machines de l'Empire, en défi facultatif."
+	]
+	"chapter.5F04DE91C92B78B2.title": "&3Annexe&r · Bestiaire"
+	"chapter.61CC052BF462CBD1.chapter_subtitle": [
+		"Cartographier ce que l'Empire a laissé derrière lui."
+	]
+	"chapter.61CC052BF462CBD1.title": "&3Annexe&r · Exploration et bestiaire"
+	"chapter.621611A59C993E9F.chapter_subtitle": [
+		"Ne pas montrer aux joueurs."
+	]
+	"chapter.621611A59C993E9F.title": "&cSecours administrateur&r"
+	"chapter.6643CF10372B0A3C.chapter_subtitle": [
+		"Les armes de l'Empire : lames, artillerie et armes à feu."
+	]
+	"chapter.6643CF10372B0A3C.title": "&3Annexe&r · Arsenal"
+	"chapter.6C42785A50835ECA.chapter_subtitle": [
+		"Ce que les Réfractaires ont appris, à l'écart de l'Empire."
+	]
+	"chapter.6C42785A50835ECA.title": "&dVoie de l'Écho&r · Les Arcanes"
+	"chapter.6D69E3E3CC19B49C.chapter_subtitle": [
+		"Relier les ruines, transporter la production."
+	]
+	"chapter.6D69E3E3CC19B49C.title": "&3Annexe&r · Trains et logistique"
+	"chapter.793E4FE9A199F8DC.chapter_subtitle": [
+		"Rassembler les mémoires. Rallumer le Cœur."
+	]
+	"chapter.793E4FE9A199F8DC.title": "&6VI&r · Le Cœur d'Airain"
+	"chapter.7D072E5709492909.chapter_subtitle": [
+		"Les premières machines. Et des ruines étrangement propres."
+	]
+	"chapter.7D072E5709492909.title": "&6II&r · L'Âge de l'Andésite"
+	"chapter_group.160174A5E6BB3B2B.title": "La voie de l'Écho"
+	"chapter_group.25F3599C6B050FF2.title": "L'Empire"
+	"chapter_group.2F4EAC3DE90A7B97.title": "Annexes"
+	"file.0000000000000001.title": "L'Empire d'Airain"
+	"quest.1190B3F329729E07.quest_desc": [
+		"Un Empire a besoin d'un trône. Un seul, dressé dans la &6capitale impériale&r : un étendard de fondation sur lequel on a posé une plaque impériale."
+		"Assis, l'Empereur promulgue un &6décret&r pour une heure : &6guerre&r (gardiens renforcés, et au lieu de mourir on est ramené au trône), &6forge&r (concasseurs, meule, lavage et cuisson au ventilateur rendent le double dans les bases) ou &6prospérité&r (commandes +50 %). On peut en changer au bout de 15 minutes."
+		"Dans sa base, la couronne commande tous les gardiens, et l'on réapparaît devant le trône."
+	]
+	"quest.1190B3F329729E07.title": "Le Trône impérial"
+	"quest.119561AB3FC3C71C.quest_desc": [
+		"&7Optionnel.&r Repliée, elle roule. Déployée, elle se bat."
+		"&8Elles arrivent vite et en nombre : tenez un passage étroit.&r"
+	]
+	"quest.119561AB3FC3C71C.title": "La sphère"
+	"quest.11C988C0F5B9F881.quest_desc": [
+		"Vous tenez le Cœur à deux mains. Il bat. Il chauffe. Et très loin sous vos pieds, quelque chose répond."
+		""
+		"Le carnet s'ouvre tout seul à une page restée blanche. Des lettres s'y gravent, comme brûlées de l'intérieur :"
+		""
+		"&6&o« Merci."
+		"Ces pages, ces gardiens, ces schémas : c'est nous qui les avons placés sur votre route."
+		"Il nous fallait des mains vivantes pour rallumer le Cœur."
+		"Nous n'avons jamais disparu. Nous attendions dans le métal."
+		"Maintenant, nous revenons. Et ce monde redevient le nôtre. »&r"
+		""
+		"En dessous, d'une autre main, plus petite, à l'encre ordinaire :"
+		"&7&o« Ne les crois pas. Ils ne dorment pas : ils brûlent. Je vous ai gardés à part pour ce jour-là. Quand tout sera fini, c'est vous qui choisirez. — O. L. »&r"
+		""
+		"&cL'Empire d'Airain se réveille.&r"
+	]
+	"quest.11C988C0F5B9F881.quest_subtitle": "&cLe retournement&r"
+	"quest.11C988C0F5B9F881.title": "Réactiver le Cœur"
+	"quest.12774D49FDCC5AA1.quest_desc": [
+		"Un laminoir digne de ce nom ne s'arrête jamais."
+		"Une presse au-dessus d'un tapis qui défile, nourri par entonnoir : les plaques s'empilent seules. Elles serviront pour l'armure, les hélices, les goulottes et les commandes de l'Empire."
+	]
+	"quest.12774D49FDCC5AA1.title": "Laminoir"
+	"quest.12DA5A8CE065BE11.quest_desc": [
+		"Les âmes sont parties, mais l'Écho reste dans le laiton. Un bloc d'écho primordial suffit à le réveiller dans un gardien."
+		"Clic droit avec un &3bloc d'écho primordial&r sur un gardien rattaché à une base. Un seul gardien d'Écho par base."
+		"Il frappe ses cibles d'une &3onde sonique&r jusqu'à 16 blocs et soigne les gardiens qui l'entourent."
+	]
+	"quest.12DA5A8CE065BE11.title": "Le Gardien d'Écho"
+	"quest.131E638BEA368FF3.quest_desc": [
+		"Un train qui charge et décharge seul à deux gares, grâce aux interfaces portables."
+		"Une interface sur le train, une autre en face sur le quai : à l'arrêt, elles se rejoignent et vident ou remplissent les coffres. Elles demandent le Grand Chantier de la gare impériale."
+	]
+	"quest.131E638BEA368FF3.title": "Le train de marchandises"
+	"quest.1347D975D0FDD40A.quest_desc": [
+		"Couvert d'épines, il les lance en se roulant en boule. Le plus grand d'entre eux, le &5Chœur des Égarés&r, attend au Grand Relais (section « Les Échos perdus », dans ce chapitre)."
+		"&8Récompense : la dernière page du carnet de l'apprentie.&r"
+	]
+	"quest.1347D975D0FDD40A.title": "Le gardien wilden"
+	"quest.135B677FDE010CCD.quest_desc": [
+		"&7La voie de l'Écho.&r Le cœur de tout atelier réfractaire : il lie l'Écho aux objets."
+		"Le noyau arcanique dessous, l'appareil dessus, des socles autour avec les ingrédients. EMI montre chaque recette."
+	]
+	"quest.135B677FDE010CCD.quest_subtitle": "IV · L'atelier réfractaire"
+	"quest.135B677FDE010CCD.title": "L'appareil d'enchantement"
+	"quest.139325E7E48DBC39.quest_desc": [
+		"Au fond d'une forge des âmes dort une &cmonstruosité de netherite&r. Bombardez-la, puis finissez le travail."
+		""
+		"&eRécompenses :&r le &6Schéma du Ciel&r (assembleur physique, roulement d'hélice), et l'&5End&r s'ouvre pour vous."
+	]
+	"quest.139325E7E48DBC39.quest_subtitle": "Schéma du Ciel, ouverture de l'End"
+	"quest.139325E7E48DBC39.title": "La forge des âmes"
+	"quest.1430B27303EA7FED.quest_desc": [
+		"Un gardien de cristal qui fait pousser l'améthyste. Le seul golem que l'Empire n'a jamais construit."
+	]
+	"quest.1430B27303EA7FED.title": "Le golem d'améthyste"
+	"quest.144C3DFF93A0364E.quest_desc": [
+		"À la &6table de forgeron&r : un modèle d'amélioration en netherite, un module, une plaque sacrée. Le laiton noircit, l'or remonte dans les rivets, et tout ce que fait le module est doublé."
+		"Montez un module de niveau II sur un de vos gardiens."
+	]
+	"quest.144C3DFF93A0364E.title": "Un gardien d'élite"
+	"quest.146CEF081856F7C6.quest_desc": [
+		"Les cités de l'Empire consommaient des forêts entières en charpentes."
+		"Une scie mécanique sous un tapis : les bûches passent et ressortent en planches, à l'infini. Un filtre sur la scie choisit ce qu'elle taille."
+	]
+	"quest.146CEF081856F7C6.title": "La scierie"
+	"quest.1479F49A41F4DA32.quest_desc": [
+		"Une machine nue s'use vite. L'Empire habillait tout."
+		"Alliage d'andésite appliqué sur un tronc écorcé, à la main ou plus tard au déployeur. Le boîtier sert à fabriquer presse, perceuse, ventilateur et la plupart des machines du chapitre suivant."
+	]
+	"quest.1479F49A41F4DA32.title": "Boîtiers d'andésite"
+	"quest.14B5ABF61C3CBA18.quest_desc": [
+		"&7Optionnel.&r Rare et immense : une ville entière de l'Empire, sa tour d'horloge, plusieurs marchés et les trois salles scellées."
+		"Ses marchés vendent contre des pièces, et son laboratoire d'essais cache un journal."
+	]
+	"quest.14B5ABF61C3CBA18.title": "La cité mécanique"
+	"quest.1503E9BC853DDD58.quest_desc": [
+		"Trouvez un avant-poste de l'Empire. Personne ne vous y attend, mais ses machines fonctionnent encore : on y achète ce qui manque contre des pièces."
+		"Une salle y est restée scellée. Revenez quand vous aurez le bon Schéma."
+	]
+	"quest.1503E9BC853DDD58.title": "Signes de vie"
+	"quest.1564E6748941BD57.quest_desc": [
+		"&7Optionnel.&r L'Empire est passé partout, même dans les ruines plus anciennes que lui. Ses écrits dorment au fond de leurs coffres. Rassemblez-les dans votre inventaire (ils ne sont pas consommés) :"
+		"• le carnet de mineur : puits de mine abandonnés et donjons ;"
+		"• la lettre d'un prospecteur : temples du désert et de la jungle, igloos ;"
+		"• le manifeste de cargaison : épaves, trésors enfouis, ruines sous-marines ;"
+		"• le registre du Conseil : forts souterrains ;"
+		"• le rapport des profondeurs : cités antiques ;"
+		"• le journal du Nether : forteresses du Nether et bastions ;"
+		"• le dernier message : cités de l'End."
+		"&8Le dernier ne se trouve qu'au bout du voyage.&r"
+	]
+	"quest.1564E6748941BD57.quest_subtitle": "Les écrits cachés dans les ruines d'avant"
+	"quest.1564E6748941BD57.title": "Les traces du monde ancien"
+	"quest.1605A034446002D5.quest_desc": [
+		"Les navires de l'Empire ne connaissaient ni voile ni rame : seulement le bruit des hélices."
+		"Le roulement d'hélice demande le Schéma du Ciel. Plus il tourne vite, plus il pousse ; le sens de rotation choisit le sens de la poussée."
+	]
+	"quest.1605A034446002D5.title": "Hélices"
+	"quest.16093FB4B909B8E5.quest_desc": [
+		"Les messagers de l'Empire ne prenaient jamais l'escalier."
+		"Votre réservoir d'air dorsal, des élytres et du laiton, assemblés à l'assembleur mécanique. Il vole à l'air comprimé : rechargez-le comme le réservoir."
+	]
+	"quest.16093FB4B909B8E5.title": "Le jetpack"
+	"quest.16A3282CA5AB4ACA.quest_desc": [
+		"Certaines volontés sont trop grandes pour un grimoire. On les confie au feu."
+	]
+	"quest.16A3282CA5AB4ACA.title": "Le brasero rituel"
+	"quest.16EDC0C6EDFC4901.quest_desc": [
+		"Une palissade, des tentes rouges, un automate abattu exposé comme un trophée. Ici, on n'aime pas l'Empire."
+		"Leurs coffres gardent des écrits et des cartes, et leurs machines vendent ce que l'Empire leur refusait."
+	]
+	"quest.16EDC0C6EDFC4901.title": "Le camp réfractaire"
+	"quest.16F6CF9BF8AE44DC.quest_desc": [
+		"L'Empire n'a jamais su allumer un feu qui ne s'éteigne pas. Alors il a capturé ceux du Nether."
+		"Brûleur vide (avec le Schéma du Laiton), puis clic droit sur une lanterne de forge (un blaze). Placé sous un bassin, il chauffe le mixeur ; nourri au charbon, il tient longtemps."
+	]
+	"quest.16F6CF9BF8AE44DC.title": "Capturer un blaze"
+	"quest.173E532804C19AAB.quest_desc": [
+		"Le berceau de l'Empire : là où Auguste Ferrand a forgé ses premières machines, et où il dort encore."
+		"Une usine ancienne enfouie vers Y -30. Le Cœur vous en a donné la direction."
+	]
+	"quest.173E532804C19AAB.title": "Le berceau de l'Empire"
+	"quest.175D62868380B4C5.quest_desc": [
+		"Votre premier atelier : une seule source, plusieurs machines, et rien à faire à la main."
+		"Construisez un moulin qui alimente en même temps une meule, un tapis roulant et un dépôt. Validez la coche quand tout tourne."
+	]
+	"quest.175D62868380B4C5.title": "Le moulin"
+	"quest.17DC1C655AD476A4.quest_desc": [
+		"&7Optionnel.&r Ceux qui ont vécu la fin de l'Empire ont laissé des écrits. Rassemblez-les tous dans votre inventaire (ils ne sont pas consommés) :"
+		"• le rapport de Vael, sur le pupitre d'une station de capsules ;"
+		"• la lettre d'Ada, dans le coffre du collecteur de la même station ;"
+		"• le rapport d'incident, sur le pupitre d'un relais brisé ;"
+		"• le journal d'essais, dans le laboratoire d'une cité mécanique ;"
+		"• le journal d'Ada Vesper, dans le sanctuaire réfractaire ;"
+		"• un écrit réfractaire, dans les coffres des camps ;"
+		"• l'inventaire d'une cache, enterrée sous la croix d'une carte réfractaire (cartes trouvées dans les camps)."
+		"&8Les structures générées avant cette mise à jour gardent d'anciens exemplaires, non reconnus : cherchez-en de nouvelles.&r"
+	]
+	"quest.17DC1C655AD476A4.quest_subtitle": "Rassembler tous les écrits"
+	"quest.17DC1C655AD476A4.title": "Les archives de l'Empire"
+	"quest.187081628EA4ED2B.quest_desc": [
+		"Le mécanisme de précision est la signature de l'Empire : rien d'important ne fonctionnait sans lui."
+		"Une chaîne de déployeurs et de presses le construit pièce par pièce. Maintenez W sur une machine pour son tutoriel ; EMI montre chaque étape."
+	]
+	"quest.187081628EA4ED2B.title": "Mécanisme de précision"
+	"quest.1872C8058F3E588C.quest_desc": [
+		"Pour les couloirs des cités mécaniques, rien ne vaut le fusil à pompe."
+		"Redoutable de près, inutile de loin. Gardez une autre arme pour la distance."
+	]
+	"quest.1872C8058F3E588C.title": "Le fusil à pompe"
+	"quest.189109008AF985AC.quest_desc": [
+		"Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug."
+	]
+	"quest.189109008AF985AC.title": "Secours : l'Écho"
+	"quest.18B5F8ACE26BB5D7.quest_desc": [
+		"Elle garde l'usine ancienne depuis que plus personne n'y travaille. Elle n'a jamais reçu l'ordre d'arrêter."
+		"Ses tirs portent loin : approchez à couvert et ne restez pas dans son axe."
+	]
+	"quest.18B5F8ACE26BB5D7.title": "La sentinelle"
+	"quest.193619FED2D8E2B8.quest_desc": [
+		"La ligne impériale traversait le continent d'un bout à l'autre."
+		"Mille rails : de quoi relier vos bases entre elles, et rejoindre les cités mécaniques."
+	]
+	"quest.193619FED2D8E2B8.title": "La grande ligne"
+	"quest.195F07572F5878D2.quest_desc": [
+		"Les Wildens sont des égarés qui ont trop longtemps erré dans la nature. Ils ne reconnaissent plus personne."
+	]
+	"quest.195F07572F5878D2.quest_subtitle": "VII · Les bêtes de l'Écho"
+	"quest.195F07572F5878D2.title": "Le chasseur"
+	"quest.19F9F56FA350AD47.quest_desc": [
+		"&7Optionnel.&r Les automates ne saignent pas : ils fuient. Leur &6huile de machine&r fait tourner le banc d'entretien."
+		"Il répare comme une enclume (mêmes matériaux, mêmes quantités) mais brûle de l'huile au lieu de l'expérience : 1 000 mB, soit deux burettes, par lingot ou par fusion."
+		"C'est une vraie machine, montée comme la meule à farine : un rouage voisin ou un arbre par-dessous l'entraîne, et elle consomme du stress. Plus elle tourne vite (16 tr/min au moins), plus elle travaille vite ; les objets très enchantés prennent bien plus longtemps."
+		"&6Clic droit main vide&r : l'écran du banc. L'objet abîmé en haut, le matériau en dessous, l'objet réparé sort à droite. La cuve d'huile est à gauche, les trois emplacements de &6modules&r tout à droite."
+		"Un outil ou une arme réparé ressort &6affûté&r pour un temps (voir « Le fil de la lame »)."
+		"&8Une burette ou un seau se verse d'un clic droit ; l'huile passe aussi au tuyau, après un égouttoir. Entonnoirs et tapis l'alimentent et récupèrent l'objet réparé. Les lunettes d'ingénieur montrent l'avancement et le temps restant.&r"
+	]
+	"quest.19F9F56FA350AD47.quest_subtitle": "Quête secondaire : réparer sans expérience"
+	"quest.19F9F56FA350AD47.title": "Le banc d'entretien"
+	"quest.1AC4C8BD4097E5BF.quest_desc": [
+		"Les officiers de l'Empire portaient le diamant serti dans le cuivre : plus léger, aussi solide."
+		"Diamants + plaques de cuivre + Sceau de la Forge (non consommé), à l'établi."
+	]
+	"quest.1AC4C8BD4097E5BF.title": "L'armure de diamant"
+	"quest.1B1BDBDB461DC54F.quest_desc": [
+		"Un petit alchimiste au chaudron. Il se souvient de recettes que personne ne lui a apprises."
+	]
+	"quest.1B1BDBDB461DC54F.title": "Le Wixie"
+	"quest.1B424BE661BF65B3.quest_desc": [
+		"Au centre de l'usine, une machine immense, immobile. L'Empereur, fusionné avec ce qu'il a construit : Auguste Ferrand, le fondateur, transféré dans sa propre usine bien avant tous les autres."
+		"Clic droit avec le cœur du Gardien des enfers pour le réveiller. &cIl est extrêmement dangereux.&r"
+	]
+	"quest.1B424BE661BF65B3.quest_subtitle": "&4Boss final&r"
+	"quest.1B424BE661BF65B3.title": "L'Empereur d'Airain"
+	"quest.1B5DBF55A3EA9939.quest_desc": [
+		"L'épreuve funeste ne pardonne pas. Les vétérans de l'Empire n'y descendaient jamais les mains vides."
+		"Bouclier, flèches et provisions. Le gardien du vent frappe de loin et renvoie les projectiles : le bouclier compte plus que l'arc."
+	]
+	"quest.1B5DBF55A3EA9939.title": "Préparatifs"
+	"quest.1B8D2D125236F20C.quest_desc": [
+		"Il récolte ce que laissent les bêtes, sans leur faire de mal. Les Réfractaires ne tuaient pas pour manger quand ils pouvaient l'éviter."
+	]
+	"quest.1B8D2D125236F20C.title": "Le Drygmy"
+	"quest.1BFEB1057231EE88.quest_desc": [
+		"Sans pompe, un tuyau n'est qu'un tube. L'Empire en a fait des veines."
+		"Engrenage + tuyau + &6Schéma du Cuivre&r (non consommé). La flèche sur la pompe montre le sens : une clé l'inverse. Plus elle tourne vite, plus elle débite."
+	]
+	"quest.1BFEB1057231EE88.title": "La pompe mécanique"
+	"quest.1C331299D7A13876.quest_desc": [
+		"Le Cœur d'Airain ne tient dans aucun établi."
+		"Il se forge sur une grille 5 × 5 d'assembleurs : il en faut 21 (les coins restent vides). Reliez-les à la clé et alimentez-les en rotation."
+	]
+	"quest.1C331299D7A13876.title": "La grille d'assemblage"
+	"quest.1C5B176D24E37BD9.quest_desc": [
+		"Les ingénieurs de l'Empire ne montaient jamais une machine deux fois à la main : ils dessinaient un plan, et le canon le posait."
+		"Les &6bureaux d'études&r des avant-postes vendent des &6plans de l'Empire&r (moulin à vent, centrale à roues, meunerie…). Clic droit sur un plan : il devient un schéma."
+		"Posez le schéma au sol (clic droit pour le placer, il apparaît en fantôme), puis donnez-le au &6canon à schémas&r avec de la poudre à canon et un coffre de matériaux à côté : il construit tout seul."
+		"&8Le pack doit contenir son dossier « schematics » (voir le LISEZMOI).&r"
+	]
+	"quest.1C5B176D24E37BD9.title": "Le bureau d'études"
+	"quest.1C87550C0BEA8CA7.quest_desc": [
+		"Là où la ligne principale du Transfert a cédé. Le résonateur, une pierre d'aimant posée sur de l'ardoise renforcée, se dresse près du pylône effondré."
+		"&cPréparez-vous avant de frapper le diapason : le Chœur est redoutable. Équipement du chapitre V conseillé, à deux.&r"
+	]
+	"quest.1C87550C0BEA8CA7.title": "Le Grand Relais"
+	"quest.1CA0FA6F8952E2D7.quest_desc": [
+		"Rien d'important ne fonctionne sans eux. L'Empire en commande sans compter."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.1CA0FA6F8952E2D7.title": "Commande : mécanismes"
+	"quest.1CB86E4CE793D650.quest_desc": [
+		"Une base qui abrite le Cœur doit tenir."
+		"Trois affûts de canon autour de la base, orientés vers les accès. Validez quand ils sont en place."
+	]
+	"quest.1CB86E4CE793D650.title": "Renforcer la base"
+	"quest.1CFBD49CF418919F.quest_desc": [
+		"&7La voie de l'Écho.&r Les chefs réfractaires en portaient un. Avec lui, on parle presque aux esprits perdus."
+		"Toutes les pages, tous les cercles de glyphes. Contre le Chœur des Égarés, mieux vaut l'avoir."
+	]
+	"quest.1CFBD49CF418919F.title": "Le grimoire d'archimage"
+	"quest.1D19C2609F2DC9FE.quest_desc": [
+		"Les cités volantes de l'Empire ne vivaient que du fret. Construisez un engin volant avec une cale (coffres, tonneaux ou coffres-forts), chargez-le dans une de vos bases et livrez la cargaison dans une autre."
+		"Validez après une livraison complète."
+	]
+	"quest.1D19C2609F2DC9FE.title": "Le fret aérien"
+	"quest.1D5897A82AAC331E.quest_desc": [
+		"L'Empire a fouillé ces temples avant vous. Il n'a pas tout emporté."
+		"Méfiez-vous de la plaque de pression au fond de la salle : elle est reliée à des explosifs."
+	]
+	"quest.1D5897A82AAC331E.title": "Le temple du désert"
+	"quest.1D6182D685EE0401.quest_desc": [
+		"Le Cœur battait jadis dans une salle que nul n'avait le droit de voir. Le vôtre mérite au moins un écrin."
+		"Construisez une salle d'au moins 9 × 9 avec la grille au centre. Validez quand c'est fait."
+	]
+	"quest.1D6182D685EE0401.title": "La Salle du Cœur"
+	"quest.1DE601252CF5A646.quest_desc": [
+		"Le boîtier de laiton habille les machines de précision : on ne le donnait pas aux apprentis."
+		"Il s'obtient comme les autres, en appliquant le laiton sur du bois écorcé. Bras mécaniques, assembleurs et entonnoirs de laiton en dépendent."
+	]
+	"quest.1DE601252CF5A646.title": "Boîtier de laiton"
+	"quest.1DF1C682CA5AEA52.quest_desc": [
+		"Une armure de mage complète (sorcier, arcaniste ou mage de bataille). Validez une fois vêtu."
+		"« On ne porte pas la robe pour se protéger. On la porte pour que les égarés nous reconnaissent. »"
+	]
+	"quest.1DF1C682CA5AEA52.title": "La robe des Arcanes"
+	"quest.1EAB9C7B77E4AB38.quest_desc": [
+		"Le choix est fait. Lisez le livre qu'il vous a laissé : c'est la fin de l'histoire, la vôtre."
+		""
+		"&6Merci d'avoir joué à L'Empire d'Airain.&r"
+	]
+	"quest.1EAB9C7B77E4AB38.title": "Épilogue"
+	"quest.1F033FEA83391D5C.quest_desc": [
+		"Le sac des officiers de l'Empire. Il ne craint ni la lave ni le feu."
+		"L'amélioration de réservoir lui ajoute une citerne : eau, lave ou huile de machine, prête à verser."
+	]
+	"quest.1F033FEA83391D5C.title": "Sac de netherite"
+	"quest.1FBF918B2C978F2C.quest_desc": [
+		"Le déployeur a une main, et il s'en sert mieux que bien des ouvriers."
+		"Il agit comme un joueur : il pose, utilise, assemble. Il rend possible l'assemblage en séquence. Mettez-lui l'objet en main d'un clic droit."
+	]
+	"quest.1FBF918B2C978F2C.title": "Le déployeur"
+	"quest.1FCBD41B7D95520D.quest_desc": [
+		"La mer garde ses cœurs au fond de ses coffres."
+		"Dans les trésors enfouis (cartes au trésor des épaves), ou au comptoir du laboratoire, contre une couronne."
+	]
+	"quest.1FCBD41B7D95520D.title": "Le cœur de la mer"
+	"quest.1FD1EF651A408D3E.quest_desc": [
+		"Rallumez 10 avant-postes en tout."
+	]
+	"quest.1FD1EF651A408D3E.title": "Rebâtir : 10 avant-postes"
+	"quest.202B5ED65D83F0DE.quest_desc": [
+		"Les Réfractaires, ceux qui ont refusé le Transfert, vivaient dans des camps de fortune. Ils ont disparu, mais dans environ un camp sur trois, un étal vend encore la &6fiole funeste&r."
+		"Buvez-la avant d'entrer dans une salle d'épreuve : elle devient funeste."
+	]
+	"quest.202B5ED65D83F0DE.title": "Le présage funeste"
+	"quest.206485813AC811D6.quest_desc": [
+		"La première arme à feu de l'Empire : plaques de fer, alliage d'andésite, un briquet. Elle tire des cartouches de papier (balles de plomb, poudre, papier)."
+	]
+	"quest.206485813AC811D6.title": "Le pistolet à silex"
+	"quest.20736FBF273C7E22.quest_desc": [
+		"La cantine d'une cité nourrissait des milliers d'ouvriers. Personne n'y retournait les steaks à la main."
+		"Un ventilateur qui souffle à travers un feu de camp ou du feu cuit la viande qui passe devant, sur un tapis ou un dépôt."
+	]
+	"quest.20736FBF273C7E22.title": "Cuisine au ventilateur"
+	"quest.20B07BC03DA5FDE0.quest_desc": [
+		"Sous terre, des salles de cuivre et de tuf. L'Empire y éprouvait ses soldats ; elles continuent sans eux."
+		"Videz quelques générateurs d'épreuve pour récupérer des clés : elles ouvrent les coffres-forts des salles."
+	]
+	"quest.20B07BC03DA5FDE0.title": "Les salles d'épreuve"
+	"quest.20D678D8A2CEF427.quest_desc": [
+		"Les pierres de passage reliaient les cités de l'Empire en un clin d'œil. Elles se sont tues avec lui."
+		"Remettez le réseau en marche : les matériaux sont consommés. Ensuite, chacun pourra poser ses propres Waystones."
+	]
+	"quest.20D678D8A2CEF427.quest_subtitle": "Débloque la pose des Waystones"
+	"quest.20D678D8A2CEF427.title": "Grand Chantier : le réseau des Waystones"
+	"quest.211383434933E242.quest_desc": [
+		"Une cité de l'Empire bâtie dans le bronze, bien avant l'âge du laiton. Ses grandes araignées gardiennes veillent encore."
+		"Abattez-en trois. Elles gardent les portes : forcez-en une, les autres viendront."
+	]
+	"quest.211383434933E242.title": "La cité de bronze"
+	"quest.2193D6B93C4D0569.quest_desc": [
+		"Là où il danse, les plantes poussent. Il nourrit l'Écho en retour."
+	]
+	"quest.2193D6B93C4D0569.title": "Le Whirlisprig"
+	"quest.2194169FD04FE59B.quest_desc": [
+		"Rallumez 5 avant-postes en tout."
+	]
+	"quest.2194169FD04FE59B.title": "Rebâtir : 5 avant-postes"
+	"quest.223174505C4CDFF6.quest_desc": [
+		"Frappez le diapason sur le résonateur (clic droit). Des milliers d'esprits fusionnés dans la douleur se réveillent."
+		"Les vaincre, c'est les libérer. Venez avec un grimoire bien garni : l'épée seule ne suffira pas."
+	]
+	"quest.223174505C4CDFF6.quest_subtitle": "&5Boss de l'Écho&r"
+	"quest.223174505C4CDFF6.title": "Le Chœur des Égarés"
+	"quest.225937F4E9E720B6.quest_desc": [
+		"La citadelle en ruine flotte au-dessus du vide. Une chute, et c'est fini."
+		"Perles et potions (chute lente conseillée) pour la citadelle. Un sac avec le réapprovisionnement peut vous sauver."
+	]
+	"quest.225937F4E9E720B6.title": "Préparatifs célestes"
+	"quest.2290363A0D1E891A.quest_desc": [
+		"Une cité entière a été bâtie en bois de chêne. Il a bien fallu le couper."
+		"Une scie mécanique sur un engin mobile abat l'arbre entier d'un coup. Un déployeur peut replanter les pousses derrière elle."
+	]
+	"quest.2290363A0D1E891A.title": "Ferme à arbres"
+	"quest.23562325F0DE1D91.quest_desc": [
+		"&7Optionnel.&r Exposez un trophée de boss sur un socle : tant qu'il y reste, son effet profite à &6toute l'équipe&r, où que vous soyez."
+		"• Masque des enfers : résistance au feu ; Cœur du Gardien des enfers : régénération ; Œuf du Gardien des Cieux : aucun dégât de chute ; Écho primordial : vision nocturne ;"
+		"• Visière du Colosse : force ; Cœur de magma : résistance ; Engrenage du Rôdeur : célérité ; Œil du Gardien : absorption ; Sceau du Centurion : satiété."
+		"&6Gravure&r : clic droit sur le socle avec &62 couronnes&r, et le trophée exposé gagne un second effet. Une plaque de netherite sacrée fait passer son effet au niveau II."
+		"&6Accroupi + clic droit main vide&r : les réglages du socle (matériau, velours, garnitures, colonne, présentation, éclairage, particules, plaque gravée au nom du trophée et au jour de la victoire)."
+		"&8Deux trophées identiques ne cumulent pas. Clic droit main vide pour reprendre le trophée. Un comparateur lit le socle ; un gabarit de bannière copie son apparence.&r"
+	]
+	"quest.23562325F0DE1D91.title": "Le socle de l'Empire"
+	"quest.23667A58FF83BC81.quest_desc": [
+		"Le premier moulin de l'Empire ne moulait que du grain. Le reste est venu après."
+		"La meule broie gravier, fleurs, céréales… Farine, silex et colorants sans effort. Les lunettes montrent ce qu'elle est en train de moudre."
+	]
+	"quest.23667A58FF83BC81.title": "La meule"
+	"quest.236F61406199A692.quest_desc": [
+		"Le bras mécanique a remplacé plus d'ouvriers que toutes les autres machines réunies."
+		"Avant de le poser, clic droit avec le bras en main sur les blocs où il doit prendre (bleu) et déposer (orange). Il sert tapis, dépôts, coffres, presses et brûleurs."
+	]
+	"quest.236F61406199A692.title": "Le bras mécanique"
+	"quest.23E3A6500C449AEB.quest_desc": [
+		"La grande ligne doit rouvrir : chaque rail livré la rapproche d'une cité."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.23E3A6500C449AEB.title": "Commande : rails"
+	"quest.249F3A050A5A2692.quest_desc": [
+		"Sous les cités, l'Empire envoyait ses ingénieurs d'un atelier à l'autre par des tubes de verre et de laiton. Rouvrez le réseau."
+		"Les tubes se fabriquent dès maintenant ; seules les entrées attendent ce chantier."
+	]
+	"quest.249F3A050A5A2692.quest_subtitle": "Débloque les entrées d'Hypertubes"
+	"quest.249F3A050A5A2692.title": "Grand Chantier : le réseau pneumatique"
+	"quest.24CC53E36E5B5F0A.quest_desc": [
+		"Avant les salles d'épreuve : un sac plus grand qui ramasse tout seul."
+		"L'amélioration de ramassage avale ce que vous touchez au sol ; son filtre choisit quoi garder."
+	]
+	"quest.24CC53E36E5B5F0A.title": "Sac de fer"
+	"quest.2543479E97C7BC7E.quest_desc": [
+		"Ils vous ont confié ce qu'ils étaient."
+		"&dL'Écho primordial&r entre dans la fabrication des sorts les plus puissants : explosion, foudre, maléfice, flétrissement, persistance, mur et rafale."
+		"Et les machines ne le sentent pas : vos sorts infligent &650 % de dégâts en plus&r aux machines de l'Empire, même les plus grandes."
+	]
+	"quest.2543479E97C7BC7E.title": "L'Écho primordial"
+	"quest.2616FA2DD6124E22.quest_desc": [
+		"Les cantines des avant-postes rallumés réclament du pain : les gardiens ne mangent pas, mais leurs ateliers se souviennent de ceux qui mangeaient."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.2616FA2DD6124E22.title": "Commande : pain"
+	"quest.2635834C88309144.quest_desc": [
+		"Elle a signé les plans des capsules. Puis elle a pris ceux qui voulaient vivre, et elle est partie vers le nord. Avant de rallumer quoi que ce soit, lisez ce qu'elle a laissé."
+		"Quelque part dans le nord froid, le sanctuaire réfractaire garde le journal d'&dAda Vesper&r. Lisez-le jusqu'au bout : la récompense indique où se trouve le Grand Relais."
+	]
+	"quest.2635834C88309144.quest_subtitle": "L'appel de l'Écho"
+	"quest.2635834C88309144.title": "Le journal d'Ada"
+	"quest.26721FDF49DBAC1B.quest_desc": [
+		"« Certains égarés étaient trop petits pour garder une forme humaine. Ils ont pris celle qu'ils ont pu. »"
+		"Le Starbuncle porte les objets d'un coffre à l'autre. Il fera ça très bien pour vos machines."
+		"&8Récompense : une page du carnet de l'apprentie.&r"
+	]
+	"quest.26721FDF49DBAC1B.quest_subtitle": "V · Les petits Échos"
+	"quest.26721FDF49DBAC1B.title": "Le petit être jaune"
+	"quest.26EEACC9EDD1822F.quest_desc": [
+		"Rallumez 3 avant-postes en tout."
+	]
+	"quest.26EEACC9EDD1822F.title": "Rebâtir : 3 avant-postes"
+	"quest.27C73491488EF22F.quest_desc": [
+		"Les gardes de la forge des âmes veulent leur armure. Ils paient en couronnes."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.27C73491488EF22F.title": "Commande : plaques de netherite"
+	"quest.282F0B189F106A12.quest_desc": [
+		"Morgana chantait assise. Son siège, rebâti à l'appareil d'enchantement, se dresse dans une &3capitale arcanique&r (un étendard de fondation sur lequel on a posé un bloc d'écho primordial), et il n'y en a qu'un."
+		"Assise, la Prêtresse entonne un &3chant&r pour une heure : &3âmes&r (expérience doublée), &3croissance&r (plantes trois fois plus rapides dans les bases) ou &3résonance&r (sourcelinks doublés). On peut en changer au bout de 15 minutes."
+		"Dans sa base, le mana se régénère bien plus vite, et l'on réapparaît devant le solium."
+	]
+	"quest.282F0B189F106A12.title": "Le Solium de la Prêtresse"
+	"quest.284B486F1D112E1F.quest_desc": [
+		"&7Optionnel.&r Plus de marchands pour vendre des livres : il faut les arracher aux objets."
+		"Le désenchanteur détruit un objet enchanté et en tire &cun seul&r enchantement, au hasard, dans un livre vierge. Monté comme la meule à farine, il tourne au rouage et brûle 500 mB d'huile par niveau."
+		"&8Clic droit avec l'objet, puis avec des livres ; main vide pour reprendre le livre enchanté. Entonnoirs et tapis fonctionnent aussi. Les lunettes d'ingénieur montrent l'opération en cours.&r"
+	]
+	"quest.284B486F1D112E1F.quest_subtitle": "Quête secondaire : remplir la bibliothèque"
+	"quest.284B486F1D112E1F.title": "Le désenchanteur"
+	"quest.299A3CC737A4A7C2.quest_desc": [
+		"&7Optionnel.&r Quand l'Empereur entrait dans une cité, toutes ses bannières montaient ensemble."
+		"Grands étendards et bannières murales ont un réglage « Hissage » :"
+		"• &6Manuel&r : un arbre de Create qui tourne contre le pied du mât, ou contre la bannière, la hisse ou l'abaisse selon le sens ;"
+		"• &6Selon présence&r : les bannières montent dès que l'un de vous entre dans la zone de l'étendard de fondation, et redescendent quand le dernier la quitte. Toutes celles de la zone bougent ensemble ;"
+		"• &6Selon trophées&r : elles montent tant qu'un trophée est exposé dans la zone."
+		"Réglez une bannière « selon présence » dans votre base, sortez de la zone puis revenez. Validez quand vous l'avez vue se hisser."
+	]
+	"quest.299A3CC737A4A7C2.title": "Hisser les couleurs"
+	"quest.29E98529A035C62A.quest_desc": [
+		"Tous n'ont pas voulu du Transfert. Ils ont vu revenir les capsules vides, et ils sont partis la nuit même. Leurs camps tiennent encore, quelque part."
+		"Trouvez un camp réfractaire et lisez l'un de leurs écrits (dans leurs coffres). Validez quand c'est fait."
+	]
+	"quest.29E98529A035C62A.quest_subtitle": "L'appel de l'Écho"
+	"quest.29E98529A035C62A.title": "Ceux qui ont dit non"
+	"quest.2A6746E2E9BA639E.quest_desc": [
+		"Les ateliers de l'Empire ne portaient rien à la main : tout tombait, glissait, filait d'une machine à l'autre."
+		"Une &6goulotte&r laisse tomber les objets vers le bas, d'étage en étage. Un &6entonnoir&r les prend dans un coffre ou les dépose sur un tapis ; une clé inverse son sens."
+		"&8Un filtre posé sur l'entonnoir choisit ce qui passe.&r"
+	]
+	"quest.2A6746E2E9BA639E.title": "Goulottes et entonnoirs"
+	"quest.2AB864DB22E2AED6.quest_desc": [
+		"Les tubes électroniques ont donné aux machines de l'Empire ce qui leur manquait : du jugement."
+		"Quartz du Nether + redstone = quartz rose. Poli à la ponceuse ou au tapis, il devient le cœur des tubes électroniques."
+	]
+	"quest.2AB864DB22E2AED6.title": "Quartz et tubes"
+	"quest.2ABAD12CF77811C1.quest_desc": [
+		"Remettez le Cœur en marche. Les automates se tairont, puis vous obéiront : vous serez les nouveaux souverains."
+		"&8Un cœur du Gardien des enfers : battez de nouveau le Wither s'il le faut.&r"
+		"Récompenses : la &6couronne d'airain&r (les automates ne vous attaquent plus d'eux-mêmes, vos gardiens proches sont plus forts), des gardiens réparés plus robustes, et le livre « L'Empire renaissant »."
+	]
+	"quest.2ABAD12CF77811C1.quest_subtitle": "&6Fin de l'Empire&r"
+	"quest.2ABAD12CF77811C1.title": "Rallumer le Cœur"
+	"quest.2ADA37E3BDA2E081.quest_desc": [
+		"Des croiseurs de l'Empire n'ont jamais atterri. Ils tournent encore au-dessus des nuages, vers la hauteur 150, tenus par leur équipage d'automates."
+		"Abordez-en un avec votre propre engin volant. Le livre de bord du capitaine est dans sa cabine, à la poupe ; la soute est sous le pont."
+		"&8C'est d'eux que tombent parfois des automates, quand une patrouille est larguée.&r"
+	]
+	"quest.2ADA37E3BDA2E081.title": "La flotte du ciel"
+	"quest.2B1CA1C84EB763C4.quest_desc": [
+		"Certaines ruines sont &opropres&r. Les mécanismes sont huilés, les couloirs balayés. Les gardiens ne sont peut-être pas déréglés…"
+		"&oMais pour qui font-ils la maintenance ?&r"
+		""
+		"&6&lJournal d'Octave Lanfrey&r"
+		"&oLes sentinelles de cuivre veilleront sur les salles d'épreuve.&r"
+	]
+	"quest.2B1CA1C84EB763C4.title": "Des ruines entretenues"
+	"quest.2BB788600A03C295.quest_desc": [
+		"&7Optionnel.&r Sur un îlot du lac de lave, une palissade de bois de l'Écho et un feu d'âmes. Des Réfractaires se sont arrêtés ici, sur la route de leur fuite."
+		"&8Leur carnet de route dit où ils allaient.&r"
+	]
+	"quest.2BB788600A03C295.title": "La route de la fuite"
+	"quest.2BF0E7162C817443.quest_desc": [
+		"Les trains de l'Empire partaient à la minute près. On réglait sa montre sur eux."
+		"Remplissez l'horaire (destinations, attentes, conditions de départ), puis donnez-le au conducteur assis aux commandes, d'un clic droit."
+	]
+	"quest.2BF0E7162C817443.title": "Les horaires"
+	"quest.2C2F9AA5E91C8AA7.quest_desc": [
+		"Apaisez 5 relais en tout."
+	]
+	"quest.2C2F9AA5E91C8AA7.title": "Apaiser : 5 relais"
+	"quest.2C32E48616BB7DF5.quest_desc": [
+		"Réservoirs + eau + un feu dessous : la chaleur passive fait tourner une petite machine à vapeur."
+		"&8Les brûleurs à blaze du chapitre IV la rendront bien plus puissante.&r"
+	]
+	"quest.2C32E48616BB7DF5.title": "La machine à vapeur"
+	"quest.2C3306FF10D176A1.quest_desc": [
+		"Tout ce que vous avez construit menait ici."
+		"Consultez la recette dans EMI, catégorie assembleur mécanique. Remplissez la grille, et le Cœur d'Airain battra de nouveau."
+	]
+	"quest.2C3306FF10D176A1.title": "Forger le Cœur"
+	"quest.2CB5DA93642E7418.quest_desc": [
+		"Les entrepôts de l'Empire ne se vidaient jamais pour être agrandis."
+		"Ces tonneaux et coffres montent en gamme sur place, avec un kit d'amélioration, sans perdre leur contenu. Un tonneau affiche ce qu'il contient sur sa face."
+	]
+	"quest.2CB5DA93642E7418.title": "Tonneaux de l'Empire"
+	"quest.2D2D133F3E4B2039.quest_desc": [
+		"&7Record d'ingénieur, optionnel.&r Faites tourner une machine à 256 tours/minute, la vitesse maximale. Les lunettes affichent la vitesse. Validez quand c'est fait."
+	]
+	"quest.2D2D133F3E4B2039.title": "Pleine puissance"
+	"quest.2D3AA9AFE58CD8BE.quest_desc": [
+		"Les aiguilleurs savaient toujours où était chaque train."
+		"Posé sur la voie, l'observateur émet un signal de redstone quand un train passe. Son filtre peut ne réagir qu'à une cargaison précise."
+	]
+	"quest.2D3AA9AFE58CD8BE.title": "Observateurs de voie"
+	"quest.2D44DCFA9C18E918.quest_desc": [
+		"Au moins trois trains qui partagent les mêmes voies sans collision."
+		"Des signaux de voie découpent le réseau en tronçons : un train n'entre pas dans un tronçon occupé. Placez-en à chaque croisement."
+	]
+	"quest.2D44DCFA9C18E918.title": "La gare de triage"
+	"quest.2D595A10D32FC61D.quest_desc": [
+		"Le second réseau, celui sous les rues, se répare tronçon par tronçon."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.2D595A10D32FC61D.title": "Commande : tuyaux"
+	"quest.2DEBFB7D2923CD45.quest_desc": [
+		"On ne prend pas l'Écho, on le nourrit : les plantes qui poussent, la lave qui brûle. Ce qui vit lui rend un peu de ce que l'Empire lui a volé."
+		"&8Récompense : une page du carnet de l'apprentie.&r"
+	]
+	"quest.2DEBFB7D2923CD45.quest_subtitle": "II · Nourrir l'Écho"
+	"quest.2DEBFB7D2923CD45.title": "Nourrir l'Écho"
+	"quest.2DFFED2A5E3EF921.quest_desc": [
+		"La flotte du ciel de l'Empire n'a jamais perdu une bataille. Elle a seulement été oubliée."
+		"Montez au moins deux canons sur votre engin volant. Le ciel n'est pas vide."
+	]
+	"quest.2DFFED2A5E3EF921.title": "Le navire de guerre"
+	"quest.2E4723BB5AA601A2.quest_desc": [
+		"Apaisez 10 relais en tout."
+	]
+	"quest.2E4723BB5AA601A2.title": "Apaiser : 10 relais"
+	"quest.2E75045EF91CE45C.quest_desc": [
+		"&7Optionnel.&r Dans les savanes brûlées et les collines battues, la guerre s'est arrêtée net. Un marcheur de l'Empire gît encore devant une barricade réfractaire, au milieu d'un cratère où l'Écho a fait pousser du cristal."
+		"&8La caisse de la barricade garde parfois une lettre jamais envoyée.&r"
+	]
+	"quest.2E75045EF91CE45C.title": "Le front"
+	"quest.2EF37A4DD7D32352.quest_desc": [
+		"Les chaudières des cités fuient. Il leur faut du cuivre, beaucoup de cuivre."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.2EF37A4DD7D32352.title": "Commande : plaques de cuivre"
+	"quest.2F130DA613E8FEE3.quest_desc": [
+		"Une ligne, c'est un trajet. Deux lignes, c'est un réseau."
+		"Un réseau d'au moins deux lignes, avec des signaux pour éviter les collisions. Validez quand deux trains circulent sans se gêner."
+	]
+	"quest.2F130DA613E8FEE3.title": "Deux lignes"
+	"quest.303C4600D2F40D99.quest_desc": [
+		"Sans papier, pas de cartes, pas de livres, pas de cartouches."
+		"Des pistons coupent la canne au-dessus du premier bloc, déclenchés par des observateurs ; elle repousse seule. Un tapis sous la rangée ramasse la récolte."
+	]
+	"quest.303C4600D2F40D99.title": "Ferme à canne à sucre"
+	"quest.308DA6D9FACBFFB4.quest_desc": [
+		"Quand le Cœur battra de nouveau, ce qui reste de l'Empire viendra le reprendre."
+		"Remplissez les soutes de vos canons : boulets pour percer, obus explosifs pour les groupes. Mieux vaut trop que pas assez."
+	]
+	"quest.308DA6D9FACBFFB4.title": "Préparer le siège"
+	"quest.30A89C3EB74F4D50.quest_desc": [
+		"Avant l'Empire, le peuple du Nether vivait dans ces forteresses. Asservi aux forges, rongé par les fumées d'âmes, il les a reprises quand l'Empire est parti."
+		"Les bastions cachent les gabarits d'amélioration en netherite, et l'or du tribut qu'ils accumulent encore. Ne cassez pas l'or sous leurs yeux."
+	]
+	"quest.30A89C3EB74F4D50.title": "Le bastion"
+	"quest.315A19C157FEDB23.quest_desc": [
+		"Les ateliers de l'Empire ne se traversaient pas à pied : tout y roulait."
+		"Le tapis roulant (fait de varech séché) relie deux arbres et transporte les objets entre les machines. Le dépôt garde un objet sous une machine, le temps qu'elle travaille."
+	]
+	"quest.315A19C157FEDB23.title": "Tapis et dépôt"
+	"quest.315CF297898F138E.quest_desc": [
+		"Remplir, vider : la moitié du travail d'un atelier de l'Empire tenait à ces deux gestes."
+		"Le &6bec verseur&r remplit ce qui passe dessous (bouteilles, seaux, burettes) sur un dépôt ou un tapis. L'&6égouttoir&r fait l'inverse : il vide les objets dans son réservoir."
+		"&8C'est par l'égouttoir que l'huile des burettes rejoint vos tuyaux.&r"
+	]
+	"quest.315CF297898F138E.title": "Bec verseur et égouttoir"
+	"quest.31AFBCA2E8ACAA09.quest_desc": [
+		"Haut dans le ciel, au-dessus des plaines, une île flotte avec une coupole de cuivre. L'Empire y observait les étoiles."
+		"Le pupitre garde les relevés de l'ingénieur en chef Octave Lanfrey. &8Il faut voler pour l'atteindre : vers la hauteur 170.&r"
+	]
+	"quest.31AFBCA2E8ACAA09.title": "La station d'observation"
+	"quest.31C724BE22F84506.quest_desc": [
+		"La netherite de l'Empire ne sortait jamais brute des forges : elle était laminée, plaque par plaque."
+		"Lingot de netherite → déployeur (mécanisme de précision) → presse. Ces plaques remplacent le lingot à la table de forgeron, pour l'armure comme pour les armes."
+	]
+	"quest.31C724BE22F84506.title": "Plaques de netherite"
+	"quest.31D630A6895FF90A.quest_desc": [
+		"Cinq cents lingots : de quoi rendre à une cité son éclat."
+		"Un mixeur nourri en continu par entonnoirs, un brûleur toujours alimenté, et la fonderie tourne seule. Le minerai broyé et lavé donne plus de cuivre et de zinc."
+	]
+	"quest.31D630A6895FF90A.title": "Fonderie de laiton"
+	"quest.337B0BA5127D891F.quest_desc": [
+		"Les coffres-forts de la banque impériale n'ont jamais été forcés."
+		"Posés côte à côte, ils fusionnent en un seul grand coffre. Ils ne s'ouvrent pas à la main : entonnoirs, bras et tapis les remplissent et les vident."
+	]
+	"quest.337B0BA5127D891F.title": "Coffres-forts"
+	"quest.33A63A2740A53798.quest_desc": [
+		"&7Après la fin de l'Empire.&r Couronne sur la tête, entrez dans un avant-poste (ou une cité mécanique) et utilisez une &6charte impériale&r (clic droit)."
+		"L'avant-poste se rallume : ses bannières prennent les couleurs de votre base la plus proche, plus aucun monstre n'y apparaît, ses comptoirs baissent leurs prix d'un quart, et un gardien réparé y monte la garde."
+		"&8Charte : 6 lingots de laiton, 2 mécanismes de précision, 1 papier.&r"
+	]
+	"quest.33A63A2740A53798.title": "Rebâtir l'Empire"
+	"quest.349D5216D8932504.quest_desc": [
+		"La salle secrète du Conseil, bâtie autour d'une porte que personne ne devait franchir. C'est d'ici que l'Empire a lancé sa traque."
+		"Les yeux de l'Ender, lancés en l'air, vous y mènent. La porte vers l'End ne s'ouvrira qu'après la forge des âmes."
+	]
+	"quest.349D5216D8932504.title": "Le fort souterrain"
+	"quest.35F93598035AE578.quest_desc": [
+		"Vous vous réveillez dans une salle sans aucun souvenir. Une lampe grésille, une horloge s'est arrêtée. Sur la table, un carnet attend qu'on l'ouvre."
+		"Cherchez des indices : le carnet de l'ingénieur raconte ce qui s'est passé ici."
+		""
+		"&8La quête se valide en refermant le carnet, à la dernière page.&r"
+	]
+	"quest.35F93598035AE578.quest_subtitle": "Lisez le journal de l'ingénieur"
+	"quest.35F93598035AE578.title": "Comprendre ce qui s'est passé"
+	"quest.3683E03BE02A53FF.quest_desc": [
+		"Sous chaque cité courait un second réseau, plus discret que le rail : la tuyauterie."
+		"Les tuyaux mènent les fluides, mais ne poussent rien seuls : il leur faut une pompe. Une clé sur un tuyau droit y pose une fenêtre ; un tuyau peut aussi recevoir une vanne."
+	]
+	"quest.3683E03BE02A53FF.title": "Tuyauterie"
+	"quest.370DB6CD983FF0CC.quest_desc": [
+		"Sur les murs d'une ruine noyée, répétées des centaines de fois :"
+		"&o« Nous dormons dans le métal. »&r"
+		"&o« Le grand transfert approche. »&r"
+		""
+		"&6&lJournal d'Octave Lanfrey&r"
+		"&oLes gardiens des marées garderont le secret de l'alliage.&r"
+	]
+	"quest.370DB6CD983FF0CC.title": "Les inscriptions"
+	"quest.37B3F0D4305E4904.quest_desc": [
+		"&7Optionnel.&r Les distributeurs demandent les pièces exactes et ne rendent pas la monnaie. La banque règle ce problème."
+		""
+		"1. Fabriquez une &6carte bancaire&r : plaque de fer, plaque d'or et colorant blanc."
+		"2. Clic droit avec la carte en main : elle se lie à votre compte."
+		"3. Déposez vos pièces au &6terminal bancaire&r du comptoir."
+		"4. Achetez aux distributeurs en tenant la carte : la valeur totale est débitée, quelles que soient vos pièces."
+	]
+	"quest.37B3F0D4305E4904.quest_subtitle": "Quête secondaire : payer par carte"
+	"quest.37B3F0D4305E4904.title": "La banque de l'Empire"
+	"quest.37F7CA7DE0411DCA.quest_desc": [
+		"« Nos relais ne retiennent personne. Ils transmettent, puis ils laissent partir. » Ceux de l'Empire, eux, n'ont jamais rendu ce qu'ils portaient."
+	]
+	"quest.37F7CA7DE0411DCA.title": "Des relais qui laissent partir"
+	"quest.38B2650A583B18EA.quest_desc": [
+		"Les gardes des remparts tenaient l'ennemi à distance de lance."
+		"Les armes de fer de l'arsenal se forgent avec des plaques de fer au lieu de lingots. Comme les autres, elles se réparent au banc d'entretien."
+	]
+	"quest.38B2650A583B18EA.title": "La lance"
+	"quest.38C137BD563DC81F.quest_desc": [
+		"L'Écho se souvient de tout ce qui a existé. Une &3archive résonante&r, éveillée à l'appareil d'enchantement autour d'un bloc d'écho primordial, le lui fait rendre."
+		"Elle se pose avec ses obélisques et un &3cercle d'arrivée&r de 3 x 3 devant elle. Clic droit : choisissez des matières premières par lots de 1, 32 ou 64, payées en pièces."
+		"Une minute plus tard, un passage s'ouvre et la caisse &3apparaît&r sur le cercle. Clic droit dessus pour la vider."
+	]
+	"quest.38C137BD563DC81F.title": "L'Archive résonante"
+	"quest.39E9F1207BD8C9A9.quest_desc": [
+		"La première roue de l'Empire tournait dans un ruisseau, derrière la maison de son fondateur. On la montre encore aux enfants."
+		"Une roue à eau dans un courant : votre première force mécanique. Les arbres la transmettent. Portez les lunettes pour lire vitesse et contrainte."
+	]
+	"quest.39E9F1207BD8C9A9.title": "La première roue"
+	"quest.3A95A67E6E76796D.quest_desc": [
+		"Le cycle 212, la ligne a cédé en pleine charge. Une partie du flux n'est jamais arrivée au Cœur. L'Empire a interdit le mot. Les cristaux, eux, ont continué de pousser."
+		"Trouvez un relais brisé et lisez le rapport d'incident sur le pupitre. C'est là que l'Écho s'est échappé."
+	]
+	"quest.3A95A67E6E76796D.quest_subtitle": "L'appel de l'Écho"
+	"quest.3A95A67E6E76796D.title": "La ligne rompue"
+	"quest.3AA9ACD7A616F854.quest_desc": [
+		"&7Optionnel.&r Les places de l'Empire se reconnaissaient de loin : un mât de cinq à huit blocs, et une toile qui claquait au vent."
+		"Le &6grand étendard&r fait tout ce que fait l'étendard de fondation, en plus grand. Une troisième page, « Mât », règle la hauteur, la longueur et la largeur de la toile, le vent, les franges, le fleuron du sommet (le rouage tourne), la bannière simple (à gauche ou à droite) ou double, et les lanternes."
+		"Mode &6décoratif&r (page « Général ») : pas de titre à l'écran, pas de place dans le registre. Parfait pour orner une base qui a déjà sa fondation."
+		"&8Un signal de redstone le met en berne. La météo fait claquer la toile ; l'option « Vent commun » fait onduler ensemble toutes les bannières qui l'ont.&r"
+	]
+	"quest.3AA9ACD7A616F854.title": "Le grand étendard"
+	"quest.3B38C5096A245F19.quest_desc": [
+		"Le temple de prismarine où l'Empire cachait le secret du laiton. Repérez-le avant de l'attaquer."
+		"&8Récompense : les livres Respiration III et Affinité aquatique, pour le casque de plongée.&r"
+	]
+	"quest.3B38C5096A245F19.title": "Les ruines englouties"
+	"quest.3B5B4C7E5A9E504E.quest_desc": [
+		"&7Optionnel.&r Pour celui de l'équipe qui suit la voie de l'Écho : une pièce d'armure d'Ars Nouveau (sorcier, arcaniste ou mage de bataille). Validez quand elle est portée."
+	]
+	"quest.3B5B4C7E5A9E504E.title": "Robes d'Écho"
+	"quest.3BA0D7C84446401F.quest_desc": [
+		"Avant le monument : aimant, nourriture et réapprovisionnement automatiques."
+		"L'aimant attire les objets proches, la nourriture vous nourrit quand vous avez faim, le réapprovisionnement remplit votre main quand une pile s'épuise."
+	]
+	"quest.3BA0D7C84446401F.title": "Sac d'or"
+	"quest.3BE4A51ACF80D7CB.quest_desc": [
+		"&7Optionnel.&r Plantez un &6étendard de fondation&r au cœur de votre base et donnez-lui un nom et une devise : chaque fois qu'un de vous deux entrera dans sa zone, ils s'afficheront à l'écran, encadrés de sa bannière."
+		"Clic droit pour tout régler. Page « Général » : nom, devise, style du mât (potence, vexillum, cérémonie). Page « Toile » : couleurs, partition et seconde couleur, motif et sa couleur, forme du bas, usure (neuve, usée, déchirée), broderie lumineuse."
+		"Clic droit avec une clé de Create pour agrandir la zone (16 à 128 blocs, accroupi pour réduire). Un comparateur contre l'étendard donne un signal plein tant que l'un de vous est dans la zone."
+		"Le &6registre des fondations&r liste toutes vos bases (nom, coordonnées, dimension, distance), puis vos trophées exposés."
+		"&8L'étendard de fondation est le maître de sa zone : les grands étendards et bannières qui s'y trouvent peuvent suivre sa présence (voir « Hisser les couleurs »).&r"
+	]
+	"quest.3BE4A51ACF80D7CB.title": "La première fondation"
+	"quest.3D95E57BC7AAF705.quest_desc": [
+		"Les entonnoirs de laiton comptaient chaque pièce : rien ne sortait de l'entrepôt sans être pesé."
+		"Ils filtrent directement et règlent la quantité exacte prise à chaque fois (molette sur leur face)."
+	]
+	"quest.3D95E57BC7AAF705.title": "Entonnoirs de laiton"
+	"quest.3DC7156494A0EA62.quest_desc": [
+		"L'alliage est le pain des machines. Il en faudra beaucoup, et longtemps."
+		"Faites-en une réserve. Un mixeur, au chapitre suivant, saura bientôt le produire pour vous."
+	]
+	"quest.3DC7156494A0EA62.title": "Réserve d'alliage"
+	"quest.3E42AFB5B4ED0540.quest_desc": [
+		"Le métal de l'Empire, celui de ses insignes : ses entrepôts le paient au prix fort."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.3E42AFB5B4ED0540.title": "Commande : laiton"
+	"quest.3E8DC7B2286715F3.quest_desc": [
+		"Frappez le diapason d'Ada sur le Cœur. Il se fendra, et les âmes s'en iront. Les automates s'arrêteront pour de bon."
+		"&8L'Écho primordial s'obtient dans la voie de l'Écho, section « Les Échos perdus ».&r"
+		"Récompenses : la &3bénédiction de l'Écho&r (vision dans le noir, moitié plus d'expérience, le sculk ne vous entend plus, et accroupi immobile un instant, une onde révèle les créatures à 24 blocs), les âmes sans repos ne reviennent plus, et le livre « Le dernier chant »."
+	]
+	"quest.3E8DC7B2286715F3.quest_subtitle": "&3Fin de l'Écho&r"
+	"quest.3E8DC7B2286715F3.title": "Libérer les âmes"
+	"quest.3EA8884EEA45169F.quest_desc": [
+		"Un ingénieur pressé passait d'un atelier à l'autre en quelques secondes, aspiré dans un tube de verre."
+		"Deux entrées alimentées par un engrenage, reliées par des tubes. Validez quand vous avez fait le trajet."
+	]
+	"quest.3EA8884EEA45169F.title": "Le premier tube"
+	"quest.3F70267359AFD16A.quest_desc": [
+		"Les ruines ne dorment plus. Vous avez rendu son Cœur à l'Empire. À vous de l'arrêter."
+		""
+		"&eRécompense :&r la &cBalise de défense&r, une tour-phare à sirène. Posez-la dans votre base (3 × 3 blocs au sol, 8 de haut) : c'est vous qui choisissez quand l'Empire attaque. Pendant l'assaut, son phare balaie la base, et sa sirène annonce chaque vague."
+		"&8Chaque joueur réclame sa propre balise.&r"
+		""
+		"&cDésormais, des patrouilles d'automates viennent à votre rencontre en surface, et certaines tombent du ciel.&r Elles cessent quand l'Empereur tombe."
+	]
+	"quest.3F70267359AFD16A.title": "L'Empire s'éveille"
+	"quest.3FC181E6EAD2F9AB.quest_desc": [
+		"La pierre ne manque jamais. Encore faut-il l'extraire sans s'user les bras."
+		"Lave et eau qui se rencontrent, une perceuse mécanique en face : de la roche sans fin. Broyée, elle devient gravier puis sable."
+	]
+	"quest.3FC181E6EAD2F9AB.title": "Générateur de pierre"
+	"quest.4058125A46150053.quest_desc": [
+		"L'Empire était bâti de tôle. Chaque machine, chaque coque, chaque armure commence par une plaque."
+		"Posez les lingots sur un dépôt ou un tapis, sous la presse : elle les aplatit un par un. Gardez-en d'avance, le reste du chapitre en dévore."
+	]
+	"quest.4058125A46150053.title": "Plaques de fer"
+	"quest.40BA346F57FB7B3E.quest_desc": [
+		"« L'Écho est plus fort là où les arbres changent de couleur. » Trouvez une forêt d'archebois : bleu, rouge, vert ou violet, chaque teinte chante autrement."
+	]
+	"quest.40BA346F57FB7B3E.quest_subtitle": "I · Les premiers murmures"
+	"quest.40BA346F57FB7B3E.title": "Les premiers murmures"
+	"quest.422022D7AAF0448C.quest_desc": [
+		"L'Empire a laissé ses machines, pas ses outils. Il faudra commencer comme ses premiers ingénieurs : à la main."
+		"Les outils et l'épée de fer se fabriquent toujours à l'établi. Les autres armes et les armures passeront par les machines : la presse, puis la forge."
+	]
+	"quest.422022D7AAF0448C.title": "Des outils dignes de ce nom"
+	"quest.42E914B06EF601A5.quest_desc": [
+		"&7Optionnel.&r Elle garde les portes des cités de bronze. Son ordre n'a jamais été levé."
+		"&8Plus lente que ses petites sœurs, mais bien plus solide. Ne la laissez pas vous acculer.&r"
+	]
+	"quest.42E914B06EF601A5.title": "L'araignée gardienne"
+	"quest.42F7136AFE2BDD6A.quest_desc": [
+		"&7Optionnel.&r La masse des gardes d'élite : plus on tombe de haut, plus elle frappe fort."
+		"Le noyau lourd tombe rarement des coffres funestes. Il faut aussi une tige de breeze pour l'assembler."
+	]
+	"quest.42F7136AFE2BDD6A.title": "Bonus : la masse d'armes"
+	"quest.433D57C46C36B83C.quest_desc": [
+		"Il attaque en piqué, depuis les hauteurs. Gardez un sort prêt."
+	]
+	"quest.433D57C46C36B83C.title": "Le rôdeur"
+	"quest.43F9DDC4A4D5280C.quest_desc": [
+		"L'arme des gardes de la forge des âmes."
+		"Plaques de netherite et gabarit d'amélioration à la table de forgeron, sur l'arme de diamant. Les plaques remplacent le lingot, comme pour l'armure."
+	]
+	"quest.43F9DDC4A4D5280C.title": "Une arme de netherite"
+	"quest.44080B72B3CD942B.quest_desc": [
+		"Le bruit de la presse était celui des cités de l'Empire : un battement, jour et nuit."
+		"Bloc de fer + boîtier d'andésite. La presse aplatit les lingots en plaques : tout le chapitre en dépend. Posée au-dessus d'un bassin, elle sert aussi à compacter."
+	]
+	"quest.44080B72B3CD942B.title": "La presse mécanique"
+	"quest.45908562924123FC.quest_desc": [
+		"Les ateliers de l'Empire équipaient leurs gardiens selon la garnison : lanternes pour les mines, canons pour les remparts, chaudières pour les postes isolés."
+		"Trois emplacements, un module chacun :"
+		"&6Tête&r : tête-lanterne (lumière, monstres en surbrillance) ou longue-vue (dégâts, voit les invisibles)."
+		"&6Épaules&r : canon d'épaule ou bobine Tesla."
+		"&6Torse&r : blindage riveté ou chaudière de secours (il se relève au lieu d'être détruit)."
+		"Ils se fabriquent à l'&6assembleur mécanique&r. Clic droit sur un gardien en marche pour en monter un ; accroupi, main vide, pour tout démonter."
+		"&8La bobine et la chaudière demandent un fragment de résonance.&r"
+	]
+	"quest.45908562924123FC.title": "Les ateliers de garnison"
+	"quest.45CA43199084EBB5.quest_desc": [
+		"Le laiton est le métal de l'Empire : celui de ses mécanismes, de ses insignes, de son nom."
+		"Cuivre et zinc fondus ensemble au mixeur, sur un bassin chauffé par un brûleur à blaze. Sans chaleur, pas de laiton."
+	]
+	"quest.45CA43199084EBB5.title": "L'alliage impérial"
+	"quest.45DA6B1623943C36.quest_desc": [
+		"Une épée de fer, c'est bien. L'arsenal de l'Empire avait mieux."
+		"Forgez une arme de fer de Simply Swords (épée longue, katana, lance…). Elles demandent aussi des plaques. Validez quand c'est fait."
+		"&8L'annexe « Arsenal » détaille toutes les armes.&r"
+	]
+	"quest.45DA6B1623943C36.title": "Une vraie arme"
+	"quest.46882C5D681F223B.quest_desc": [
+		"&7Record d'ingénieur, optionnel.&r Descendez sous Y -59, tout contre la bedrock."
+		"&8Les mineurs de l'Empire disaient qu'on y entend battre le monde.&r"
+	]
+	"quest.46882C5D681F223B.title": "Au fond du monde"
+	"quest.472B472777388071.quest_desc": [
+		"Une lame venue des forges de l'Est, adoptée par les officiers de l'Empire."
+		"Rapide et tranchant. Comme la lance, il se forge avec des plaques de fer."
+	]
+	"quest.472B472777388071.title": "Le katana"
+	"quest.47A90C9D840F46EF.quest_desc": [
+		"Obtenez une &6clé funeste&r et abattez 10 gardiens de vent."
+		""
+		"&eRécompense :&r le &6Schéma du Cuivre&r (pompe, bec verseur, égouttoir)."
+		"&8En tombant, le dernier gardien laisse échapper un éclat de métal tiède. Un souvenir.&r"
+	]
+	"quest.47A90C9D840F46EF.quest_subtitle": "Débloque le Schéma du Cuivre"
+	"quest.47A90C9D840F46EF.title": "Le gardien du vent"
+	"quest.47ADCC0B3FAD7F28.quest_desc": [
+		"Le chantier naval de la capitale lançait un navire par semaine."
+		"Un second Schéma du Ciel, pour que chacun puisse construire de son côté. Les matériaux sont consommés."
+	]
+	"quest.47ADCC0B3FAD7F28.quest_subtitle": "Un second Schéma du Ciel"
+	"quest.47ADCC0B3FAD7F28.title": "Grand Chantier : le chantier naval"
+	"quest.484751AF0234DDF5.quest_desc": [
+		"&7Optionnel.&r Pendant le Transfert, tous les esprits ne sont pas arrivés jusqu'au Cœur. Ceux qui se sont perdus flottent encore dans le monde : les Réfractaires appellent cela l'&dÉcho&r."
+		"L'Empire l'avait interdit. Les Réfractaires, eux, ont appris à s'en servir. L'améthyste résonne avec lui."
+		"Rapportez des éclats d'améthyste et du lapis-lazuli : un carnet réfractaire vous apprendra à capter l'Écho."
+		"&8Récompense : le carnet d'Ars Nouveau, le guide de toute la magie de l'Écho.&r"
+	]
+	"quest.484751AF0234DDF5.quest_subtitle": "Quête secondaire : la magie de l'Écho"
+	"quest.484751AF0234DDF5.title": "L'Écho"
+	"quest.48A453D94E21691C.quest_desc": [
+		"&7Optionnel.&r Un hall plein de capsules vides, et des câbles qui plongent dans un puits."
+		"Descendez lire le rapport de l'ingénieur, sur le pupitre au fond. Le coffre du collecteur garde une lettre."
+	]
+	"quest.48A453D94E21691C.title": "La station de capsules"
+	"quest.48FA53E37A178943.quest_desc": [
+		"Près des cristaux, l'air se refroidit, comme si quelqu'un passait. Les Réfractaires avaient appris à retenir ce froid dans l'améthyste. Ils l'appelaient l'&dÉcho&r."
+		"La chambre d'imprégnation fixe l'Écho dans l'améthyste : des gemmes de source. Posez-y de l'améthyste et laissez-la se charger ; sa recette est dans EMI."
+		"&8Récompense : la première page du carnet d'une apprentie réfractaire.&r"
+	]
+	"quest.48FA53E37A178943.quest_subtitle": "L'appel de l'Écho"
+	"quest.48FA53E37A178943.title": "Un froid dans l'améthyste"
+	"quest.48FB591AC7A056F4.quest_desc": [
+		"&7Optionnel.&r Les ingénieurs de l'Empire ne rendaient jamais un outil sans l'avoir passé à la meule."
+		"Tout outil ou arme qui sort du banc d'entretien est &6affûté&r pendant 10 minutes : +10 % de vitesse de minage pour un outil, +10 % de dégâts pour une arme. Si la cuve d'huile est pleine aux trois quarts au moment de la réparation, l'effet dure 15 minutes."
+		"L'infobulle de l'objet affiche le temps qui reste. Validez après votre première réparation."
+	]
+	"quest.48FB591AC7A056F4.title": "Le fil de la lame"
+	"quest.492C9807A7C2C221.quest_desc": [
+		"Les entrepôts de l'Empire n'ont jamais été vides ; il suffisait de savoir compter. Une &6machine différentielle&r, montée à l'établi mécanique autour d'une plaque impériale, les rouvre."
+		"Elle se pose avec ses décors et une &6zone d'arrivage&r de 3 x 3 devant elle. Clic droit : choisissez des matières premières par lots de 1, 32 ou 64, payées en pièces."
+		"Une minute plus tard, la caisse descend en &6parachute&r sur la zone. Clic droit dessus pour la vider."
+	]
+	"quest.492C9807A7C2C221.title": "La Machine différentielle"
+	"quest.49BEC3C1141BEF65.quest_desc": [
+		"&7Record d'ingénieur, optionnel.&r Passez au-dessus du plafond de bedrock du Nether. Une perle de l'Ender bien lancée peut aider."
+		"&8Personne ne sait ce que les ingénieurs de l'Empire allaient y chercher.&r"
+	]
+	"quest.49BEC3C1141BEF65.title": "Le toit du Nether"
+	"quest.49C49B3652FB243A.quest_desc": [
+		"Un entrepôt sans ordre n'est qu'un tas."
+		"L'&6outil de stockage&r relie tonneaux et coffres à un contrôleur, et règle ce qu'ils affichent. Les tonneaux de fer gardent plus de piles."
+	]
+	"quest.49C49B3652FB243A.title": "Le stockage s'organise"
+	"quest.49E4BA6154AA295A.quest_desc": [
+		"Les forges d'en bas n'ont jamais cessé de brûler. Le portail ne s'allume qu'après le Gardien des marées."
+		"Partez armé, nourri, avec de quoi boucher un passage et rentrer vite. Les blazes de ses forteresses donnent le feu qui fait le laiton."
+	]
+	"quest.49E4BA6154AA295A.title": "Vers le Nether"
+	"quest.4A9B3A221345EC1C.quest_desc": [
+		"Posez la balise de défense dans votre base et repoussez un assaut complet de l'Empire : quatre vagues, la dernière menée par un centurion à vapeur."
+		""
+		"&eClic droit&r sur la balise : l'assaut commence après un compte à rebours."
+		"&eAccroupi + clic droit&r (balise au repos) : règle le rayon d'arrivée (48, 64, 96 ou 128 blocs) et montre le cercle rouge où ils apparaîtront. Placez-le au-delà de vos murailles."
+		"Les ennemis n'apparaissent que sur du sol naturel à ciel ouvert : jamais sur vos sols, toits ou chemins."
+		"Entre deux vagues, 30 secondes de répit. Si vous tombez tous les deux, seule la vague en cours recommence à votre retour."
+		""
+		"La balise ne s'use jamais. Chaque assaut repoussé rapporte des engrenages et un objet rare, et le suivant sera un peu plus fort."
+	]
+	"quest.4A9B3A221345EC1C.title": "Tenir la position"
+	"quest.4AC816ED3CDE8C53.quest_desc": [
+		"Un vrai train a des portes. Les voyageurs de l'Empire n'ont jamais sauté d'un wagon en marche."
+		"Les portes de train s'ouvrent seules à l'arrêt en gare, du côté du quai, et se referment au départ."
+	]
+	"quest.4AC816ED3CDE8C53.title": "Portes de train"
+	"quest.4B53300A90F22D2C.quest_desc": [
+		"Descendez au fond d'une station de capsules et lisez le rapport de l'ingénieur Elias Vael."
+		"Dans le coffre du collecteur, une lettre attend toujours d'être ouverte."
+	]
+	"quest.4B53300A90F22D2C.title": "Le rapport de Vael"
+	"quest.4C11C27421D7B2F4.quest_desc": [
+		"Au troisième étage d'une citadelle en ruine de l'End, l'&5autel du vide&r. Les chasseurs de l'Empire en avaient fait leur tête de pont ; l'Écho, trop dense ici, les a dévorés. Approchez et leur chef s'éveille."
+		"&8Il ne meurt pas en hurlant. Il murmure : « Bientôt. »&r"
+	]
+	"quest.4C11C27421D7B2F4.quest_subtitle": "Le dernier fragment"
+	"quest.4C11C27421D7B2F4.title": "La citadelle en ruine"
+	"quest.4DA9AA29C115DD53.quest_desc": [
+		"Certaines armes n'ont jamais été fabriquées en série : on les trouve dans les coffres des donjons et des forteresses. Mettez la main sur une arme unique de Simply Swords, puis validez."
+	]
+	"quest.4DA9AA29C115DD53.title": "Une arme unique"
+	"quest.4DCBE77F930CEB10.quest_desc": [
+		"L'arme des champions de l'arène impériale. Lourde, lente, sans pitié."
+		"Le manche est désormais une plaque de cuivre au lieu d'un bâton. Elle frappe large : idéale contre les groupes."
+	]
+	"quest.4DCBE77F930CEB10.title": "La claymore de diamant"
+	"quest.4F1E60398199317B.quest_desc": [
+		"Glissez un fil d'amélioration dans une pièce de votre robe (à l'appareil d'enchantement). Validez quand c'est fait."
+	]
+	"quest.4F1E60398199317B.title": "Un fil d'Écho"
+	"quest.4FCBF12D61978F2E.quest_desc": [
+		"Le cuivre gardait les fluides de l'Empire : vapeur, huile, eau des chaudières."
+		"Comme l'andésite, le boîtier de cuivre s'obtient en appliquant le matériau sur du bois écorcé, à la main ou au déployeur. Il habille tout ce qui touche aux fluides."
+	]
+	"quest.4FCBF12D61978F2E.title": "Boîtier de cuivre"
+	"quest.504C64579D0C97F8.quest_desc": [
+		"&7Record d'ingénieur, optionnel.&r Parcourez 10 km en élytres. Des fusées, ou un jetpack pour repartir."
+		"&8Les messagers de l'Empire faisaient le tour du continent en une journée.&r"
+	]
+	"quest.504C64579D0C97F8.title": "Le grand voyageur"
+	"quest.5051FDBC40E9057C.quest_desc": [
+		"L'Empire n'est pas le seul à avoir laissé de grandes ruines. D'autres ont surgi depuis."
+		"Explorez trois grandes structures de When Dungeons Arise (forteresses volantes, cités en ruine…). Validez à la troisième."
+	]
+	"quest.5051FDBC40E9057C.title": "Les donjons surgis"
+	"quest.5056F0EBCF563749.quest_desc": [
+		"&7Optionnel.&r Des ruines à moitié enterrées, plus anciennes que l'Empire lui-même. Ses archéologues les fouillaient déjà."
+		"Un pinceau sur le sable ou le gravier suspect révèle ce que la terre cache : poteries, gabarits, et parfois mieux."
+	]
+	"quest.5056F0EBCF563749.title": "Les ruines enfouies"
+	"quest.50BA89E70106AA5D.quest_desc": [
+		"&7La voie de l'Écho.&r Pour inscrire de nouveaux sorts dans votre grimoire."
+		"Chaque glyphe se grave une fois pour toutes, contre des matériaux. Les réfractaires gardaient leurs tables loin des yeux de l'Empire."
+	]
+	"quest.50BA89E70106AA5D.quest_subtitle": "III · Le grimoire"
+	"quest.50BA89E70106AA5D.title": "La table du scribe"
+	"quest.50D4055059B84939.quest_desc": [
+		"Un ingénieur de l'Empire ne sortait jamais sans son sac."
+		"Cuir, ficelle et un coffre. Clic droit pour l'ouvrir, accroupi + clic droit sur le sol pour le poser. Équipé sur le dos, il s'ouvre d'une touche (B par défaut)."
+	]
+	"quest.50D4055059B84939.title": "Le premier sac"
+	"quest.526FC1E547AB0990.quest_desc": [
+		"Un rituel des nuages, posé sur le brasero. Validez une fois le ciel changé."
+		"&8Récompense : une page du carnet de l'apprentie.&r"
+	]
+	"quest.526FC1E547AB0990.title": "Ouvrir le ciel"
+	"quest.52FA0BE465BA921D.quest_desc": [
+		"&7Optionnel.&r Pour ceux qui en veulent encore : trois centurions de plus. Ils ne se sont pas tous arrêtés."
+		"&8Ils crachent de la vapeur brûlante avant de frapper : reculez quand ils sifflent.&r"
+	]
+	"quest.52FA0BE465BA921D.title": "Défi final : la garde de bronze"
+	"quest.53673928BEED9E60.quest_desc": [
+		"Les roues de broyage se fabriquent à l'assembleur mécanique. Roues → lavage au ventilateur → fonte : de l'expérience et des sous-produits en plus (de la redstone avec le fer)."
+		"&8Broyez des blocs de minerai minés avec Toucher de soie : près de deux fois plus de métal.&r"
+	]
+	"quest.53673928BEED9E60.title": "La ligne de minerai"
+	"quest.53A08AFC6A48F66F.quest_desc": [
+		"Une chaudière de l'Empire buvait plus d'eau qu'un village entier."
+		"Les réservoirs posés côte à côte ou empilés fusionnent en une seule cuve, jusqu'à 3 blocs de large. Les lunettes d'ingénieur montrent leur contenu."
+	]
+	"quest.53A08AFC6A48F66F.title": "Réservoirs"
+	"quest.53B3D206C5511F69.quest_desc": [
+		"Le premier atelier impérial est là, sous la poussière. Il ne demande que des matériaux pour reprendre vie."
+		"Livrez les matériaux : ils sont consommés. En échange, de quoi fabriquer votre première presse, et la suite du chapitre."
+	]
+	"quest.53B3D206C5511F69.quest_subtitle": "Ouvre le chapitre II"
+	"quest.53B3D206C5511F69.title": "Grand Chantier : le premier atelier"
+	"quest.546D55D27972933A.quest_desc": [
+		"Un brûleur à blaze dans une crosse de bois. Ce n'est pas prudent. C'est très efficace."
+		"Courte portée, dégâts de feu : redoutable de près, inutile contre ce qui vient du Nether."
+	]
+	"quest.546D55D27972933A.title": "Le lance-flammes à blaze"
+	"quest.54AD56ABAB892175.quest_desc": [
+		"&7Optionnel.&r Le modèle le plus répandu des vieilles usines de bronze. Il en sort encore de partout."
+		"&8Seule, elle n'est rien. Elles ne sont jamais seules.&r"
+	]
+	"quest.54AD56ABAB892175.title": "L'araignée de bronze"
+	"quest.5625831E74A2BFCD.quest_desc": [
+		"&7Optionnel.&r Une machine de guerre de l'usine ancienne. On l'appelle aussi la Sentinelle."
+		"&8Ses tirs portent loin : approchez à couvert, et ne restez jamais dans son axe.&r"
+	]
+	"quest.5625831E74A2BFCD.title": "Le rôdeur"
+	"quest.5645B33FC3535356.quest_desc": [
+		"Le jour du premier vol, toute la capitale avait levé la tête."
+		"Faites décoller votre premier engin et volez au-dessus des nuages. Prévoyez des élytres ou un seau d'eau, au cas où."
+	]
+	"quest.5645B33FC3535356.title": "Premier envol"
+	"quest.564D3460A05544FE.quest_desc": [
+		"Un ingénieur de l'Empire ne disait pas « plus vite » : il disait « quel rapport ? »."
+		"Petit et grand engrenage : en les combinant, on double ou on divise la vitesse. Plus vite, c'est aussi plus de contrainte : les lunettes montrent ce que la source peut encore fournir."
+	]
+	"quest.564D3460A05544FE.title": "Engrenages"
+	"quest.567C5E9704837F57.quest_desc": [
+		"Un mécanisme de précision, un tambour, et l'Empire n'a plus besoin de soldats."
+		"Elle tire tant qu'on tient la détente et qu'il reste des munitions. Gardez-en une réserve dans votre sac."
+	]
+	"quest.567C5E9704837F57.title": "La gatling"
+	"quest.5690BF6C00E42CBE.quest_desc": [
+		"Par-dessus les remparts, là où les canons ne voient pas."
+		"Les obus de mortier partent en cloche et retombent derrière les murs. Pratique contre un ennemi retranché."
+	]
+	"quest.5690BF6C00E42CBE.title": "Le mortier"
+	"quest.56C0BFD4CD51AFFC.quest_desc": [
+		"&7Optionnel.&r Une armure vide qui attend un ordre. Elle garde sa salle depuis la chute."
+		"&8Il ne craint presque rien de face : esquivez sa hache, puis frappez-le dans le dos.&r"
+	]
+	"quest.56C0BFD4CD51AFFC.title": "Le colosse de fer"
+	"quest.573BB19942AFDDDC.quest_desc": [
+		"L'huile de l'Empire voyageait par wagons-citernes."
+		"Les interfaces de fluides font comme celles des objets, pour les réservoirs du train. Elles aussi demandent le Grand Chantier de la gare impériale."
+	]
+	"quest.573BB19942AFDDDC.title": "Le train-citerne"
+	"quest.577AA2DD38280354.quest_desc": [
+		"Les âmes sans repos (les fantômes des nuits sans sommeil) laissent parfois un &dfragment de résonance&r. Les relais brisés et le sanctuaire en cachent aussi."
+	]
+	"quest.577AA2DD38280354.title": "Résonance"
+	"quest.57CCAE32A34055EC.quest_desc": [
+		"Quarante essais ont échoué. Le quarante et unième a réussi. C'est bien le problème."
+		"Dans une cité mécanique, trouvez un laboratoire d'essais et lisez le journal de sa salle souterraine."
+	]
+	"quest.57CCAE32A34055EC.title": "L'essai 41"
+	"quest.57F64A3976275B83.quest_desc": [
+		"Avant les hélices, l'Empire volait à l'air chaud."
+		"Des enveloppes au-dessus d'un brûleur à air chaud réglable : la portance. Plus le brûleur chauffe, plus on monte."
+	]
+	"quest.57F64A3976275B83.title": "Le ballon"
+	"quest.58D982FE0CA0F710.quest_desc": [
+		"Dans une salle souterraine fermée, une armure vide, plus grande qu'un homme, tient encore sa hache. Elle attend un ordre depuis des siècles."
+		"&8Frappez-la dans le dos, quand elle se fige après un coup.&r"
+	]
+	"quest.58D982FE0CA0F710.title": "Le colosse de fer"
+	"quest.5A05D09AC645F0CD.quest_desc": [
+		"Quatre canons complets. Le fer devient de la fonte (presse sur bassin chauffé), la fonte fond dans un bassin chauffé et se coule dans un moule à canon, puis le fût se perce. Détails dans EMI."
+	]
+	"quest.5A05D09AC645F0CD.title": "Une batterie de canons"
+	"quest.5A88FC3E3D161C0E.quest_desc": [
+		"Il relie tous vos coffres et tonneaux en un seul inventaire. Demande un comparateur, donc du quartz du Nether."
+		"Ouvrez-le pour chercher, ranger et prendre dans tout l'entrepôt à la fois. Les entonnoirs qui le servent servent tout l'entrepôt."
+	]
+	"quest.5A88FC3E3D161C0E.title": "Le contrôleur de stockage"
+	"quest.5B3EC0CEF0830078.quest_desc": [
+		"Dans le Nether aussi, les forges de l'Empire se sont rallumées. Leurs gardiens avec."
+		"Trente wither squelettes et trente blazes. Résistance au feu, bouclier contre les boules de feu, et du lait contre le flétrissement."
+	]
+	"quest.5B3EC0CEF0830078.title": "Les forges rallumées"
+	"quest.5B8A28AB21830019.quest_desc": [
+		"Les gardes de l'Empire ne portaient pas de fer forgé : leur armure sortait de la presse, pièce par pièce."
+		"Les armures de fer se fabriquent avec des &6plaques de fer&r au lieu des lingots."
+	]
+	"quest.5B8A28AB21830019.title": "L'armure de fer pressée"
+	"quest.5BC8E9FED58E5BF5.quest_desc": [
+		"Une machine qui dort depuis si longtemps a besoin d'une étincelle pour se réveiller."
+		"Un cœur du Gardien des enfers réveillera l'Empereur endormi dans sa machine. Ne l'utilisez qu'une fois prêts."
+	]
+	"quest.5BC8E9FED58E5BF5.title": "L'étincelle"
+	"quest.5BCC503DB5D79A29.quest_desc": [
+		"Les navires marchands de l'Empire ont sombré avec leur cargaison. Personne n'est venu la chercher."
+		"Les épaves cachent des cartes au trésor : le cœur de la mer est au bout. L'équipement de plongée rend la fouille bien plus facile."
+	]
+	"quest.5BCC503DB5D79A29.title": "L'épave"
+	"quest.5C96E0E608B593DA.quest_desc": [
+		"&7Optionnel.&r Le sac de l'Empereur lui-même, dit-on. Il a survécu à la chute."
+		"Demande des cœurs du Gardien des enfers (étoiles du Nether) : le sac ne disparaît plus jamais, même dans la lave, et peut contenir d'autres sacs."
+	]
+	"quest.5C96E0E608B593DA.title": "Bonus : le sac éternel"
+	"quest.5CF7D5BC19E0C27E.quest_desc": [
+		"&7Optionnel.&r Les drapiers de l'Empire travaillaient sur patron : toutes les bannières d'une cité se ressemblaient au fil près."
+		"Accroupi + clic droit avec le &6gabarit&r sur un étendard ou une bannière : il en copie l'apparence (couleurs, motif, mât, mode décoratif). Clic droit sur une autre : il l'applique. Le nom et la devise restent."
+		"&8Il copie aussi l'apparence d'un socle de l'Empire, pour l'appliquer à un autre socle.&r"
+	]
+	"quest.5CF7D5BC19E0C27E.title": "Le gabarit"
+	"quest.5D4486926E02A87D.quest_desc": [
+		"Le premier train de l'Empire n'avait qu'un wagon. Il a pourtant changé le monde."
+		"Des commandes, un boîtier de voie, deux gares. Assemblez le train à la gare, posez un conducteur, et donnez-lui un horaire."
+		"Validez quand un train fait seul l'aller-retour entre deux gares."
+	]
+	"quest.5D4486926E02A87D.title": "Le premier train"
+	"quest.5DD61605A436607E.quest_desc": [
+		"Les gardes de la forge des âmes portaient celle-ci. Il en restera peu, après vous."
+		"Plaques de netherite et gabarit d'amélioration à la table de forgeron, sur l'armure de diamant. Les plaques remplacent le lingot."
+	]
+	"quest.5DD61605A436607E.title": "L'armure de netherite"
+	"quest.5E3B48DAED62091C.quest_desc": [
+		"Une cité engloutie dans les ténèbres, plus ancienne que tout. Quelque chose y écoute encore."
+		"&cSilence absolu recommandé.&r Accroupissez-vous, évitez les capteurs sculk et ne réveillez pas le gardien. La laine étouffe les bruits."
+	]
+	"quest.5E3B48DAED62091C.title": "La cité antique"
+	"quest.5E5F8A3BE04D22CA.quest_desc": [
+		"Plus personne pour couper le bois et creuser les galeries ? Les machines n'ont jamais eu besoin de personne."
+		"La scie coupe le bois et taille les planches, la perceuse brise ce qu'elle a devant elle. Montées sur un engin mobile, elles abattent et creusent sans fatigue."
+	]
+	"quest.5E5F8A3BE04D22CA.title": "Scie et perceuse"
+	"quest.5E6A2757F7E53E09.quest_desc": [
+		"&7La voie de l'Écho.&r Les apprentis réfractaires recevaient ce grimoire après leur première année."
+		"Plus de pages de sorts, et l'accès aux glyphes du deuxième cercle."
+	]
+	"quest.5E6A2757F7E53E09.quest_subtitle": "VI · La robe des Arcanes"
+	"quest.5E6A2757F7E53E09.title": "Le grimoire d'apprenti"
+	"quest.5E756F97CBFB58A5.quest_desc": [
+		"Ce que l'établi ne sait pas faire, l'Empire le faisait à neuf mains."
+		"Les &6assembleurs mécaniques&r se posent en grille, se relient à la clé et fabriquent les recettes trop grandes pour l'établi, jusqu'à 5×5 et plus. Ils ont besoin de rotation."
+		"&8Le Cœur d'Airain, plus tard, sortira d'une telle grille.&r"
+	]
+	"quest.5E756F97CBFB58A5.title": "L'assembleur mécanique"
+	"quest.5EC88E01813B9167.quest_desc": [
+		"La grande chaudière d'une cité faisait trembler les vitres de tout le quartier."
+		"Une machine à vapeur chauffée par au moins quatre brûleurs à blaze. Plus la chaudière est grande et chaude, plus elle fait tourner de machines ; les lunettes affichent son niveau."
+	]
+	"quest.5EC88E01813B9167.title": "La grande chaudière"
+	"quest.5F56E688DC1454DE.quest_desc": [
+		"Le cuivre verdit, mais il ne trahit jamais."
+		"Une presse sur un tapis, comme pour le fer. Ces plaques serviront aux tuyaux, à l'équipement de plongée et à l'armure de diamant."
+	]
+	"quest.5F56E688DC1454DE.title": "Feuilles de cuivre"
+	"quest.605C7D0D8F9D52AD.quest_desc": [
+		"&eÀ deux :&r rejoignez la même équipe (/ftbteams party create, puis invite) pour partager le livre."
+		"&eLes Schémas&r et &eles Sceaux&r débloquent les machines clés. Ils ne sont jamais consommés."
+		"&eChaque joueur&r doit réclamer lui-même les récompenses qui ouvrent un portail ou un chantier."
+		"&eLe comptoir&r du laboratoire échange vos pièces contre ce qu'on ne trouve nulle part. Payez avec les pièces exactes, ou par carte (quête « La banque de l'Empire »)."
+	]
+	"quest.605C7D0D8F9D52AD.title": "Règles de survie"
+	"quest.6069B3B98BE0D757.quest_desc": [
+		"Une salle immense. Des milliers de capsules de laiton, alignées. &lToutes vides.&r Des câbles en sortent, tous vers le bas."
+		""
+		"&6&lJournal d'Octave Lanfrey&r"
+		"&oLe transfert a commencé. Nous entrons dans le métal un par un.&r"
+		"&oJe serai le dernier.&r"
+	]
+	"quest.6069B3B98BE0D757.title": "La salle des capsules"
+	"quest.61675AD339969EEC.quest_desc": [
+		"Partout où vous passez, des machines s'allument seules. Des engrenages tournent sans force."
+		""
+		"&6&lJournal d'Octave Lanfrey&r"
+		"&oSi un jour le Cœur répond, c'est que quelqu'un vient. Ce sera vous.&r"
+	]
+	"quest.61675AD339969EEC.title": "Bientôt"
+	"quest.617C215FCC40D2A5.quest_desc": [
+		"Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug."
+	]
+	"quest.617C215FCC40D2A5.title": "Secours : chapitre IV"
+	"quest.618F5BC2D53A0570.quest_desc": [
+		"Les chantiers de toile de la capitale tissaient jour et nuit."
+		"Les enveloppes retiennent l'air chaud : plus il y en a, plus l'engin soulève lourd. Les teinturiers les coloraient aux couleurs de la cité."
+	]
+	"quest.618F5BC2D53A0570.title": "Chantier de toile"
+	"quest.62AA25CF72321165.quest_desc": [
+		"&7Optionnel.&r Certaines armes trouvées dans les ruines portent une malédiction. L'Empire savait la défaire sans briser l'objet."
+		"Donnez de l'&6encre runique&r au désenchanteur (clic droit). Un objet maudit qu'on lui confie n'est alors plus détruit : il perd &6une malédiction par passage&r, contre une encre et 500 mB d'huile, puis ressort avec ses autres enchantements intacts."
+		"&8Sans encre, un objet maudit est désenchanté comme les autres. Encre runique : au mélangeur chauffé, un éclat d'écho, un fragment de résonance, 4 lapis et un seau d'eau donnent 2 encres.&r"
+	]
+	"quest.62AA25CF72321165.title": "La purge"
+	"quest.62B49B400243E47C.quest_desc": [
+		"Dans la capitale, un seul guichet servait tous les entrepôts d'un quartier."
+		"Un &6lien de stockage&r rattache au contrôleur des coffres qui ne le touchent pas. Les coffres d'or gardent encore plus de place."
+	]
+	"quest.62B49B400243E47C.title": "Liens de stockage"
+	"quest.64437A5B515F64EC.quest_desc": [
+		"Chaque situation a son obus."
+		"Le boulet &6perforant&r traverse les blocs, l'obus à &6shrapnels&r crible une zone d'éclats, l'obus &6fumigène&r masque un assaut. Les obus demandent une fusée pour éclater."
+	]
+	"quest.64437A5B515F64EC.title": "Obus spéciaux"
+	"quest.6581B56BF39E0D5F.quest_desc": [
+		"&7Optionnel.&r Si le cœur du Gardien des enfers offert par le Cœur d'Airain est perdu, le Gardien des enfers (le Wither) en donne un autre."
+		"&8Invoquez-le loin de la base, sous terre de préférence : il détruit tout autour de lui.&r"
+	]
+	"quest.6581B56BF39E0D5F.title": "L'étincelle de secours"
+	"quest.65D3DED4428A3995.quest_desc": [
+		"Quatre gardiens, quatre fragments. Côte à côte, les fragments se répondent. Leurs inscriptions forment une seule phrase :"
+		"&o« Rendez-nous notre Cœur. »&r"
+	]
+	"quest.65D3DED4428A3995.title": "Les quatre mémoires"
+	"quest.66621D64DAA04B1F.quest_desc": [
+		"&7Après la fin de l'Écho.&r Dans un relais brisé (ou au Grand Relais), accroupi, frappez le diapason d'Ada (clic droit) avec &d8 fragments de résonance&r sur vous."
+		"Le relais s'apaise : plus aucun monstre n'apparaît à moins de 64 blocs, et un Écho tranquille flotte autour."
+		"&8Les âmes sans repos ne venant plus, les fragments se trouvent dans les relais, le sanctuaire et les cités antiques.&r"
+	]
+	"quest.66621D64DAA04B1F.title": "Apaiser l'Écho"
+	"quest.668C71D348398E06.quest_desc": [
+		"&7Optionnel.&r Un colosse à vapeur. Il crache de la vapeur brûlante avant de frapper."
+		"&8Reculez quand il siffle, frappez quand il recharge.&r"
+	]
+	"quest.668C71D348398E06.title": "Le centurion"
+	"quest.66BDF063180A33F3.quest_desc": [
+		"Les commandes se répètent : livrez, encaissez, recommencez."
+		"Valeurs : éperon 1, biseau 8, pignon 16, engrenage 64, couronne 512, soleil 4096."
+		"Le comptoir du laboratoire vend bois, fer brut, lapis, netherrack, perles de l'Ender et cœurs de la mer. Les avant-postes ont leurs propres machines, et leurs salles scellées vendent livres d'enchantement, totems et bien plus."
+	]
+	"quest.66BDF063180A33F3.title": "La boutique de l'Empire"
+	"quest.66E7DFD4A54D2089.quest_desc": [
+		"Tout ce que l'Empire a construit commence ici : un métal gris, solide, humble."
+		"Andésite + pépite de fer ou de zinc, à l'établi. Bientôt, le mixeur le fera pour vous, par piles entières."
+	]
+	"quest.66E7DFD4A54D2089.title": "L'alliage d'andésite"
+	"quest.66FAEDF5BE60EEE3.quest_desc": [
+		"Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug."
+	]
+	"quest.66FAEDF5BE60EEE3.title": "Secours : chapitre VI"
+	"quest.671D029F4D599454.quest_desc": [
+		"Un ventilateur, de l'eau, du feu : la moitié des ateliers de l'Empire tenait là-dedans."
+		"Soufflé à travers l'eau : lavage. À travers le feu : cuisson. À travers la lave : fonte. Les objets doivent passer devant, au sol ou sur un tapis."
+	]
+	"quest.671D029F4D599454.title": "Le ventilateur"
+	"quest.6744DC79A58ED05B.quest_desc": [
+		"Avant le Nether : un sac qui fond le minerai pendant que vous marchez."
+		"L'amélioration de fonte automatique cuit ce que vous ramassez. Gardez du combustible dans son emplacement."
+	]
+	"quest.6744DC79A58ED05B.title": "Sac de diamant"
+	"quest.68203257D12F33AA.quest_desc": [
+		"La première ligne de l'Empire reliait la mine à la forge. Le reste du réseau en est né."
+		"Les rails se fabriquent par assemblage en séquence. Les ruines sont loin : reliez le monde."
+	]
+	"quest.68203257D12F33AA.title": "Poser les rails"
+	"quest.685E510A3BD4D040.quest_desc": [
+		"La flotte du ciel a des trous dans ses ballons. Les chantiers de toile ne suffisent plus."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.685E510A3BD4D040.title": "Commande : enveloppes"
+	"quest.687DE16EA4871143.quest_desc": [
+		"Les ateliers de garnison réclament de la tôle pour rapiécer leurs gardiens."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.687DE16EA4871143.title": "Commande : plaques de fer"
+	"quest.68A1EAD2EBC7AD8C.quest_desc": [
+		"Au-delà du portail, pas une cité de l'Empire. Des tours d'un violet étrange, une lumière qui chante. Quelqu'un a vécu ici, loin des machines."
+		"Il ne s'ouvre qu'après la forge des âmes. Prévoyez de quoi revenir : il n'y a pas d'autre chemin que le gardien."
+	]
+	"quest.68A1EAD2EBC7AD8C.title": "Au-delà du portail"
+	"quest.68BE2867F6DDB6F9.quest_desc": [
+		"Le gardien des marées attend au fond du monument. Ses servants vous ralentiront avant."
+		"Le lait annule la fatigue de minage des gardiens. Un réservoir d'air chargé, et c'est parti."
+	]
+	"quest.68BE2867F6DDB6F9.title": "Préparatifs sous-marins"
+	"quest.6A249B856D1B3472.quest_desc": [
+		"La magebloom ne pousse que sur une terre imprégnée. Ses fibres tissent les robes des Arcanes."
+	]
+	"quest.6A249B856D1B3472.title": "La fleur des mages"
+	"quest.6ADAF2C48DBFE7D4.quest_desc": [
+		"&7Optionnel.&r Les palais de l'Empire exposaient leurs trophées sous les bannières de leurs fondateurs. Exposez quatre trophées différents dans votre base. Validez quand c'est fait."
+		"&8Le registre des fondations recense aussi vos trophées exposés, et les bannières réglées « selon trophées » se hissent quand un trophée est exposé dans leur zone.&r"
+	]
+	"quest.6ADAF2C48DBFE7D4.title": "La salle des trophées"
+	"quest.6B1A427C3921B026.quest_desc": [
+		"Les remparts de l'Empire ne se défendaient pas à l'épée."
+		"Les &6boulets pleins&r percent ; les &6obus explosifs&r ont besoin d'une fusée posée sur leur nez pour éclater. Chaque tir demande aussi des charges de poudre derrière le projectile."
+	]
+	"quest.6B1A427C3921B026.title": "Munitions"
+	"quest.6B69D38F6FEEAF3D.quest_desc": [
+		"Chaque objet à sa place : la règle d'or des magasiniers de l'Empire."
+		"Des filtres sur les entonnoirs : chaque objet dans le bon coffre. Les entonnoirs de laiton et les goulottes intelligentes trient plus finement."
+	]
+	"quest.6B69D38F6FEEAF3D.title": "Le tri"
+	"quest.6BA5E8ED8CF404BA.quest_desc": [
+		"Les scaphandriers de l'Empire réparaient les quais sans jamais remonter."
+		"Le réservoir dorsal se recharge en air quand on le pose sur une source de rotation. Avec le casque, on respire sous l'eau ; les bottes vous gardent au fond, sans flotter."
+	]
+	"quest.6BA5E8ED8CF404BA.title": "L'équipement de plongée"
+	"quest.6CB81EFFB7F0CBB5.quest_desc": [
+		"Les machines qui pensent demandent des tubes neufs : les vieux ont grillé pendant le grand sommeil."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.6CB81EFFB7F0CBB5.title": "Commande : tubes électroniques"
+	"quest.6CE0A52059FD47C2.quest_desc": [
+		"L'Empire dort dans le Cœur et promet l'éternité à ceux qui le servent."
+		"Ada, Morgana et Octave disent autre chose : le Transfert ne tue pas, il enferme, et des milliers de voix attendent encore."
+		"&6Rallumer le Cœur&r, c'est rendre l'Empire au monde. &3Le briser&r, c'est rendre les âmes à elles-mêmes."
+		"Il n'y a pas de bonne réponse. Seulement la vôtre."
+	]
+	"quest.6CE0A52059FD47C2.title": "Les deux voix"
+	"quest.6DA6D020B8F3F601.quest_desc": [
+		"Se fabrique à l'assembleur mécanique avec des plaques de laiton et de l'acier."
+		"L'acier se mélange au malaxeur sur un brûleur surchauffé (gâteau de blaze) : fer et poussière de charbon de bois."
+	]
+	"quest.6DA6D020B8F3F601.title": "Le revolver"
+	"quest.6DB0A3122C849921.quest_desc": [
+		"Les trois gardiens anciens du monument."
+		""
+		"&eRécompenses :&r le &6Schéma du Laiton&r (brûleur à blaze), et le &cNether&r s'ouvre pour vous."
+		"&8Chaque joueur doit réclamer sa propre récompense pour pouvoir passer le portail.&r"
+	]
+	"quest.6DB0A3122C849921.quest_subtitle": "Schéma du Laiton, ouverture du Nether"
+	"quest.6DB0A3122C849921.title": "Le gardien des marées"
+	"quest.6E108C45FF1015DD.quest_desc": [
+		"Les greniers de l'Empire ne désemplissaient jamais. Personne ne se souvient avoir vu un paysan."
+		"Une moissonneuse sur un engin qui va et vient récolte et replante. Le pain servira de provisions, et la boutique en achète."
+	]
+	"quest.6E108C45FF1015DD.title": "La ferme automatique"
+	"quest.6EC3CFDAA91A4268.quest_desc": [
+		"Les batteries des remparts n'ont plus rien à tirer. Remplissez leurs soutes."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.6EC3CFDAA91A4268.title": "Commande : boulets"
+	"quest.6FDC2B7E31680DCF.quest_desc": [
+		"La monstruosité de la forge des âmes ne s'est jamais refroidie. Vous non plus, si vous n'êtes pas prêts."
+		"Des potions (résistance au feu conseillée) et des pommes dorées : la monstruosité frappe fort, et la lave est partout."
+	]
+	"quest.6FDC2B7E31680DCF.title": "Préparatifs infernaux"
+	"quest.6FF5B231E6CCF065.quest_desc": [
+		"Le Cœur d'Airain ne se forge qu'une fois. Ses matériaux, eux, se rassemblent longtemps à l'avance."
+		"Mécanismes de précision et boîtiers de laiton : relancez vos chaînes avant de partir chercher le reste."
+	]
+	"quest.6FF5B231E6CCF065.title": "Les matériaux du Cœur"
+	"quest.71C1917F8DAC3905.quest_desc": [
+		"Sous terre, une ville entière éclairée par des lampes qui n'ont jamais faibli. Au fond, un centurion de bronze, haut comme une maison, à vapeur. Abattez-le."
+	]
+	"quest.71C1917F8DAC3905.title": "Les profondeurs"
+	"quest.71DF30C0262B65CA.quest_desc": [
+		"Les vieilles usines de bronze de l'Empire se sont rallumées. Leurs araignées mécaniques patrouillent de nouveau."
+		"Abattez-en vingt (le compteur avance à chaque machine détruite)."
+	]
+	"quest.71DF30C0262B65CA.title": "Les araignées de bronze"
+	"quest.72464843991ABAFB.quest_desc": [
+		"Chaque réparation de l'Empire commence par de l'alliage d'andésite. Il n'y en a jamais assez."
+		"&7Répétable.&r Les objets livrés sont consommés."
+	]
+	"quest.72464843991ABAFB.title": "Commande : alliage"
+	"quest.72573259B6EDF8F7.quest_desc": [
+		"La gare impériale voyait passer cent trains par jour. Ses quais attendent encore."
+		"Livrez les matériaux. La gare débloque les interfaces portables, pour charger et décharger les trains sans personne."
+	]
+	"quest.72573259B6EDF8F7.quest_subtitle": "Débloque les interfaces de stockage portables"
+	"quest.72573259B6EDF8F7.title": "Grand Chantier : la gare impériale"
+	"quest.72883D4BEEF6D72B.quest_desc": [
+		"L'Empire rallumé a de nouveau besoin d'officiers. Une plaque impériale, rivée sur le torse d'un gardien, en fait un capitaine."
+		"Clic droit avec une &6plaque impériale&r sur un gardien rattaché à une base. Un seul capitaine par base."
+		"Plus grand et plus robuste, il porte &6deux modules par emplacement&r, et les gardiens à 16 blocs gagnent Force et Résistance."
+	]
+	"quest.72883D4BEEF6D72B.title": "Le Capitaine impérial"
+	"quest.728A556CC3B52C43.quest_desc": [
+		"&7Optionnel.&r Avec le laiton, le banc d'entretien peut enfin être réglé comme ceux des ateliers de la capitale."
+		"Trois modules, à poser dans les emplacements à droite de son écran (un exemplaire de chaque compte) :"
+		"• &6Meule fine&r : 30 % d'huile en moins par réparation ;"
+		"• &6Démultiplicateur&r : 60 % plus rapide, mais demande deux fois plus de stress ;"
+		"• &6Graisseur&r : pompe l'huile d'un réservoir voisin, 250 mB par seconde. Plus besoin de burettes."
+		"&8Les modules se voient sur le banc, et les lunettes d'ingénieur les listent.&r"
+	]
+	"quest.728A556CC3B52C43.title": "Les modules du banc"
+	"quest.7307282B5DF56B0D.quest_desc": [
+		"Le silence revient. Dans votre sac, le Cœur d'Airain ne bat plus. Il contient encore toutes les âmes que l'Empire a fait brûler, et une voix que vous connaissez : celle d'Elias Vael, le frère d'Ada."
+		"Deux gestes sont possibles. &6Rallumer le Cœur&r, avec un cœur du Gardien des enfers : l'Empire repart, et il vous obéit. &3Libérer les âmes&r, avec le diapason d'Ada et un Écho primordial : le Cœur se brise, et tout s'arrête."
+		"&cUn seul choix pour tout le monde. Le Cœur est consommé, il n'y a pas de retour.&r"
+	]
+	"quest.7307282B5DF56B0D.title": "Le Cœur éteint"
+	"quest.7334C891610A4015.quest_desc": [
+		"Dans les ruines de l'Empire, des &6gardiens d'airain&r attendent, assis, couverts de mousse."
+		"Clé de Create en main, avec &616 ferrailles, 4 huiles et 2 rouages brisés&r sur vous : clic droit, et il se relève. Il garde la fondation la plus proche (4 par base)."
+		"&8Le livre de l'ingénieur a tout le détail.&r"
+	]
+	"quest.7334C891610A4015.title": "Un gardien sur pied"
+	"quest.73796EB7BAF6E4A1.quest_desc": [
+		"Ce qui vole, ce qui flotte, ce qui roule : tout passait par l'assembleur physique."
+		"Avec le Schéma du Ciel. Il transforme une construction en véhicule qui obéit à la physique : poids, poussée, inertie."
+	]
+	"quest.73796EB7BAF6E4A1.title": "L'assembleur physique"
+	"quest.739C8164C9982BC6.quest_desc": [
+		"L'atelier d'enchantement de l'Empire fondait l'expérience comme on fond le métal."
+		"Rouvrez-le : vous pourrez poser l'enchanteur à blaze, la forge à blaze et l'imprimante d'Enchantment Industry. Les matériaux et l'expérience sont consommés."
+	]
+	"quest.739C8164C9982BC6.quest_subtitle": "Débloque les machines d'enchantement"
+	"quest.739C8164C9982BC6.title": "Grand Chantier : l'atelier d'enchantement"
+	"quest.73B823D3D42DE379.quest_desc": [
+		"Un sort, c'est une volonté qu'on confie à l'Écho. Commencez petit : de la lumière dans la mine, une roche qui cède. Les égarés aiment se rendre utiles."
+		"Un grimoire de novice et le glyphe de lumière. Ouvrez le grimoire pour composer vos sorts à partir de glyphes ; ils puisent dans votre réserve d'Écho."
+		"&8Ouvre le chapitre &dLes Arcanes&8, la seconde voie de l'histoire.&r"
+	]
+	"quest.73B823D3D42DE379.quest_subtitle": "L'appel de l'Écho"
+	"quest.73B823D3D42DE379.title": "Une volonté confiée"
+	"quest.7530670FBF04DB70.quest_desc": [
+		"&7Optionnel.&r Il ne manque que les écrits les plus difficiles à atteindre :"
+		"• les relevés de la station d'observation, sur une île volante ;"
+		"• le carnet de route d'un abri réfractaire, sur un îlot du lac de lave du Nether ;"
+		"• la lettre jamais envoyée, dans la caisse d'une barricade du champ de bataille ;"
+		"• le livre de bord d'un dirigeable de la flotte du ciel."
+		"Tous ces écrits se relisent dans les archives des Chroniques oubliées."
+	]
+	"quest.7530670FBF04DB70.quest_subtitle": "Tous les écrits du monde"
+	"quest.7530670FBF04DB70.title": "L'Archiviste"
+	"quest.757A48365022B721.quest_desc": [
+		"&7Optionnel.&r Dans les halls de l'Empire, les couleurs tombaient des murs jusqu'au sol."
+		"La &6bannière murale&r se pose contre un mur, sur sa tringle. Mêmes réglages de toile que les étendards ; sa page « Taille » choisit la longueur (2 à 4 blocs) et la largeur."
+		"&8Un signal de redstone l'enroule. Les camps réfractaires ont aussi les leurs, à leurs propres couleurs.&r"
+	]
+	"quest.757A48365022B721.title": "La bannière murale"
+	"quest.769408885D0708A5.quest_desc": [
+		"Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug."
+	]
+	"quest.769408885D0708A5.title": "Secours : chapitre III"
+	"quest.76A72FC020B609BB.quest_desc": [
+		"L'Écho qu'on capte doit bien aller quelque part. Les Réfractaires le gardaient dans des bocaux, comme on garde une braise."
+	]
+	"quest.76A72FC020B609BB.title": "Un bocal de source"
+	"quest.76BF387EB0CFFC46.quest_desc": [
+		"Le sac de cuivre sert l'ingénieur comme un apprenti attentif."
+		"L'échangeur d'outils prend tout seul dans le sac le bon outil pour le bloc visé, et le range ensuite."
+	]
+	"quest.76BF387EB0CFFC46.title": "Sac de cuivre"
+	"quest.781B4AE91894BA53.quest_desc": [
+		"Des tours suspendues dans le vide, faites d'Écho devenu pierre. Ce ne sont pas des cités de l'Empire : ce sont des refuges."
+		"Aux quais, des navires impériaux échoués : des chasseurs venus traquer ceux qui vivaient là. On y trouve les élytres de leurs équipages. Gare aux sentinelles du refuge : leurs projectiles font léviter."
+	]
+	"quest.781B4AE91894BA53.title": "Les cités volantes"
+	"quest.781FE5FC0EF77559.quest_desc": [
+		"Les alchimistes avaient leurs chaudrons. Les ingénieurs ont eu le mixeur."
+		"Le mixeur au-dessus d'un bassin mélange les ingrédients. Automatisez l'alliage d'andésite avec : un entonnoir pour remplir, un autre pour vider."
+	]
+	"quest.781FE5FC0EF77559.title": "Le mixeur et le bassin"
+	"quest.78688D0CBE6C5DD1.quest_desc": [
+		"Apaisez 3 relais en tout."
+	]
+	"quest.78688D0CBE6C5DD1.title": "Apaiser : 3 relais"
+	"quest.78BB158FFEA4A6B8.quest_desc": [
+		"La capitale en produisait des milliers par jour. Il en faudra beaucoup pour le Cœur."
+		"Une plaque d'or passe trois déployeurs (rouage, grand rouage, pépite de fer), cinq fois de suite. Un tapis qui boucle devant les trois déployeurs fait toute la chaîne seul."
+	]
+	"quest.78BB158FFEA4A6B8.title": "Chaîne de précision"
+	"quest.79C3C6BDEB9D9F14.quest_desc": [
+		"La Forge impériale a forgé les armures de trois générations de gardes. Elle est froide depuis la chute."
+		"Rallumez-la : les plaques sont consommées."
+		"&eRécompense :&r le &6Sceau de la Forge&r, exigé (sans être consommé) par l'armure de diamant."
+	]
+	"quest.79C3C6BDEB9D9F14.quest_subtitle": "Débloque l'armure de diamant"
+	"quest.79C3C6BDEB9D9F14.title": "Grand Chantier : la Forge impériale"
+	"quest.7A1EE1657346F1A8.quest_desc": [
+		"Le fer brut sur un tapis roulant, un ventilateur soufflant à travers la lave : des lingots à la chaîne, sans four. Validez quand la ligne tourne sans vous."
+		"&8Les roues de broyage, plus rentables, arriveront au chapitre IV.&r"
+	]
+	"quest.7A1EE1657346F1A8.title": "La fonderie à ventilateur"
+	"quest.7A269F052587CB1A.quest_desc": [
+		"Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug."
+	]
+	"quest.7A269F052587CB1A.title": "Secours : chapitre II"
+	"quest.7B1C7507CD43B59E.quest_desc": [
+		"Briser, soigner, éclairer. « Morgana disait qu'on juge un mage à son premier sort de soin. »"
+	]
+	"quest.7B1C7507CD43B59E.title": "Trois volontés"
+	"quest.7BD013E33BBE2173.quest_desc": [
+		"&7Optionnel.&r Un drone de surveillance. Il ne vient jamais seul."
+		"&8Abattez-le vite : là où il passe, d'autres machines suivent.&r"
+	]
+	"quest.7BD013E33BBE2173.title": "Le veilleur"
+	"quest.7C784488716A8DAF.quest_desc": [
+		"Complétez cette quête en mode édition pour débloquer un joueur coincé par un bug."
+	]
+	"quest.7C784488716A8DAF.title": "Secours : chapitre V"
+	"quest.7CAC6244231575FB.quest_desc": [
+		"&7Optionnel.&r Un gardien de pierre et de vide, qui ne dort jamais."
+		"&8Ses coups au sol portent loin : ne restez pas au contact quand il lève les bras.&r"
+	]
+	"quest.7CAC6244231575FB.title": "Le golem de l'End"
+	"quest.7CDE28D2D18A4436.quest_desc": [
+		"Ada Vesper avait trouvé la note qui apaise l'Écho. Elle n'a jamais pu la jouer."
+		"La recette d'Ada : quatre fragments de résonance, une gemme d'Écho et un lingot d'or."
+	]
+	"quest.7CDE28D2D18A4436.title": "Le diapason"
+	"quest.7D319DB84563FF59.quest_desc": [
+		"Les fondeurs de l'Empire y avaient leurs quartiers. Il n'en reste que des squelettes."
+		"Les blazes donnent les bâtonnets des brûleurs ; les wither squelettes, leur crâne : le Masque des enfers, un trophée pour votre socle."
+	]
+	"quest.7D319DB84563FF59.title": "La forteresse du Nether"
+	"quest.7D3B24521CD53A87.quest_desc": [
+		"&7Optionnel.&r Une fondation digne de l'Empire : au moins quatre grands étendards ou bannières murales dans la zone d'un même étendard de fondation, aux mêmes couleurs, qui se hissent tous ensemble à votre arrivée."
+		"Validez quand c'est fait."
+	]
+	"quest.7D3B24521CD53A87.title": "Une base pavoisée"
+	"quest.7D567EF62083EB45.quest_desc": [
+		"Ce qui reste de l'Empire ne fera pas de quartier."
+		"Des potions de soin, de force, de résistance au feu. Rangez-les dans un sac avec réapprovisionnement : on n'a pas le temps de fouiller en plein assaut."
+	]
+	"quest.7D567EF62083EB45.title": "La réserve de soins"
+	"quest.7D7CCDE15946F46E.quest_desc": [
+		"Trouvez un filon caché avec le détecteur, puis forez-le à l'infini."
+		"&8Le détecteur demande un bloc de minerai de redstone intact (pioche Toucher de soie) ; la foreuse, des plaques renforcées (obsidienne broyée aux roues).&r"
+	]
+	"quest.7D7CCDE15946F46E.title": "Les gisements infinis"
+	"quest.7E1047D9247BDB41.quest_desc": [
+		"Une plaque de netherite, et au centre, serti dans l'or, le cœur d'un Gardien des enfers."
+		"Posez la plaque sur un dépôt ou un tapis, et faites-y enfoncer le &6Cœur du Gardien des enfers&r par un &6déployeur&r."
+	]
+	"quest.7E1047D9247BDB41.title": "La netherite sacrée"
+	"quest.7E5194BB3CA7ED58.quest_desc": [
+		"Une épée de fer, forgée à la main avec les lingots du laboratoire : avec la pioche, c'est tout ce qu'il faut pour sortir."
+		"L'armure de fer arrivera au chapitre II, avec la presse."
+	]
+	"quest.7E5194BB3CA7ED58.title": "Équipement de départ"
+	"quest.7ED07D538A789774.quest_desc": [
+		"Repliées, elles roulent comme des boulets. Déployées, ce sont des soldats."
+		"Détruisez douze sphères. Elles arrivent vite et en nombre : tenez un passage étroit."
+	]
+	"quest.7ED07D538A789774.title": "Les sphères"
+	"quest.7F005683914676AB.quest_desc": [
+		"Le laboratoire reste votre base. Dehors, le monde est vide : pas une tombe, pas un squelette. Comme si tout le monde était parti en même temps."
+		"Repérez l'eau courante pour une roue, l'andésite pour l'alliage, et les ruines à l'horizon."
+		"Validez quand vous avez exploré les alentours."
+	]
+	"quest.7F005683914676AB.title": "Remonter à la surface"
+	"quest.7F01288868696FF3.quest_desc": [
+		"Le Gardien des Cieux n'est pas une machine, ni une bête de l'End. &dMorgana Dalmont&r l'a appelé de ses mains et l'a lié aux tours d'obsidienne, pour garder les portes des siens. Ses pages se trouvent encore dans les cités de l'End."
+		"Brisez d'abord les cristaux qui le nourrissent, sur les piliers. Il laisse un œuf : posé sur un socle de l'Empire, il protège toute l'équipe des chutes."
+	]
+	"quest.7F01288868696FF3.title": "Le Gardien des Cieux"
+	"quest.7FA88B2F63BC01DA.quest_desc": [
+		"&7Optionnel.&r La vieille table d'enchantement ne répond plus. Celle de l'Empire ne devine rien : elle lit."
+		"Rangez des &6livres enchantés&r dans des &6bibliothèques sculptées&r à moins de 3 blocs : la table propose ces enchantements, et vous choisissez le niveau, sans dépasser celui du livre. Les livres restent en place."
+		"Coût : de l'expérience (3 niveaux par niveau, plus selon la rareté, 30 au plus) et un lapis par niveau."
+		"&6Tomes anciens&r : rangé à côté d'un livre du même enchantement, un tome ancien ouvre le niveau suivant celui du livre (bouton doré), même au-delà du maximum. Le tome reste en place, mais appliquer ce niveau consomme une &6encre runique&r (troisième case). Un seul tome compte par enchantement. Au-delà du maximum, le coût passe à 40 niveaux et au double de lapis."
+		"&8Encre runique : au mélangeur chauffé, un éclat d'écho, un fragment de résonance, 4 lapis et 1 000 mB d'eau (un seau) donnent 2 encres.&r"
+	]
+	"quest.7FA88B2F63BC01DA.quest_subtitle": "Quête secondaire : enchanter sur mesure"
+	"quest.7FA88B2F63BC01DA.title": "La bibliothèque impériale"
+	"quest.7FB1F721F1B934FC.quest_desc": [
+		"Les cités de l'Empire étaient reliées par le rail. Rétablissez une ligne : un train qui relie votre base à une cité mécanique, avec une gare à chaque bout."
+		"Validez après le premier aller-retour."
+	]
+	"quest.7FB1F721F1B934FC.title": "La ligne impériale"
+	"quest.7FF957863CC019F2.quest_desc": [
+		"&7Record d'ingénieur, optionnel.&r Montez au-dessus de Y 330, plus haut que tout ce qu'on peut construire. En élytres ou en engin volant."
+		"&8Le record de l'Empire tenait à Y 400. Personne n'est redescendu pour le confirmer.&r"
+	]
+	"quest.7FF957863CC019F2.title": "Au-dessus de tout"
+	"task.10BBCA124564623E.title": "L'inventaire d'une cache"
+	"task.15624E864CACC031.title": "Le rapport des profondeurs"
+	"task.16B479B7CD564FB9.title": "Le Cœur d'Airain"
+	"task.19F4625B777461F4.title": "Quatre bannières hissées ensemble"
+	"task.1B426C4864E1D67A.title": "La lettre d'un prospecteur"
+	"task.1CE89F85EAB84365.title": "Voir une bannière se hisser à votre retour"
+	"task.1D807A49B8A8B1F9.title": "Réparer un outil ou une arme au banc"
+	"task.1DB4FBADCF620731.title": "La lettre jamais envoyée"
+	"task.1E0596A41C93E9C4.title": "Le carnet de route"
+	"task.1ECF1DAF8C615CE9.title": "Un écrit réfractaire"
+	"task.1F1E46E8DBEE6DD0.title": "Le journal d'essais"
+	"task.2DA794549CA0C0A2.title": "Le journal du Nether"
+	"task.2E52ED05EB5852B0.title": "Purger un objet maudit"
+	"task.2F273B2C478004C2.title": "Le rapport d'incident"
+	"task.318ED45DF4C4F2CE.title": "Le journal d'Ada Vesper"
+	"task.325DF823FB0D6363.title": "Le manifeste de cargaison"
+	"task.370CC98FB9CA0995.title": "La table à schémas"
+	"task.376FE865A8FDD474.title": "Les relevés de la station n°2"
+	"task.43B4570673B9D1AA.title": "Un aller-retour base ↔ cité"
+	"task.47BF9C61D2CF7484.title": "Un Écho primordial"
+	"task.486D87C9A0C36D3F.title": "Un cœur du Gardien des enfers"
+	"task.5165EFD936C30A7F.title": "Le carnet de mineur"
+	"task.52579755FEE910DF.title": "Le diapason d'Ada"
+	"task.52764CA4B15EF784.title": "La lettre d'Ada"
+	"task.5A7970D0A5CC27A8.title": "Le dernier message"
+	"task.5D9954971B83AC92.title": "Le canon à schémas"
+	"task.6819B23AAE4D8E59.title": "Le livre de bord"
+	"task.6B9352AA5523AC15.title": "Le rapport de l'ingénieur Vael"
+	"task.6DE383629AD5C303.title": "Le Cœur d'Airain"
+	"task.71ECC9B6560D6FF8.title": "Le registre du Conseil"
+}
