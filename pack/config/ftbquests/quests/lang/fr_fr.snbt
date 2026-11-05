@@ -310,7 +310,7 @@
 		"Les ingénieurs de l'Empire ne montaient jamais une machine deux fois à la main : ils dessinaient un plan, et le canon le posait."
 		"Les &6bureaux d'études&r des avant-postes vendent des &6plans de l'Empire&r (moulin à vent, centrale à roues, meunerie…). Clic droit sur un plan : il devient un schéma."
 		"Posez le schéma au sol (clic droit pour le placer, il apparaît en fantôme), puis donnez-le au &6canon à schémas&r avec de la poudre à canon et un coffre de matériaux à côté : il construit tout seul."
-		"&8Le pack doit contenir son dossier « schematics » (voir le LISEZMOI).&r"
+		"&8Le pack doit contenir son dossier « schematics » (voir le README).&r"
 	]
 	"quest.1C5B176D24E37BD9.title": "Le bureau d'études"
 	"quest.1C87550C0BEA8CA7.quest_desc": [

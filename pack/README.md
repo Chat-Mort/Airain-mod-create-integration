@@ -4,12 +4,14 @@ Modpack Create pour Minecraft **1.21.1 / NeoForge**, à jouer à deux, environ 6
 
 Ce dossier contient :
 
-- le livre de quêtes (environ 200 quêtes, en français et en anglais) ;
+- le livre de quêtes (environ 290 quêtes, en français et en anglais) ;
 - les scripts de progression ;
 - les structures du monde ;
 - les objets du pack et leurs textures.
 
 Les mods eux-mêmes sont à télécharger à part : voir la liste des mods.
+
+Ce qui change à chaque version : voir `CHANGELOG.md`.
 
 ---
 

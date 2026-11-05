@@ -7,7 +7,7 @@ Dernière sauvegarde : 5 novembre 2026, mod 1.43.0.
 
 | Dossier | Ce que c'est |
 |---|---|
-| `pack/` | Le pack complet tel qu'il est livré : `kubejs`, `config` (quêtes FTB), `defaultconfigs`, `mods` (jar du mod), `schematics`, `LISEZMOI.md`. |
+| `pack/` | Le pack complet tel qu'il est livré : `kubejs`, `config` (quêtes FTB), `defaultconfigs`, `mods` (jar du mod), `schematics`, `README.md`, `CHANGELOG.md` (notes de version, à compléter à chaque livraison). |
 | `outils/` | Les scripts qui fabriquent le pack (générateurs de quêtes, structures, textures, modèles, aperçus) et leurs données. |
 
 Le mod lui-même (code Java, ressources) est sur la branche `main`.
@@ -45,6 +45,6 @@ Le mod lui-même (code Java, ressources) est sur la branche `main`.
 - `avant_poste_pieces.json` : cache régénéré par `avant_poste.py`.
 - Les zips livrés (`empire-airain-pack.zip`, `airain-serveur.zip`) : se refont depuis `pack/` avec
   `zip -qr ../airain-serveur.zip kubejs config defaultconfigs mods schematics` et
-  `zip -qr ../empire-airain-pack.zip LISEZMOI.md kubejs config defaultconfigs mods schematics`.
+  `zip -qr ../empire-airain-pack.zip README.md CHANGELOG.md kubejs config defaultconfigs mods schematics`.
 
 - Les clones de dépôts externes (`ars`, `cj`, `kjsc`, `kjsrc`, `mcmeta-reg`, `sb`, `simproj`, `ss`) : sources d'autres mods et registres de Minecraft, à recloner si besoin.
