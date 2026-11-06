@@ -38,7 +38,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 /**
  * L'Empire d'Airain : intégration Create.
- * Ajoute le banc d'entretien, une machine Create qui répare l'équipement avec de l'huile au lieu de l'expérience.
  */
 @Mod(AirainMod.ID)
 public class AirainMod {
@@ -50,7 +49,7 @@ public class AirainMod {
 	public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, ID);
 	public static final DeferredRegister<net.minecraft.world.item.CreativeModeTab> ONGLETS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ID);
 
-	/** Un seul onglet créatif pour tout l'Empire : les objets du mod, puis ceux du pack (KubeJS). */
+	/** Regroupement des items mod + KubeJS dans un seul onglet créa */
 	public static final DeferredHolder<net.minecraft.world.item.CreativeModeTab, net.minecraft.world.item.CreativeModeTab> ONGLET = ONGLETS.register("empire",
 		() -> net.minecraft.world.item.CreativeModeTab.builder()
 			.title(Component.translatable("itemGroup.airain.empire"))
@@ -77,7 +76,7 @@ public class AirainMod {
 		BLOCK_ENTITIES.register("maintenance_bench",
 			() -> BlockEntityType.Builder.of(BancEntretienBlockEntity::new, BANC.get()).build(null));
 
-	// ---- enchantement : table de l'Empire et désenchanteur
+	// ---- table de l'Empire et désenchanteur
 	public static final DeferredBlock<TableEmpireBlock> TABLE = BLOCKS.register("imperial_enchanting_table",
 		() -> new TableEmpireBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_ORANGE).strength(5f, 1200f).requiresCorrectToolForDrops().sound(SoundType.COPPER)
@@ -99,7 +98,7 @@ public class AirainMod {
 	public static final DeferredBlock<DesenchanteurBlock> DESENCH = BLOCKS.register("disenchanter",
 		() -> new DesenchanteurBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f).requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion()));
-	/** Socle de l'Empire : expose un trophée de boss, effet permanent pour toute l'équipe. */
+	/** Piédestal → trophé exposé = effet constant partout dans le monde */
 	public static final DeferredBlock<fr.chatmort.airain.trophee.SocleBlock> SOCLE = BLOCKS.register("trophy_pedestal",
 		() -> new fr.chatmort.airain.trophee.SocleBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.GOLD).strength(3f, 9f).requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion()
@@ -110,13 +109,13 @@ public class AirainMod {
 		BLOCK_ENTITIES.register("trophy_pedestal",
 			() -> BlockEntityType.Builder.of(fr.chatmort.airain.trophee.SocleBlockEntity::new, SOCLE.get()).build(null));
 
-	/** Pierre de fondation : nomme une base, titre à l'écran en entrant dans sa zone. */
+	/** Étandard de fondation : crée et nomme une base, titre à l'écran en entrant dans sa zone. */
 	public static final DeferredBlock<fr.chatmort.airain.fondation.FondationBlock> FONDATION = BLOCKS.register("foundation_stone",
 		() -> new fr.chatmort.airain.fondation.FondationBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
 	public static final DeferredItem<BlockItem> FONDATION_ITEM = ITEMS.register("foundation_stone",
 		() -> new BlockItem(FONDATION.get(), new Item.Properties()));
-	/** Grand étendard : même piédestal, mât de six blocs, bannière réglable en taille. */
+	/** Grand étendard : même piédestal, mât de 6 à 8 blocs, bannière réglable en taille. */
 	public static final DeferredBlock<fr.chatmort.airain.fondation.GrandEtendardBlock> GRAND_ETENDARD = BLOCKS.register("great_standard",
 		() -> new fr.chatmort.airain.fondation.GrandEtendardBlock(BlockBehaviour.Properties.of()
 			.mapColor(MapColor.STONE).strength(2.5f, 9f).requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
@@ -184,12 +183,12 @@ public class AirainMod {
 	public static final DeferredRegister<net.minecraft.world.item.crafting.RecipeSerializer<?>> SERIALISEURS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, ID);
 	public static final DeferredHolder<net.minecraft.world.item.crafting.RecipeSerializer<?>, net.minecraft.world.item.crafting.RecipeSerializer<Monture>> MONTURE =
 		SERIALISEURS.register("mount", () -> Monture.SERIALISEUR);
-	/** Couronne sacrée : le casque couronné consacré par une plaque sacrée (objet à part, pour JEI/EMI). */
+	/** Couronne sacrée : le casque couronné consacré par une plaque sacrée. */
 	public static final DeferredItem<Item> CASQUE_COURONNE_SACREE = ITEMS.register("sacred_crown",
 		() -> new fr.chatmort.airain.gardien.CouronneItem(AIRAIN_CASQUE, true, new Item.Properties()
 			.stacksTo(1).fireResistant().rarity(net.minecraft.world.item.Rarity.RARE)
 			.durability(net.minecraft.world.item.ArmorItem.Type.HELMET.getDurability(37))));
-	/** Trophées des boss avancés : type de créature → trophée. */
+	/** Trophées des boss avancés : trophée → boss. */
 	public static final java.util.Map<String, DeferredItem<Item>> TROPHEES_BOSS = new java.util.LinkedHashMap<>();
 	static {
 		String[][] t = {{"colossus_visor", "mowziesmobs:ferrous_wroughtnaut"}, {"magma_heart", "cataclysm:netherite_monstrosity"},
@@ -246,14 +245,15 @@ public class AirainMod {
 	}
 	// Paliers des armes et pioches de fin : palier(durabilité, vitesse de minage). Sacré = runique, impérial = arcanique.
 	public static final net.minecraft.world.item.Tier TIER_SACRE = palier(2600, 12f), TIER_IMPERIAL = palier(3600, 16f);
-	// Armes de l'Empire : arme(identifiant, type, palier 1 = sacré / 2 = impérial, dégâts, vitesse d'attaque,
-	//                         portée en plus en blocs, recul, balayage). Les pouvoirs sont dans armure/Armes.java.
+	
+	                       
 	private static DeferredItem<Item> arme(String nom, fr.chatmort.airain.armure.ArmeItem.Type type, int pal,
 			double degats, double vitesse, double portee, double recul, double balayage) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(pal == 2 ? TIER_IMPERIAL : TIER_SACRE, type, pal,
 			new Item.Properties().fireResistant().rarity(pal == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
 				.attributes(fr.chatmort.airain.armure.ArmeItem.stats(degats, vitesse, portee, recul, balayage))));
 	}
+	// Armes de l'Empire : arme(identifiant, type, palier 1 = sacré / 2 = impérial, dégâts, vitesse d'attaque, portée en plus en blocs, recul, balayage). Les pouvoirs sont dans armure/Armes.java.
 	public static final DeferredItem<Item> EPEE_SACREE = arme("sacred_sword", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 1, 10, 1.7, 0.5, 0, 0);
 	public static final DeferredItem<Item> EPEE_IMPERIALE = arme("imperial_sword", fr.chatmort.airain.armure.ArmeItem.Type.EPEE, 2, 13, 1.8, 1, 0, 0);
 	public static final DeferredItem<Item> KATANA_SACRE = arme("sacred_katana", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
@@ -261,7 +261,7 @@ public class AirainMod {
 	public static final DeferredItem<Item> ESPADON_SACRE = arme("sacred_greatsword", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
 	public static final DeferredItem<Item> ESPADON_IMPERIAL = arme("imperial_greatsword", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 2, 18, 1.0, 1.5, 0.5, 0.5);
 	public static final DeferredItem<Item> TWINBLADE_SACREE = arme("sacred_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
-	public static final DeferredItem<Item> TWINBLADE_IMPERIALE = arme("imperial_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 2, 10, 2.0, 0, 0, 0);
+	public static final DeferredItem<Item> TWINBLADE_IMPERIALE = arme("imperial_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 2, 11, 2.0, 0, 0, 0);
 	private static DeferredItem<Item> pioche(String nom, int pal, double portee) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.PiocheItem(pal == 2 ? TIER_IMPERIAL : TIER_SACRE, pal,
 			new Item.Properties().fireResistant().rarity(pal == 2 ? net.minecraft.world.item.Rarity.EPIC : net.minecraft.world.item.Rarity.RARE)
