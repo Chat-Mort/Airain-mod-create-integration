@@ -412,6 +412,11 @@ public class AirainMod {
 	public static final DeferredItem<Item> TRAITE = ITEMS.register("echo_arms_treatise",
 		() -> new fr.chatmort.airain.armurerie.ArmurerieItem(true, new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
 
+	/** La machine de l'Empereur : apparaît là où il tombe ; on y pose le Cœur puis on la rallume (fin Empire). Incassable. */
+	public static final DeferredBlock<fr.chatmort.airain.choix.MachineEmpereurBlock> MACHINE_EMPEREUR = BLOCKS.register("emperor_machine",
+		() -> new fr.chatmort.airain.choix.MachineEmpereurBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(-1f, 3600000f)
+			.noOcclusion().sound(SoundType.NETHERITE_BLOCK).lightLevel(s -> s.getValue(fr.chatmort.airain.choix.MachineEmpereurBlock.ETAT) == 2 ? 12 : 0)));
+
 	/** Manuels d'armes : une page par arme et par armure de fin, dévoilée en la portant. Empire (0) et Écho (1). */
 	public static final DeferredItem<Item> MANUEL_EMPIRE = ITEMS.register("imperial_arms_regulations",
 		() -> new fr.chatmort.airain.manuel.ManuelItem(0, new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
@@ -528,7 +533,10 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.DiademeItem::enclume);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::dimension);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.chronique.Chronique::tick);
-		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.manuel.Manuel::tick);   // pages des manuels d'armes
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.manuel.Manuel::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.choix.ChoixFinal::mort);        // choix final dans le monde
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.choix.ChoixFinal::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.choix.ChoixFinal::resonateur);   // pages des manuels d'armes
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.tableau.Tableaux::connexion);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.atlas.Atlas::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.atlas.Atlas::mort);

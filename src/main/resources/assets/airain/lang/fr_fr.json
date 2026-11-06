@@ -1372,5 +1372,19 @@
  "airain.ingenieur.manuels.titre": "Les manuels d'armes",
  "airain.ingenieur.manuels.court": "Manuels d'armes",
  "airain.ingenieur.manuels.histoire": "Chaque camp a consigné ses armes : l'Empire dans un règlement, les Réfractaires dans un traité.",
- "airain.ingenieur.manuels.usage": "Règlement des armes de l'Empire (livre, lingot de laiton, épée en fer) et Traité des armes de l'Écho (livre, gemme d'Écho, éclat d'améthyste). Une page par arme, couronne, diadème et ensemble d'armure de fin : caractéristiques, pouvoirs, forge. Une page se remplit dès que quelqu'un de l'équipe porte l'objet. Tous deux tiennent dans la reliure."
+ "airain.ingenieur.manuels.usage": "Règlement des armes de l'Empire (livre, lingot de laiton, épée en fer) et Traité des armes de l'Écho (livre, gemme d'Écho, éclat d'améthyste). Une page par arme, couronne, diadème et ensemble d'armure de fin : caractéristiques, pouvoirs, forge. Une page se remplit dès que quelqu'un de l'équipe porte l'objet. Tous deux tiennent dans la reliure.",
+ "block.airain.emperor_machine": "Machine de l'Empereur",
+ "airain.choix.elias": "« Il fait froid… Ramène-moi, ou laisse-moi partir. »",
+ "airain.choix.indice": "Le Cœur d'Airain s'est éteint. Rallumez-le dans la machine de l'Empereur, ou libérez les âmes sur le résonateur d'un Grand Relais.",
+ "airain.choix.eteint": "Le Cœur d'Airain s'est éteint.",
+ "airain.choix.machine.pose": "Le Cœur se loge dans la machine. Il attend une étincelle.",
+ "airain.choix.machine.coeur_d_abord": "La machine est vide : posez-y d'abord le Cœur.",
+ "airain.choix.machine.aide": "Une niche vide, à la taille du Cœur d'Airain.",
+ "airain.choix.machine.bat": "Le Cœur bat. L'Empire vous écoute.",
+ "airain.choix.machine.trop_tard": "La machine ne se rallumera plus : le Cœur a été brisé.",
+ "airain.choix.resonateur.pose": "Le Cœur flotte au-dessus du résonateur. Les âmes s'y pressent.",
+ "airain.choix.resonateur.echo": "Il faut un Écho primordial sur vous pour que le diapason sonne juste.",
+ "airain.choix.empire.1": "« Merci. Il faisait si froid. »",
+ "airain.choix.echo.1": "« Ada. Tu avais raison, depuis le début. Je te pardonne. Pardonne-moi. »",
+ "airain.choix.echo.2": "« Je t'ai attendu. »"
 }

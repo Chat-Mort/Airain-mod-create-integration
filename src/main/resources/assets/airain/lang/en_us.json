@@ -1372,5 +1372,19 @@
  "airain.ingenieur.manuels.titre": "The arms manuals",
  "airain.ingenieur.manuels.court": "Arms manuals",
  "airain.ingenieur.manuels.histoire": "Each side recorded its weapons: the Empire in a set of regulations, the Refractories in a treatise.",
- "airain.ingenieur.manuels.usage": "Imperial Arms Regulations (book, brass ingot, iron sword) and Treatise on the Echo Arms (book, Echo gem, amethyst shard). One page per end-game weapon, crown, diadem and armour set: characteristics, powers, forging. A page fills in as soon as someone on the team carries the item. Both fit in the binder."
+ "airain.ingenieur.manuels.usage": "Imperial Arms Regulations (book, brass ingot, iron sword) and Treatise on the Echo Arms (book, Echo gem, amethyst shard). One page per end-game weapon, crown, diadem and armour set: characteristics, powers, forging. A page fills in as soon as someone on the team carries the item. Both fit in the binder.",
+ "block.airain.emperor_machine": "The Emperor's Machine",
+ "airain.choix.elias": "\"It's cold… Bring me back, or let me go.\"",
+ "airain.choix.indice": "Airain's Core has gone dark. Rekindle it in the Emperor's machine, or free the souls on the resonator of a Great Relay.",
+ "airain.choix.eteint": "Airain's Core has gone dark.",
+ "airain.choix.machine.pose": "The Core settles into the machine. It waits for a spark.",
+ "airain.choix.machine.coeur_d_abord": "The machine is empty: set the Core in it first.",
+ "airain.choix.machine.aide": "An empty niche, the size of Airain's Core.",
+ "airain.choix.machine.bat": "The Core beats. The Empire is listening to you.",
+ "airain.choix.machine.trop_tard": "The machine will never start again: the Core has been broken.",
+ "airain.choix.resonateur.pose": "The Core floats above the resonator. The souls gather around it.",
+ "airain.choix.resonateur.echo": "You need a Primordial Echo on you for the tuning fork to ring true.",
+ "airain.choix.empire.1": "\"Thank you. It was so cold.\"",
+ "airain.choix.echo.1": "\"Ada. You were right, from the very start. I forgive you. Forgive me.\"",
+ "airain.choix.echo.2": "\"I waited for you.\""
 }

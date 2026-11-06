@@ -36,6 +36,16 @@ public class Fin extends SavedData {
 	public static final TagKey<EntityType<?>> AMES = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("airain", "ames_sans_repos"));
 
 	private String choix = "";
+	/** L'Empereur est tombé : le Cœur d'Airain s'éteint, et le choix devient possible dans le monde. */
+	private boolean empereurMort;
+	public boolean empereurMort() { return empereurMort; }
+	public void empereurTombe() { if (!empereurMort) { empereurMort = true; setDirty(); } }
+	/** Enregistre le choix s'il n'a pas encore été fait ; renvoie faux sinon. */
+	public boolean enregistrer(String v) {
+		if (!choix.isEmpty()) return false;
+		choix = v; setDirty(); return true;
+	}
+	public String choix() { return choix; }
 
 	public static Fin de(MinecraftServer serveur) {
 		return serveur.overworld().getDataStorage().computeIfAbsent(
@@ -68,7 +78,7 @@ public class Fin extends SavedData {
 	}
 
 	/** Le livre d'épilogue (pages traduites) et, pour l'Empire, la couronne. */
-	private static void recompenser(ServerPlayer p, String v) {
+	public static void recompenser(ServerPlayer p, String v) {
 		java.util.List<net.minecraft.server.network.Filterable<Component>> pages = new java.util.ArrayList<>();
 		for (int i = 1; i <= 5; i++) pages.add(net.minecraft.server.network.Filterable.passThrough(Component.translatable("airain.epilogue." + v + ".p" + i)));
 		net.minecraft.world.item.ItemStack livre = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WRITTEN_BOOK);
@@ -108,7 +118,7 @@ public class Fin extends SavedData {
 		p.connection.send(new net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket(Component.translatable("airain.fin." + v)));
 		p.level().playSound(null, p.blockPosition(), v.equals("empire") ? net.minecraft.sounds.SoundEvents.BEACON_ACTIVATE : net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_RESONATE,
 			net.minecraft.sounds.SoundSource.PLAYERS, 1f, v.equals("empire") ? 0.7f : 0.6f);
-		fr.chatmort.airain.chronique.Theme.jouer(p.server, fr.chatmort.airain.chronique.Theme.EPILOGUE);
+		net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(p, new fr.chatmort.airain.chronique.Theme(fr.chatmort.airain.chronique.Theme.EPILOGUE));   // une fois par joueur
 		fr.chatmort.airain.chronique.Chronique.premiere(p.server, "fin", "airain.chronique.j.fin_" + v, p.getGameProfile().getName());
 		fr.chatmort.airain.chronique.Chronique.de(p.server).debloquer(p.server, "fin_" + v);
 		if (v.equals("echo")) p.sendSystemMessage(Component.translatable("airain.fin.benediction").withStyle(net.minecraft.ChatFormatting.DARK_AQUA));
@@ -212,12 +222,14 @@ public class Fin extends SavedData {
 	@Override
 	public CompoundTag save(CompoundTag tag, HolderLookup.Provider registres) {
 		tag.putString("choix", choix);
+		tag.putBoolean("empereurMort", empereurMort);
 		return tag;
 	}
 
 	private static Fin charger(CompoundTag tag, HolderLookup.Provider registres) {
 		Fin f = new Fin();
 		f.choix = tag.getString("choix");
+		f.empereurMort = tag.getBoolean("empereurMort");
 		return f;
 	}
 }
