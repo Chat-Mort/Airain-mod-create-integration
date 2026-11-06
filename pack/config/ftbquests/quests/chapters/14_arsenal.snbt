@@ -8,6 +8,14 @@
 	images: [
 		{
 			height: 0.75d
+			image: "kubejs:textures/quests/title_arsenal_the_manuals.png"
+			rotation: 0.0d
+			width: 3.469d
+			x: -2.484d
+			y: -4.0d
+		}
+		{
+			height: 0.75d
 			image: "kubejs:textures/quests/title_arsenal_blades.png"
 			rotation: 0.0d
 			width: 2.906d
@@ -141,6 +149,52 @@
 			]
 			x: 8.0d
 			y: -2.0d
+		}
+		{
+			dependencies: ["45CA43199084EBB5"]
+			id: "76F6510C12601686"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "7BA9631EF786AFCA"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:imperial_arms_regulations" }
+					count: 1L
+					id: "50240C2B4C3E9CD0"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["48FA53E37A178943"]
+			id: "711F38FA2AEF2C1B"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "42E2B8FE8CE2F0B7"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:echo_arms_treatise" }
+					count: 1L
+					id: "543F961282668198"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["6B1A427C3921B026"]

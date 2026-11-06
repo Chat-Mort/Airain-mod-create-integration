@@ -1408,6 +1408,11 @@
 		"Mécanismes de précision et boîtiers de laiton : relancez vos chaînes avant de partir chercher le reste."
 	]
 	"quest.6FF5B231E6CCF065.title": "Les matériaux du Cœur"
+	"quest.711F38FA2AEF2C1B.quest_desc": [
+		"&7Optionnel.&r Les Réfractaires ont recueilli tout ce qu'ils savaient des armes qu'on éveille avec l'Écho. Le traité les décrit une par une, avec leurs atours."
+		"Une page se remplit dès que quelqu'un de l'équipe porte l'arme. Le livre tient dans la reliure."
+	]
+	"quest.711F38FA2AEF2C1B.title": "Le traité des armes de l'Écho"
 	"quest.71C1917F8DAC3905.quest_desc": [
 		"Sous terre, une ville entière éclairée par des lampes qui n'ont jamais faibli. Au fond, un centurion de bronze, haut comme une maison, à vapeur. Abattez-le."
 	]
@@ -1502,6 +1507,11 @@
 		"L'échangeur d'outils prend tout seul dans le sac le bon outil pour le bloc visé, et le range ensuite."
 	]
 	"quest.76BF387EB0CFFC46.title": "Sac de cuivre"
+	"quest.76F6510C12601686.quest_desc": [
+		"&7Optionnel.&r Les officiers de l'Empire apprenaient leurs armes dans un règlement. Il décrit, page par page, les armes et les armures de fin de l'Empire : caractéristiques, pouvoirs, forge."
+		"Une page se remplit dès que quelqu'un de l'équipe porte l'arme. Le livre tient dans la reliure."
+	]
+	"quest.76F6510C12601686.title": "Le règlement des armes"
 	"quest.781B4AE91894BA53.quest_desc": [
 		"Des tours suspendues dans le vide, faites d'Écho devenu pierre. Ce ne sont pas des cités de l'Empire : ce sont des refuges."
 		"Aux quais, des navires impériaux échoués : des chasseurs venus traquer ceux qui vivaient là. On y trouve les élytres de leurs équipages. Gare aux sentinelles du refuge : leurs projectiles font léviter."

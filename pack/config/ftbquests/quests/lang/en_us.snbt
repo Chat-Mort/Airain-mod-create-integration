@@ -1408,6 +1408,11 @@
 		"Precision mechanisms and brass casings: restart your production lines before going after the rest."
 	]
 	"quest.6FF5B231E6CCF065.title": "Core Materials"
+	"quest.711F38FA2AEF2C1B.quest_desc": [
+		"&7Optional.&r The Refractories gathered everything they knew about the weapons awakened with the Echo. The treatise describes them one by one, with their attire."
+		"A page fills in as soon as someone on the team carries the weapon. The book fits in the binder."
+	]
+	"quest.711F38FA2AEF2C1B.title": "The Treatise on the Echo Arms"
 	"quest.71C1917F8DAC3905.quest_desc": [
 		"Underground, a whole city lit by lamps that never dimmed. At its heart, a steam-powered bronze centurion as tall as a house. Destroy it."
 	]
@@ -1502,6 +1507,11 @@
 		"The tool swapper picks the right tool from the pack for the targeted block, and puts it back afterwards."
 	]
 	"quest.76BF387EB0CFFC46.title": "Copper Backpack"
+	"quest.76F6510C12601686.quest_desc": [
+		"&7Optional.&r The Empire's officers learned their weapons from a book of regulations. Page by page, it describes the Empire's end-game weapons and armour: characteristics, powers, forging."
+		"A page fills in as soon as someone on the team carries the weapon. The book fits in the binder."
+	]
+	"quest.76F6510C12601686.title": "The Arms Regulations"
 	"quest.781B4AE91894BA53.quest_desc": [
 		"Towers hanging in the void, made of Echo turned to stone. These are not cities of the Empire: they are refuges."
 		"At the docks, stranded imperial ships: hunters sent after those who lived here. Their crews' elytra are still aboard. Beware of the refuge sentinels: their projectiles make you levitate."

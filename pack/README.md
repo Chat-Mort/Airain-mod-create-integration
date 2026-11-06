@@ -28,10 +28,10 @@ Ce qui change à chaque version : voir `CHANGELOG.md`.
 1. Dans Prism Launcher, crée une instance **Minecraft 1.21.1 + NeoForge** et installe les mods de la liste.
 
 2. Copie `config`, `defaultconfigs`, `kubejs` et `schematics` à la racine de l'instance (le dossier qui contient `mods`),
-   et mets `mods/airain-1.43.3.jar` (le mod du pack : banc d'entretien) dans le dossier `mods`. Supprime l'ancienne version du `.jar` s'il y en a une.
+   et mets `mods/airain-1.44.0.jar` (le mod du pack : banc d'entretien) dans le dossier `mods`. Supprime l'ancienne version du `.jar` s'il y en a une.
    Si une ancienne version du pack y est déjà, **supprime d'abord** `config/ftbquests/quests` et `kubejs`.
 
-3. Serveur : mêmes mods sauf ceux marqués « Client », plus `airain-1.43.3.jar`, et la même copie de `config`, `defaultconfigs`, `kubejs` et `schematics` (les plans de l'Empire, lus par le canon à schémas).
+3. Serveur : mêmes mods sauf ceux marqués « Client », plus `airain-1.44.0.jar`, et la même copie de `config`, `defaultconfigs`, `kubejs` et `schematics` (les plans de l'Empire, lus par le canon à schémas).
 
 4. Mémoire du serveur (`user_jvm_args.txt`) :
    - `-Xmx8G` sur une machine de 16 Go ;
@@ -243,7 +243,7 @@ Coche au fur et à mesure. **Repars d'un monde neuf pour la vraie partie.**
 - [ ] **Chroniques oubliées** : le livre arrive avec la première quête (ou livre + horloge à l'établi). Il contient « Où en étions-nous ? », le récit (un passage par grande quête), le journal de bord (fondations, boss, premiers pas dans le Nether et l'End, écrits trouvés, assauts, gardiens, choix final) et les archives (les écrits portés sur soi y sont recopiés ; un clic pour les relire).
   Partie déjà commencée : `/airain chronique jusqua <étape>` (opérateur) débloque le récit jusqu'à une étape, par exemple `jusqua atelier` pour la fin du chapitre I. Les étapes se complètent avec la touche Tab.
 
-- [ ] **Reliure de l'ingénieur** (livre + cuir + plaque de laiton + pépite de fer) : 8 livres (Chroniques, registre, codex, livre de l'ingénieur, livre de quêtes, carnet d'Ars Nouveau). Clic droit : onglets pour lire ; accroupi + clic droit : ranger ; touche K : l’ouvre même rangée dans un sac porté.
+- [ ] **Reliure de l'ingénieur** (livre + cuir + plaque de laiton + pépite de fer) : 9 livres (Chroniques, registre, codex, atlas, livre de l'ingénieur, les deux manuels d'armes, livre de quêtes, carnet d'Ars Nouveau). Clic droit : onglets pour lire ; accroupi + clic droit : ranger ; touche K : l’ouvre même rangée dans un sac porté.
   Rangée dans un sac (ou un coffre), ses livres apparaissent en onglets à gauche de l'écran ; Échap après lecture ramène au sac. À vérifier livre par livre : le livre de quêtes et le carnet d'Ars Nouveau. Liste des livres autorisés : tag `airain:reliure`.
 
 - [ ] **Fin du lore** : la station d'observation n°2 flotte vers la hauteur 170 au-dessus des plaines (`/locate structure kubejs:station_observation`), avec un gardien en panne et les relevés d'Octave. Les affiches de propagande pendent aux murs des avant-postes et des cités (vérifier qu'elles tiennent au mur). Les fragments de mémoire ont un texte complet dans leur infobulle.

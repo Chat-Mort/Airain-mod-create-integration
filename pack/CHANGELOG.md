@@ -5,6 +5,21 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 6 novembre 2026 — version 1.44.0
+
+**Ajouts**
+- **Deux manuels d'armes** :
+  - le *Règlement des armes de l'Empire* (livre, lingot de laiton, épée en fer) ;
+  - le *Traité des armes de l'Écho* (livre, gemme d'Écho, éclat d'améthyste).
+
+  Une page par arme, couronne, diadème et ensemble d'armure de fin : caractéristiques, pouvoirs, forge et une devise. Une page reste « ?????????? » tant que personne dans l'équipe n'a porté l'objet. Deux nouvelles quêtes dans l'annexe Arsenal.
+
+**Changements**
+- La reliure passe à neuf livres, avec les deux manuels.
+- Commentaires du code plus clairs.
+
+---
+
 ## 5 novembre 2026 — versions 1.41.5 à 1.43.3
 
 **Ajouts**

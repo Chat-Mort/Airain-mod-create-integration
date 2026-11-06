@@ -1098,6 +1098,18 @@ quest(cA, "a_netherite", ("Une arme de netherite", "A Netherite Weapon"), 6, -2,
 quest(cA, "a_unique", ("Une arme unique", "A Unique Weapon"), 8, -2, [T_check()], [R_coin("cog", 3)], deps=["a_netherite"],
       desc=D(["Certaines armes n'ont jamais été fabriquées en série : on les trouve dans les coffres des donjons et des forteresses. Mettez la main sur une arme unique de Simply Swords, puis validez."],
              ["Some weapons were never mass-produced: they are found in the chests of dungeons and fortresses. Get your hands on a unique Simply Swords weapon, then tick the box."]))
+quest(cA, "a_reglement", ("Le règlement des armes", "The Arms Regulations"), 0, -4, [T_item("airain:imperial_arms_regulations")], [R_coin("sprocket", 2)],
+      deps=["laiton"], optional=True,
+      desc=D(["&7Optionnel.&r Les officiers de l'Empire apprenaient leurs armes dans un règlement. Il décrit, page par page, les armes et les armures de fin de l'Empire : caractéristiques, pouvoirs, forge.",
+              "Une page se remplit dès que quelqu'un de l'équipe porte l'arme. Le livre tient dans la reliure."],
+             ["&7Optional.&r The Empire's officers learned their weapons from a book of regulations. Page by page, it describes the Empire's end-game weapons and armour: characteristics, powers, forging.",
+              "A page fills in as soon as someone on the team carries the weapon. The book fits in the binder."]))
+quest(cA, "a_traite", ("Le traité des armes de l'Écho", "The Treatise on the Echo Arms"), 2, -4, [T_item("airain:echo_arms_treatise")], [R_coin("sprocket", 2)],
+      deps=["a_ars_source"], optional=True,
+      desc=D(["&7Optionnel.&r Les Réfractaires ont recueilli tout ce qu'ils savaient des armes qu'on éveille avec l'Écho. Le traité les décrit une par une, avec leurs atours.",
+              "Une page se remplit dès que quelqu'un de l'équipe porte l'arme. Le livre tient dans la reliure."],
+             ["&7Optional.&r The Refractories gathered everything they knew about the weapons awakened with the Echo. The treatise describes them one by one, with their attire.",
+              "A page fills in as soon as someone on the team carries the weapon. The book fits in the binder."]))
 quest(cA, "a_obus", ("Obus spéciaux", "Special Shells"), 0, 1,
       [T_item("createbigcannons:ap_shot", 8), T_item("createbigcannons:shrapnel_shell", 8), T_item("createbigcannons:smoke_shell", 4)],
       [R_coin("cog", 2)], deps=["obus"])

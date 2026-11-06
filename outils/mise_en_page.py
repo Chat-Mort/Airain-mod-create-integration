@@ -117,6 +117,7 @@ ligne(1, ("t_portes", 2), ("t_fluides", 6))
 ligne(2, ("t_horaire", 0), ("t_fret", 4))
 ligne(3, ("t_observateur", 2), ("t_triage", 6), ("t_long", 8))
 ligne(5, ("t_ligne", 0), ("t_pneumatique", 2), ("t_tube", 4))
+ligne(-4, ("a_reglement", 0), ("a_traite", 2))
 ligne(-2, ("a_lance", 0), ("a_katana", 2), ("a_claymore", 4), ("a_netherite", 6), ("a_unique", 8))
 ligne(0, ("a_obus", 0), ("a_mortier", 2))
 ligne(2, ("a_silex", 0), ("a_revolver", 2), ("a_fusil", 4), ("a_gatling", 6)); ligne(3.5, ("a_blazegun", 4))
@@ -166,6 +167,7 @@ TITRES = [
  ("arcanes", "Les Échos perdus", "The Lost Echoes", 13, -2, "h", "echo"),
  ("ingenierie", "L'ingénierie", "Engineering", 0, -3, "g", "empire"),
  ("ingenierie", "Trains et logistique", "Trains and Logistics", 0, 2, "g", "empire"),
+ ("arsenal", "Les manuels", "The Manuals", 0, -4, "g", "empire"),
  ("arsenal", "Les lames", "Blades", 0, -2, "g", "empire"),
  ("arsenal", "L'artillerie", "Artillery", 0, 0, "g", "empire"),
  ("arsenal", "Les armes à feu", "Firearms", 0, 2, "g", "empire"),
