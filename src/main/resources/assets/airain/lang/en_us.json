@@ -1386,6 +1386,5 @@
  "airain.choix.resonateur.echo": "You need a Primordial Echo on you for the tuning fork to ring true.",
  "airain.choix.empire.1": "\"Thank you. It was so cold.\"",
  "airain.choix.echo.1": "\"Ada. You were right, from the very start. I forgive you. Forgive me.\"",
- "airain.choix.echo.2": "\"I waited for you.\"",
- "airain.table.reduction": "Instead of %s levels: the item already has level %s"
+ "airain.choix.echo.2": "\"I waited for you.\""
 }

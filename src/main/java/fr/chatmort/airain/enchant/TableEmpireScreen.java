@@ -50,6 +50,13 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 	}
 
 	/** Panneau de laiton : cases (avec leurs silhouettes), registre riveté, tuyau et engrenages, plaque de titre. */
+	/** « 14 3 » avec 14 barré quand le prix est réduit, sinon le prix seul. */
+	private static Component prix(int plein, int reduit) {
+		if (reduit >= plein) return Component.literal(String.valueOf(reduit));
+		return Component.literal(String.valueOf(plein)).withStyle(ChatFormatting.STRIKETHROUGH, ChatFormatting.DARK_GRAY)
+			.append(Component.literal(" " + reduit).withStyle(s -> s.withStrikethrough(false).withColor(ChatFormatting.GREEN)));
+	}
+
 	@Override
 	protected void renderBg(GuiGraphics g, float partialTick, int mouseX, int mouseY) {
 		g.blit(FOND, leftPos, topPos, 0, 0, imageWidth, imageHeight, 256, 256);
@@ -98,9 +105,9 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 			var hs = survole.ligne.enchantement();
 			int deja = Bibliotheque.actuel(menu.objet(), hs);
 			int xp = Bibliotheque.coutXp(hs, survole.niveau, deja), plein = Bibliotheque.coutXp(hs, survole.niveau);
-			info.add(Component.translatable("airain.table.cout", xp, Bibliotheque.coutLapis(hs, survole.niveau, deja)).withStyle(ChatFormatting.GRAY));
-			if (xp < plein)   // l'objet porte déjà un niveau de cet enchantement
-				info.add(Component.translatable("airain.table.reduction", plein, deja).withStyle(ChatFormatting.DARK_GREEN));
+			int lapis = Bibliotheque.coutLapis(hs, survole.niveau, deja), lapisPlein = Bibliotheque.coutLapis(hs, survole.niveau);
+			// prix réduit affiché comme chez les villageois : l'ancien prix barré, puis le nouveau
+			info.add(Component.translatable("airain.table.cout", prix(plein, xp), prix(lapisPlein, lapis)).withStyle(ChatFormatting.GRAY));
 			if (survole.ligne.parTome(survole.niveau))
 				info.add(Component.translatable("airain.table.tome").withStyle(ChatFormatting.GOLD));
 			if (Bibliotheque.depasse(survole.ligne.enchantement(), survole.niveau))

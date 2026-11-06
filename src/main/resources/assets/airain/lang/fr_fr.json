@@ -1386,6 +1386,5 @@
  "airain.choix.resonateur.echo": "Il faut un Écho primordial sur vous pour que le diapason sonne juste.",
  "airain.choix.empire.1": "« Merci. Il faisait si froid. »",
  "airain.choix.echo.1": "« Ada. Tu avais raison, depuis le début. Je te pardonne. Pardonne-moi. »",
- "airain.choix.echo.2": "« Je t'ai attendu. »",
- "airain.table.reduction": "Au lieu de %s niveaux : l'objet porte déjà le niveau %s"
+ "airain.choix.echo.2": "« Je t'ai attendu. »"
 }
