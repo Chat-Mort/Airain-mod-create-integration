@@ -5,32 +5,6 @@
 	group: "2F4EAC3DE90A7B97"
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "airain:foundation_stone" }
-	images: [
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_bases_found_and_decorate.png"
-			rotation: 0.0d
-			width: 5.203d
-			x: -3.352d
-			y: 0.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_bases_trophies.png"
-			rotation: 0.0d
-			width: 3.797d
-			x: -2.648d
-			y: 3.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_bases_the_capital.png"
-			rotation: 0.0d
-			width: 3.188d
-			x: -2.344d
-			y: 5.0d
-		}
-	]
 	id: "268936E7997482A8"
 	order_index: 14
 	quests: [

@@ -5,24 +5,6 @@
 	group: "2F4EAC3DE90A7B97"
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "create:mechanical_harvester" }
-	images: [
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_ingenierie_engineering.png"
-			rotation: 0.0d
-			width: 3.234d
-			x: -2.367d
-			y: -3.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_ingenierie_trains_and_logistics.png"
-			rotation: 0.0d
-			width: 5.156d
-			x: -3.328d
-			y: 2.0d
-		}
-	]
 	id: "1172B9D9F1004842"
 	order_index: 12
 	quests: [

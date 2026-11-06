@@ -5,48 +5,6 @@
 	group: "25F3599C6B050FF2"
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "minecraft:nether_star" }
-	images: [
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_reconquete_the_assaults.png"
-			rotation: 0.0d
-			width: 3.516d
-			x: -2.508d
-			y: -2.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_reconquete_the_cities.png"
-			rotation: 0.0d
-			width: 2.766d
-			x: -2.133d
-			y: 2.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_reconquete_the_choice.png"
-			rotation: 0.0d
-			width: 2.578d
-			x: 16.0d
-			y: -1.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_reconquete_empire_ending.png"
-			rotation: 0.0d
-			width: 3.938d
-			x: 17.281d
-			y: -6.5d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_reconquete_echo_ending.png"
-			rotation: 0.0d
-			width: 3.562d
-			x: 17.469d
-			y: 6.5d
-		}
-	]
 	id: "35BF15091D15D650"
 	order_index: 7
 	quests: [

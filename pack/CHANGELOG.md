@@ -17,6 +17,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 **Changements**
 - La reliure passe à neuf livres, avec les deux manuels.
 - Commentaires du code plus clairs.
+- Livre de quêtes : les plaques de titre de section sont retirées.
 - Textures retouchées : couronne d'airain sacrée, Chroniques, balise de défense, graisseur, et les trophées Œil du Gardien, Engrenage du Rôdeur, Cœur de magma et Sceau du Centurion.
 
 ---

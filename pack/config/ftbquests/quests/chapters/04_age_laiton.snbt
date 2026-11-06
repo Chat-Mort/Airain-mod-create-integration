@@ -5,56 +5,6 @@
 	group: "25F3599C6B050FF2"
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "create:brass_casing" }
-	images: [
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_laiton_the_bastion_and_the_arsenal.png"
-			rotation: 0.0d
-			width: 5.953d
-			x: -3.727d
-			y: -6.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_laiton_the_imperial_workshop.png"
-			rotation: 0.0d
-			width: 4.453d
-			x: -2.977d
-			y: -4.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_laiton_brass.png"
-			rotation: 0.0d
-			width: 2.625d
-			x: -2.062d
-			y: -2.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_laiton_factories_and_trains.png"
-			rotation: 0.0d
-			width: 4.359d
-			x: -2.93d
-			y: 2.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_laiton_the_guardians.png"
-			rotation: 0.0d
-			width: 3.703d
-			x: -2.602d
-			y: 4.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_laiton_the_call_of_the_echo.png"
-			rotation: 0.0d
-			width: 4.547d
-			x: -3.023d
-			y: 6.0d
-		}
-	]
 	id: "3E6DF521B4BEF468"
 	order_index: 4
 	quests: [

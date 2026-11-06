@@ -5,40 +5,6 @@
 	group: "2F4EAC3DE90A7B97"
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "simplyswords:iron_longsword" }
-	images: [
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arsenal_the_manuals.png"
-			rotation: 0.0d
-			width: 3.469d
-			x: -2.484d
-			y: -4.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arsenal_blades.png"
-			rotation: 0.0d
-			width: 2.906d
-			x: -2.203d
-			y: -2.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arsenal_artillery.png"
-			rotation: 0.0d
-			width: 3.047d
-			x: -2.273d
-			y: 0.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arsenal_firearms.png"
-			rotation: 0.0d
-			width: 4.5d
-			x: -3.0d
-			y: 2.0d
-		}
-	]
 	id: "6643CF10372B0A3C"
 	order_index: 13
 	quests: [

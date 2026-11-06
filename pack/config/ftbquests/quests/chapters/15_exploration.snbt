@@ -5,40 +5,6 @@
 	group: "2F4EAC3DE90A7B97"
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "minecraft:filled_map" }
-	images: [
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_exploration_ruins_and_remains.png"
-			rotation: 0.0d
-			width: 4.922d
-			x: -3.211d
-			y: -3.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_exploration_the_lost_cities.png"
-			rotation: 0.0d
-			width: 4.922d
-			x: -3.211d
-			y: 1.5d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_exploration_engineer_s_records.png"
-			rotation: 0.0d
-			width: 5.297d
-			x: -3.398d
-			y: 5.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_exploration_bestiary.png"
-			rotation: 0.0d
-			width: 2.672d
-			x: -2.086d
-			y: 7.0d
-		}
-	]
 	id: "61CC052BF462CBD1"
 	order_index: 15
 	quests: [

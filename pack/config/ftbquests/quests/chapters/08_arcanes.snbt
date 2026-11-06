@@ -5,56 +5,6 @@
 	group: "160174A5E6BB3B2B"
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "ars_nouveau:archmage_spell_book" }
-	images: [
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arcanes_the_first_whispers.png"
-			rotation: 0.0d
-			width: 6.141d
-			x: -3.82d
-			y: -6.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arcanes_the_spell_book.png"
-			rotation: 0.0d
-			width: 3.234d
-			x: -2.367d
-			y: -3.0d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arcanes_the_refractory_workshop.png"
-			rotation: 0.0d
-			width: 5.484d
-			x: -3.492d
-			y: -1.5d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arcanes_the_little_echoes.png"
-			rotation: 0.0d
-			width: 4.547d
-			x: -3.023d
-			y: 1.5d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arcanes_the_robe_of_the_arcana.png"
-			rotation: 0.0d
-			width: 5.672d
-			x: -3.586d
-			y: 4.5d
-		}
-		{
-			height: 0.75d
-			image: "kubejs:textures/quests/title_arcanes_the_lost_echoes.png"
-			rotation: 0.0d
-			width: 4.922d
-			x: 13.0d
-			y: -3.0d
-		}
-	]
 	id: "6C42785A50835ECA"
 	order_index: 8
 	quests: [

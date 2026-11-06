@@ -191,6 +191,7 @@ _TEX = os.path.join(sys.argv[1], "kubejs/assets/kubejs/textures/quests")
 os.makedirs(_TEX, exist_ok=True)
 for _f in os.listdir(_TEX):
     if _f.startswith("title_"): os.remove(os.path.join(_TEX, _f))
+TITRES = []   # 6 novembre : plaques de titre retirées (Liam préfère sans) ; la liste ci-dessus est gardée pour mémoire
 for _cle, _fr, _en, _x, _y, _cote, _st in TITRES:
     _ch = _par_cle.get(_cle) or next(c for c in chapters if c["key"] == _cle)
     _im = _plaque(_fr, _st)
