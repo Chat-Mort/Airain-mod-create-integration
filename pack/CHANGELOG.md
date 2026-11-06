@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 6 novembre 2026 — version 1.44.0
+## 6 novembre 2026 — versions 1.44.0 à 1.44.1
 
 **Ajouts**
 - **Deux manuels d'armes** :
@@ -17,6 +17,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 **Changements**
 - La reliure passe à neuf livres, avec les deux manuels.
 - Commentaires du code plus clairs.
+- Textures retouchées : couronne d'airain sacrée, Chroniques, balise de défense, graisseur, et les trophées Œil du Gardien, Engrenage du Rôdeur, Cœur de magma et Sceau du Centurion.
 
 ---
 
