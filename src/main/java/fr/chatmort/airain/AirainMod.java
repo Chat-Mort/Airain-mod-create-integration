@@ -244,7 +244,10 @@ public class AirainMod {
 			public net.minecraft.world.item.crafting.Ingredient getRepairIngredient() { return net.minecraft.world.item.crafting.Ingredient.of(net.minecraft.world.item.Items.NETHERITE_INGOT); }
 		};
 	}
+	// Paliers des armes et pioches de fin : palier(durabilité, vitesse de minage). Sacré = runique, impérial = arcanique.
 	public static final net.minecraft.world.item.Tier TIER_SACRE = palier(2600, 12f), TIER_IMPERIAL = palier(3600, 16f);
+	// Armes de l'Empire : arme(identifiant, type, palier 1 = sacré / 2 = impérial, dégâts, vitesse d'attaque,
+	//                         portée en plus en blocs, recul, balayage). Les pouvoirs sont dans armure/Armes.java.
 	private static DeferredItem<Item> arme(String nom, fr.chatmort.airain.armure.ArmeItem.Type type, int pal,
 			double degats, double vitesse, double portee, double recul, double balayage) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(pal == 2 ? TIER_IMPERIAL : TIER_SACRE, type, pal,
@@ -268,6 +271,7 @@ public class AirainMod {
 						net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE), net.minecraft.world.entity.EquipmentSlotGroup.MAINHAND))));
 	}
 	public static final DeferredItem<Item> PIOCHE_SACREE = pioche("sacred_pickaxe", 1, 1);
+	// Armes runiques (Écho, palier sacré) : mêmes paramètres que arme().
 	private static DeferredItem<Item> armeEcho(String nom, fr.chatmort.airain.armure.ArmeItem.Type type, int pal,
 			double degats, double vitesse, double portee, double recul, double balayage) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(TIER_SACRE, type, pal, fr.chatmort.airain.armure.Lignee.ECHO,
@@ -278,6 +282,7 @@ public class AirainMod {
 	public static final DeferredItem<Item> KATANA_RUNIQUE = armeEcho("runic_katana", fr.chatmort.airain.armure.ArmeItem.Type.KATANA, 1, 9, 2.1, 0.5, 0, 0);
 	public static final DeferredItem<Item> ESPADON_RUNIQUE = armeEcho("runic_greatsword", fr.chatmort.airain.armure.ArmeItem.Type.ESPADON, 1, 14, 0.9, 0.5, 0.5, 0);
 	public static final DeferredItem<Item> TWINBLADE_RUNIQUE = armeEcho("runic_twinblade", fr.chatmort.airain.armure.ArmeItem.Type.TWINBLADE, 1, 8, 1.9, 0, 0, 0);
+	// Armes arcaniques (Écho, palier impérial) : comme arme(), sans le palier.
 	private static DeferredItem<Item> armeArcanique(String nom, fr.chatmort.airain.armure.ArmeItem.Type type,
 			double degats, double vitesse, double portee, double recul, double balayage) {
 		return ITEMS.register(nom, () -> new fr.chatmort.airain.armure.ArmeItem(TIER_IMPERIAL, type, 2, fr.chatmort.airain.armure.Lignee.ECHO,
