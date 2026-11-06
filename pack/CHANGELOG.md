@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 6 novembre 2026 — versions 1.44.0 à 1.45.1
+## 6 novembre 2026 — versions 1.44.0 à 1.46.0
 
 **Ajouts**
 - **Deux manuels d'armes** :
@@ -22,6 +22,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   La quête « Le choix final » se valide toute seule. Seule la fin choisie apparaît ensuite dans le livre.
 - **Le Cœur brisé** : le premier Cœur, volé par Morgana. Le gardien du Vide le laisse une seule fois dans la partie, et il entre dans la recette du Cœur d'Airain. Le Cœur n'existe donc qu'en un seul exemplaire.
 - Pages de Morgana III réécrites : le vol du premier Cœur.
+- **Table d'enchantement de l'Empire** : un objet qui porte déjà l'enchantement paie moins. Pour un niveau normal, on paie seulement la différence (Protection III → IV : 3 niveaux au lieu de 14). Pour un niveau ouvert par un tome, la réduction est de 50 % au plus, soit 50 % divisés par le niveau maximum, pour chaque niveau déjà présent (Protection III → V : 25 niveaux au lieu de 40).
 
 **Changements**
 - La reliure passe à neuf livres, avec les deux manuels.
