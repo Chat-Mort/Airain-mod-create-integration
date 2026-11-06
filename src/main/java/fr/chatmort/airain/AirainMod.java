@@ -406,12 +406,6 @@ public class AirainMod {
 		return ITEMS.register(id, () -> new fr.chatmort.airain.fondation.PlanItem(t, new Item.Properties().stacksTo(16).rarity(net.minecraft.world.item.Rarity.EPIC)));
 	}
 
-	/** Manuels des armes : le Règlement de l'Empire et le Traité de l'Écho (une page par arme, ensemble ou coiffe du mod). */
-	public static final DeferredItem<Item> REGLEMENT = ITEMS.register("empire_arms_regulations",
-		() -> new fr.chatmort.airain.armurerie.ArmurerieItem(false, new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
-	public static final DeferredItem<Item> TRAITE = ITEMS.register("echo_arms_treatise",
-		() -> new fr.chatmort.airain.armurerie.ArmurerieItem(true, new Item.Properties().stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON)));
-
 	/** La machine de l'Empereur : apparaît là où il tombe ; on y pose le Cœur puis on la rallume (fin Empire). Incassable. */
 	public static final DeferredBlock<fr.chatmort.airain.choix.MachineEmpereurBlock> MACHINE_EMPEREUR = BLOCKS.register("emperor_machine",
 		() -> new fr.chatmort.airain.choix.MachineEmpereurBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(-1f, 3600000f)
@@ -580,8 +574,6 @@ public class AirainMod {
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.tableau(m)))
 			.playToClient(fr.chatmort.airain.atlas.OuvrirAtlas.TYPE, fr.chatmort.airain.atlas.OuvrirAtlas.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.atlas(m)))
-			.playToClient(fr.chatmort.airain.armurerie.OuvrirArmurerie.TYPE, fr.chatmort.airain.armurerie.OuvrirArmurerie.CODEC,
-				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.armurerie(m)))
 			.playToClient(fr.chatmort.airain.manuel.OuvrirManuel.TYPE, fr.chatmort.airain.manuel.OuvrirManuel.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.manuel(m)))
 			.playToClient(fr.chatmort.airain.chronique.Theme.TYPE, fr.chatmort.airain.chronique.Theme.CODEC,

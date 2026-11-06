@@ -119,14 +119,6 @@ public class Chronique extends SavedData {
 	public static void tick(PlayerTickEvent.Post e) {
 		if (!(e.getEntity() instanceof ServerPlayer p) || p.tickCount % 100 != 7) return;
 		Chronique c = null;
-		// manuels des armes : toute arme ou armure du mod portée (inventaire, armure, main secondaire) se dévoile
-		var inv = p.getInventory();
-		for (int i = 0; i < inv.getContainerSize(); i++) {
-			var cle = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(inv.getItem(i).getItem());
-			if (!cle.getNamespace().equals("airain") || !fr.chatmort.airain.armurerie.Armurerie.SUIVIS.contains(cle.getPath())) continue;
-			if (c == null) c = de(p.server);
-			if (c.armes.add(cle.getPath())) c.setDirty();
-		}
 		for (ItemStack s : p.getInventory().items) {
 			var cd = s.get(DataComponents.CUSTOM_DATA);
 			if (cd == null || !cd.contains("airain_doc")) continue;

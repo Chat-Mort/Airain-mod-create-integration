@@ -24,10 +24,6 @@ public final class EcranClient {
 			net.minecraft.sounds.SoundEvent.createVariableRangeEvent(net.minecraft.resources.ResourceLocation.parse(m.son()))));
 	}
 
-	public static void armurerie(fr.chatmort.airain.armurerie.OuvrirArmurerie m) {
-		Minecraft.getInstance().setScreen(new fr.chatmort.airain.armurerie.ArmurerieScreen(m.echo(), m.vus()));
-	}
-
 	public static void chroniques(fr.chatmort.airain.chronique.OuvrirChroniques m) {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.chronique.ChroniquesScreen(m.donnees()));
 	}
