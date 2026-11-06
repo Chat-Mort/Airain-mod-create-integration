@@ -364,7 +364,7 @@
  "airain.ingenieur.modules.usage": "Trois emplacements à droite de l'écran du banc. Meule fine : −30 % d'huile. Démultiplicateur : +60 % de vitesse, deux fois plus de stress. Graisseur : pompe l'huile d'un réservoir voisin.",
  "airain.ingenieur.table.titre": "Table de l'Empire",
  "airain.ingenieur.table.histoire": "Elle ne devine rien : elle lit. Ce que vos bibliothèques savent, elle l'enseigne.",
- "airain.ingenieur.table.usage": "Livres enchantés dans des bibliothèques sculptées à 3 blocs. Choisissez l'enchantement et le niveau. Un tome ancien ouvre le niveau suivant, contre une encre runique. Lunettes : livres lus.",
+ "airain.ingenieur.table.usage": "Livres enchantés dans des bibliothèques sculptées à 3 blocs. Choisissez l'enchantement et le niveau. Un tome ancien ouvre le niveau suivant, contre une encre runique. Un objet qui porte déjà l'enchantement paie moins : la différence pour un niveau normal, et jusqu'à 50 % de moins pour un niveau de tome. Lunettes : livres lus.",
  "airain.ingenieur.desenchanteur.titre": "Désenchanteur",
  "airain.ingenieur.desenchanteur.histoire": "Plus de marchands pour vendre des livres : il faut les arracher aux objets.",
  "airain.ingenieur.desenchanteur.usage": "Entraîné par un rouage, 500 mB d'huile par niveau. Détruit l'objet et tire un seul enchantement au hasard. Avec de l'encre runique : il purge les malédictions sans rien détruire.",
@@ -1386,5 +1386,6 @@
  "airain.choix.resonateur.echo": "Il faut un Écho primordial sur vous pour que le diapason sonne juste.",
  "airain.choix.empire.1": "« Merci. Il faisait si froid. »",
  "airain.choix.echo.1": "« Ada. Tu avais raison, depuis le début. Je te pardonne. Pardonne-moi. »",
- "airain.choix.echo.2": "« Je t'ai attendu. »"
+ "airain.choix.echo.2": "« Je t'ai attendu. »",
+ "airain.table.reduction": "Au lieu de %s niveaux : l'objet porte déjà le niveau %s"
 }

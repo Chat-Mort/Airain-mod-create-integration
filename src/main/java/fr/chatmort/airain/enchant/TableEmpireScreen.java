@@ -41,7 +41,7 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 				int x = leftPos + LISTE_X + LARGEUR - (ligne.niveauMax() - n + 1) * (BOUTON + 1) - 2;
 				boolean possible = Bibliotheque.applicable(objet, ligne.enchantement(), n)
 					&& (minecraft.player.getAbilities().instabuild
-						|| (minecraft.player.experienceLevel >= Bibliotheque.coutXp(ligne.enchantement(), n) && menu.lapis() >= Bibliotheque.coutLapis(ligne.enchantement(), n)
+						|| (minecraft.player.experienceLevel >= Bibliotheque.coutXp(ligne.enchantement(), n, Bibliotheque.actuel(objet, ligne.enchantement())) && menu.lapis() >= Bibliotheque.coutLapis(ligne.enchantement(), n, Bibliotheque.actuel(objet, ligne.enchantement()))
 							&& (!ligne.parTome(n) || menu.encre() > 0)));
 				b.add(new Bouton(i + defilement, n, x, y + 2, possible, ligne));
 			}
@@ -95,8 +95,12 @@ public class TableEmpireScreen extends AbstractContainerScreen<TableEmpireMenu> 
 		if (survole != null) {
 			List<Component> info = new ArrayList<>();
 			info.add(net.minecraft.world.item.enchantment.Enchantment.getFullname(survole.ligne.enchantement(), survole.niveau));
-			info.add(Component.translatable("airain.table.cout", Bibliotheque.coutXp(survole.ligne.enchantement(), survole.niveau),
-				Bibliotheque.coutLapis(survole.ligne.enchantement(), survole.niveau)).withStyle(ChatFormatting.GRAY));
+			var hs = survole.ligne.enchantement();
+			int deja = Bibliotheque.actuel(menu.objet(), hs);
+			int xp = Bibliotheque.coutXp(hs, survole.niveau, deja), plein = Bibliotheque.coutXp(hs, survole.niveau);
+			info.add(Component.translatable("airain.table.cout", xp, Bibliotheque.coutLapis(hs, survole.niveau, deja)).withStyle(ChatFormatting.GRAY));
+			if (xp < plein)   // l'objet porte déjà un niveau de cet enchantement
+				info.add(Component.translatable("airain.table.reduction", plein, deja).withStyle(ChatFormatting.DARK_GREEN));
 			if (survole.ligne.parTome(survole.niveau))
 				info.add(Component.translatable("airain.table.tome").withStyle(ChatFormatting.GOLD));
 			if (Bibliotheque.depasse(survole.ligne.enchantement(), survole.niveau))

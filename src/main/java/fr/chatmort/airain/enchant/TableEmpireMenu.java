@@ -154,7 +154,8 @@ public class TableEmpireMenu extends AbstractContainerMenu {
 		ItemStack lapis = table.getItem(1);
 		if (!Bibliotheque.applicable(objet, h, niveau))
 			return false;
-		int xp = Bibliotheque.coutXp(h, niveau), nl = Bibliotheque.coutLapis(h, niveau);
+		int deja = Bibliotheque.actuel(objet, h);   // niveau déjà présent : le prix baisse (voir Bibliotheque.coutXp)
+		int xp = Bibliotheque.coutXp(h, niveau, deja), nl = Bibliotheque.coutLapis(h, niveau, deja);
 		ItemStack encre = table.getItem(2);
 		if (!player.getAbilities().instabuild && (player.experienceLevel < xp || lapis.getCount() < nl || (parTome && encre.isEmpty())))
 			return false;

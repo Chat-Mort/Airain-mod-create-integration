@@ -364,7 +364,7 @@
  "airain.ingenieur.modules.usage": "Three slots on the right of the bench screen. Fine grindstone: −30% oil. Reduction gear: +60% speed, twice the stress. Greaser: pumps oil from a neighbouring tank.",
  "airain.ingenieur.table.titre": "Empire Table",
  "airain.ingenieur.table.histoire": "It guesses nothing: it reads. What your bookshelves know, it teaches.",
- "airain.ingenieur.table.usage": "Enchanted books in chiseled bookshelves within 3 blocks. Pick the enchantment and level. An ancient tome unlocks the next level, for a rune ink. Goggles: books read.",
+ "airain.ingenieur.table.usage": "Enchanted books in chiseled bookshelves within 3 blocks. Pick the enchantment and level. An ancient tome unlocks the next level, for a rune ink. Goggles: books read. An item that already carries the enchantment pays less: only the difference for a normal level, and up to 50% less for a tome level.",
  "airain.ingenieur.desenchanteur.titre": "Disenchanter",
  "airain.ingenieur.desenchanteur.histoire": "No more merchants to sell books: they must be torn out of items.",
  "airain.ingenieur.desenchanteur.usage": "Driven by a cogwheel, 500 mB of oil per level. Destroys the item and pulls one random enchantment. With rune ink: it purges curses without destroying anything.",
@@ -1386,5 +1386,6 @@
  "airain.choix.resonateur.echo": "You need a Primordial Echo on you for the tuning fork to ring true.",
  "airain.choix.empire.1": "\"Thank you. It was so cold.\"",
  "airain.choix.echo.1": "\"Ada. You were right, from the very start. I forgive you. Forgive me.\"",
- "airain.choix.echo.2": "\"I waited for you.\""
+ "airain.choix.echo.2": "\"I waited for you.\"",
+ "airain.table.reduction": "Instead of %s levels: the item already has level %s"
 }
