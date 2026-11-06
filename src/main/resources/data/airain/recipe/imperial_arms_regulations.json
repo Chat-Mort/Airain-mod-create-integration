@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "minecraft:book"
+  },
+  {
+   "item": "create:brass_ingot"
+  },
+  {
+   "item": "minecraft:iron_sword"
+  }
+ ],
+ "result": {
+  "id": "airain:imperial_arms_regulations",
+  "count": 1
+ }
+}

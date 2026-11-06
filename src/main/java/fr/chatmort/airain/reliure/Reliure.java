@@ -19,7 +19,7 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 public final class Reliure {
 	private Reliure() {}
 
-	public static final int CASES = 8;
+	public static final int CASES = 9;   // 9 livres : la rangée tient juste dans le panneau
 	public static final TagKey<Item> LIVRES = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("airain", "reliure"));
 	/** D'où vient la Reliure : main / case d'inventaire, case du conteneur ouvert, recherche (touche). */
 	public static final int INVENTAIRE = 0, CONTENEUR = 1, RECHERCHE = 2;

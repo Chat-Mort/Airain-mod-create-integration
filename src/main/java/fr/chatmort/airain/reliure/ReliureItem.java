@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-/** La Reliure de l'ingénieur : huit livres sous la main. Clic droit : lire ; accroupi + clic droit : ranger. */
+/** La Reliure de l'ingénieur : neuf livres sous la main. Clic droit : lire ; accroupi + clic droit : ranger. */
 public class ReliureItem extends Item {
 	public ReliureItem(Properties p) { super(p); }
 

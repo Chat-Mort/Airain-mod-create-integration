@@ -13,7 +13,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 
-/** Ranger les livres de la Reliure : 8 cases, puis l'inventaire du joueur (la Reliure tenue ne bouge pas). */
+/** Ranger les livres de la Reliure : 9 cases, puis l'inventaire du joueur (la Reliure tenue ne bouge pas). */
 public class ReliureMenu extends AbstractContainerMenu {
 	private final int slotReliure;
 	private final Player joueur;
@@ -31,7 +31,7 @@ public class ReliureMenu extends AbstractContainerMenu {
 		var cases = Reliure.cases(reliure());
 		for (int i = 0; i < Reliure.CASES; i++) livres.setItem(i, cases.get(i));
 		for (int i = 0; i < Reliure.CASES; i++)
-			addSlot(new Slot(livres, i, 17 + i * 18, 20) {
+			addSlot(new Slot(livres, i, 8 + i * 18, 20) {
 				@Override public boolean mayPlace(ItemStack s) { return s.is(Reliure.LIVRES) && !Reliure.est(s); }
 				@Override public int getMaxStackSize() { return 1; }
 			});

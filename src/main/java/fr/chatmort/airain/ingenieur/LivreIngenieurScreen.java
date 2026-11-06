@@ -36,7 +36,7 @@ public class LivreIngenieurScreen extends Screen {
 		 {"banc", "airain:maintenance_bench"}, {"modules", "airain:fine_grindstone"}, {"table", "airain:imperial_enchanting_table"},
 		 {"desenchanteur", "airain:disenchanter"}, {"balise", "airain:defense_beacon"}, {"gardien", "airain:guardian_spawn_egg"},
 		 {"modules_gardien", "airain:lantern_module"}},
-		{{"codex", "airain:codex"}, {"chroniques", "airain:chronicles"}, {"reliure", "airain:binder"}, {"tableau", "airain:duty_board"},
+		{{"codex", "airain:codex"}, {"chroniques", "airain:chronicles"}, {"reliure", "airain:binder"}, {"manuels", "airain:imperial_arms_regulations"}, {"tableau", "airain:duty_board"},
 		 {"atlas", "airain:atlas"}, {"affiches", "airain:blank_poster"}, {"cartes", "airain:empire_map"},
 		 {"encre", "airain:runic_ink"}, {"schemas", "kubejs:schema_cuivre"}, {"sceau", "kubejs:sceau_forge"},
 		 {"memoires", "kubejs:coeur_d_airain"}, {"resonance", "kubejs:fragment_resonance"}, {"recuperation", "kubejs:ferraille"},

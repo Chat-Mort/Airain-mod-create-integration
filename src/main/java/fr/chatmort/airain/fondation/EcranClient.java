@@ -13,12 +13,19 @@ public final class EcranClient {
 		Minecraft.getInstance().setScreen(new fr.chatmort.airain.codex.CodexScreen(m));
 	}
 
+	/** Un manuel d'armes. */
+	public static void manuel(fr.chatmort.airain.manuel.OuvrirManuel m) { Minecraft.getInstance().setScreen(new fr.chatmort.airain.manuel.ManuelScreen(m)); }
+
 	/** Un thème de l'histoire : coupe la musique en cours, joue sans position. */
 	public static void theme(fr.chatmort.airain.chronique.Theme m) {
 		var mc = Minecraft.getInstance();
 		mc.getMusicManager().stopPlaying();
 		mc.getSoundManager().play(net.minecraft.client.resources.sounds.SimpleSoundInstance.forMusic(
 			net.minecraft.sounds.SoundEvent.createVariableRangeEvent(net.minecraft.resources.ResourceLocation.parse(m.son()))));
+	}
+
+	public static void armurerie(fr.chatmort.airain.armurerie.OuvrirArmurerie m) {
+		Minecraft.getInstance().setScreen(new fr.chatmort.airain.armurerie.ArmurerieScreen(m.echo(), m.vus()));
 	}
 
 	public static void chroniques(fr.chatmort.airain.chronique.OuvrirChroniques m) {

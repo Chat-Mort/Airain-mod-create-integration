@@ -30,7 +30,7 @@ public class ReliureScreen extends Screen {
 
 	private int survol(double mx, double my) {
 		for (int i = 0; i < Reliure.CASES; i++) {
-			int x = bx() - 26, y = by() + 14 + i * 21;
+			int x = bx() - 26, y = by() + 14 + i * 20;
 			if (mx >= x && mx < x + 28 && my >= y && my < y + 19) return i;
 		}
 		return -1;
@@ -59,7 +59,7 @@ public class ReliureScreen extends Screen {
 		super.render(g, mx, my, pt);
 		int h = survol(mx, my);
 		for (int i = 0; i < Reliure.CASES; i++) {
-			int x = bx() - 24, y = by() + 14 + i * 21;
+			int x = bx() - 24, y = by() + 14 + i * 20;
 			boolean plein = i < livres.size(), sur = plein && i == h;
 			int dx = sur ? -4 : 0;
 			g.fill(x + dx - 1, y - 1, x + 27, y + 20, 0xFF1E120A);

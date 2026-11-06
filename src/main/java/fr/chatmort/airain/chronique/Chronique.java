@@ -40,6 +40,9 @@ public class Chronique extends SavedData {
 	public record Entree(int jour, String cle, List<String> args) {}
 
 	private final List<Entree> journal = new ArrayList<>();
+	/** Armes et armures du mod déjà portées par l'équipe : elles se dévoilent dans les manuels des armes. */
+	private final Set<String> armes = new LinkedHashSet<>();
+	public Set<String> armes() { return armes; }
 
 	/**
 	 * Index des archives : camp, auteur, puis les écrits {id airain_doc, clé du titre}, dans l'ordre de lecture.
@@ -116,6 +119,14 @@ public class Chronique extends SavedData {
 	public static void tick(PlayerTickEvent.Post e) {
 		if (!(e.getEntity() instanceof ServerPlayer p) || p.tickCount % 100 != 7) return;
 		Chronique c = null;
+		// manuels des armes : toute arme ou armure du mod portée (inventaire, armure, main secondaire) se dévoile
+		var inv = p.getInventory();
+		for (int i = 0; i < inv.getContainerSize(); i++) {
+			var cle = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(inv.getItem(i).getItem());
+			if (!cle.getNamespace().equals("airain") || !fr.chatmort.airain.armurerie.Armurerie.SUIVIS.contains(cle.getPath())) continue;
+			if (c == null) c = de(p.server);
+			if (c.armes.add(cle.getPath())) c.setDirty();
+		}
 		for (ItemStack s : p.getInventory().items) {
 			var cd = s.get(DataComponents.CUSTOM_DATA);
 			if (cd == null || !cd.contains("airain_doc")) continue;
@@ -191,7 +202,7 @@ public class Chronique extends SavedData {
 			j.add(c);
 		}
 		t.put("journal", j);
-		t.put("recit", liste(recit)); t.put("marques", liste(marques)); t.put("docs", liste(docs)); t.put("auteurs", liste(auteurs));
+		t.put("recit", liste(recit)); t.put("marques", liste(marques)); t.put("docs", liste(docs)); t.put("auteurs", liste(auteurs)); t.put("armes", liste(armes));
 		ListTag ar = new ListTag();
 		ar.addAll(archives);
 		t.put("archives", ar);
@@ -215,7 +226,7 @@ public class Chronique extends SavedData {
 			c.journal.add(new Entree(e.getInt("jour"), e.getString("cle"), a));
 		}
 		lire(t.getList("recit", Tag.TAG_STRING), c.recit); lire(t.getList("marques", Tag.TAG_STRING), c.marques);
-		lire(t.getList("docs", Tag.TAG_STRING), c.docs); lire(t.getList("auteurs", Tag.TAG_STRING), c.auteurs);
+		lire(t.getList("docs", Tag.TAG_STRING), c.docs); lire(t.getList("auteurs", Tag.TAG_STRING), c.auteurs); lire(t.getList("armes", Tag.TAG_STRING), c.armes);
 		for (Tag x : t.getList("archives", Tag.TAG_COMPOUND)) c.archives.add((CompoundTag) x);
 		return c;
 	}
