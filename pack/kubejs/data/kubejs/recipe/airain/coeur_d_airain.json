@@ -3,21 +3,41 @@
   "accept_mirrored": false,
   "category": "misc",
   "key": {
-    "B": { "item": "create:brass_casing" },
-    "P": { "item": "create:precision_mechanism" },
-    "E": { "item": "minecraft:heart_of_the_sea" },
-    "R": { "item": "kubejs:fragment_rouages" },
-    "M": { "item": "kubejs:fragment_marees" },
-    "F": { "item": "kubejs:fragment_forge" },
-    "V": { "item": "kubejs:fragment_vide" }
+    "B": {
+      "item": "create:brass_casing"
+    },
+    "P": {
+      "item": "create:precision_mechanism"
+    },
+    "E": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "R": {
+      "item": "kubejs:fragment_rouages"
+    },
+    "M": {
+      "item": "kubejs:fragment_marees"
+    },
+    "F": {
+      "item": "kubejs:fragment_forge"
+    },
+    "V": {
+      "item": "kubejs:fragment_vide"
+    },
+    "C": {
+      "item": "kubejs:coeur_brise"
+    }
   },
   "pattern": [
-    " BBB ",
+    " BEB ",
     "BRPMB",
-    "BPEPB",
+    "BPCPB",
     "BFPVB",
     " BBB "
   ],
-  "result": { "count": 1, "id": "kubejs:coeur_d_airain" },
+  "result": {
+    "count": 1,
+    "id": "kubejs:coeur_d_airain"
+  },
   "show_notification": true
 }

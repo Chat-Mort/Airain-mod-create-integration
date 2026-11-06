@@ -377,8 +377,8 @@
   "airain.ferrand3.p1": "Demain, j'entre dans l'usine. Héléna gardera la porte.\n\nSi j'ai raison, je ne mourrai jamais. Ils me suivront, un par un, et personne n'aura plus froid.",
   "airain.ferrand3.p2": "Si j'ai tort …\n\n(le reste est brûlé)",
   "airain.morgana3.titre": "Pages de Morgana, III",
-  "airain.morgana3.p1": "J'ai éveillé un second gardien, dans la citadelle, autour de l'autel du Vide. Il garde le dernier fragment.\n\nIl ne laissera passer que celui qui saura le vaincre. Celui-là aura la force d'aller jusqu'au bout.",
-  "airain.morgana3.p2": "Je lui ai donné ma voix, pour qu'il ne soit pas seul. Il ne connaît qu'un mot, le seul que je sache encore promettre au Chœur.\n\nBientôt.\n\n— M. D.",
+  "airain.morgana3.p1": "J'ai volé leur premier Cœur, la nuit de notre départ. Je croyais arrêter Ferrand. Il s'est transféré dans son usine, et le Transfert a continué sans lui.",
+  "airain.morgana3.p2": "Le Cœur volé ne battait plus. Je l'ai brisé, et de ses morceaux j'ai éveillé un gardien autour de l'autel du Vide. Je lui ai donné ma voix, pour qu'il ne soit pas seul.",
   "airain.ada_fin.titre": "Dernière page d'Ada",
   "airain.ada_fin.p1": "Je suis vieille, maintenant. Elias n'est jamais venu.\n\nL'Écho garde les voix de ceux qui s'éteignent près des relais. Je le sais, je l'ai assez écouté.",
   "airain.ada_fin.p2": "Alors je m'assieds ici, contre le résonateur, et j'attends. Je lui avais promis : aussi longtemps qu'il le faudra.\n\nSi quelqu'un libère le Chœur, je serai la dernière à partir. Je voudrais partir avec mon frère.\n\n— Ada",
@@ -390,5 +390,16 @@
   "airain.vael.p5": "On a glissé une lettre sous ma porte. L'écriture d'Ada.\n\nJe ne l'ai pas ouverte. Je l'ai rangée dans le coffre du collecteur.\n\nJe ne sais pas pourquoi je ne l'ai pas brûlée.",
   "airain.vael.p6": "Cycle 211. Dernière entrée.\n\nMon tour de capsule est demain. J'ai demandé à passer le premier.\n\nSi quelqu'un trouve ce rapport : n'allumez jamais le Cœur. Ils attendent encore, là-dedans.",
   "airain.essais.titre": "Journal d'essais",
-  "airain.relais.titre": "Rapport d'incident"
+  "airain.relais.titre": "Rapport d'incident",
+  "item.kubejs.coeur_brise": "Cœur brisé",
+  "item.kubejs.coeur_eteint": "Cœur d'Airain éteint",
+  "tooltip.kubejs.coeur_d_airain.3": "Il n'en existe qu'un seul.",
+  "tooltip.kubejs.coeur_brise.1": "Le premier Cœur, volé par Morgana la nuit du départ.",
+  "tooltip.kubejs.coeur_brise.2": "Fendu, froid, mais entier.",
+  "tooltip.kubejs.coeur_brise.3": "Il n'en existe qu'un seul.",
+  "tooltip.kubejs.coeur_eteint.1": "Il ne bat plus. Une voix y murmure encore.",
+  "tooltip.kubejs.coeur_eteint.2": "Machine de l'Empereur : posez-le, puis allumez-le d'un cœur du Gardien des enfers.",
+  "tooltip.kubejs.coeur_eteint.3": "Résonateur d'un Grand Relais : posez-le, puis frappez avec le diapason d'Ada.",
+  "tooltip.kubejs.coeur_eteint.4": "Il n'en existe qu'un seul. Le choix sera définitif.",
+  "airain.morgana3.p3": "Il ne connaît qu'un mot, le seul que je sache encore promettre au Chœur.\n\nBientôt.\n\n— M. D."
 }

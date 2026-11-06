@@ -551,9 +551,8 @@
 	]
 	"quest.2AB864DB22E2AED6.title": "Quartz et tubes"
 	"quest.2ABAD12CF77811C1.quest_desc": [
-		"Remettez le Cœur en marche. Les automates se tairont, puis vous obéiront : vous serez les nouveaux souverains."
-		"&8Un cœur du Gardien des enfers : battez de nouveau le Wither s'il le faut.&r"
-		"Récompenses : la &6couronne d'airain&r (les automates ne vous attaquent plus d'eux-mêmes, vos gardiens proches sont plus forts), des gardiens réparés plus robustes, et le livre « L'Empire renaissant »."
+		"Le Cœur bat de nouveau. Les automates se sont tus, puis ils vous ont obéi : vous êtes les nouveaux souverains."
+		"Récompenses : la &6couronne d'airain&r (les automates ne vous attaquent plus d'eux-mêmes, vos gardiens proches sont plus forts), le testament d'Auguste Ferrand, des gardiens réparés plus robustes, et le livre « L'Empire renaissant »."
 	]
 	"quest.2ABAD12CF77811C1.quest_subtitle": "&6Fin de l'Empire&r"
 	"quest.2ABAD12CF77811C1.title": "Rallumer le Cœur"
@@ -809,9 +808,8 @@
 	]
 	"quest.3E42AFB5B4ED0540.title": "Commande : laiton"
 	"quest.3E8DC7B2286715F3.quest_desc": [
-		"Frappez le diapason d'Ada sur le Cœur. Il se fendra, et les âmes s'en iront. Les automates s'arrêteront pour de bon."
-		"&8L'Écho primordial s'obtient dans la voie de l'Écho, section « Les Échos perdus ».&r"
-		"Récompenses : la &3bénédiction de l'Écho&r (vision dans le noir, moitié plus d'expérience, le sculk ne vous entend plus, et accroupi immobile un instant, une onde révèle les créatures à 24 blocs), les âmes sans repos ne reviennent plus, et le livre « Le dernier chant »."
+		"Le diapason a sonné contre le Cœur. Il s'est fendu, et les âmes s'en sont allées, Elias et Ada les derniers. Les automates se sont arrêtés pour de bon."
+		"Récompenses : la &3bénédiction de l'Écho&r (vision dans le noir, moitié plus d'expérience, le sculk ne vous entend plus, et accroupi immobile un instant, une onde révèle les créatures à 24 blocs), le diadème et la note de Morgana, les âmes sans repos ne reviennent plus, et le livre « Le dernier chant »."
 	]
 	"quest.3E8DC7B2286715F3.quest_subtitle": "&3Fin de l'Écho&r"
 	"quest.3E8DC7B2286715F3.title": "Libérer les âmes"
@@ -992,6 +990,14 @@
 	]
 	"quest.4C11C27421D7B2F4.quest_subtitle": "Le dernier fragment"
 	"quest.4C11C27421D7B2F4.title": "La citadelle en ruine"
+	"quest.4CFC0AA91A4343AD.quest_desc": [
+		"Deux lieux, deux gestes. Le choix se fait dans le monde, et vaut pour toute l'équipe. Il n'y a pas de retour."
+		"&6Rallumer le Cœur&r : au berceau, posez le Cœur éteint dans la &6machine de l'Empereur&r, puis allumez-le d'un &6cœur du Gardien des enfers&r. L'Empire repart, et il vous obéit."
+		"&3Libérer les âmes&r : au centre d'un &3Grand Relais&r, posez le Cœur éteint sur le résonateur, puis frappez avec le &3diapason d'Ada&r, un &3Écho primordial&r sur vous. Le Cœur se brise, et tout s'arrête."
+		"&8Tant que le geste n'est pas fait, un clic droit à main nue reprend le Cœur. Le diapason se fabrique : refaites-en un s'il a servi contre le Chœur.&r"
+	]
+	"quest.4CFC0AA91A4343AD.quest_subtitle": "&6Un seul choix, pour tout le monde&r"
+	"quest.4CFC0AA91A4343AD.title": "Le choix final"
 	"quest.4DA9AA29C115DD53.quest_desc": [
 		"Certaines armes n'ont jamais été fabriquées en série : on les trouve dans les coffres des donjons et des forteresses. Mettez la main sur une arme unique de Simply Swords, puis validez."
 	]
@@ -1276,6 +1282,7 @@
 	"quest.65D3DED4428A3995.quest_desc": [
 		"Quatre gardiens, quatre fragments. Côte à côte, les fragments se répondent. Leurs inscriptions forment une seule phrase :"
 		"&o« Rendez-nous notre Cœur. »&r"
+		"Au milieu d'eux, le &6Cœur brisé&r que le gardien du Vide a laissé en tombant : le premier Cœur, celui que Morgana avait volé. Il n'en existe qu'un seul."
 	]
 	"quest.65D3DED4428A3995.title": "Les quatre mémoires"
 	"quest.66621D64DAA04B1F.quest_desc": [
@@ -1449,9 +1456,9 @@
 	]
 	"quest.728A556CC3B52C43.title": "Les modules du banc"
 	"quest.7307282B5DF56B0D.quest_desc": [
-		"Le silence revient. Dans votre sac, le Cœur d'Airain ne bat plus. Il contient encore toutes les âmes que l'Empire a fait brûler, et une voix que vous connaissez : celle d'Elias Vael, le frère d'Ada."
-		"Deux gestes sont possibles. &6Rallumer le Cœur&r, avec un cœur du Gardien des enfers : l'Empire repart, et il vous obéit. &3Libérer les âmes&r, avec le diapason d'Ada et un Écho primordial : le Cœur se brise, et tout s'arrête."
-		"&cUn seul choix pour tout le monde. Le Cœur est consommé, il n'y a pas de retour.&r"
+		"L'Empereur est tombé. Sa machine est restée là, éteinte, et dans votre sac le Cœur d'Airain ne bat plus. Il contient encore toutes les âmes que l'Empire a fait brûler, et une voix que vous connaissez : celle d'Elias Vael, le frère d'Ada."
+		"&o« Il fait froid… Ramène-moi, ou laisse-moi partir. »&r"
+		"&8Le Cœur s'éteint dès qu'on le porte sur soi. Il n'en existe qu'un seul : ne le perdez pas.&r"
 	]
 	"quest.7307282B5DF56B0D.title": "Le Cœur éteint"
 	"quest.7334C891610A4015.quest_desc": [
@@ -1637,7 +1644,6 @@
 	"quest.7FF957863CC019F2.title": "Au-dessus de tout"
 	"task.10BBCA124564623E.title": "L'inventaire d'une cache"
 	"task.15624E864CACC031.title": "Le rapport des profondeurs"
-	"task.16B479B7CD564FB9.title": "Le Cœur d'Airain"
 	"task.19F4625B777461F4.title": "Quatre bannières hissées ensemble"
 	"task.1B426C4864E1D67A.title": "La lettre d'un prospecteur"
 	"task.1CE89F85EAB84365.title": "Voir une bannière se hisser à votre retour"
@@ -1646,6 +1652,7 @@
 	"task.1E0596A41C93E9C4.title": "Le carnet de route"
 	"task.1ECF1DAF8C615CE9.title": "Un écrit réfractaire"
 	"task.1F1E46E8DBEE6DD0.title": "Le journal d'essais"
+	"task.1F8537C954994ED0.title": "Rallumer le Cœur ou libérer les âmes"
 	"task.2DA794549CA0C0A2.title": "Le journal du Nether"
 	"task.2E52ED05EB5852B0.title": "Purger un objet maudit"
 	"task.2F273B2C478004C2.title": "Le rapport d'incident"
@@ -1654,15 +1661,11 @@
 	"task.370CC98FB9CA0995.title": "La table à schémas"
 	"task.376FE865A8FDD474.title": "Les relevés de la station n°2"
 	"task.43B4570673B9D1AA.title": "Un aller-retour base ↔ cité"
-	"task.47BF9C61D2CF7484.title": "Un Écho primordial"
-	"task.486D87C9A0C36D3F.title": "Un cœur du Gardien des enfers"
 	"task.5165EFD936C30A7F.title": "Le carnet de mineur"
-	"task.52579755FEE910DF.title": "Le diapason d'Ada"
 	"task.52764CA4B15EF784.title": "La lettre d'Ada"
 	"task.5A7970D0A5CC27A8.title": "Le dernier message"
 	"task.5D9954971B83AC92.title": "Le canon à schémas"
 	"task.6819B23AAE4D8E59.title": "Le livre de bord"
 	"task.6B9352AA5523AC15.title": "Le rapport de l'ingénieur Vael"
-	"task.6DE383629AD5C303.title": "Le Cœur d'Airain"
 	"task.71ECC9B6560D6FF8.title": "Le registre du Conseil"
 }

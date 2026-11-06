@@ -84,7 +84,7 @@ ligne(2, ("mat_coeur", 2), ("mer", 4))
 # ============================================================ VII · la Reconquête : symétrique
 ligne(-3.5, ("assaut", 2))
 ligne(-2, ("vague1", 2), ("vague2", 4), ("vague3", 6))
-ligne(0, ("eveil", 0), ("flotte", 2), ("berceau", 8), ("empereur", 12), ("coeur_eteint", 14), ("deux_voix", 16), ("epilogue", 20), ("defi", 22))
+ligne(0, ("eveil", 0), ("flotte", 2), ("berceau", 8), ("empereur", 12), ("coeur_eteint", 14), ("deux_voix", 16), ("choix_final", 18), ("epilogue", 20), ("defi", 22))
 ligne(-1, ("sentinelle", 10)); ligne(1, ("etincelle", 10))
 ligne(2, ("cite1", 2), ("cite2", 4), ("cite3", 6))
 ligne(4, ("wither", 2))

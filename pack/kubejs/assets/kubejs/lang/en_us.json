@@ -377,8 +377,8 @@
   "airain.ferrand3.p1": "Tomorrow I enter the factory. Héléna will guard the door.\n\nIf I am right, I will never die. They will follow me, one by one, and no one will be cold again.",
   "airain.ferrand3.p2": "If I am wrong …\n\n(the rest is burnt)",
   "airain.morgana3.titre": "Morgana's Pages, III",
-  "airain.morgana3.p1": "I woke a second guardian, in the citadel, around the Altar of Void. It guards the last fragment.\n\nIt will let through only whoever can defeat it. That one will have the strength to see it through.",
-  "airain.morgana3.p2": "I gave it my voice, so it would not be alone. It knows a single word, the only one I can still promise the Choir.\n\nSoon.\n\n— M. D.",
+  "airain.morgana3.p1": "I stole their first Core, on the night we left. I thought I could stop Ferrand. He transferred himself into his factory, and the Transfer went on without it.",
+  "airain.morgana3.p2": "The stolen Core no longer beat. I broke it, and from its pieces I woke a guardian around the Altar of Void. I gave it my voice, so it would not be alone.",
   "airain.ada_fin.titre": "Ada's Last Page",
   "airain.ada_fin.p1": "I am old now. Elias never came.\n\nThe Echo keeps the voices of those who fade away near the relays. I know it; I have listened to it long enough.",
   "airain.ada_fin.p2": "So I sit here, against the resonator, and I wait. I promised him: as long as it takes.\n\nIf someone frees the Choir, I will be the last to leave. I would like to leave with my brother.\n\n— Ada",
@@ -390,5 +390,16 @@
   "airain.vael.p5": "Someone slipped a letter under my door. Ada's handwriting.\n\nI did not open it. I put it away in the collector's chest.\n\nI do not know why I did not burn it.",
   "airain.vael.p6": "Cycle 211. Last entry.\n\nMy turn in the capsule is tomorrow. I asked to go first.\n\nIf anyone finds this report: never light the Core. They are still waiting, in there.",
   "airain.essais.titre": "Trial Log",
-  "airain.relais.titre": "Incident Report"
+  "airain.relais.titre": "Incident Report",
+  "item.kubejs.coeur_brise": "Broken Core",
+  "item.kubejs.coeur_eteint": "Dark Airain Core",
+  "tooltip.kubejs.coeur_d_airain.3": "There is only one.",
+  "tooltip.kubejs.coeur_brise.1": "The first Core, stolen by Morgana on the night of the departure.",
+  "tooltip.kubejs.coeur_brise.2": "Cracked, cold, but whole.",
+  "tooltip.kubejs.coeur_brise.3": "There is only one.",
+  "tooltip.kubejs.coeur_eteint.1": "It no longer beats. A voice still whispers inside.",
+  "tooltip.kubejs.coeur_eteint.2": "The Emperor's machine: set it in, then light it with an Infernal Guardian Core.",
+  "tooltip.kubejs.coeur_eteint.3": "A Great Relay's resonator: set it there, then strike with Ada's tuning fork.",
+  "tooltip.kubejs.coeur_eteint.4": "There is only one. The choice will be final.",
+  "airain.morgana3.p3": "It knows a single word, the only one I can still promise the Choir.\n\nSoon.\n\n— M. D."
 }

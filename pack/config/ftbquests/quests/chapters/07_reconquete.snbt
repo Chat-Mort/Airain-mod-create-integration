@@ -400,8 +400,10 @@
 			size: 1.5d
 			tasks: [
 				{
+					item: { count: 1, id: "kubejs:coeur_eteint" }
+					count: 1L
 					id: "734169C0C83CD1A8"
-					type: "checkmark"
+					type: "item"
 				}
 			]
 			x: 14.0d
@@ -428,20 +430,38 @@
 		}
 		{
 			dependencies: ["6CE0A52059FD47C2"]
-			icon: { count: 1, id: "airain:airain_crown" }
-			id: "2ABAD12CF77811C1"
+			icon: { count: 1, id: "kubejs:coeur_eteint" }
+			id: "4CFC0AA91A4343AD"
 			rewards: [
 				{
-					command: "airain fin empire"
-					permission_level: 2
-					silent: true
-					id: "6965C1B5AFBF1CF4"
-					type: "command"
+					xp: 2000
+					id: "2AA0846498E1350F"
+					type: "xp"
 				}
+			]
+			shape: "hexagon"
+			size: 2.0d
+			tasks: [
+				{
+					stage: "airain_fin"
+					id: "1F8537C954994ED0"
+					type: "gamestage"
+				}
+			]
+			x: 18.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4CFC0AA91A4343AD"]
+			icon: { count: 1, id: "airain:airain_crown" }
+			id: "2ABAD12CF77811C1"
+			invisible: true
+			invisible_until_tasks: 1
+			rewards: [
 				{
 					item: { count: 1, id: "airain:imperial_charter" }
 					count: 3
-					id: "63ABB5040C8B35CE"
+					id: "6965C1B5AFBF1CF4"
 					type: "item"
 				}
 			]
@@ -449,58 +469,27 @@
 			size: 1.5d
 			tasks: [
 				{
-					item: { count: 1, id: "kubejs:coeur_d_airain" }
-					count: 1L
-					consume_items: true
+					stage: "airain_fin_empire"
 					id: "6DE383629AD5C303"
-					type: "item"
-				}
-				{
-					item: { count: 1, id: "minecraft:nether_star" }
-					count: 1L
-					consume_items: true
-					id: "486D87C9A0C36D3F"
-					type: "item"
+					type: "gamestage"
 				}
 			]
 			x: 18.0d
 			y: -2.0d
 		}
 		{
-			dependencies: ["6CE0A52059FD47C2"]
+			dependencies: ["4CFC0AA91A4343AD"]
 			icon: { count: 1, id: "kubejs:echo_primordial" }
 			id: "3E8DC7B2286715F3"
-			rewards: [
-				{
-					command: "airain fin echo"
-					permission_level: 2
-					silent: true
-					id: "1338037C6AB11B8E"
-					type: "command"
-				}
-			]
+			invisible: true
+			invisible_until_tasks: 1
 			shape: "hexagon"
 			size: 1.5d
 			tasks: [
 				{
-					item: { count: 1, id: "kubejs:diapason_echo" }
-					count: 1L
+					stage: "airain_fin_echo"
 					id: "52579755FEE910DF"
-					type: "item"
-				}
-				{
-					item: { count: 1, id: "kubejs:coeur_d_airain" }
-					count: 1L
-					consume_items: true
-					id: "16B479B7CD564FB9"
-					type: "item"
-				}
-				{
-					item: { count: 1, id: "kubejs:echo_primordial" }
-					count: 1L
-					consume_items: true
-					id: "47BF9C61D2CF7484"
-					type: "item"
+					type: "gamestage"
 				}
 			]
 			x: 18.0d

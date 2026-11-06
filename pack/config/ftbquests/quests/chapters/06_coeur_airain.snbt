@@ -146,6 +146,12 @@
 					id: "3B56D3083405FB25"
 					type: "item"
 				}
+				{
+					item: { count: 1, id: "kubejs:coeur_brise" }
+					count: 1L
+					id: "4FAD9346AE547193"
+					type: "item"
+				}
 			]
 			x: 4.0d
 			y: -2.0d

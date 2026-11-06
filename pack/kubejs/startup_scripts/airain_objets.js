@@ -48,6 +48,17 @@ StartupEvents.registry('item', event => {
     .rarity('epic')
     .fireResistant()
 
+  event.create('coeur_brise')                 // le premier Cœur, volé par Morgana : lâché une seule fois par le gardien du Vide
+    .displayName(nom('coeur_brise').gold())
+    .unstackable()
+    .rarity('rare')
+    .fireResistant()
+  event.create('coeur_eteint')                // le Cœur d'Airain après la mort de l'Empereur : ne sert qu'au choix final
+    .displayName(nom('coeur_eteint').gold().bold())
+    .unstackable()
+    .rarity('epic')
+    .fireResistant()
+
   // --- La voie de l'Écho (annexe « Les Échos perdus ») ---
   event.create('fragment_resonance')          // lâché par les âmes sans repos, trouvé près des relais brisés
     .displayName(nom('fragment_resonance').lightPurple())

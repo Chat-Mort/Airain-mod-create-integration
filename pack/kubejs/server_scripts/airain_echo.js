@@ -30,6 +30,8 @@ function airainDiapason(event) {
   const dim = String(level.dimension)
   const x = block.x + 0.5, y = block.y + 2, z = block.z + 0.5
   const ici = 'execute in ' + dim + ' positioned ' + x + ' ' + y + ' ' + z + ' run '
+  // le Cœur éteint est posé sur le résonateur : le diapason sert au choix final (géré par le mod), pas au boss
+  if (event.server.runCommandSilent(ici + 'execute if entity @e[tag=airain_coeur_pose,distance=..3]') > 0) return false
   // un seul Chœur à la fois autour du résonateur
   if (event.server.runCommandSilent(ici + 'execute if entity @e[tag=airain_choeur,distance=..96]') > 0) {
     player.setStatusMessage(Text.translate('airain.boss.deja').lightPurple()); return true
@@ -71,4 +73,16 @@ EntityEvents.death('minecraft:wither', event => {
   const ici = 'execute in ' + String(e.level.dimension) + ' positioned ' + e.x + ' ' + e.y + ' ' + e.z + ' run '
   const n = event.server.runCommandSilent(ici + 'give @a[distance=..64] minecraft:nether_star 1')
   if (n <= 0) event.server.runCommandSilent(ici + 'summon minecraft:item ~ ~1 ~ {Item:{id:"minecraft:nether_star",count:1}}')
+})
+
+// Le gardien du Vide (citadelle de l'End) : Morgana l'a éveillé avec le premier Cœur, qu'elle avait volé.
+// La première fois qu'il tombe dans la partie, il laisse le Cœur brisé ; ensuite, plus jamais (il n'en existe qu'un).
+EntityEvents.death('cataclysm:ender_guardian', event => {
+  const data = event.server.persistentData
+  if (data.getBoolean('airain_coeur_brise')) return
+  data.putBoolean('airain_coeur_brise', true)
+  const e = event.entity
+  const ici = 'execute in ' + String(e.level.dimension) + ' positioned ' + e.x + ' ' + (e.y + 0.5) + ' ' + e.z + ' run '
+  event.server.runCommandSilent(ici + 'summon minecraft:item ~ ~ ~ {Item:{id:"kubejs:coeur_brise",count:1},Invulnerable:1b,Glowing:1b,Age:-32768s}')
+  event.server.runCommandSilent(ici + 'playsound minecraft:block.anvil.land hostile @a[distance=..64] ~ ~ ~ 1 0.5')
 })

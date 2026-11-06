@@ -728,10 +728,12 @@ quest(c6, "mat_coeur", ("Les matériaux du Cœur", "Core Materials"), 2, 2,
 quest(c6, "mer", ("Le cœur de la mer", "Heart of the Sea"), 4, 2, [T_item("minecraft:heart_of_the_sea")], [R_xp(300)], deps=["mat_coeur"],
       desc=D(["Dans les trésors enfouis (cartes au trésor des épaves), ou à la boutique."], ["In buried treasure (shipwreck treasure maps), or at the shop."]))
 quest(c6, "memoires", ("Les quatre mémoires", "The Four Memories"), 4, -2,
-      [T_item("kubejs:fragment_rouages"), T_item("kubejs:fragment_marees"), T_item("kubejs:fragment_forge"), T_item("kubejs:fragment_vide")],
+      [T_item("kubejs:fragment_rouages"), T_item("kubejs:fragment_marees"), T_item("kubejs:fragment_forge"), T_item("kubejs:fragment_vide"), T_item("kubejs:coeur_brise")],
       [R_xp(500)], deps=["salle"],
-      desc=D(["Côte à côte, les fragments se répondent. Leurs inscriptions forment une seule phrase :", "&o« Rendez-nous notre Cœur. »&r"],
-             ["Side by side, the fragments answer each other. Their inscriptions form a single sentence:", "&o\"Give us back our Core.\"&r"]))
+      desc=D(["Côte à côte, les fragments se répondent. Leurs inscriptions forment une seule phrase :", "&o« Rendez-nous notre Cœur. »&r",
+              "Au milieu d'eux, le &6Cœur brisé&r que le gardien du Vide a laissé en tombant : le premier Cœur, celui que Morgana avait volé. Il n'en existe qu'un seul."],
+             ["Side by side, the fragments answer each other. Their inscriptions form a single sentence:", "&o\"Give us back our Core.\"&r",
+              "Among them, the &6Broken Core&r the Void guardian left as it fell: the first Core, the one Morgana stole. There is only one."]))
 quest(c6, "l_sanctuaire", ("Le journal d'Ada", "Ada's Journal"), 4, 4, [T_struct("kubejs:sanctuaire_refractaire"), lire()],
       [R_coin("cog", 1), R_cmd_visible("locate structure kubejs:grand_relais")], deps=["l_relais"],
       subtitle=("L'appel de l'Écho", "The Call of the Echo"),
@@ -847,14 +849,14 @@ quest(c7, "empereur", ("L'Empereur d'Airain", "The Airain Emperor"), 12, 1, [T_k
               "Clic droit avec le cœur du Gardien des enfers pour le réveiller. &cIl est extrêmement dangereux.&r"],
              ["At the center of the factory, a huge motionless machine. The Emperor, fused with what he built: Auguste Ferrand, the founder, transferred into his own factory long before everyone else.",
               "Right-click it with the Infernal Guardian Core to wake him. &cHe is extremely dangerous.&r"]))
-quest(c7, "coeur_eteint", ("Le Cœur éteint", "The Silent Heart"), 14, 1, [T_check()], [R_xp(1000)], deps=["empereur"],
+quest(c7, "coeur_eteint", ("Le Cœur éteint", "The Dark Heart"), 14, 1, [T_item("kubejs:coeur_eteint")], [R_xp(1000)], deps=["empereur"],
       shape="gear", size=1.5,
-      desc=D(["Le silence revient. Dans votre sac, le Cœur d'Airain ne bat plus. Il contient encore toutes les âmes que l'Empire a fait brûler, et une voix que vous connaissez : celle d'Elias Vael.",
-              "Deux gestes sont possibles. &6Rallumer le Cœur&r, avec un cœur du Gardien des enfers : l'Empire repart, et il vous obéit. &3Libérer les âmes&r, avec le diapason d'Ada et un Écho primordial : le Cœur se brise, et tout s'arrête.",
-              "&cUn seul choix pour tout le monde. Le Cœur est consommé, il n'y a pas de retour.&r"],
-             ["Silence returns. In your pack, Airain's Core no longer beats. It still holds every soul the Empire burned, and a voice you know: Elias Vael's.",
-              "Two gestures are possible. &6Rekindle the Heart&r with an Infernal Guardian Core: the Empire starts again, and obeys you. &3Free the souls&r with Ada's tuning fork and a Primordial Echo: the Heart breaks, and everything stops.",
-              "&cOne choice for the whole world. The Core is consumed; there is no going back.&r"]))
+      desc=D(["L'Empereur est tombé. Sa machine est restée là, éteinte, et dans votre sac le Cœur d'Airain ne bat plus. Il contient encore toutes les âmes que l'Empire a fait brûler, et une voix que vous connaissez : celle d'Elias Vael.",
+              "&o« Il fait froid… Ramène-moi, ou laisse-moi partir. »&r",
+              "&8Le Cœur s'éteint dès qu'on le porte sur soi. Il n'en existe qu'un seul : ne le perdez pas.&r"],
+             ["The Emperor has fallen. His machine stayed behind, dark, and in your pack Airain's Core no longer beats. It still holds every soul the Empire burned, and a voice you know: Elias Vael's.",
+              "&o\"It's cold… Bring me back, or let me go.\"&r",
+              "&8The Core goes dark as soon as someone carries it. There is only one: do not lose it.&r"]))
 quest(c7, "deux_voix", ("Les deux voix", "The Two Voices"), 14, -1, [T_check()], [R_xp(500)], deps=["coeur_eteint"],
       desc=D(["L'Empire dort dans le Cœur et promet l'éternité à ceux qui le servent.",
               "Ada, Morgana et Octave disent autre chose : le Transfert ne tue pas, il enferme, et des milliers de voix attendent encore.",
@@ -864,28 +866,34 @@ quest(c7, "deux_voix", ("Les deux voix", "The Two Voices"), 14, -1, [T_check()],
               "Ada, Morgana and Octave say otherwise: the Transfer does not kill, it imprisons, and thousands of voices are still waiting.",
               "&6Rekindling the Heart&r gives the Empire back to the world. &3Breaking it&r gives the souls back to themselves.",
               "There is no right answer. Only yours."]))
-quest(c7, "f_empire", ("Rallumer le Cœur", "Rekindle the Heart"), 16, 0,
-      [T_item("kubejs:coeur_d_airain", consume=True), T_item("minecraft:nether_star", consume=True)],
-      [R_cmd("airain fin empire"), R_item("airain:imperial_charter", 3)], deps=["deux_voix"], shape="hexagon", size=1.5, icon="airain:airain_crown",
+quest(c7, "choix_final", ("Le choix final", "The Final Choice"), 16, 1, [T_stage("airain_fin")], [R_xp(2000)], deps=["deux_voix"],
+      shape="hexagon", size=2.0, icon="kubejs:coeur_eteint", subtitle=("&6Un seul choix, pour tout le monde&r", "&6One choice, for everyone&r"),
+      desc=D(["Deux lieux, deux gestes. Le choix se fait dans le monde, et vaut pour toute l'équipe. Il n'y a pas de retour.",
+              "&6Rallumer le Cœur&r : au berceau, posez le Cœur éteint dans la &6machine de l'Empereur&r, puis allumez-le d'un &6cœur du Gardien des enfers&r. L'Empire repart, et il vous obéit.",
+              "&3Libérer les âmes&r : au centre d'un &3Grand Relais&r, posez le Cœur éteint sur le résonateur, puis frappez avec le &3diapason d'Ada&r, un &3Écho primordial&r sur vous. Le Cœur se brise, et tout s'arrête.",
+              "&8Tant que le geste n'est pas fait, un clic droit à main nue reprend le Cœur. Le diapason se fabrique : refaites-en un s'il a servi contre le Chœur.&r"],
+             ["Two places, two gestures. The choice is made in the world, and holds for the whole team. There is no going back.",
+              "&6Rekindle the Heart&r: at the cradle, set the dark Core into the &6Emperor's machine&r, then light it with an &6Infernal Guardian Core&r. The Empire starts again, and obeys you.",
+              "&3Free the souls&r: at the center of a &3Great Relay&r, set the dark Core on the resonator, then strike it with &3Ada's tuning fork&r, a &3Primordial Echo&r on you. The Core breaks, and everything stops.",
+              "&8Until the gesture is made, right-clicking bare-handed takes the Core back. The tuning fork can be crafted: make another if it was spent against the Choir.&r"]))
+titres_taches("choix_final", [("Rallumer le Cœur ou libérer les âmes", "Rekindle the Heart or free the souls")])
+quest(c7, "f_empire", ("Rallumer le Cœur", "Rekindle the Heart"), 18, 0, [T_stage("airain_fin_empire")],
+      [R_item("airain:imperial_charter", 3)], deps=["choix_final"], shape="hexagon", size=1.5, icon="airain:airain_crown",
       subtitle=("&6Fin de l'Empire&r", "&6Empire ending&r"),
-      desc=D(["Remettez le Cœur en marche. Les automates se tairont, puis vous obéiront : vous serez les nouveaux souverains.",
-              "&8Un cœur du Gardien des enfers : battez de nouveau le Wither s'il le faut.&r",
-              "Récompenses : la &6couronne d'airain&r (les automates ne vous attaquent plus d'eux-mêmes, vos gardiens proches sont plus forts), des gardiens réparés plus robustes, et le livre « L'Empire renaissant »."],
-             ["Start the Heart again. The automatons will fall silent, then obey you: you will be the new sovereigns.",
-              "&8An Infernal Guardian Core: beat the Wither again if you must.&r",
-              "Rewards: the &6Airain Crown&r (automatons no longer attack you on their own, your nearby guardians grow stronger), sturdier repaired guardians, and the book \"The Empire Reborn\"."]))
-quest(c7, "f_echo", ("Libérer les âmes", "Free the Souls"), 16, 2,
-      [T_item("kubejs:diapason_echo"), T_item("kubejs:coeur_d_airain", consume=True), T_item("kubejs:echo_primordial", consume=True)],
-      [R_cmd("airain fin echo")], deps=["deux_voix"], shape="hexagon", size=1.5, icon="kubejs:echo_primordial",
+      desc=D(["Le Cœur bat de nouveau. Les automates se sont tus, puis ils vous ont obéi : vous êtes les nouveaux souverains.",
+              "Récompenses : la &6couronne d'airain&r (les automates ne vous attaquent plus d'eux-mêmes, vos gardiens proches sont plus forts), le testament d'Auguste Ferrand, des gardiens réparés plus robustes, et le livre « L'Empire renaissant »."],
+             ["The Heart beats again. The automatons fell silent, then obeyed you: you are the new sovereigns.",
+              "Rewards: the &6Airain Crown&r (automatons no longer attack you on their own, your nearby guardians grow stronger), Auguste Ferrand's testament, sturdier repaired guardians, and the book \"The Empire Reborn\"."]))
+quest(c7, "f_echo", ("Libérer les âmes", "Free the Souls"), 18, 2, [T_stage("airain_fin_echo")],
+      [], deps=["choix_final"], shape="hexagon", size=1.5, icon="kubejs:echo_primordial",
       subtitle=("&3Fin de l'Écho&r", "&3Echo ending&r"),
-      desc=D(["Frappez le diapason d'Ada sur le Cœur. Il se fendra, et les âmes s'en iront. Les automates s'arrêteront pour de bon.",
-              "&8L'Écho primordial vient de l'annexe « Les Échos perdus ».&r",
-              "Récompenses : la &3bénédiction de l'Écho&r (vision dans le noir, moitié plus d'expérience, le sculk ne vous entend plus, et accroupi immobile un instant, une onde révèle les créatures à 24 blocs), les âmes sans repos ne reviennent plus, et le livre « Le dernier chant »."],
-             ["Strike Ada's tuning fork against the Heart. It will crack, and the souls will leave. The automatons will stop for good.",
-              "&8The Primordial Echo comes from the side chapter \"The Lost Echoes\".&r",
-              "Rewards: the &3Echo's blessing&r (sight in the dark, half again as much experience, the sculk no longer hears you, and crouching still for a moment sends a wave revealing creatures within 24 blocks), restless souls never return, and the book \"The Last Song\"."]))
-titres_taches("f_empire", [("Le Cœur d'Airain", "Airain's Core"), ("Un cœur du Gardien des enfers", "An Infernal Guardian Core")])
-titres_taches("f_echo", [("Le diapason d'Ada", "Ada's tuning fork"), ("Le Cœur d'Airain", "Airain's Core"), ("Un Écho primordial", "A Primordial Echo")])
+      desc=D(["Le diapason a sonné contre le Cœur. Il s'est fendu, et les âmes s'en sont allées, Elias et Ada les derniers. Les automates se sont arrêtés pour de bon.",
+              "Récompenses : la &3bénédiction de l'Écho&r (vision dans le noir, moitié plus d'expérience, le sculk ne vous entend plus, et accroupi immobile un instant, une onde révèle les créatures à 24 blocs), le diadème et la note de Morgana, les âmes sans repos ne reviennent plus, et le livre « Le dernier chant »."],
+             ["The tuning fork rang against the Core. It cracked, and the souls went away, Elias and Ada last of all. The automatons stopped for good.",
+              "Rewards: the &3Echo's blessing&r (sight in the dark, half again as much experience, the sculk no longer hears you, and crouching still for a moment sends a wave revealing creatures within 24 blocks), Morgana's diadem and note, restless souls never return, and the book \"The Last Song\"."]))
+for _c in chapters:                       # la fin non choisie ne s'affiche jamais
+    for _q in _c["quests"]:
+        if _q["id"] in (QUESTS["f_empire"], QUESTS["f_echo"]): _q["invisible"] = True
 quest(c7, "capitaine", ("Le Capitaine impérial", "The Imperial Captain"), 18, -1, [T_stage("airain_gardien_elite")],
       [R_coin("crown", 1), R_xp(2000)], deps=["f_empire"], icon="airain:imperial_plate", optional=True,
       desc=D(["L'Empire rallumé a de nouveau besoin d'officiers. Une plaque impériale, rivée sur le torse d'un gardien, en fait un capitaine.",
@@ -1635,6 +1643,7 @@ def write_chapter(ch):
         if q.get("hide_lines"): L.append("\t\t\thide_dependency_lines: true\n")
         if q["icon"]: L.append(f'\t\t\ticon: {item(q["icon"])}\n')
         L.append(f'\t\t\tid: {s(q["id"])}\n')
+        if q.get("invisible"): L.append("\t\t\tinvisible: true\n\t\t\tinvisible_until_tasks: 1\n")   # cachée tant que sa tâche n'est pas faite
         if q["optional"]: L.append("\t\t\toptional: true\n")
         if q["rewards"]:
             L.append("\t\t\trewards: [\n")

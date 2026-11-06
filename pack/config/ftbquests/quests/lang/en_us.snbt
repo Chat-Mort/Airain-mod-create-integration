@@ -551,9 +551,8 @@
 	]
 	"quest.2AB864DB22E2AED6.title": "Quartz and Tubes"
 	"quest.2ABAD12CF77811C1.quest_desc": [
-		"Start the Heart again. The automatons will fall silent, then obey you: you will be the new sovereigns."
-		"&8An Infernal Guardian Core: beat the Wither again if you must.&r"
-		"Rewards: the &6Airain Crown&r (automatons no longer attack you on their own, your nearby guardians grow stronger), sturdier repaired guardians, and the book \"The Empire Reborn\"."
+		"The Heart beats again. The automatons fell silent, then obeyed you: you are the new sovereigns."
+		"Rewards: the &6Airain Crown&r (automatons no longer attack you on their own, your nearby guardians grow stronger), Auguste Ferrand's testament, sturdier repaired guardians, and the book \"The Empire Reborn\"."
 	]
 	"quest.2ABAD12CF77811C1.quest_subtitle": "&6Empire ending&r"
 	"quest.2ABAD12CF77811C1.title": "Rekindle the Heart"
@@ -809,9 +808,8 @@
 	]
 	"quest.3E42AFB5B4ED0540.title": "Order: Brass"
 	"quest.3E8DC7B2286715F3.quest_desc": [
-		"Strike Ada's tuning fork against the Heart. It will crack, and the souls will leave. The automatons will stop for good."
-		"&8The Primordial Echo is earned on the Echo path, in \"The Lost Echoes\" section.&r"
-		"Rewards: the &3Echo's blessing&r (sight in the dark, half again as much experience, the sculk no longer hears you, and crouching still for a moment sends a wave revealing creatures within 24 blocks), restless souls never return, and the book \"The Last Song\"."
+		"The tuning fork rang against the Core. It cracked, and the souls went away, Elias and Ada last of all. The automatons stopped for good."
+		"Rewards: the &3Echo's blessing&r (sight in the dark, half again as much experience, the sculk no longer hears you, and crouching still for a moment sends a wave revealing creatures within 24 blocks), Morgana's diadem and note, restless souls never return, and the book \"The Last Song\"."
 	]
 	"quest.3E8DC7B2286715F3.quest_subtitle": "&3Echo ending&r"
 	"quest.3E8DC7B2286715F3.title": "Free the Souls"
@@ -992,6 +990,14 @@
 	]
 	"quest.4C11C27421D7B2F4.quest_subtitle": "The last fragment"
 	"quest.4C11C27421D7B2F4.title": "The Ruined Citadel"
+	"quest.4CFC0AA91A4343AD.quest_desc": [
+		"Two places, two gestures. The choice is made in the world, and holds for the whole team. There is no going back."
+		"&6Rekindle the Heart&r: at the cradle, set the dark Core into the &6Emperor's machine&r, then light it with an &6Infernal Guardian Core&r. The Empire starts again, and obeys you."
+		"&3Free the souls&r: at the center of a &3Great Relay&r, set the dark Core on the resonator, then strike it with &3Ada's tuning fork&r, a &3Primordial Echo&r on you. The Core breaks, and everything stops."
+		"&8Until the gesture is made, right-clicking bare-handed takes the Core back. The tuning fork can be crafted: make another if it was spent against the Choir.&r"
+	]
+	"quest.4CFC0AA91A4343AD.quest_subtitle": "&6One choice, for everyone&r"
+	"quest.4CFC0AA91A4343AD.title": "The Final Choice"
 	"quest.4DA9AA29C115DD53.quest_desc": [
 		"Some weapons were never mass-produced: they are found in the chests of dungeons and fortresses. Get your hands on a unique Simply Swords weapon, then tick the box."
 	]
@@ -1276,6 +1282,7 @@
 	"quest.65D3DED4428A3995.quest_desc": [
 		"Four guardians, four fragments. Side by side, the fragments answer each other. Their inscriptions form a single sentence:"
 		"&o\"Give us back our Core.\"&r"
+		"Among them, the &6Broken Core&r the Void guardian left as it fell: the first Core, the one Morgana stole. There is only one."
 	]
 	"quest.65D3DED4428A3995.title": "The Four Memories"
 	"quest.66621D64DAA04B1F.quest_desc": [
@@ -1449,11 +1456,11 @@
 	]
 	"quest.728A556CC3B52C43.title": "Bench Modules"
 	"quest.7307282B5DF56B0D.quest_desc": [
-		"Silence returns. In your pack, Airain's Core no longer beats. It still holds every soul the Empire burned, and a voice you know: Elias Vael's, Ada's brother."
-		"Two gestures are possible. &6Rekindle the Heart&r with an Infernal Guardian Core: the Empire starts again, and obeys you. &3Free the souls&r with Ada's tuning fork and a Primordial Echo: the Heart breaks, and everything stops."
-		"&cOne choice for the whole world. The Core is consumed; there is no going back.&r"
+		"The Emperor has fallen. His machine stayed behind, dark, and in your pack Airain's Core no longer beats. It still holds every soul the Empire burned, and a voice you know: Elias Vael's, Ada's brother."
+		"&o\"It's cold… Bring me back, or let me go.\"&r"
+		"&8The Core goes dark as soon as someone carries it. There is only one: do not lose it.&r"
 	]
-	"quest.7307282B5DF56B0D.title": "The Silent Heart"
+	"quest.7307282B5DF56B0D.title": "The Dark Heart"
 	"quest.7334C891610A4015.quest_desc": [
 		"In the Empire's ruins, &6brass guardians&r wait, seated, covered in moss."
 		"Create wrench in hand, with &616 scrap, 4 oils and 2 broken cogs&r on you: right-click, and it stands up. It guards the nearest foundation (4 per base)."
@@ -1637,7 +1644,6 @@
 	"quest.7FF957863CC019F2.title": "Above Everything"
 	"task.10BBCA124564623E.title": "A cache inventory"
 	"task.15624E864CACC031.title": "The deep expedition report"
-	"task.16B479B7CD564FB9.title": "Airain's Core"
 	"task.19F4625B777461F4.title": "Four banners raised together"
 	"task.1B426C4864E1D67A.title": "A prospector's letter"
 	"task.1CE89F85EAB84365.title": "See a banner rise when you return"
@@ -1646,6 +1652,7 @@
 	"task.1E0596A41C93E9C4.title": "The road notebook"
 	"task.1ECF1DAF8C615CE9.title": "A Refractory writing"
 	"task.1F1E46E8DBEE6DD0.title": "The trial log"
+	"task.1F8537C954994ED0.title": "Rekindle the Heart or free the souls"
 	"task.2DA794549CA0C0A2.title": "The Nether log"
 	"task.2E52ED05EB5852B0.title": "Purge a cursed item"
 	"task.2F273B2C478004C2.title": "The incident report"
@@ -1654,15 +1661,11 @@
 	"task.370CC98FB9CA0995.title": "The schematic table"
 	"task.376FE865A8FDD474.title": "Station no. 2 readings"
 	"task.43B4570673B9D1AA.title": "A base ↔ city round trip"
-	"task.47BF9C61D2CF7484.title": "A Primordial Echo"
-	"task.486D87C9A0C36D3F.title": "An Infernal Guardian Core"
 	"task.5165EFD936C30A7F.title": "The miner's notebook"
-	"task.52579755FEE910DF.title": "Ada's tuning fork"
 	"task.52764CA4B15EF784.title": "Ada's letter"
 	"task.5A7970D0A5CC27A8.title": "The last message"
 	"task.5D9954971B83AC92.title": "The schematicannon"
 	"task.6819B23AAE4D8E59.title": "The ship's log"
 	"task.6B9352AA5523AC15.title": "Engineer Vael's report"
-	"task.6DE383629AD5C303.title": "Airain's Core"
 	"task.71ECC9B6560D6FF8.title": "The Council register"
 }

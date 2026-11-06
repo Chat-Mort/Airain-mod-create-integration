@@ -39,8 +39,6 @@ _desc("dragon",
 # ---- renvois vers des chapitres disparus
 _rep("Le chapitre « Arsenal et Écho » détaille toutes les armes.", "L'annexe « Arsenal » détaille toutes les armes.",
      'The "Arsenal and Echo" chapter covers every weapon.', 'The "Arsenal" side chapter covers every weapon.')
-_rep("L'Écho primordial vient de l'annexe « Les Échos perdus ».", "L'Écho primordial s'obtient dans la voie de l'Écho, section « Les Échos perdus ».",
-     'The Primordial Echo comes from the side chapter "The Lost Echoes".', 'The Primordial Echo is earned on the Echo path, in "The Lost Echoes" section.')
 _rep("attend au Grand Relais (Échos perdus).", "attend au Grand Relais (section « Les Échos perdus », dans ce chapitre).",
      "waits at the Great Relay (Lost Echoes).", 'waits at the Great Relay ("The Lost Echoes" section of this chapter).')
 tr(f"chapter.{hid('ch:arsenal')}.chapter_subtitle", (["Les armes de l'Empire : lames, artillerie et armes à feu."], ["The Empire's weapons: blades, artillery and firearms."]))
@@ -108,3 +106,12 @@ for _c in chapters:
             _d = _rid.get(_d, _d) if _d in _rid else _d
             if _d and _d not in _n: _n.append(_d)
         _q["deps"] = _n
+
+# ---- 6 novembre : le Cœur brisé, cinquième pièce du Cœur
+_desc("memoires",
+      ["Quatre gardiens, quatre fragments. Côte à côte, les fragments se répondent. Leurs inscriptions forment une seule phrase :",
+       "&o« Rendez-nous notre Cœur. »&r",
+       "Au milieu d'eux, le &6Cœur brisé&r que le gardien du Vide a laissé en tombant : le premier Cœur, celui que Morgana avait volé. Il n'en existe qu'un seul."],
+      ["Four guardians, four fragments. Side by side, the fragments answer each other. Their inscriptions form a single sentence:",
+       "&o\"Give us back our Core.\"&r",
+       "Among them, the &6Broken Core&r the Void guardian left as it fell: the first Core, the one Morgana stole. There is only one."])

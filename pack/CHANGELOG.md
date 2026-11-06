@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 6 novembre 2026 — versions 1.44.0 à 1.44.1
+## 6 novembre 2026 — versions 1.44.0 à 1.45.0
 
 **Ajouts**
 - **Deux manuels d'armes** :
@@ -13,6 +13,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - le *Traité des armes de l'Écho* (livre, gemme d'Écho, éclat d'améthyste).
 
   Une page par arme, couronne, diadème et ensemble d'armure de fin : caractéristiques, pouvoirs, forge et une devise. Une page reste « ?????????? » tant que personne dans l'équipe n'a porté l'objet. Deux nouvelles quêtes dans l'annexe Arsenal.
+
+- **Le choix final se fait dans le monde.**
+  - À la mort de l'Empereur, sa machine reste à l'endroit où il est tombé, éteinte, et le Cœur d'Airain s'éteint.
+  - Fin Empire : poser le Cœur éteint dans la machine, puis l'allumer avec un cœur du Gardien des enfers.
+  - Fin Écho : poser le Cœur éteint sur le résonateur d'un Grand Relais, puis frapper avec le diapason d'Ada, un Écho primordial sur soi.
+
+  La quête « Le choix final » se valide toute seule. Seule la fin choisie apparaît ensuite dans le livre.
+- **Le Cœur brisé** : le premier Cœur, volé par Morgana. Le gardien du Vide le laisse une seule fois dans la partie, et il entre dans la recette du Cœur d'Airain. Le Cœur n'existe donc qu'en un seul exemplaire.
+- Pages de Morgana III réécrites : le vol du premier Cœur.
 
 **Changements**
 - La reliure passe à neuf livres, avec les deux manuels.
