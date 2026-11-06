@@ -21,11 +21,15 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
+      # Un identifiant enregistré deux fois compile mais fait planter le jeu au lancement
+      - name: Vérifier les enregistrements
+        run: python3 outils/verifier_enregistrements.py | tee -a build.log; exit ${PIPESTATUS[0]}
+
       - name: Compiler le mod
         id: build
         run: |
           chmod +x gradlew
-          ./gradlew build --stacktrace 2>&1 | tee build.log
+          ./gradlew build --stacktrace 2>&1 | tee -a build.log
           exit ${PIPESTATUS[0]}
 
       # Vérifie que les cibles des mixins existent dans le jar de Create utilisé
