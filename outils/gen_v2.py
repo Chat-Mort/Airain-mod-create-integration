@@ -1304,6 +1304,13 @@ quest(cT, "t_tube", ("Le premier tube", "The First Tube"), 6, 3, [T_item("create
       deps=["t_pneumatique"],
       desc=D(["Deux entrées alimentées par un engrenage, reliées par des tubes. Validez quand vous avez fait le trajet."],
              ["Two entrances powered by a cogwheel, linked by tubes. Tick the box once you've made the trip."]))
+# Ender Transmission : transmetteurs entre dimensions, recettes verrouillées derrière le dragon (carapaces de shulker)
+quest(cT, "t_ender", ("Par-delà les dimensions", "Beyond the Dimensions"), 0, 7,
+      [T_item("createendertransmission:item_transmitter")], [R_coin("cog", 2)], deps=["dragon"],
+      desc=D(["Les ingénieurs de l'Empire savaient faire passer la matière d'un monde à l'autre : un transmetteur envoie objets, fluides ou rotation à tous ceux réglés sur la même fréquence, quelle que soit la dimension.",
+              "&8Assembleur mécanique. Il faut des carapaces de shulker, qu'on ne trouve qu'au-delà de la passerelle ouverte par la mort du dragon.&r"],
+             ["The Empire's engineers knew how to send matter from one world to another: a transmitter sends items, fluids or rotation to every transmitter tuned to the same frequency, whatever the dimension.",
+              "&8Mechanical crafter. It needs shulker shells, found only beyond the gateway opened by the dragon's death.&r"]))
 
 # =============================================================================
 # BESTIAIRE

@@ -1442,6 +1442,11 @@
 		"A page fills in as soon as someone on the team carries the weapon. The book fits in the binder."
 	]
 	"quest.711F38FA2AEF2C1B.title": "The Treatise on the Echo Arms"
+	"quest.719E428FCBD08925.quest_desc": [
+		"The Empire's engineers knew how to send matter from one world to another: a transmitter sends items, fluids or rotation to every transmitter tuned to the same frequency, whatever the dimension."
+		"&8Mechanical crafter. It needs shulker shells, found only beyond the gateway opened by the dragon's death.&r"
+	]
+	"quest.719E428FCBD08925.title": "Beyond the Dimensions"
 	"quest.71C1917F8DAC3905.quest_desc": [
 		"Underground, a whole city lit by lamps that never dimmed. At its heart, a steam-powered bronze centurion as tall as a house. Destroy it."
 	]

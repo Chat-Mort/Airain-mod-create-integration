@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "HOH",
+  "OBO",
+  "HOH"
+ ],
+ "key": {
+  "O": {
+   "item": "minecraft:obsidian"
+  },
+  "B": {
+   "item": "minecraft:beacon"
+  },
+  "H": {
+   "item": "minecraft:shulker_shell"
+  }
+ },
+ "result": {
+  "id": "createendertransmission:chunk_loader",
+  "count": 1
+ }
+}

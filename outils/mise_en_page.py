@@ -23,7 +23,7 @@ def _deplacer(cles, vers):
 # les Échos perdus rejoignent la voie de l'Écho
 _deplacer({"l_vael", "l_essai", "l_resonance", "l_diapason", "l_grand_relais", "l_choeur", "l_primordial"}, _par_cle["arcanes"])
 # ingénierie et trains : une seule annexe
-_deplacer({q for q in ("t_horaire", "t_portes", "t_observateur", "t_fret", "t_fluides", "t_triage", "t_long", "t_pneumatique", "t_tube", "t_ligne")}, _par_cle["ingenierie"])
+_deplacer({q for q in ("t_horaire", "t_portes", "t_observateur", "t_fret", "t_fluides", "t_triage", "t_long", "t_pneumatique", "t_tube", "t_ligne", "t_ender")}, _par_cle["ingenierie"])
 # bases et capitales : la nouvelle annexe
 cBa = chapter("bases", "13_bases", ("&3Annexe&r · Bases et capitales", "&3Side&r · Bases and Capitals"),
               ("Fonder, pavoiser, exposer : faire d'un abri une base de l'Empire.", "Found, decorate, display: turn a shelter into an Empire base."),
@@ -112,12 +112,13 @@ ligne(1, ("stock1", 2), ("stock2", 4), ("stock3", 6), ("controleur", 8))
 POS["boutique"] = (0, 0)
 cercle(0, 0, 4.5, ["o_pain", "o_alliage", "o_plaques", "o_tuyaux", "o_cuivre", "o_laiton", "o_precision", "o_rails", "o_tubes", "o_obus", "o_netherite", "o_enveloppes"])
 ligne(-3, ("i_scierie", 0), ("i_cuisine", 2), ("i_tri", 4), ("i_vapeur", 6), ("i_coffres", 8))
-ligne(0.5, ("f_condenseur", 0), ("f_turbine", 2), ("f_sourcelink", 4), ("f_diffuseur", 6), ("f_glyphe", 8))   # machines réfractaires
+ligne(-4.5, ("f_condenseur", 0), ("f_turbine", 2), ("f_sourcelink", 4), ("f_diffuseur", 6), ("f_glyphe", 8))   # machines réfractaires
 ligne(-1.5, ("i_arbres", 0), ("i_canne", 2), ("i_pierre", 4), ("i_entonnoirs", 6), ("i_gisement", 8))
 ligne(1, ("t_portes", 2), ("t_fluides", 6))
 ligne(2, ("t_horaire", 0), ("t_fret", 4))
 ligne(3, ("t_observateur", 2), ("t_triage", 6), ("t_long", 8))
 ligne(5, ("t_ligne", 0), ("t_pneumatique", 2), ("t_tube", 4))
+ligne(5, ("t_ender", 6))   # Ender Transmission, après le dragon
 ligne(-4, ("a_reglement", 0), ("a_traite", 2))
 ligne(-2, ("a_lance", 0), ("a_katana", 2), ("a_claymore", 4), ("a_netherite", 6), ("a_unique", 8))
 ligne(0, ("a_obus", 0), ("a_mortier", 2))

@@ -15,8 +15,9 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - **Condenseur d'Écho** : la source des jarres devient de l'**Écho liquide**, qui passe dans les tuyaux de Create (socle givré), et l'inverse à 90 % (socle chauffé au rouge, couvercle relevé, vapeur). Le liquide se voit dans la cuve à sa vraie hauteur. Au bec verseur, l'Écho liquide imprègne les objets un par un.
 - **Glyphe de l'engrenage** (Ars Nouveau, niveau 2) : il accélère une machine de Create quelques secondes, grippe les automates (Rôdeur, Centurion nain, golems de l'End…) et soigne les gardiens d'airain.
 - Les cuves des machines d'Écho ont des vitres en retrait d'un pixel, avec un bord bleu pâle et quelques reflets.
+- **Ender Transmission** (mod à ajouter dans `mods/`, clients et serveur) : transmetteurs d'objets, de fluides et de rotation entre dimensions, et chargeur de chunks. Leurs recettes demandent des carapaces de shulker, donc l'accès au-delà de la passerelle ouverte par la mort du dragon. Nouvelle quête « Par-delà les dimensions » dans l'annexe Ingénierie et logistique.
 - Livre de l'ingénieur : un cinquième sommaire, **Fusion**, avec une page par machine.
-- Annexe Ingénierie : une ligne de cinq quêtes, « Les machines réfractaires ».
+- Annexe Ingénierie : une ligne de cinq quêtes, « Les machines réfractaires », en haut du chapitre.
 
 ---
 

@@ -1442,6 +1442,11 @@
 		"Une page se remplit dès que quelqu'un de l'équipe porte l'arme. Le livre tient dans la reliure."
 	]
 	"quest.711F38FA2AEF2C1B.title": "Le traité des armes de l'Écho"
+	"quest.719E428FCBD08925.quest_desc": [
+		"Les ingénieurs de l'Empire savaient faire passer la matière d'un monde à l'autre : un transmetteur envoie objets, fluides ou rotation à tous ceux réglés sur la même fréquence, quelle que soit la dimension."
+		"&8Assembleur mécanique. Il faut des carapaces de shulker, qu'on ne trouve qu'au-delà de la passerelle ouverte par la mort du dragon.&r"
+	]
+	"quest.719E428FCBD08925.title": "Par-delà les dimensions"
 	"quest.71C1917F8DAC3905.quest_desc": [
 		"Sous terre, une ville entière éclairée par des lampes qui n'ont jamais faibli. Au fond, un centurion de bronze, haut comme une maison, à vapeur. Abattez-le."
 	]
