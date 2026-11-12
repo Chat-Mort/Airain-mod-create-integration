@@ -1,10 +1,10 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "sombre": "create:block/andesite_casing",
-  "laiton": "create:block/brass_casing",
   "fenetre": "create:block/fluid_tank_window_single",
   "source": "ars_nouveau:block/source_still",
+  "laiton": "create:block/brass_casing",
+  "sombre": "create:block/andesite_casing",
   "particle": "create:block/brass_casing"
  },
  "elements": [
@@ -16,8 +16,8 @@
    ],
    "to": [
     16,
-    12,
-    6
+    4,
+    3
    ],
    "faces": {
     "north": {
@@ -69,6 +69,119 @@
     },
     "down": {
      "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    4,
+    0
+   ],
+   "to": [
+    4,
+    12,
+    3
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    12,
+    4,
+    0
+   ],
+   "to": [
+    16,
+    12,
+    3
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    0,
+    3
+   ],
+   "to": [
+    16,
+    12,
+    6
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    4,
+    2.99
+   ],
+   "to": [
+    12,
+    12,
+    3
+   ],
+   "faces": {
+    "north": {
+     "texture": "#sombre"
     }
    }
   },
@@ -232,13 +345,31 @@
    ],
    "faces": {
     "east": {
-     "texture": "#fenetre"
+     "texture": "#fenetre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
     },
     "west": {
-     "texture": "#fenetre"
+     "texture": "#fenetre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
     },
     "south": {
-     "texture": "#fenetre"
+     "texture": "#fenetre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
     }
    }
   },

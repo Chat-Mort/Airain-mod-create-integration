@@ -1,16 +1,16 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "dore": "ars_nouveau:block/gilded_sourcestone_small_bricks",
   "fenetre": "create:block/fluid_tank_window_single",
-  "bloc_laiton": "create:block/brass_block",
-  "tuyau": "create:block/glass_fluid_pipe",
-  "tuyau_cuivre": "create:block/encased_pipe",
-  "pierre": "ars_nouveau:block/smooth_sourcestone",
-  "magma": "minecraft:block/magma",
-  "cuve_haut": "create:block/fluid_tank_top",
   "gemme": "ars_nouveau:block/source_gem_block",
   "cuivre": "create:block/copper_casing",
+  "cuve_haut": "create:block/fluid_tank_top",
+  "tuyau_cuivre": "create:block/encased_pipe",
+  "bloc_laiton": "create:block/brass_block",
+  "tuyau": "create:block/glass_fluid_pipe",
+  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "magma": "minecraft:block/magma",
+  "dore": "ars_nouveau:block/gilded_sourcestone_small_bricks",
   "particle": "create:block/brass_block"
  },
  "elements": [
@@ -263,16 +263,40 @@
    ],
    "faces": {
     "north": {
-     "texture": "#fenetre"
+     "texture": "#fenetre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
     },
     "south": {
-     "texture": "#fenetre"
+     "texture": "#fenetre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
     },
     "east": {
-     "texture": "#fenetre"
+     "texture": "#fenetre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
     },
     "west": {
-     "texture": "#fenetre"
+     "texture": "#fenetre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
     }
    }
   },
