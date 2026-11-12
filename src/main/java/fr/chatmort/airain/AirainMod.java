@@ -438,7 +438,8 @@ public class AirainMod {
 
 	public static final DeferredBlock<fr.chatmort.airain.fusion.CondenseurBlock> CONDENSEUR = BLOCKS.register("echo_condenser",
 		() -> new fr.chatmort.airain.fusion.CondenseurBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f)
-			.requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion().lightLevel(s -> 5)));
+			.requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion()
+			.lightLevel(s -> s.getValue(fr.chatmort.airain.fusion.CondenseurBlock.EVAPORE) ? 9 : 5)));   // le socle chauffé éclaire plus
 	public static final DeferredItem<BlockItem> CONDENSEUR_ITEM = ITEMS.register("echo_condenser", () -> new BlockItem(CONDENSEUR.get(), new Item.Properties()));
 	@SuppressWarnings("DataFlowIssue")
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fusion.CondenseurBlockEntity>> CONDENSEUR_BE =
@@ -656,6 +657,9 @@ public class AirainMod {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BANC_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, BANC_BE.get(), (be, side) -> be.reservoir);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, CONDENSEUR_BE.get(), (be, side) -> be.reservoir);   // tuyaux de Create
+		// la turbine boit l'Écho liquide, le sourcelink en produit : tuyaux sur toutes les faces sauf celle de l'arbre
+		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, TURBINE_ECHO_BE.get(), (be, side) -> side == be.getBlockState().getValue(fr.chatmort.airain.fusion.TurbineEchoBlock.FACING) ? null : be.reservoir);
+		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, SOURCELINK_MECA_BE.get(), (be, side) -> side == be.getBlockState().getValue(fr.chatmort.airain.fusion.SourcelinkMecaBlock.FACING) ? null : be.reservoir);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.reservoir);
 	}

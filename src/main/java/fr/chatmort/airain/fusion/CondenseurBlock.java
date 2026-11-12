@@ -51,6 +51,17 @@ public class CondenseurBlock extends BaseEntityBlock {
 		return l.isClientSide || type != AirainMod.CONDENSEUR_BE.get() ? null : (lv, p, st, be) -> ((CondenseurBlockEntity) be).tickServeur();
 	}
 
+	// Particules : vapeur violette et braises quand il évapore, flocons de givre quand il condense
+	@Override
+	public void animateTick(BlockState s, Level l, BlockPos p, net.minecraft.util.RandomSource r) {
+		double x = p.getX() + 0.5, y = p.getY(), z = p.getZ() + 0.5;
+		if (s.getValue(EVAPORE)) {
+			l.addParticle(net.minecraft.core.particles.ParticleTypes.WITCH, x + (r.nextDouble() - .5) * .3, y + 1.45, z + (r.nextDouble() - .5) * .3, 0, .05, 0);
+			if (r.nextInt(3) == 0) l.addParticle(net.minecraft.core.particles.ParticleTypes.SMALL_FLAME, x + (r.nextDouble() - .5) * 1.02, y + .1, z + (r.nextDouble() - .5) * 1.02, 0, .01, 0);
+		} else if (r.nextInt(2) == 0)
+			l.addParticle(net.minecraft.core.particles.ParticleTypes.SNOWFLAKE, x + (r.nextDouble() - .5) * 1.1, y + .15, z + (r.nextDouble() - .5) * 1.1, 0, .005, 0);
+	}
+
 	@Override
 	protected InteractionResult useWithoutItem(BlockState s, Level l, BlockPos p, Player j, BlockHitResult h) {
 		if (!l.isClientSide) {

@@ -1,0 +1,63 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "pales": "create:block/fan_blades",
+  "bloc_laiton": "create:block/brass_block",
+  "particle": "create:block/brass_block"
+ },
+ "elements": [
+  {
+   "from": [
+    2,
+    2,
+    1
+   ],
+   "to": [
+    14,
+    14,
+    1.01
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pales"
+    },
+    "south": {
+     "texture": "#pales"
+    }
+   }
+  },
+  {
+   "from": [
+    7,
+    7,
+    0.6
+   ],
+   "to": [
+    9,
+    9,
+    2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bloc_laiton"
+    },
+    "south": {
+     "texture": "#bloc_laiton"
+    },
+    "east": {
+     "texture": "#bloc_laiton"
+    },
+    "west": {
+     "texture": "#bloc_laiton"
+    },
+    "up": {
+     "texture": "#bloc_laiton"
+    },
+    "down": {
+     "texture": "#bloc_laiton"
+    }
+   }
+  }
+ ],
+ "render_type": "minecraft:cutout"
+}

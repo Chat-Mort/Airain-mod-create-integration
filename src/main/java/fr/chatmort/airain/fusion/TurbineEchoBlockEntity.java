@@ -8,14 +8,19 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 /**
- * Turbine d'Écho : consomme {@link #CONSO} de source par tick et fournit 64 tr/min (capacité réglée dans AirainMod :
- * 16 par tr/min, soit 1 024 de force). Un signal de redstone l'arrête.
+ * Turbine d'Écho : boit {@link #CONSO} mB d'Écho liquide par tick (20 mB/s), amené par les tuyaux de Create,
+ * et fournit 64 tr/min (capacité réglée dans AirainMod : 16 par tr/min, soit 1 024 de force). Un signal de redstone l'arrête.
  */
 public class TurbineEchoBlockEntity extends GeneratingKineticBlockEntity {
-	public static final int VITESSE = 64, CONSO = 1, RESERVE_MAX = 200, RAYON = 6;
-	private int reserve;
+	public static final int VITESSE = 64, CONSO = 1, CAPACITE = 1000;
+	/** La cuve arrière : n'accepte que l'Écho liquide (capacité enregistrée dans AirainMod). */
+	public final FluidTank reservoir = new FluidTank(CAPACITE, f -> f.getFluid().isSame(EchoLiquide.SOURCE.get())) {
+		@Override protected void onContentsChanged() { setChanged(); }
+	};
 	private boolean actif;
 
 	public TurbineEchoBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) { super(type, pos, state); }
@@ -32,10 +37,9 @@ public class TurbineEchoBlockEntity extends GeneratingKineticBlockEntity {
 					worldPosition.getY() + 1.15, worldPosition.getZ() + 0.5 + (level.random.nextDouble() - 0.5) * 0.6, 0, 0.02, 0);
 			return;
 		}
-		if (reserve < RESERVE_MAX / 2 && level.getGameTime() % 10 == 0) reserve += Source.prendre(level, worldPosition, RAYON, RESERVE_MAX - reserve);
-		boolean marche = reserve >= CONSO && !level.hasNeighborSignal(worldPosition);
-		if (marche) reserve -= CONSO;
-		if (marche != actif) { actif = marche; updateGeneratedRotation(); setChanged(); }
+		boolean marche = reservoir.getFluidAmount() >= CONSO && !level.hasNeighborSignal(worldPosition);
+		if (marche) reservoir.drain(CONSO, IFluidHandler.FluidAction.EXECUTE);
+		if (marche != actif) { actif = marche; updateGeneratedRotation(); setChanged(); sendData(); }
 	}
 
 	@Override
@@ -52,12 +56,12 @@ public class TurbineEchoBlockEntity extends GeneratingKineticBlockEntity {
 	@Override
 	protected void write(CompoundTag t, HolderLookup.Provider r, boolean client) {
 		super.write(t, r, client);
-		t.putInt("reserve", reserve); t.putBoolean("actif", actif);
+		t.put("reservoir", reservoir.writeToNBT(r, new CompoundTag())); t.putBoolean("actif", actif);
 	}
 
 	@Override
 	protected void read(CompoundTag t, HolderLookup.Provider r, boolean client) {
 		super.read(t, r, client);
-		reserve = t.getInt("reserve"); actif = t.getBoolean("actif");
+		reservoir.readFromNBT(r, t.getCompound("reservoir")); actif = t.getBoolean("actif");
 	}
 }
