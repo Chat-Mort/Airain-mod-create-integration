@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 12 novembre 2026 — versions 1.47.0 à 1.47.4
+## 12 novembre 2026 — versions 1.47.0 à 1.47.5
 
 **Ajouts**
 - **Machines d'Écho**, le pont entre Create et Ars Nouveau, en milieu de partie :

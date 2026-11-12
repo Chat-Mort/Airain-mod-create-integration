@@ -16,6 +16,13 @@ def deplace(els,dx,dy,dz):
         if 'rotation' in e: e['rotation']['origin']=[a+b for a,b in zip(e['rotation']['origin'],(dx,dy,dz))]
         out.append(e)
     return out
+def bande(e, v0, v1):
+    """Côtés de l'élément : lit les lignes v0..v1 de la texture (ex. le bord haut du boîtier sur un socle bas)."""
+    x1,y1,z1=e['from']; x2,y2,z2=e['to']
+    u={"north":(16-x2,16-x1),"south":(x1,x2),"west":(z1,z2),"east":(16-z2,16-z1)}
+    for k,(a,b) in u.items():
+        if k in e['faces']: e['faces'][k]['uv']=[a,v0,b,v1]
+    return e
 COG=json.load(open(CR+'cogwheel_shaftless.json'))['elements']
 SHAFT_N=box([6,6,-1],[10,10,8],"axis",faces=("east","west","up","down"))|{}
 SHAFT_N["faces"]["north"]={"texture":"axis_top"}
@@ -31,7 +38,7 @@ turbine=[
  box([0,0,3],[16,12,6],"laiton"),box([4,4,2.99],[12,12,3],"sombre",faces=("north",)),
  box([0,0,6],[16,2,16],"laiton"),                                                                                                       # cuve arrière
  box([0,2,15],[1,12,16],"laiton"),box([15,2,15],[16,12,16],"laiton"),
- box([1,2,7],[15,11,15],"source",lum=True),box([0.5,2,6.5],[15.5,12,15.5],"fenetre",faces=("east","west","south")),
+ box([1,2,7],[15,12,15],"source",lum=True),
  box([0,12,4],[4,16,16],"laiton"),box([12,12,4],[16,16,16],"laiton"),box([4,12,12],[12,16,16],"laiton"),                                # dessus, creusé pour la cheminée
  box([4,11.99,4],[12,12,12],"sombre",faces=("up",)),
  SHAFT_N]
@@ -62,7 +69,6 @@ def condenseur(evap):
     e=[box([0,0,0],[16,3,16],"cuivre",faces=("down",)),box([0,0,0],[16,3,16],socle,faces=("north","south","east","west","up"),lum=evap),
        box([0,14,0],[16,16,16],"cuivre",faces=("north","south","east","west","down")),box([0,14,0],[16,16,16],"cuve_haut",faces=("up",)),
        box([0,3,0],[2,14,2],"cuivre"),box([14,3,0],[16,14,2],"cuivre"),box([0,3,14],[2,14,16],"cuivre"),box([14,3,14],[16,14,16],"cuivre"),
-       box([0.5,3,0.5],[15.5,14,15.5],"fenetre",faces=("north","south","east","west")),
        box([-1,5,5],[0.5,11,11],"tuyau_cuivre",faces=("north","south","up","down","west")),box([15.5,5,5],[17,11,11],"tuyau_cuivre",faces=("north","south","up","down","east")),
        box([6,16,6],[10,19,10],"tuyau",faces=("north","south","east","west"))]
     if evap:
