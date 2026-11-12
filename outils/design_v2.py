@@ -26,14 +26,14 @@ T={"laiton":"create:block/brass_casing","andesite":"create:block/andesite_casing
 G45=lambda o:{"origin":o,"axis":"y","angle":45}
 # --- Turbine : à l'avant le rotor dans sa grille, à l'arrière la cuve de source qui l'alimente
 turbine=[
- box([0,0,0],[16,16,6],"laiton"),                                                                                                       # avant plein : l'arbre en sort
- box([0,0,6],[16,2,16],"laiton"),box([0,14,6],[16,16,16],"laiton"),                                                                    # cuve arrière
- box([0,2,15],[1,14,16],"laiton"),box([15,2,15],[16,14,16],"laiton"),box([0,2,6],[1,14,7],"laiton"),box([15,2,6],[16,14,7],"laiton"),
- box([1,2,7],[15,12,15],"source",lum=True),box([0.5,2,6.5],[15.5,14,15.5],"fenetre",faces=("east","west","south")),
- box([3,16,3],[13,19,4],"bloc_laiton"),box([3,16,12],[13,19,13],"bloc_laiton"),box([3,16,4],[4,19,12],"bloc_laiton"),box([12,16,4],[13,19,12],"bloc_laiton"),   # cheminée
- box([4,16,4],[12,16.01,12],"pierre",faces=("up",)),
+ box([0,0,0],[16,12,6],"laiton"),box([0,12,0],[16,16,4],"laiton"),                                                                     # avant plein : l'arbre en sort
+ box([0,0,6],[16,2,16],"laiton"),                                                                                                       # cuve arrière
+ box([0,2,15],[1,12,16],"laiton"),box([15,2,15],[16,12,16],"laiton"),
+ box([1,2,7],[15,11,15],"source",lum=True),box([0.5,2,6.5],[15.5,12,15.5],"fenetre",faces=("east","west","south")),
+ box([0,12,4],[4,16,16],"laiton"),box([12,12,4],[16,16,16],"laiton"),box([4,12,12],[12,16,16],"laiton"),                                # dessus, creusé pour la cheminée
+ box([4,11.99,4],[12,12,12],"sombre",faces=("up",)),
  SHAFT_N]
-ROTOR_TURBINE=[box([4,17.5,4],[12,17.51,12],"pales",faces=("up","down")),box([7,16,7],[9,18,9],"bloc_laiton")]
+ROTOR_TURBINE=[box([4,14.5,4],[12,14.51,12],"pales",faces=("up","down")),box([7,12,7],[9,15,9],"bloc_laiton")]
 # --- Sourcelink mécanique : la rotation fait tourner un engrenage, qui fait tourner la gemme
 sourcelink=[box([0,0,0],[16,8,16],"andesite"),box([0,0,0],[16,8,0.01],"laiton",faces=("north",)),
  *deplace(COG,0,3,0),
