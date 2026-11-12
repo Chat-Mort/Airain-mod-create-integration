@@ -1,9 +1,8 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "fenetre": "create:block/fluid_tank_window_single",
-  "source": "ars_nouveau:block/source_still",
   "laiton": "create:block/brass_casing",
+  "source": "ars_nouveau:block/source_still",
   "sombre": "create:block/andesite_casing",
   "particle": "create:block/brass_casing"
  },
@@ -289,7 +288,7 @@
    ],
    "to": [
     15,
-    11,
+    12,
     15
    ],
    "faces": {
@@ -331,47 +330,6 @@
     }
    },
    "shade": false
-  },
-  {
-   "from": [
-    0.5,
-    2,
-    6.5
-   ],
-   "to": [
-    15.5,
-    12,
-    15.5
-   ],
-   "faces": {
-    "east": {
-     "texture": "#fenetre",
-     "uv": [
-      0,
-      0,
-      16,
-      16
-     ]
-    },
-    "west": {
-     "texture": "#fenetre",
-     "uv": [
-      0,
-      0,
-      16,
-      16
-     ]
-    },
-    "south": {
-     "texture": "#fenetre",
-     "uv": [
-      0,
-      0,
-      16,
-      16
-     ]
-    }
-   }
   },
   {
    "from": [

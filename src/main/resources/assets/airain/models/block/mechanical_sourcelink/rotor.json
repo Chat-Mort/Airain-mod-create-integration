@@ -1,10 +1,10 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "pierre": "ars_nouveau:block/smooth_sourcestone",
-  "gemme": "ars_nouveau:block/source_gem_block",
-  "1_2": "create:block/cogwheel",
   "dore": "ars_nouveau:block/gilded_sourcestone_small_bricks",
+  "gemme": "ars_nouveau:block/source_gem_block",
+  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "1_2": "create:block/cogwheel",
   "particle": "create:block/cogwheel"
  },
  "elements": [
