@@ -31,6 +31,7 @@ repositories {
     maven { url = 'https://maven.createmod.net' }            // Create, Ponder, Flywheel
     maven { url = 'https://maven.ithundxr.dev/snapshots' }   // Registrate
     maven { url = 'https://mvn.devos.one/snapshots/' }       // Registrate (miroir)
+    maven { url = 'https://maven.blamejared.com' }           // Ars Nouveau (compilation seulement : le mod est installé à part)
 }
 
 dependencies {
@@ -38,6 +39,7 @@ dependencies {
     compileOnly("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
     compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
     compileOnly("com.tterrag.registrate:Registrate:${registrate_version}")
+    compileOnly("com.hollingsworth.ars_nouveau:ars_nouveau-${minecraft_version}:5.13.+") { transitive = false }
 }
 
 tasks.withType(JavaCompile).configureEach {
