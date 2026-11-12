@@ -1,0 +1,19 @@
+{
+ "type": "ars_nouveau:glyph",
+ "exp": 55,
+ "inputs": [
+  {
+   "item": "create:large_cogwheel"
+  },
+  {
+   "item": "create:brass_ingot"
+  },
+  {
+   "item": "minecraft:clock"
+  }
+ ],
+ "output": {
+  "count": 1,
+  "id": "airain:glyph_gear"
+ }
+}

@@ -544,6 +544,9 @@ public class AirainMod {
 		alias(BLOCKS, ANCIENS_BLOCS);
 		alias(ENTITES, ANCIENNES_ENTITES);
 		alias(BLOCK_ENTITIES, ANCIENS_BE);
+		// Glyphe de l'engrenage : Ars Nouveau crée lui-même l'objet du glyphe (airain:glyph_gear)
+		com.hollingsworth.arsnouveau.api.registry.GlyphRegistry.registerSpell(fr.chatmort.airain.fusion.GlypheEngrenage.INSTANCE);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fusion.GlypheEngrenage::tickMonde);
 		fr.chatmort.airain.fusion.EchoLiquide.TYPES.register(bus);   // l'Écho liquide (son bloc et son seau rejoignent BLOCKS et ITEMS)
 		fr.chatmort.airain.fusion.EchoLiquide.FLUIDES.register(bus);
 		BLOCKS.register(bus);

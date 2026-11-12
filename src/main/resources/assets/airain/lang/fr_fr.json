@@ -1397,5 +1397,12 @@
  "block.airain.liquid_echo": "Écho liquide",
  "item.airain.liquid_echo_bucket": "Seau d'Écho liquide",
  "airain.condenseur.condense": "Condenseur : la source des jarres devient de l'Écho liquide",
- "airain.condenseur.evapore": "Condenseur : l'Écho liquide redevient de la source dans les jarres (90 %)"
+ "airain.condenseur.evapore": "Condenseur : l'Écho liquide redevient de la source dans les jarres (90 %)",
+ "airain.glyph_name.glyph_gear": "Engrenage",
+ "item.airain.glyph_gear": "Glyphe de l'engrenage",
+ "airain.glyph_desc.glyph_gear": "Accélère une machine de Create pendant quelques secondes. Grippe les rouages des automates et huile les gardiens d'airain.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_amplify": "Machines : un tick de plus par tick (4 au plus). Automates : grippage plus fort.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_extend_time": "Dure 3 secondes de plus.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_duration_down": "Dure 3 secondes de moins.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_aoe": "Accélère aussi les machines autour de la cible."
 }

@@ -1,0 +1,7 @@
+{"replace":false,"values":[
+ {"id":"cataclysm:the_prowler","required":false},
+ {"id":"cataclysm:the_harbinger","required":false},
+ {"id":"cataclysm:ender_golem","required":false},
+ {"id":"cataclysm:ender_guardian","required":false},
+ {"id":"mebahelcreaturesdwarven:dwarven_centurion","required":false}
+]}

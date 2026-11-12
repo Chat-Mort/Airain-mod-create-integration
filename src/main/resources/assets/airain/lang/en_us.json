@@ -1397,5 +1397,12 @@
  "block.airain.liquid_echo": "Liquid Echo",
  "item.airain.liquid_echo_bucket": "Liquid Echo Bucket",
  "airain.condenseur.condense": "Condenser: jar source becomes liquid Echo",
- "airain.condenseur.evapore": "Condenser: liquid Echo turns back into source in the jars (90%)"
+ "airain.condenseur.evapore": "Condenser: liquid Echo turns back into source in the jars (90%)",
+ "airain.glyph_name.glyph_gear": "Gear",
+ "item.airain.glyph_gear": "Glyph of the Gear",
+ "airain.glyph_desc.glyph_gear": "Speeds up a Create machine for a few seconds. Jams the gears of automatons and oils brass guardians.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_amplify": "Machines: one more extra tick per tick (up to 4). Automatons: stronger jam.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_extend_time": "Lasts 3 more seconds.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_duration_down": "Lasts 3 fewer seconds.",
+ "ars_nouveau.augment_desc.glyph_gear_glyph_aoe": "Also speeds up the machines around the target."
 }
