@@ -169,8 +169,9 @@
 	]
 	"quest.14B5ABF61C3CBA18.title": "The Mechanical City"
 	"quest.14FF93BAA2E7DE34.quest_desc": [
-		"The condenser turns the source of jars into liquid Echo, which flows through pipes. A spout uses it to imbue items one by one."
+		"The condenser turns the source of jars into liquid Echo, which flows through pipes, and back. It feeds the turbine from your jars. A spout also uses it to imbue items one by one."
 	]
+	"quest.14FF93BAA2E7DE34.quest_subtitle": "The Refractory Machines"
 	"quest.14FF93BAA2E7DE34.title": "Liquid Echo"
 	"quest.1503E9BC853DDD58.quest_desc": [
 		"Find an Empire outpost. Nobody is waiting for you there, but its machines still work: you can buy what you lack with coins."
@@ -714,7 +715,7 @@
 	]
 	"quest.349D5216D8932504.title": "The Stronghold"
 	"quest.35DB86F169ABDBCC.quest_desc": [
-		"The turbine's opposite: rotation becomes source, poured into jars. Something is always lost."
+		"The turbine's opposite: rotation becomes liquid Echo, to pump out of its tank. Something is always lost."
 	]
 	"quest.35DB86F169ABDBCC.title": "The Mechanical Sourcelink"
 	"quest.35F93598035AE578.quest_desc": [
@@ -740,10 +741,9 @@
 	]
 	"quest.370DB6CD983FF0CC.title": "The Inscriptions"
 	"quest.376963AEBE46325E.quest_desc": [
-		"The Refractory engineers ran their workshops on source. An Echo Turbine burns the source of nearby jars and gives 64 RPM."
+		"The Refractory engineers ran their workshops on source. An Echo Turbine drinks piped liquid Echo and gives 64 RPM."
 		"&8Mechanical crafter. Everything is in the engineer's manual, Fusion tab.&r"
 	]
-	"quest.376963AEBE46325E.quest_subtitle": "The Refractory Machines"
 	"quest.376963AEBE46325E.title": "The Echo Turbine"
 	"quest.37B3F0D4305E4904.quest_desc": [
 		"&7Optional.&r Vendors ask for the exact coins and give no change. The bank solves that."

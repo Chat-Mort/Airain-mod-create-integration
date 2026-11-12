@@ -112,6 +112,7 @@ ligne(1, ("stock1", 2), ("stock2", 4), ("stock3", 6), ("controleur", 8))
 POS["boutique"] = (0, 0)
 cercle(0, 0, 4.5, ["o_pain", "o_alliage", "o_plaques", "o_tuyaux", "o_cuivre", "o_laiton", "o_precision", "o_rails", "o_tubes", "o_obus", "o_netherite", "o_enveloppes"])
 ligne(-3, ("i_scierie", 0), ("i_cuisine", 2), ("i_tri", 4), ("i_vapeur", 6), ("i_coffres", 8))
+ligne(0.5, ("f_condenseur", 0), ("f_turbine", 2), ("f_sourcelink", 4), ("f_diffuseur", 6), ("f_glyphe", 8))   # machines réfractaires
 ligne(-1.5, ("i_arbres", 0), ("i_canne", 2), ("i_pierre", 4), ("i_entonnoirs", 6), ("i_gisement", 8))
 ligne(1, ("t_portes", 2), ("t_fluides", 6))
 ligne(2, ("t_horaire", 0), ("t_fret", 4))

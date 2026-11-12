@@ -1074,6 +1074,30 @@ quest(cI, "i_gisement", ("Les gisements infinis", "Infinite Veins"), 8, 2, [T_it
              ["Find a hidden vein with the finder, then drill it forever.",
               "&8The finder needs an intact redstone ore block (Silk Touch pickaxe); the drilling machine needs sturdy sheets (obsidian crushed by the wheels).&r"]))
 
+# Les machines réfractaires : Create et Ars Nouveau ensemble (mod Airain, package fusion)
+quest(cI, "f_condenseur", ("L'Écho liquide", "Liquid Echo"), 0, 0, [T_item("airain:echo_condenser"), T_item("airain:liquid_echo_bucket")], [R_coin("cog", 1)],
+      deps=["laiton", "a_ars_source"], subtitle=("Les machines réfractaires", "The Refractory Machines"),
+      desc=D(["Le condenseur change la source des jarres en Écho liquide, qui coule dans les tuyaux, et l'inverse. C'est lui qui nourrit la turbine depuis vos jarres. Un bec verseur s'en sert aussi pour imprégner les objets un par un."],
+             ["The condenser turns the source of jars into liquid Echo, which flows through pipes, and back. It feeds the turbine from your jars. A spout also uses it to imbue items one by one."]))
+quest(cI, "f_turbine", ("La turbine d'Écho", "The Echo Turbine"), 2, 0, [T_item("airain:echo_turbine")], [R_coin("cog", 1)],
+      deps=["f_condenseur"],
+      desc=D(["Les ingénieurs réfractaires faisaient tourner leurs ateliers à la source. Une turbine d'Écho boit de l'Écho liquide, amené par les tuyaux, et rend 64 tr/min.",
+              "&8Établi mécanique. Tout est dans le livre de l'ingénieur, onglet Fusion.&r"],
+             ["The Refractory engineers ran their workshops on source. An Echo Turbine drinks piped liquid Echo and gives 64 RPM.",
+              "&8Mechanical crafter. Everything is in the engineer's manual, Fusion tab.&r"]))
+quest(cI, "f_sourcelink", ("Le sourcelink mécanique", "The Mechanical Sourcelink"), 2, 0, [T_item("airain:mechanical_sourcelink")], [R_coin("sprocket", 3)],
+      deps=["f_turbine"],
+      desc=D(["L'inverse de la turbine : la rotation devient de l'Écho liquide, à pomper hors de sa cuve. On y perd toujours un peu."],
+             ["The turbine's opposite: rotation becomes liquid Echo, to pump out of its tank. Something is always lost."]))
+quest(cI, "f_diffuseur", ("La brume d'Écho", "The Echo Mist"), 4, 0, [T_item("airain:echo_diffuser"), T_item("ars_nouveau:source_gem", 32)], [R_coin("cog", 1)],
+      deps=["f_condenseur", "ventilateur"],
+      desc=D(["Un diffuseur d'Écho devant un ventilateur : le souffle imprègne d'Écho tout ce qu'il touche. Les éclats d'améthyste deviennent des gemmes de source, le sculk des éclats d'écho."],
+             ["An Echo Diffuser in front of a fan: the airflow imbues everything it touches. Amethyst shards become source gems, sculk becomes echo shards."]))
+quest(cI, "f_glyphe", ("Le glyphe de l'engrenage", "The Glyph of the Gear"), 8, 0, [T_item("airain:glyph_gear")], [R_coin("cog", 2)],
+      deps=["f_turbine"],
+      desc=D(["Le seul sort que les deux camps ont appris l'un de l'autre. Lancé sur une machine de Create, il la fait tourner plus vite. Lancé sur un automate, il grippe ses rouages."],
+             ["The only spell both sides learned from each other. Cast on a Create machine, it makes it run faster. Cast on an automaton, it jams its gears."]))
+
 # =============================================================================
 # TRAINS ET LOGISTIQUE
 # =============================================================================
