@@ -26,13 +26,14 @@ T={"laiton":"create:block/brass_casing","andesite":"create:block/andesite_casing
 G45=lambda o:{"origin":o,"axis":"y","angle":45}
 # --- Turbine : à l'avant le rotor dans sa grille, à l'arrière la cuve de source qui l'alimente
 turbine=[
- box([0,0,0],[16,2,6],"laiton"),box([0,14,0],[16,16,6],"laiton"),box([0,2,0],[2,14,6],"laiton"),box([14,2,0],[16,14,6],"laiton"),   # cadre avant
- box([2,2,1],[14,14,1.01],"pales",faces=("north",)),box([2,2,3],[14,14,6],"sombre",faces=("north",)),                                 # rotor (tourne en jeu)
+ box([0,0,0],[16,16,6],"laiton"),                                                                                                       # avant plein : l'arbre en sort
  box([0,0,6],[16,2,16],"laiton"),box([0,14,6],[16,16,16],"laiton"),                                                                    # cuve arrière
  box([0,2,15],[1,14,16],"laiton"),box([15,2,15],[16,14,16],"laiton"),box([0,2,6],[1,14,7],"laiton"),box([15,2,6],[16,14,7],"laiton"),
  box([1,2,7],[15,12,15],"source",lum=True),box([0.5,2,6.5],[15.5,14,15.5],"fenetre",faces=("east","west","south")),
- box([5,16,9],[11,17,13],"pierre"),box([6.5,17,9.5],[9.5,20,12.5],"gemme",lum=True,rot=G45([8,18.5,11])),                             # entrée de source
+ box([3,16,3],[13,19,4],"bloc_laiton"),box([3,16,12],[13,19,13],"bloc_laiton"),box([3,16,4],[4,19,12],"bloc_laiton"),box([12,16,4],[13,19,12],"bloc_laiton"),   # cheminée
+ box([4,16,4],[12,16.01,12],"pierre",faces=("up",)),
  SHAFT_N]
+ROTOR_TURBINE=[box([4,17.5,4],[12,17.51,12],"pales",faces=("up","down")),box([7,16,7],[9,18,9],"bloc_laiton")]
 # --- Sourcelink mécanique : la rotation fait tourner un engrenage, qui fait tourner la gemme
 sourcelink=[box([0,0,0],[16,8,16],"andesite"),box([0,0,0],[16,8,0.01],"laiton",faces=("north",)),
  *deplace(COG,0,3,0),
@@ -59,7 +60,7 @@ def condenseur(evap):
     e=[box([0,0,0],[16,3,16],"cuivre",faces=("down",)),box([0,0,0],[16,3,16],socle,faces=("north","south","east","west","up"),lum=evap),
        box([0,14,0],[16,16,16],"cuivre",faces=("north","south","east","west","down")),box([0,14,0],[16,16,16],"cuve_haut",faces=("up",)),
        box([0,3,0],[2,14,2],"cuivre"),box([14,3,0],[16,14,2],"cuivre"),box([0,3,14],[2,14,16],"cuivre"),box([14,3,14],[16,14,16],"cuivre"),
-       box([2,3,2],[14,niveau,14],"source",lum=True),box([0.5,3,0.5],[15.5,14,15.5],"fenetre",faces=("north","south","east","west")),
+       box([0.5,3,0.5],[15.5,14,15.5],"fenetre",faces=("north","south","east","west")),
        box([-1,5,5],[0.5,11,11],"tuyau_cuivre",faces=("north","south","up","down","west")),box([15.5,5,5],[17,11,11],"tuyau_cuivre",faces=("north","south","up","down","east")),
        box([6,16,6],[10,19,10],"tuyau",faces=("north","south","east","west"))]
     if evap:
