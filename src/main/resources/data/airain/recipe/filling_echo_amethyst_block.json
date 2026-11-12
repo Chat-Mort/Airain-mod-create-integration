@@ -1,0 +1,18 @@
+{
+ "type": "create:filling",
+ "ingredients": [
+  {
+   "item": "minecraft:amethyst_block"
+  },
+  {
+   "type": "neoforge:single",
+   "amount": 2000,
+   "fluid": "airain:liquid_echo"
+  }
+ ],
+ "results": [
+  {
+   "id": "ars_nouveau:source_gem_block"
+  }
+ ]
+}

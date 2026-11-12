@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "evapore=false": {
+   "model": "airain:block/echo_condenser_condense"
+  },
+  "evapore=true": {
+   "model": "airain:block/echo_condenser_evaporate"
+  }
+ }
+}

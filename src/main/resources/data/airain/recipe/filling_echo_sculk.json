@@ -1,0 +1,18 @@
+{
+ "type": "create:filling",
+ "ingredients": [
+  {
+   "item": "minecraft:sculk"
+  },
+  {
+   "type": "neoforge:single",
+   "amount": 250,
+   "fluid": "airain:liquid_echo"
+  }
+ ],
+ "results": [
+  {
+   "id": "minecraft:echo_shard"
+  }
+ ]
+}

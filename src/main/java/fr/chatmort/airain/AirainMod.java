@@ -436,6 +436,14 @@ public class AirainMod {
 	public static final DeferredHolder<com.simibubi.create.content.kinetics.fan.processing.FanProcessingType, fr.chatmort.airain.fusion.Impregnation> IMPREGNATION =
 		VENTILATION.register("echo_imbuing", fr.chatmort.airain.fusion.Impregnation::new);
 
+	public static final DeferredBlock<fr.chatmort.airain.fusion.CondenseurBlock> CONDENSEUR = BLOCKS.register("echo_condenser",
+		() -> new fr.chatmort.airain.fusion.CondenseurBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f)
+			.requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion().lightLevel(s -> 5)));
+	public static final DeferredItem<BlockItem> CONDENSEUR_ITEM = ITEMS.register("echo_condenser", () -> new BlockItem(CONDENSEUR.get(), new Item.Properties()));
+	@SuppressWarnings("DataFlowIssue")
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fusion.CondenseurBlockEntity>> CONDENSEUR_BE =
+		BLOCK_ENTITIES.register("echo_condenser", () -> BlockEntityType.Builder.of(fr.chatmort.airain.fusion.CondenseurBlockEntity::new, CONDENSEUR.get()).build(null));
+
 	/** La machine de l'Empereur : apparaît là où il tombe ; on y pose le Cœur puis on la rallume (fin Empire). Incassable. */
 	public static final DeferredBlock<fr.chatmort.airain.choix.MachineEmpereurBlock> MACHINE_EMPEREUR = BLOCKS.register("emperor_machine",
 		() -> new fr.chatmort.airain.choix.MachineEmpereurBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(-1f, 3600000f)
@@ -536,6 +544,8 @@ public class AirainMod {
 		alias(BLOCKS, ANCIENS_BLOCS);
 		alias(ENTITES, ANCIENNES_ENTITES);
 		alias(BLOCK_ENTITIES, ANCIENS_BE);
+		fr.chatmort.airain.fusion.EchoLiquide.TYPES.register(bus);   // l'Écho liquide (son bloc et son seau rejoignent BLOCKS et ITEMS)
+		fr.chatmort.airain.fusion.EchoLiquide.FLUIDES.register(bus);
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
 		BLOCK_ENTITIES.register(bus);
@@ -642,6 +652,7 @@ public class AirainMod {
 	private void capacites(RegisterCapabilitiesEvent event) {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BANC_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, BANC_BE.get(), (be, side) -> be.reservoir);
+		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, CONDENSEUR_BE.get(), (be, side) -> be.reservoir);   // tuyaux de Create
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.reservoir);
 	}

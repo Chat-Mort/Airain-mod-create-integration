@@ -41,7 +41,13 @@ public class AirainClient {
 			  for (int i = 0; i < 4; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.ArcaniqueModele.COUCHES[k], () -> fr.chatmort.airain.armure.ArcaniqueModele.creer(k)); }
 			  for (int i = 0; i < 4; i++) { final int k = i; e.registerLayerDefinition(fr.chatmort.airain.armure.ImperialeModele.COUCHES[k], () -> fr.chatmort.airain.armure.ImperialeModele.creer(k)); } });
 		bus.addListener((net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent e) ->
-			{ e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION, AirainMod.COURONNE.get());
+			{ e.registerFluidType(new net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions() {   // l'Écho liquide : source d'Ars teintée
+				  final net.minecraft.resources.ResourceLocation t = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("ars_nouveau", "block/source_still");
+				  @Override public net.minecraft.resources.ResourceLocation getStillTexture() { return t; }
+				  @Override public net.minecraft.resources.ResourceLocation getFlowingTexture() { return t; }
+				  @Override public int getTintColor() { return 0xFFB98AFF; }
+			  }, fr.chatmort.airain.fusion.EchoLiquide.TYPE.get());
+			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION, AirainMod.COURONNE.get());
 			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION_CASQUE, AirainMod.CASQUE_COURONNE.get(), AirainMod.CASQUE_COURONNE_SACREE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(0), AirainMod.CASQUE_IMPERIAL.get());
 			  e.registerItem(fr.chatmort.airain.armure.DiademeModele.EXTENSION, AirainMod.DIADEME.get());

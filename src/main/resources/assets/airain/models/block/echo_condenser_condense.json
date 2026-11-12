@@ -1,0 +1,360 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "particle": "create:block/copper_casing",
+  "cuivre": "create:block/copper_casing",
+  "verre": "ars_nouveau:block/source_still",
+  "laiton": "create:block/brass_casing",
+  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "gemme": "ars_nouveau:block/source_gem_block"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    3,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cuivre"
+    },
+    "south": {
+     "texture": "#cuivre"
+    },
+    "east": {
+     "texture": "#cuivre"
+    },
+    "west": {
+     "texture": "#cuivre"
+    },
+    "up": {
+     "texture": "#cuivre"
+    },
+    "down": {
+     "texture": "#cuivre"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    13,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cuivre"
+    },
+    "south": {
+     "texture": "#cuivre"
+    },
+    "east": {
+     "texture": "#cuivre"
+    },
+    "west": {
+     "texture": "#cuivre"
+    },
+    "up": {
+     "texture": "#cuivre"
+    },
+    "down": {
+     "texture": "#cuivre"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    3,
+    1
+   ],
+   "to": [
+    15,
+    13,
+    15
+   ],
+   "faces": {
+    "north": {
+     "texture": "#verre",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "south": {
+     "texture": "#verre",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "east": {
+     "texture": "#verre",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "west": {
+     "texture": "#verre",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "up": {
+     "texture": "#verre",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "down": {
+     "texture": "#verre",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    }
+   },
+   "shade": false
+  },
+  {
+   "from": [
+    0,
+    3,
+    0
+   ],
+   "to": [
+    2,
+    13,
+    2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    14,
+    3,
+    0
+   ],
+   "to": [
+    16,
+    13,
+    2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    3,
+    14
+   ],
+   "to": [
+    2,
+    13,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    14,
+    3,
+    14
+   ],
+   "to": [
+    16,
+    13,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    5,
+    16,
+    5
+   ],
+   "to": [
+    11,
+    17,
+    11
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pierre"
+    },
+    "south": {
+     "texture": "#pierre"
+    },
+    "east": {
+     "texture": "#pierre"
+    },
+    "west": {
+     "texture": "#pierre"
+    },
+    "up": {
+     "texture": "#pierre"
+    },
+    "down": {
+     "texture": "#pierre"
+    }
+   }
+  },
+  {
+   "from": [
+    6.5,
+    17,
+    6.5
+   ],
+   "to": [
+    9.5,
+    20,
+    9.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "south": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "east": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "west": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "up": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "down": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    }
+   },
+   "shade": false,
+   "rotation": {
+    "origin": [
+     8,
+     18.5,
+     8
+    ],
+    "axis": "y",
+    "angle": 45
+   }
+  }
+ ]
+}

@@ -1391,5 +1391,11 @@
  "block.airain.mechanical_sourcelink": "Mechanical Sourcelink",
  "block.airain.echo_diffuser": "Echo Diffuser",
  "create.recipe.echo_imbuing": "Echo Imbuing",
- "airain.fusion.titre": "The Refractory Machines"
+ "airain.fusion.titre": "The Refractory Machines",
+ "block.airain.echo_condenser": "Echo Condenser",
+ "fluid.airain.liquid_echo": "Liquid Echo",
+ "block.airain.liquid_echo": "Liquid Echo",
+ "item.airain.liquid_echo_bucket": "Liquid Echo Bucket",
+ "airain.condenseur.condense": "Condenser: jar source becomes liquid Echo",
+ "airain.condenseur.evapore": "Condenser: liquid Echo turns back into source in the jars (90%)"
 }

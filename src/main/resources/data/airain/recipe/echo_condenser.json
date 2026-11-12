@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "CGC",
+  "TJT",
+  "CBC"
+ ],
+ "key": {
+  "C": {
+   "item": "create:copper_sheet"
+  },
+  "G": {
+   "item": "ars_nouveau:source_gem"
+  },
+  "T": {
+   "item": "create:fluid_pipe"
+  },
+  "J": {
+   "item": "ars_nouveau:source_jar"
+  },
+  "B": {
+   "item": "create:copper_casing"
+  }
+ },
+ "result": {
+  "id": "airain:echo_condenser",
+  "count": 1
+ }
+}

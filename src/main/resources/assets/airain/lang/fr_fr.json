@@ -1391,5 +1391,11 @@
  "block.airain.mechanical_sourcelink": "Sourcelink mécanique",
  "block.airain.echo_diffuser": "Diffuseur d'Écho",
  "create.recipe.echo_imbuing": "Imprégnation à l'Écho",
- "airain.fusion.titre": "Les machines réfractaires"
+ "airain.fusion.titre": "Les machines réfractaires",
+ "block.airain.echo_condenser": "Condenseur d'Écho",
+ "fluid.airain.liquid_echo": "Écho liquide",
+ "block.airain.liquid_echo": "Écho liquide",
+ "item.airain.liquid_echo_bucket": "Seau d'Écho liquide",
+ "airain.condenseur.condense": "Condenseur : la source des jarres devient de l'Écho liquide",
+ "airain.condenseur.evapore": "Condenseur : l'Écho liquide redevient de la source dans les jarres (90 %)"
 }
