@@ -1386,5 +1386,10 @@
  "airain.choix.resonateur.echo": "Il faut un Écho primordial sur vous pour que le diapason sonne juste.",
  "airain.choix.empire.1": "« Merci. Il faisait si froid. »",
  "airain.choix.echo.1": "« Ada. Tu avais raison, depuis le début. Je te pardonne. Pardonne-moi. »",
- "airain.choix.echo.2": "« Je t'ai attendu. »"
+ "airain.choix.echo.2": "« Je t'ai attendu. »",
+ "block.airain.echo_turbine": "Turbine d'Écho",
+ "block.airain.mechanical_sourcelink": "Sourcelink mécanique",
+ "block.airain.echo_diffuser": "Diffuseur d'Écho",
+ "create.recipe.echo_imbuing": "Imprégnation à l'Écho",
+ "airain.fusion.titre": "Les machines réfractaires"
 }

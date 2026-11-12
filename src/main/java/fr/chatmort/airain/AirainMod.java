@@ -406,6 +406,36 @@ public class AirainMod {
 		return ITEMS.register(id, () -> new fr.chatmort.airain.fondation.PlanItem(t, new Item.Properties().stacksTo(16).rarity(net.minecraft.world.item.Rarity.EPIC)));
 	}
 
+	// ---- Create × Ars Nouveau : turbine d'Écho, sourcelink mécanique, diffuseur d'Écho (paquet fusion)
+	public static final DeferredBlock<fr.chatmort.airain.fusion.TurbineEchoBlock> TURBINE_ECHO = BLOCKS.register("echo_turbine",
+		() -> new fr.chatmort.airain.fusion.TurbineEchoBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f)
+			.requiresCorrectToolForDrops().sound(SoundType.COPPER).noOcclusion().lightLevel(s -> 6)));
+	public static final DeferredItem<BlockItem> TURBINE_ECHO_ITEM = ITEMS.register("echo_turbine", () -> new BlockItem(TURBINE_ECHO.get(), new Item.Properties()));
+	@SuppressWarnings("DataFlowIssue")
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fusion.TurbineEchoBlockEntity>> TURBINE_ECHO_BE =
+		BLOCK_ENTITIES.register("echo_turbine", () -> BlockEntityType.Builder.of(
+			(p, s) -> new fr.chatmort.airain.fusion.TurbineEchoBlockEntity(AirainMod.TURBINE_ECHO_BE.get(), p, s), TURBINE_ECHO.get()).build(null));
+	public static final DeferredBlock<fr.chatmort.airain.fusion.SourcelinkMecaBlock> SOURCELINK_MECA = BLOCKS.register("mechanical_sourcelink",
+		() -> new fr.chatmort.airain.fusion.SourcelinkMecaBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(3f, 6f)
+			.requiresCorrectToolForDrops().sound(SoundType.STONE).noOcclusion()));
+	public static final DeferredItem<BlockItem> SOURCELINK_MECA_ITEM = ITEMS.register("mechanical_sourcelink", () -> new BlockItem(SOURCELINK_MECA.get(), new Item.Properties()));
+	@SuppressWarnings("DataFlowIssue")
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fusion.SourcelinkMecaBlockEntity>> SOURCELINK_MECA_BE =
+		BLOCK_ENTITIES.register("mechanical_sourcelink", () -> BlockEntityType.Builder.of(
+			(p, s) -> new fr.chatmort.airain.fusion.SourcelinkMecaBlockEntity(AirainMod.SOURCELINK_MECA_BE.get(), p, s), SOURCELINK_MECA.get()).build(null));
+	public static final DeferredBlock<fr.chatmort.airain.fusion.DiffuseurEchoBlock> DIFFUSEUR_ECHO = BLOCKS.register("echo_diffuser",
+		() -> new fr.chatmort.airain.fusion.DiffuseurEchoBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(2f, 6f)
+			.sound(SoundType.COPPER).noOcclusion().noCollission().lightLevel(s -> s.getValue(fr.chatmort.airain.fusion.DiffuseurEchoBlock.ALLUME) ? 11 : 0)));
+	public static final DeferredItem<BlockItem> DIFFUSEUR_ECHO_ITEM = ITEMS.register("echo_diffuser", () -> new BlockItem(DIFFUSEUR_ECHO.get(), new Item.Properties()));
+	@SuppressWarnings("DataFlowIssue")
+	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<fr.chatmort.airain.fusion.DiffuseurEchoBlockEntity>> DIFFUSEUR_ECHO_BE =
+		BLOCK_ENTITIES.register("echo_diffuser", () -> BlockEntityType.Builder.of(fr.chatmort.airain.fusion.DiffuseurEchoBlockEntity::new, DIFFUSEUR_ECHO.get()).build(null));
+	/** La brume d'Écho, nouveau traitement au ventilateur de Create. */
+	public static final DeferredRegister<com.simibubi.create.content.kinetics.fan.processing.FanProcessingType> VENTILATION =
+		DeferredRegister.create(com.simibubi.create.api.registry.CreateRegistries.FAN_PROCESSING_TYPE, ID);
+	public static final DeferredHolder<com.simibubi.create.content.kinetics.fan.processing.FanProcessingType, fr.chatmort.airain.fusion.Impregnation> IMPREGNATION =
+		VENTILATION.register("echo_imbuing", fr.chatmort.airain.fusion.Impregnation::new);
+
 	/** La machine de l'Empereur : apparaît là où il tombe ; on y pose le Cœur puis on la rallume (fin Empire). Incassable. */
 	public static final DeferredBlock<fr.chatmort.airain.choix.MachineEmpereurBlock> MACHINE_EMPEREUR = BLOCKS.register("emperor_machine",
 		() -> new fr.chatmort.airain.choix.MachineEmpereurBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(-1f, 3600000f)
@@ -509,6 +539,7 @@ public class AirainMod {
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
 		BLOCK_ENTITIES.register(bus);
+		VENTILATION.register(bus);
 		MENUS.register(bus);
 		ENTITES.register(bus);
 		SERIALISEURS.register(bus);
@@ -603,6 +634,8 @@ public class AirainMod {
 				fr.chatmort.airain.gardien.Fin::couronne);
 			BlockStressValues.IMPACTS.register(BANC.get(), () -> 8.0);
 			BlockStressValues.IMPACTS.register(DESENCH.get(), () -> 8.0);
+			BlockStressValues.CAPACITIES.register(TURBINE_ECHO.get(), () -> 16.0);       // 64 tr/min × 16 = 1 024 de force
+			BlockStressValues.IMPACTS.register(SOURCELINK_MECA.get(), () -> 8.0);
 		});
 	}
 

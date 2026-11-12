@@ -68,6 +68,8 @@ public class AirainClient {
 
 	private void rendus(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerBlockEntityRenderer(AirainMod.BANC_BE.get(), BancEntretienRenderer::new);
+		event.registerBlockEntityRenderer(AirainMod.TURBINE_ECHO_BE.get(), fr.chatmort.airain.fusion.ArbreRenderer::new);   // l'arbre qui sort de la face avant
+		event.registerBlockEntityRenderer(AirainMod.SOURCELINK_MECA_BE.get(), fr.chatmort.airain.fusion.ArbreRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.DESENCH_BE.get(), DesenchanteurRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.TABLE_BE.get(), fr.chatmort.airain.enchant.TableEmpireRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.SOCLE_BE.get(), fr.chatmort.airain.trophee.SocleRenderer::new);
@@ -95,6 +97,10 @@ public class AirainClient {
 			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
 			.skipVanillaRender(be -> false)
 			.apply();
+		SimpleBlockEntityVisualizer.builder(AirainMod.TURBINE_ECHO_BE.get())
+			.factory(com.simibubi.create.content.kinetics.base.OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF)).skipVanillaRender(be -> false).apply();
+		SimpleBlockEntityVisualizer.builder(AirainMod.SOURCELINK_MECA_BE.get())
+			.factory(com.simibubi.create.content.kinetics.base.OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF)).skipVanillaRender(be -> false).apply();
 		SimpleBlockEntityVisualizer.builder(AirainMod.DESENCH_BE.get())
 			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
 			.skipVanillaRender(be -> false)

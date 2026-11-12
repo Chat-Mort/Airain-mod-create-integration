@@ -1,0 +1,271 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "particle": "create:block/andesite_casing",
+  "andesite": "create:block/andesite_casing",
+  "laiton": "create:block/brass_casing",
+  "pierre": "ars_nouveau:block/sourcestone",
+  "dore": "ars_nouveau:block/gilded_sourcestone_large_bricks",
+  "gemme": "ars_nouveau:block/source_gem_block"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    2
+   ],
+   "to": [
+    16,
+    6,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#andesite"
+    },
+    "south": {
+     "texture": "#andesite"
+    },
+    "east": {
+     "texture": "#andesite"
+    },
+    "west": {
+     "texture": "#andesite"
+    },
+    "up": {
+     "texture": "#andesite"
+    },
+    "down": {
+     "texture": "#andesite"
+    }
+   }
+  },
+  {
+   "from": [
+    2,
+    0,
+    0
+   ],
+   "to": [
+    14,
+    6,
+    2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    3,
+    6,
+    4
+   ],
+   "to": [
+    13,
+    12,
+    14
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pierre"
+    },
+    "south": {
+     "texture": "#pierre"
+    },
+    "east": {
+     "texture": "#pierre"
+    },
+    "west": {
+     "texture": "#pierre"
+    },
+    "up": {
+     "texture": "#pierre"
+    },
+    "down": {
+     "texture": "#pierre"
+    }
+   }
+  },
+  {
+   "from": [
+    2,
+    12,
+    3
+   ],
+   "to": [
+    14,
+    14,
+    15
+   ],
+   "faces": {
+    "north": {
+     "texture": "#dore"
+    },
+    "south": {
+     "texture": "#dore"
+    },
+    "east": {
+     "texture": "#dore"
+    },
+    "west": {
+     "texture": "#dore"
+    },
+    "up": {
+     "texture": "#dore"
+    },
+    "down": {
+     "texture": "#dore"
+    }
+   }
+  },
+  {
+   "from": [
+    6,
+    14,
+    7
+   ],
+   "to": [
+    10,
+    18,
+    11
+   ],
+   "faces": {
+    "north": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "south": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "east": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "west": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "up": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "down": {
+     "texture": "#gemme",
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    }
+   },
+   "rotation": {
+    "origin": [
+     8,
+     16,
+     9
+    ],
+    "axis": "y",
+    "angle": 45
+   },
+   "shade": false
+  },
+  {
+   "from": [
+    0,
+    6,
+    6
+   ],
+   "to": [
+    2,
+    10,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    14,
+    6,
+    6
+   ],
+   "to": [
+    16,
+    10,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  }
+ ]
+}

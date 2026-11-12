@@ -11,6 +11,9 @@
   "airain:star_block",
   "airain:primordial_echo_block",
   "airain:imperial_throne",
-  "airain:solium"
+  "airain:solium",
+  "airain:echo_turbine",
+  "airain:mechanical_sourcelink",
+  "airain:echo_diffuser"
  ]
 }

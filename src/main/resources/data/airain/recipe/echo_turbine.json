@@ -1,0 +1,31 @@
+{
+ "type": "create:mechanical_crafting",
+ "category": "misc",
+ "accept_mirrored": false,
+ "pattern": [
+  " G ",
+  "CJC",
+  "BSB"
+ ],
+ "key": {
+  "G": {
+   "item": "ars_nouveau:source_gem_block"
+  },
+  "C": {
+   "item": "create:brass_casing"
+  },
+  "J": {
+   "item": "ars_nouveau:source_jar"
+  },
+  "B": {
+   "item": "create:brass_sheet"
+  },
+  "S": {
+   "item": "create:shaft"
+  }
+ },
+ "result": {
+  "id": "airain:echo_turbine",
+  "count": 1
+ }
+}

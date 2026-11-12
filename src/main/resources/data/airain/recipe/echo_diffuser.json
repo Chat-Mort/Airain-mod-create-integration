@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  " A ",
+  "SGS",
+  " B "
+ ],
+ "key": {
+  "A": {
+   "item": "minecraft:amethyst_shard"
+  },
+  "S": {
+   "item": "ars_nouveau:source_gem"
+  },
+  "G": {
+   "item": "create:brass_sheet"
+  },
+  "B": {
+   "item": "create:brass_casing"
+  }
+ },
+ "result": {
+  "id": "airain:echo_diffuser",
+  "count": 1
+ }
+}

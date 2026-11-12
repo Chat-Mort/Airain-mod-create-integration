@@ -1,0 +1,27 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/mechanical_sourcelink"
+  },
+  "facing=east": {
+   "model": "airain:block/mechanical_sourcelink",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/mechanical_sourcelink",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/mechanical_sourcelink",
+   "y": 270
+  },
+  "facing=up": {
+   "model": "airain:block/mechanical_sourcelink",
+   "x": 270
+  },
+  "facing=down": {
+   "model": "airain:block/mechanical_sourcelink",
+   "x": 90
+  }
+ }
+}

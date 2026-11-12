@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  " G ",
+  "PLP",
+  "ASA"
+ ],
+ "key": {
+  "G": {
+   "item": "ars_nouveau:source_gem"
+  },
+  "P": {
+   "item": "ars_nouveau:sourcestone"
+  },
+  "L": {
+   "item": "ars_nouveau:volcanic_sourcelink"
+  },
+  "A": {
+   "item": "create:andesite_casing"
+  },
+  "S": {
+   "item": "create:shaft"
+  }
+ },
+ "result": {
+  "id": "airain:mechanical_sourcelink",
+  "count": 1
+ }
+}

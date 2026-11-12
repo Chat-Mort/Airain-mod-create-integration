@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "allume=false": {
+   "model": "airain:block/echo_diffuser_off"
+  },
+  "allume=true": {
+   "model": "airain:block/echo_diffuser_on"
+  }
+ }
+}

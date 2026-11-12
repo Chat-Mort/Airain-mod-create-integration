@@ -1,0 +1,134 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "particle": "create:block/brass_block",
+  "laiton": "create:block/brass_block",
+  "coupe": "create:block/brass_casing",
+  "cristal": "minecraft:block/amethyst_cluster",
+  "source": "ars_nouveau:block/source_still"
+ },
+ "elements": [
+  {
+   "from": [
+    3,
+    0,
+    3
+   ],
+   "to": [
+    13,
+    2,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    2,
+    4
+   ],
+   "to": [
+    12,
+    4,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#coupe"
+    },
+    "south": {
+     "texture": "#coupe"
+    },
+    "east": {
+     "texture": "#coupe"
+    },
+    "west": {
+     "texture": "#coupe"
+    },
+    "up": {
+     "texture": "#coupe"
+    },
+    "down": {
+     "texture": "#coupe"
+    }
+   }
+  },
+  {
+   "from": [
+    5.5,
+    4,
+    7.5
+   ],
+   "to": [
+    10.5,
+    9,
+    8.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cristal"
+    },
+    "south": {
+     "texture": "#cristal"
+    }
+   },
+   "rotation": {
+    "origin": [
+     8,
+     6,
+     8
+    ],
+    "axis": "y",
+    "angle": 45
+   }
+  },
+  {
+   "from": [
+    7.5,
+    4,
+    5.5
+   ],
+   "to": [
+    8.5,
+    9,
+    10.5
+   ],
+   "faces": {
+    "east": {
+     "texture": "#cristal"
+    },
+    "west": {
+     "texture": "#cristal"
+    }
+   },
+   "rotation": {
+    "origin": [
+     8,
+     6,
+     8
+    ],
+    "axis": "y",
+    "angle": 45
+   }
+  }
+ ]
+}
