@@ -29,7 +29,7 @@ public class LivreIngenieurScreen extends Screen {
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, BLEU = 0x28507A;
 
 	/** Sections : clé du sommaire, puis chapitres {clé de texte, objet illustré}. */
-	static final String[] SECTIONS = {"machines", "objets", "empire", "echo"};
+	static final String[] SECTIONS = {"machines", "objets", "empire", "echo", "fusion"};   // fusion : les machines qui marient Create et Ars
 	static final String[][][] CHAPITRES = {
 		{{"fondation", "airain:foundation_stone"}, {"grand_etendard", "airain:great_standard"}, {"banniere_murale", "airain:foundation_wall_banner"},
 		 {"gabarit", "airain:banner_template"}, {"registre", "airain:foundation_registry"}, {"socle", "airain:trophy_pedestal"},
@@ -48,7 +48,10 @@ public class LivreIngenieurScreen extends Screen {
 		{{"diademe", "airain:echo_diadem"}, {"capitale_arcanique", "airain:foundation_stone"}, {"ameliorations", "airain:expansion_plans"}, {"arcanium", "airain:arcanium_ingot"},
 		 {"armure_runique", "airain:runic_chestplate"}, {"armure_arcanique", "airain:arcane_chestplate"}, {"armes_runiques", "airain:runic_katana"},
 		 {"armes_arcaniques", "airain:arcane_katana"}, {"sceptre_arcanique", "airain:arcane_scepter"}, {"gardien_echo", "airain:primordial_echo_block"},
-		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:resonant_archive"}, {"relais", "kubejs:diapason_echo"}}};
+		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:resonant_archive"}, {"relais", "kubejs:diapason_echo"}},
+		// Machines d'Écho : le pont entre Create et Ars Nouveau
+		{{"turbine_echo", "airain:echo_turbine"}, {"sourcelink_meca", "airain:mechanical_sourcelink"}, {"diffuseur_echo", "airain:echo_diffuser"},
+		 {"condenseur_echo", "airain:echo_condenser"}, {"glyphe_engrenage", "airain:glyph_gear"}}};
 	/** Chapitres à la suite, et la section de chacun. */
 	private static final List<String[]> TOUS = new ArrayList<>();
 	private static final List<Integer> SECTION_DE = new ArrayList<>();
@@ -118,11 +121,11 @@ public class LivreIngenieurScreen extends Screen {
 		return i < GAUCHE ? new int[] {bx() + 20, by() + 22 + 56 + i * PAS} : new int[] {bx() + 162, by() + 22 + 2 + (i - GAUCHE) * PAS};
 	}
 
-	/** Onglets des quatre sommaires, en bas de la page de gauche. */
+	/** Onglets des cinq sommaires, en bas de la page de gauche. */
 	private int[] onglet(int s) {
 		int x = bx() + 20;
-		for (int i = s % 2 == 1 ? s - 1 : s; i < s; i++) x += largeurOnglet(i) + 10;   // deux onglets par ligne
-		return new int[] {x, by() + 22 + 26 + (s / 2) * 11};
+		for (int i = s - s % 3; i < s; i++) x += largeurOnglet(i) + 10;   // trois onglets par ligne
+		return new int[] {x, by() + 22 + 26 + (s / 3) * 11};
 	}
 
 	private int largeurOnglet(int s) { return font.width(Component.translatable("airain.ingenieur.onglet." + SECTIONS[s])); }
