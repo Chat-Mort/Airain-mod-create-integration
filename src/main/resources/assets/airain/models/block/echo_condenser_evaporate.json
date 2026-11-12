@@ -1,17 +1,16 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
+  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "dore": "ars_nouveau:block/gilded_sourcestone_small_bricks",
   "tuyau_cuivre": "create:block/encased_pipe",
+  "gemme": "ars_nouveau:block/source_gem_block",
+  "tuyau": "create:block/glass_fluid_pipe",
+  "fenetre": "create:block/fluid_tank_window_single",
   "cuivre": "create:block/copper_casing",
   "bloc_laiton": "create:block/brass_block",
-  "dore": "ars_nouveau:block/gilded_sourcestone_small_bricks",
-  "cuve_haut": "create:block/fluid_tank_top",
-  "tuyau": "create:block/glass_fluid_pipe",
-  "gemme": "ars_nouveau:block/source_gem_block",
   "magma": "minecraft:block/magma",
-  "fenetre": "create:block/fluid_tank_window_single",
-  "source": "ars_nouveau:block/source_still",
-  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "cuve_haut": "create:block/fluid_tank_top",
   "particle": "create:block/brass_block"
  },
  "elements": [
@@ -250,57 +249,6 @@
      "texture": "#cuivre"
     }
    }
-  },
-  {
-   "from": [
-    2,
-    3,
-    2
-   ],
-   "to": [
-    14,
-    5,
-    14
-   ],
-   "faces": {
-    "north": {
-     "texture": "#source",
-     "neoforge_data": {
-      "block_light": 15
-     }
-    },
-    "south": {
-     "texture": "#source",
-     "neoforge_data": {
-      "block_light": 15
-     }
-    },
-    "east": {
-     "texture": "#source",
-     "neoforge_data": {
-      "block_light": 15
-     }
-    },
-    "west": {
-     "texture": "#source",
-     "neoforge_data": {
-      "block_light": 15
-     }
-    },
-    "up": {
-     "texture": "#source",
-     "neoforge_data": {
-      "block_light": 15
-     }
-    },
-    "down": {
-     "texture": "#source",
-     "neoforge_data": {
-      "block_light": 15
-     }
-    }
-   },
-   "shade": false
   },
   {
    "from": [

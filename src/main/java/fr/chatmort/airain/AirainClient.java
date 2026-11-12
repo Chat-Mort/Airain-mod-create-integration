@@ -75,7 +75,8 @@ public class AirainClient {
 	private void rendus(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerBlockEntityRenderer(AirainMod.BANC_BE.get(), BancEntretienRenderer::new);
 		// l'arbre qui sort de la face avant, et la pièce qui tourne (pales de la turbine, engrenage du sourcelink)
-		event.registerBlockEntityRenderer(AirainMod.TURBINE_ECHO_BE.get(), c -> new fr.chatmort.airain.fusion.RotorRenderer<>(c, AirainPartials.ROTOR_TURBINE, true));
+		event.registerBlockEntityRenderer(AirainMod.TURBINE_ECHO_BE.get(), c -> new fr.chatmort.airain.fusion.RotorRenderer<>(c, AirainPartials.ROTOR_TURBINE, false));   // pales à plat dans la cheminée
+		event.registerBlockEntityRenderer(AirainMod.CONDENSEUR_BE.get(), fr.chatmort.airain.fusion.CondenseurRenderer::new);   // le liquide à sa vraie hauteur
 		event.registerBlockEntityRenderer(AirainMod.SOURCELINK_MECA_BE.get(), c -> new fr.chatmort.airain.fusion.RotorRenderer<>(c, AirainPartials.ROTOR_SOURCELINK, false));
 		event.registerBlockEntityRenderer(AirainMod.DESENCH_BE.get(), DesenchanteurRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.TABLE_BE.get(), fr.chatmort.airain.enchant.TableEmpireRenderer::new);

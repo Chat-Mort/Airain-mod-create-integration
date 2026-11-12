@@ -32,9 +32,9 @@ public class TurbineEchoBlockEntity extends GeneratingKineticBlockEntity {
 		super.tick();
 		if (level == null) return;
 		if (level.isClientSide) {                                    // lueur violette quand elle tourne
-			if (actif && level.random.nextInt(4) == 0)
-				level.addParticle(ParticleTypes.WITCH, worldPosition.getX() + 0.5 + (level.random.nextDouble() - 0.5) * 0.6,
-					worldPosition.getY() + 1.15, worldPosition.getZ() + 0.5 + (level.random.nextDouble() - 0.5) * 0.6, 0, 0.02, 0);
+			if (actif && level.random.nextInt(2) == 0)                 // la cheminée évacue la vapeur d'Écho
+				level.addParticle(ParticleTypes.WITCH, worldPosition.getX() + 0.5 + (level.random.nextDouble() - 0.5) * 0.4,
+					worldPosition.getY() + 1.2, worldPosition.getZ() + 0.5 + (level.random.nextDouble() - 0.5) * 0.4, 0, 0.12, 0);
 			return;
 		}
 		boolean marche = reservoir.getFluidAmount() >= CONSO && !level.hasNeighborSignal(worldPosition);

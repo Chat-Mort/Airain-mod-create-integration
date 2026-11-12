@@ -1,27 +1,27 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "pales": "create:block/fan_blades",
   "bloc_laiton": "create:block/brass_block",
+  "pales": "create:block/fan_blades",
   "particle": "create:block/brass_block"
  },
  "elements": [
   {
    "from": [
-    2,
-    2,
-    1
+    4,
+    17.5,
+    4
    ],
    "to": [
-    14,
-    14,
-    1.01
+    12,
+    17.51,
+    12
    ],
    "faces": {
-    "north": {
+    "up": {
      "texture": "#pales"
     },
-    "south": {
+    "down": {
      "texture": "#pales"
     }
    }
@@ -29,13 +29,13 @@
   {
    "from": [
     7,
-    7,
-    0.6
+    16,
+    7
    ],
    "to": [
     9,
-    9,
-    2
+    18,
+    9
    ],
    "faces": {
     "north": {
