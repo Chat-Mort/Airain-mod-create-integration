@@ -5,11 +5,11 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 12 novembre 2026 — versions 1.47.0 à 1.47.3
+## 12 novembre 2026 — versions 1.47.0 à 1.47.4
 
 **Ajouts**
 - **Machines d'Écho**, le pont entre Create et Ars Nouveau, en milieu de partie :
-  - **Turbine d'Écho** : un moteur de Create qui boit de l'Écho liquide amené par les tuyaux (20 mB par seconde) pour 64 tr/min et 1 024 de force. L'arbre sort à l'avant, et une cheminée à pales, creusée dans le dessus, évacue la vapeur d'Écho ;
+  - **Turbine d'Écho** : un moteur de Create qui boit de l'Écho liquide amené par les tuyaux (20 mB par seconde) pour 64 tr/min et 1 024 de force. L'arbre sort d'un logement creusé dans la face avant, et une cheminée à pales, creusée dans le dessus, évacue la vapeur d'Écho ;
   - **Sourcelink mécanique** : l'inverse, la rotation devient de l'Écho liquide, à pomper hors de sa cuve, avec un peu de perte. Son engrenage et sa gemme tournent avec l'axe ;
   - **Diffuseur d'Écho** : posé devant un ventilateur, il donne un nouveau traitement, l'imprégnation. Éclat d'améthyste ou lapis en gemme de source, bloc d'améthyste en bloc de gemme de source, sculk en éclat d'écho ;
   - **Condenseur d'Écho** : la source des jarres devient de l'**Écho liquide**, qui passe dans les tuyaux de Create (socle givré), et l'inverse à 90 % (socle chauffé au rouge, couvercle relevé, vapeur). Le liquide se voit dans la cuve à sa vraie hauteur. Au bec verseur, l'Écho liquide imprègne les objets un par un.

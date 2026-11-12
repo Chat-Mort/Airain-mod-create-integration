@@ -3,6 +3,7 @@ from rendu_modele import *
 CR='/tmp/claude-0/-home-claude/c0fedc50-c1fd-5e3d-b135-6ac1b8100b13/scratchpad/create-src/src/main/resources/assets/create/models/block/'
 ALL=("north","south","east","west","up","down")
 def box(fr,to,t,faces=ALL,lum=False,rot=None,uv=None):
+    if t=="fenetre" and uv is None: uv={k:[0,0,16,16] for k in ALL}
     f={k:({"texture":t}|({"neoforge_data":{"block_light":15}} if lum else {})|({"uv":uv[k]} if uv and k in uv else {})) for k in faces}
     e={"from":fr,"to":to,"faces":f}
     if lum: e["shade"]=False
@@ -26,7 +27,8 @@ T={"laiton":"create:block/brass_casing","andesite":"create:block/andesite_casing
 G45=lambda o:{"origin":o,"axis":"y","angle":45}
 # --- Turbine : à l'avant le rotor dans sa grille, à l'arrière la cuve de source qui l'alimente
 turbine=[
- box([0,0,0],[16,12,6],"laiton"),box([0,12,0],[16,16,4],"laiton"),                                                                     # avant plein : l'arbre en sort
+ box([0,0,0],[16,4,3],"laiton"),box([0,12,0],[16,16,4],"laiton"),box([0,4,0],[4,12,3],"laiton"),box([12,4,0],[16,12,3],"laiton"),   # avant creusé autour de l'arbre
+ box([0,0,3],[16,12,6],"laiton"),box([4,4,2.99],[12,12,3],"sombre",faces=("north",)),
  box([0,0,6],[16,2,16],"laiton"),                                                                                                       # cuve arrière
  box([0,2,15],[1,12,16],"laiton"),box([15,2,15],[16,12,16],"laiton"),
  box([1,2,7],[15,11,15],"source",lum=True),box([0.5,2,6.5],[15.5,12,15.5],"fenetre",faces=("east","west","south")),
