@@ -3,7 +3,6 @@ from rendu_modele import *
 CR='/tmp/claude-0/-home-claude/c0fedc50-c1fd-5e3d-b135-6ac1b8100b13/scratchpad/create-src/src/main/resources/assets/create/models/block/'
 ALL=("north","south","east","west","up","down")
 def box(fr,to,t,faces=ALL,lum=False,rot=None,uv=None):
-    if t=="fenetre" and uv is None: uv={k:[0,0,16,16] for k in ALL}
     f={k:({"texture":t}|({"neoforge_data":{"block_light":15}} if lum else {})|({"uv":uv[k]} if uv and k in uv else {})) for k in faces}
     e={"from":fr,"to":to,"faces":f}
     if lum: e["shade"]=False
@@ -27,7 +26,7 @@ COG=json.load(open(CR+'cogwheel_shaftless.json'))['elements']
 SHAFT_N=box([6,6,-1],[10,10,8],"axis",faces=("east","west","up","down"))|{}
 SHAFT_N["faces"]["north"]={"texture":"axis_top"}
 T={"laiton":"create:block/brass_casing","andesite":"create:block/andesite_casing","cuivre":"create:block/copper_casing","bloc_laiton":"create:block/brass_block",
-   "fenetre":"create:block/fluid_tank_window_single","cuve_haut":"create:block/fluid_tank_top","pales":"create:block/fan_blades","grille":"create:block/fan_casing",
+   "fenetre":"airain:block/echo_glass","cuve_haut":"create:block/fluid_tank_top","pales":"create:block/fan_blades","grille":"create:block/fan_casing",
    "source":"ars_nouveau:block/source_still","pierre":"ars_nouveau:block/smooth_sourcestone","dore":"ars_nouveau:block/gilded_sourcestone_small_bricks",
    "gemme":"ars_nouveau:block/source_gem_block","cristal":"minecraft:block/amethyst_cluster","axis":"create:block/axis","axis_top":"create:block/axis_top",
    "1_2":"create:block/cogwheel","tuyau":"create:block/glass_fluid_pipe","tuyau_cuivre":"create:block/encased_pipe","sombre":"create:block/andesite_casing","magma":"minecraft:block/magma","glace":"minecraft:block/packed_ice"}
@@ -38,7 +37,7 @@ turbine=[
  box([0,0,3],[16,12,6],"laiton"),box([4,4,2.99],[12,12,3],"sombre",faces=("north",)),
  box([0,0,6],[16,2,16],"laiton"),                                                                                                       # cuve arrière
  box([0,2,15],[1,12,16],"laiton"),box([15,2,15],[16,12,16],"laiton"),
- box([1,2,7],[15,12,15],"source",lum=True),
+ box([1,2,7],[15,12,15],"source",lum=True),box([0.5,2,6.5],[15.5,12,15.5],"fenetre",faces=("east","west","south")),
  box([0,12,4],[4,16,16],"laiton"),box([12,12,4],[16,16,16],"laiton"),box([4,12,12],[12,16,16],"laiton"),                                # dessus, creusé pour la cheminée
  box([4,11.99,4],[12,12,12],"sombre",faces=("up",)),
  SHAFT_N]
@@ -69,6 +68,7 @@ def condenseur(evap):
     e=[box([0,0,0],[16,3,16],"cuivre",faces=("down",)),box([0,0,0],[16,3,16],socle,faces=("north","south","east","west","up"),lum=evap),
        box([0,14,0],[16,16,16],"cuivre",faces=("north","south","east","west","down")),box([0,14,0],[16,16,16],"cuve_haut",faces=("up",)),
        box([0,3,0],[2,14,2],"cuivre"),box([14,3,0],[16,14,2],"cuivre"),box([0,3,14],[2,14,16],"cuivre"),box([14,3,14],[16,14,16],"cuivre"),
+       box([0.5,3,0.5],[15.5,14,15.5],"fenetre",faces=("north","south","east","west")),
        box([-1,5,5],[0.5,11,11],"tuyau_cuivre",faces=("north","south","up","down","west")),box([15.5,5,5],[17,11,11],"tuyau_cuivre",faces=("north","south","up","down","east")),
        box([6,16,6],[10,19,10],"tuyau",faces=("north","south","east","west"))]
     if evap:
