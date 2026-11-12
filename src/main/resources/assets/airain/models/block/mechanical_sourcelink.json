@@ -1,9 +1,9 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "source": "ars_nouveau:block/source_still",
-  "fenetre": "create:block/fluid_tank_window_single",
   "laiton": "create:block/brass_casing",
+  "fenetre": "create:block/fluid_tank_window_single",
+  "source": "ars_nouveau:block/source_still",
   "andesite": "create:block/andesite_casing",
   "particle": "create:block/brass_casing"
  },

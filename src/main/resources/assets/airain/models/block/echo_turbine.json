@@ -1,10 +1,9 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "sombre": "create:block/andesite_casing",
   "laiton": "create:block/brass_casing",
   "fenetre": "create:block/fluid_tank_window_single",
-  "bloc_laiton": "create:block/brass_block",
   "source": "ars_nouveau:block/source_still",
   "particle": "create:block/brass_casing"
  },
@@ -17,231 +16,167 @@
    ],
    "to": [
     16,
-    16,
-    6
-   ],
-   "faces": {
-    "north": {
-     "texture": "#laiton"
-    },
-    "south": {
-     "texture": "#laiton"
-    },
-    "east": {
-     "texture": "#laiton"
-    },
-    "west": {
-     "texture": "#laiton"
-    },
-    "up": {
-     "texture": "#laiton"
-    },
-    "down": {
-     "texture": "#laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    0,
-    0,
-    6
-   ],
-   "to": [
-    16,
-    2,
-    16
-   ],
-   "faces": {
-    "north": {
-     "texture": "#laiton"
-    },
-    "south": {
-     "texture": "#laiton"
-    },
-    "east": {
-     "texture": "#laiton"
-    },
-    "west": {
-     "texture": "#laiton"
-    },
-    "up": {
-     "texture": "#laiton"
-    },
-    "down": {
-     "texture": "#laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    0,
-    14,
-    6
-   ],
-   "to": [
-    16,
-    16,
-    16
-   ],
-   "faces": {
-    "north": {
-     "texture": "#laiton"
-    },
-    "south": {
-     "texture": "#laiton"
-    },
-    "east": {
-     "texture": "#laiton"
-    },
-    "west": {
-     "texture": "#laiton"
-    },
-    "up": {
-     "texture": "#laiton"
-    },
-    "down": {
-     "texture": "#laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    0,
-    2,
-    15
-   ],
-   "to": [
-    1,
-    14,
-    16
-   ],
-   "faces": {
-    "north": {
-     "texture": "#laiton"
-    },
-    "south": {
-     "texture": "#laiton"
-    },
-    "east": {
-     "texture": "#laiton"
-    },
-    "west": {
-     "texture": "#laiton"
-    },
-    "up": {
-     "texture": "#laiton"
-    },
-    "down": {
-     "texture": "#laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    15,
-    2,
-    15
-   ],
-   "to": [
-    16,
-    14,
-    16
-   ],
-   "faces": {
-    "north": {
-     "texture": "#laiton"
-    },
-    "south": {
-     "texture": "#laiton"
-    },
-    "east": {
-     "texture": "#laiton"
-    },
-    "west": {
-     "texture": "#laiton"
-    },
-    "up": {
-     "texture": "#laiton"
-    },
-    "down": {
-     "texture": "#laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    0,
-    2,
-    6
-   ],
-   "to": [
-    1,
-    14,
-    7
-   ],
-   "faces": {
-    "north": {
-     "texture": "#laiton"
-    },
-    "south": {
-     "texture": "#laiton"
-    },
-    "east": {
-     "texture": "#laiton"
-    },
-    "west": {
-     "texture": "#laiton"
-    },
-    "up": {
-     "texture": "#laiton"
-    },
-    "down": {
-     "texture": "#laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    15,
-    2,
-    6
-   ],
-   "to": [
-    16,
-    14,
-    7
-   ],
-   "faces": {
-    "north": {
-     "texture": "#laiton"
-    },
-    "south": {
-     "texture": "#laiton"
-    },
-    "east": {
-     "texture": "#laiton"
-    },
-    "west": {
-     "texture": "#laiton"
-    },
-    "up": {
-     "texture": "#laiton"
-    },
-    "down": {
-     "texture": "#laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    1,
-    2,
-    7
-   ],
-   "to": [
-    15,
     12,
+    6
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    12,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    4
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    0,
+    6
+   ],
+   "to": [
+    16,
+    2,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    2,
+    15
+   ],
+   "to": [
+    1,
+    12,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    15,
+    2,
+    15
+   ],
+   "to": [
+    16,
+    12,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    2,
+    7
+   ],
+   "to": [
+    15,
+    11,
     15
    ],
    "faces": {
@@ -292,7 +227,7 @@
    ],
    "to": [
     15.5,
-    14,
+    12,
     15.5
    ],
    "faces": {
@@ -309,146 +244,114 @@
   },
   {
    "from": [
-    3,
-    16,
-    3
-   ],
-   "to": [
-    13,
-    19,
-    4
-   ],
-   "faces": {
-    "north": {
-     "texture": "#bloc_laiton"
-    },
-    "south": {
-     "texture": "#bloc_laiton"
-    },
-    "east": {
-     "texture": "#bloc_laiton"
-    },
-    "west": {
-     "texture": "#bloc_laiton"
-    },
-    "up": {
-     "texture": "#bloc_laiton"
-    },
-    "down": {
-     "texture": "#bloc_laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    3,
-    16,
-    12
-   ],
-   "to": [
-    13,
-    19,
-    13
-   ],
-   "faces": {
-    "north": {
-     "texture": "#bloc_laiton"
-    },
-    "south": {
-     "texture": "#bloc_laiton"
-    },
-    "east": {
-     "texture": "#bloc_laiton"
-    },
-    "west": {
-     "texture": "#bloc_laiton"
-    },
-    "up": {
-     "texture": "#bloc_laiton"
-    },
-    "down": {
-     "texture": "#bloc_laiton"
-    }
-   }
-  },
-  {
-   "from": [
-    3,
-    16,
+    0,
+    12,
     4
    ],
    "to": [
     4,
-    19,
-    12
+    16,
+    16
    ],
    "faces": {
     "north": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "south": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "east": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "west": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "up": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "down": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     }
    }
   },
   {
    "from": [
     12,
-    16,
+    12,
     4
    ],
    "to": [
-    13,
-    19,
-    12
+    16,
+    16,
+    16
    ],
    "faces": {
     "north": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "south": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "east": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "west": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "up": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     },
     "down": {
-     "texture": "#bloc_laiton"
+     "texture": "#laiton"
     }
    }
   },
   {
    "from": [
     4,
+    12,
+    12
+   ],
+   "to": [
+    12,
     16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#laiton"
+    },
+    "south": {
+     "texture": "#laiton"
+    },
+    "east": {
+     "texture": "#laiton"
+    },
+    "west": {
+     "texture": "#laiton"
+    },
+    "up": {
+     "texture": "#laiton"
+    },
+    "down": {
+     "texture": "#laiton"
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    11.99,
     4
    ],
    "to": [
     12,
-    16.01,
+    12,
     12
    ],
    "faces": {
     "up": {
-     "texture": "#pierre"
+     "texture": "#sombre"
     }
    }
   }

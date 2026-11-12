@@ -1410,7 +1410,7 @@
  "airain.ingenieur.turbine_echo.titre": "Turbine d'Écho",
  "airain.ingenieur.turbine_echo.court": "Turbine d'Écho",
  "airain.ingenieur.turbine_echo.histoire": "Les ingénieurs réfractaires n'avaient pas de charbon : ils faisaient tourner leurs ateliers à la source, en cachette des contrôleurs de l'Empire.",
- "airain.ingenieur.turbine_echo.usage": "Un moteur de Create qui boit de l'Écho liquide, amené par les tuyaux sur n'importe quelle face sauf celle de l'arbre : 20 mB par seconde pour 64 tr/min et 1 024 de force. Sa cuve garde 1 000 mB. Un signal de redstone l'arrête. L'arbre sort de la face avant ; sur le dessus, la cheminée évacue la vapeur d'Écho et ses pales tournent avec la machine.",
+ "airain.ingenieur.turbine_echo.usage": "Un moteur de Create qui boit de l'Écho liquide, amené par les tuyaux sur n'importe quelle face sauf celle de l'arbre : 20 mB par seconde pour 64 tr/min et 1 024 de force. Sa cuve garde 1 000 mB. Un signal de redstone l'arrête. L'arbre sort de la face avant ; dans le dessus, creusée dans le bloc, la cheminée évacue la vapeur d'Écho et ses pales tournent avec la machine.",
  "airain.ingenieur.sourcelink_meca.titre": "Sourcelink mécanique",
  "airain.ingenieur.sourcelink_meca.court": "Sourcelink mécanique",
  "airain.ingenieur.sourcelink_meca.histoire": "L'inverse de la turbine : un sourcelink que l'on remonte comme une horloge. L'engrenage fait tourner la gemme, la gemme pleure de l'Écho. On y perd toujours un peu.",

@@ -1,14 +1,14 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "pierre": "ars_nouveau:block/smooth_sourcestone",
-  "tuyau_cuivre": "create:block/encased_pipe",
-  "gemme": "ars_nouveau:block/source_gem_block",
-  "tuyau": "create:block/glass_fluid_pipe",
   "fenetre": "create:block/fluid_tank_window_single",
-  "cuivre": "create:block/copper_casing",
-  "cuve_haut": "create:block/fluid_tank_top",
+  "tuyau": "create:block/glass_fluid_pipe",
   "glace": "minecraft:block/packed_ice",
+  "tuyau_cuivre": "create:block/encased_pipe",
+  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "cuve_haut": "create:block/fluid_tank_top",
+  "gemme": "ars_nouveau:block/source_gem_block",
+  "cuivre": "create:block/copper_casing",
   "particle": "create:block/copper_casing"
  },
  "elements": [
