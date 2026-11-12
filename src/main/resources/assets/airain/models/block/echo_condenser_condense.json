@@ -1,13 +1,14 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "cuivre": "create:block/copper_casing",
   "tuyau_cuivre": "create:block/encased_pipe",
-  "pierre": "ars_nouveau:block/smooth_sourcestone",
+  "fenetre": "airain:block/echo_glass",
   "tuyau": "create:block/glass_fluid_pipe",
+  "pierre": "ars_nouveau:block/smooth_sourcestone",
   "glace": "minecraft:block/packed_ice",
-  "cuve_haut": "create:block/fluid_tank_top",
+  "cuivre": "create:block/copper_casing",
   "gemme": "ars_nouveau:block/source_gem_block",
+  "cuve_haut": "create:block/fluid_tank_top",
   "particle": "create:block/copper_casing"
  },
  "elements": [
@@ -228,6 +229,32 @@
     },
     "down": {
      "texture": "#cuivre"
+    }
+   }
+  },
+  {
+   "from": [
+    0.5,
+    3,
+    0.5
+   ],
+   "to": [
+    15.5,
+    14,
+    15.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#fenetre"
+    },
+    "south": {
+     "texture": "#fenetre"
+    },
+    "east": {
+     "texture": "#fenetre"
+    },
+    "west": {
+     "texture": "#fenetre"
     }
    }
   },

@@ -1,9 +1,9 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
+  "laiton": "create:block/brass_casing",
   "bloc_laiton": "create:block/brass_block",
   "source": "ars_nouveau:block/source_still",
-  "laiton": "create:block/brass_casing",
   "cristal": "minecraft:block/amethyst_cluster",
   "particle": "create:block/brass_casing"
  },

@@ -1,9 +1,10 @@
 {
  "parent": "minecraft:block/block",
  "textures": {
-  "andesite": "create:block/andesite_casing",
   "source": "ars_nouveau:block/source_still",
   "laiton": "create:block/brass_casing",
+  "andesite": "create:block/andesite_casing",
+  "fenetre": "airain:block/echo_glass",
   "particle": "create:block/brass_casing"
  },
  "elements": [
@@ -393,6 +394,32 @@
     }
    },
    "shade": false
+  },
+  {
+   "from": [
+    0.5,
+    2,
+    0.5
+   ],
+   "to": [
+    15.5,
+    6,
+    15.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#fenetre"
+    },
+    "south": {
+     "texture": "#fenetre"
+    },
+    "east": {
+     "texture": "#fenetre"
+    },
+    "west": {
+     "texture": "#fenetre"
+    }
+   }
   },
   {
    "from": [
