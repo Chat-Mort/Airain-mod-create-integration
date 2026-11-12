@@ -5,6 +5,20 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 12 novembre 2026 — version 1.47.0
+
+**Ajouts**
+- **Machines d'Écho**, le pont entre Create et Ars Nouveau, en milieu de partie :
+  - **Turbine d'Écho** : un moteur de Create qui brûle la source des jarres proches (20 par seconde) pour 64 tr/min et 1 024 de force ;
+  - **Sourcelink mécanique** : l'inverse, la rotation devient de la source versée dans les jarres, avec un peu de perte ;
+  - **Diffuseur d'Écho** : posé devant un ventilateur, il donne un nouveau traitement, l'imprégnation. Éclat d'améthyste ou lapis en gemme de source, bloc d'améthyste en bloc de gemme de source, sculk en éclat d'écho ;
+  - **Condenseur d'Écho** : la source des jarres devient de l'**Écho liquide**, qui passe dans les tuyaux de Create, et l'inverse (90 %). Au bec verseur, l'Écho liquide imprègne les objets un par un.
+- **Glyphe de l'engrenage** (Ars Nouveau, niveau 2) : il accélère une machine de Create quelques secondes, grippe les automates (Rôdeur, Centurion nain, golems de l'End…) et soigne les gardiens d'airain.
+- Livre de l'ingénieur : un cinquième sommaire, **Fusion**, avec une page par machine.
+- Annexe Ingénierie : une ligne de cinq quêtes, « Les machines réfractaires ».
+
+---
+
 ## 6 novembre 2026 — versions 1.44.0 à 1.46.1
 
 **Ajouts**

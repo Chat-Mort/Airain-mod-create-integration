@@ -168,6 +168,10 @@
 		"Its markets sell for coins, and its trial laboratory hides a journal."
 	]
 	"quest.14B5ABF61C3CBA18.title": "The Mechanical City"
+	"quest.14FF93BAA2E7DE34.quest_desc": [
+		"The condenser turns the source of jars into liquid Echo, which flows through pipes. A spout uses it to imbue items one by one."
+	]
+	"quest.14FF93BAA2E7DE34.title": "Liquid Echo"
 	"quest.1503E9BC853DDD58.quest_desc": [
 		"Find an Empire outpost. Nobody is waiting for you there, but its machines still work: you can buy what you lack with coins."
 		"One room there is still sealed. Come back when you have the right Schematic."
@@ -358,6 +362,10 @@
 		"\"You don't wear the robe to protect yourself. You wear it so the lost recognise you.\""
 	]
 	"quest.1DF1C682CA5AEA52.title": "The Robe of the Arcana"
+	"quest.1E2D5921BF7C63E6.quest_desc": [
+		"An Echo Diffuser in front of a fan: the airflow imbues everything it touches. Amethyst shards become source gems, sculk becomes echo shards."
+	]
+	"quest.1E2D5921BF7C63E6.title": "The Echo Mist"
 	"quest.1EAB9C7B77E4AB38.quest_desc": [
 		"The choice is made. Read the book it left you: this is the end of the story, yours."
 		""
@@ -705,6 +713,10 @@
 		"Eyes of Ender, thrown into the air, lead you there. The gate to the End only opens after the Soul Forge."
 	]
 	"quest.349D5216D8932504.title": "The Stronghold"
+	"quest.35DB86F169ABDBCC.quest_desc": [
+		"The turbine's opposite: rotation becomes source, poured into jars. Something is always lost."
+	]
+	"quest.35DB86F169ABDBCC.title": "The Mechanical Sourcelink"
 	"quest.35F93598035AE578.quest_desc": [
 		"You wake up in a room with no memory at all. A lamp crackles, a clock has stopped. On the table, a notebook waits to be opened."
 		"Look for clues: the engineer's notebook tells what happened here."
@@ -727,6 +739,12 @@
 		"&oThe tide guardians will keep the secret of the alloy.&r"
 	]
 	"quest.370DB6CD983FF0CC.title": "The Inscriptions"
+	"quest.376963AEBE46325E.quest_desc": [
+		"The Refractory engineers ran their workshops on source. An Echo Turbine burns the source of nearby jars and gives 64 RPM."
+		"&8Mechanical crafter. Everything is in the engineer's manual, Fusion tab.&r"
+	]
+	"quest.376963AEBE46325E.quest_subtitle": "The Refractory Machines"
+	"quest.376963AEBE46325E.title": "The Echo Turbine"
 	"quest.37B3F0D4305E4904.quest_desc": [
 		"&7Optional.&r Vendors ask for the exact coins and give no change. The bank solves that."
 		""
@@ -1258,6 +1276,10 @@
 		"Envelopes hold the hot air: the more there are, the heavier the craft can lift. Dyers coloured them in the city's colours."
 	]
 	"quest.618F5BC2D53A0570.title": "Canvas Yard"
+	"quest.61D8426CE542D0C8.quest_desc": [
+		"The only spell both sides learned from each other. Cast on a Create machine, it makes it run faster. Cast on an automaton, it jams its gears."
+	]
+	"quest.61D8426CE542D0C8.title": "The Glyph of the Gear"
 	"quest.62AA25CF72321165.quest_desc": [
 		"&7Optional.&r Some weapons found in the ruins carry a curse. The Empire knew how to undo it without breaking the item."
 		"Give &6rune ink&r to the disenchanter (right-click). A cursed item fed to it is then no longer destroyed: it loses &6one curse per pass&r, for one ink and 500 mB of oil, and comes out with its other enchantments intact."

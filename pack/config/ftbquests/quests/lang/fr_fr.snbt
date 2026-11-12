@@ -168,6 +168,10 @@
 		"Ses marchés vendent contre des pièces, et son laboratoire d'essais cache un journal."
 	]
 	"quest.14B5ABF61C3CBA18.title": "La cité mécanique"
+	"quest.14FF93BAA2E7DE34.quest_desc": [
+		"Le condenseur change la source des jarres en Écho liquide, qui coule dans les tuyaux. Un bec verseur s'en sert pour imprégner les objets un par un."
+	]
+	"quest.14FF93BAA2E7DE34.title": "L'Écho liquide"
 	"quest.1503E9BC853DDD58.quest_desc": [
 		"Trouvez un avant-poste de l'Empire. Personne ne vous y attend, mais ses machines fonctionnent encore : on y achète ce qui manque contre des pièces."
 		"Une salle y est restée scellée. Revenez quand vous aurez le bon Schéma."
@@ -358,6 +362,10 @@
 		"« On ne porte pas la robe pour se protéger. On la porte pour que les égarés nous reconnaissent. »"
 	]
 	"quest.1DF1C682CA5AEA52.title": "La robe des Arcanes"
+	"quest.1E2D5921BF7C63E6.quest_desc": [
+		"Un diffuseur d'Écho devant un ventilateur : le souffle imprègne d'Écho tout ce qu'il touche. Les éclats d'améthyste deviennent des gemmes de source, le sculk des éclats d'écho."
+	]
+	"quest.1E2D5921BF7C63E6.title": "La brume d'Écho"
 	"quest.1EAB9C7B77E4AB38.quest_desc": [
 		"Le choix est fait. Lisez le livre qu'il vous a laissé : c'est la fin de l'histoire, la vôtre."
 		""
@@ -705,6 +713,10 @@
 		"Les yeux de l'Ender, lancés en l'air, vous y mènent. La porte vers l'End ne s'ouvrira qu'après la forge des âmes."
 	]
 	"quest.349D5216D8932504.title": "Le fort souterrain"
+	"quest.35DB86F169ABDBCC.quest_desc": [
+		"L'inverse de la turbine : la rotation devient de la source, versée dans les jarres. On y perd toujours un peu."
+	]
+	"quest.35DB86F169ABDBCC.title": "Le sourcelink mécanique"
 	"quest.35F93598035AE578.quest_desc": [
 		"Vous vous réveillez dans une salle sans aucun souvenir. Une lampe grésille, une horloge s'est arrêtée. Sur la table, un carnet attend qu'on l'ouvre."
 		"Cherchez des indices : le carnet de l'ingénieur raconte ce qui s'est passé ici."
@@ -727,6 +739,12 @@
 		"&oLes gardiens des marées garderont le secret de l'alliage.&r"
 	]
 	"quest.370DB6CD983FF0CC.title": "Les inscriptions"
+	"quest.376963AEBE46325E.quest_desc": [
+		"Les ingénieurs réfractaires faisaient tourner leurs ateliers à la source. Une turbine d'Écho brûle la source des jarres proches et rend 64 tr/min."
+		"&8Établi mécanique. Tout est dans le livre de l'ingénieur, onglet Fusion.&r"
+	]
+	"quest.376963AEBE46325E.quest_subtitle": "Les machines réfractaires"
+	"quest.376963AEBE46325E.title": "La turbine d'Écho"
 	"quest.37B3F0D4305E4904.quest_desc": [
 		"&7Optionnel.&r Les distributeurs demandent les pièces exactes et ne rendent pas la monnaie. La banque règle ce problème."
 		""
@@ -1258,6 +1276,10 @@
 		"Les enveloppes retiennent l'air chaud : plus il y en a, plus l'engin soulève lourd. Les teinturiers les coloraient aux couleurs de la cité."
 	]
 	"quest.618F5BC2D53A0570.title": "Chantier de toile"
+	"quest.61D8426CE542D0C8.quest_desc": [
+		"Le seul sort que les deux camps ont appris l'un de l'autre. Lancé sur une machine de Create, il la fait tourner plus vite. Lancé sur un automate, il grippe ses rouages."
+	]
+	"quest.61D8426CE542D0C8.title": "Le glyphe de l'engrenage"
 	"quest.62AA25CF72321165.quest_desc": [
 		"&7Optionnel.&r Certaines armes trouvées dans les ruines portent une malédiction. L'Empire savait la défaire sans briser l'objet."
 		"Donnez de l'&6encre runique&r au désenchanteur (clic droit). Un objet maudit qu'on lui confie n'est alors plus détruit : il perd &6une malédiction par passage&r, contre une encre et 500 mB d'huile, puis ressort avec ses autres enchantements intacts."
