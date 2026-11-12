@@ -21,7 +21,7 @@ ecrire('echo_turbine/rotor', ROTOR_TURBINE)   # les pales de la cheminée, à pl
 # socle bas (8 de haut) : chaque bande lit le bon morceau du boîtier, pour garder son bord tout autour
 base=[bande(box([0,0,0],[16,2,16],"andesite"),14,16),bande(box([0,6,0],[16,8,16],"andesite"),0,2),
       bande(box([0,2,0],[2,6,2],"andesite"),2,6),bande(box([14,2,0],[16,6,2],"andesite"),2,6),bande(box([0,2,14],[2,6,16],"andesite"),2,6),bande(box([14,2,14],[16,6,16],"andesite"),2,6),
-      box([1,2,1],[15,6,15],"source",lum=True),box([0.5,2,0.5],[15.5,6,15.5],"fenetre",faces=("north","south","east","west")),
+      box([2,2,2],[14,6,14],"source",lum=True),*vitre("south",2,14,2,6),*vitre("west",2,14,2,6),*vitre("east",2,14,2,6),
       bande(box([0,4,-0.01],[16,8,0],"laiton",faces=("north",)),0,4),bande(box([0,0,-0.01],[16,4,0],"laiton",faces=("north",)),12,16)]   # plaque de l'arbre : bords haut et bas
 ecrire('mechanical_sourcelink', base)
 ecrire('mechanical_sourcelink/rotor', [*deplace(COG,0,2,0), box([5,11.5,5],[11,13,11],"pierre"),box([4,13,4],[12,14,12],"dore"),
