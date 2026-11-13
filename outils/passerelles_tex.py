@@ -22,3 +22,18 @@ for s,pre in enumerate(['','exposed_','weathered_','oxidized_']):
     rendre_carte(caillebotis(),T[s]).save(OUT+pre+'airain_catwalk.png')
     rendre_carte(echelle(),T[s]).save(OUT+pre+'airain_ladder.png')
 print('ok')
+# tôle larmée (plancher plein) : plaque polie avec des larmes en relief, alternées en diagonale
+def tole():
+    c=vide(); plaque(0,0,15,15,c,3.0,0.6)
+    for gy in range(4):
+        for gx in range(4):
+            x0,y0=gx*4+1,gy*4+1
+            if (gx+gy)%2==0: pts=[(x0,y0+2),(x0+1,y0+1),(x0+2,y0)]
+            else: pts=[(x0,y0),(x0+1,y0+1),(x0+2,y0+2)]
+            for i,(x,y) in enumerate(pts):
+                if 0<x<15 and 0<y<15: c[y][x]=5.2 if i<2 else 4.6
+                if 0<x+1<15 and 0<y+1<15 and c[y+1][x+1] is not None and c[y+1][x+1]<4: c[y+1][x+1]=1.8
+    return c
+for s,pre in enumerate(['','exposed_','weathered_','oxidized_']):
+    rendre_carte(tole(),T[s]).save(OUT+pre+'airain_tread_plate.png')
+print('tole ok')

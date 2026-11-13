@@ -25,6 +25,18 @@ def modele(nom, elements, tex):
 def plancher(h):
     return [el([0,h-2,0],[16,h,16],'#g',faces=("up","down"),full=True),
             el([0,h-2,0],[16,h,1]),el([0,h-2,15],[16,h,16]),el([0,h-2,1],[1,h,15]),el([15,h-2,1],[16,h,15])]
+def plein(E):
+    out=[]
+    for e in E:
+        e=json.loads(json.dumps(e))
+        for f in e['faces'].values():
+            if f['texture']=='#g': f['texture']='#p'
+        out.append(e)
+    return out
+def tunnel():
+    # tunnel plein autour de l'échelle : trois parois de tôle, ouvertes côté mur
+    return [el([1,0,1],[15,16,2],'#m',faces=("north","south"),full=True),el([1,0,2],[2,16,13],'#m',faces=("east","west"),full=True),
+            el([14,0,2],[15,16,13],'#m',faces=("east","west"),full=True)]
 def rambarde_nord(h):
     return [el([0,h+11,0],[16,h+13,2]),el([0,h+6,0.5],[16,h+7,1.5]),el([0,h,0.5],[16,h+3,1]),el([0,h,0],[2,h+13,2])]
 def portillon_nord(h, ouvert):
@@ -83,20 +95,20 @@ def cage():
 # ---------------------------------------------------------------- modèles par teinte
 ROT={'north':0,'east':90,'south':180,'west':270}
 for p in PRE:
-    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain'}
+    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain','p':f'airain:block/{p}airain_tread_plate'}
     for haut,h in (('bottom',3),('top',11)):
-        modele(f'{p}airain_catwalk_floor_{haut}',plancher(h),tex)
+        modele(f'{p}airain_catwalk_floor_{haut}',plancher(h),tex); modele(f'{p}airain_catwalk_floor_solid_{haut}',plein(plancher(h)),tex)
         modele(f'{p}airain_catwalk_railing_{haut}',rambarde_nord(h),tex)
         modele(f'{p}airain_catwalk_gate_{haut}',portillon_nord(h,False),tex)
         modele(f'{p}airain_catwalk_gate_open_{haut}',portillon_nord(h,True),tex)
-        modele(f'{p}airain_catwalk_ramp_{haut}',rampe_base(h),tex)
+        modele(f'{p}airain_catwalk_ramp_{haut}',rampe_base(h),tex); modele(f'{p}airain_catwalk_ramp_solid_{haut}',plein(rampe_base(h)),tex)
         modele(f'{p}airain_catwalk_ramp_left_{haut}',rampe_cote(h,0),tex)
         modele(f'{p}airain_catwalk_ramp_right_{haut}',rampe_cote(h,14),tex)
-    modele(f'{p}airain_catwalk_stairs',escalier_base(),tex)
+    modele(f'{p}airain_catwalk_stairs',escalier_base(),tex); modele(f'{p}airain_catwalk_stairs_solid',plein(escalier_base()),tex)
     modele(f'{p}airain_catwalk_stairs_left',escalier_rampe(0),tex)
     modele(f'{p}airain_catwalk_stairs_right',escalier_rampe(14),tex)
     modele(f'{p}airain_support',poteau_fut(),tex); modele(f'{p}airain_support_bottom',poteau_bas(),tex); modele(f'{p}airain_support_top',poteau_haut(),tex)
-    modele(f'{p}airain_ladder',echelle(),tex); modele(f'{p}airain_ladder_cage',cage(),tex)
+    modele(f'{p}airain_ladder',echelle(),tex); modele(f'{p}airain_ladder_cage',cage(),tex); modele(f'{p}airain_ladder_tunnel',tunnel(),tex)
     # objets : une pièce complète
     modele(f'{p}airain_catwalk_item',plancher(3)+rambarde_nord(3),tex)
     modele(f'{p}airain_catwalk_stairs_item',escalier_base()+escalier_rampe(0)+escalier_rampe(14),tex)
@@ -114,7 +126,8 @@ for f in FAM:
         for c in (0,1):
             i=('waxed_' if c else '')+p+f; TOUS.append(i); M=lambda n: f'airain:block/{p}{n}'
             if f=='airain_catwalk':
-                parts=[mp(M('airain_catwalk_floor_bottom'),{"top":"false"}),mp(M('airain_catwalk_floor_top'),{"top":"true"})]
+                parts=[mp(M('airain_catwalk_floor_bottom'),{"top":"false","solid":"false"}),mp(M('airain_catwalk_floor_top'),{"top":"true","solid":"false"}),
+                       mp(M('airain_catwalk_floor_solid_bottom'),{"top":"false","solid":"true"}),mp(M('airain_catwalk_floor_solid_top'),{"top":"true","solid":"true"})]
                 for d,r in ROT.items():
                     for etat,modl in (('railing','railing'),('gate','gate'),('gate_open','gate_open')):
                         for haut in ('false','true'):
@@ -123,21 +136,21 @@ for f in FAM:
             elif f=='airain_catwalk_stairs':
                 parts=[]
                 for d,r in ROT.items():
-                    parts+=[mp(M('airain_catwalk_stairs'),{"facing":d},r),mp(M('airain_catwalk_stairs_left'),{"facing":d,"left":"true"},r),mp(M('airain_catwalk_stairs_right'),{"facing":d,"right":"true"},r)]
+                    parts+=[mp(M('airain_catwalk_stairs'),{"facing":d,"solid":"false"},r),mp(M('airain_catwalk_stairs_solid'),{"facing":d,"solid":"true"},r),mp(M('airain_catwalk_stairs_left'),{"facing":d,"left":"true"},r),mp(M('airain_catwalk_stairs_right'),{"facing":d,"right":"true"},r)]
                 bs={"multipart":parts}
             elif f=='airain_catwalk_ramp':
                 parts=[]
                 for d,r in ROT.items():
                     for haut in ('false','true'):
                         hh='top' if haut=='true' else 'bottom'
-                        parts+=[mp(M('airain_catwalk_ramp_'+hh),{"facing":d,"top":haut},r),mp(M('airain_catwalk_ramp_left_'+hh),{"facing":d,"top":haut,"left":"true"},r),
+                        parts+=[mp(M('airain_catwalk_ramp_'+hh),{"facing":d,"top":haut,"solid":"false"},r),mp(M('airain_catwalk_ramp_solid_'+hh),{"facing":d,"top":haut,"solid":"true"},r),mp(M('airain_catwalk_ramp_left_'+hh),{"facing":d,"top":haut,"left":"true"},r),
                                 mp(M('airain_catwalk_ramp_right_'+hh),{"facing":d,"top":haut,"right":"true"},r)]
                 bs={"multipart":parts}
             elif f=='airain_support':
                 bs={"multipart":[mp(M('airain_support')),mp(M('airain_support_bottom'),{"bottom":"true"}),mp(M('airain_support_top'),{"top":"true"})]}
             else:
                 parts=[]
-                for d,r in ROT.items(): parts+=[mp(M('airain_ladder'),{"facing":d},r),mp(M('airain_ladder_cage'),{"facing":d,"cage":"true"},r)]
+                for d,r in ROT.items(): parts+=[mp(M('airain_ladder'),{"facing":d},r),mp(M('airain_ladder_cage'),{"facing":d,"cage":"cage"},r),mp(M('airain_ladder_tunnel'),{"facing":d,"cage":"full"},r)]
                 bs={"multipart":parts}
             w(AS+f'blockstates/{i}.json',bs)
             w(AS+f'models/item/{i}.json',{"parent":M(f+'_item')})
