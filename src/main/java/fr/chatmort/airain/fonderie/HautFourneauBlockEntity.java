@@ -130,7 +130,7 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 						if (n != s) level.setBlock(p, n, Block.UPDATE_CLIENTS);
 					}
 					if (monte && s.is(Fourneau.TUYERE.get())) {                // la buse se tourne vers l'extérieur
-						Direction dehors = lz == 1 ? (lx < 0 ? a.getCounterClockWise() : a.getClockWise()) : a.getOpposite();
+						Direction dehors = lz == 1 ? (lx > 0 ? a.getCounterClockWise() : a.getClockWise()) : a.getOpposite();   // lx > 0 : côté anti-horaire (voir local)
 						if (s.getValue(FourneauBlocs.FACING) != dehors) level.setBlock(p, s.setValue(FourneauBlocs.FACING, dehors), Block.UPDATE_CLIENTS);
 					}
 				}
@@ -138,7 +138,7 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	/** Les modèles de coin sont dessinés pour le coin nord-ouest, puis tournés : on choisit la rotation selon le coin réel. */
 	private Direction orientationCoin(int lx, int lz) {
 		Direction a = avant();
-		Direction cote = lx < 0 ? a.getCounterClockWise() : a.getClockWise();     // face latérale extérieure
+		Direction cote = lx > 0 ? a.getCounterClockWise() : a.getClockWise();     // face latérale extérieure (lx > 0 : côté anti-horaire)
 		Direction fond = lz == 0 ? a : a.getOpposite();                           // face avant ou arrière
 		boolean n = cote == Direction.NORTH || fond == Direction.NORTH, s = cote == Direction.SOUTH || fond == Direction.SOUTH;
 		boolean o = cote == Direction.WEST || fond == Direction.WEST;
