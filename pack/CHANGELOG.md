@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 13 novembre 2026 — versions 1.48.0 à 1.49.1
+## 13 novembre 2026 — versions 1.48.0 à 1.49.2
 
 **Ajouts**
 - **L'airain**, l'alliage secret de l'Empire : lingot, pépite, plaque, engrenage d'airain et airain en fusion. Il ne sort que du haut-fourneau.
@@ -16,7 +16,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - la vitesse du ventilateur règle le débit ; l'airain en fusion sort au tuyau, le laitier à l'entonnoir ; les lunettes d'ingénieur montrent la chaleur, le souffle et la cuve.
 - **Le style impérial** : bloc d'airain, airain taillé, riveté, ciselé, pilier, escaliers, dalles, grille, barreaux, porte et trappe ferronnées, chaîne, et une lanterne à flamme rouge. Avec le temps, l'airain vire du doré au rouge impérial en quatre teintes ; la cire fige la teinte, la hache la ramène.
 - **Engrenage d'airain** (assemblage séquencé) : il entre dans le Cœur d'Airain (avec des blocs d'airain), la Machine différentielle, le trône impérial et la charte impériale.
-- **Passerelles d'airain** (style industriel) : passerelle en caillebotis, à hauteur basse ou à mi-hauteur, avec des rambardes qui se posent seules sur les côtés libres (la clé de Create en retire ou en remet une) ; escalier qui monte d'un bloc ; rampe qui monte d'une demi-hauteur ; portillon à poser sur une rambarde ; poteau de soutien évasé ; échelle d'airain à crinoline. La clé de Create passe le sol d'une passerelle, d'un escalier ou d'une rampe du caillebotis à la tôle pleine, et l'entourage de l'échelle de rien à la crinoline puis au tunnel plein. Tout se patine comme l'airain.
+- **Passerelles d'airain** (style industriel) : passerelle en caillebotis, à hauteur basse ou à mi-hauteur, avec des rambardes qui se posent seules sur les côtés libres (la clé de Create en retire ou en remet une) ; escalier qui monte d'un bloc ; rampe qui monte d'une demi-hauteur ; portillon à poser sur une rambarde ; poteau de soutien évasé ; échelle d'airain à crinoline. La clé de Create passe le sol d'une passerelle, d'un escalier ou d'une rampe du caillebotis à l'airain plein, et l'entourage de l'échelle de rien à la crinoline puis au tunnel plein. Tout se patine comme l'airain.
 - Nouvelle annexe de quêtes « La fonderie impériale » (9 quêtes) et quatre pages dans le livre de l'ingénieur.
 
 **Changements**

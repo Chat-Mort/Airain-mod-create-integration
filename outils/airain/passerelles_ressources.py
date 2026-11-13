@@ -18,7 +18,17 @@ def el(fr,to,t='#m',faces=ALL,rot=None,full=False):
     e={"from":[round(v,3) for v in fr],"to":[round(v,3) for v in to],"faces":f}
     if rot: e["rotation"]={"origin":rot[0],"axis":rot[1],"angle":rot[2],"rescale":True}
     return e
+def uv_position(E):
+    for e in E:
+        x0,_,z0=e['from']; x1,_,z1=e['to']
+        for k in ('up','down'):
+            f=e['faces'].get(k)
+            if f and f['texture'] in ('#g','#m') and 'rotation' not in e and abs(e['to'][1]-e['from'][1])<=2.01 and (x1-x0)>=1.99 and (z1-z0)>=1.99:
+                u0,u1=sorted((max(0,min(16,x0)),max(0,min(16,x1)))); v0,v1=sorted((max(0,min(16,z0)),max(0,min(16,z1))))
+                f['uv']=[u0,v0,u1,v1] if k=='up' else [u0,16-v1,u1,16-v0]
+    return E
 def modele(nom, elements, tex):
+    elements=uv_position(elements)
     w(AS+f'models/block/{nom}.json',{"parent":"minecraft:block/block","render_type":"minecraft:cutout","ambientocclusion":False,
        "textures":dict(tex,particle=tex['m']),"elements":elements})
 # ---------------------------------------------------------------- géométrie (pièces décrites côté nord / montant vers le nord)
@@ -30,7 +40,7 @@ def plein(E):
     for e in E:
         e=json.loads(json.dumps(e))
         for f in e['faces'].values():
-            if f['texture']=='#g': f['texture']='#p'
+            if f['texture']=='#g': f['texture']='#m'
         out.append(e)
     return out
 def tunnel():
@@ -95,7 +105,7 @@ def cage():
 # ---------------------------------------------------------------- modèles par teinte
 ROT={'north':0,'east':90,'south':180,'west':270}
 for p in PRE:
-    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain','p':f'airain:block/{p}airain_tread_plate'}
+    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain'}
     for haut,h in (('bottom',3),('top',11)):
         modele(f'{p}airain_catwalk_floor_{haut}',plancher(h),tex); modele(f'{p}airain_catwalk_floor_solid_{haut}',plein(plancher(h)),tex)
         modele(f'{p}airain_catwalk_railing_{haut}',rambarde_nord(h),tex)
