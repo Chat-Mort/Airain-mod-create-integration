@@ -239,5 +239,68 @@
 			x: 8.0d
 			y: 1.0d
 		}
+		{
+			dependencies: ["1B4E33638C6A805D"]
+			id: "67695976737B0BB5"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "44199158D08F3A19"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_catwalk_landing" }
+					count: 1L
+					id: "36A97DEB71195D5C"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_hanger" }
+					count: 2L
+					id: "19D07BCAD2C4F4FF"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_railing" }
+					count: 4L
+					id: "2D339DCD537AADFE"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["2ADCE98DF27075B6"]
+			id: "1A965A7BFBF0677E"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "632D59A7F2D1A82D"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_air_duct" }
+					count: 8L
+					id: "29E264B01E50CAC9"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_air_vent" }
+					count: 1L
+					id: "217FB0EED53D5D8B"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 2.0d
+		}
 	]
 }

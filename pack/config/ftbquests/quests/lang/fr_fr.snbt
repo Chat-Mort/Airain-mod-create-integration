@@ -281,6 +281,11 @@
 	]
 	"quest.19F9F56FA350AD47.quest_subtitle": "Quête secondaire : réparer sans expérience"
 	"quest.19F9F56FA350AD47.title": "Le banc d'entretien"
+	"quest.1A965A7BFBF0677E.quest_desc": [
+		"Un ventilateur de Create souffle dans un conduit d'air ; à l'autre bout, la bouche d'air rend exactement le même courant : même force, même portée, mêmes traitements, quelle que soit la longueur (64 conduits au plus)."
+		"&8Les lunettes d'ingénieur montrent le courant transmis.&r"
+	]
+	"quest.1A965A7BFBF0677E.title": "Le souffle de l'Empire"
 	"quest.1AC4C8BD4097E5BF.quest_desc": [
 		"Les officiers de l'Empire portaient le diamant serti dans le cuivre : plus léger, aussi solide."
 		"Diamants + plaques de cuivre + Sceau de la Forge (non consommé), à l'établi."
@@ -1390,6 +1395,10 @@
 		"L'amélioration de fonte automatique cuit ce que vous ramassez. Gardez du combustible dans son emplacement."
 	]
 	"quest.6744DC79A58ED05B.title": "Sac de diamant"
+	"quest.67695976737B0BB5.quest_desc": [
+		"&7Optionnel.&r L'escalier à palier tourne d'un quart de tour en montant d'un bloc, avec un palier à mi-hauteur qui se raccorde aux passerelles hautes. Les suspentes pendent les passerelles au plafond ; la rambarde seule borde n'importe quel bloc."
+	]
+	"quest.67695976737B0BB5.title": "L'usine suspendue"
 	"quest.68203257D12F33AA.quest_desc": [
 		"La première ligne de l'Empire reliait la mine à la forge. Le reste du réseau en est né."
 		"Les rails se fabriquent par assemblage en séquence. Les ruines sont loin : reliez le monde."

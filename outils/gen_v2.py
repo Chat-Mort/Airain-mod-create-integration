@@ -1155,6 +1155,18 @@ quest(cF, "fo_passerelle", ("Au-dessus des machines", "Above the Machines"), 8, 
       [T_item("airain:airain_catwalk", 16), T_item("airain:airain_catwalk_stairs", 2)], [R_coin("cog", 1)], deps=["fo_style"],
       desc=D(["Dans les usines de l'Empire, on circulait au-dessus des machines. Passerelles, escaliers, rampes, poteaux et échelles d'airain : les rambardes se posent seules, la clé de Create les retire ou les remet."],
              ["In the Empire's factories people moved above the machines. Airain catwalks, stairs, ramps, supports and ladders: railings appear on their own, the Create wrench removes or restores them."]))
+quest(cF, "fo_atelier", ("L'usine suspendue", "The Hanging Factory"), 10, 1,
+      [T_item("airain:airain_catwalk_landing"), T_item("airain:airain_hanger", 2), T_item("airain:airain_railing", 4)], [R_coin("sprocket", 2)],
+      deps=["fo_passerelle"], optional=True,
+      desc=D(["&7Optionnel.&r L'escalier à palier tourne d'un quart de tour en montant d'un bloc, avec un palier à mi-hauteur qui se raccorde aux passerelles hautes. Les suspentes pendent les passerelles au plafond ; la rambarde seule borde n'importe quel bloc."],
+             ["&7Optional.&r Landing stairs turn a quarter in climbing one block, with a half-height landing that joins high catwalks. Hangers hang catwalks from the ceiling; the standalone railing edges any block."]))
+quest(cF, "fo_conduit", ("Le souffle de l'Empire", "The Empire's Breath"), 8, 2,
+      [T_item("airain:airain_air_duct", 8), T_item("airain:airain_air_vent")], [R_coin("cog", 2)],
+      deps=["fo_engrenage"],
+      desc=D(["Un ventilateur de Create souffle dans un conduit d'air ; à l'autre bout, la bouche d'air rend exactement le même courant : même force, même portée, mêmes traitements, quelle que soit la longueur (64 conduits au plus).",
+              "&8Les lunettes d'ingénieur montrent le courant transmis.&r"],
+             ["A Create fan blows into an air duct; at the far end, the air vent gives back exactly the same current: same force, same range, same processing, whatever the length (64 ducts at most).",
+              "&8Engineer's goggles show the transmitted current.&r"]))
 # le Cœur demande de l'airain : « Forger le Cœur » dépend aussi de l'engrenage d'airain
 [q for q in c6["quests"] if q["id"] == QUESTS["forger"]][0]["deps"].append(QUESTS["fo_engrenage"])
 

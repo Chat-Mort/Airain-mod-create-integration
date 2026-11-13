@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 13 novembre 2026 — versions 1.48.0 à 1.49.2
+## 13 novembre 2026 — versions 1.48.0 à 1.50.0
 
 **Ajouts**
 - **L'airain**, l'alliage secret de l'Empire : lingot, pépite, plaque, engrenage d'airain et airain en fusion. Il ne sort que du haut-fourneau.
@@ -17,7 +17,11 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 - **Le style impérial** : bloc d'airain, airain taillé, riveté, ciselé, pilier, escaliers, dalles, grille, barreaux, porte et trappe ferronnées, chaîne, et une lanterne à flamme rouge. Avec le temps, l'airain vire du doré au rouge impérial en quatre teintes ; la cire fige la teinte, la hache la ramène.
 - **Engrenage d'airain** (assemblage séquencé) : il entre dans le Cœur d'Airain (avec des blocs d'airain), la Machine différentielle, le trône impérial et la charte impériale.
 - **Passerelles d'airain** (style industriel) : passerelle en caillebotis, à hauteur basse ou à mi-hauteur, avec des rambardes qui se posent seules sur les côtés libres (la clé de Create en retire ou en remet une) ; escalier qui monte d'un bloc ; rampe qui monte d'une demi-hauteur ; portillon à poser sur une rambarde ; poteau de soutien évasé ; échelle d'airain à crinoline. La clé de Create passe le sol d'une passerelle, d'un escalier ou d'une rampe du caillebotis à l'airain plein, et l'entourage de l'échelle de rien à la crinoline puis au tunnel plein. Tout se patine comme l'airain.
-- Nouvelle annexe de quêtes « La fonderie impériale » (9 quêtes) et quatre pages dans le livre de l'ingénieur.
+- **Escalier à palier** : une marche, un palier à mi-hauteur, puis une marche à 90° qui ressort un bloc plus haut (virage à gauche ou à droite selon la moitié du bloc visée). Les côtés extérieurs du palier se raccordent aux passerelles à mi-hauteur et au haut des rampes, sinon ils portent une rambarde (portillon possible).
+- **Suspente d'airain** : pend une passerelle au plafond ; ses deux tirants longent les rambardes et son étrier se cale sous le plancher, bas ou à mi-hauteur.
+- **Rambarde d'airain seule** : se pose au bord de n'importe quel bloc ; on ajoute un côté avec une autre rambarde, la clé de Create en retire un.
+- **Conduite d'air** : un ventilateur de Create souffle dans un réseau de conduits d'air (raccords automatiques, jusqu'à 64 conduits) ; la bouche d'air au bout rend exactement le même courant (même force, même portée, mêmes traitements). Aspiration comprise. Les lunettes d'ingénieur affichent le courant transmis.
+- Nouvelle annexe de quêtes « La fonderie impériale » (11 quêtes) et cinq pages dans le livre de l'ingénieur.
 
 **Changements**
 - « Forger le Cœur » demande aussi l'engrenage d'airain.

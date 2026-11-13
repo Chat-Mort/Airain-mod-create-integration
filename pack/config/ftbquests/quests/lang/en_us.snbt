@@ -281,6 +281,11 @@
 	]
 	"quest.19F9F56FA350AD47.quest_subtitle": "Side quest: repair without experience"
 	"quest.19F9F56FA350AD47.title": "The Maintenance Bench"
+	"quest.1A965A7BFBF0677E.quest_desc": [
+		"A Create fan blows into an air duct; at the far end, the air vent gives back exactly the same current: same force, same range, same processing, whatever the length (64 ducts at most)."
+		"&8Engineer's goggles show the transmitted current.&r"
+	]
+	"quest.1A965A7BFBF0677E.title": "The Empire's Breath"
 	"quest.1AC4C8BD4097E5BF.quest_desc": [
 		"The Empire's officers wore diamond set in copper: lighter, just as strong."
 		"Diamonds + copper sheets + Forge Seal (not consumed), at the crafting table."
@@ -1390,6 +1395,10 @@
 		"The auto-smelting upgrade cooks what you pick up. Keep fuel in its slot."
 	]
 	"quest.6744DC79A58ED05B.title": "Diamond Backpack"
+	"quest.67695976737B0BB5.quest_desc": [
+		"&7Optional.&r Landing stairs turn a quarter in climbing one block, with a half-height landing that joins high catwalks. Hangers hang catwalks from the ceiling; the standalone railing edges any block."
+	]
+	"quest.67695976737B0BB5.title": "The Hanging Factory"
 	"quest.68203257D12F33AA.quest_desc": [
 		"The Empire's first line linked the mine to the forge. The whole network grew from it."
 		"Tracks are made by sequenced assembly. The ruins are far away: link the world."
