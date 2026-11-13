@@ -1628,5 +1628,9 @@
  "block.airain.weathered_airain_ladder": "Échelle d'airain vieilli",
  "block.airain.waxed_weathered_airain_ladder": "Échelle d'airain vieilli (ciré)",
  "block.airain.oxidized_airain_ladder": "Échelle d'airain rouge impérial",
- "block.airain.waxed_oxidized_airain_ladder": "Échelle d'airain rouge impérial (ciré)"
+ "block.airain.waxed_oxidized_airain_ladder": "Échelle d'airain rouge impérial (ciré)",
+ "airain.ingenieur.passerelles.titre": "Les passerelles",
+ "airain.ingenieur.passerelles.court": "Passerelles",
+ "airain.ingenieur.passerelles.histoire": "Dans les usines de l'Empire, on circulait au-dessus des machines : caillebotis d'airain, rambardes et escaliers reliaient les ateliers sans jamais toucher le sol.",
+ "airain.ingenieur.passerelles.usage": "Passerelle : plancher à 3 pixels, ou à mi-hauteur si on la pose sur le haut d'un bloc (comme une dalle). Les rambardes se posent seules sur les côtés libres ; la clé de Create retire ou remet celle du côté visé (accroupi : ramasse la pièce). Escalier : monte d'un bloc entier, vers l'avant. Rampe : monte d'une demi-hauteur ; deux rampes de suite montent d'un bloc, en passant par une passerelle à mi-hauteur. Portillon : clic droit sur un côté de passerelle, puis main nue pour l'ouvrir. Poteau de soutien : s'évase au sol et sous la passerelle. Échelle d'airain : la crinoline apparaît au troisième échelon. Tout se patine comme l'airain."
 }
