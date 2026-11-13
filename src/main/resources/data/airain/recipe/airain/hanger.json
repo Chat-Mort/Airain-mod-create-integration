@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "SSS",
+  "N N",
+  "N N"
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "N": {
+   "item": "airain:airain_nugget"
+  }
+ },
+ "result": {
+  "id": "airain:airain_hanger",
+  "count": 4
+ }
+}

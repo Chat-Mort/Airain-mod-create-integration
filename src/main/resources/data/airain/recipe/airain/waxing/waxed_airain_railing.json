@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "group": "airain_waxing",
+ "ingredients": [
+  {
+   "item": "airain:airain_railing"
+  },
+  {
+   "item": "minecraft:honeycomb"
+  }
+ ],
+ "result": {
+  "id": "airain:waxed_airain_railing",
+  "count": 1
+ }
+}

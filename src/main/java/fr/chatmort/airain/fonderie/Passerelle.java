@@ -12,6 +12,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
@@ -64,6 +65,18 @@ public final class Passerelle {
 	public static final EnumProperty<Entourage> CAGE = EnumProperty.create("cage", Entourage.class);
 	public static final BooleanProperty BAS = BooleanProperty.create("bottom");
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+	/** Escalier à palier : tourne à gauche (sinon à droite). */
+	public static final BooleanProperty A_GAUCHE = BooleanProperty.create("turn_left");
+	/** Suspente : plaque au plafond (absente quand une autre suspente est au-dessus). */
+	public static final BooleanProperty PLAQUE = BooleanProperty.create("plate");
+	/** Suspente : étrier sous la passerelle du dessous (basse ou haute), ou aucun. */
+	public enum Etrier implements StringRepresentable {
+		AUCUN("none"), BAS("low"), HAUT("high");
+		private final String nom;
+		Etrier(String n) { nom = n; }
+		@Override public String getSerializedName() { return nom; }
+	}
+	public static final EnumProperty<Etrier> ETRIER = EnumProperty.create("stirrup", Etrier.class);
 
 	/** Ce qu'il y a sur un côté de passerelle. */
 	public enum Cote implements StringRepresentable {
@@ -106,6 +119,10 @@ public final class Passerelle {
 		if (s.getBlock() instanceof Rampe) {
 			Direction f = s.getValue(FACING); int bas = s.getValue(HAUT) ? 11 : 3;
 			return d == f.getOpposite() ? bas : d == f ? bas + 8 : -1;
+		}
+		if (s.getBlock() instanceof Palier) {      // palier : entrée en bas, sortie un bloc plus haut, côtés extérieurs à mi-hauteur
+			Direction f = s.getValue(FACING), so = Palier.sortie(s);
+			return d == f.getOpposite() ? 3 : d == so ? 19 : (d == f || d == so.getOpposite()) ? 11 : -1;
 		}
 		return -1;
 	}
@@ -388,6 +405,224 @@ public final class Passerelle {
 				c.getLevel().playSound(null, c.getClickedPos(), SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
 			}
 			return InteractionResult.SUCCESS;
+		}
+	}
+
+	// ====================================================================== l'escalier à palier (marche, palier à mi-hauteur, marche à 90°)
+	/**
+	 * On entre par la face opposée à FACING (plancher bas, 3 px), on monte une marche, on arrive sur un palier à 11 px
+	 * (hauteur d'une passerelle haute ou du haut d'une rampe), on tourne de 90° et on sort un bloc plus haut (19 px).
+	 * Les deux côtés extérieurs du palier se raccordent à des passerelles à 11 px, sinon ils portent une rambarde.
+	 */
+	public static class Palier extends Block implements Patinable, IWrenchable {
+		private final WeatherState etat;
+		private static final Map<BlockState, VoxelShape> FORMES = new java.util.concurrent.ConcurrentHashMap<>();
+		public Palier(WeatherState etat, Properties p) {
+			super(p); this.etat = etat;
+			registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH).setValue(A_GAUCHE, false).setValue(PLEIN, false)
+				.setValue(NORD, Cote.AUCUN).setValue(SUD, Cote.AUCUN).setValue(EST, Cote.AUCUN).setValue(OUEST, Cote.AUCUN));
+		}
+		@Override public WeatherState etat() { return etat; }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, A_GAUCHE, PLEIN, NORD, SUD, EST, OUEST); }
+		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
+		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
+
+		/** Face de sortie (un bloc plus haut). */
+		static Direction sortie(BlockState s) { Direction f = s.getValue(FACING); return s.getValue(A_GAUCHE) ? f.getCounterClockWise() : f.getClockWise(); }
+		/** Les deux côtés extérieurs du palier (fond et côté opposé à la sortie). */
+		static boolean exterieur(BlockState s, Direction d) { return d == s.getValue(FACING) || d == sortie(s).getOpposite(); }
+		private static boolean raccorde(BlockGetter l, BlockPos p, Direction d) { return niveauFace(l.getBlockState(p.relative(d)), d.getOpposite()) == 11; }
+
+		// sens du virage : on vise la moitié gauche ou droite du bloc, comme pour une porte
+		@Override
+		public BlockState getStateForPlacement(BlockPlaceContext c) {
+			Direction f = c.getHorizontalDirection(), dr = f.getClockWise();
+			Vec3 v = c.getClickLocation().subtract(Vec3.atCenterOf(c.getClickedPos()));
+			BlockState s = defaultBlockState().setValue(FACING, f).setValue(A_GAUCHE, v.x * dr.getStepX() + v.z * dr.getStepZ() < 0);
+			for (Direction d : Direction.Plane.HORIZONTAL)
+				if (exterieur(s, d)) s = s.setValue(cote(d), raccorde(c.getLevel(), c.getClickedPos(), d) ? Cote.AUCUN : Cote.RAMBARDE);
+			return s;
+		}
+		@Override
+		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
+			if (d.getAxis().isHorizontal() && exterieur(s, d)) {
+				Cote c = s.getValue(cote(d));
+				if (c == Cote.AUCUN || c == Cote.RAMBARDE) s = s.setValue(cote(d), raccorde(l, p, d) ? Cote.AUCUN : Cote.RAMBARDE);
+			}
+			return s;
+		}
+		@Override
+		protected void onPlace(BlockState s, Level l, BlockPos p, BlockState ancien, boolean deplace) {
+			super.onPlace(s, l, p, ancien, deplace);
+			Direction so = sortie(s); Plancher.recalculer(l, p.relative(so).above(), so.getOpposite());
+		}
+		@Override
+		protected void onRemove(BlockState s, Level l, BlockPos p, BlockState n, boolean deplace) {
+			if (!(n.getBlock() instanceof Palier)) {
+				for (Direction d : Direction.Plane.HORIZONTAL)
+					if (s.getValue(cote(d)) == Cote.PORTILLON || s.getValue(cote(d)) == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
+			}
+			super.onRemove(s, l, p, n, deplace);
+			if (!(n.getBlock() instanceof Palier)) { Direction so = sortie(s); Plancher.recalculer(l, p.relative(so).above(), so.getOpposite()); }
+		}
+		// portillon sur un côté extérieur
+		@Override
+		protected ItemInteractionResult useItemOn(ItemStack st, BlockState s, Level l, BlockPos p, Player j, InteractionHand h, BlockHitResult hit) {
+			if (!st.is(Passerelles.PORTILLON.get())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+			Direction d = coteVise(p, hit.getLocation());
+			Cote c = s.getValue(cote(d));
+			if (!exterieur(s, d) || c == Cote.PORTILLON || c == Cote.OUVERT) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+			if (!l.isClientSide) {
+				l.setBlock(p, s.setValue(cote(d), Cote.PORTILLON), Block.UPDATE_ALL);
+				l.playSound(null, p, SoundEvents.COPPER_PLACE, SoundSource.BLOCKS, 1f, 1f);
+				if (!j.getAbilities().instabuild) st.shrink(1);
+			}
+			return ItemInteractionResult.sidedSuccess(l.isClientSide);
+		}
+		@Override
+		protected InteractionResult useWithoutItem(BlockState s, Level l, BlockPos p, Player j, BlockHitResult hit) {
+			Direction d = coteVise(p, hit.getLocation());
+			Cote c = s.getValue(cote(d));
+			if (c != Cote.PORTILLON && c != Cote.OUVERT) return InteractionResult.PASS;
+			if (!l.isClientSide) {
+				boolean ouvre = c == Cote.PORTILLON;
+				l.setBlock(p, s.setValue(cote(d), ouvre ? Cote.OUVERT : Cote.PORTILLON), Block.UPDATE_ALL);
+				l.playSound(null, p, ouvre ? SoundEvents.COPPER_TRAPDOOR_OPEN : SoundEvents.COPPER_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1f, 1f);
+			}
+			return InteractionResult.sidedSuccess(l.isClientSide);
+		}
+		// clé de Create : sur un côté extérieur, rambarde ; ailleurs, plancher plein ou caillebotis
+		@Override
+		public InteractionResult onWrenched(BlockState s, UseOnContext c) {
+			Level l = c.getLevel(); BlockPos p = c.getClickedPos();
+			Direction d = coteVise(p, c.getClickLocation());
+			double x = c.getClickLocation().x - p.getX(), z = c.getClickLocation().z - p.getZ();
+			double bord = Math.min(Math.min(x, 1 - x), Math.min(z, 1 - z));
+			boolean sol = c.getClickedFace() == Direction.UP && bord > 0.2;
+			if (!l.isClientSide) {
+				if (!sol && exterieur(s, d)) {
+					Cote cc = s.getValue(cote(d));
+					if (cc == Cote.PORTILLON || cc == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
+					l.setBlock(p, s.setValue(cote(d), cc == Cote.AUCUN ? Cote.RAMBARDE : Cote.AUCUN), Block.UPDATE_ALL);
+					l.playSound(null, p, SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
+				} else {
+					l.setBlock(p, s.setValue(PLEIN, !s.getValue(PLEIN)), Block.UPDATE_ALL);
+					l.playSound(null, p, SoundEvents.COPPER_PLACE, SoundSource.BLOCKS, 1f, 0.8f);
+				}
+			}
+			return InteractionResult.SUCCESS;
+		}
+		@Override
+		protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return FORMES.computeIfAbsent(s, Palier::forme); }
+		private static VoxelShape forme(BlockState s) {
+			Direction f = s.getValue(FACING); boolean g = s.getValue(A_GAUCHE);
+			// décrit pour une entrée au sud, un palier, une sortie à l'est (FACING nord, virage à droite) ; miroir pour la gauche
+			double[][] B = {{1, 5, 12, 12, 7, 16}, {0, 9, 0, 12, 11, 12}, {12, 13, 1, 16, 15, 12}, {12, 0, 12, 16, 24, 16}};
+			VoxelShape v = Shapes.empty();
+			for (double[] b : B) {
+				double x0 = g ? 16 - b[3] : b[0], x1 = g ? 16 - b[0] : b[3];
+				v = Shapes.joinUnoptimized(v, tournerEsc(f, x0, b[1], b[2], x1, b[4], b[5]), BooleanOp.OR);
+			}
+			for (Direction d : Direction.Plane.HORIZONTAL) {
+				Cote c = s.getValue(cote(d));
+				if (c == Cote.RAMBARDE || c == Cote.PORTILLON) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, 0, 16, 24, 2), BooleanOp.OR);
+			}
+			return v.optimize();
+		}
+	}
+
+	// ====================================================================== la suspente (tirants pendus au plafond, étrier sous la passerelle)
+	public static class Suspente extends Block implements Patinable {
+		private final WeatherState etat;
+		private static final Map<BlockState, VoxelShape> FORMES = new java.util.concurrent.ConcurrentHashMap<>();
+		public Suspente(WeatherState etat, Properties p) {
+			super(p); this.etat = etat;
+			registerDefaultState(defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X).setValue(PLAQUE, true).setValue(ETRIER, Etrier.AUCUN));
+		}
+		@Override public WeatherState etat() { return etat; }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(BlockStateProperties.HORIZONTAL_AXIS, PLAQUE, ETRIER); }
+		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
+		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
+		/** Plaque si rien de pendu au-dessus ; étrier selon la passerelle du dessous (basse ou haute). */
+		private static BlockState ajuster(BlockState s, BlockGetter l, BlockPos p) {
+			BlockState dessous = l.getBlockState(p.below());
+			Etrier e = dessous.getBlock() instanceof Plancher ? (dessous.getValue(HAUT) ? Etrier.HAUT : Etrier.BAS) : Etrier.AUCUN;
+			return s.setValue(PLAQUE, !(l.getBlockState(p.above()).getBlock() instanceof Suspente)).setValue(ETRIER, e);
+		}
+		// l'axe suit le regard du joueur : on regarde le long de la passerelle, les tirants passent sur ses deux côtés
+		@Override
+		public BlockState getStateForPlacement(BlockPlaceContext c) {
+			return ajuster(defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_AXIS, c.getHorizontalDirection().getAxis()), c.getLevel(), c.getClickedPos());
+		}
+		@Override
+		protected BlockState updateShape(BlockState s, Direction d, BlockState v, LevelAccessor l, BlockPos p, BlockPos np) {
+			return d.getAxis() == Direction.Axis.Y ? ajuster(s, l, p) : s;
+		}
+		@Override
+		protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return FORMES.computeIfAbsent(s, Suspente::forme); }
+		private static VoxelShape forme(BlockState s) {
+			boolean x = s.getValue(BlockStateProperties.HORIZONTAL_AXIS) == Direction.Axis.X;
+			VoxelShape v = Shapes.empty();
+			for (double z0 : new double[]{2.5, 12.5})
+				v = Shapes.joinUnoptimized(v, x ? Block.box(7.5, 0, z0, 8.5, 16, z0 + 1) : Block.box(z0, 0, 7.5, z0 + 1, 16, 8.5), BooleanOp.OR);
+			if (s.getValue(PLAQUE)) v = Shapes.joinUnoptimized(v, x ? Block.box(5, 15, 1, 11, 16, 15) : Block.box(1, 15, 5, 15, 16, 11), BooleanOp.OR);
+			return v.optimize();
+		}
+	}
+
+	// ====================================================================== la rambarde seule (sur n'importe quel bloc ; jusqu'à 4 côtés)
+	public static class RambardeSeule extends Block implements Patinable, IWrenchable {
+		private final WeatherState etat;
+		private static final Map<BlockState, VoxelShape> FORMES = new java.util.concurrent.ConcurrentHashMap<>();
+		public static BooleanProperty prop(Direction d) {
+			return switch (d) { case NORTH -> BlockStateProperties.NORTH; case SOUTH -> BlockStateProperties.SOUTH; case EAST -> BlockStateProperties.EAST; default -> BlockStateProperties.WEST; };
+		}
+		public RambardeSeule(WeatherState etat, Properties p) {
+			super(p); this.etat = etat;
+			registerDefaultState(defaultBlockState().setValue(BlockStateProperties.NORTH, false).setValue(BlockStateProperties.SOUTH, false).setValue(BlockStateProperties.EAST, false).setValue(BlockStateProperties.WEST, false));
+		}
+		@Override public WeatherState etat() { return etat; }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(BlockStateProperties.NORTH, BlockStateProperties.SOUTH, BlockStateProperties.EAST, BlockStateProperties.WEST); }
+		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
+		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
+		// posée du côté où regarde le joueur (le bord vers lequel il se tient)
+		@Override public BlockState getStateForPlacement(BlockPlaceContext c) { return defaultBlockState().setValue(prop(c.getHorizontalDirection()), true); }
+		// clic avec une autre rambarde : ajoute le côté visé (ou celui du regard s'il est déjà pris)
+		@Override
+		protected ItemInteractionResult useItemOn(ItemStack st, BlockState s, Level l, BlockPos p, Player j, InteractionHand h, BlockHitResult hit) {
+			if (!(st.getItem() instanceof BlockItem bi) || !(bi.getBlock() instanceof RambardeSeule)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+			Direction d = coteVise(p, hit.getLocation());
+			if (s.getValue(prop(d))) d = j.getDirection();
+			if (s.getValue(prop(d))) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+			if (!l.isClientSide) {
+				l.setBlock(p, s.setValue(prop(d), true), Block.UPDATE_ALL);
+				l.playSound(null, p, SoundEvents.COPPER_PLACE, SoundSource.BLOCKS, 1f, 1f);
+				if (!j.getAbilities().instabuild) st.shrink(1);
+			}
+			return ItemInteractionResult.sidedSuccess(l.isClientSide);
+		}
+		// clé de Create : retire le côté visé (et rend la rambarde) ; le bloc disparaît avec son dernier côté
+		@Override
+		public InteractionResult onWrenched(BlockState s, UseOnContext c) {
+			Level l = c.getLevel(); BlockPos p = c.getClickedPos();
+			Direction d = coteVise(p, c.getClickLocation());
+			if (!s.getValue(prop(d))) return InteractionResult.PASS;
+			if (!l.isClientSide) {
+				BlockState n = s.setValue(prop(d), false);
+				boolean vide = true;
+				for (Direction e : Direction.Plane.HORIZONTAL) vide &= !n.getValue(prop(e));
+				if (c.getPlayer() == null || !c.getPlayer().getAbilities().instabuild) Block.popResource(l, p, new ItemStack(this));
+				if (vide) l.removeBlock(p, false); else l.setBlock(p, n, Block.UPDATE_ALL);
+				l.playSound(null, p, SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
+			}
+			return InteractionResult.SUCCESS;
+		}
+		@Override
+		protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return FORMES.computeIfAbsent(s, RambardeSeule::forme); }
+		private static VoxelShape forme(BlockState s) {
+			VoxelShape v = Shapes.empty();
+			for (Direction d : Direction.Plane.HORIZONTAL) if (s.getValue(prop(d))) v = Shapes.joinUnoptimized(v, tourner(d, 0, 0, 0, 16, 13, 2), BooleanOp.OR);
+			return v.isEmpty() ? Block.box(0, 0, 0, 16, 13, 2) : v.optimize();
 		}
 	}
 

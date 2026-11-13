@@ -239,6 +239,42 @@
   },
   "airain:oxidized_airain_ladder": {
    "waxed": "airain:waxed_oxidized_airain_ladder"
+  },
+  "airain:airain_catwalk_landing": {
+   "waxed": "airain:waxed_airain_catwalk_landing"
+  },
+  "airain:exposed_airain_catwalk_landing": {
+   "waxed": "airain:waxed_exposed_airain_catwalk_landing"
+  },
+  "airain:weathered_airain_catwalk_landing": {
+   "waxed": "airain:waxed_weathered_airain_catwalk_landing"
+  },
+  "airain:oxidized_airain_catwalk_landing": {
+   "waxed": "airain:waxed_oxidized_airain_catwalk_landing"
+  },
+  "airain:airain_hanger": {
+   "waxed": "airain:waxed_airain_hanger"
+  },
+  "airain:exposed_airain_hanger": {
+   "waxed": "airain:waxed_exposed_airain_hanger"
+  },
+  "airain:weathered_airain_hanger": {
+   "waxed": "airain:waxed_weathered_airain_hanger"
+  },
+  "airain:oxidized_airain_hanger": {
+   "waxed": "airain:waxed_oxidized_airain_hanger"
+  },
+  "airain:airain_railing": {
+   "waxed": "airain:waxed_airain_railing"
+  },
+  "airain:exposed_airain_railing": {
+   "waxed": "airain:waxed_exposed_airain_railing"
+  },
+  "airain:weathered_airain_railing": {
+   "waxed": "airain:waxed_weathered_airain_railing"
+  },
+  "airain:oxidized_airain_railing": {
+   "waxed": "airain:waxed_oxidized_airain_railing"
   }
  }
 }

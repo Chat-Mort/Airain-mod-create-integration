@@ -179,6 +179,33 @@
   },
   "airain:weathered_airain_ladder": {
    "next_oxidation_stage": "airain:oxidized_airain_ladder"
+  },
+  "airain:airain_catwalk_landing": {
+   "next_oxidation_stage": "airain:exposed_airain_catwalk_landing"
+  },
+  "airain:exposed_airain_catwalk_landing": {
+   "next_oxidation_stage": "airain:weathered_airain_catwalk_landing"
+  },
+  "airain:weathered_airain_catwalk_landing": {
+   "next_oxidation_stage": "airain:oxidized_airain_catwalk_landing"
+  },
+  "airain:airain_hanger": {
+   "next_oxidation_stage": "airain:exposed_airain_hanger"
+  },
+  "airain:exposed_airain_hanger": {
+   "next_oxidation_stage": "airain:weathered_airain_hanger"
+  },
+  "airain:weathered_airain_hanger": {
+   "next_oxidation_stage": "airain:oxidized_airain_hanger"
+  },
+  "airain:airain_railing": {
+   "next_oxidation_stage": "airain:exposed_airain_railing"
+  },
+  "airain:exposed_airain_railing": {
+   "next_oxidation_stage": "airain:weathered_airain_railing"
+  },
+  "airain:weathered_airain_railing": {
+   "next_oxidation_stage": "airain:oxidized_airain_railing"
   }
  }
 }

@@ -1,0 +1,78 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger"
+   },
+   "when": {
+    "axis": "x"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger_plate"
+   },
+   "when": {
+    "axis": "x",
+    "plate": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger_low"
+   },
+   "when": {
+    "axis": "x",
+    "stirrup": "low"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger_high"
+   },
+   "when": {
+    "axis": "x",
+    "stirrup": "high"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger",
+    "y": 90
+   },
+   "when": {
+    "axis": "z"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger_plate",
+    "y": 90
+   },
+   "when": {
+    "axis": "z",
+    "plate": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger_low",
+    "y": 90
+   },
+   "when": {
+    "axis": "z",
+    "stirrup": "low"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_hanger_high",
+    "y": 90
+   },
+   "when": {
+    "axis": "z",
+    "stirrup": "high"
+   }
+  }
+ ]
+}

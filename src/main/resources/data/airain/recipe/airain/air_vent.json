@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "SBS",
+  " D "
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "B": {
+   "item": "airain:airain_bars"
+  },
+  "D": {
+   "item": "airain:airain_air_duct"
+  }
+ },
+ "result": {
+  "id": "airain:airain_air_vent",
+  "count": 1
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "m": "airain:block/airain_block",
+  "r": "airain:block/riveted_airain",
+  "d": "airain:block/oxidized_airain_block",
+  "particle": "airain:block/airain_block"
+ },
+ "elements": [
+  {
+   "from": [
+    3,
+    3,
+    3
+   ],
+   "to": [
+    13,
+    13,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#m",
+     "uv": [
+      2,
+      2,
+      12,
+      12
+     ]
+    },
+    "south": {
+     "texture": "#m",
+     "uv": [
+      2,
+      2,
+      12,
+      12
+     ]
+    },
+    "east": {
+     "texture": "#m",
+     "uv": [
+      2,
+      2,
+      12,
+      12
+     ]
+    },
+    "west": {
+     "texture": "#m",
+     "uv": [
+      2,
+      2,
+      12,
+      12
+     ]
+    },
+    "up": {
+     "texture": "#m",
+     "uv": [
+      2,
+      2,
+      12,
+      12
+     ]
+    },
+    "down": {
+     "texture": "#m",
+     "uv": [
+      2,
+      2,
+      12,
+      12
+     ]
+    }
+   }
+  }
+ ]
+}

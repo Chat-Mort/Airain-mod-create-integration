@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/** Enregistrement des passerelles d'airain : 5 familles × 4 teintes × (patinable, cirée), et le portillon. */
+/** Enregistrement des passerelles d'airain : 8 familles × 4 teintes × (patinable, cirée), et le portillon. */
 public final class Passerelles {
 	private Passerelles() {}
 
@@ -46,6 +46,10 @@ public final class Passerelles {
 		famille("airain_catwalk_ramp", Passerelle.Rampe::new);
 		famille("airain_support", Passerelle.Poteau::new);
 		famille("airain_ladder", Passerelle.Echelle::new);
+		// pièces ajoutées en 1.50 : escalier à palier, suspente, rambarde seule
+		famille("airain_catwalk_landing", Passerelle.Palier::new);
+		famille("airain_hanger", Passerelle.Suspente::new);
+		famille("airain_railing", Passerelle.RambardeSeule::new);
 	}
 	/** Le portillon : un objet qu'on pose sur un côté de passerelle (clic droit), puis qu'on ouvre main nue. */
 	public static final DeferredItem<Item> PORTILLON = AirainMod.ITEMS.register("airain_catwalk_gate", () -> new Item(new Item.Properties()));
