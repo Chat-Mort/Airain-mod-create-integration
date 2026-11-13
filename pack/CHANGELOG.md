@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 13 novembre 2026 — versions 1.48.0 à 1.52.0
+## 13 novembre 2026 — versions 1.48.0 à 1.52.1
 
 **Ajouts**
 - **L'airain**, l'alliage secret de l'Empire : lingot, pépite, plaque, engrenage d'airain et airain en fusion. Il ne sort que du haut-fourneau.
@@ -38,6 +38,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 **Changements**
 - « Forger le Cœur » demande aussi l'engrenage d'airain.
+- Le sol des passerelles, escaliers, rampes, paliers et pièces-mécanismes passe en croisillons épais, comme la grille d'airain ; chaque marche d'escalier montre une rangée de croix entières. Plus aucune texture de passerelle n'est tassée.
 
 ---
 

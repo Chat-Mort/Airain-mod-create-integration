@@ -13,7 +13,9 @@ def el(fr,to,t='#m',faces=ALL,rot=None,full=False):
         else:
             dx,dy,dz=[abs(to[i]-fr[i]) for i in range(3)]
             a,b={"north":(dx,dy),"south":(dx,dy),"east":(dz,dy),"west":(dz,dy),"up":(dx,dz),"down":(dx,dz)}[k]
-            uv=[2,2,round(2+max(0.5,min(12,a)),3),round(2+max(0.5,min(12,b)),3)]
+            # pixel pour pixel, centré : jamais tassé (jusqu'à 16 px)
+            a=max(0.5,min(16,a)); b=max(0.5,min(16,b)); u=(16-a)/2; v=(16-b)/2
+            uv=[round(u,3),round(v,3),round(u+a,3),round(v+b,3)]
         f[k]={"texture":t,"uv":uv}
     e={"from":[round(v,3) for v in fr],"to":[round(v,3) for v in to],"faces":f}
     if rot: e["rotation"]={"origin":rot[0],"axis":rot[1],"angle":rot[2],"rescale":True}
@@ -40,7 +42,7 @@ def plein(E):
     for e in E:
         e=json.loads(json.dumps(e))
         for f in e['faces'].values():
-            if f['texture']=='#g': f['texture']='#m'
+            if f['texture'] in ('#g','#gs'): f['texture']='#m'
         out.append(e)
     return out
 def tunnel():
@@ -74,7 +76,8 @@ def escalier_base():
     E=[]
     for i in range(4):
         top=S+4*(i+1)
-        E.append(eln([4*i,top-1,2],[4*i+4,top,14],'#g',faces=("up","down"),full=True))
+        # marche : la bande des croisillons (rangs 2 à 6 : une rangée de croix entières), pixel pour pixel
+        e=eln([4*i,top-1,2],[4*i+4,top,14],'#gs',faces=("up","down")); e['faces']['up']['uv']=[2,2,14,6]; e['faces']['down']['uv']=[2,6,14,2]; E.append(e)
         E.append(eln([4*i+3,top-2,2],[4*i+4,top,14]))
     for z0 in (0,14): E.append(eln([0,S+5,z0+0.5],[16,S+8,z0+1.5],rot=([8,S+6.5,8],'z',45)))
     return E
@@ -105,7 +108,7 @@ def cage():
 # ---------------------------------------------------------------- modèles par teinte
 ROT={'north':0,'east':90,'south':180,'west':270}
 for p in PRE:
-    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain'}
+    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','gs':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain'}
     for haut,h in (('bottom',3),('top',11)):
         modele(f'{p}airain_catwalk_floor_{haut}',plancher(h),tex); modele(f'{p}airain_catwalk_floor_solid_{haut}',plein(plancher(h)),tex)
         modele(f'{p}airain_catwalk_railing_{haut}',rambarde_nord(h),tex)
