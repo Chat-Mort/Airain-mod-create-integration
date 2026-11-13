@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "airain:airain_catwalk"
+  },
+  {
+   "item": "airain:airain_catwalk"
+  },
+  {
+   "item": "airain:airain_sheet"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_catwalk_ramp",
+  "count": 2
+ }
+}

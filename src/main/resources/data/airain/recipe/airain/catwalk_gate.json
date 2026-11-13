@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "airain:airain_bars"
+  },
+  {
+   "item": "airain:airain_bars"
+  },
+  {
+   "item": "airain:airain_ingot"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_catwalk_gate",
+  "count": 1
+ }
+}

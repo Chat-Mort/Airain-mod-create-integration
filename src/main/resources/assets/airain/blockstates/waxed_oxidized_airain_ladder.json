@@ -1,0 +1,78 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder"
+   },
+   "when": {
+    "facing": "north"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder_cage"
+   },
+   "when": {
+    "facing": "north",
+    "cage": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder",
+    "y": 90
+   },
+   "when": {
+    "facing": "east"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder_cage",
+    "y": 90
+   },
+   "when": {
+    "facing": "east",
+    "cage": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder",
+    "y": 180
+   },
+   "when": {
+    "facing": "south"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder_cage",
+    "y": 180
+   },
+   "when": {
+    "facing": "south",
+    "cage": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder",
+    "y": 270
+   },
+   "when": {
+    "facing": "west"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_ladder_cage",
+    "y": 270
+   },
+   "when": {
+    "facing": "west",
+    "cage": "true"
+   }
+  }
+ ]
+}

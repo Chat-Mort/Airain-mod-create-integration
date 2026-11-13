@@ -134,6 +134,51 @@
   },
   "airain:weathered_airain_lantern": {
    "next_oxidation_stage": "airain:oxidized_airain_lantern"
+  },
+  "airain:airain_catwalk": {
+   "next_oxidation_stage": "airain:exposed_airain_catwalk"
+  },
+  "airain:exposed_airain_catwalk": {
+   "next_oxidation_stage": "airain:weathered_airain_catwalk"
+  },
+  "airain:weathered_airain_catwalk": {
+   "next_oxidation_stage": "airain:oxidized_airain_catwalk"
+  },
+  "airain:airain_catwalk_stairs": {
+   "next_oxidation_stage": "airain:exposed_airain_catwalk_stairs"
+  },
+  "airain:exposed_airain_catwalk_stairs": {
+   "next_oxidation_stage": "airain:weathered_airain_catwalk_stairs"
+  },
+  "airain:weathered_airain_catwalk_stairs": {
+   "next_oxidation_stage": "airain:oxidized_airain_catwalk_stairs"
+  },
+  "airain:airain_catwalk_ramp": {
+   "next_oxidation_stage": "airain:exposed_airain_catwalk_ramp"
+  },
+  "airain:exposed_airain_catwalk_ramp": {
+   "next_oxidation_stage": "airain:weathered_airain_catwalk_ramp"
+  },
+  "airain:weathered_airain_catwalk_ramp": {
+   "next_oxidation_stage": "airain:oxidized_airain_catwalk_ramp"
+  },
+  "airain:airain_support": {
+   "next_oxidation_stage": "airain:exposed_airain_support"
+  },
+  "airain:exposed_airain_support": {
+   "next_oxidation_stage": "airain:weathered_airain_support"
+  },
+  "airain:weathered_airain_support": {
+   "next_oxidation_stage": "airain:oxidized_airain_support"
+  },
+  "airain:airain_ladder": {
+   "next_oxidation_stage": "airain:exposed_airain_ladder"
+  },
+  "airain:exposed_airain_ladder": {
+   "next_oxidation_stage": "airain:weathered_airain_ladder"
+  },
+  "airain:weathered_airain_ladder": {
+   "next_oxidation_stage": "airain:oxidized_airain_ladder"
   }
  }
 }

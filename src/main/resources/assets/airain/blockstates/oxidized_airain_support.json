@@ -1,0 +1,25 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_support"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_support_bottom"
+   },
+   "when": {
+    "bottom": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_support_top"
+   },
+   "when": {
+    "top": "true"
+   }
+  }
+ ]
+}

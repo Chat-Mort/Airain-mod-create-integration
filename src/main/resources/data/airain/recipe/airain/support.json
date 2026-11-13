@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "I",
+  "I",
+  "S"
+ ],
+ "key": {
+  "I": {
+   "item": "airain:airain_ingot"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:airain_support",
+  "count": 2
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "C ",
+  "CC"
+ ],
+ "key": {
+  "C": {
+   "item": "airain:airain_catwalk"
+  }
+ },
+ "result": {
+  "id": "airain:airain_catwalk_stairs",
+  "count": 2
+ }
+}

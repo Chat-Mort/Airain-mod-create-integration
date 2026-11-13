@@ -1,0 +1,13 @@
+{
+ "replace": false,
+ "values": [
+  "airain:airain_ladder",
+  "airain:waxed_airain_ladder",
+  "airain:exposed_airain_ladder",
+  "airain:waxed_exposed_airain_ladder",
+  "airain:weathered_airain_ladder",
+  "airain:waxed_weathered_airain_ladder",
+  "airain:oxidized_airain_ladder",
+  "airain:waxed_oxidized_airain_ladder"
+ ]
+}

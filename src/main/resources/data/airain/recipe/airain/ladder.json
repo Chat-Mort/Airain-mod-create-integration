@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "N N",
+  "NIN",
+  "N N"
+ ],
+ "key": {
+  "N": {
+   "item": "airain:airain_nugget"
+  },
+  "I": {
+   "item": "airain:airain_ingot"
+  }
+ },
+ "result": {
+  "id": "airain:airain_ladder",
+  "count": 4
+ }
+}
