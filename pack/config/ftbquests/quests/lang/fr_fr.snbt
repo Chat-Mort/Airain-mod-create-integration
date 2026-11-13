@@ -247,6 +247,13 @@
 	]
 	"quest.17DC1C655AD476A4.quest_subtitle": "Rassembler tous les écrits"
 	"quest.17DC1C655AD476A4.title": "Les archives de l'Empire"
+	"quest.1859660CF0F6DC08.quest_desc": [
+		"Ce que la fonderie apporte à Create. Au crafteur mécanique, sur une grille 5 × 5 entièrement remplie :"
+		"&6Allégeur impérial&r : posé dans une ligne d'arbres, son volant d'inertie retire 25 % de la charge de tout le réseau (un seul compte par réseau)."
+		"&6Surcompresseur impérial&r : posé contre une roue à eau, un moulin ou un moteur à vapeur, il donne +50 % de capacité de stress à ce générateur."
+		"&8Les lunettes d'ingénieur montrent ce qu'ils font. Ils se patinent sans rien perdre.&r"
+	]
+	"quest.1859660CF0F6DC08.title": "La mécanique impériale"
 	"quest.187081628EA4ED2B.quest_desc": [
 		"Le mécanisme de précision est la signature de l'Empire : rien d'important ne fonctionnait sans lui."
 		"Une chaîne de déployeurs et de presses le construit pièce par pièce. Maintenez W sur une machine pour son tutoriel ; EMI montre chaque étape."

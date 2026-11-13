@@ -1198,6 +1198,17 @@ quest(cF, "fo_monte_charge", ("Le monte-charge", "The Lift"), 12, 0,
               "Dans la cabine : clic droit pour monter d'un étage, accroupi pour descendre, clic droit maintenu sur le panneau du boîtier pour choisir l'étage. Le boîtier d'appel fait venir la cabine."],
              ["A winch (Create rotation) at the foot of a rack mast: the cabin runs on the side where you placed the mast. Every catwalk placed opposite the mast, beyond the cabin, becomes a floor.",
               "In the cabin: right-click to go up one floor, sneak to go down, hold right-click on the box's panel to pick the floor. The call box brings the cabin to you."]))
+quest(cF, "fo_mecanique", ("La mécanique impériale", "Imperial Mechanics"), 6, 3,
+      [T_item("airain:airain_load_reliever"), T_item("airain:airain_supercharger")], [R_coin("cog", 4)],
+      deps=["fo_engrenage"],
+      desc=D(["Ce que la fonderie apporte à Create. Au crafteur mécanique, sur une grille 5 × 5 entièrement remplie :",
+              "&6Allégeur impérial&r : posé dans une ligne d'arbres, son volant d'inertie retire 25 % de la charge de tout le réseau (un seul compte par réseau).",
+              "&6Surcompresseur impérial&r : posé contre une roue à eau, un moulin ou un moteur à vapeur, il donne +50 % de capacité de stress à ce générateur.",
+              "&8Les lunettes d'ingénieur montrent ce qu'ils font. Ils se patinent sans rien perdre.&r"],
+             ["What the foundry brings to Create. At the mechanical crafter, on a fully filled 5 × 5 grid:",
+              "&6Imperial Load Reliever&r: placed in a shaft line, its flywheel removes 25% of the whole network's load (only one counts per network).",
+              "&6Imperial Supercharger&r: placed against a water wheel, a windmill or a steam engine, it gives that generator +50% stress capacity.",
+              "&8Engineer's goggles show what they do. They weather without losing anything.&r"]))
 # le Cœur demande de l'airain : « Forger le Cœur » dépend aussi de l'engrenage d'airain
 [q for q in c6["quests"] if q["id"] == QUESTS["forger"]][0]["deps"].append(QUESTS["fo_engrenage"])
 

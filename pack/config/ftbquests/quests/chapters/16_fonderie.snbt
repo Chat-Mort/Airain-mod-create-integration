@@ -469,5 +469,33 @@
 			x: 12.0d
 			y: 0.0d
 		}
+		{
+			dependencies: ["2ADCE98DF27075B6"]
+			id: "1859660CF0F6DC08"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 4
+					id: "34387FE216B29A2A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_load_reliever" }
+					count: 1L
+					id: "1A57676FB6C9654B"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_supercharger" }
+					count: 1L
+					id: "197EACFBF95A2191"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 3.0d
+		}
 	]
 }

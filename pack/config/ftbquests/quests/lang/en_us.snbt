@@ -247,6 +247,13 @@
 	]
 	"quest.17DC1C655AD476A4.quest_subtitle": "Gather every writing"
 	"quest.17DC1C655AD476A4.title": "The Empire's Archives"
+	"quest.1859660CF0F6DC08.quest_desc": [
+		"What the foundry brings to Create. At the mechanical crafter, on a fully filled 5 × 5 grid:"
+		"&6Imperial Load Reliever&r: placed in a shaft line, its flywheel removes 25% of the whole network's load (only one counts per network)."
+		"&6Imperial Supercharger&r: placed against a water wheel, a windmill or a steam engine, it gives that generator +50% stress capacity."
+		"&8Engineer's goggles show what they do. They weather without losing anything.&r"
+	]
+	"quest.1859660CF0F6DC08.title": "Imperial Mechanics"
 	"quest.187081628EA4ED2B.quest_desc": [
 		"The precision mechanism is the Empire's signature: nothing important worked without it."
 		"A line of deployers and presses builds it piece by piece. Hold W over a machine for its tutorial; EMI shows every step."
