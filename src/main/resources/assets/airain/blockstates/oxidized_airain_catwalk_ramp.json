@@ -6,7 +6,18 @@
    },
    "when": {
     "facing": "north",
-    "top": "false"
+    "top": "false",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_bottom"
+   },
+   "when": {
+    "facing": "north",
+    "top": "false",
+    "solid": "true"
    }
   },
   {
@@ -35,7 +46,18 @@
    },
    "when": {
     "facing": "north",
-    "top": "true"
+    "top": "true",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_top"
+   },
+   "when": {
+    "facing": "north",
+    "top": "true",
+    "solid": "true"
    }
   },
   {
@@ -65,7 +87,19 @@
    },
    "when": {
     "facing": "east",
-    "top": "false"
+    "top": "false",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_bottom",
+    "y": 90
+   },
+   "when": {
+    "facing": "east",
+    "top": "false",
+    "solid": "true"
    }
   },
   {
@@ -97,7 +131,19 @@
    },
    "when": {
     "facing": "east",
-    "top": "true"
+    "top": "true",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_top",
+    "y": 90
+   },
+   "when": {
+    "facing": "east",
+    "top": "true",
+    "solid": "true"
    }
   },
   {
@@ -129,7 +175,19 @@
    },
    "when": {
     "facing": "south",
-    "top": "false"
+    "top": "false",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_bottom",
+    "y": 180
+   },
+   "when": {
+    "facing": "south",
+    "top": "false",
+    "solid": "true"
    }
   },
   {
@@ -161,7 +219,19 @@
    },
    "when": {
     "facing": "south",
-    "top": "true"
+    "top": "true",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_top",
+    "y": 180
+   },
+   "when": {
+    "facing": "south",
+    "top": "true",
+    "solid": "true"
    }
   },
   {
@@ -193,7 +263,19 @@
    },
    "when": {
     "facing": "west",
-    "top": "false"
+    "top": "false",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_bottom",
+    "y": 270
+   },
+   "when": {
+    "facing": "west",
+    "top": "false",
+    "solid": "true"
    }
   },
   {
@@ -225,7 +307,19 @@
    },
    "when": {
     "facing": "west",
-    "top": "true"
+    "top": "true",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_ramp_solid_top",
+    "y": 270
+   },
+   "when": {
+    "facing": "west",
+    "top": "true",
+    "solid": "true"
    }
   },
   {

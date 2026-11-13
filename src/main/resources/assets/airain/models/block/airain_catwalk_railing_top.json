@@ -6,6 +6,7 @@
   "m": "airain:block/airain_block",
   "g": "airain:block/airain_catwalk",
   "r": "airain:block/riveted_airain",
+  "p": "airain:block/airain_tread_plate",
   "particle": "airain:block/airain_block"
  },
  "elements": [

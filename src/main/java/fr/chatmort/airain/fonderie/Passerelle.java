@@ -52,7 +52,16 @@ public final class Passerelle {
 	public static final BooleanProperty HAUT = BooleanProperty.create("top");
 	public static final BooleanProperty GAUCHE = BooleanProperty.create("left");
 	public static final BooleanProperty DROITE = BooleanProperty.create("right");
-	public static final BooleanProperty CAGE = BooleanProperty.create("cage");
+	/** Plancher plein (tôle) au lieu du caillebotis : clé de Create sur le sol de la pièce. */
+	public static final BooleanProperty PLEIN = BooleanProperty.create("solid");
+	/** Ce qui entoure l'échelle : rien, une crinoline, ou un tunnel plein (clé de Create pour passer de l'un à l'autre). */
+	public enum Entourage implements StringRepresentable {
+		RIEN("none"), CRINOLINE("cage"), TUNNEL("full");
+		private final String nom;
+		Entourage(String n) { nom = n; }
+		@Override public String getSerializedName() { return nom; }
+	}
+	public static final EnumProperty<Entourage> CAGE = EnumProperty.create("cage", Entourage.class);
 	public static final BooleanProperty BAS = BooleanProperty.create("bottom");
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
@@ -113,10 +122,10 @@ public final class Passerelle {
 		private static final Map<BlockState, VoxelShape> FORMES = new java.util.concurrent.ConcurrentHashMap<>();
 		public Plancher(WeatherState etat, Properties p) {
 			super(p); this.etat = etat;
-			registerDefaultState(defaultBlockState().setValue(HAUT, false).setValue(NORD, Cote.AUCUN).setValue(SUD, Cote.AUCUN).setValue(EST, Cote.AUCUN).setValue(OUEST, Cote.AUCUN));
+			registerDefaultState(defaultBlockState().setValue(HAUT, false).setValue(PLEIN, false).setValue(NORD, Cote.AUCUN).setValue(SUD, Cote.AUCUN).setValue(EST, Cote.AUCUN).setValue(OUEST, Cote.AUCUN));
 		}
 		@Override public WeatherState etat() { return etat; }
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(HAUT, NORD, SUD, EST, OUEST); }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(HAUT, PLEIN, NORD, SUD, EST, OUEST); }
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
 		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
 
@@ -179,11 +188,20 @@ public final class Passerelle {
 			}
 			return InteractionResult.sidedSuccess(l.isClientSide);
 		}
-		// clé de Create : enlève ou remet la rambarde du côté visé (le portillon est rendu au joueur)
+		// clé de Create : sur le sol (loin des bords), plancher plein ou caillebotis ; sinon, enlève ou remet la rambarde du côté visé
 		@Override
 		public InteractionResult onWrenched(BlockState s, UseOnContext c) {
 			Level l = c.getLevel(); BlockPos p = c.getClickedPos();
 			Direction d = coteVise(p, c.getClickLocation());
+			double x = c.getClickLocation().x - p.getX(), z = c.getClickLocation().z - p.getZ();
+			double bord = Math.min(Math.min(x, 1 - x), Math.min(z, 1 - z));
+			if (c.getClickedFace().getAxis() == Direction.Axis.Y && bord > 0.2) {
+				if (!l.isClientSide) {
+					l.setBlock(p, s.setValue(PLEIN, !s.getValue(PLEIN)), Block.UPDATE_ALL);
+					l.playSound(null, p, SoundEvents.COPPER_PLACE, SoundSource.BLOCKS, 1f, 0.8f);
+				}
+				return InteractionResult.SUCCESS;
+			}
 			Cote cc = s.getValue(cote(d));
 			if (!l.isClientSide) {
 				if (cc == Cote.PORTILLON || cc == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
@@ -221,10 +239,10 @@ public final class Passerelle {
 		private static final Map<BlockState, VoxelShape> FORMES = new java.util.concurrent.ConcurrentHashMap<>();
 		public Escalier(WeatherState etat, Properties p) {
 			super(p); this.etat = etat;
-			registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH).setValue(GAUCHE, true).setValue(DROITE, true));
+			registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH).setValue(GAUCHE, true).setValue(DROITE, true).setValue(PLEIN, false));
 		}
 		@Override public WeatherState etat() { return etat; }
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, GAUCHE, DROITE); }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, GAUCHE, DROITE, PLEIN); }
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
 		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
 		@Override public BlockState getStateForPlacement(BlockPlaceContext c) { return defaultBlockState().setValue(FACING, c.getHorizontalDirection()); }
@@ -242,7 +260,7 @@ public final class Passerelle {
 		public InteractionResult onWrenched(BlockState s, UseOnContext c) {
 			Direction f = s.getValue(FACING), d = coteVise(c.getClickedPos(), c.getClickLocation());
 			BooleanProperty r = d == f.getCounterClockWise() ? GAUCHE : d == f.getClockWise() ? DROITE : null;
-			if (r == null) return InteractionResult.PASS;
+			if (r == null || c.getClickedFace() == Direction.UP) r = PLEIN;     // sur les marches : plein ou caillebotis
 			if (!c.getLevel().isClientSide) {
 				c.getLevel().setBlock(c.getClickedPos(), s.setValue(r, !s.getValue(r)), Block.UPDATE_ALL);
 				c.getLevel().playSound(null, c.getClickedPos(), SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
@@ -279,10 +297,10 @@ public final class Passerelle {
 		private static final Map<BlockState, VoxelShape> FORMES = new java.util.concurrent.ConcurrentHashMap<>();
 		public Rampe(WeatherState etat, Properties p) {
 			super(p); this.etat = etat;
-			registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH).setValue(HAUT, false).setValue(GAUCHE, true).setValue(DROITE, true));
+			registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH).setValue(HAUT, false).setValue(GAUCHE, true).setValue(DROITE, true).setValue(PLEIN, false));
 		}
 		@Override public WeatherState etat() { return etat; }
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, HAUT, GAUCHE, DROITE); }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, HAUT, GAUCHE, DROITE, PLEIN); }
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
 		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
 		@Override
@@ -305,7 +323,7 @@ public final class Passerelle {
 		public InteractionResult onWrenched(BlockState s, UseOnContext c) {
 			Direction f = s.getValue(FACING), d = coteVise(c.getClickedPos(), c.getClickLocation());
 			BooleanProperty r = d == f.getCounterClockWise() ? GAUCHE : d == f.getClockWise() ? DROITE : null;
-			if (r == null) return InteractionResult.PASS;
+			if (r == null || c.getClickedFace() == Direction.UP) r = PLEIN;     // sur les marches : plein ou caillebotis
 			if (!c.getLevel().isClientSide) {
 				c.getLevel().setBlock(c.getClickedPos(), s.setValue(r, !s.getValue(r)), Block.UPDATE_ALL);
 				c.getLevel().playSound(null, c.getClickedPos(), SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
@@ -345,9 +363,9 @@ public final class Passerelle {
 	}
 
 	// ====================================================================== l'échelle (crinoline à partir du 3e échelon)
-	public static class Echelle extends LadderBlock implements Patinable {
+	public static class Echelle extends LadderBlock implements Patinable, IWrenchable {
 		private final WeatherState etat;
-		public Echelle(WeatherState etat, Properties p) { super(p); this.etat = etat; registerDefaultState(defaultBlockState().setValue(CAGE, false)); }
+		public Echelle(WeatherState etat, Properties p) { super(p); this.etat = etat; registerDefaultState(defaultBlockState().setValue(CAGE, Entourage.RIEN)); }
 		@Override public WeatherState etat() { return etat; }
 		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { super.createBlockStateDefinition(b); b.add(CAGE); }
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
@@ -358,12 +376,18 @@ public final class Passerelle {
 		@Override
 		public BlockState getStateForPlacement(BlockPlaceContext c) {
 			BlockState s = super.getStateForPlacement(c);
-			return s == null ? null : s.setValue(CAGE, cage(c.getLevel(), c.getClickedPos()));
+			return s == null ? null : s.setValue(CAGE, cage(c.getLevel(), c.getClickedPos()) ? Entourage.CRINOLINE : Entourage.RIEN);
 		}
+		// clé de Create : rien → crinoline → tunnel plein → rien
 		@Override
-		protected BlockState updateShape(BlockState s, Direction d, BlockState v, LevelAccessor l, BlockPos p, BlockPos np) {
-			BlockState n = super.updateShape(s, d, v, l, p, np);
-			return n.getBlock() instanceof Echelle && d == Direction.DOWN ? n.setValue(CAGE, cage(l, p)) : n;
+		public InteractionResult onWrenched(BlockState s, UseOnContext c) {
+			if (!c.getLevel().isClientSide) {
+				Entourage e = s.getValue(CAGE);
+				Entourage n = e == Entourage.RIEN ? Entourage.CRINOLINE : e == Entourage.CRINOLINE ? Entourage.TUNNEL : Entourage.RIEN;
+				c.getLevel().setBlock(c.getClickedPos(), s.setValue(CAGE, n), Block.UPDATE_ALL);
+				c.getLevel().playSound(null, c.getClickedPos(), SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
+			}
+			return InteractionResult.SUCCESS;
 		}
 	}
 

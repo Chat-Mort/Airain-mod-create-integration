@@ -5,7 +5,8 @@
     "model": "airain:block/weathered_airain_catwalk_floor_bottom"
    },
    "when": {
-    "top": "false"
+    "top": "false",
+    "solid": "false"
    }
   },
   {
@@ -13,7 +14,26 @@
     "model": "airain:block/weathered_airain_catwalk_floor_top"
    },
    "when": {
-    "top": "true"
+    "top": "true",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_floor_solid_bottom"
+   },
+   "when": {
+    "top": "false",
+    "solid": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_floor_solid_top"
+   },
+   "when": {
+    "top": "true",
+    "solid": "true"
    }
   },
   {

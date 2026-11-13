@@ -14,7 +14,16 @@
    },
    "when": {
     "facing": "north",
-    "cage": "true"
+    "cage": "cage"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_ladder_tunnel"
+   },
+   "when": {
+    "facing": "north",
+    "cage": "full"
    }
   },
   {
@@ -33,7 +42,17 @@
    },
    "when": {
     "facing": "east",
-    "cage": "true"
+    "cage": "cage"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_ladder_tunnel",
+    "y": 90
+   },
+   "when": {
+    "facing": "east",
+    "cage": "full"
    }
   },
   {
@@ -52,7 +71,17 @@
    },
    "when": {
     "facing": "south",
-    "cage": "true"
+    "cage": "cage"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_ladder_tunnel",
+    "y": 180
+   },
+   "when": {
+    "facing": "south",
+    "cage": "full"
    }
   },
   {
@@ -71,7 +100,17 @@
    },
    "when": {
     "facing": "west",
-    "cage": "true"
+    "cage": "cage"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_ladder_tunnel",
+    "y": 270
+   },
+   "when": {
+    "facing": "west",
+    "cage": "full"
    }
   }
  ]

@@ -5,7 +5,17 @@
     "model": "airain:block/airain_catwalk_stairs"
    },
    "when": {
-    "facing": "north"
+    "facing": "north",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_stairs_solid"
+   },
+   "when": {
+    "facing": "north",
+    "solid": "true"
    }
   },
   {
@@ -32,7 +42,18 @@
     "y": 90
    },
    "when": {
-    "facing": "east"
+    "facing": "east",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_stairs_solid",
+    "y": 90
+   },
+   "when": {
+    "facing": "east",
+    "solid": "true"
    }
   },
   {
@@ -61,7 +82,18 @@
     "y": 180
    },
    "when": {
-    "facing": "south"
+    "facing": "south",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_stairs_solid",
+    "y": 180
+   },
+   "when": {
+    "facing": "south",
+    "solid": "true"
    }
   },
   {
@@ -90,7 +122,18 @@
     "y": 270
    },
    "when": {
-    "facing": "west"
+    "facing": "west",
+    "solid": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_stairs_solid",
+    "y": 270
+   },
+   "when": {
+    "facing": "west",
+    "solid": "true"
    }
   },
   {
