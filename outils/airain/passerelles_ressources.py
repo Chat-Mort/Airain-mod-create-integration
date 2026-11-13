@@ -79,6 +79,10 @@ def escalier_base():
         # marche : la bande des croisillons (rangs 2 à 6 : une rangée de croix entières), pixel pour pixel
         e=eln([4*i,top-1,2],[4*i+4,top,14],'#gs',faces=("up","down")); e['faces']['up']['uv']=[2,2,14,6]; e['faces']['down']['uv']=[2,6,14,2]; E.append(e)
         E.append(eln([4*i+3,top-2,2],[4*i+4,top,14]))
+        # nez de marche : bandeau à rivets sur l'avant (pixel pour pixel)
+        n=eln([4*i,top-2,2],[4*i+1,top,14],'#bd')
+        for k,f in n['faces'].items(): f['uv']=[2,1,14,3] if k in ('north','south') else ([7,1,8,3] if k in ('east','west') else [2,1,14,2])
+        E.append(n)
     for z0 in (0,14): E.append(eln([0,S+5,z0+0.5],[16,S+8,z0+1.5],rot=([8,S+6.5,8],'z',45)))
     return E
 def escalier_rampe(z0):
@@ -108,7 +112,7 @@ def cage():
 # ---------------------------------------------------------------- modèles par teinte
 ROT={'north':0,'east':90,'south':180,'west':270}
 for p in PRE:
-    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','gs':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain'}
+    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','gs':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain','bd':f'airain:block/{p}airain_band'}
     for haut,h in (('bottom',3),('top',11)):
         modele(f'{p}airain_catwalk_floor_{haut}',plancher(h),tex); modele(f'{p}airain_catwalk_floor_solid_{haut}',plein(plancher(h)),tex)
         modele(f'{p}airain_catwalk_railing_{haut}',rambarde_nord(h),tex)

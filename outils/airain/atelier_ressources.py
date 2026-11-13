@@ -31,7 +31,7 @@ def modele(nom,E,tex,rt="cutout",parent="minecraft:block/block"):
     w(AS+f'models/block/{nom}.json',{"parent":parent,"render_type":"minecraft:"+rt,"ambientocclusion":False,"textures":dict(tex,particle=tex.get('m',list(tex.values())[0])),"elements":E})
 def tex(p): return {'m':f'airain:block/{p}airain_block','pn':f'airain:block/{p}airain_panel','fz':f'airain:block/{p}airain_frieze','bd':f'airain:block/{p}airain_band',
                     'fl':f'airain:block/{p}airain_fluted','tu':f'airain:block/{p}airain_pipe','tv':f'airain:block/{p}airain_pipe_vertical','ro':f'airain:block/{p}airain_rod',
-                    'rg':f'airain:block/{p}oxidized_airain_block' if p!='oxidized_' else 'airain:block/oxidized_airain_block','g':f'airain:block/{p}airain_catwalk'}
+                    'rg':'airain:block/oxidized_airain_block','g':f'airain:block/{p}airain_catwalk'}
 # ---------------------------------------------------------------- textures : copiées depuis l'atelier de textures (noms neufs uniquement)
 TB=SCR+'/airain_tex/block/'; DT=AS+'textures/block/'
 NOUV_TEX=[p+n for p in PRE for n in ('airain_panel','airain_frieze','airain_band','airain_fluted','airain_pipe','airain_pipe_vertical','airain_rod')]+\
@@ -113,7 +113,7 @@ def etabli():
     E=dalle()
     for (x,z) in ((0.5,0.5),(13.5,0.5),(0.5,13.5),(13.5,13.5)): E.append(el([x,0,z],[x+2,13,z+2]))
     E+=[el([1,3,1],[15,4,15],'#rg'),el([2,9,0],[14,12.5,1],'#bd'),el([7,10,-0.5],[9,11,0]),
-        el([1,16,1],[6,19,4],'#bd'),el([1.5,16,-1],[5.5,19,0.5],'#bd'),el([3,17,-3],[4,18,-1]),el([0,17.5,-2.5],[7,18,-2]),
+        el([1,16,2],[6,19,5],'#bd'),el([1.5,16,0.5],[5.5,19,1.5],'#bd'),el([3,17,1.5],[4,18,2],'#rg'),el([1,17.5,0],[6,18,0.5],'#rg'),
         el([9,16,6],[13,17.5,7.5],'#rg'),el([10.5,16,7.5],[11.5,17,13])]
     return E
 def vitre_cadre(h):

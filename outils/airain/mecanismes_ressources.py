@@ -16,7 +16,7 @@ def butin(i):
 def carter(h, pont):
     b=h-2      # dessous du plancher
     E=[el([2,b-10,2],[14,b,14],'#bd',faces=("north","south","east","west")),el([2,b-10,2],[14,b,14],'#pn',faces=("down",),uv='crop'),
-       el([14,b-8,5],[14.6,b-2,11],'#m'),el([14,b-8,5],[14.6,b-2,11],'#m',rot=([14.3,b-5,8],'x',45)),el([14.4,b-6,7],[14.9,b-4,9],'#rg'),el([6.5,b-16,6.5],[9.5,b-10,9.5],'#tv',faces=("north","south","east","west"),uv='crop')]
+       el([14,b-8,5],[14.6,b-2,11],'#m'),el([14,b-8,5],[14.6,b-2,11],'#m',rot=([14.3,b-5,8],'x',45)),el([14.4,b-6,7],[14.9,b-4,9],'#rg')]
     if pont:   # charnières au bord nord, au ras du plancher
         E+=[el([1,b-1,-0.5],[3,b+1,1.5],'#m'),el([13,b-1,-0.5],[15,b+1,1.5],'#m'),el([3,b-0.5,0],[13,b+0.5,1],'#rg')]
     else:      # fente du télescope sur la face nord du carter
@@ -49,7 +49,7 @@ tp=dict(tex(''),lw='airain:block/lamp_warm',lr='airain:block/lamp_red_glass')
 for p in PRE:
     t=dict(tex(p),lw='airain:block/lamp_warm',lr='airain:block/lamp_red_glass')
     for pont,nom in ((True,'drawbridge'),(False,'telescopic')):
-        for hh,h in (('bottom',3),('top',11)): modele(f'{p}airain_catwalk_{nom}_carter_{hh}',carter(h,pont),t)
+        for hh,h in (('bottom',3),('top',11)): modele(f'airain_catwalk_mechanism/{p}{nom}_{hh}',carter(h,pont),t)
         modele(f'{p}airain_catwalk_{nom}_item',[e for e in json.load(open(AS+f'models/block/{p}airain_catwalk_item.json'))['elements']]+carter(3,pont),dict(t,g=f'airain:block/{p}airain_catwalk',r=f'airain:block/{p}riveted_airain'))
 modele('airain_lift_cabin',cabine(),tp)
 modele('airain_lift_cabin/gate',[dict(e) for e in P['portillon_nord'](3,False)],dict(tp,m='airain:block/airain_block'))
@@ -72,8 +72,6 @@ for f in FAMS:
             i=('waxed_' if c else '')+p+f; TOUS.append(i)
             parts=[json.loads(json.dumps(x)) for x in base['multipart']]
             for part in parts: part['when'].pop('retracted',None)
-            for d,r in ROT.items():
-                for hh,top in (('bottom','false'),('top','true')): parts.append(mp(f'airain:block/{p}airain_catwalk_{nom}_carter_{hh}',{"facing":d,"top":top},r))
             w(AS+f'blockstates/{i}.json',{"multipart":parts}); w(AS+f'models/item/{i}.json',{"parent":f'airain:block/{p}airain_catwalk_{nom}_item'}); butin(i)
 # 3. monte-charge
 w(AS+'blockstates/airain_lift_mast.json',{"variants":{f"facing={d}":{"model":"airain:block/airain_lift_mast"}|({"y":r} if r else {}) for d,r in ROT.items()}})

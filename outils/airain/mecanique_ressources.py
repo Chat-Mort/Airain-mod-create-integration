@@ -9,11 +9,17 @@ def butin(i):
 TIGE_TRAVERS={"uv":[7,3,9,13],"rotation":90}
 # ---------------------------------------------------------------- allégeur (arbre nord-sud)
 def allegeur():
+    """Flasques ciselés creusés au centre (on voit l'arbre et son palier), quatre colonnes, volant au milieu."""
     E=[]
     for z0 in (0,13):
         dehors="north" if z0==0 else "south"; dedans="south" if z0==0 else "north"
-        E+=[el([0,0,z0],[16,16,z0+3],'#ci',faces=(dehors,),uv='full'),el([0,0,z0],[16,16,z0+3],'#pn',faces=(dedans,),uv='full'),
-            el([0,0,z0],[16,16,z0+3],'#bd',faces=("east","west","up","down"))]
+        for (a,b) in (([0,0],[16,5]),([0,11],[16,16]),([0,5],[5,11]),([11,5],[16,11])):
+            E+=[el([a[0],a[1],z0],[b[0],b[1],z0+3],'#ci',faces=(dehors,)),el([a[0],a[1],z0],[b[0],b[1],z0+3],'#pn',faces=(dedans,))]
+        E+=[el([0,0,z0],[16,16,z0+3],'#bd',faces=("east","west","up","down")),
+            el([5,5,z0],[11,11,z0+3],'#bd',faces=("east","west","up","down"))]          # parois du trou (vues de l'intérieur)
+        zc=z0+2 if z0==0 else z0
+        for (a,b) in (([5,5],[11,6]),([5,10],[11,11]),([5,6],[6,10]),([10,6],[11,10])):  # palier en retrait, autour de l'arbre
+            E.append(el([a[0],a[1],zc],[b[0],b[1],zc+1],'#rg'))
     for (x,y) in ((0,0),(14,0),(0,14),(14,14)):
         e=el([x,y,3],[x+2,y+2,13],'#ro',faces=("up","down"),uv=[7,3,9,13])
         e['faces'].update({k:{"texture":"#ro","uv":[7,3,9,13],"rotation":90} for k in ("east","west")}); E.append(e)
