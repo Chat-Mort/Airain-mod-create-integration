@@ -406,5 +406,68 @@
 			x: 12.0d
 			y: 1.0d
 		}
+		{
+			dependencies: ["1B4E33638C6A805D", "2ADCE98DF27075B6"]
+			id: "235D2E2FFE20DAB2"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "221C39761B57997D"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_catwalk_drawbridge" }
+					count: 1L
+					id: "2A4C751BDD96D113"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_catwalk_telescopic" }
+					count: 1L
+					id: "40D2BCEA9A822C72"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["235D2E2FFE20DAB2"]
+			id: "26E73EF871F9C5B7"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 4
+					id: "6E5E50652B3812E6"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_lift_winch" }
+					count: 1L
+					id: "239B879292165044"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_lift_mast" }
+					count: 4L
+					id: "50A4ABFB293128DA"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_lift_call_box" }
+					count: 1L
+					id: "14DBC2862187F002"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 0.0d
+		}
 	]
 }

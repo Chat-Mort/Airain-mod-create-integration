@@ -1,0 +1,16 @@
+src=open('verif_atelier2.py').read(); exec(src[:src.index('# 1. tuyauterie')])
+E=[]
+for x in (0,1,2):
+    E+=charge('airain_catwalk_floor_bottom',(x,1,0))+charge('airain_catwalk_railing_bottom',(x,1,0),0)+charge('airain_catwalk_railing_bottom',(x,1,0),180)
+E+=charge('airain_catwalk_railing_bottom',(0,1,0),270)
+E+=charge('airain_catwalk_drawbridge_carter_bottom',(1,1,0),90)
+E+=charge('airain_catwalk_telescopic_carter_bottom',(2,3,0),90)+charge('airain_catwalk_floor_bottom',(2,3,0))
+E+=charge('airain_support',(0,0,0))+charge('airain_support_bottom',(0,0,0))+charge('airain_support_top',(0,0,0))
+A=vue(E+sol(range(0,4),range(0,1)),[-0.5,0.3,1])
+E=charge('airain_lift_winch',(0,0,0))
+for y in range(1,4): E+=charge('airain_lift_mast',(0,y,0),90)
+E+=charge('airain_lift_cabin',(1,1,0),90)+charge('airain_lift_cabin/gate',(1,3,0),90)+charge('airain_lift_cabin',(1,3,0),90)
+E+=charge('airain_catwalk_floor_bottom',(2,3,0))+charge('airain_catwalk_railing_bottom',(2,3,0),0)+charge('airain_catwalk_railing_bottom',(2,3,0),180)+charge('airain_catwalk_railing_bottom',(2,3,0),270)
+E+=charge('airain_lift_call_box',(0,3,1),180)+cube((0,3,2))
+B=vue(E+sol(range(-1,3),range(0,3)),[-0.6,0.4,1])
+W=Image.new('RGBA',(A.width+B.width+60,max(A.height,B.height)+40),(34,30,38,255)); W.alpha_composite(A,(20,20)); W.alpha_composite(B,(A.width+40,20)); W.save('rendu_fusion/meca_vrais.png')

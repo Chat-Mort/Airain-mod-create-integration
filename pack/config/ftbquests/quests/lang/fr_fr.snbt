@@ -473,6 +473,11 @@
 		"&8Deux trophées identiques ne cumulent pas. Clic droit main vide pour reprendre le trophée. Un comparateur lit le socle ; un gabarit de bannière copie son apparence.&r"
 	]
 	"quest.23562325F0DE1D91.title": "Le socle de l'Empire"
+	"quest.235D2E2FFE20DAB2.quest_desc": [
+		"&7Optionnel.&r Deux pièces-mécanismes à glisser dans une ligne de passerelles : elles entraînent les 1 à 4 passerelles qui suivent (la clé, au milieu du sol, règle la longueur)."
+		"Le pont-levis les relève, la passerelle rétractable les rentre. Un arbre de Create par-dessous (un sens déploie, l'autre relève) ou la redstone (signal : relevé). Des rambardes ferment les deux bouts tant que le passage est ouvert."
+	]
+	"quest.235D2E2FFE20DAB2.title": "Passages mobiles"
 	"quest.23667A58FF83BC81.quest_desc": [
 		"Le premier moulin de l'Empire ne moulait que du grain. Le reste est venu après."
 		"La meule broie gravier, fleurs, céréales… Farine, silex et colorants sans effort. Les lunettes montrent ce qu'elle est en train de moudre."
@@ -529,6 +534,11 @@
 	]
 	"quest.26721FDF49DBAC1B.quest_subtitle": "V · Les petits Échos"
 	"quest.26721FDF49DBAC1B.title": "Le petit être jaune"
+	"quest.26E73EF871F9C5B7.quest_desc": [
+		"Un treuil (rotation de Create) au pied d'un mât à crémaillère : la cabine monte du côté où vous posez le mât. Chaque passerelle posée en face du mât, de l'autre côté de la cabine, devient un étage."
+		"Dans la cabine : clic droit pour monter d'un étage, accroupi pour descendre, clic droit maintenu sur le panneau du boîtier pour choisir l'étage. Le boîtier d'appel fait venir la cabine."
+	]
+	"quest.26E73EF871F9C5B7.title": "Le monte-charge"
 	"quest.26EEACC9EDD1822F.quest_desc": [
 		"Rallumez 3 avant-postes en tout."
 	]

@@ -1184,6 +1184,20 @@ quest(cF, "fo_rues", ("Les rues de l'Empire", "Streets of the Empire"), 12, 1,
       deps=["fo_atelier"], optional=True,
       desc=D(["&7Optionnel.&r Bornes de carrefour (une étiquette renommée écrit sur la flèche, la clé la tourne), plaques émaillées (la clé change le pictogramme), toboggan, garde-corps vitré (la clé sur une rambarde), et l'établi d'atelier, dont la grille garde ses objets."],
              ["&7Optional.&r Crossroads signposts (a renamed name tag writes on the arrow, the wrench turns it), enamel signs (the wrench changes the pictogram), chutes, glass railings (the wrench on a railing), and the workshop bench, whose grid keeps its items."]))
+quest(cF, "fo_mobiles", ("Passages mobiles", "Moving Crossings"), 10, 0,
+      [T_item("airain:airain_catwalk_drawbridge"), T_item("airain:airain_catwalk_telescopic")], [R_coin("cog", 2)],
+      deps=["fo_passerelle", "fo_engrenage"], optional=True,
+      desc=D(["&7Optionnel.&r Deux pièces-mécanismes à glisser dans une ligne de passerelles : elles entraînent les 1 à 4 passerelles qui suivent (la clé, au milieu du sol, règle la longueur).",
+              "Le pont-levis les relève, la passerelle rétractable les rentre. Un arbre de Create par-dessous (un sens déploie, l'autre relève) ou la redstone (signal : relevé). Des rambardes ferment les deux bouts tant que le passage est ouvert."],
+             ["&7Optional.&r Two mechanism pieces to slip into a catwalk line: they drive the 1 to 4 catwalks that follow (the wrench, in the middle of the floor, sets the length).",
+              "The drawbridge raises them, the telescopic catwalk retracts them. A Create shaft from below (one direction deploys, the other raises) or redstone (signal: raised). Railings close both ends while the crossing is open."]))
+quest(cF, "fo_monte_charge", ("Le monte-charge", "The Lift"), 12, 0,
+      [T_item("airain:airain_lift_winch"), T_item("airain:airain_lift_mast", 4), T_item("airain:airain_lift_call_box")], [R_coin("sprocket", 4)],
+      deps=["fo_mobiles"],
+      desc=D(["Un treuil (rotation de Create) au pied d'un mât à crémaillère : la cabine monte du côté où vous posez le mât. Chaque passerelle posée en face du mât, de l'autre côté de la cabine, devient un étage.",
+              "Dans la cabine : clic droit pour monter d'un étage, accroupi pour descendre, clic droit maintenu sur le panneau du boîtier pour choisir l'étage. Le boîtier d'appel fait venir la cabine."],
+             ["A winch (Create rotation) at the foot of a rack mast: the cabin runs on the side where you placed the mast. Every catwalk placed opposite the mast, beyond the cabin, becomes a floor.",
+              "In the cabin: right-click to go up one floor, sneak to go down, hold right-click on the box's panel to pick the floor. The call box brings the cabin to you."]))
 # le Cœur demande de l'airain : « Forger le Cœur » dépend aussi de l'engrenage d'airain
 [q for q in c6["quests"] if q["id"] == QUESTS["forger"]][0]["deps"].append(QUESTS["fo_engrenage"])
 

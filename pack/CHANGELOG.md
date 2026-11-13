@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 13 novembre 2026 — versions 1.48.0 à 1.51.0
+## 13 novembre 2026 — versions 1.48.0 à 1.52.0
 
 **Ajouts**
 - **L'airain**, l'alliage secret de l'Empire : lingot, pépite, plaque, engrenage d'airain et airain en fusion. Il ne sort que du haut-fourneau.
@@ -31,8 +31,10 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - plaques émaillées à huit pictogrammes, contre un mur ou une rambarde ;
   - borne de carrefour à flèches orientables (huit directions), sur lesquelles on écrit avec une étiquette renommée ;
   - établi d'atelier dont la grille garde ses objets.
+- **Passerelles mobiles** : deux pièces-mécanismes à glisser dans une ligne de passerelles, qui entraînent les 1 à 4 passerelles suivantes : pont-levis (elles se relèvent) et passerelle rétractable (elles rentrent en télescope). Commandes par arbre de Create (sens et vitesse) ou par redstone ; des rambardes ferment les deux bouts quand le passage est ouvert.
+- **Monte-charge** : treuil (rotation de Create), mât à crémaillère jusqu'à 32 blocs, cabine. Les étages sont détectés tout seuls (chaque passerelle en face du mât) ; dans la cabine, clic droit pour monter, accroupi pour descendre, clic maintenu sur le panneau pour choisir l'étage dans le tableau de Create ; boîtier d'appel sur les paliers. Les paliers gardent leur rambarde tant que la cabine n'y est pas.
 - Nouvelles textures de détail pour ces pièces : panneau à pointe de diamant, frise, bandeau à perles, cannelures, tuyau, tige.
-- Nouvelle annexe de quêtes « La fonderie impériale » (14 quêtes) et six pages dans le livre de l'ingénieur.
+- Nouvelle annexe de quêtes « La fonderie impériale » (16 quêtes) et sept pages dans le livre de l'ingénieur.
 
 **Changements**
 - « Forger le Cœur » demande aussi l'engrenage d'airain.

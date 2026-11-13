@@ -473,6 +473,11 @@
 		"&8Identical trophies don't stack. Right-click empty-handed to take the trophy back. A comparator reads the pedestal; a banner template copies its look.&r"
 	]
 	"quest.23562325F0DE1D91.title": "The Empire Pedestal"
+	"quest.235D2E2FFE20DAB2.quest_desc": [
+		"&7Optional.&r Two mechanism pieces to slip into a catwalk line: they drive the 1 to 4 catwalks that follow (the wrench, in the middle of the floor, sets the length)."
+		"The drawbridge raises them, the telescopic catwalk retracts them. A Create shaft from below (one direction deploys, the other raises) or redstone (signal: raised). Railings close both ends while the crossing is open."
+	]
+	"quest.235D2E2FFE20DAB2.title": "Moving Crossings"
 	"quest.23667A58FF83BC81.quest_desc": [
 		"The Empire's first mill only ground grain. The rest came later."
 		"The millstone grinds gravel, flowers, grain… Flour, flint and dyes with no effort. The goggles show what it is grinding."
@@ -529,6 +534,11 @@
 	]
 	"quest.26721FDF49DBAC1B.quest_subtitle": "V · The Little Echoes"
 	"quest.26721FDF49DBAC1B.title": "The Little Yellow One"
+	"quest.26E73EF871F9C5B7.quest_desc": [
+		"A winch (Create rotation) at the foot of a rack mast: the cabin runs on the side where you placed the mast. Every catwalk placed opposite the mast, beyond the cabin, becomes a floor."
+		"In the cabin: right-click to go up one floor, sneak to go down, hold right-click on the box's panel to pick the floor. The call box brings the cabin to you."
+	]
+	"quest.26E73EF871F9C5B7.title": "The Lift"
 	"quest.26EEACC9EDD1822F.quest_desc": [
 		"Rekindle 3 outposts in all."
 	]
