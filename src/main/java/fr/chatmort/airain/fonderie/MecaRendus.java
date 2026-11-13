@@ -92,4 +92,60 @@ public final class MecaRendus {
 		@Override public boolean shouldRenderOffScreen(MonteCharge.TreuilBlockEntity be) { return true; }
 		@Override public int getViewDistance() { return 128; }
 	}
+
+	// ---------------------------------------------------------------- allégeur : l'arbre, le volant d'inertie qui tourne, ses lampes quand il travaille
+	public static class Allegeur extends KineticBlockEntityRenderer<Mecanique.AllegeurBlockEntity> {
+		public Allegeur(BlockEntityRendererProvider.Context c) { super(c); }
+		@Override
+		protected void renderSafe(Mecanique.AllegeurBlockEntity be, float pt, PoseStack ms, MultiBufferSource buf, int light, int overlay) {
+			super.renderSafe(be, pt, ms, buf, light, overlay);
+			BlockState s = be.getBlockState();
+			Direction.Axis ax = s.getValue(BlockStateProperties.AXIS);
+			float angle = getAngleForBe(be, be.getBlockPos(), ax);
+			ms.pushPose();
+			ms.translate(0.5, 0.5, 0.5);
+			if (ax == Direction.Axis.X) ms.mulPose(Axis.YP.rotationDegrees(-90));
+			if (ax == Direction.Axis.Y) ms.mulPose(Axis.XP.rotationDegrees(-90));
+			ms.pushPose();
+			ms.mulPose(Axis.ZP.rotation(angle));
+			ms.translate(-0.5, -0.5, -0.5);
+			CachedBuffers.partial(AirainPartials.VOLANT, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+			ms.popPose();
+			if (be.actif) {
+				ms.translate(-0.5, -0.5, -0.5);
+				CachedBuffers.partial(AirainPartials.LAMPES_ALLEGEUR, s).light(net.minecraft.client.renderer.LightTexture.FULL_BRIGHT).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+			}
+			ms.popPose();
+		}
+	}
+
+	// ---------------------------------------------------------------- surcompresseur : pistons qui battent, aiguille du manomètre, voyant
+	public static class Surcompresseur implements BlockEntityRenderer<Mecanique.SurcompresseurBlockEntity> {
+		public Surcompresseur(BlockEntityRendererProvider.Context c) {}
+		@Override
+		public void render(Mecanique.SurcompresseurBlockEntity be, float pt, PoseStack ms, MultiBufferSource buf, int light, int overlay) {
+			BlockState s = be.getBlockState();
+			Direction f = s.getValue(BlockStateProperties.HORIZONTAL_FACING);
+			int r = switch (f) { case EAST -> 90; case SOUTH -> 180; case WEST -> 270; default -> 0; };
+			float ph = be.phaseAvant + (be.phase - be.phaseAvant) * pt;
+			ms.pushPose();
+			ms.translate(0.5, 0, 0.5); ms.mulPose(Axis.YP.rotationDegrees(-r)); ms.translate(-0.5, 0, -0.5);
+			for (int i = 0; i < 2; i++) {                                // deux pistons en opposition
+				ms.pushPose();
+				ms.translate(i * 6 / 16f, (float) Math.sin(ph + i * Math.PI) * 1.5f / 16f, 0);
+				CachedBuffers.partial(AirainPartials.PISTON, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+				ms.popPose();
+			}
+			ms.pushPose();                                               // aiguille du manomètre (cadran tourné vers l'arrière)
+			ms.translate(0.5, 18 / 16f, 14.25 / 16f);
+			ms.mulPose(Axis.YP.rotationDegrees(180));
+			ms.mulPose(Axis.ZP.rotationDegrees(-135f + 270f * be.aiguille));
+			ms.translate(-0.5, -0.5, -0.5);
+			CachedBuffers.partial(AirainPartials.AIGUILLE, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+			ms.popPose();
+			if (be.vitesse > 0)
+				CachedBuffers.partial(AirainPartials.VOYANT_SURCOMP, s).light(net.minecraft.client.renderer.LightTexture.FULL_BRIGHT).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+			ms.popPose();
+		}
+	}
 }

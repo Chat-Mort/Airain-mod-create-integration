@@ -1,8 +1,17 @@
 {
-  "required": false,
-  "minVersion": "0.8",
-  "package": "fr.chatmort.airain.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": ["MeuleMixin", "ConcasseurMixin", "CourantMixin", "VentilateurMixin", "SourceMixin"],
-  "injectors": {"defaultRequire": 0}
+ "required": false,
+ "minVersion": "0.8",
+ "package": "fr.chatmort.airain.mixin",
+ "compatibilityLevel": "JAVA_21",
+ "mixins": [
+  "MeuleMixin",
+  "ConcasseurMixin",
+  "CourantMixin",
+  "VentilateurMixin",
+  "SourceMixin",
+  "SurcompresseurMixin"
+ ],
+ "injectors": {
+  "defaultRequire": 0
+ }
 }

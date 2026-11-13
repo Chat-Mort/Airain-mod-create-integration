@@ -21,6 +21,12 @@ public class AirainPartials {
 	// monte-charge : portail de la cabine pendant le trajet
 	public static final PartialModel PORTAIL_CABINE = bloc("airain_lift_cabin/gate");
 
+	// mécanique impériale : volant et lampes de l'allégeur, piston et voyant du surcompresseur
+	public static final PartialModel VOLANT = bloc("airain_load_reliever/flywheel");
+	public static final PartialModel LAMPES_ALLEGEUR = bloc("airain_load_reliever/lamps");
+	public static final PartialModel PISTON = bloc("airain_supercharger/piston");
+	public static final PartialModel VOYANT_SURCOMP = bloc("airain_supercharger/lamp");
+
 	private static PartialModel bloc(String chemin) {
 		return PartialModel.of(ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "block/" + chemin));
 	}
