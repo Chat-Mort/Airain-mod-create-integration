@@ -1151,6 +1151,10 @@ quest(cF, "fo_laitier", ("Rien ne se perd", "Nothing Is Wasted"), 2, 2, [T_item(
       desc=D(["&7Optionnel.&r Le laitier sort par le trou de coulée (entonnoir). Broyé, il donne de la poudre de cendres ; remis au gueulard, il sert de fondant."],
              ["&7Optional.&r Slag comes out of the taphole (funnel). Crushed, it gives cinder flour; put back into the throat, it serves as flux."]))
 
+quest(cF, "fo_passerelle", ("Au-dessus des machines", "Above the Machines"), 8, 1,
+      [T_item("airain:airain_catwalk", 16), T_item("airain:airain_catwalk_stairs", 2)], [R_coin("cog", 1)], deps=["fo_style"],
+      desc=D(["Dans les usines de l'Empire, on circulait au-dessus des machines. Passerelles, escaliers, rampes, poteaux et échelles d'airain : les rambardes se posent seules, la clé de Create les retire ou les remet."],
+             ["In the Empire's factories people moved above the machines. Airain catwalks, stairs, ramps, supports and ladders: railings appear on their own, the Create wrench removes or restores them."]))
 # le Cœur demande de l'airain : « Forger le Cœur » dépend aussi de l'engrenage d'airain
 [q for q in c6["quests"] if q["id"] == QUESTS["forger"]][0]["deps"].append(QUESTS["fo_engrenage"])
 

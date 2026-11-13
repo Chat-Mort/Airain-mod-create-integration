@@ -212,5 +212,32 @@
 			x: 2.0d
 			y: 2.0d
 		}
+		{
+			dependencies: ["365D357F3A917CC6"]
+			id: "1B4E33638C6A805D"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "7F17C6DC6C50CFC9"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_catwalk" }
+					count: 16L
+					id: "1757727C17FD8125"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_catwalk_stairs" }
+					count: 2L
+					id: "748978360291BF42"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 1.0d
+		}
 	]
 }
