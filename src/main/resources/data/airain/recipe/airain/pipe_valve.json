@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "airain:airain_pipe"
+  },
+  {
+   "item": "airain:airain_ingot"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_pipe_valve",
+  "count": 1
+ }
+}

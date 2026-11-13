@@ -1,0 +1,25 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/airain_signpost_post"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_signpost_base"
+   },
+   "when": {
+    "bottom": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_signpost_cap"
+   },
+   "when": {
+    "top": "true"
+   }
+  }
+ ]
+}

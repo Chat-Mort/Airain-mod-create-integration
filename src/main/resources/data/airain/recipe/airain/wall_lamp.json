@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "B",
+  "G",
+  "S"
+ ],
+ "key": {
+  "B": {
+   "item": "airain:airain_bars"
+  },
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:airain_wall_lamp",
+  "count": 2
+ }
+}

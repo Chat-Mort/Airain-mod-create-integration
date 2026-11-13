@@ -1,0 +1,63 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_raised_floor_legs"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_raised_floor_plate"
+   },
+   "when": {
+    "open": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_raised_floor_pipe"
+   },
+   "when": {
+    "content": "pipe",
+    "axis": "z"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_raised_floor_duct"
+   },
+   "when": {
+    "content": "duct",
+    "axis": "z"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_raised_floor_pipe",
+    "y": 90
+   },
+   "when": {
+    "content": "pipe",
+    "axis": "x"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_raised_floor_duct",
+    "y": 90
+   },
+   "when": {
+    "content": "duct",
+    "axis": "x"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_raised_floor_lid"
+   },
+   "when": {
+    "open": "true"
+   }
+  }
+ ]
+}

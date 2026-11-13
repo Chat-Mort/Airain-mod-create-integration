@@ -1,0 +1,6 @@
+{
+ "parent": "airain:block/airain_sign_plate_middle",
+ "textures": {
+  "sign": "airain:block/sign_fleche_haut"
+ }
+}

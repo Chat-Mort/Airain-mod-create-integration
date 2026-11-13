@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "airain:airain_ingot"
+  },
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "minecraft:red_dye"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_signpost",
+  "count": 2
+ }
+}

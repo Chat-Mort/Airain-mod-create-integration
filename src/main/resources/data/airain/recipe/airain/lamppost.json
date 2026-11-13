@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "L",
+  "I",
+  "S"
+ ],
+ "key": {
+  "L": {
+   "item": "airain:airain_lantern"
+  },
+  "I": {
+   "item": "airain:airain_ingot"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:airain_lamppost",
+  "count": 3
+ }
+}

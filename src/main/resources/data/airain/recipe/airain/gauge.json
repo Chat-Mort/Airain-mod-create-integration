@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "minecraft:glass_pane"
+  },
+  {
+   "item": "minecraft:redstone"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_gauge",
+  "count": 1
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "variants": {
+  "facing=north,flat=false": {
+   "model": "airain:block/weathered_airain_chute"
+  },
+  "facing=north,flat=true": {
+   "model": "airain:block/weathered_airain_chute_flat"
+  },
+  "facing=east,flat=false": {
+   "model": "airain:block/weathered_airain_chute",
+   "y": 90
+  },
+  "facing=east,flat=true": {
+   "model": "airain:block/weathered_airain_chute_flat",
+   "y": 90
+  },
+  "facing=south,flat=false": {
+   "model": "airain:block/weathered_airain_chute",
+   "y": 180
+  },
+  "facing=south,flat=true": {
+   "model": "airain:block/weathered_airain_chute_flat",
+   "y": 180
+  },
+  "facing=west,flat=false": {
+   "model": "airain:block/weathered_airain_chute",
+   "y": 270
+  },
+  "facing=west,flat=true": {
+   "model": "airain:block/weathered_airain_chute_flat",
+   "y": 270
+  }
+ }
+}

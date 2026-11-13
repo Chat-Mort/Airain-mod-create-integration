@@ -1,0 +1,364 @@
+{
+ "variants": {
+  "facing=north,level=middle,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_right"
+  },
+  "facing=north,level=middle,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_left"
+  },
+  "facing=north,level=middle,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_up"
+  },
+  "facing=north,level=middle,picto=forge": {
+   "model": "airain:block/airain_sign_plate_middle_forge"
+  },
+  "facing=north,level=middle,picto=danger": {
+   "model": "airain:block/airain_sign_plate_middle_danger"
+  },
+  "facing=north,level=middle,picto=exit": {
+   "model": "airain:block/airain_sign_plate_middle_exit"
+  },
+  "facing=north,level=middle,picto=storage": {
+   "model": "airain:block/airain_sign_plate_middle_storage"
+  },
+  "facing=north,level=middle,picto=gear": {
+   "model": "airain:block/airain_sign_plate_middle_gear"
+  },
+  "facing=north,level=catwalk_low,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_right"
+  },
+  "facing=north,level=catwalk_low,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_left"
+  },
+  "facing=north,level=catwalk_low,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_up"
+  },
+  "facing=north,level=catwalk_low,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_forge"
+  },
+  "facing=north,level=catwalk_low,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_danger"
+  },
+  "facing=north,level=catwalk_low,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_exit"
+  },
+  "facing=north,level=catwalk_low,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_storage"
+  },
+  "facing=north,level=catwalk_low,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_gear"
+  },
+  "facing=north,level=catwalk_high,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_right"
+  },
+  "facing=north,level=catwalk_high,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_left"
+  },
+  "facing=north,level=catwalk_high,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_up"
+  },
+  "facing=north,level=catwalk_high,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_forge"
+  },
+  "facing=north,level=catwalk_high,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_danger"
+  },
+  "facing=north,level=catwalk_high,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_exit"
+  },
+  "facing=north,level=catwalk_high,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_storage"
+  },
+  "facing=north,level=catwalk_high,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_gear"
+  },
+  "facing=east,level=middle,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_right",
+   "y": 90
+  },
+  "facing=east,level=middle,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_left",
+   "y": 90
+  },
+  "facing=east,level=middle,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_up",
+   "y": 90
+  },
+  "facing=east,level=middle,picto=forge": {
+   "model": "airain:block/airain_sign_plate_middle_forge",
+   "y": 90
+  },
+  "facing=east,level=middle,picto=danger": {
+   "model": "airain:block/airain_sign_plate_middle_danger",
+   "y": 90
+  },
+  "facing=east,level=middle,picto=exit": {
+   "model": "airain:block/airain_sign_plate_middle_exit",
+   "y": 90
+  },
+  "facing=east,level=middle,picto=storage": {
+   "model": "airain:block/airain_sign_plate_middle_storage",
+   "y": 90
+  },
+  "facing=east,level=middle,picto=gear": {
+   "model": "airain:block/airain_sign_plate_middle_gear",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_right",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_left",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_up",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_forge",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_danger",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_exit",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_storage",
+   "y": 90
+  },
+  "facing=east,level=catwalk_low,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_gear",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_right",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_left",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_up",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_forge",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_danger",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_exit",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_storage",
+   "y": 90
+  },
+  "facing=east,level=catwalk_high,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_gear",
+   "y": 90
+  },
+  "facing=south,level=middle,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_right",
+   "y": 180
+  },
+  "facing=south,level=middle,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_left",
+   "y": 180
+  },
+  "facing=south,level=middle,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_up",
+   "y": 180
+  },
+  "facing=south,level=middle,picto=forge": {
+   "model": "airain:block/airain_sign_plate_middle_forge",
+   "y": 180
+  },
+  "facing=south,level=middle,picto=danger": {
+   "model": "airain:block/airain_sign_plate_middle_danger",
+   "y": 180
+  },
+  "facing=south,level=middle,picto=exit": {
+   "model": "airain:block/airain_sign_plate_middle_exit",
+   "y": 180
+  },
+  "facing=south,level=middle,picto=storage": {
+   "model": "airain:block/airain_sign_plate_middle_storage",
+   "y": 180
+  },
+  "facing=south,level=middle,picto=gear": {
+   "model": "airain:block/airain_sign_plate_middle_gear",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_right",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_left",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_up",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_forge",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_danger",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_exit",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_storage",
+   "y": 180
+  },
+  "facing=south,level=catwalk_low,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_gear",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_right",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_left",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_up",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_forge",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_danger",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_exit",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_storage",
+   "y": 180
+  },
+  "facing=south,level=catwalk_high,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_gear",
+   "y": 180
+  },
+  "facing=west,level=middle,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_right",
+   "y": 270
+  },
+  "facing=west,level=middle,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_left",
+   "y": 270
+  },
+  "facing=west,level=middle,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_middle_arrow_up",
+   "y": 270
+  },
+  "facing=west,level=middle,picto=forge": {
+   "model": "airain:block/airain_sign_plate_middle_forge",
+   "y": 270
+  },
+  "facing=west,level=middle,picto=danger": {
+   "model": "airain:block/airain_sign_plate_middle_danger",
+   "y": 270
+  },
+  "facing=west,level=middle,picto=exit": {
+   "model": "airain:block/airain_sign_plate_middle_exit",
+   "y": 270
+  },
+  "facing=west,level=middle,picto=storage": {
+   "model": "airain:block/airain_sign_plate_middle_storage",
+   "y": 270
+  },
+  "facing=west,level=middle,picto=gear": {
+   "model": "airain:block/airain_sign_plate_middle_gear",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_right",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_left",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_arrow_up",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_forge",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_danger",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_exit",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_storage",
+   "y": 270
+  },
+  "facing=west,level=catwalk_low,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_low_gear",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=arrow_right": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_right",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=arrow_left": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_left",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=arrow_up": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_arrow_up",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=forge": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_forge",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=danger": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_danger",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=exit": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_exit",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=storage": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_storage",
+   "y": 270
+  },
+  "facing=west,level=catwalk_high,picto=gear": {
+   "model": "airain:block/airain_sign_plate_catwalk_high_gear",
+   "y": 270
+  }
+ }
+}

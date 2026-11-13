@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "SSS",
+  "ICI",
+  "I I"
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "I": {
+   "item": "airain:airain_ingot"
+  },
+  "C": {
+   "item": "minecraft:crafting_table"
+  }
+ },
+ "result": {
+  "id": "airain:airain_workbench",
+  "count": 1
+ }
+}

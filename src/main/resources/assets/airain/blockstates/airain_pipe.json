@@ -1,0 +1,106 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_core_x"
+   },
+   "when": {
+    "OR": [
+     {
+      "east": "true"
+     },
+     {
+      "west": "true"
+     }
+    ]
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_core_z"
+   },
+   "when": {
+    "AND": [
+     {
+      "east": "false",
+      "west": "false"
+     },
+     {
+      "OR": [
+       {
+        "north": "true"
+       },
+       {
+        "south": "true"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_core_y"
+   },
+   "when": {
+    "east": "false",
+    "west": "false",
+    "north": "false",
+    "south": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_arm"
+   },
+   "when": {
+    "north": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_arm",
+    "y": 90
+   },
+   "when": {
+    "east": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_arm",
+    "y": 180
+   },
+   "when": {
+    "south": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_arm",
+    "y": 270
+   },
+   "when": {
+    "west": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_arm",
+    "x": 270
+   },
+   "when": {
+    "up": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_pipe_arm",
+    "x": 90
+   },
+   "when": {
+    "down": "true"
+   }
+  }
+ ]
+}

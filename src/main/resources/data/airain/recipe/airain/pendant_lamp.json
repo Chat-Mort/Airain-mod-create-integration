@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  " C ",
+  "SGS"
+ ],
+ "key": {
+  "C": {
+   "item": "airain:airain_chain"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "G": {
+   "item": "minecraft:glowstone_dust"
+  }
+ },
+ "result": {
+  "id": "airain:airain_pendant_lamp",
+  "count": 2
+ }
+}

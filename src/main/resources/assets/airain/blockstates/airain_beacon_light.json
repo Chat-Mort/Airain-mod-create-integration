@@ -1,0 +1,25 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/airain_beacon_light_frame"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_beacon_light_glass_on"
+   },
+   "when": {
+    "lit": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_beacon_light_glass_off"
+   },
+   "when": {
+    "lit": "false"
+   }
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "group": "airain_waxing",
+ "ingredients": [
+  {
+   "item": "airain:exposed_airain_pipe_valve"
+  },
+  {
+   "item": "minecraft:honeycomb"
+  }
+ ],
+ "result": {
+  "id": "airain:waxed_exposed_airain_pipe_valve",
+  "count": 1
+ }
+}

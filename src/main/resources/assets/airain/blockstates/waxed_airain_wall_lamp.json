@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/airain_wall_lamp"
+  },
+  "facing=east": {
+   "model": "airain:block/airain_wall_lamp",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/airain_wall_lamp",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/airain_wall_lamp",
+   "y": 270
+  }
+ }
+}

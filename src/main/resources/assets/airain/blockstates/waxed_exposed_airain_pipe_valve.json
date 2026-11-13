@@ -1,0 +1,26 @@
+{
+ "variants": {
+  "axis=z,open=true": {
+   "model": "airain:block/exposed_airain_pipe_valve_open"
+  },
+  "axis=x,open=true": {
+   "model": "airain:block/exposed_airain_pipe_valve_open",
+   "y": 90
+  },
+  "axis=y,open=true": {
+   "model": "airain:block/exposed_airain_pipe_valve_open",
+   "x": 90
+  },
+  "axis=z,open=false": {
+   "model": "airain:block/exposed_airain_pipe_valve_closed"
+  },
+  "axis=x,open=false": {
+   "model": "airain:block/exposed_airain_pipe_valve_closed",
+   "y": 90
+  },
+  "axis=y,open=false": {
+   "model": "airain:block/exposed_airain_pipe_valve_closed",
+   "x": 90
+  }
+ }
+}

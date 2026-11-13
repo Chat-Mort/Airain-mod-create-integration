@@ -1,0 +1,50 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_lamppost_mast"
+   },
+   "when": {
+    "top": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_lamppost_base"
+   },
+   "when": {
+    "bottom": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_lamppost_head"
+   },
+   "when": {
+    "top": "true",
+    "double": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_lamppost_head_double"
+   },
+   "when": {
+    "top": "true",
+    "double": "true",
+    "axis": "x"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_lamppost_head_double",
+    "y": 90
+   },
+   "when": {
+    "top": "true",
+    "double": "true",
+    "axis": "z"
+   }
+  }
+ ]
+}

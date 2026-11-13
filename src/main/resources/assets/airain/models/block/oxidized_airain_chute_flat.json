@@ -1,0 +1,148 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "m": "airain:block/oxidized_airain_block",
+  "pn": "airain:block/oxidized_airain_panel",
+  "fz": "airain:block/oxidized_airain_frieze",
+  "bd": "airain:block/oxidized_airain_band",
+  "fl": "airain:block/oxidized_airain_fluted",
+  "tu": "airain:block/oxidized_airain_pipe",
+  "tv": "airain:block/oxidized_airain_pipe_vertical",
+  "ro": "airain:block/oxidized_airain_rod",
+  "rg": "airain:block/oxidized_airain_block",
+  "g": "airain:block/oxidized_airain_catwalk",
+  "particle": "airain:block/oxidized_airain_block"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    1,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#m"
+    },
+    "south": {
+     "texture": "#m"
+    },
+    "east": {
+     "texture": "#m"
+    },
+    "west": {
+     "texture": "#m"
+    },
+    "up": {
+     "texture": "#m"
+    },
+    "down": {
+     "texture": "#m"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    1,
+    0
+   ],
+   "to": [
+    2,
+    4,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#m"
+    },
+    "south": {
+     "texture": "#m"
+    },
+    "east": {
+     "texture": "#m"
+    },
+    "west": {
+     "texture": "#m"
+    },
+    "up": {
+     "texture": "#m"
+    },
+    "down": {
+     "texture": "#m"
+    }
+   }
+  },
+  {
+   "from": [
+    14,
+    1,
+    0
+   ],
+   "to": [
+    15,
+    4,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#m"
+    },
+    "south": {
+     "texture": "#m"
+    },
+    "east": {
+     "texture": "#m"
+    },
+    "west": {
+     "texture": "#m"
+    },
+    "up": {
+     "texture": "#m"
+    },
+    "down": {
+     "texture": "#m"
+    }
+   }
+  },
+  {
+   "from": [
+    2,
+    1,
+    0
+   ],
+   "to": [
+    14,
+    4,
+    1
+   ],
+   "faces": {
+    "north": {
+     "texture": "#m"
+    },
+    "south": {
+     "texture": "#m"
+    },
+    "east": {
+     "texture": "#m"
+    },
+    "west": {
+     "texture": "#m"
+    },
+    "up": {
+     "texture": "#m"
+    },
+    "down": {
+     "texture": "#m"
+    }
+   }
+  }
+ ]
+}

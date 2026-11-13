@@ -276,6 +276,76 @@
    "when": {
     "west": "gate_open"
    }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_frame_top"
+   },
+   "when": {
+    "north": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_pane_top"
+   },
+   "when": {
+    "north": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_frame_top",
+    "y": 90
+   },
+   "when": {
+    "east": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_pane_top",
+    "y": 90
+   },
+   "when": {
+    "east": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_frame_top",
+    "y": 180
+   },
+   "when": {
+    "south": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_pane_top",
+    "y": 180
+   },
+   "when": {
+    "south": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_frame_top",
+    "y": 270
+   },
+   "when": {
+    "west": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_glass_pane_top",
+    "y": 270
+   },
+   "when": {
+    "west": "glass"
+   }
   }
  ]
 }

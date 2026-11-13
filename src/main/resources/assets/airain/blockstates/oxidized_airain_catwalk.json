@@ -269,6 +269,162 @@
     "west": "gate_open",
     "top": "true"
    }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_bottom"
+   },
+   "when": {
+    "top": "false",
+    "north": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_bottom"
+   },
+   "when": {
+    "top": "false",
+    "north": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_top"
+   },
+   "when": {
+    "top": "true",
+    "north": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_top"
+   },
+   "when": {
+    "top": "true",
+    "north": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_bottom",
+    "y": 90
+   },
+   "when": {
+    "top": "false",
+    "east": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_bottom",
+    "y": 90
+   },
+   "when": {
+    "top": "false",
+    "east": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_top",
+    "y": 90
+   },
+   "when": {
+    "top": "true",
+    "east": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_top",
+    "y": 90
+   },
+   "when": {
+    "top": "true",
+    "east": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_bottom",
+    "y": 180
+   },
+   "when": {
+    "top": "false",
+    "south": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_bottom",
+    "y": 180
+   },
+   "when": {
+    "top": "false",
+    "south": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_top",
+    "y": 180
+   },
+   "when": {
+    "top": "true",
+    "south": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_top",
+    "y": 180
+   },
+   "when": {
+    "top": "true",
+    "south": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_bottom",
+    "y": 270
+   },
+   "when": {
+    "top": "false",
+    "west": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_bottom",
+    "y": 270
+   },
+   "when": {
+    "top": "false",
+    "west": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_frame_top",
+    "y": 270
+   },
+   "when": {
+    "top": "true",
+    "west": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_catwalk_glass_pane_top",
+    "y": 270
+   },
+   "when": {
+    "top": "true",
+    "west": "glass"
+   }
   }
  ]
 }

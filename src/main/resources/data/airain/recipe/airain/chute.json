@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "S ",
+  "SS"
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:airain_chute",
+  "count": 4
+ }
+}

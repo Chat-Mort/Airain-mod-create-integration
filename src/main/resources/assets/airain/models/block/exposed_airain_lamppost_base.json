@@ -1,0 +1,84 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "m": "airain:block/exposed_airain_block",
+  "pn": "airain:block/exposed_airain_panel",
+  "fz": "airain:block/exposed_airain_frieze",
+  "bd": "airain:block/exposed_airain_band",
+  "fl": "airain:block/exposed_airain_fluted",
+  "tu": "airain:block/exposed_airain_pipe",
+  "tv": "airain:block/exposed_airain_pipe_vertical",
+  "ro": "airain:block/exposed_airain_rod",
+  "rg": "airain:block/exposed_oxidized_airain_block",
+  "g": "airain:block/exposed_airain_catwalk",
+  "particle": "airain:block/exposed_airain_block"
+ },
+ "elements": [
+  {
+   "from": [
+    3,
+    0,
+    3
+   ],
+   "to": [
+    13,
+    2,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#m"
+    },
+    "south": {
+     "texture": "#m"
+    },
+    "east": {
+     "texture": "#m"
+    },
+    "west": {
+     "texture": "#m"
+    },
+    "up": {
+     "texture": "#m"
+    },
+    "down": {
+     "texture": "#m"
+    }
+   }
+  },
+  {
+   "from": [
+    4.5,
+    2,
+    4.5
+   ],
+   "to": [
+    11.5,
+    5,
+    11.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bd"
+    },
+    "south": {
+     "texture": "#bd"
+    },
+    "east": {
+     "texture": "#bd"
+    },
+    "west": {
+     "texture": "#bd"
+    },
+    "up": {
+     "texture": "#bd"
+    },
+    "down": {
+     "texture": "#bd"
+    }
+   }
+  }
+ ]
+}

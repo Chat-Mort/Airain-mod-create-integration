@@ -206,6 +206,69 @@
   },
   "airain:weathered_airain_railing": {
    "next_oxidation_stage": "airain:oxidized_airain_railing"
+  },
+  "airain:airain_pipe": {
+   "next_oxidation_stage": "airain:exposed_airain_pipe"
+  },
+  "airain:exposed_airain_pipe": {
+   "next_oxidation_stage": "airain:weathered_airain_pipe"
+  },
+  "airain:weathered_airain_pipe": {
+   "next_oxidation_stage": "airain:oxidized_airain_pipe"
+  },
+  "airain:airain_pipe_valve": {
+   "next_oxidation_stage": "airain:exposed_airain_pipe_valve"
+  },
+  "airain:exposed_airain_pipe_valve": {
+   "next_oxidation_stage": "airain:weathered_airain_pipe_valve"
+  },
+  "airain:weathered_airain_pipe_valve": {
+   "next_oxidation_stage": "airain:oxidized_airain_pipe_valve"
+  },
+  "airain:airain_pendant_lamp": {
+   "next_oxidation_stage": "airain:exposed_airain_pendant_lamp"
+  },
+  "airain:exposed_airain_pendant_lamp": {
+   "next_oxidation_stage": "airain:weathered_airain_pendant_lamp"
+  },
+  "airain:weathered_airain_pendant_lamp": {
+   "next_oxidation_stage": "airain:oxidized_airain_pendant_lamp"
+  },
+  "airain:airain_wall_lamp": {
+   "next_oxidation_stage": "airain:exposed_airain_wall_lamp"
+  },
+  "airain:exposed_airain_wall_lamp": {
+   "next_oxidation_stage": "airain:weathered_airain_wall_lamp"
+  },
+  "airain:weathered_airain_wall_lamp": {
+   "next_oxidation_stage": "airain:oxidized_airain_wall_lamp"
+  },
+  "airain:airain_raised_floor": {
+   "next_oxidation_stage": "airain:exposed_airain_raised_floor"
+  },
+  "airain:exposed_airain_raised_floor": {
+   "next_oxidation_stage": "airain:weathered_airain_raised_floor"
+  },
+  "airain:weathered_airain_raised_floor": {
+   "next_oxidation_stage": "airain:oxidized_airain_raised_floor"
+  },
+  "airain:airain_chute": {
+   "next_oxidation_stage": "airain:exposed_airain_chute"
+  },
+  "airain:exposed_airain_chute": {
+   "next_oxidation_stage": "airain:weathered_airain_chute"
+  },
+  "airain:weathered_airain_chute": {
+   "next_oxidation_stage": "airain:oxidized_airain_chute"
+  },
+  "airain:airain_lamppost": {
+   "next_oxidation_stage": "airain:exposed_airain_lamppost"
+  },
+  "airain:exposed_airain_lamppost": {
+   "next_oxidation_stage": "airain:weathered_airain_lamppost"
+  },
+  "airain:weathered_airain_lamppost": {
+   "next_oxidation_stage": "airain:oxidized_airain_lamppost"
   }
  }
 }

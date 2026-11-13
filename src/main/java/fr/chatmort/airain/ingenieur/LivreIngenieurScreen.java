@@ -35,7 +35,7 @@ public class LivreIngenieurScreen extends Screen {
 		 {"gabarit", "airain:banner_template"}, {"registre", "airain:foundation_registry"}, {"socle", "airain:trophy_pedestal"},
 		 {"banc", "airain:maintenance_bench"}, {"modules", "airain:fine_grindstone"}, {"table", "airain:imperial_enchanting_table"},
 		 {"desenchanteur", "airain:disenchanter"}, {"balise", "airain:defense_beacon"}, {"gardien", "airain:guardian_spawn_egg"},
-		 {"modules_gardien", "airain:lantern_module"}, {"haut_fourneau", "airain:blast_furnace_taphole"}, {"style_imperial", "airain:chiseled_airain"}, {"passerelles", "airain:airain_catwalk"}, {"conduite_air", "airain:airain_air_vent"}},
+		 {"modules_gardien", "airain:lantern_module"}, {"haut_fourneau", "airain:blast_furnace_taphole"}, {"style_imperial", "airain:chiseled_airain"}, {"passerelles", "airain:airain_catwalk"}, {"conduite_air", "airain:airain_air_vent"}, {"atelier", "airain:airain_workbench"}},
 		{{"codex", "airain:codex"}, {"chroniques", "airain:chronicles"}, {"reliure", "airain:binder"}, {"manuels", "airain:imperial_arms_regulations"}, {"tableau", "airain:duty_board"},
 		 {"atlas", "airain:atlas"}, {"affiches", "airain:blank_poster"}, {"cartes", "airain:empire_map"},
 		 {"encre", "airain:runic_ink"}, {"schemas", "kubejs:schema_cuivre"}, {"sceau", "kubejs:sceau_forge"},

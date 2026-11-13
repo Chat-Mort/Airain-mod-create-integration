@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "minecraft:red_dye"
+  },
+  {
+   "item": "minecraft:gold_nugget"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_sign_plate",
+  "count": 3
+ }
+}

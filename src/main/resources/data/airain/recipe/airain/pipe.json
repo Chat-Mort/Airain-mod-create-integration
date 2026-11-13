@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "SSS"
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:airain_pipe",
+  "count": 6
+ }
+}
