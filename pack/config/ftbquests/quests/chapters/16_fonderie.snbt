@@ -302,5 +302,109 @@
 			x: 8.0d
 			y: 2.0d
 		}
+		{
+			dependencies: ["1A965A7BFBF0677E"]
+			id: "16DBEE9D973CA774"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "4B9D1A3CE4DFA13D"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_pipe" }
+					count: 8L
+					id: "4054C637262FBD45"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_pipe_valve" }
+					count: 1L
+					id: "6AA9F20C8610F2A7"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_gauge" }
+					count: 1L
+					id: "6722B2E9E89E5250"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["365D357F3A917CC6"]
+			id: "610CC2B45BED1276"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "48600A904EA06909"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_lamppost" }
+					count: 3L
+					id: "282CB6231F9A92F6"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_pendant_lamp" }
+					count: 2L
+					id: "4A3C15408FDB488F"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_wall_lamp" }
+					count: 2L
+					id: "2B9D45BEE2FC40AE"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["67695976737B0BB5"]
+			id: "7CE33080A1A0597C"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "6789A95F57E87A4B"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_signpost" }
+					count: 1L
+					id: "58DFCD4CDB2ABFDC"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_sign_plate" }
+					count: 3L
+					id: "27042484D31B0808"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_workbench" }
+					count: 1L
+					id: "59D9B746FDE09A6A"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: 1.0d
+		}
 	]
 }

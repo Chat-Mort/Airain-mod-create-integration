@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 13 novembre 2026 — versions 1.48.0 à 1.50.0
+## 13 novembre 2026 — versions 1.48.0 à 1.51.0
 
 **Ajouts**
 - **L'airain**, l'alliage secret de l'Empire : lingot, pépite, plaque, engrenage d'airain et airain en fusion. Il ne sort que du haut-fourneau.
@@ -21,7 +21,18 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 - **Suspente d'airain** : pend une passerelle au plafond ; ses deux tirants longent les rambardes et son étrier se cale sous le plancher, bas ou à mi-hauteur.
 - **Rambarde d'airain seule** : se pose au bord de n'importe quel bloc ; on ajoute un côté avec une autre rambarde, la clé de Create en retire un.
 - **Conduite d'air** : un ventilateur de Create souffle dans un réseau de conduits d'air (raccords automatiques, jusqu'à 64 conduits) ; la bouche d'air au bout rend exactement le même courant (même force, même portée, mêmes traitements). Aspiration comprise. Les lunettes d'ingénieur affichent le courant transmis.
-- Nouvelle annexe de quêtes « La fonderie impériale » (11 quêtes) et cinq pages dans le livre de l'ingénieur.
+- **L'atelier impérial** :
+  - tuyau d'airain décoratif qui se raccorde tout seul, vanne à volant (clic droit), manomètre dont l'aiguille suit la vitesse d'une machine de Create, le courant d'une bouche d'air ou le remplissage d'un réservoir ;
+  - plancher technique sur plots : la clé relève la dalle, on y loge un tuyau ou un conduit d'air (le conduit reste dans le réseau d'air) ;
+  - suspension d'atelier, applique à flamme rouge, gyrophare qui tourne sur un signal de redstone ;
+  - réverbère impérial à empiler, à une ou deux lanternes ;
+  - toboggan d'airain (on y glisse) et son bac de réception ;
+  - garde-corps vitré : la clé fait passer une rambarde de passerelle ou de palier de pleine à vitrée, puis à rien ;
+  - plaques émaillées à huit pictogrammes, contre un mur ou une rambarde ;
+  - borne de carrefour à flèches orientables (huit directions), sur lesquelles on écrit avec une étiquette renommée ;
+  - établi d'atelier dont la grille garde ses objets.
+- Nouvelles textures de détail pour ces pièces : panneau à pointe de diamant, frise, bandeau à perles, cannelures, tuyau, tige.
+- Nouvelle annexe de quêtes « La fonderie impériale » (14 quêtes) et six pages dans le livre de l'ingénieur.
 
 **Changements**
 - « Forger le Cœur » demande aussi l'engrenage d'airain.

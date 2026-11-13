@@ -209,6 +209,11 @@
 		"Certaines volontés sont trop grandes pour un grimoire. On les confie au feu."
 	]
 	"quest.16A3282CA5AB4ACA.title": "Le brasero rituel"
+	"quest.16DBEE9D973CA774.quest_desc": [
+		"&7Optionnel.&r Des tuyaux d'airain qui se raccordent tout seuls, des vannes à volant (clic droit), et le manomètre : posé sur une machine de Create, une bouche d'air ou un réservoir, son aiguille suit la vitesse, le courant ou le remplissage."
+		"Le plancher technique cache tuyaux et conduits : la clé relève la dalle, on y loge l'objet ; un conduit logé reste dans le réseau d'air."
+	]
+	"quest.16DBEE9D973CA774.title": "La tuyauterie impériale"
 	"quest.16EDC0C6EDFC4901.quest_desc": [
 		"Une palissade, des tentes rouges, un automate abattu exposé comme un trophée. Ici, on n'aime pas l'Empire."
 		"Leurs coffres gardent des écrits et des cartes, et leurs machines vendent ce que l'Empire leur refusait."
@@ -1312,6 +1317,10 @@
 		"&oJe serai le dernier.&r"
 	]
 	"quest.6069B3B98BE0D757.title": "La salle des capsules"
+	"quest.610CC2B45BED1276.quest_desc": [
+		"&7Optionnel.&r Réverbères impériaux (empilez-les ; la clé sur la tête donne une ou deux lanternes), suspensions d'atelier, appliques à flamme rouge. Et le gyrophare, qui tourne sur un signal de redstone."
+	]
+	"quest.610CC2B45BED1276.title": "Les lumières de la capitale"
 	"quest.61675AD339969EEC.quest_desc": [
 		"Partout où vous passez, des machines s'allument seules. Des engrenages tournent sans force."
 		""
@@ -1660,6 +1669,10 @@
 		"La recette d'Ada : quatre fragments de résonance, une gemme d'Écho et un lingot d'or."
 	]
 	"quest.7CDE28D2D18A4436.title": "Le diapason"
+	"quest.7CE33080A1A0597C.quest_desc": [
+		"&7Optionnel.&r Bornes de carrefour (une étiquette renommée écrit sur la flèche, la clé la tourne), plaques émaillées (la clé change le pictogramme), toboggan, garde-corps vitré (la clé sur une rambarde), et l'établi d'atelier, dont la grille garde ses objets."
+	]
+	"quest.7CE33080A1A0597C.title": "Les rues de l'Empire"
 	"quest.7D319DB84563FF59.quest_desc": [
 		"Les fondeurs de l'Empire y avaient leurs quartiers. Il n'en reste que des squelettes."
 		"Les blazes donnent les bâtonnets des brûleurs ; les wither squelettes, leur crâne : le Masque des enfers, un trophée pour votre socle."

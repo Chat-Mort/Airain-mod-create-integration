@@ -209,6 +209,11 @@
 		"Some wills are too great for a spell book. They are entrusted to the fire."
 	]
 	"quest.16A3282CA5AB4ACA.title": "The Ritual Brazier"
+	"quest.16DBEE9D973CA774.quest_desc": [
+		"&7Optional.&r Airain pipes that connect by themselves, handwheel valves (right-click), and the gauge: placed on a Create machine, an air vent or a tank, its needle follows the speed, the current or the fill level."
+		"The raised floor hides pipes and ducts: the wrench lifts the plate, you lodge the item in; a lodged duct stays part of the air network."
+	]
+	"quest.16DBEE9D973CA774.title": "Imperial Pipework"
 	"quest.16EDC0C6EDFC4901.quest_desc": [
 		"A palisade, red tents, a destroyed automaton displayed like a trophy. Here, they don't like the Empire."
 		"Their chests hold writings and maps, and their machines sell what the Empire refused them."
@@ -1312,6 +1317,10 @@
 		"&oI will be the last.&r"
 	]
 	"quest.6069B3B98BE0D757.title": "The Capsule Hall"
+	"quest.610CC2B45BED1276.quest_desc": [
+		"&7Optional.&r Imperial lampposts (stack them; the wrench on the head gives one or two lanterns), workshop pendant lamps, red-flame wall lamps. And the beacon light, which spins on a redstone signal."
+	]
+	"quest.610CC2B45BED1276.title": "Lights of the Capital"
 	"quest.61675AD339969EEC.quest_desc": [
 		"Wherever you go, machines switch on by themselves. Gears turn with no power."
 		""
@@ -1660,6 +1669,10 @@
 		"Ada's recipe: four resonance fragments, an echo gem and a gold ingot."
 	]
 	"quest.7CDE28D2D18A4436.title": "The Tuning Fork"
+	"quest.7CE33080A1A0597C.quest_desc": [
+		"&7Optional.&r Crossroads signposts (a renamed name tag writes on the arrow, the wrench turns it), enamel signs (the wrench changes the pictogram), chutes, glass railings (the wrench on a railing), and the workshop bench, whose grid keeps its items."
+	]
+	"quest.7CE33080A1A0597C.title": "Streets of the Empire"
 	"quest.7D319DB84563FF59.quest_desc": [
 		"The Empire's smelters had their quarters there. Only skeletons remain."
 		"Blazes give the rods for burners; wither skeletons, their skull: the Infernal Mask, a trophy for your pedestal."

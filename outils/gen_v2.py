@@ -1167,6 +1167,23 @@ quest(cF, "fo_conduit", ("Le souffle de l'Empire", "The Empire's Breath"), 8, 2,
               "&8Les lunettes d'ingénieur montrent le courant transmis.&r"],
              ["A Create fan blows into an air duct; at the far end, the air vent gives back exactly the same current: same force, same range, same processing, whatever the length (64 ducts at most).",
               "&8Engineer's goggles show the transmitted current.&r"]))
+quest(cF, "fo_tuyaux", ("La tuyauterie impériale", "Imperial Pipework"), 10, 2,
+      [T_item("airain:airain_pipe", 8), T_item("airain:airain_pipe_valve"), T_item("airain:airain_gauge")], [R_coin("sprocket", 2)],
+      deps=["fo_conduit"], optional=True,
+      desc=D(["&7Optionnel.&r Des tuyaux d'airain qui se raccordent tout seuls, des vannes à volant (clic droit), et le manomètre : posé sur une machine de Create, une bouche d'air ou un réservoir, son aiguille suit la vitesse, le courant ou le remplissage.",
+              "Le plancher technique cache tuyaux et conduits : la clé relève la dalle, on y loge l'objet ; un conduit logé reste dans le réseau d'air."],
+             ["&7Optional.&r Airain pipes that connect by themselves, handwheel valves (right-click), and the gauge: placed on a Create machine, an air vent or a tank, its needle follows the speed, the current or the fill level.",
+              "The raised floor hides pipes and ducts: the wrench lifts the plate, you lodge the item in; a lodged duct stays part of the air network."]))
+quest(cF, "fo_lumieres", ("Les lumières de la capitale", "Lights of the Capital"), 10, -1,
+      [T_item("airain:airain_lamppost", 3), T_item("airain:airain_pendant_lamp", 2), T_item("airain:airain_wall_lamp", 2)], [R_coin("sprocket", 2)],
+      deps=["fo_style"], optional=True,
+      desc=D(["&7Optionnel.&r Réverbères impériaux (empilez-les ; la clé sur la tête donne une ou deux lanternes), suspensions d'atelier, appliques à flamme rouge. Et le gyrophare, qui tourne sur un signal de redstone."],
+             ["&7Optional.&r Imperial lampposts (stack them; the wrench on the head gives one or two lanterns), workshop pendant lamps, red-flame wall lamps. And the beacon light, which spins on a redstone signal."]))
+quest(cF, "fo_rues", ("Les rues de l'Empire", "Streets of the Empire"), 12, 1,
+      [T_item("airain:airain_signpost"), T_item("airain:airain_sign_plate", 3), T_item("airain:airain_workbench")], [R_coin("cog", 1)],
+      deps=["fo_atelier"], optional=True,
+      desc=D(["&7Optionnel.&r Bornes de carrefour (une étiquette renommée écrit sur la flèche, la clé la tourne), plaques émaillées (la clé change le pictogramme), toboggan, garde-corps vitré (la clé sur une rambarde), et l'établi d'atelier, dont la grille garde ses objets."],
+             ["&7Optional.&r Crossroads signposts (a renamed name tag writes on the arrow, the wrench turns it), enamel signs (the wrench changes the pictogram), chutes, glass railings (the wrench on a railing), and the workshop bench, whose grid keeps its items."]))
 # le Cœur demande de l'airain : « Forger le Cœur » dépend aussi de l'engrenage d'airain
 [q for q in c6["quests"] if q["id"] == QUESTS["forger"]][0]["deps"].append(QUESTS["fo_engrenage"])
 
