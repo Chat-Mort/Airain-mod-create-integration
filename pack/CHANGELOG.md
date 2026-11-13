@@ -5,6 +5,24 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 13 novembre 2026 — version 1.48.0
+
+**Ajouts**
+- **L'airain**, l'alliage secret de l'Empire : lingot, pépite, plaque, engrenage d'airain et airain en fusion. Il ne sort que du haut-fourneau.
+- **Le haut-fourneau impérial**, une tour de 3 × 3 sur 4 en briques réfractaires, qui prend son habillage d'airain une fois montée (socle riveté, cornières, blason) :
+  - le trou de coulée en façade, une grille au centre du sol avec un brûleur à blaze dessous, le gueulard au sommet, une tuyère sur un côté avec un ventilateur de Create ;
+  - clic droit main nue sur le trou de coulée : il dit ce qui manque, et les places vides brillent ;
+  - brûleur chauffé : refonte de la ferraille et des rouages brisés des automates ; surchauffé : alliage (3 cuivres, 1 zinc, 1 fondant donnent 4 lingots) ;
+  - la vitesse du ventilateur règle le débit ; l'airain en fusion sort au tuyau, le laitier à l'entonnoir ; les lunettes d'ingénieur montrent la chaleur, le souffle et la cuve.
+- **Le style impérial** : bloc d'airain, airain taillé, riveté, ciselé, pilier, escaliers, dalles, grille, barreaux, porte et trappe ferronnées, chaîne, et une lanterne à flamme rouge. Avec le temps, l'airain vire du doré au rouge impérial en quatre teintes ; la cire fige la teinte, la hache la ramène.
+- **Engrenage d'airain** (assemblage séquencé) : il entre dans le Cœur d'Airain (avec des blocs d'airain), la Machine différentielle, le trône impérial et la charte impériale.
+- Nouvelle annexe de quêtes « La fonderie impériale » (8 quêtes) et trois pages dans le livre de l'ingénieur.
+
+**Changements**
+- « Forger le Cœur » demande aussi l'engrenage d'airain.
+
+---
+
 ## 12 novembre 2026 — versions 1.47.0 à 1.47.7
 
 **Ajouts**

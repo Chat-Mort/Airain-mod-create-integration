@@ -1,43 +1,46 @@
 {
-  "type": "create:mechanical_crafting",
-  "accept_mirrored": false,
-  "category": "misc",
-  "key": {
-    "B": {
-      "item": "create:brass_casing"
-    },
-    "P": {
-      "item": "create:precision_mechanism"
-    },
-    "E": {
-      "item": "minecraft:heart_of_the_sea"
-    },
-    "R": {
-      "item": "kubejs:fragment_rouages"
-    },
-    "M": {
-      "item": "kubejs:fragment_marees"
-    },
-    "F": {
-      "item": "kubejs:fragment_forge"
-    },
-    "V": {
-      "item": "kubejs:fragment_vide"
-    },
-    "C": {
-      "item": "kubejs:coeur_brise"
-    }
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "B": {
+   "item": "create:brass_casing"
   },
-  "pattern": [
-    " BEB ",
-    "BRPMB",
-    "BPCPB",
-    "BFPVB",
-    " BBB "
-  ],
-  "result": {
-    "count": 1,
-    "id": "kubejs:coeur_d_airain"
+  "E": {
+   "item": "minecraft:heart_of_the_sea"
   },
-  "show_notification": true
+  "R": {
+   "item": "kubejs:fragment_rouages"
+  },
+  "M": {
+   "item": "kubejs:fragment_marees"
+  },
+  "F": {
+   "item": "kubejs:fragment_forge"
+  },
+  "V": {
+   "item": "kubejs:fragment_vide"
+  },
+  "C": {
+   "item": "kubejs:coeur_brise"
+  },
+  "A": {
+   "item": "airain:airain_block"
+  },
+  "G": {
+   "item": "airain:airain_gear"
+  }
+ },
+ "pattern": [
+  " AEA ",
+  "BRGMB",
+  "BGCGB",
+  "BFGVB",
+  " AAA "
+ ],
+ "result": {
+  "count": 1,
+  "id": "kubejs:coeur_d_airain"
+ },
+ "show_notification": true
 }

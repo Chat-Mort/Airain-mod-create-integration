@@ -35,7 +35,7 @@ chapters[:] = [c for c in chapters if c["key"] not in ("echos", "trains", "besti
 tr(f"chapter.{_par_cle['ingenierie']['id']}.title", ("&3Annexe&r · Ingénierie et logistique", "&3Side&r · Engineering and Logistics"))
 tr(f"chapter.{_par_cle['arsenal']['id']}.title", ("&3Annexe&r · Arsenal", "&3Side&r · Arsenal"))
 tr(f"chapter.{_par_cle['exploration']['id']}.title", ("&3Annexe&r · Exploration et bestiaire", "&3Side&r · Exploration and Bestiary"))
-_ordre = {"sacs": 10, "commandes": 11, "ingenierie": 12, "arsenal": 13, "bases": 14, "exploration": 15}
+_ordre = {"sacs": 10, "commandes": 11, "ingenierie": 12, "fonderie": 13, "arsenal": 14, "bases": 15, "exploration": 16}
 for c in chapters:
     if c["key"] in _ordre: c["order"] = _ordre[c["key"]]
 GROUPES = [("empire", ("L'Empire", "The Empire"), ("reveil", "andesite", "cuivre", "laiton", "ciel", "coeur", "reconquete")),

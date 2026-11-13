@@ -6,7 +6,7 @@
 	hide_quest_details_until_startable: true
 	icon: { count: 1, id: "simplyswords:iron_longsword" }
 	id: "6643CF10372B0A3C"
-	order_index: 13
+	order_index: 14
 	quests: [
 		{
 			dependencies: ["45DA6B1623943C36"]

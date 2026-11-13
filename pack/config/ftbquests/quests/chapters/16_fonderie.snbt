@@ -1,0 +1,216 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "16_fonderie"
+	group: "2F4EAC3DE90A7B97"
+	hide_quest_details_until_startable: true
+	icon: { count: 1, id: "airain:blast_furnace_taphole" }
+	id: "6736904DE97196BF"
+	order_index: 13
+	quests: [
+		{
+			dependencies: ["45CA43199084EBB5"]
+			id: "2D256B16F732227C"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "51F758D6C18E4FA0"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:fire_bricks" }
+					count: 32L
+					id: "64DC810D82EEE097"
+					type: "item"
+				}
+			]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2D256B16F732227C", "16F6CF9BF8AE44DC"]
+			id: "27339A8771243368"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "2D6AD7AD55EFC83A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:blast_furnace_taphole" }
+					count: 1L
+					id: "4D795212AF5F2A4D"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:blast_furnace_tuyere" }
+					count: 1L
+					id: "1CEA35A41F1A5556"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:blast_furnace_hopper" }
+					count: 1L
+					id: "5B8B7A8608A2FCC7"
+					type: "item"
+				}
+				{
+					id: "241FA2EBE30CB3AB"
+					type: "checkmark"
+				}
+			]
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["27339A8771243368"]
+			id: "60587825C7B0D2F7"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 3
+					id: "35D76385EB39BEE7"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_ingot" }
+					count: 4L
+					id: "1463063782E45515"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["27339A8771243368"]
+			id: "46071A021876623F"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "6DA1CEFFD836AAF0"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_block" }
+					count: 4L
+					id: "32CF15B1673FEA15"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["46071A021876623F", "187081628EA4ED2B"]
+			id: "2ADCE98DF27075B6"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "3D05DDEA46EC0F58"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_gear" }
+					count: 4L
+					id: "10DBABA9CCB64943"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["60587825C7B0D2F7"]
+			id: "365D357F3A917CC6"
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 4
+					id: "6F2F35589161DD1D"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:chiseled_airain" }
+					count: 4L
+					id: "3028541F416883A7"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_pillar" }
+					count: 4L
+					id: "1D8C67338CFFA828"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_lantern" }
+					count: 4L
+					id: "1A5F5E57895E05D8"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["365D357F3A917CC6"]
+			id: "48825C0187F0D461"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "4C739BC5D3E5E487"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:oxidized_airain_block" }
+					count: 1L
+					id: "17CE11E85C07B3EB"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["27339A8771243368"]
+			id: "2862CA0C1EA07E8C"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					id: "13389A9A9175C90E"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:slag" }
+					count: 16L
+					id: "7BD1FF5C548F80DA"
+					type: "item"
+				}
+			]
+			x: 2.0d
+			y: 2.0d
+		}
+	]
+}

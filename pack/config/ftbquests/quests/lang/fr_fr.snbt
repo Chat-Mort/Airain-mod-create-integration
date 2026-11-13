@@ -55,6 +55,10 @@
 		"Les armes de l'Empire : lames, artillerie et armes à feu."
 	]
 	"chapter.6643CF10372B0A3C.title": "&3Annexe&r · Arsenal"
+	"chapter.6736904DE97196BF.chapter_subtitle": [
+		"L'airain, l'alliage secret de l'Empire, et le haut-fourneau qui le fond."
+	]
+	"chapter.6736904DE97196BF.title": "&3Annexe&r · La fonderie impériale"
 	"chapter.6C42785A50835ECA.chapter_subtitle": [
 		"Ce que les Réfractaires ont appris, à l'écart de l'Empire."
 	]
@@ -515,6 +519,12 @@
 		"Rallumez 3 avant-postes en tout."
 	]
 	"quest.26EEACC9EDD1822F.title": "Rebâtir : 3 avant-postes"
+	"quest.27339A8771243368.quest_desc": [
+		"Une tour de 3 × 3, haute de 4. Le trou de coulée au milieu de la face avant, en bas ; une grille au centre du sol, un brûleur à blaze dessous ; le gueulard au centre du sommet ; une tuyère sur un côté, avec un ventilateur de Create qui souffle dedans."
+		"Clic droit main nue sur le trou de coulée : il dit ce qui manque, et les places à remplir brillent. Une fois monté, le fourneau prend son habillage d'airain. Validez quand c'est fait."
+		"&8Tout est dans le livre de l'ingénieur.&r"
+	]
+	"quest.27339A8771243368.title": "Le haut-fourneau impérial"
 	"quest.27C73491488EF22F.quest_desc": [
 		"Les gardes de la forge des âmes veulent leur armure. Ils paient en couronnes."
 		"&7Répétable.&r Les objets livrés sont consommés."
@@ -533,6 +543,10 @@
 	]
 	"quest.284B486F1D112E1F.quest_subtitle": "Quête secondaire : remplir la bibliothèque"
 	"quest.284B486F1D112E1F.title": "Le désenchanteur"
+	"quest.2862CA0C1EA07E8C.quest_desc": [
+		"&7Optionnel.&r Le laitier sort par le trou de coulée (entonnoir). Broyé, il donne de la poudre de cendres ; remis au gueulard, il sert de fondant."
+	]
+	"quest.2862CA0C1EA07E8C.title": "Rien ne se perd"
 	"quest.299A3CC737A4A7C2.quest_desc": [
 		"&7Optionnel.&r Quand l'Empereur entrait dans une cité, toutes ses bannières montaient ensemble."
 		"Grands étendards et bannières murales ont un réglage « Hissage » :"
@@ -571,6 +585,11 @@
 		"&8C'est d'eux que tombent parfois des automates, quand une patrouille est larguée.&r"
 	]
 	"quest.2ADA37E3BDA2E081.title": "La flotte du ciel"
+	"quest.2ADCE98DF27075B6.quest_desc": [
+		"La pièce maîtresse des machines impériales : un engrenage, une plaque d'airain, une coulée d'airain en fusion, un coup de presse. Assemblage séquencé."
+		"Les bornes, le trône, la charte et le Cœur d'Airain en demandent."
+	]
+	"quest.2ADCE98DF27075B6.title": "L'engrenage d'airain"
 	"quest.2B1CA1C84EB763C4.quest_desc": [
 		"Certaines ruines sont &opropres&r. Les mécanismes sont huilés, les couloirs balayés. Les gardiens ne sont peut-être pas déréglés…"
 		"&oMais pour qui font-ils la maintenance ?&r"
@@ -608,6 +627,12 @@
 		"Ces tonneaux et coffres montent en gamme sur place, avec un kit d'amélioration, sans perdre leur contenu. Un tonneau affiche ce qu'il contient sur sa face."
 	]
 	"quest.2CB5DA93642E7418.title": "Tonneaux de l'Empire"
+	"quest.2D256B16F732227C.quest_desc": [
+		"L'airain ne se fond pas dans un four ordinaire. Les fondeurs de l'Empire montaient leurs hauts-fourneaux en briques réfractaires, qui tiennent là où la pierre éclate."
+		"&8Mélangeur chauffé : deux briques et une brique du Nether donnent deux briques réfractaires.&r"
+	]
+	"quest.2D256B16F732227C.quest_subtitle": "La fonderie impériale"
+	"quest.2D256B16F732227C.title": "Les briques réfractaires"
 	"quest.2D2D133F3E4B2039.quest_desc": [
 		"&7Record d'ingénieur, optionnel.&r Faites tourner une machine à 256 tours/minute, la vitesse maximale. Les lunettes affichent la vitesse. Validez quand c'est fait."
 	]
@@ -726,6 +751,10 @@
 	]
 	"quest.35F93598035AE578.quest_subtitle": "Lisez le journal de l'ingénieur"
 	"quest.35F93598035AE578.title": "Comprendre ce qui s'est passé"
+	"quest.365D357F3A917CC6.quest_desc": [
+		"Airain taillé, riveté, ciselé, piliers, grilles, portes ferronnées, lanternes à flamme rouge : de quoi bâtir une capitale digne de l'Empire. Au tailleur de pierre depuis un bloc d'airain."
+	]
+	"quest.365D357F3A917CC6.title": "Le style impérial"
 	"quest.3683E03BE02A53FF.quest_desc": [
 		"Sous chaque cité courait un second réseau, plus discret que le rail : la tuyauterie."
 		"Les tuyaux mènent les fluides, mais ne poussent rien seuls : il leur faut une pompe. Une clé sur un tuyau droit y pose une fenêtre ; un tuyau peut aussi recevoir une vanne."
@@ -910,6 +939,11 @@
 		"&8L'annexe « Arsenal » détaille toutes les armes.&r"
 	]
 	"quest.45DA6B1623943C36.title": "Une vraie arme"
+	"quest.46071A021876623F.quest_desc": [
+		"Trois de cuivre, un de zinc, un fondant (calcite, poudre de cendres ou laitier) : la recette que l'Empire gardait sous scellés. Il faut un brûleur surchauffé."
+		"Plus le ventilateur tourne vite, plus le fourneau produit."
+	]
+	"quest.46071A021876623F.title": "L'alliage secret"
 	"quest.46882C5D681F223B.quest_desc": [
 		"&7Record d'ingénieur, optionnel.&r Descendez sous Y -59, tout contre la bedrock."
 		"&8Les mineurs de l'Empire disaient qu'on y entend battre le monde.&r"
@@ -942,6 +976,10 @@
 	]
 	"quest.484751AF0234DDF5.quest_subtitle": "Quête secondaire : la magie de l'Écho"
 	"quest.484751AF0234DDF5.title": "L'Écho"
+	"quest.48825C0187F0D461.quest_desc": [
+		"&7Optionnel.&r Avec le temps, l'airain vire doucement du doré au rouge profond de l'Empire. Une couche de cire (rayon de miel) fige la teinte ; la hache la fait revenir en arrière."
+	]
+	"quest.48825C0187F0D461.title": "Rouge impérial"
 	"quest.48A453D94E21691C.quest_desc": [
 		"&7Optionnel.&r Un hall plein de capsules vides, et des câbles qui plongent dans un puits."
 		"Descendez lire le rapport de l'ingénieur, sur le pupitre au fond. Le coffre du collecteur garde une lettre."
@@ -1245,6 +1283,11 @@
 		"Une presse sur un tapis, comme pour le fer. Ces plaques serviront aux tuyaux, à l'équipement de plongée et à l'armure de diamant."
 	]
 	"quest.5F56E688DC1454DE.title": "Feuilles de cuivre"
+	"quest.60587825C7B0D2F7.quest_desc": [
+		"Les automates sont faits d'airain. Leur ferraille et leurs rouages brisés, versés au gueulard, redeviennent de l'airain en fusion : il suffit d'un brûleur chauffé."
+		"Le métal sort par le trou de coulée : un tuyau, un bassin et une presse en font des lingots."
+	]
+	"quest.60587825C7B0D2F7.title": "Refondre l'Empire"
 	"quest.605C7D0D8F9D52AD.quest_desc": [
 		"&eÀ deux :&r rejoignez la même équipe (/ftbteams party create, puis invite) pour partager le livre."
 		"&eLes Schémas&r et &eles Sceaux&r débloquent les machines clés. Ils ne sont jamais consommés."

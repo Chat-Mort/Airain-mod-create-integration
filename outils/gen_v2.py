@@ -743,7 +743,8 @@ quest(c6, "l_sanctuaire", ("Le journal d'Ada", "Ada's Journal"), 4, 4, [T_struct
               "Somewhere in the cold north, the Refractory sanctuary keeps &dAda Vesper&r's journal. Read it to the end: the reward tells you where the Great Relay is."]))
 quest(c6, "forger", ("Forger le Cœur", "Forge the Core"), 6, 0, [T_item("kubejs:coeur_d_airain")], [R_xp(2000)], deps=["memoires", "mer", "l_sanctuaire"],
       shape="gear", size=1.75,
-      desc=D(["Consultez la recette dans EMI, catégorie assembleur mécanique."], ["Check the recipe in EMI, mechanical crafting category."]))
+      desc=D(["Consultez la recette dans EMI, catégorie assembleur mécanique.", "Le Cœur est fait d'airain : il demande des blocs et des engrenages d'airain (annexe « La fonderie impériale »)."],
+             ["Check the recipe in EMI, mechanical crafting category.", "The Core is made of airain: it needs airain blocks and gears (side chapter \"The Imperial Foundry\")."]))
 quest(c6, "reactiver", ("Réactiver le Cœur", "Reawaken the Core"), 8, 0, [T_check()],
       [R_cmd_visible("locate structure cataclysm:ancient_factory"), R_item("minecraft:nether_star"), R_coin("crown", 2), R_tag("airain_coeur_reveille")],
       deps=["forger"], shape="hexagon", size=2.0, subtitle=("&cLe retournement&r", "&cThe twist&r"),
@@ -1097,6 +1098,61 @@ quest(cI, "f_glyphe", ("Le glyphe de l'engrenage", "The Glyph of the Gear"), 8, 
       deps=["f_turbine"],
       desc=D(["Le seul sort que les deux camps ont appris l'un de l'autre. Lancé sur une machine de Create, il la fait tourner plus vite. Lancé sur un automate, il grippe ses rouages."],
              ["The only spell both sides learned from each other. Cast on a Create machine, it makes it run faster. Cast on an automaton, it jams its gears."]))
+
+# =============================================================================
+# LA FONDERIE IMPÉRIALE (mod Airain, paquet fonderie)
+# =============================================================================
+cF = chapter("fonderie", "16_fonderie", ("&3Annexe&r · La fonderie impériale", "&3Side&r · The Imperial Foundry"),
+             ("L'airain, l'alliage secret de l'Empire, et le haut-fourneau qui le fond.", "Airain, the Empire's secret alloy, and the blast furnace that melts it."),
+             "airain:blast_furnace_taphole", 16)
+quest(cF, "fo_briques", ("Les briques réfractaires", "Fire Bricks"), 0, 0, [T_item("airain:fire_bricks", 32)], [R_coin("sprocket", 2)],
+      deps=["laiton"], subtitle=("La fonderie impériale", "The Imperial Foundry"),
+      desc=D(["L'airain ne se fond pas dans un four ordinaire. Les fondeurs de l'Empire montaient leurs hauts-fourneaux en briques réfractaires, qui tiennent là où la pierre éclate.",
+              "&8Mélangeur chauffé : deux briques et une brique du Nether donnent deux briques réfractaires.&r"],
+             ["Airain cannot be melted in an ordinary furnace. The Empire's founders built their blast furnaces from fire bricks, which hold where stone cracks.",
+              "&8Heated mixer: two bricks and a nether brick make two fire bricks.&r"]))
+quest(cF, "fo_fourneau", ("Le haut-fourneau impérial", "The Imperial Blast Furnace"), 2, 0,
+      [T_item("airain:blast_furnace_taphole"), T_item("airain:blast_furnace_tuyere"), T_item("airain:blast_furnace_hopper"), T_check()], [R_coin("cog", 2)],
+      deps=["fo_briques", "blaze"],
+      desc=D(["Une tour de 3 × 3, haute de 4. Le trou de coulée au milieu de la face avant, en bas ; une grille au centre du sol, un brûleur à blaze dessous ; le gueulard au centre du sommet ; une tuyère sur un côté, avec un ventilateur de Create qui souffle dedans.",
+              "Clic droit main nue sur le trou de coulée : il dit ce qui manque, et les places à remplir brillent. Une fois monté, le fourneau prend son habillage d'airain. Validez quand c'est fait.",
+              "&8Tout est dans le livre de l'ingénieur.&r"],
+             ["A 3 × 3 tower, 4 high. The taphole in the middle of the front face, at the bottom; a grate in the middle of the floor, a blaze burner below; the throat in the middle of the top; a tuyere on one side, with a Create fan blowing into it.",
+              "Right-click the taphole bare-handed: it tells what is missing, and the spots to fill glow. Once assembled, the furnace takes on its airain trim. Tick the box when it's done.",
+              "&8Everything is in the engineer's manual.&r"]))
+quest(cF, "fo_refonte", ("Refondre l'Empire", "Remelting the Empire"), 4, -1, [T_item("airain:airain_ingot", 4)], [R_coin("sprocket", 3)],
+      deps=["fo_fourneau"],
+      desc=D(["Les automates sont faits d'airain. Leur ferraille et leurs rouages brisés, versés au gueulard, redeviennent de l'airain en fusion : il suffit d'un brûleur chauffé.",
+              "Le métal sort par le trou de coulée : un tuyau, un bassin et une presse en font des lingots."],
+             ["The automatons are made of airain. Their scrap and broken cogs, poured into the throat, turn back into molten airain: a heated burner is enough.",
+              "The metal comes out of the taphole: a pipe, a basin and a press turn it into ingots."]))
+quest(cF, "fo_alliage", ("L'alliage secret", "The Secret Alloy"), 4, 1, [T_item("airain:airain_block", 4)], [R_coin("cog", 2)],
+      deps=["fo_fourneau"],
+      desc=D(["Trois de cuivre, un de zinc, un fondant (calcite, poudre de cendres ou laitier) : la recette que l'Empire gardait sous scellés. Il faut un brûleur surchauffé.",
+              "Plus le ventilateur tourne vite, plus le fourneau produit."],
+             ["Three copper, one zinc, one flux (calcite, cinder flour or slag): the recipe the Empire kept under seal. It needs a superheated burner.",
+              "The faster the fan spins, the more the furnace produces."]))
+quest(cF, "fo_engrenage", ("L'engrenage d'airain", "The Airain Gear"), 6, 1, [T_item("airain:airain_gear", 4)], [R_coin("cog", 2)],
+      deps=["fo_alliage", "precision"],
+      desc=D(["La pièce maîtresse des machines impériales : un engrenage, une plaque d'airain, une coulée d'airain en fusion, un coup de presse. Assemblage séquencé.",
+              "Les bornes, le trône, la charte et le Cœur d'Airain en demandent."],
+             ["The centrepiece of imperial machines: a cogwheel, an airain sheet, a pour of molten airain, a press stroke. Sequenced assembly.",
+              "Terminals, the throne, the charter and Airain's Core require it."]))
+quest(cF, "fo_style", ("Le style impérial", "The Imperial Style"), 6, -1, [T_item("airain:chiseled_airain", 4), T_item("airain:airain_pillar", 4), T_item("airain:airain_lantern", 4)],
+      [R_coin("sprocket", 4)], deps=["fo_refonte"],
+      desc=D(["Airain taillé, riveté, ciselé, piliers, grilles, portes ferronnées, lanternes à flamme rouge : de quoi bâtir une capitale digne de l'Empire. Au tailleur de pierre depuis un bloc d'airain."],
+             ["Cut, riveted and chiseled airain, pillars, grates, wrought doors, red-flame lanterns: enough to build a capital worthy of the Empire. At the stonecutter, from a block of airain."]))
+quest(cF, "fo_patine", ("Rouge impérial", "Imperial Red"), 8, -1, [T_item("airain:oxidized_airain_block")], [R_coin("cog", 1)],
+      deps=["fo_style"], optional=True,
+      desc=D(["&7Optionnel.&r Avec le temps, l'airain vire doucement du doré au rouge profond de l'Empire. Une couche de cire (rayon de miel) fige la teinte ; la hache la fait revenir en arrière."],
+             ["&7Optional.&r Over time, airain slowly turns from gold to the Empire's deep red. A coat of wax (honeycomb) freezes the colour; an axe takes it back."]))
+quest(cF, "fo_laitier", ("Rien ne se perd", "Nothing Is Wasted"), 2, 2, [T_item("airain:slag", 16)], [R_coin("sprocket", 1)],
+      deps=["fo_fourneau"], optional=True,
+      desc=D(["&7Optionnel.&r Le laitier sort par le trou de coulée (entonnoir). Broyé, il donne de la poudre de cendres ; remis au gueulard, il sert de fondant."],
+             ["&7Optional.&r Slag comes out of the taphole (funnel). Crushed, it gives cinder flour; put back into the throat, it serves as flux."]))
+
+# le Cœur demande de l'airain : « Forger le Cœur » dépend aussi de l'engrenage d'airain
+[q for q in c6["quests"] if q["id"] == QUESTS["forger"]][0]["deps"].append(QUESTS["fo_engrenage"])
 
 # =============================================================================
 # TRAINS ET LOGISTIQUE

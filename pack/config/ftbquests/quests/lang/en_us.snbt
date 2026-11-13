@@ -55,6 +55,10 @@
 		"The Empire's weapons: blades, artillery and firearms."
 	]
 	"chapter.6643CF10372B0A3C.title": "&3Side&r · Arsenal"
+	"chapter.6736904DE97196BF.chapter_subtitle": [
+		"Airain, the Empire's secret alloy, and the blast furnace that melts it."
+	]
+	"chapter.6736904DE97196BF.title": "&3Side&r · The Imperial Foundry"
 	"chapter.6C42785A50835ECA.chapter_subtitle": [
 		"What the Refractories learned, far from the Empire."
 	]
@@ -515,6 +519,12 @@
 		"Rekindle 3 outposts in all."
 	]
 	"quest.26EEACC9EDD1822F.title": "Rebuild: 3 outposts"
+	"quest.27339A8771243368.quest_desc": [
+		"A 3 × 3 tower, 4 high. The taphole in the middle of the front face, at the bottom; a grate in the middle of the floor, a blaze burner below; the throat in the middle of the top; a tuyere on one side, with a Create fan blowing into it."
+		"Right-click the taphole bare-handed: it tells what is missing, and the spots to fill glow. Once assembled, the furnace takes on its airain trim. Tick the box when it's done."
+		"&8Everything is in the engineer's manual.&r"
+	]
+	"quest.27339A8771243368.title": "The Imperial Blast Furnace"
 	"quest.27C73491488EF22F.quest_desc": [
 		"The Soul Forge guards want their armor. They pay in crowns."
 		"&7Repeatable.&r Delivered items are consumed."
@@ -533,6 +543,10 @@
 	]
 	"quest.284B486F1D112E1F.quest_subtitle": "Side quest: filling the library"
 	"quest.284B486F1D112E1F.title": "The Disenchanter"
+	"quest.2862CA0C1EA07E8C.quest_desc": [
+		"&7Optional.&r Slag comes out of the taphole (funnel). Crushed, it gives cinder flour; put back into the throat, it serves as flux."
+	]
+	"quest.2862CA0C1EA07E8C.title": "Nothing Is Wasted"
 	"quest.299A3CC737A4A7C2.quest_desc": [
 		"&7Optional.&r When the Emperor entered a city, all its banners rose together."
 		"Great standards and wall banners have a \"Hoisting\" setting:"
@@ -571,6 +585,11 @@
 		"&8They are where automatons sometimes drop from, when a patrol is airdropped.&r"
 	]
 	"quest.2ADA37E3BDA2E081.title": "The Sky Fleet"
+	"quest.2ADCE98DF27075B6.quest_desc": [
+		"The centrepiece of imperial machines: a cogwheel, an airain sheet, a pour of molten airain, a press stroke. Sequenced assembly."
+		"Terminals, the throne, the charter and Airain's Core require it."
+	]
+	"quest.2ADCE98DF27075B6.title": "The Airain Gear"
 	"quest.2B1CA1C84EB763C4.quest_desc": [
 		"Some ruins are &oclean&r. Mechanisms oiled, corridors swept. Maybe the guardians are not malfunctioning…"
 		"&oBut who are they maintaining it for?&r"
@@ -608,6 +627,12 @@
 		"These barrels and chests upgrade in place, with an upgrade kit, without losing their contents. A barrel shows what it holds on its front."
 	]
 	"quest.2CB5DA93642E7418.title": "Empire Barrels"
+	"quest.2D256B16F732227C.quest_desc": [
+		"Airain cannot be melted in an ordinary furnace. The Empire's founders built their blast furnaces from fire bricks, which hold where stone cracks."
+		"&8Heated mixer: two bricks and a nether brick make two fire bricks.&r"
+	]
+	"quest.2D256B16F732227C.quest_subtitle": "The Imperial Foundry"
+	"quest.2D256B16F732227C.title": "Fire Bricks"
 	"quest.2D2D133F3E4B2039.quest_desc": [
 		"&7Engineer's record, optional.&r Run a machine at 256 RPM, the maximum speed. The goggles show the speed. Tick the box when done."
 	]
@@ -726,6 +751,10 @@
 	]
 	"quest.35F93598035AE578.quest_subtitle": "Read the engineer's journal"
 	"quest.35F93598035AE578.title": "Understand What Happened"
+	"quest.365D357F3A917CC6.quest_desc": [
+		"Cut, riveted and chiseled airain, pillars, grates, wrought doors, red-flame lanterns: enough to build a capital worthy of the Empire. At the stonecutter, from a block of airain."
+	]
+	"quest.365D357F3A917CC6.title": "The Imperial Style"
 	"quest.3683E03BE02A53FF.quest_desc": [
 		"Beneath every city ran a second network, quieter than the rails: the plumbing."
 		"Pipes carry fluids but push nothing on their own: they need a pump. A wrench on a straight pipe adds a window; a pipe can also take a valve."
@@ -910,6 +939,11 @@
 		"&8The \"Arsenal\" side chapter covers every weapon.&r"
 	]
 	"quest.45DA6B1623943C36.title": "A Real Weapon"
+	"quest.46071A021876623F.quest_desc": [
+		"Three copper, one zinc, one flux (calcite, cinder flour or slag): the recipe the Empire kept under seal. It needs a superheated burner."
+		"The faster the fan spins, the more the furnace produces."
+	]
+	"quest.46071A021876623F.title": "The Secret Alloy"
 	"quest.46882C5D681F223B.quest_desc": [
 		"&7Engineer's record, optional.&r Go below Y -59, right against the bedrock."
 		"&8The Empire's miners said you could hear the world's heartbeat down there.&r"
@@ -942,6 +976,10 @@
 	]
 	"quest.484751AF0234DDF5.quest_subtitle": "Side quest: the magic of the Echo"
 	"quest.484751AF0234DDF5.title": "The Echo"
+	"quest.48825C0187F0D461.quest_desc": [
+		"&7Optional.&r Over time, airain slowly turns from gold to the Empire's deep red. A coat of wax (honeycomb) freezes the colour; an axe takes it back."
+	]
+	"quest.48825C0187F0D461.title": "Imperial Red"
 	"quest.48A453D94E21691C.quest_desc": [
 		"&7Optional.&r A hall full of empty capsules, and cables plunging into a shaft."
 		"Go down and read the engineer's report, on the lectern at the bottom. The collector's chest holds a letter."
@@ -1245,6 +1283,11 @@
 		"A press over a belt, like for iron. These sheets go into pipes, diving gear and diamond armour."
 	]
 	"quest.5F56E688DC1454DE.title": "Copper Sheets"
+	"quest.60587825C7B0D2F7.quest_desc": [
+		"The automatons are made of airain. Their scrap and broken cogs, poured into the throat, turn back into molten airain: a heated burner is enough."
+		"The metal comes out of the taphole: a pipe, a basin and a press turn it into ingots."
+	]
+	"quest.60587825C7B0D2F7.title": "Remelting the Empire"
 	"quest.605C7D0D8F9D52AD.quest_desc": [
 		"&ePlaying together:&r join the same team (/ftbteams party create, then invite) to share the book."
 		"&eSchematics&r and &eSeals&r unlock the key machines. They are never consumed."
