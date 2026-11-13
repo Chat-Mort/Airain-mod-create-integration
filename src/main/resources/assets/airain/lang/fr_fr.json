@@ -1575,5 +1575,17 @@
  "airain.fourneau.lunettes.chaleur": "Chaleur : %s",
  "airain.fourneau.lunettes.air": "Souffle : %s tr/min",
  "airain.fourneau.lunettes.cuve": "Airain en fusion : %s / %s mB",
- "airain.fourneau.lunettes.progres": "Fonte : %s %%"
+ "airain.fourneau.lunettes.progres": "Fonte : %s %%",
+ "airain.ingenieur.haut_fourneau.titre": "Le haut-fourneau impérial",
+ "airain.ingenieur.haut_fourneau.court": "Haut-fourneau",
+ "airain.ingenieur.haut_fourneau.histoire": "Seuls les fondeurs de l'Empire savaient tenir un feu assez chaud pour l'airain. Leurs tours de briques réfractaires, cerclées d'airain, fumaient jour et nuit au cœur des capitales.",
+ "airain.ingenieur.haut_fourneau.usage": "Une tour de 3 × 3, haute de 4, en briques réfractaires. Le trou de coulée au milieu de la face avant, en bas. Au centre du sol, une grille d'airain (ou de cuivre) avec un brûleur à blaze dessous ; au-dessus, deux blocs vides ; au centre du sommet, le gueulard. Une tuyère au milieu d'un côté ou de l'arrière, au rang 2 ou 3, avec un ventilateur de Create qui souffle dedans. Clic droit main nue sur le trou de coulée : il dit ce qui manque et les places vides brillent. Brûleur chauffé : refonte (6 ferrailles ou 2 rouages brisés = un lingot). Surchauffé : alliage aussi (3 cuivres, 1 zinc, 1 fondant = 4 lingots). La vitesse du ventilateur règle le débit. L'airain en fusion sort au tuyau par le trou de coulée (bassin + presse : 90 mB = un lingot), le laitier à l'entonnoir. Lunettes d'ingénieur : chaleur, souffle, cuve.",
+ "airain.ingenieur.style_imperial.titre": "Le style impérial",
+ "airain.ingenieur.style_imperial.court": "Style impérial",
+ "airain.ingenieur.style_imperial.histoire": "Les capitales de l'Empire ne se bâtissaient pas en pierre : elles se coulaient. L'airain poli du jour de la fondation virait, au fil des ans, au rouge profond qui fit sa gloire.",
+ "airain.ingenieur.style_imperial.usage": "Au tailleur de pierre depuis un bloc d'airain : airain taillé, riveté, ciselé, pilier, grille, escaliers et dalles. À l'établi : porte, trappe, barreaux, chaîne, et la lanterne à flamme rouge (pépites autour d'une torche de redstone). Avec le temps, l'airain passe par quatre teintes : neuf, terni, vieilli, rouge impérial. Un rayon de miel fige la teinte (ciré) ; la hache enlève la cire ou ramène la teinte d'un cran.",
+ "airain.ingenieur.airain.titre": "L'airain",
+ "airain.ingenieur.airain.court": "L'airain",
+ "airain.ingenieur.airain.histoire": "L'alliage secret de l'Empire : le métal de ses automates, de ses machines et du Cœur lui-même. La recette dormait sous scellés ; les automates la portent encore dans leurs carcasses.",
+ "airain.ingenieur.airain.usage": "Ne sort que du haut-fourneau. Lingots : airain en fusion au bassin sous une presse (90 mB) ; bloc : 810 mB. Plaque : presse sur un lingot. Engrenage d'airain : assemblage séquencé (engrenage, plaque d'airain au déployeur, 90 mB au bec verseur, presse). Les bornes, le trône, la charte et le Cœur d'Airain demandent des engrenages ; le Cœur, aussi des blocs d'airain."
 }

@@ -1575,5 +1575,17 @@
  "airain.fourneau.lunettes.chaleur": "Heat: %s",
  "airain.fourneau.lunettes.air": "Blast: %s RPM",
  "airain.fourneau.lunettes.cuve": "Molten airain: %s / %s mB",
- "airain.fourneau.lunettes.progres": "Smelting: %s %%"
+ "airain.fourneau.lunettes.progres": "Smelting: %s %%",
+ "airain.ingenieur.haut_fourneau.titre": "The Imperial Blast Furnace",
+ "airain.ingenieur.haut_fourneau.court": "Blast Furnace",
+ "airain.ingenieur.haut_fourneau.histoire": "Only the Empire's founders knew how to keep a fire hot enough for airain. Their fire-brick towers, ringed with airain, smoked day and night at the heart of the capitals.",
+ "airain.ingenieur.haut_fourneau.usage": "A 3 × 3 tower, 4 high, of fire bricks. The taphole in the middle of the front face, at the bottom. In the middle of the floor, an airain (or copper) grate with a blaze burner below; above it, two empty blocks; in the middle of the top, the throat. A tuyere in the middle of a side or of the back, on row 2 or 3, with a Create fan blowing into it. Right-click the taphole bare-handed: it tells what is missing and the empty spots glow. Heated burner: remelting (6 scrap or 2 broken cogs = one ingot). Superheated: alloying too (3 copper, 1 zinc, 1 flux = 4 ingots). The fan's speed sets the throughput. Molten airain is piped out of the taphole (basin + press: 90 mB = one ingot), slag comes out with a funnel. Engineer's goggles: heat, blast, tank.",
+ "airain.ingenieur.style_imperial.titre": "The Imperial Style",
+ "airain.ingenieur.style_imperial.court": "Imperial Style",
+ "airain.ingenieur.style_imperial.histoire": "The Empire's capitals were not built of stone: they were cast. The polished airain of founding day turned, over the years, into the deep red that made its glory.",
+ "airain.ingenieur.style_imperial.usage": "At the stonecutter, from a block of airain: cut, riveted and chiseled airain, pillar, grate, stairs and slabs. At the crafting table: door, trapdoor, bars, chain, and the red-flame lantern (nuggets around a redstone torch). Over time airain goes through four tints: new, tarnished, aged, imperial red. Honeycomb freezes the tint (waxed); an axe removes the wax or takes the tint back one step.",
+ "airain.ingenieur.airain.titre": "Airain",
+ "airain.ingenieur.airain.court": "Airain",
+ "airain.ingenieur.airain.histoire": "The Empire's secret alloy: the metal of its automatons, its machines and the Core itself. The recipe slept under seal; the automatons still carry it in their shells.",
+ "airain.ingenieur.airain.usage": "Only comes out of the blast furnace. Ingots: molten airain in a basin under a press (90 mB); block: 810 mB. Sheet: press an ingot. Airain gear: sequenced assembly (cogwheel, airain sheet with a deployer, 90 mB with a spout, press). Terminals, the throne, the charter and Airain's Core need gears; the Core also needs airain blocks."
 }
