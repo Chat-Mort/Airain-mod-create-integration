@@ -5,6 +5,7 @@
  "textures": {
   "m": "airain:block/airain_block",
   "g": "airain:block/airain_catwalk",
+  "gs": "airain:block/airain_catwalk",
   "r": "airain:block/riveted_airain",
   "particle": "airain:block/airain_block"
  },
