@@ -247,6 +247,25 @@
   "airain:airain_beacon_light",
   "airain:airain_sign_plate",
   "airain:airain_signpost",
-  "airain:airain_workbench"
+  "airain:airain_workbench",
+  "airain:airain_catwalk_drawbridge",
+  "airain:waxed_airain_catwalk_drawbridge",
+  "airain:exposed_airain_catwalk_drawbridge",
+  "airain:waxed_exposed_airain_catwalk_drawbridge",
+  "airain:weathered_airain_catwalk_drawbridge",
+  "airain:waxed_weathered_airain_catwalk_drawbridge",
+  "airain:oxidized_airain_catwalk_drawbridge",
+  "airain:waxed_oxidized_airain_catwalk_drawbridge",
+  "airain:airain_catwalk_telescopic",
+  "airain:waxed_airain_catwalk_telescopic",
+  "airain:exposed_airain_catwalk_telescopic",
+  "airain:waxed_exposed_airain_catwalk_telescopic",
+  "airain:weathered_airain_catwalk_telescopic",
+  "airain:waxed_weathered_airain_catwalk_telescopic",
+  "airain:oxidized_airain_catwalk_telescopic",
+  "airain:waxed_oxidized_airain_catwalk_telescopic",
+  "airain:airain_lift_winch",
+  "airain:airain_lift_mast",
+  "airain:airain_lift_call_box"
  ]
 }

@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "minecraft:stone_button"
+  },
+  {
+   "item": "minecraft:redstone"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_lift_call_box",
+  "count": 1
+ }
+}

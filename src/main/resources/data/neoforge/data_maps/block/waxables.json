@@ -359,6 +359,30 @@
   },
   "airain:oxidized_airain_lamppost": {
    "waxed": "airain:waxed_oxidized_airain_lamppost"
+  },
+  "airain:airain_catwalk_drawbridge": {
+   "waxed": "airain:waxed_airain_catwalk_drawbridge"
+  },
+  "airain:exposed_airain_catwalk_drawbridge": {
+   "waxed": "airain:waxed_exposed_airain_catwalk_drawbridge"
+  },
+  "airain:weathered_airain_catwalk_drawbridge": {
+   "waxed": "airain:waxed_weathered_airain_catwalk_drawbridge"
+  },
+  "airain:oxidized_airain_catwalk_drawbridge": {
+   "waxed": "airain:waxed_oxidized_airain_catwalk_drawbridge"
+  },
+  "airain:airain_catwalk_telescopic": {
+   "waxed": "airain:waxed_airain_catwalk_telescopic"
+  },
+  "airain:exposed_airain_catwalk_telescopic": {
+   "waxed": "airain:waxed_exposed_airain_catwalk_telescopic"
+  },
+  "airain:weathered_airain_catwalk_telescopic": {
+   "waxed": "airain:waxed_weathered_airain_catwalk_telescopic"
+  },
+  "airain:oxidized_airain_catwalk_telescopic": {
+   "waxed": "airain:waxed_oxidized_airain_catwalk_telescopic"
   }
  }
 }

@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "I",
+  "B",
+  "I"
+ ],
+ "key": {
+  "I": {
+   "item": "airain:airain_ingot"
+  },
+  "B": {
+   "item": "airain:airain_bars"
+  }
+ },
+ "result": {
+  "id": "airain:airain_lift_mast",
+  "count": 2
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "group": "airain_waxing",
+ "ingredients": [
+  {
+   "item": "airain:weathered_airain_catwalk_telescopic"
+  },
+  {
+   "item": "minecraft:honeycomb"
+  }
+ ],
+ "result": {
+  "id": "airain:waxed_weathered_airain_catwalk_telescopic",
+  "count": 1
+ }
+}

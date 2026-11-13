@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "airain:airain_catwalk"
+  },
+  {
+   "item": "airain:airain_gear"
+  },
+  {
+   "item": "airain:airain_sheet"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_catwalk_drawbridge",
+  "count": 1
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "SGS",
+  "ICI"
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "G": {
+   "item": "airain:airain_gear"
+  },
+  "I": {
+   "item": "airain:airain_ingot"
+  },
+  "C": {
+   "item": "create:shaft"
+  }
+ },
+ "result": {
+  "id": "airain:airain_lift_winch",
+  "count": 1
+ }
+}

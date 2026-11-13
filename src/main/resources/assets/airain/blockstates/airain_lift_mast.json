@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/airain_lift_mast"
+  },
+  "facing=east": {
+   "model": "airain:block/airain_lift_mast",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/airain_lift_mast",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/airain_lift_mast",
+   "y": 270
+  }
+ }
+}
