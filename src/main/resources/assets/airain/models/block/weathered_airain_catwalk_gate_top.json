@@ -7,6 +7,7 @@
   "g": "airain:block/weathered_airain_catwalk",
   "gs": "airain:block/weathered_airain_catwalk",
   "r": "airain:block/weathered_riveted_airain",
+  "bd": "airain:block/weathered_airain_band",
   "particle": "airain:block/weathered_airain_block"
  },
  "elements": [

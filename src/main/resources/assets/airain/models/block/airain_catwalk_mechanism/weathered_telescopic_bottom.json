@@ -11,7 +11,7 @@
   "tu": "airain:block/weathered_airain_pipe",
   "tv": "airain:block/weathered_airain_pipe_vertical",
   "ro": "airain:block/weathered_airain_rod",
-  "rg": "airain:block/weathered_oxidized_airain_block",
+  "rg": "airain:block/oxidized_airain_block",
   "g": "airain:block/weathered_airain_catwalk",
   "lw": "airain:block/lamp_warm",
   "lr": "airain:block/lamp_red_glass",
@@ -169,56 +169,6 @@
     },
     "down": {
      "texture": "#rg"
-    }
-   }
-  },
-  {
-   "from": [
-    6.5,
-    -15,
-    6.5
-   ],
-   "to": [
-    9.5,
-    -9,
-    9.5
-   ],
-   "faces": {
-    "north": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
-    },
-    "south": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
-    },
-    "east": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
-    },
-    "west": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
     }
    }
   },

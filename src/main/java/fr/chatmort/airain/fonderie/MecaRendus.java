@@ -35,9 +35,21 @@ public final class MecaRendus {
 		@Override
 		public void render(PasserelleMobile.Mecanisme be, float pt, PoseStack ms, MultiBufferSource buf, int light, int overlay) {
 			if (be.getLevel() == null) return;
+			Direction f = be.sens(); int n = be.longueur();
+			BlockState ici = be.getBlockState();
+			boolean haute = ici.getValue(Passerelle.HAUT);
+			// le carter : seulement s'il a la place (passerelle haute, ou rien de plein sous une passerelle basse)
+			BlockPos dessous = be.getBlockPos().below();
+			if (haute || !be.getLevel().getBlockState(dessous).isCollisionShapeFullBlock(be.getLevel(), dessous)) {
+				int r = switch (f) { case EAST -> 90; case SOUTH -> 180; case WEST -> 270; default -> 0; };
+				ms.pushPose();
+				ms.translate(0.5, 0, 0.5); ms.mulPose(Axis.YP.rotationDegrees(-r)); ms.translate(-0.5, 0, -0.5);
+				CachedBuffers.partial(AirainPartials.CARTER[be.pontLevis() ? 0 : 1][haute ? 1 : 0][AirainPartials.teinte(ici)], ici)
+					.light(haute ? light : LevelRenderer.getLightColor(be.getLevel(), dessous)).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+				ms.popPose();
+			}
 			float a = be.avanceAvant + (be.avance - be.avanceAvant) * pt;
 			if (a >= 1) return;                                            // déployé : ce sont de vrais blocs
-			Direction f = be.sens(); int n = be.longueur();
 			boolean pont = be.pontLevis();
 			float h = be.getBlockState().getValue(Passerelle.HAUT) ? 11 / 16f : 3 / 16f;
 			for (int i = 1; i <= n; i++) {

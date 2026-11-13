@@ -11,7 +11,7 @@
   "tu": "airain:block/exposed_airain_pipe",
   "tv": "airain:block/exposed_airain_pipe_vertical",
   "ro": "airain:block/exposed_airain_rod",
-  "rg": "airain:block/exposed_oxidized_airain_block",
+  "rg": "airain:block/oxidized_airain_block",
   "g": "airain:block/exposed_airain_catwalk",
   "ci": "airain:block/exposed_chiseled_airain",
   "lr": "airain:block/lamp_red_glass",

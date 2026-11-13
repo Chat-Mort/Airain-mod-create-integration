@@ -3,19 +3,19 @@
  "render_type": "minecraft:cutout",
  "ambientocclusion": false,
  "textures": {
-  "m": "airain:block/weathered_airain_block",
-  "pn": "airain:block/weathered_airain_panel",
-  "fz": "airain:block/weathered_airain_frieze",
-  "bd": "airain:block/weathered_airain_band",
-  "fl": "airain:block/weathered_airain_fluted",
-  "tu": "airain:block/weathered_airain_pipe",
-  "tv": "airain:block/weathered_airain_pipe_vertical",
-  "ro": "airain:block/weathered_airain_rod",
-  "rg": "airain:block/weathered_oxidized_airain_block",
-  "g": "airain:block/weathered_airain_catwalk",
+  "m": "airain:block/oxidized_airain_block",
+  "pn": "airain:block/oxidized_airain_panel",
+  "fz": "airain:block/oxidized_airain_frieze",
+  "bd": "airain:block/oxidized_airain_band",
+  "fl": "airain:block/oxidized_airain_fluted",
+  "tu": "airain:block/oxidized_airain_pipe",
+  "tv": "airain:block/oxidized_airain_pipe_vertical",
+  "ro": "airain:block/oxidized_airain_rod",
+  "rg": "airain:block/oxidized_airain_block",
+  "g": "airain:block/oxidized_airain_catwalk",
   "lw": "airain:block/lamp_warm",
   "lr": "airain:block/lamp_red_glass",
-  "particle": "airain:block/weathered_airain_block"
+  "particle": "airain:block/oxidized_airain_block"
  },
  "elements": [
   {
@@ -169,56 +169,6 @@
     },
     "down": {
      "texture": "#rg"
-    }
-   }
-  },
-  {
-   "from": [
-    6.5,
-    -15,
-    6.5
-   ],
-   "to": [
-    9.5,
-    -9,
-    9.5
-   ],
-   "faces": {
-    "north": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
-    },
-    "south": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
-    },
-    "east": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
-    },
-    "west": {
-     "texture": "#tv",
-     "uv": [
-      6.5,
-      5.0,
-      9.5,
-      11.0
-     ]
     }
    }
   },

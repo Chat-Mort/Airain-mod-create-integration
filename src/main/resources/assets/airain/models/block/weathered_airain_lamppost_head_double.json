@@ -11,7 +11,7 @@
   "tu": "airain:block/weathered_airain_pipe",
   "tv": "airain:block/weathered_airain_pipe_vertical",
   "ro": "airain:block/weathered_airain_rod",
-  "rg": "airain:block/weathered_oxidized_airain_block",
+  "rg": "airain:block/oxidized_airain_block",
   "g": "airain:block/weathered_airain_catwalk",
   "lw": "airain:block/lamp_warm",
   "lr": "airain:block/lamp_red_glass",
