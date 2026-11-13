@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column",
+ "textures": {
+  "end": "airain:block/weathered_airain_pillar_top",
+  "side": "airain:block/weathered_airain_pillar"
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "type": "minecraft:stonecutting",
+ "ingredient": {
+  "item": "airain:oxidized_airain_block"
+ },
+ "result": {
+  "id": "airain:oxidized_cut_airain",
+  "count": 4
+ }
+}

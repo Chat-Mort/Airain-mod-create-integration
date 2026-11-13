@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/inner_stairs",
+ "textures": {
+  "bottom": "airain:block/airain_block",
+  "side": "airain:block/airain_block",
+  "top": "airain:block/airain_block"
+ }
+}

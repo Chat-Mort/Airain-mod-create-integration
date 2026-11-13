@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "NNN",
+  "NTN",
+  "NNN"
+ ],
+ "key": {
+  "N": {
+   "item": "airain:airain_nugget"
+  },
+  "T": {
+   "item": "minecraft:redstone_torch"
+  }
+ },
+ "result": {
+  "id": "airain:airain_lantern",
+  "count": 1
+ }
+}

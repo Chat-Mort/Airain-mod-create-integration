@@ -1,0 +1,308 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "all": "airain:block/blast_furnace_hopper_side",
+  "up": "airain:block/blast_furnace_hopper_top",
+  "down": "airain:block/fire_bricks",
+  "airain": "airain:block/blast_furnace_airain",
+  "metal": "airain:block/molten_airain_still",
+  "particle": "airain:block/blast_furnace_hopper_side"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#all",
+     "cullface": "north"
+    },
+    "south": {
+     "texture": "#all",
+     "cullface": "south"
+    },
+    "east": {
+     "texture": "#all",
+     "cullface": "east"
+    },
+    "west": {
+     "texture": "#all",
+     "cullface": "west"
+    },
+    "up": {
+     "texture": "#up",
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#down",
+     "cullface": "down"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    16,
+    1
+   ],
+   "to": [
+    15,
+    22,
+    3
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    16,
+    13
+   ],
+   "to": [
+    15,
+    22,
+    15
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    16,
+    3
+   ],
+   "to": [
+    3,
+    22,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    13,
+    16,
+    3
+   ],
+   "to": [
+    15,
+    22,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    22,
+    0
+   ],
+   "to": [
+    16,
+    23,
+    2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    22,
+    14
+   ],
+   "to": [
+    16,
+    23,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    22,
+    2
+   ],
+   "to": [
+    2,
+    23,
+    14
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    14,
+    22,
+    2
+   ],
+   "to": [
+    16,
+    23,
+    14
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "south": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  }
+ ],
+ "render_type": "minecraft:cutout"
+}

@@ -1,0 +1,10 @@
+{
+ "type": "minecraft:stonecutting",
+ "ingredient": {
+  "item": "airain:airain_block"
+ },
+ "result": {
+  "id": "airain:cut_airain_slab",
+  "count": 8
+ }
+}

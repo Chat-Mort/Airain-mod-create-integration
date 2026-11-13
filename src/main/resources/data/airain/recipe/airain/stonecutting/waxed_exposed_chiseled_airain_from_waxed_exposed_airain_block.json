@@ -1,0 +1,10 @@
+{
+ "type": "minecraft:stonecutting",
+ "ingredient": {
+  "item": "airain:waxed_exposed_airain_block"
+ },
+ "result": {
+  "id": "airain:waxed_exposed_chiseled_airain",
+  "count": 1
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "replace": false,
+ "values": [
+  "airain:airain_door",
+  "airain:waxed_airain_door",
+  "airain:exposed_airain_door",
+  "airain:waxed_exposed_airain_door",
+  "airain:weathered_airain_door",
+  "airain:waxed_weathered_airain_door",
+  "airain:oxidized_airain_door",
+  "airain:waxed_oxidized_airain_door"
+ ]
+}

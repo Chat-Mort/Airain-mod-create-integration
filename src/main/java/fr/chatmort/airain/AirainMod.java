@@ -548,6 +548,12 @@ public class AirainMod {
 		// Glyphe de l'engrenage : Ars Nouveau crée lui-même l'objet du glyphe (airain:glyph_gear)
 		com.hollingsworth.arsnouveau.api.registry.GlyphRegistry.registerSpell(fr.chatmort.airain.fusion.GlypheEngrenage.INSTANCE);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fusion.GlypheEngrenage::tickMonde);
+		// L'airain : le métal, le style impérial et le haut-fourneau (paquet fonderie)
+		fr.chatmort.airain.fonderie.MetalAirain.charger();
+		fr.chatmort.airain.fonderie.BlocsAirain.charger();
+		fr.chatmort.airain.fonderie.Fourneau.charger();
+		fr.chatmort.airain.fonderie.MetalAirain.TYPES.register(bus);
+		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);
 		fr.chatmort.airain.fusion.EchoLiquide.TYPES.register(bus);   // l'Écho liquide (son bloc et son seau rejoignent BLOCKS et ITEMS)
 		fr.chatmort.airain.fusion.EchoLiquide.FLUIDES.register(bus);
 		BLOCKS.register(bus);
@@ -657,6 +663,13 @@ public class AirainMod {
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BANC_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, BANC_BE.get(), (be, side) -> be.reservoir);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, CONDENSEUR_BE.get(), (be, side) -> be.reservoir);   // tuyaux de Create
+		// haut-fourneau : l'airain en fusion et le laitier sortent au trou de coulée, la charge entre par le gueulard
+		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, fr.chatmort.airain.fonderie.Fourneau.BE.get(), (be, side) -> be.sortie);
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, fr.chatmort.airain.fonderie.Fourneau.BE.get(), (be, side) -> be.sortieLaitier);
+		event.registerBlock(Capabilities.ItemHandler.BLOCK, (lv, pos, st, be, side) -> {
+			var f = fr.chatmort.airain.fonderie.HautFourneauBlockEntity.depuisGueulard(lv, pos);
+			return f != null && f.forme() ? f.entree : null;
+		}, fr.chatmort.airain.fonderie.Fourneau.GUEULARD.get());
 		// la turbine boit l'Écho liquide, le sourcelink en produit : tuyaux sur toutes les faces sauf celle de l'arbre
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, TURBINE_ECHO_BE.get(), (be, side) -> side == be.getBlockState().getValue(fr.chatmort.airain.fusion.TurbineEchoBlock.FACING) ? null : be.reservoir);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, SOURCELINK_MECA_BE.get(), (be, side) -> side == be.getBlockState().getValue(fr.chatmort.airain.fusion.SourcelinkMecaBlock.FACING) ? null : be.reservoir);

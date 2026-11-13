@@ -1,0 +1,104 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "all": "airain:block/fire_bricks",
+  "north": "airain:block/blast_furnace_tuyere",
+  "airain": "airain:block/blast_furnace_airain",
+  "particle": "airain:block/blast_furnace_tuyere"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#north",
+     "cullface": "north"
+    },
+    "south": {
+     "texture": "#all",
+     "cullface": "south"
+    },
+    "east": {
+     "texture": "#all",
+     "cullface": "east"
+    },
+    "west": {
+     "texture": "#all",
+     "cullface": "west"
+    },
+    "up": {
+     "texture": "#all",
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#all",
+     "cullface": "down"
+    }
+   }
+  },
+  {
+   "from": [
+    5,
+    5,
+    -3
+   ],
+   "to": [
+    11,
+    11,
+    0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    4,
+    -1
+   ],
+   "to": [
+    12,
+    12,
+    0
+   ],
+   "faces": {
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  }
+ ]
+}

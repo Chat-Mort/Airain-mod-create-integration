@@ -47,6 +47,10 @@ public class AirainClient {
 				  @Override public net.minecraft.resources.ResourceLocation getFlowingTexture() { return t; }
 				  @Override public int getTintColor() { return 0xFFB98AFF; }
 			  }, fr.chatmort.airain.fusion.EchoLiquide.TYPE.get());
+			  e.registerFluidType(new net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions() {   // l'airain en fusion
+				  @Override public net.minecraft.resources.ResourceLocation getStillTexture() { return net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "block/molten_airain_still"); }
+				  @Override public net.minecraft.resources.ResourceLocation getFlowingTexture() { return net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "block/molten_airain_flow"); }
+			  }, fr.chatmort.airain.fonderie.MetalAirain.TYPE.get());
 			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION, AirainMod.COURONNE.get());
 			  e.registerItem(fr.chatmort.airain.gardien.CouronneModele.EXTENSION_CASQUE, AirainMod.CASQUE_COURONNE.get(), AirainMod.CASQUE_COURONNE_SACREE.get());
 			  e.registerItem(fr.chatmort.airain.armure.ImperialeModele.extension(0), AirainMod.CASQUE_IMPERIAL.get());

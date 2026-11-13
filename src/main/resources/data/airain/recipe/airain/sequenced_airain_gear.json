@@ -1,0 +1,64 @@
+{
+ "type": "create:sequenced_assembly",
+ "ingredient": {
+  "item": "create:cogwheel"
+ },
+ "loops": 1,
+ "results": [
+  {
+   "id": "airain:airain_gear"
+  }
+ ],
+ "transitional_item": {
+  "id": "airain:incomplete_airain_gear"
+ },
+ "sequence": [
+  {
+   "type": "create:deploying",
+   "ingredients": [
+    {
+     "item": "airain:incomplete_airain_gear"
+    },
+    {
+     "item": "airain:airain_sheet"
+    }
+   ],
+   "results": [
+    {
+     "id": "airain:incomplete_airain_gear"
+    }
+   ]
+  },
+  {
+   "type": "create:filling",
+   "ingredients": [
+    {
+     "item": "airain:incomplete_airain_gear"
+    },
+    {
+     "type": "neoforge:single",
+     "amount": 90,
+     "fluid": "airain:molten_airain"
+    }
+   ],
+   "results": [
+    {
+     "id": "airain:incomplete_airain_gear"
+    }
+   ]
+  },
+  {
+   "type": "create:pressing",
+   "ingredients": [
+    {
+     "item": "airain:incomplete_airain_gear"
+    }
+   ],
+   "results": [
+    {
+     "id": "airain:incomplete_airain_gear"
+    }
+   ]
+  }
+ ]
+}

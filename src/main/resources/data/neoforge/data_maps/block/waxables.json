@@ -1,0 +1,184 @@
+{
+ "values": {
+  "airain:airain_block": {
+   "waxed": "airain:waxed_airain_block"
+  },
+  "airain:exposed_airain_block": {
+   "waxed": "airain:waxed_exposed_airain_block"
+  },
+  "airain:weathered_airain_block": {
+   "waxed": "airain:waxed_weathered_airain_block"
+  },
+  "airain:oxidized_airain_block": {
+   "waxed": "airain:waxed_oxidized_airain_block"
+  },
+  "airain:cut_airain": {
+   "waxed": "airain:waxed_cut_airain"
+  },
+  "airain:exposed_cut_airain": {
+   "waxed": "airain:waxed_exposed_cut_airain"
+  },
+  "airain:weathered_cut_airain": {
+   "waxed": "airain:waxed_weathered_cut_airain"
+  },
+  "airain:oxidized_cut_airain": {
+   "waxed": "airain:waxed_oxidized_cut_airain"
+  },
+  "airain:riveted_airain": {
+   "waxed": "airain:waxed_riveted_airain"
+  },
+  "airain:exposed_riveted_airain": {
+   "waxed": "airain:waxed_exposed_riveted_airain"
+  },
+  "airain:weathered_riveted_airain": {
+   "waxed": "airain:waxed_weathered_riveted_airain"
+  },
+  "airain:oxidized_riveted_airain": {
+   "waxed": "airain:waxed_oxidized_riveted_airain"
+  },
+  "airain:chiseled_airain": {
+   "waxed": "airain:waxed_chiseled_airain"
+  },
+  "airain:exposed_chiseled_airain": {
+   "waxed": "airain:waxed_exposed_chiseled_airain"
+  },
+  "airain:weathered_chiseled_airain": {
+   "waxed": "airain:waxed_weathered_chiseled_airain"
+  },
+  "airain:oxidized_chiseled_airain": {
+   "waxed": "airain:waxed_oxidized_chiseled_airain"
+  },
+  "airain:airain_pillar": {
+   "waxed": "airain:waxed_airain_pillar"
+  },
+  "airain:exposed_airain_pillar": {
+   "waxed": "airain:waxed_exposed_airain_pillar"
+  },
+  "airain:weathered_airain_pillar": {
+   "waxed": "airain:waxed_weathered_airain_pillar"
+  },
+  "airain:oxidized_airain_pillar": {
+   "waxed": "airain:waxed_oxidized_airain_pillar"
+  },
+  "airain:airain_stairs": {
+   "waxed": "airain:waxed_airain_stairs"
+  },
+  "airain:exposed_airain_stairs": {
+   "waxed": "airain:waxed_exposed_airain_stairs"
+  },
+  "airain:weathered_airain_stairs": {
+   "waxed": "airain:waxed_weathered_airain_stairs"
+  },
+  "airain:oxidized_airain_stairs": {
+   "waxed": "airain:waxed_oxidized_airain_stairs"
+  },
+  "airain:cut_airain_stairs": {
+   "waxed": "airain:waxed_cut_airain_stairs"
+  },
+  "airain:exposed_cut_airain_stairs": {
+   "waxed": "airain:waxed_exposed_cut_airain_stairs"
+  },
+  "airain:weathered_cut_airain_stairs": {
+   "waxed": "airain:waxed_weathered_cut_airain_stairs"
+  },
+  "airain:oxidized_cut_airain_stairs": {
+   "waxed": "airain:waxed_oxidized_cut_airain_stairs"
+  },
+  "airain:airain_slab": {
+   "waxed": "airain:waxed_airain_slab"
+  },
+  "airain:exposed_airain_slab": {
+   "waxed": "airain:waxed_exposed_airain_slab"
+  },
+  "airain:weathered_airain_slab": {
+   "waxed": "airain:waxed_weathered_airain_slab"
+  },
+  "airain:oxidized_airain_slab": {
+   "waxed": "airain:waxed_oxidized_airain_slab"
+  },
+  "airain:cut_airain_slab": {
+   "waxed": "airain:waxed_cut_airain_slab"
+  },
+  "airain:exposed_cut_airain_slab": {
+   "waxed": "airain:waxed_exposed_cut_airain_slab"
+  },
+  "airain:weathered_cut_airain_slab": {
+   "waxed": "airain:waxed_weathered_cut_airain_slab"
+  },
+  "airain:oxidized_cut_airain_slab": {
+   "waxed": "airain:waxed_oxidized_cut_airain_slab"
+  },
+  "airain:airain_grate": {
+   "waxed": "airain:waxed_airain_grate"
+  },
+  "airain:exposed_airain_grate": {
+   "waxed": "airain:waxed_exposed_airain_grate"
+  },
+  "airain:weathered_airain_grate": {
+   "waxed": "airain:waxed_weathered_airain_grate"
+  },
+  "airain:oxidized_airain_grate": {
+   "waxed": "airain:waxed_oxidized_airain_grate"
+  },
+  "airain:airain_bars": {
+   "waxed": "airain:waxed_airain_bars"
+  },
+  "airain:exposed_airain_bars": {
+   "waxed": "airain:waxed_exposed_airain_bars"
+  },
+  "airain:weathered_airain_bars": {
+   "waxed": "airain:waxed_weathered_airain_bars"
+  },
+  "airain:oxidized_airain_bars": {
+   "waxed": "airain:waxed_oxidized_airain_bars"
+  },
+  "airain:airain_door": {
+   "waxed": "airain:waxed_airain_door"
+  },
+  "airain:exposed_airain_door": {
+   "waxed": "airain:waxed_exposed_airain_door"
+  },
+  "airain:weathered_airain_door": {
+   "waxed": "airain:waxed_weathered_airain_door"
+  },
+  "airain:oxidized_airain_door": {
+   "waxed": "airain:waxed_oxidized_airain_door"
+  },
+  "airain:airain_trapdoor": {
+   "waxed": "airain:waxed_airain_trapdoor"
+  },
+  "airain:exposed_airain_trapdoor": {
+   "waxed": "airain:waxed_exposed_airain_trapdoor"
+  },
+  "airain:weathered_airain_trapdoor": {
+   "waxed": "airain:waxed_weathered_airain_trapdoor"
+  },
+  "airain:oxidized_airain_trapdoor": {
+   "waxed": "airain:waxed_oxidized_airain_trapdoor"
+  },
+  "airain:airain_chain": {
+   "waxed": "airain:waxed_airain_chain"
+  },
+  "airain:exposed_airain_chain": {
+   "waxed": "airain:waxed_exposed_airain_chain"
+  },
+  "airain:weathered_airain_chain": {
+   "waxed": "airain:waxed_weathered_airain_chain"
+  },
+  "airain:oxidized_airain_chain": {
+   "waxed": "airain:waxed_oxidized_airain_chain"
+  },
+  "airain:airain_lantern": {
+   "waxed": "airain:waxed_airain_lantern"
+  },
+  "airain:exposed_airain_lantern": {
+   "waxed": "airain:waxed_exposed_airain_lantern"
+  },
+  "airain:weathered_airain_lantern": {
+   "waxed": "airain:waxed_weathered_airain_lantern"
+  },
+  "airain:oxidized_airain_lantern": {
+   "waxed": "airain:waxed_oxidized_airain_lantern"
+  }
+ }
+}

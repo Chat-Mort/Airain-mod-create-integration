@@ -19,7 +19,7 @@
    "item": "minecraft:netherite_block"
   },
   "P": {
-   "item": "create:precision_mechanism"
+   "item": "airain:airain_gear"
   }
  },
  "pattern": [

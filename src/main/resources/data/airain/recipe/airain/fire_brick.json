@@ -1,0 +1,21 @@
+{
+ "type": "create:mixing",
+ "heat_requirement": "heated",
+ "ingredients": [
+  {
+   "item": "minecraft:brick"
+  },
+  {
+   "item": "minecraft:brick"
+  },
+  {
+   "item": "minecraft:nether_brick"
+  }
+ ],
+ "results": [
+  {
+   "id": "airain:fire_brick",
+   "count": 2
+  }
+ ]
+}

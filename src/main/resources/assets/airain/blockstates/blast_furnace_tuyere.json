@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/blast_furnace_tuyere"
+  },
+  "facing=east": {
+   "model": "airain:block/blast_furnace_tuyere",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/blast_furnace_tuyere",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/blast_furnace_tuyere",
+   "y": 270
+  }
+ }
+}

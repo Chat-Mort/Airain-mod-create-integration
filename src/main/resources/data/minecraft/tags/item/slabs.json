@@ -1,0 +1,21 @@
+{
+ "replace": false,
+ "values": [
+  "airain:airain_slab",
+  "airain:waxed_airain_slab",
+  "airain:exposed_airain_slab",
+  "airain:waxed_exposed_airain_slab",
+  "airain:weathered_airain_slab",
+  "airain:waxed_weathered_airain_slab",
+  "airain:oxidized_airain_slab",
+  "airain:waxed_oxidized_airain_slab",
+  "airain:cut_airain_slab",
+  "airain:waxed_cut_airain_slab",
+  "airain:exposed_cut_airain_slab",
+  "airain:waxed_exposed_cut_airain_slab",
+  "airain:weathered_cut_airain_slab",
+  "airain:waxed_weathered_cut_airain_slab",
+  "airain:oxidized_cut_airain_slab",
+  "airain:waxed_oxidized_cut_airain_slab"
+ ]
+}

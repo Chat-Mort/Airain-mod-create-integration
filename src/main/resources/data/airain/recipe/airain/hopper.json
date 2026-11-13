@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "I I",
+  "IHI",
+  " B "
+ ],
+ "key": {
+  "I": {
+   "item": "create:iron_sheet"
+  },
+  "H": {
+   "item": "minecraft:hopper"
+  },
+  "B": {
+   "item": "airain:fire_bricks"
+  }
+ },
+ "result": {
+  "id": "airain:blast_furnace_hopper",
+  "count": 1
+ }
+}

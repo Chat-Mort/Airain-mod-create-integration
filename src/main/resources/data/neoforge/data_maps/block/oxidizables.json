@@ -1,0 +1,139 @@
+{
+ "values": {
+  "airain:airain_block": {
+   "next_oxidation_stage": "airain:exposed_airain_block"
+  },
+  "airain:exposed_airain_block": {
+   "next_oxidation_stage": "airain:weathered_airain_block"
+  },
+  "airain:weathered_airain_block": {
+   "next_oxidation_stage": "airain:oxidized_airain_block"
+  },
+  "airain:cut_airain": {
+   "next_oxidation_stage": "airain:exposed_cut_airain"
+  },
+  "airain:exposed_cut_airain": {
+   "next_oxidation_stage": "airain:weathered_cut_airain"
+  },
+  "airain:weathered_cut_airain": {
+   "next_oxidation_stage": "airain:oxidized_cut_airain"
+  },
+  "airain:riveted_airain": {
+   "next_oxidation_stage": "airain:exposed_riveted_airain"
+  },
+  "airain:exposed_riveted_airain": {
+   "next_oxidation_stage": "airain:weathered_riveted_airain"
+  },
+  "airain:weathered_riveted_airain": {
+   "next_oxidation_stage": "airain:oxidized_riveted_airain"
+  },
+  "airain:chiseled_airain": {
+   "next_oxidation_stage": "airain:exposed_chiseled_airain"
+  },
+  "airain:exposed_chiseled_airain": {
+   "next_oxidation_stage": "airain:weathered_chiseled_airain"
+  },
+  "airain:weathered_chiseled_airain": {
+   "next_oxidation_stage": "airain:oxidized_chiseled_airain"
+  },
+  "airain:airain_pillar": {
+   "next_oxidation_stage": "airain:exposed_airain_pillar"
+  },
+  "airain:exposed_airain_pillar": {
+   "next_oxidation_stage": "airain:weathered_airain_pillar"
+  },
+  "airain:weathered_airain_pillar": {
+   "next_oxidation_stage": "airain:oxidized_airain_pillar"
+  },
+  "airain:airain_stairs": {
+   "next_oxidation_stage": "airain:exposed_airain_stairs"
+  },
+  "airain:exposed_airain_stairs": {
+   "next_oxidation_stage": "airain:weathered_airain_stairs"
+  },
+  "airain:weathered_airain_stairs": {
+   "next_oxidation_stage": "airain:oxidized_airain_stairs"
+  },
+  "airain:cut_airain_stairs": {
+   "next_oxidation_stage": "airain:exposed_cut_airain_stairs"
+  },
+  "airain:exposed_cut_airain_stairs": {
+   "next_oxidation_stage": "airain:weathered_cut_airain_stairs"
+  },
+  "airain:weathered_cut_airain_stairs": {
+   "next_oxidation_stage": "airain:oxidized_cut_airain_stairs"
+  },
+  "airain:airain_slab": {
+   "next_oxidation_stage": "airain:exposed_airain_slab"
+  },
+  "airain:exposed_airain_slab": {
+   "next_oxidation_stage": "airain:weathered_airain_slab"
+  },
+  "airain:weathered_airain_slab": {
+   "next_oxidation_stage": "airain:oxidized_airain_slab"
+  },
+  "airain:cut_airain_slab": {
+   "next_oxidation_stage": "airain:exposed_cut_airain_slab"
+  },
+  "airain:exposed_cut_airain_slab": {
+   "next_oxidation_stage": "airain:weathered_cut_airain_slab"
+  },
+  "airain:weathered_cut_airain_slab": {
+   "next_oxidation_stage": "airain:oxidized_cut_airain_slab"
+  },
+  "airain:airain_grate": {
+   "next_oxidation_stage": "airain:exposed_airain_grate"
+  },
+  "airain:exposed_airain_grate": {
+   "next_oxidation_stage": "airain:weathered_airain_grate"
+  },
+  "airain:weathered_airain_grate": {
+   "next_oxidation_stage": "airain:oxidized_airain_grate"
+  },
+  "airain:airain_bars": {
+   "next_oxidation_stage": "airain:exposed_airain_bars"
+  },
+  "airain:exposed_airain_bars": {
+   "next_oxidation_stage": "airain:weathered_airain_bars"
+  },
+  "airain:weathered_airain_bars": {
+   "next_oxidation_stage": "airain:oxidized_airain_bars"
+  },
+  "airain:airain_door": {
+   "next_oxidation_stage": "airain:exposed_airain_door"
+  },
+  "airain:exposed_airain_door": {
+   "next_oxidation_stage": "airain:weathered_airain_door"
+  },
+  "airain:weathered_airain_door": {
+   "next_oxidation_stage": "airain:oxidized_airain_door"
+  },
+  "airain:airain_trapdoor": {
+   "next_oxidation_stage": "airain:exposed_airain_trapdoor"
+  },
+  "airain:exposed_airain_trapdoor": {
+   "next_oxidation_stage": "airain:weathered_airain_trapdoor"
+  },
+  "airain:weathered_airain_trapdoor": {
+   "next_oxidation_stage": "airain:oxidized_airain_trapdoor"
+  },
+  "airain:airain_chain": {
+   "next_oxidation_stage": "airain:exposed_airain_chain"
+  },
+  "airain:exposed_airain_chain": {
+   "next_oxidation_stage": "airain:weathered_airain_chain"
+  },
+  "airain:weathered_airain_chain": {
+   "next_oxidation_stage": "airain:oxidized_airain_chain"
+  },
+  "airain:airain_lantern": {
+   "next_oxidation_stage": "airain:exposed_airain_lantern"
+  },
+  "airain:exposed_airain_lantern": {
+   "next_oxidation_stage": "airain:weathered_airain_lantern"
+  },
+  "airain:weathered_airain_lantern": {
+   "next_oxidation_stage": "airain:oxidized_airain_lantern"
+  }
+ }
+}

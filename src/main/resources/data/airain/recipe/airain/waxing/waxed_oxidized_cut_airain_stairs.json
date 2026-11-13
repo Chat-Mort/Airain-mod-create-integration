@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "group": "airain_waxing",
+ "ingredients": [
+  {
+   "item": "airain:oxidized_cut_airain_stairs"
+  },
+  {
+   "item": "minecraft:honeycomb"
+  }
+ ],
+ "result": {
+  "id": "airain:waxed_oxidized_cut_airain_stairs",
+  "count": 1
+ }
+}

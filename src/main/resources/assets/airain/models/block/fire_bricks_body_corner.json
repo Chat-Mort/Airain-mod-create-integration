@@ -1,0 +1,62 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "particle": "airain:block/fire_bricks",
+  "coin": "airain:block/fire_bricks_corner",
+  "cote": "airain:block/fire_bricks",
+  "haut": "airain:block/fire_bricks",
+  "bas": "airain:block/fire_bricks"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#coin",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ],
+     "cullface": "north"
+    },
+    "west": {
+     "texture": "#coin",
+     "uv": [
+      16,
+      0,
+      0,
+      16
+     ],
+     "cullface": "west"
+    },
+    "south": {
+     "texture": "#cote",
+     "cullface": "south"
+    },
+    "east": {
+     "texture": "#cote",
+     "cullface": "east"
+    },
+    "up": {
+     "texture": "#haut",
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#bas",
+     "cullface": "down"
+    }
+   }
+  }
+ ]
+}

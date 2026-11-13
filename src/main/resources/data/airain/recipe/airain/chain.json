@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "N",
+  "I",
+  "N"
+ ],
+ "key": {
+  "N": {
+   "item": "airain:airain_nugget"
+  },
+  "I": {
+   "item": "airain:airain_ingot"
+  }
+ },
+ "result": {
+  "id": "airain:airain_chain",
+  "count": 1
+ }
+}

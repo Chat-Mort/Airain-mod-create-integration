@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "BSB",
+  "BPB",
+  "BBB"
+ ],
+ "key": {
+  "B": {
+   "item": "airain:fire_bricks"
+  },
+  "S": {
+   "item": "create:brass_sheet"
+  },
+  "P": {
+   "item": "create:fluid_pipe"
+  }
+ },
+ "result": {
+  "id": "airain:blast_furnace_taphole",
+  "count": 1
+ }
+}

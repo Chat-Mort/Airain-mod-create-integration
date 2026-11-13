@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=x": {
+   "model": "airain:block/exposed_airain_pillar_horizontal",
+   "x": 90,
+   "y": 90
+  },
+  "axis=y": {
+   "model": "airain:block/exposed_airain_pillar"
+  },
+  "axis=z": {
+   "model": "airain:block/exposed_airain_pillar_horizontal",
+   "x": 90
+  }
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "replace": false,
+ "values": [
+  "airain:airain_stairs",
+  "airain:waxed_airain_stairs",
+  "airain:exposed_airain_stairs",
+  "airain:waxed_exposed_airain_stairs",
+  "airain:weathered_airain_stairs",
+  "airain:waxed_weathered_airain_stairs",
+  "airain:oxidized_airain_stairs",
+  "airain:waxed_oxidized_airain_stairs",
+  "airain:cut_airain_stairs",
+  "airain:waxed_cut_airain_stairs",
+  "airain:exposed_cut_airain_stairs",
+  "airain:waxed_exposed_cut_airain_stairs",
+  "airain:weathered_cut_airain_stairs",
+  "airain:waxed_weathered_cut_airain_stairs",
+  "airain:oxidized_cut_airain_stairs",
+  "airain:waxed_oxidized_cut_airain_stairs"
+ ]
+}

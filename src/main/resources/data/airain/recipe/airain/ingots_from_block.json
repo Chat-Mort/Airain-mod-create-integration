@@ -1,0 +1,13 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "airain:airain_block"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_ingot",
+  "count": 9
+ }
+}

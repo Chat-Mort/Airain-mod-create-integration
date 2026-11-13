@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "lit=false": {
+   "model": "airain:block/blast_furnace_hopper"
+  },
+  "lit=true": {
+   "model": "airain:block/blast_furnace_hopper_lit"
+  }
+ }
+}

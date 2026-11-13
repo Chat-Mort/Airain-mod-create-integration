@@ -1,0 +1,8 @@
+{
+ "parent": "minecraft:block/outer_stairs",
+ "textures": {
+  "bottom": "airain:block/oxidized_airain_block",
+  "side": "airain:block/oxidized_airain_block",
+  "top": "airain:block/oxidized_airain_block"
+ }
+}

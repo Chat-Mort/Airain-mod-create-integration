@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "hanging=false": {
+   "model": "airain:block/exposed_airain_lantern"
+  },
+  "hanging=true": {
+   "model": "airain:block/exposed_airain_lantern_hanging"
+  }
+ }
+}

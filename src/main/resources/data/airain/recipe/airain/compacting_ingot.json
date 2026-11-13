@@ -1,0 +1,15 @@
+{
+ "type": "create:compacting",
+ "ingredients": [
+  {
+   "type": "neoforge:single",
+   "amount": 90,
+   "fluid": "airain:molten_airain"
+  }
+ ],
+ "results": [
+  {
+   "id": "airain:airain_ingot"
+  }
+ ]
+}

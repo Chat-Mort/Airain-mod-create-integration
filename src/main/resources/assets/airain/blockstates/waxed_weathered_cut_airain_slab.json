@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "airain:block/weathered_cut_airain_slab"
+  },
+  "type=double": {
+   "model": "airain:block/weathered_cut_airain"
+  },
+  "type=top": {
+   "model": "airain:block/weathered_cut_airain_slab_top"
+  }
+ }
+}

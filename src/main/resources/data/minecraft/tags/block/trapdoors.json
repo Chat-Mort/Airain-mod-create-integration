@@ -1,0 +1,13 @@
+{
+ "replace": false,
+ "values": [
+  "airain:airain_trapdoor",
+  "airain:waxed_airain_trapdoor",
+  "airain:exposed_airain_trapdoor",
+  "airain:waxed_exposed_airain_trapdoor",
+  "airain:weathered_airain_trapdoor",
+  "airain:waxed_weathered_airain_trapdoor",
+  "airain:oxidized_airain_trapdoor",
+  "airain:waxed_oxidized_airain_trapdoor"
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "all": "airain:block/fire_bricks",
+  "north": "airain:block/blast_furnace_taphole",
+  "airain": "airain:block/blast_furnace_airain",
+  "metal": "airain:block/molten_airain_still",
+  "particle": "airain:block/blast_furnace_taphole"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#north",
+     "cullface": "north"
+    },
+    "south": {
+     "texture": "#all",
+     "cullface": "south"
+    },
+    "east": {
+     "texture": "#all",
+     "cullface": "east"
+    },
+    "west": {
+     "texture": "#all",
+     "cullface": "west"
+    },
+    "up": {
+     "texture": "#all",
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#all",
+     "cullface": "down"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    9,
+    -2
+   ],
+   "to": [
+    15,
+    11,
+    0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    5,
+    2,
+    -6
+   ],
+   "to": [
+    11,
+    3,
+    0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    },
+    "down": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    5,
+    3,
+    -6
+   ],
+   "to": [
+    6,
+    5,
+    0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    }
+   }
+  },
+  {
+   "from": [
+    10,
+    3,
+    -6
+   ],
+   "to": [
+    11,
+    5,
+    0
+   ],
+   "faces": {
+    "north": {
+     "texture": "#airain"
+    },
+    "east": {
+     "texture": "#airain"
+    },
+    "west": {
+     "texture": "#airain"
+    },
+    "up": {
+     "texture": "#airain"
+    }
+   }
+  }
+ ]
+}

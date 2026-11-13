@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "axis=x": {
+   "model": "airain:block/airain_chain",
+   "x": 90,
+   "y": 90
+  },
+  "axis=y": {
+   "model": "airain:block/airain_chain"
+  },
+  "axis=z": {
+   "model": "airain:block/airain_chain",
+   "x": 90
+  }
+ }
+}

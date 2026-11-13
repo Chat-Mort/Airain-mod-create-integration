@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "group": "airain_waxing",
+ "ingredients": [
+  {
+   "item": "airain:exposed_cut_airain_slab"
+  },
+  {
+   "item": "minecraft:honeycomb"
+  }
+ ],
+ "result": {
+  "id": "airain:waxed_exposed_cut_airain_slab",
+  "count": 1
+ }
+}

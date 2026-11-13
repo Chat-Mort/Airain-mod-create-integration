@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  " P ",
+  "SBS"
+ ],
+ "key": {
+  "P": {
+   "item": "create:fluid_pipe"
+  },
+  "S": {
+   "item": "create:copper_sheet"
+  },
+  "B": {
+   "item": "airain:fire_bricks"
+  }
+ },
+ "result": {
+  "id": "airain:blast_furnace_tuyere",
+  "count": 1
+ }
+}

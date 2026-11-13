@@ -1,0 +1,53 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "all": "airain:block/fire_bricks",
+  "north": "airain:block/blast_furnace_hopper_side",
+  "south": "airain:block/blast_furnace_hopper_side",
+  "east": "airain:block/blast_furnace_hopper_side",
+  "west": "airain:block/blast_furnace_hopper_side",
+  "up": "airain:block/blast_furnace_top_sooty",
+  "down": "airain:block/fire_bricks",
+  "particle": "airain:block/blast_furnace_hopper_side"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#north",
+     "cullface": "north"
+    },
+    "south": {
+     "texture": "#south",
+     "cullface": "south"
+    },
+    "east": {
+     "texture": "#east",
+     "cullface": "east"
+    },
+    "west": {
+     "texture": "#west",
+     "cullface": "west"
+    },
+    "up": {
+     "texture": "#up",
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#down",
+     "cullface": "down"
+    }
+   }
+  }
+ ]
+}

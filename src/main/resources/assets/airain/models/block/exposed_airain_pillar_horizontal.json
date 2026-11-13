@@ -1,0 +1,7 @@
+{
+ "parent": "minecraft:block/cube_column_horizontal",
+ "textures": {
+  "end": "airain:block/exposed_airain_pillar_top",
+  "side": "airain:block/exposed_airain_pillar"
+ }
+}

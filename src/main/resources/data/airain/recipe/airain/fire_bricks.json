@@ -1,0 +1,17 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "BB",
+  "BB"
+ ],
+ "key": {
+  "B": {
+   "item": "airain:fire_brick"
+  }
+ },
+ "result": {
+  "id": "airain:fire_bricks",
+  "count": 1
+ }
+}

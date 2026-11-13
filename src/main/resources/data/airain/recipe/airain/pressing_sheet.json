@@ -1,0 +1,13 @@
+{
+ "type": "create:pressing",
+ "ingredients": [
+  {
+   "item": "airain:airain_ingot"
+  }
+ ],
+ "results": [
+  {
+   "id": "airain:airain_sheet"
+  }
+ ]
+}

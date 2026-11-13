@@ -1,0 +1,18 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "III",
+  "III",
+  "III"
+ ],
+ "key": {
+  "I": {
+   "item": "airain:airain_ingot"
+  }
+ },
+ "result": {
+  "id": "airain:airain_block",
+  "count": 1
+ }
+}

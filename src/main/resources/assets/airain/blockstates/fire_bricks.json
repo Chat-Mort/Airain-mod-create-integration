@@ -1,0 +1,112 @@
+{
+ "variants": {
+  "facing=north,part=none": {
+   "model": "airain:block/fire_bricks_none"
+  },
+  "facing=east,part=none": {
+   "model": "airain:block/fire_bricks_none"
+  },
+  "facing=south,part=none": {
+   "model": "airain:block/fire_bricks_none"
+  },
+  "facing=west,part=none": {
+   "model": "airain:block/fire_bricks_none"
+  },
+  "facing=north,part=base": {
+   "model": "airain:block/fire_bricks_base"
+  },
+  "facing=east,part=base": {
+   "model": "airain:block/fire_bricks_base"
+  },
+  "facing=south,part=base": {
+   "model": "airain:block/fire_bricks_base"
+  },
+  "facing=west,part=base": {
+   "model": "airain:block/fire_bricks_base"
+  },
+  "facing=north,part=base_corner": {
+   "model": "airain:block/fire_bricks_base_corner"
+  },
+  "facing=east,part=base_corner": {
+   "model": "airain:block/fire_bricks_base_corner",
+   "y": 90
+  },
+  "facing=south,part=base_corner": {
+   "model": "airain:block/fire_bricks_base_corner",
+   "y": 180
+  },
+  "facing=west,part=base_corner": {
+   "model": "airain:block/fire_bricks_base_corner",
+   "y": 270
+  },
+  "facing=north,part=body": {
+   "model": "airain:block/fire_bricks_body"
+  },
+  "facing=east,part=body": {
+   "model": "airain:block/fire_bricks_body"
+  },
+  "facing=south,part=body": {
+   "model": "airain:block/fire_bricks_body"
+  },
+  "facing=west,part=body": {
+   "model": "airain:block/fire_bricks_body"
+  },
+  "facing=north,part=body_corner": {
+   "model": "airain:block/fire_bricks_body_corner"
+  },
+  "facing=east,part=body_corner": {
+   "model": "airain:block/fire_bricks_body_corner",
+   "y": 90
+  },
+  "facing=south,part=body_corner": {
+   "model": "airain:block/fire_bricks_body_corner",
+   "y": 180
+  },
+  "facing=west,part=body_corner": {
+   "model": "airain:block/fire_bricks_body_corner",
+   "y": 270
+  },
+  "facing=north,part=crown": {
+   "model": "airain:block/fire_bricks_crown"
+  },
+  "facing=east,part=crown": {
+   "model": "airain:block/fire_bricks_crown"
+  },
+  "facing=south,part=crown": {
+   "model": "airain:block/fire_bricks_crown"
+  },
+  "facing=west,part=crown": {
+   "model": "airain:block/fire_bricks_crown"
+  },
+  "facing=north,part=crown_corner": {
+   "model": "airain:block/fire_bricks_crown_corner"
+  },
+  "facing=east,part=crown_corner": {
+   "model": "airain:block/fire_bricks_crown_corner",
+   "y": 90
+  },
+  "facing=south,part=crown_corner": {
+   "model": "airain:block/fire_bricks_crown_corner",
+   "y": 180
+  },
+  "facing=west,part=crown_corner": {
+   "model": "airain:block/fire_bricks_crown_corner",
+   "y": 270
+  },
+  "facing=north,part=emblem": {
+   "model": "airain:block/fire_bricks_emblem"
+  },
+  "facing=east,part=emblem": {
+   "model": "airain:block/fire_bricks_emblem",
+   "y": 90
+  },
+  "facing=south,part=emblem": {
+   "model": "airain:block/fire_bricks_emblem",
+   "y": 180
+  },
+  "facing=west,part=emblem": {
+   "model": "airain:block/fire_bricks_emblem",
+   "y": 270
+  }
+ }
+}

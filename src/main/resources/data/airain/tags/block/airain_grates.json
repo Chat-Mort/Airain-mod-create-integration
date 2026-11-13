@@ -1,0 +1,21 @@
+{
+ "replace": false,
+ "values": [
+  "airain:airain_grate",
+  "airain:waxed_airain_grate",
+  "airain:exposed_airain_grate",
+  "airain:waxed_exposed_airain_grate",
+  "airain:weathered_airain_grate",
+  "airain:waxed_weathered_airain_grate",
+  "airain:oxidized_airain_grate",
+  "airain:waxed_oxidized_airain_grate",
+  "minecraft:copper_grate",
+  "minecraft:exposed_copper_grate",
+  "minecraft:weathered_copper_grate",
+  "minecraft:oxidized_copper_grate",
+  "minecraft:waxed_copper_grate",
+  "minecraft:waxed_exposed_copper_grate",
+  "minecraft:waxed_weathered_copper_grate",
+  "minecraft:waxed_oxidized_copper_grate"
+ ]
+}

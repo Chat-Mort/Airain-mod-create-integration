@@ -1,0 +1,10 @@
+{
+ "type": "minecraft:stonecutting",
+ "ingredient": {
+  "item": "airain:cut_airain"
+ },
+ "result": {
+  "id": "airain:chiseled_airain",
+  "count": 1
+ }
+}
