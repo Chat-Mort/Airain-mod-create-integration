@@ -554,6 +554,7 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Fourneau.charger();
 		fr.chatmort.airain.fonderie.Passerelles.charger();   // passerelles d'airain (catwalks)
 		fr.chatmort.airain.fonderie.ConduitAir.charger();    // conduite d'air (ventilateur → conduits → bouche)
+		fr.chatmort.airain.atelier.Atelier.charger();        // pièces d'atelier : tuyauterie, lampes, réverbères, bornes…
 		fr.chatmort.airain.fonderie.MetalAirain.TYPES.register(bus);
 		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);
 		fr.chatmort.airain.fusion.EchoLiquide.TYPES.register(bus);   // l'Écho liquide (son bloc et son seau rejoignent BLOCKS et ITEMS)

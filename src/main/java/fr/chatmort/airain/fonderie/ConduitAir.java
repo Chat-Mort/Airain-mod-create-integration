@@ -50,6 +50,14 @@ public final class ConduitAir {
 			.isRedstoneConductor((a, b, c) -> false).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false);
 	}
 
+	/** Pour les autres paquets : même chose que boite(). */
+	public static VoxelShape boiteVers(Direction f, double x0, double y0, double z0, double x1, double y1, double z1) { return boite(f, x0, y0, z0, x1, y1, z1); }
+	/** L'état n porte-t-il un conduit d'air ouvert vers d (conduit, ou conduit logé dans un plancher technique dans l'axe) ? */
+	public static boolean porteConduit(BlockState n, Direction d) {
+		if (n.getBlock() instanceof Conduit) return true;
+		return n.getBlock() instanceof fr.chatmort.airain.atelier.PlancherTechnique
+			&& fr.chatmort.airain.atelier.PlancherTechnique.loge(n, fr.chatmort.airain.atelier.PlancherTechnique.Contenu.CONDUIT, d.getAxis());
+	}
 	/** Boîte décrite pour une pièce tournée vers le nord, tournée vers f (6 directions). */
 	static VoxelShape boite(Direction f, double x0, double y0, double z0, double x1, double y1, double z1) {
 		return switch (f) {
@@ -78,7 +86,7 @@ public final class ConduitAir {
 		/** Le conduit se raccorde à un autre conduit, au dos d'une bouche, ou à l'avant d'un ventilateur. */
 		static boolean raccorde(BlockGetter l, BlockPos p, Direction d) {
 			BlockState n = l.getBlockState(p.relative(d));
-			if (n.getBlock() instanceof Conduit) return true;
+			if (porteConduit(n, d)) return true;
 			if (n.getBlock() instanceof Bouche) return n.getValue(FACING) == d;
 			return n.getBlock() instanceof EncasedFanBlock && n.getValue(BlockStateProperties.FACING) == d.getOpposite();
 		}

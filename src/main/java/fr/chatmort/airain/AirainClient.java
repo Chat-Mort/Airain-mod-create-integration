@@ -87,6 +87,10 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(AirainMod.SOCLE_BE.get(), fr.chatmort.airain.trophee.SocleRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.FONDATION_BE.get(), fr.chatmort.airain.fondation.EtendardRenderer::new);
 		event.registerBlockEntityRenderer(AirainMod.BALISE_BE.get(), fr.chatmort.airain.balise.BaliseRenderer::new);
+		// pièces d'atelier : aiguille du manomètre, réflecteur du gyrophare, flèches et textes des bornes
+		event.registerBlockEntityRenderer(fr.chatmort.airain.atelier.Atelier.MANOMETRE_BE.get(), fr.chatmort.airain.atelier.AtelierRendus.ManometreRendu::new);
+		event.registerBlockEntityRenderer(fr.chatmort.airain.atelier.Atelier.GYROPHARE_BE.get(), fr.chatmort.airain.atelier.AtelierRendus.GyrophareRendu::new);
+		event.registerBlockEntityRenderer(fr.chatmort.airain.atelier.Atelier.BORNE_BE.get(), fr.chatmort.airain.atelier.AtelierRendus.BorneRendu::new);
 		event.registerEntityRenderer(AirainMod.GARDIEN.get(), fr.chatmort.airain.gardien.GardienRenderer::new);
 		event.registerEntityRenderer(AirainMod.ASSISE.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
 		event.registerEntityRenderer(AirainMod.CAISSE.get(), fr.chatmort.airain.borne.CaisseRenderer::new);
@@ -123,5 +127,6 @@ public class AirainClient {
 		event.register(AirainMod.TABLE_MENU.get(), TableEmpireScreen::new);
 		event.register(AirainMod.BANC_MENU.get(), fr.chatmort.airain.banc.BancScreen::new);
 		event.register(AirainMod.RELIURE_MENU.get(), fr.chatmort.airain.reliure.ReliureMenuScreen::new);
+		event.register(fr.chatmort.airain.atelier.Atelier.ETABLI_MENU.get(), fr.chatmort.airain.atelier.EtabliScreen::new);   // établi d'atelier
 	}
 }

@@ -80,7 +80,7 @@ public final class Passerelle {
 
 	/** Ce qu'il y a sur un côté de passerelle. */
 	public enum Cote implements StringRepresentable {
-		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open");
+		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open"), VITRE("glass");
 		private final String nom;
 		Cote(String n) { nom = n; }
 		@Override public String getSerializedName() { return nom; }
@@ -89,6 +89,15 @@ public final class Passerelle {
 	public static final EnumProperty<Cote> SUD = EnumProperty.create("south", Cote.class);
 	public static final EnumProperty<Cote> EST = EnumProperty.create("east", Cote.class);
 	public static final EnumProperty<Cote> OUEST = EnumProperty.create("west", Cote.class);
+	/** Côté recalculé quand un voisin change : une rambarde (pleine ou vitrée) s'efface devant un raccord ; sans raccord, une
+	 *  rambarde vitrée reste vitrée, un côté vide reprend une rambarde. Portillons : inchangés. */
+	static Cote auto(Cote c, boolean raccorde) {
+		if (c == Cote.AUCUN || c == Cote.RAMBARDE) return raccorde ? Cote.AUCUN : Cote.RAMBARDE;
+		if (c == Cote.VITRE) return raccorde ? Cote.AUCUN : Cote.VITRE;
+		return c;
+	}
+	/** Clé de Create sur un côté : rambarde → rambarde vitrée → rien → rambarde. */
+	static Cote suivant(Cote c) { return c == Cote.RAMBARDE ? Cote.VITRE : c == Cote.VITRE ? Cote.AUCUN : Cote.RAMBARDE; }
 	public static EnumProperty<Cote> cote(Direction d) {
 		return switch (d) { case NORTH -> NORD; case SOUTH -> SUD; case EAST -> EST; default -> OUEST; };
 	}
@@ -107,7 +116,7 @@ public final class Passerelle {
 		};
 	}
 	/** Côté le plus proche du point visé (en coordonnées locales du bloc). */
-	static Direction coteVise(BlockPos pos, Vec3 visee) {
+	public static Direction coteVise(BlockPos pos, Vec3 visee) {
 		double x = visee.x - pos.getX(), z = visee.z - pos.getZ();
 		double n = z, s = 1 - z, o = x, e = 1 - x, m = Math.min(Math.min(n, s), Math.min(o, e));
 		return m == n ? Direction.NORTH : m == s ? Direction.SOUTH : m == o ? Direction.WEST : Direction.EAST;
@@ -128,7 +137,7 @@ public final class Passerelle {
 	}
 
 	// ====================================================================== mécanique commune de patine
-	interface Patinable extends WeatheringCopper {
+	public interface Patinable extends WeatheringCopper {
 		WeatherState etat();
 		@Override default WeatherState getAge() { return etat() == null ? WeatherState.UNAFFECTED : etat(); }
 	}
@@ -165,8 +174,7 @@ public final class Passerelle {
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
 			if (d.getAxis().isHorizontal()) {
-				Cote c = s.getValue(cote(d));
-				if (c == Cote.AUCUN || c == Cote.RAMBARDE) s = s.setValue(cote(d), raccorde(l, p, s, d) ? Cote.AUCUN : Cote.RAMBARDE);
+				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d)));
 			}
 			return s;
 		}
@@ -175,8 +183,8 @@ public final class Passerelle {
 			BlockState s = l.getBlockState(p);
 			if (!(s.getBlock() instanceof Plancher)) return;
 			Cote c = s.getValue(cote(d));
-			if (c != Cote.AUCUN && c != Cote.RAMBARDE) return;
-			BlockState n = s.setValue(cote(d), raccorde(l, p, s, d) ? Cote.AUCUN : Cote.RAMBARDE);
+			if (c == Cote.PORTILLON || c == Cote.OUVERT) return;
+			BlockState n = s.setValue(cote(d), auto(c, raccorde(l, p, s, d)));
 			if (n != s) l.setBlock(p, n, Block.UPDATE_ALL);
 		}
 
@@ -222,7 +230,7 @@ public final class Passerelle {
 			Cote cc = s.getValue(cote(d));
 			if (!l.isClientSide) {
 				if (cc == Cote.PORTILLON || cc == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
-				l.setBlock(p, s.setValue(cote(d), cc == Cote.AUCUN ? Cote.RAMBARDE : Cote.AUCUN), Block.UPDATE_ALL);
+				l.setBlock(p, s.setValue(cote(d), (cc == Cote.PORTILLON || cc == Cote.OUVERT) ? Cote.RAMBARDE : suivant(cc)), Block.UPDATE_ALL);
 				l.playSound(null, p, SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
 			}
 			return InteractionResult.SUCCESS;
@@ -244,7 +252,7 @@ public final class Passerelle {
 			VoxelShape v = boite(0, h - 2, 0, 16, h, 16);
 			for (Direction d : Direction.Plane.HORIZONTAL) {
 				Cote c = s.getValue(cote(d));
-				if (c == Cote.RAMBARDE || c == Cote.PORTILLON) v = Shapes.joinUnoptimized(v, tourner(d, 0, h, 0, 16, h + 13, 2), BooleanOp.OR);
+				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, h, 0, 16, h + 13, 2), BooleanOp.OR);
 			}
 			return v.optimize();
 		}
@@ -446,8 +454,7 @@ public final class Passerelle {
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
 			if (d.getAxis().isHorizontal() && exterieur(s, d)) {
-				Cote c = s.getValue(cote(d));
-				if (c == Cote.AUCUN || c == Cote.RAMBARDE) s = s.setValue(cote(d), raccorde(l, p, d) ? Cote.AUCUN : Cote.RAMBARDE);
+				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, d)));
 			}
 			return s;
 		}
@@ -503,7 +510,7 @@ public final class Passerelle {
 				if (!sol && exterieur(s, d)) {
 					Cote cc = s.getValue(cote(d));
 					if (cc == Cote.PORTILLON || cc == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
-					l.setBlock(p, s.setValue(cote(d), cc == Cote.AUCUN ? Cote.RAMBARDE : Cote.AUCUN), Block.UPDATE_ALL);
+					l.setBlock(p, s.setValue(cote(d), (cc == Cote.PORTILLON || cc == Cote.OUVERT) ? Cote.RAMBARDE : suivant(cc)), Block.UPDATE_ALL);
 					l.playSound(null, p, SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
 				} else {
 					l.setBlock(p, s.setValue(PLEIN, !s.getValue(PLEIN)), Block.UPDATE_ALL);
@@ -525,7 +532,7 @@ public final class Passerelle {
 			}
 			for (Direction d : Direction.Plane.HORIZONTAL) {
 				Cote c = s.getValue(cote(d));
-				if (c == Cote.RAMBARDE || c == Cote.PORTILLON) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, 0, 16, 24, 2), BooleanOp.OR);
+				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, 0, 16, 24, 2), BooleanOp.OR);
 			}
 			return v.optimize();
 		}

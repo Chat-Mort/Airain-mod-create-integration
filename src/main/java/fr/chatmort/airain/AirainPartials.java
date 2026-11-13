@@ -12,6 +12,12 @@ public class AirainPartials {
 	public static final PartialModel ROTOR_TURBINE = bloc("echo_turbine/rotor");
 	public static final PartialModel ROTOR_SOURCELINK = bloc("mechanical_sourcelink/rotor");
 
+	// pièces d'atelier : aiguille du manomètre, réflecteur du gyrophare, flèche et planchette des bornes
+	public static final PartialModel AIGUILLE = bloc("airain_gauge/needle");
+	public static final PartialModel REFLECTEUR = bloc("airain_beacon_light/reflector");
+	public static final PartialModel FLECHE = bloc("airain_signpost/arrow");
+	public static final PartialModel PLANCHETTE = bloc("airain_signpost/board");
+
 	private static PartialModel bloc(String chemin) {
 		return PartialModel.of(ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "block/" + chemin));
 	}

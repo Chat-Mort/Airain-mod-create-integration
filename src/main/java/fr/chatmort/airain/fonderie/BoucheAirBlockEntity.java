@@ -49,17 +49,20 @@ public class BoucheAirBlockEntity extends BlockEntity implements IAirCurrentSour
 	private float chercher() {
 		tropLong = false;
 		BlockPos depart = worldPosition.relative(sens().getOpposite());
-		if (!(level.getBlockState(depart).getBlock() instanceof ConduitAir.Conduit)) return 0;
+		if (!ConduitAir.porteConduit(level.getBlockState(depart), sens())) return 0;
 		ArrayDeque<BlockPos> file = new ArrayDeque<>(); Set<BlockPos> vus = new HashSet<>();
 		file.add(depart); vus.add(depart);
 		float meilleur = 0;
 		while (!file.isEmpty()) {
 			BlockPos p = file.poll();
+			BlockState ici = level.getBlockState(p);
 			for (Direction d : Direction.values()) {
+				// un conduit logé dans un plancher technique ne s'ouvre que dans son axe
+				if (!(ici.getBlock() instanceof ConduitAir.Conduit) && !ConduitAir.porteConduit(ici, d)) continue;
 				BlockPos n = p.relative(d);
 				if (vus.contains(n) || !level.isLoaded(n)) continue;
 				BlockState s = level.getBlockState(n);
-				if (s.getBlock() instanceof ConduitAir.Conduit) {
+				if (ConduitAir.porteConduit(s, d)) {
 					vus.add(n);
 					if (vus.size() > ConduitAir.MAX_CONDUITS) { tropLong = true; return 0; }
 					file.add(n);
