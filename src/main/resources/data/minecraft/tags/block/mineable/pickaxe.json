@@ -286,6 +286,22 @@
   "airain:waxed_oxidized_airain_catwalk_telescopic",
   "airain:airain_lift_winch",
   "airain:airain_lift_mast",
-  "airain:airain_lift_call_box"
+  "airain:airain_lift_call_box",
+  "airain:airain_load_reliever",
+  "airain:waxed_airain_load_reliever",
+  "airain:exposed_airain_load_reliever",
+  "airain:waxed_exposed_airain_load_reliever",
+  "airain:weathered_airain_load_reliever",
+  "airain:waxed_weathered_airain_load_reliever",
+  "airain:oxidized_airain_load_reliever",
+  "airain:waxed_oxidized_airain_load_reliever",
+  "airain:airain_supercharger",
+  "airain:waxed_airain_supercharger",
+  "airain:exposed_airain_supercharger",
+  "airain:waxed_exposed_airain_supercharger",
+  "airain:weathered_airain_supercharger",
+  "airain:waxed_weathered_airain_supercharger",
+  "airain:oxidized_airain_supercharger",
+  "airain:waxed_oxidized_airain_supercharger"
  ]
 }

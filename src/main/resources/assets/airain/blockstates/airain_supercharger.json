@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/airain_supercharger"
+  },
+  "facing=east": {
+   "model": "airain:block/airain_supercharger",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/airain_supercharger",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/airain_supercharger",
+   "y": 270
+  }
+ }
+}

@@ -287,6 +287,24 @@
   },
   "airain:weathered_airain_catwalk_telescopic": {
    "next_oxidation_stage": "airain:oxidized_airain_catwalk_telescopic"
+  },
+  "airain:airain_load_reliever": {
+   "next_oxidation_stage": "airain:exposed_airain_load_reliever"
+  },
+  "airain:exposed_airain_load_reliever": {
+   "next_oxidation_stage": "airain:weathered_airain_load_reliever"
+  },
+  "airain:weathered_airain_load_reliever": {
+   "next_oxidation_stage": "airain:oxidized_airain_load_reliever"
+  },
+  "airain:airain_supercharger": {
+   "next_oxidation_stage": "airain:exposed_airain_supercharger"
+  },
+  "airain:exposed_airain_supercharger": {
+   "next_oxidation_stage": "airain:weathered_airain_supercharger"
+  },
+  "airain:weathered_airain_supercharger": {
+   "next_oxidation_stage": "airain:oxidized_airain_supercharger"
   }
  }
 }

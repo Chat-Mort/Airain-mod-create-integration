@@ -22,10 +22,23 @@ public class AirainPartials {
 	public static final PartialModel PORTAIL_CABINE = bloc("airain_lift_cabin/gate");
 
 	// mécanique impériale : volant et lampes de l'allégeur, piston et voyant du surcompresseur
-	public static final PartialModel VOLANT = bloc("airain_load_reliever/flywheel");
+	public static final PartialModel[] VOLANT = teintes("airain_load_reliever/", "flywheel");
 	public static final PartialModel LAMPES_ALLEGEUR = bloc("airain_load_reliever/lamps");
-	public static final PartialModel PISTON = bloc("airain_supercharger/piston");
+	public static final PartialModel[] PISTON = teintes("airain_supercharger/", "piston");
 	public static final PartialModel VOYANT_SURCOMP = bloc("airain_supercharger/lamp");
+
+	/** Une pièce animée par teinte de patine (neuf, terni, vieilli, rouge impérial). */
+	private static PartialModel[] teintes(String dossier, String nom) {
+		String[] p = {"", "exposed_", "weathered_", "oxidized_"};
+		PartialModel[] t = new PartialModel[4];
+		for (int i = 0; i < 4; i++) t[i] = bloc(dossier + p[i] + nom);
+		return t;
+	}
+	/** Teinte (0 à 3) d'un bloc d'airain, d'après son nom (vaut aussi pour les versions cirées). */
+	public static int teinte(net.minecraft.world.level.block.state.BlockState s) {
+		String n = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(s.getBlock()).getPath();
+		return n.contains("oxidized_") ? 3 : n.contains("weathered_") ? 2 : n.contains("exposed_") ? 1 : 0;
+	}
 
 	private static PartialModel bloc(String chemin) {
 		return PartialModel.of(ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "block/" + chemin));

@@ -1,0 +1,113 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "m": "airain:block/airain_block",
+  "pn": "airain:block/airain_panel",
+  "fz": "airain:block/airain_frieze",
+  "bd": "airain:block/airain_band",
+  "fl": "airain:block/airain_fluted",
+  "tu": "airain:block/airain_pipe",
+  "tv": "airain:block/airain_pipe_vertical",
+  "ro": "airain:block/airain_rod",
+  "rg": "airain:block/oxidized_airain_block",
+  "g": "airain:block/airain_catwalk",
+  "lr": "airain:block/lamp_red_glass",
+  "particle": "airain:block/airain_block"
+ },
+ "elements": [
+  {
+   "from": [
+    1.9,
+    2.9,
+    13.4
+   ],
+   "to": [
+    4.1,
+    5.1,
+    15.6
+   ],
+   "faces": {
+    "north": {
+     "texture": "#lr",
+     "uv": [
+      3,
+      6,
+      5.2,
+      8.2
+     ],
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "south": {
+     "texture": "#lr",
+     "uv": [
+      3,
+      6,
+      5.2,
+      8.2
+     ],
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "east": {
+     "texture": "#lr",
+     "uv": [
+      3,
+      6,
+      5.2,
+      8.2
+     ],
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "west": {
+     "texture": "#lr",
+     "uv": [
+      3,
+      6,
+      5.2,
+      8.2
+     ],
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "up": {
+     "texture": "#lr",
+     "uv": [
+      3,
+      6,
+      5.2,
+      8.2
+     ],
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    },
+    "down": {
+     "texture": "#lr",
+     "uv": [
+      3,
+      6,
+      5.2,
+      8.2
+     ],
+     "neoforge_data": {
+      "block_light": 15,
+      "sky_light": 15
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "B": {
+   "item": "airain:airain_block"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "G": {
+   "item": "airain:airain_gear"
+  },
+  "I": {
+   "item": "airain:airain_ingot"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  }
+ },
+ "pattern": [
+  "BSSSB",
+  "SGIGS",
+  "SIPIS",
+  "SGIGS",
+  "BSSSB"
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:airain_load_reliever"
+ },
+ "show_notification": true
+}

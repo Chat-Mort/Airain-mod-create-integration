@@ -383,6 +383,30 @@
   },
   "airain:oxidized_airain_catwalk_telescopic": {
    "waxed": "airain:waxed_oxidized_airain_catwalk_telescopic"
+  },
+  "airain:airain_load_reliever": {
+   "waxed": "airain:waxed_airain_load_reliever"
+  },
+  "airain:exposed_airain_load_reliever": {
+   "waxed": "airain:waxed_exposed_airain_load_reliever"
+  },
+  "airain:weathered_airain_load_reliever": {
+   "waxed": "airain:waxed_weathered_airain_load_reliever"
+  },
+  "airain:oxidized_airain_load_reliever": {
+   "waxed": "airain:waxed_oxidized_airain_load_reliever"
+  },
+  "airain:airain_supercharger": {
+   "waxed": "airain:waxed_airain_supercharger"
+  },
+  "airain:exposed_airain_supercharger": {
+   "waxed": "airain:waxed_exposed_airain_supercharger"
+  },
+  "airain:weathered_airain_supercharger": {
+   "waxed": "airain:waxed_weathered_airain_supercharger"
+  },
+  "airain:oxidized_airain_supercharger": {
+   "waxed": "airain:waxed_oxidized_airain_supercharger"
   }
  }
 }

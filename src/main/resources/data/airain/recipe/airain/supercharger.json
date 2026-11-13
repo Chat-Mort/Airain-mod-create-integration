@@ -1,0 +1,34 @@
+{
+ "type": "create:mechanical_crafting",
+ "accept_mirrored": false,
+ "category": "misc",
+ "key": {
+  "B": {
+   "item": "airain:airain_block"
+  },
+  "F": {
+   "item": "airain:fire_bricks"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "G": {
+   "item": "airain:airain_gear"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  }
+ },
+ "pattern": [
+  "BFFFB",
+  "FGSGF",
+  "FSPSF",
+  "FGSGF",
+  "BFFFB"
+ ],
+ "result": {
+  "count": 1,
+  "id": "airain:airain_supercharger"
+ },
+ "show_notification": true
+}

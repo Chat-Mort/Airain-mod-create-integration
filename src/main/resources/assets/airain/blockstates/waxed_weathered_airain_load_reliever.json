@@ -1,0 +1,15 @@
+{
+ "variants": {
+  "axis=z": {
+   "model": "airain:block/weathered_airain_load_reliever"
+  },
+  "axis=x": {
+   "model": "airain:block/weathered_airain_load_reliever",
+   "y": 90
+  },
+  "axis=y": {
+   "model": "airain:block/weathered_airain_load_reliever",
+   "x": 90
+  }
+ }
+}

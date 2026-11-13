@@ -109,7 +109,7 @@ public final class MecaRendus {
 			ms.pushPose();
 			ms.mulPose(Axis.ZP.rotation(angle));
 			ms.translate(-0.5, -0.5, -0.5);
-			CachedBuffers.partial(AirainPartials.VOLANT, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+			CachedBuffers.partial(AirainPartials.VOLANT[AirainPartials.teinte(s)], s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
 			ms.popPose();
 			if (be.actif) {
 				ms.translate(-0.5, -0.5, -0.5);
@@ -133,7 +133,7 @@ public final class MecaRendus {
 			for (int i = 0; i < 2; i++) {                                // deux pistons en opposition
 				ms.pushPose();
 				ms.translate(i * 6 / 16f, (float) Math.sin(ph + i * Math.PI) * 1.5f / 16f, 0);
-				CachedBuffers.partial(AirainPartials.PISTON, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+				CachedBuffers.partial(AirainPartials.PISTON[AirainPartials.teinte(s)], s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
 				ms.popPose();
 			}
 			ms.pushPose();                                               // aiguille du manomètre (cadran tourné vers l'arrière)
