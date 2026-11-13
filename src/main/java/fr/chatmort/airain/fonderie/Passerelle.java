@@ -55,6 +55,8 @@ public final class Passerelle {
 	public static final BooleanProperty DROITE = BooleanProperty.create("right");
 	/** Plancher plein (tôle) au lieu du caillebotis : clé de Create sur le sol de la pièce. */
 	public static final BooleanProperty PLEIN = BooleanProperty.create("solid");
+	/** Segment de passerelle mobile relevé ou rentré : invisible, sans collision, ne se raccorde à rien (le mécanisme le dessine). */
+	public static final BooleanProperty RENTRE = BooleanProperty.create("retracted");
 	/** Ce qui entoure l'échelle : rien, une crinoline, ou un tunnel plein (clé de Create pour passer de l'un à l'autre). */
 	public enum Entourage implements StringRepresentable {
 		RIEN("none"), CRINOLINE("cage"), TUNNEL("full");
@@ -123,7 +125,8 @@ public final class Passerelle {
 	}
 	/** Hauteur du plancher d'une passerelle, d'un escalier ou d'une rampe, sur sa face d (en px), ou -1 si rien ne s'y raccorde. */
 	static int niveauFace(BlockState s, Direction d) {
-		if (s.getBlock() instanceof Plancher) return s.getValue(HAUT) ? 11 : 3;
+		if (s.getBlock() instanceof Plancher) return s.getValue(RENTRE) ? -1 : s.getValue(HAUT) ? 11 : 3;
+		if (s.getBlock() instanceof MonteCharge.Cabine) return d == s.getValue(FACING) ? 3 : -1;     // cabine arrêtée : son portail donne sur le palier
 		if (s.getBlock() instanceof Escalier) { Direction f = s.getValue(FACING); return d == f.getOpposite() ? 3 : d == f ? 19 : -1; }
 		if (s.getBlock() instanceof Rampe) {
 			Direction f = s.getValue(FACING); int bas = s.getValue(HAUT) ? 11 : 3;
@@ -148,10 +151,12 @@ public final class Passerelle {
 		private static final Map<BlockState, VoxelShape> FORMES = new java.util.concurrent.ConcurrentHashMap<>();
 		public Plancher(WeatherState etat, Properties p) {
 			super(p); this.etat = etat;
-			registerDefaultState(defaultBlockState().setValue(HAUT, false).setValue(PLEIN, false).setValue(NORD, Cote.AUCUN).setValue(SUD, Cote.AUCUN).setValue(EST, Cote.AUCUN).setValue(OUEST, Cote.AUCUN));
+			registerDefaultState(defaultBlockState().setValue(HAUT, false).setValue(PLEIN, false).setValue(RENTRE, false).setValue(NORD, Cote.AUCUN).setValue(SUD, Cote.AUCUN).setValue(EST, Cote.AUCUN).setValue(OUEST, Cote.AUCUN));
 		}
 		@Override public WeatherState etat() { return etat; }
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(HAUT, PLEIN, NORD, SUD, EST, OUEST); }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(HAUT, PLEIN, RENTRE, NORD, SUD, EST, OUEST); }
+		// segment relevé/rentré : on ne construit pas dedans
+		@Override protected boolean canBeReplaced(BlockState s, BlockPlaceContext c) { return false; }
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
 		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
 
@@ -191,7 +196,7 @@ public final class Passerelle {
 		// portillon : le poser (objet), l'ouvrir et le fermer (main nue)
 		@Override
 		protected ItemInteractionResult useItemOn(ItemStack st, BlockState s, Level l, BlockPos p, Player j, InteractionHand h, BlockHitResult hit) {
-			if (!st.is(Passerelles.PORTILLON.get())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+			if (!st.is(Passerelles.PORTILLON.get()) || s.getValue(RENTRE)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			Direction d = coteVise(p, hit.getLocation());
 			if (s.getValue(cote(d)) == Cote.PORTILLON || s.getValue(cote(d)) == Cote.OUVERT) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			if (!l.isClientSide) {
@@ -245,7 +250,7 @@ public final class Passerelle {
 
 		@Override
 		protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
-			return FORMES.computeIfAbsent(s, Plancher::forme);
+			return s.getValue(RENTRE) ? Shapes.empty() : FORMES.computeIfAbsent(s, Plancher::forme);
 		}
 		private static VoxelShape forme(BlockState s) {
 			int h = s.getValue(HAUT) ? 11 : 3;

@@ -18,6 +18,9 @@ public class AirainPartials {
 	public static final PartialModel FLECHE = bloc("airain_signpost/arrow");
 	public static final PartialModel PLANCHETTE = bloc("airain_signpost/board");
 
+	// monte-charge : portail de la cabine pendant le trajet
+	public static final PartialModel PORTAIL_CABINE = bloc("airain_lift_cabin/gate");
+
 	private static PartialModel bloc(String chemin) {
 		return PartialModel.of(ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "block/" + chemin));
 	}

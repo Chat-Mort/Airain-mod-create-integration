@@ -50,9 +50,22 @@ public final class Passerelles {
 		famille("airain_catwalk_landing", Passerelle.Palier::new);
 		famille("airain_hanger", Passerelle.Suspente::new);
 		famille("airain_railing", Passerelle.RambardeSeule::new);
+		// 1.52 : pièces-mécanismes des passerelles mobiles
+		famille("airain_catwalk_drawbridge", (e, p) -> new PasserelleMobile(e, p, true));
+		famille("airain_catwalk_telescopic", (e, p) -> new PasserelleMobile(e, p, false));
 	}
 	/** Le portillon : un objet qu'on pose sur un côté de passerelle (clic droit), puis qu'on ouvre main nue. */
 	public static final DeferredItem<Item> PORTILLON = AirainMod.ITEMS.register("airain_catwalk_gate", () -> new Item(new Item.Properties()));
+
+	/** Bloc-entité des pièces-mécanismes (toutes teintes). */
+	@SuppressWarnings("DataFlowIssue")
+	public static final net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.level.block.entity.BlockEntityType<?>, net.minecraft.world.level.block.entity.BlockEntityType<PasserelleMobile.Mecanisme>> MOBILE_BE =
+		AirainMod.BLOCK_ENTITIES.register("airain_catwalk_mechanism", () -> {
+			java.util.List<Block> b = new java.util.ArrayList<>();
+			for (String f : new String[]{"airain_catwalk_drawbridge", "airain_catwalk_telescopic"})
+				for (DeferredBlock<Block>[] t : FAMILLES.get(f)) for (DeferredBlock<Block> x : t) b.add(x.get());
+			return net.minecraft.world.level.block.entity.BlockEntityType.Builder.of((p, s) -> new PasserelleMobile.Mecanisme(Passerelles.MOBILE_BE.get(), p, s), b.toArray(new Block[0])).build(null);
+		});
 
 	public static void charger() {}
 }

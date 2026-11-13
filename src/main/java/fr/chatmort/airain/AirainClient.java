@@ -91,6 +91,9 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(fr.chatmort.airain.atelier.Atelier.MANOMETRE_BE.get(), fr.chatmort.airain.atelier.AtelierRendus.ManometreRendu::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.atelier.Atelier.GYROPHARE_BE.get(), fr.chatmort.airain.atelier.AtelierRendus.GyrophareRendu::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.atelier.Atelier.BORNE_BE.get(), fr.chatmort.airain.atelier.AtelierRendus.BorneRendu::new);
+		// mécanismes : segments des passerelles mobiles, arbre du treuil et cabine du monte-charge en mouvement
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Passerelles.MOBILE_BE.get(), fr.chatmort.airain.fonderie.MecaRendus.Mobile::new);
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.MonteCharge.TREUIL_BE.get(), fr.chatmort.airain.fonderie.MecaRendus.Treuil::new);
 		event.registerEntityRenderer(AirainMod.GARDIEN.get(), fr.chatmort.airain.gardien.GardienRenderer::new);
 		event.registerEntityRenderer(AirainMod.ASSISE.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
 		event.registerEntityRenderer(AirainMod.CAISSE.get(), fr.chatmort.airain.borne.CaisseRenderer::new);
@@ -117,6 +120,9 @@ public class AirainClient {
 			.factory(com.simibubi.create.content.kinetics.base.OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF)).skipVanillaRender(be -> false).apply();
 		SimpleBlockEntityVisualizer.builder(AirainMod.SOURCELINK_MECA_BE.get())
 			.factory(com.simibubi.create.content.kinetics.base.OrientedRotatingVisual.of(AllPartialModels.SHAFT_HALF)).skipVanillaRender(be -> false).apply();
+		// treuil du monte-charge : l'arbre de Create qui le traverse (avec Flywheel)
+		SimpleBlockEntityVisualizer.builder(fr.chatmort.airain.fonderie.MonteCharge.TREUIL_BE.get())
+			.factory(com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual::shaft).skipVanillaRender(be -> false).apply();
 		SimpleBlockEntityVisualizer.builder(AirainMod.DESENCH_BE.get())
 			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
 			.skipVanillaRender(be -> false)
