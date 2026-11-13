@@ -6,7 +6,6 @@
   "m": "airain:block/exposed_airain_block",
   "g": "airain:block/exposed_airain_catwalk",
   "r": "airain:block/exposed_riveted_airain",
-  "p": "airain:block/exposed_airain_tread_plate",
   "particle": "airain:block/exposed_airain_block"
  },
  "elements": [
@@ -25,19 +24,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
+      2,
+      12,
+      14,
       16
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
+      2,
       0,
-      0,
-      16,
-      16
+      14,
+      4
      ]
     }
    }
@@ -125,19 +124,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      8,
+      14,
+      12
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      4,
+      14,
+      8
      ]
     }
    }
@@ -225,19 +224,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      4,
+      14,
+      8
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      8,
+      14,
+      12
      ]
     }
    }
@@ -325,18 +324,18 @@
     "up": {
      "texture": "#g",
      "uv": [
+      2,
       0,
-      0,
-      16,
-      16
+      14,
+      4
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
+      2,
+      12,
+      14,
       16
      ]
     }

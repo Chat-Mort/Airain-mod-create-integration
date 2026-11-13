@@ -6,7 +6,6 @@
   "m": "airain:block/exposed_airain_block",
   "g": "airain:block/exposed_airain_catwalk",
   "r": "airain:block/exposed_riveted_airain",
-  "p": "airain:block/exposed_airain_tread_plate",
   "particle": "airain:block/exposed_airain_block"
  },
  "elements": [
@@ -61,19 +60,19 @@
     "up": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      14,
-      4
+      0,
+      0,
+      16,
+      2
      ]
     },
     "down": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
+      0,
       14,
-      4
+      16,
+      16
      ]
     }
    }

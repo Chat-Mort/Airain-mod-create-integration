@@ -6,7 +6,6 @@
   "m": "airain:block/oxidized_airain_block",
   "g": "airain:block/oxidized_airain_catwalk",
   "r": "airain:block/oxidized_riveted_airain",
-  "p": "airain:block/oxidized_airain_tread_plate",
   "particle": "airain:block/oxidized_airain_block"
  },
  "elements": [
@@ -23,21 +22,21 @@
    ],
    "faces": {
     "up": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
-      0,
-      0,
-      16,
+      2,
+      12,
+      14,
       16
      ]
     },
     "down": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
+      2,
       0,
-      0,
-      16,
-      16
+      14,
+      4
      ]
     }
    }
@@ -123,21 +122,21 @@
    ],
    "faces": {
     "up": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      8,
+      14,
+      12
      ]
     },
     "down": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      4,
+      14,
+      8
      ]
     }
    }
@@ -223,21 +222,21 @@
    ],
    "faces": {
     "up": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      4,
+      14,
+      8
      ]
     },
     "down": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      2,
+      8,
+      14,
+      12
      ]
     }
    }
@@ -323,20 +322,20 @@
    ],
    "faces": {
     "up": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
+      2,
       0,
-      0,
-      16,
-      16
+      14,
+      4
      ]
     },
     "down": {
-     "texture": "#p",
+     "texture": "#m",
      "uv": [
-      0,
-      0,
-      16,
+      2,
+      12,
+      14,
       16
      ]
     }

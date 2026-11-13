@@ -6,7 +6,6 @@
   "m": "airain:block/weathered_airain_block",
   "g": "airain:block/weathered_airain_catwalk",
   "r": "airain:block/weathered_riveted_airain",
-  "p": "airain:block/weathered_airain_tread_plate",
   "particle": "airain:block/weathered_airain_block"
  },
  "elements": [
@@ -25,19 +24,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
+      1,
+      14,
+      15,
       16
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
+      1,
       0,
-      0,
-      16,
-      16
+      15,
+      2
      ]
     }
    }
@@ -125,19 +124,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      12,
+      15,
+      14
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      2,
+      15,
+      4
      ]
     }
    }
@@ -225,19 +224,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      10,
+      15,
+      12
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      4,
+      15,
+      6
      ]
     }
    }
@@ -325,19 +324,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      8,
+      15,
+      10
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      6,
+      15,
+      8
      ]
     }
    }
@@ -425,19 +424,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      6,
+      15,
+      8
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      8,
+      15,
+      10
      ]
     }
    }
@@ -525,19 +524,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      4,
+      15,
+      6
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      10,
+      15,
+      12
      ]
     }
    }
@@ -625,19 +624,19 @@
     "up": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      2,
+      15,
+      4
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
-      16
+      1,
+      12,
+      15,
+      14
      ]
     }
    }
@@ -725,18 +724,18 @@
     "up": {
      "texture": "#g",
      "uv": [
+      1,
       0,
-      0,
-      16,
-      16
+      15,
+      2
      ]
     },
     "down": {
      "texture": "#g",
      "uv": [
-      0,
-      0,
-      16,
+      1,
+      14,
+      15,
       16
      ]
     }

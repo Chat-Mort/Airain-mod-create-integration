@@ -6,7 +6,6 @@
   "m": "airain:block/oxidized_airain_block",
   "g": "airain:block/oxidized_airain_catwalk",
   "r": "airain:block/oxidized_riveted_airain",
-  "p": "airain:block/oxidized_airain_tread_plate",
   "particle": "airain:block/oxidized_airain_block"
  },
  "elements": [
@@ -197,19 +196,19 @@
     "up": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      10,
-      10
+      4,
+      4,
+      12,
+      12
      ]
     },
     "down": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      10,
-      10
+      4,
+      4,
+      12,
+      12
      ]
     }
    }
@@ -265,19 +264,19 @@
     "up": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      8,
-      8
+      5,
+      5,
+      11,
+      11
      ]
     },
     "down": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      8,
-      8
+      5,
+      5,
+      11,
+      11
      ]
     }
    }
@@ -333,19 +332,19 @@
     "up": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      8,
-      8
+      5,
+      5,
+      11,
+      11
      ]
     },
     "down": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      8,
-      8
+      5,
+      5,
+      11,
+      11
      ]
     }
    }
@@ -401,19 +400,19 @@
     "up": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      10,
-      10
+      4,
+      4,
+      12,
+      12
      ]
     },
     "down": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      10,
-      10
+      4,
+      4,
+      12,
+      12
      ]
     }
    }
@@ -469,19 +468,19 @@
     "up": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      14,
-      14
+      1,
+      1,
+      15,
+      15
      ]
     },
     "down": {
      "texture": "#m",
      "uv": [
-      2,
-      2,
-      14,
-      14
+      1,
+      1,
+      15,
+      15
      ]
     }
    }
