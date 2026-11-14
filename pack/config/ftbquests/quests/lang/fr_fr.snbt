@@ -551,8 +551,8 @@
 	]
 	"quest.26EEACC9EDD1822F.title": "Rebâtir : 3 avant-postes"
 	"quest.27339A8771243368.quest_desc": [
-		"Une tour de 3 × 3, haute de 4. Le trou de coulée au milieu de la face avant, en bas ; une grille au centre du sol, un brûleur à blaze dessous ; le gueulard au centre du sommet ; une tuyère sur un côté, avec un ventilateur de Create qui souffle dedans."
-		"Clic droit main nue sur le trou de coulée : il dit ce qui manque, et les places à remplir brillent. Une fois monté, le fourneau prend son habillage d'airain. Validez quand c'est fait."
+		"Cinq de haut, 54 briques réfractaires. En bas, le creuset : 5 × 5 aux coins coupés, sur deux rangs, le trou de coulée au milieu de la face avant ; une grille au centre du sol, un brûleur à blaze dessous ; une à trois tuyères sur les côtés, chacune avec un ventilateur de Create. Dessus, la cuve : 3 × 3 sur trois rangs, le gueulard au centre du sommet."
+		"Clic droit main nue sur le trou de coulée : les blocs manquants apparaissent en hologramme, et un clic droit avec le bon bloc le pose à sa place, même en l'air. Une fois monté, le fourneau prend son habillage d'airain. Validez quand c'est fait."
 		"&8Tout est dans le livre de l'ingénieur.&r"
 	]
 	"quest.27339A8771243368.title": "Le haut-fourneau impérial"

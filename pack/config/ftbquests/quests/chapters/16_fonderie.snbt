@@ -22,7 +22,7 @@
 			tasks: [
 				{
 					item: { count: 1, id: "airain:fire_bricks" }
-					count: 32L
+					count: 54L
 					id: "64DC810D82EEE097"
 					type: "item"
 				}

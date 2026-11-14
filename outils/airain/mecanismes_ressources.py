@@ -25,11 +25,25 @@ def carter(h, pont):
 def cote_rail(x0):   # rambarde le long d'un côté (x0 = 0 : ouest, 14 : est), sur toute la profondeur
     h=3; return [el([x0,h+11,0],[x0+2,h+13,16]),el([x0+0.5,h+6,0],[x0+1.5,h+7,16]),el([x0+0.5,h,0],[x0+1,h+3,16]),el([x0,h,0],[x0+2,h+13,2]),el([x0,h,14],[x0+2,h+13,16])]
 def cabine():
+    """Bas de la cabine (1.55) : plancher, poteaux d'angle, trois parois pleines ; le portail (nord) reste ouvert."""
     E=[el([0,1,0],[16,3,16],'#g',faces=("up","down"),uv='full'),el([0,1,0],[16,3,1]),el([0,1,15],[16,3,16]),el([0,1,1],[1,3,15]),el([15,1,1],[16,3,15])]
-    E+=cote_rail(0)+cote_rail(14)
-    E+=[el([2,3,14],[14,13,16],'#bd',faces=("north","east","west","up")),el([5,5,13.5],[11,11,14],'#rg',faces=("north",)),
-        el([0,14,14],[16,16,16],'#bd')]
-    E+=[el([13.5,7,2.5],[15,12,6.5],'#bd'),el([13.3,10.5,3.2],[13.5,11.3,4],'#lr',faces=("west",),uv='crop',lum=True),el([13.3,8.6,5],[13.5,9.4,5.8],'#lw',faces=("west",),uv='crop',lum=True)]
+    for (x,z) in ((0,0),(14,0),(0,14),(14,14)): E.append(el([x,3,z],[x+2,16,z+2],'#m'))
+    E+=[el([0,3,2],[1,16,14],'#pn',uv='crop'),el([15,3,2],[16,16,14],'#pn',uv='crop'),el([2,3,15],[14,16,16],'#pn',uv='crop'),
+        el([1,9,2],[1.6,10,14],'#bd'),el([14.4,9,2],[15,10,14],'#bd'),el([2,9,14.4],[14,10,15],'#bd')]          # main courante
+    return E
+def cabine_haut():
+    """Haut de la cabine (1.55) : fermé de tous côtés (fenêtres vitrées), toit avec plafonnier ; boîtier côté mât."""
+    E=[]
+    for (x,z) in ((0,0),(14,0),(0,14),(14,14)): E.append(el([x,0,z],[x+2,16,z+2],'#m'))
+    for a,b,c,d in (([0,0,2],[1,3,14],[0,13,2],[1,15,14]),([15,0,2],[16,3,14],[15,13,2],[16,15,14]),([2,0,0],[14,3,1],[2,13,0],[14,15,1])):
+        E+=[el(a,b,'#bd'),el(c,d,'#bd')]                                    # cadre de fenêtre (dont le linteau au-dessus du portail)
+    E+=[el([0.25,3,2],[0.75,13,14],'#gl',faces=("east","west"),uv='crop'),el([15.25,3,2],[15.75,13,14],'#gl',faces=("east","west"),uv='crop'),
+        el([2,3,0.25],[14,13,0.75],'#gl',faces=("north","south"),uv='crop')]
+    E+=[el([2,0,15],[14,15,16],'#pn',uv='crop'),                                            # paroi côté mât
+        el([0,15,0],[16,16,16],'#pn',faces=("up","down","north","south","east","west"),uv='crop'),   # toit
+        el([6,14.6,6],[10,15,10],'#lw',faces=("down",),uv='crop',lum=True),el([5.5,14.4,5.5],[10.5,15,6],'#bd'),el([5.5,14.4,10],[10.5,15,10.5],'#bd')]
+    # boîtier du sélecteur d'étage (le panneau de Create se pose sur sa face)
+    E+=[el([5,2,14],[11,9,15],'#bd'),el([5.6,7.4,13.8],[6.6,8.4,14],'#lr',faces=("north",),uv='crop',lum=True),el([9.4,7.4,13.8],[10.4,8.4,14],'#lw',faces=("north",),uv='crop',lum=True)]
     return E
 def mat():
     E=[]
@@ -52,6 +66,7 @@ for p in PRE:
         for hh,h in (('bottom',3),('top',11)): modele(f'airain_catwalk_mechanism/{p}{nom}_{hh}',carter(h,pont),t)
         modele(f'{p}airain_catwalk_{nom}_item',[e for e in json.load(open(AS+f'models/block/{p}airain_catwalk_item.json'))['elements']]+carter(3,pont),dict(t,g=f'airain:block/{p}airain_catwalk',r=f'airain:block/{p}riveted_airain'))
 modele('airain_lift_cabin',cabine(),tp)
+modele('airain_lift_cabin_top',cabine_haut(),dict(tp,gl='airain:block/airain_glass'),rt='translucent')
 modele('airain_lift_cabin/gate',[dict(e) for e in P['portillon_nord'](3,False)],dict(tp,m='airain:block/airain_block'))
 modele('airain_lift_mast',mat(),tp); modele('airain_lift_winch',treuil(),tp); modele('airain_lift_call_box',appel(),tp)
 modele('airain_lift_item',mat()+[e for e in cabine()],tp)
@@ -75,7 +90,7 @@ for f in FAMS:
             w(AS+f'blockstates/{i}.json',{"multipart":parts}); w(AS+f'models/item/{i}.json',{"parent":f'airain:block/{p}airain_catwalk_{nom}_item'}); butin(i)
 # 3. monte-charge
 w(AS+'blockstates/airain_lift_mast.json',{"variants":{f"facing={d}":{"model":"airain:block/airain_lift_mast"}|({"y":r} if r else {}) for d,r in ROT.items()}})
-w(AS+'blockstates/airain_lift_cabin.json',{"variants":{f"facing={d}":{"model":"airain:block/airain_lift_cabin"}|({"y":r} if r else {}) for d,r in ROT.items()}})
+w(AS+'blockstates/airain_lift_cabin.json',{"variants":{f"facing={d},top={t}":{"model":"airain:block/airain_lift_cabin"+("_top" if t=="true" else "")}|({"y":r} if r else {}) for d,r in ROT.items() for t in ("false","true")}})
 w(AS+'blockstates/airain_lift_winch.json',{"variants":{"axis=z":{"model":"airain:block/airain_lift_winch"},"axis=x":{"model":"airain:block/airain_lift_winch","y":90}}})
 ap={}
 for d,r in ROT.items():

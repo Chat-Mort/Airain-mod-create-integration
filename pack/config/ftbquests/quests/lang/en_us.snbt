@@ -551,8 +551,8 @@
 	]
 	"quest.26EEACC9EDD1822F.title": "Rebuild: 3 outposts"
 	"quest.27339A8771243368.quest_desc": [
-		"A 3 × 3 tower, 4 high. The taphole in the middle of the front face, at the bottom; a grate in the middle of the floor, a blaze burner below; the throat in the middle of the top; a tuyere on one side, with a Create fan blowing into it."
-		"Right-click the taphole bare-handed: it tells what is missing, and the spots to fill glow. Once assembled, the furnace takes on its airain trim. Tick the box when it's done."
+		"Five high, 54 fire bricks. At the bottom, the hearth: 5 × 5 with cut corners, two rows, the taphole in the middle of the front face; a grate in the middle of the floor, a blaze burner below; one to three tuyeres on the sides, each with a Create fan. On top, the shaft: 3 × 3 over three rows, the throat in the middle of the top."
+		"Right-click the taphole bare-handed: missing blocks appear as a hologram, and right-clicking with the right block places it, even mid-air. Once assembled, the furnace takes on its airain trim. Tick the box when it's done."
 		"&8Everything is in the engineer's manual.&r"
 	]
 	"quest.27339A8771243368.title": "The Imperial Blast Furnace"
