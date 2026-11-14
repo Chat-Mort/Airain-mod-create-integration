@@ -61,7 +61,7 @@ import java.util.List;
  * Le monte-charge d'airain : un treuil (rotation de Create) au pied d'un mât à crémaillère (jusqu'à 32 blocs), une cabine
  * qui monte et descend contre le mât. Chaque passerelle basse posée en face du mât (de l'autre côté de la cabine) est un
  * étage ; le pied du mât est le rez-de-chaussée. Les paliers gardent leur rambarde tant que la cabine n'y est pas arrêtée.
- * La cabine fait deux blocs de haut, fermée sauf le portail (un bloc de haut, côté passerelles). Dans la cabine : clic
+ * La cabine fait deux blocs de haut, fermée sauf le côté passerelles (portail en bas). Dans la cabine : clic
  * droit = étage du dessus, accroupi = étage du dessous ; clic droit maintenu sur le panneau du boîtier (en haut, côté mât)
  * = tableau de Create pour choisir l'étage. Boîtier d'appel : fait venir la cabine à son étage.
  */
@@ -269,8 +269,8 @@ public final class MonteCharge {
 		static {
 			for (Direction d : Direction.Plane.HORIZONTAL) {
 				FORMES.put(d, Shapes.or(Block.box(0, 1, 0, 16, 3, 16), ConduitAir.boiteVers(d, 0, 3, 0, 1, 16, 16), ConduitAir.boiteVers(d, 15, 3, 0, 16, 16, 16), ConduitAir.boiteVers(d, 0, 3, 15, 16, 16, 16)));
-				// 1.55 : le haut est fermé des quatre côtés (le toit n'a pas de collision : on y tient debout)
-				FORMES_HAUT.put(d, Shapes.or(ConduitAir.boiteVers(d, 0, 0, 0, 1, 16, 16), ConduitAir.boiteVers(d, 15, 0, 0, 16, 16, 16), ConduitAir.boiteVers(d, 0, 0, 15, 16, 16, 16), ConduitAir.boiteVers(d, 0, 0, 0, 16, 16, 1)));
+				// haut de la cabine : côtés et paroi du mât ; ouvert côté passerelles pour entrer debout (le toit n'a pas de collision)
+				FORMES_HAUT.put(d, Shapes.or(ConduitAir.boiteVers(d, 0, 0, 0, 1, 16, 16), ConduitAir.boiteVers(d, 15, 0, 0, 16, 16, 16), ConduitAir.boiteVers(d, 0, 0, 15, 16, 16, 16)));
 			}
 		}
 		public Cabine(Properties p) { super(p); registerDefaultState(defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).setValue(Passerelle.HAUT, false)); }
