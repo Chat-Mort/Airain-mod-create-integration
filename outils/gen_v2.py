@@ -1151,6 +1151,21 @@ quest(cF, "fo_materiaux", ("Les matériaux de l'Empire", "Materials of the Empir
              ["Airain is not enough on its own: the capitals mixed gold-veined white marble, black marble and slate roofs.",
               "Mixer: 8 calcite, diorite or limestone and a gold nugget make 8 white marble; 8 blackstone, cobbled deepslate or basalt make black marble. Press: cobbled deepslate becomes slate.",
               "&8Stonecutter: polished, bricks, pillars, chiseled, shingles, stairs, slabs and walls.&r"]))
+quest(cF, "fo_laminoir", ("Le laminoir", "The Rolling Mill"), 8, 4, [T_item("airain:airain_rolling_mill"), T_item("airain:airain_cable", 4)], [R_coin("cog", 1)],
+      deps=["fo_engrenage"], optional=True,
+      desc=D(["Entre deux rouleaux, l'airain s'étire en fil. Tressé autour d'une plaque, le fil devient câble.",
+              "&8Laminoir : un arbre de Create sur le côté, des lingots d'airain dedans (entonnoir ou clic droit), le fil ressort. Établi : 8 fils et une plaque d'airain donnent 2 câbles.&r"],
+             ["Between two rollers, airain stretches into wire. Braided around a sheet, the wire becomes cable.",
+              "&8Rolling mill: a Create shaft on the side, airain ingots inside (funnel or right-click), wire comes out. Crafting table: 8 wires and an airain sheet make 2 cables.&r"]))
+quest(cF, "fo_telepherique", ("Le téléphérique impérial", "The Imperial Cable Car"), 10, 4,
+      [T_item("airain:airain_gondola"), T_check()], [R_coin("cog", 3)],
+      deps=["fo_laminoir"], optional=True,
+      desc=D(["Les nacelles d'airain franchissaient les vallées d'une gare à l'autre, au-dessus des forêts.",
+              "Une gare à chaque bout, des pylônes coiffés de leur tête entre les deux (32 blocs au plus par travée), reliés au câble : clic droit sur un nœud, puis sur le suivant. Posez la nacelle sur une gare et entraînez une gare avec un arbre de Create.",
+              "Clic droit dans la nacelle : elle part deux secondes plus tard. Clic droit sur une gare : elle vient. Validez quand vous aurez fait le voyage."],
+             ["Airain gondolas crossed the valleys from one station to the other, above the forests.",
+              "A station at each end, pylons topped with their head in between (32 blocks at most per span), linked with cable: right-click a node, then the next one. Place the gondola on a station and drive a station with a Create shaft.",
+              "Right-click inside the gondola: it leaves two seconds later. Right-click a station: it comes. Tick the box once you have made the trip."]))
 quest(cF, "fo_patine", ("Rouge impérial", "Imperial Red"), 8, -3, [T_item("airain:oxidized_airain_block")], [R_coin("cog", 1)],
       deps=["fo_style"], optional=True,
       desc=D(["&7Optionnel.&r Avec le temps, l'airain vire doucement du doré au rouge profond de l'Empire. Une couche de cire (rayon de miel) fige la teinte ; la hache la fait revenir en arrière."],

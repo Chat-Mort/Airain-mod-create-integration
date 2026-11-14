@@ -442,6 +442,11 @@
 		"Clear a few trial spawners to collect keys: they open the chambers' vaults."
 	]
 	"quest.20B07BC03DA5FDE0.title": "The Trial Chambers"
+	"quest.20BC4E4C508FE3D0.quest_desc": [
+		"Between two rollers, airain stretches into wire. Braided around a sheet, the wire becomes cable."
+		"&8Rolling mill: a Create shaft on the side, airain ingots inside (funnel or right-click), wire comes out. Crafting table: 8 wires and an airain sheet make 2 cables.&r"
+	]
+	"quest.20BC4E4C508FE3D0.title": "The Rolling Mill"
 	"quest.20D678D8A2CEF427.quest_desc": [
 		"The waystones linked the Empire's cities in the blink of an eye. They fell silent with it."
 		"Restart the network: the materials are consumed. Afterwards, each player can place their own Waystones."
@@ -1600,6 +1605,12 @@
 	]
 	"quest.73B823D3D42DE379.quest_subtitle": "The Call of the Echo"
 	"quest.73B823D3D42DE379.title": "An Entrusted Will"
+	"quest.7420565C2B246FAB.quest_desc": [
+		"Airain gondolas crossed the valleys from one station to the other, above the forests."
+		"A station at each end, pylons topped with their head in between (32 blocks at most per span), linked with cable: right-click a node, then the next one. Place the gondola on a station and drive a station with a Create shaft."
+		"Right-click inside the gondola: it leaves two seconds later. Right-click a station: it comes. Tick the box once you have made the trip."
+	]
+	"quest.7420565C2B246FAB.title": "The Imperial Cable Car"
 	"quest.7530670FBF04DB70.quest_desc": [
 		"&7Optional.&r Only the hardest writings to reach are missing:"
 		"• the readings of the observation station, on a floating island;"

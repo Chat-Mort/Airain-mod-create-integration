@@ -442,6 +442,11 @@
 		"Videz quelques générateurs d'épreuve pour récupérer des clés : elles ouvrent les coffres-forts des salles."
 	]
 	"quest.20B07BC03DA5FDE0.title": "Les salles d'épreuve"
+	"quest.20BC4E4C508FE3D0.quest_desc": [
+		"Entre deux rouleaux, l'airain s'étire en fil. Tressé autour d'une plaque, le fil devient câble."
+		"&8Laminoir : un arbre de Create sur le côté, des lingots d'airain dedans (entonnoir ou clic droit), le fil ressort. Établi : 8 fils et une plaque d'airain donnent 2 câbles.&r"
+	]
+	"quest.20BC4E4C508FE3D0.title": "Le laminoir"
 	"quest.20D678D8A2CEF427.quest_desc": [
 		"Les pierres de passage reliaient les cités de l'Empire en un clin d'œil. Elles se sont tues avec lui."
 		"Remettez le réseau en marche : les matériaux sont consommés. Ensuite, chacun pourra poser ses propres Waystones."
@@ -1600,6 +1605,12 @@
 	]
 	"quest.73B823D3D42DE379.quest_subtitle": "L'appel de l'Écho"
 	"quest.73B823D3D42DE379.title": "Une volonté confiée"
+	"quest.7420565C2B246FAB.quest_desc": [
+		"Les nacelles d'airain franchissaient les vallées d'une gare à l'autre, au-dessus des forêts."
+		"Une gare à chaque bout, des pylônes coiffés de leur tête entre les deux (32 blocs au plus par travée), reliés au câble : clic droit sur un nœud, puis sur le suivant. Posez la nacelle sur une gare et entraînez une gare avec un arbre de Create."
+		"Clic droit dans la nacelle : elle part deux secondes plus tard. Clic droit sur une gare : elle vient. Validez quand vous aurez fait le voyage."
+	]
+	"quest.7420565C2B246FAB.title": "Le téléphérique impérial"
 	"quest.7530670FBF04DB70.quest_desc": [
 		"&7Optionnel.&r Il ne manque que les écrits les plus difficiles à atteindre :"
 		"• les relevés de la station d'observation, sur une île volante ;"

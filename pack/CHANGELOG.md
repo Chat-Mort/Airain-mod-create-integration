@@ -5,7 +5,19 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 15 novembre 2026 — version 1.57.0
+## 15 novembre 2026 — versions 1.57.0 et 1.58.0
+
+**Ajouts (1.58.0)**
+- **Laminoir** : machine de Create (arbre sur le côté). Un lingot d'airain passé entre ses rouleaux donne 2 fils d'airain ; entonnoirs et tapis acceptés, ou clic droit (lingots dedans, main nue pour reprendre le fil).
+- **Câble d'airain** : 8 fils et une plaque d'airain à l'établi donnent 2 câbles.
+- **Téléphérique impérial** :
+  - une gare à chaque bout (deux blocs de haut, grande poulie qui tourne quand la nacelle roule), des pylônes à empiler coiffés d'une tête à bras et galets ;
+  - le câble se pose nœud par nœud (clic droit sur une gare ou une tête, puis sur la suivante), 32 blocs au plus par travée, 8 pylônes au plus ; les têtes se tournent seules dans l'axe de la ligne ; deux brins avec leur affaissement ;
+  - la nacelle (plateforme ouverte 2 × 2 à rambardes et portillon, pendue à son chariot) se pose sur une gare d'une ligne complète ; jusqu'à 4 voyageurs debout ; clic droit dedans : départ deux secondes plus tard ; clic droit sur une gare : elle vient ; démarrage et freinage en douceur ; on ne peut pas descendre en route ;
+  - une gare entraînée par un arbre de Create règle la vitesse (256 tr/min : 7 blocs par seconde) ; la nacelle charge elle-même les tronçons qu'elle traverse ;
+  - accroupi + frapper la nacelle à l'arrêt : on la reprend.
+- Deux quêtes optionnelles (« Le laminoir », « Le téléphérique impérial ») et une page dans le livre de l'ingénieur (onglet Industrie ; le glyphe de l'engrenage passe dans l'onglet Écho).
+
 
 **Ajouts**
 - Nouveaux matériaux de construction, pour varier avec l'airain :

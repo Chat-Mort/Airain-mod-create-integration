@@ -203,6 +203,61 @@
 			y: -4.0d
 		}
 		{
+			dependencies: ["2ADCE98DF27075B6"]
+			id: "20BC4E4C508FE3D0"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "26BE1979429561FF"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_rolling_mill" }
+					count: 1L
+					id: "568846A1E63B4AB0"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_cable" }
+					count: 4L
+					id: "5A2EE58255481555"
+					type: "item"
+				}
+			]
+			x: 8.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["20BC4E4C508FE3D0"]
+			id: "7420565C2B246FAB"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 3
+					id: "117749F389BAF846"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_gondola" }
+					count: 1L
+					id: "7E1364B17C374AED"
+					type: "item"
+				}
+				{
+					id: "618D3DFE4585802F"
+					type: "checkmark"
+				}
+			]
+			x: 10.0d
+			y: 4.0d
+		}
+		{
 			dependencies: ["365D357F3A917CC6"]
 			id: "48825C0187F0D461"
 			optional: true
