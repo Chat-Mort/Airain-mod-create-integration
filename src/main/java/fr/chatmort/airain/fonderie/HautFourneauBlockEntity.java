@@ -57,8 +57,25 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	private static final TagKey<Item> CUIVRE = TagKey.create(net.minecraft.core.registries.Registries.ITEM, ResourceLocation.parse("c:ingots/copper"));
 	private static final TagKey<Item> ZINC = TagKey.create(net.minecraft.core.registries.Registries.ITEM, ResourceLocation.parse("c:ingots/zinc"));
 
-	/** La charge versée par le gueulard (4 emplacements). */
-	public final ItemStackHandler charge = new ItemStackHandler(4) { @Override protected void onContentsChanged(int s) { setChanged(); } };
+	/** La charge versée par le gueulard : un emplacement par ingrédient (cuivre, zinc, fondant, ferraille, rouages brisés),
+	 * pour qu'un ingrédient en trop ne prenne jamais la place d'un autre (1.56.1). */
+	public static final int PLACES = 5;
+	public final ItemStackHandler charge = new ItemStackHandler(PLACES) {
+		@Override protected void onContentsChanged(int s) { setChanged(); }
+		@Override public boolean isItemValid(int s, ItemStack st) { return place(st) == s; }
+	};
+	/** L'emplacement de cet ingrédient, ou -1 s'il n'entre pas dans le fourneau. */
+	static int place(ItemStack s) {
+		if (s.isEmpty()) return -1;
+		if (estCuivre(s)) return 0;
+		if (estZinc(s)) return 1;
+		if (estFondant(s)) return 2;
+		if (estFerraille(s)) return 3;
+		if (estRouage(s)) return 4;
+		return -1;
+	}
+	/** Charge d'une ancienne sauvegarde qui ne tient pas dans les nouveaux emplacements : rendue au prochain tick. */
+	private final List<ItemStack> surplus = new ArrayList<>();
 	/** Le laitier, à récupérer au trou de coulée. */
 	public final ItemStackHandler laitier = new ItemStackHandler(1) { @Override protected void onContentsChanged(int s) { setChanged(); } };
 	/** L'airain en fusion. */
@@ -182,6 +199,7 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	// ------------------------------------------------------------------ fonctionnement
 	void tickServeur() {
 		if (level == null) return;
+		if (!surplus.isEmpty()) { for (ItemStack st : surplus) Block.popResource(level, worldPosition.relative(avant()), st); surplus.clear(); }
 		if (level.getGameTime() % 20 == 0) {
 			boolean f = verifier();
 			if (f != forme) { forme = f; habiller(f); change = true; if (!f) allumer(false); }
@@ -325,7 +343,8 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	public final IItemHandler entree = new IItemHandler() {
 		@Override public int getSlots() { return charge.getSlots(); }
 		@Override public ItemStack getStackInSlot(int s) { return charge.getStackInSlot(s); }
-		@Override public ItemStack insertItem(int s, ItemStack st, boolean sim) { return accepte(st) ? charge.insertItem(s, st, sim) : st; }
+		// chaque ingrédient va dans son emplacement, quel que soit celui que vise l'entonnoir
+		@Override public ItemStack insertItem(int s, ItemStack st, boolean sim) { int p = place(st); return p < 0 ? st : charge.insertItem(p, st, sim); }
 		@Override public ItemStack extractItem(int s, int n, boolean sim) { return ItemStack.EMPTY; }
 		@Override public int getSlotLimit(int s) { return 64; }
 		@Override public boolean isItemValid(int s, ItemStack st) { return accepte(st); }
@@ -386,7 +405,16 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	@Override
 	protected void loadAdditional(CompoundTag t, HolderLookup.Provider r) {
 		super.loadAdditional(t, r);
-		charge.deserializeNBT(r, t.getCompound("charge")); laitier.deserializeNBT(r, t.getCompound("laitier")); cuve.readFromNBT(r, t.getCompound("cuve"));
+		// relu emplacement par emplacement : les anciennes sauvegardes (4 emplacements mélangés) sont rangées par ingrédient
+		ItemStackHandler lu = new ItemStackHandler(PLACES); lu.deserializeNBT(r, t.getCompound("charge"));
+		for (int i = 0; i < PLACES; i++) charge.setStackInSlot(i, ItemStack.EMPTY);
+		for (int i = 0; i < lu.getSlots(); i++) {
+			ItemStack st = lu.getStackInSlot(i).copy();
+			if (st.isEmpty()) continue;
+			int p = place(st);
+			ItemStack reste = p < 0 ? st : charge.insertItem(p, st, false);
+			if (!reste.isEmpty()) surplus.add(reste);
+		} laitier.deserializeNBT(r, t.getCompound("laitier")); cuve.readFromNBT(r, t.getCompound("cuve"));
 		progres = t.getInt("progres"); forme = t.getBoolean("forme"); air = t.getInt("air");
 		for (HeatLevel h : HeatLevel.values()) if (h.getSerializedName().equals(t.getString("chaleur"))) chaleur = h;
 	}

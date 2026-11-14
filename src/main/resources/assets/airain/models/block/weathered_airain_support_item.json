@@ -8,18 +8,19 @@
   "gs": "airain:block/weathered_airain_catwalk",
   "r": "airain:block/weathered_riveted_airain",
   "bd": "airain:block/weathered_airain_band",
+  "pn": "airain:block/weathered_airain_panel",
   "particle": "airain:block/weathered_airain_block"
  },
  "elements": [
   {
    "from": [
     6,
-    0,
+    0.02,
     6
    ],
    "to": [
     10,
-    16,
+    15.98,
     10
    ],
    "faces": {

@@ -8,6 +8,7 @@
   "gs": "airain:block/exposed_airain_catwalk",
   "r": "airain:block/exposed_riveted_airain",
   "bd": "airain:block/exposed_airain_band",
+  "pn": "airain:block/exposed_airain_panel",
   "particle": "airain:block/exposed_airain_block"
  },
  "elements": [

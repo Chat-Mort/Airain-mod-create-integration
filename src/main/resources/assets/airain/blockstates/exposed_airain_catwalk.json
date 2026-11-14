@@ -122,7 +122,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_bottom",
+    "model": "airain:block/exposed_airain_catwalk_railing_bottom_x",
     "y": 90
    },
    "when": {
@@ -133,7 +133,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_top",
+    "model": "airain:block/exposed_airain_catwalk_railing_top_x",
     "y": 90
    },
    "when": {
@@ -144,7 +144,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_bottom",
+    "model": "airain:block/exposed_airain_catwalk_gate_bottom_x",
     "y": 90
    },
    "when": {
@@ -155,7 +155,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_top",
+    "model": "airain:block/exposed_airain_catwalk_gate_top_x",
     "y": 90
    },
    "when": {
@@ -166,7 +166,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_open_bottom",
+    "model": "airain:block/exposed_airain_catwalk_gate_open_bottom_x",
     "y": 90
    },
    "when": {
@@ -177,7 +177,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_open_top",
+    "model": "airain:block/exposed_airain_catwalk_gate_open_top_x",
     "y": 90
    },
    "when": {
@@ -188,7 +188,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_inner_bottom",
+    "model": "airain:block/exposed_airain_catwalk_railing_inner_bottom_x",
     "y": 90
    },
    "when": {
@@ -199,7 +199,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_inner_top",
+    "model": "airain:block/exposed_airain_catwalk_railing_inner_top_x",
     "y": 90
    },
    "when": {
@@ -298,7 +298,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_bottom",
+    "model": "airain:block/exposed_airain_catwalk_railing_bottom_x",
     "y": 270
    },
    "when": {
@@ -309,7 +309,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_top",
+    "model": "airain:block/exposed_airain_catwalk_railing_top_x",
     "y": 270
    },
    "when": {
@@ -320,7 +320,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_bottom",
+    "model": "airain:block/exposed_airain_catwalk_gate_bottom_x",
     "y": 270
    },
    "when": {
@@ -331,7 +331,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_top",
+    "model": "airain:block/exposed_airain_catwalk_gate_top_x",
     "y": 270
    },
    "when": {
@@ -342,7 +342,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_open_bottom",
+    "model": "airain:block/exposed_airain_catwalk_gate_open_bottom_x",
     "y": 270
    },
    "when": {
@@ -353,7 +353,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_gate_open_top",
+    "model": "airain:block/exposed_airain_catwalk_gate_open_top_x",
     "y": 270
    },
    "when": {
@@ -364,7 +364,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_inner_bottom",
+    "model": "airain:block/exposed_airain_catwalk_railing_inner_bottom_x",
     "y": 270
    },
    "when": {
@@ -375,7 +375,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_railing_inner_top",
+    "model": "airain:block/exposed_airain_catwalk_railing_inner_top_x",
     "y": 270
    },
    "when": {
@@ -426,7 +426,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_frame_bottom",
+    "model": "airain:block/exposed_airain_catwalk_glass_frame_bottom_x",
     "y": 90
    },
    "when": {
@@ -437,7 +437,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_pane_bottom",
+    "model": "airain:block/exposed_airain_catwalk_glass_pane_bottom_x",
     "y": 90
    },
    "when": {
@@ -448,7 +448,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_frame_top",
+    "model": "airain:block/exposed_airain_catwalk_glass_frame_top_x",
     "y": 90
    },
    "when": {
@@ -459,73 +459,62 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_pane_top",
+    "model": "airain:block/exposed_airain_catwalk_glass_pane_top_x",
     "y": 90
    },
    "when": {
     "top": "true",
     "east": "glass",
-    "retracted": "false"
-   }
-  },
-  {
-   "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_frame_bottom",
-    "y": 180
-   },
-   "when": {
-    "top": "false",
-    "south": "glass",
-    "retracted": "false"
-   }
-  },
-  {
-   "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_pane_bottom",
-    "y": 180
-   },
-   "when": {
-    "top": "false",
-    "south": "glass",
-    "retracted": "false"
-   }
-  },
-  {
-   "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_frame_top",
-    "y": 180
-   },
-   "when": {
-    "top": "true",
-    "south": "glass",
-    "retracted": "false"
-   }
-  },
-  {
-   "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_pane_top",
-    "y": 180
-   },
-   "when": {
-    "top": "true",
-    "south": "glass",
     "retracted": "false"
    }
   },
   {
    "apply": {
     "model": "airain:block/exposed_airain_catwalk_glass_frame_bottom",
-    "y": 270
+    "y": 180
    },
    "when": {
     "top": "false",
-    "west": "glass",
+    "south": "glass",
     "retracted": "false"
    }
   },
   {
    "apply": {
     "model": "airain:block/exposed_airain_catwalk_glass_pane_bottom",
+    "y": 180
+   },
+   "when": {
+    "top": "false",
+    "south": "glass",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_glass_frame_top",
+    "y": 180
+   },
+   "when": {
+    "top": "true",
+    "south": "glass",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_glass_pane_top",
+    "y": 180
+   },
+   "when": {
+    "top": "true",
+    "south": "glass",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_glass_frame_bottom_x",
     "y": 270
    },
    "when": {
@@ -536,7 +525,18 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_frame_top",
+    "model": "airain:block/exposed_airain_catwalk_glass_pane_bottom_x",
+    "y": 270
+   },
+   "when": {
+    "top": "false",
+    "west": "glass",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_glass_frame_top_x",
     "y": 270
    },
    "when": {
@@ -547,12 +547,106 @@
   },
   {
    "apply": {
-    "model": "airain:block/exposed_airain_catwalk_glass_pane_top",
+    "model": "airain:block/exposed_airain_catwalk_glass_pane_top_x",
     "y": 270
    },
    "when": {
     "top": "true",
     "west": "glass",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_bottom"
+   },
+   "when": {
+    "north": "railing|glass|gate|gate_open",
+    "west": "railing|glass|gate|gate_open",
+    "top": "false",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_top"
+   },
+   "when": {
+    "north": "railing|glass|gate|gate_open",
+    "west": "railing|glass|gate|gate_open",
+    "top": "true",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_bottom",
+    "y": 90
+   },
+   "when": {
+    "north": "railing|glass|gate|gate_open",
+    "east": "railing|glass|gate|gate_open",
+    "top": "false",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_top",
+    "y": 90
+   },
+   "when": {
+    "north": "railing|glass|gate|gate_open",
+    "east": "railing|glass|gate|gate_open",
+    "top": "true",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_bottom",
+    "y": 180
+   },
+   "when": {
+    "east": "railing|glass|gate|gate_open",
+    "south": "railing|glass|gate|gate_open",
+    "top": "false",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_top",
+    "y": 180
+   },
+   "when": {
+    "east": "railing|glass|gate|gate_open",
+    "south": "railing|glass|gate|gate_open",
+    "top": "true",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_bottom",
+    "y": 270
+   },
+   "when": {
+    "south": "railing|glass|gate|gate_open",
+    "west": "railing|glass|gate|gate_open",
+    "top": "false",
+    "retracted": "false"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_catwalk_rail_corner_top",
+    "y": 270
+   },
+   "when": {
+    "south": "railing|glass|gate|gate_open",
+    "west": "railing|glass|gate|gate_open",
+    "top": "true",
     "retracted": "false"
    }
   }

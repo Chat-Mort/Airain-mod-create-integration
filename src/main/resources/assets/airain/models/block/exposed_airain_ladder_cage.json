@@ -8,6 +8,7 @@
   "gs": "airain:block/exposed_airain_catwalk",
   "r": "airain:block/exposed_riveted_airain",
   "bd": "airain:block/exposed_airain_band",
+  "pn": "airain:block/exposed_airain_panel",
   "particle": "airain:block/exposed_airain_block"
  },
  "elements": [
@@ -149,13 +150,13 @@
   },
   {
    "from": [
-    1,
-    4,
-    1
+    1.02,
+    4.02,
+    1.02
    ],
    "to": [
-    15,
-    5,
+    14.98,
+    4.98,
     2
    ],
    "faces": {
@@ -353,13 +354,13 @@
   },
   {
    "from": [
-    1,
-    12,
-    1
+    1.02,
+    12.02,
+    1.02
    ],
    "to": [
-    15,
-    13,
+    14.98,
+    12.98,
     2
    ],
    "faces": {
@@ -421,14 +422,14 @@
   },
   {
    "from": [
-    1,
+    1.04,
     0,
-    1
+    1.04
    ],
    "to": [
-    2,
+    1.98,
     16,
-    2
+    1.98
    ],
    "faces": {
     "north": {
@@ -496,7 +497,7 @@
    "to": [
     8.5,
     16,
-    2
+    1.98
    ],
    "faces": {
     "north": {
@@ -557,14 +558,14 @@
   },
   {
    "from": [
-    14,
+    14.02,
     0,
-    1
+    1.04
    ],
    "to": [
-    15,
+    14.96,
     16,
-    2
+    1.98
    ],
    "faces": {
     "north": {

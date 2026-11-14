@@ -82,7 +82,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 270
    },
    "when": {
@@ -93,7 +93,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 270
    },
    "when": {
@@ -104,7 +104,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 270
    },
    "when": {
@@ -115,7 +115,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 270
    },
    "when": {
@@ -166,7 +166,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 90
    },
    "when": {
@@ -177,7 +177,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 90
    },
    "when": {
@@ -188,7 +188,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 90
    },
    "when": {
@@ -199,7 +199,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 90
    },
    "when": {
@@ -254,7 +254,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 90
    },
    "when": {
@@ -265,7 +265,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 90
    },
    "when": {
@@ -276,7 +276,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 90
    },
    "when": {
@@ -287,7 +287,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 90
    },
    "when": {
@@ -338,7 +338,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 90
    },
    "when": {
@@ -349,7 +349,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 90
    },
    "when": {
@@ -360,7 +360,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 90
    },
    "when": {
@@ -371,7 +371,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 90
    },
    "when": {
@@ -514,7 +514,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 90
    },
    "when": {
@@ -525,7 +525,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 90
    },
    "when": {
@@ -536,7 +536,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 90
    },
    "when": {
@@ -547,7 +547,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 90
    },
    "when": {
@@ -602,7 +602,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 270
    },
    "when": {
@@ -613,7 +613,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 270
    },
    "when": {
@@ -624,7 +624,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 270
    },
    "when": {
@@ -635,7 +635,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 270
    },
    "when": {
@@ -690,7 +690,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 270
    },
    "when": {
@@ -701,7 +701,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 270
    },
    "when": {
@@ -712,7 +712,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 270
    },
    "when": {
@@ -723,7 +723,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 270
    },
    "when": {
@@ -778,7 +778,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_top_x",
     "y": 270
    },
    "when": {
@@ -789,7 +789,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_top_x",
     "y": 270
    },
    "when": {
@@ -800,7 +800,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_gate_open_top",
+    "model": "airain:block/weathered_airain_catwalk_gate_open_top_x",
     "y": 270
    },
    "when": {
@@ -811,7 +811,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_railing_inner_top",
+    "model": "airain:block/weathered_airain_catwalk_railing_inner_top_x",
     "y": 270
    },
    "when": {
@@ -882,7 +882,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 270
    },
    "when": {
@@ -893,7 +893,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 270
    },
    "when": {
@@ -924,7 +924,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 90
    },
    "when": {
@@ -935,7 +935,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 90
    },
    "when": {
@@ -946,7 +946,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 90
    },
    "when": {
@@ -957,7 +957,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 90
    },
    "when": {
@@ -988,7 +988,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 90
    },
    "when": {
@@ -999,7 +999,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 90
    },
    "when": {
@@ -1054,7 +1054,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 90
    },
    "when": {
@@ -1065,7 +1065,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 90
    },
    "when": {
@@ -1098,7 +1098,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 270
    },
    "when": {
@@ -1109,7 +1109,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 270
    },
    "when": {
@@ -1120,7 +1120,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 270
    },
    "when": {
@@ -1131,7 +1131,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 270
    },
    "when": {
@@ -1164,7 +1164,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_frame_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_frame_top_x",
     "y": 270
    },
    "when": {
@@ -1175,7 +1175,7 @@
   },
   {
    "apply": {
-    "model": "airain:block/weathered_airain_catwalk_glass_pane_top",
+    "model": "airain:block/weathered_airain_catwalk_glass_pane_top_x",
     "y": 270
    },
    "when": {
@@ -1202,6 +1202,100 @@
     "facing": "west",
     "turn_left": "true",
     "side": "glass"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top"
+   },
+   "when": {
+    "facing": "north",
+    "turn_left": "false",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top",
+    "y": 90
+   },
+   "when": {
+    "facing": "north",
+    "turn_left": "true",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top",
+    "y": 90
+   },
+   "when": {
+    "facing": "east",
+    "turn_left": "false",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top",
+    "y": 180
+   },
+   "when": {
+    "facing": "east",
+    "turn_left": "true",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top",
+    "y": 180
+   },
+   "when": {
+    "facing": "south",
+    "turn_left": "false",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top",
+    "y": 270
+   },
+   "when": {
+    "facing": "south",
+    "turn_left": "true",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top",
+    "y": 270
+   },
+   "when": {
+    "facing": "west",
+    "turn_left": "false",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_catwalk_rail_corner_top"
+   },
+   "when": {
+    "facing": "west",
+    "turn_left": "true",
+    "back": "railing|glass|gate|gate_open",
+    "side": "railing|glass|gate|gate_open"
    }
   }
  ]

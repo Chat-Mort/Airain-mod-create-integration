@@ -1,0 +1,53 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:translucent",
+ "ambientocclusion": false,
+ "textures": {
+  "m": "airain:block/weathered_airain_block",
+  "pn": "airain:block/weathered_airain_panel",
+  "fz": "airain:block/weathered_airain_frieze",
+  "bd": "airain:block/weathered_airain_band",
+  "fl": "airain:block/weathered_airain_fluted",
+  "tu": "airain:block/weathered_airain_pipe",
+  "tv": "airain:block/weathered_airain_pipe_vertical",
+  "ro": "airain:block/weathered_airain_rod",
+  "rg": "airain:block/oxidized_airain_block",
+  "g": "airain:block/weathered_airain_catwalk",
+  "gl": "airain:block/airain_glass",
+  "particle": "airain:block/weathered_airain_block"
+ },
+ "elements": [
+  {
+   "from": [
+    0.03,
+    4.53,
+    -1.22
+   ],
+   "to": [
+    15.97,
+    13.97,
+    -0.78
+   ],
+   "faces": {
+    "north": {
+     "texture": "#gl",
+     "uv": [
+      0.0,
+      3.25,
+      16.0,
+      12.75
+     ]
+    },
+    "south": {
+     "texture": "#gl",
+     "uv": [
+      0.0,
+      3.25,
+      16.0,
+      12.75
+     ]
+    }
+   }
+  }
+ ]
+}

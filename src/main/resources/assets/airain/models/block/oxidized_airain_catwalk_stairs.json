@@ -8,6 +8,7 @@
   "gs": "airain:block/oxidized_airain_catwalk",
   "r": "airain:block/oxidized_riveted_airain",
   "bd": "airain:block/oxidized_airain_band",
+  "pn": "airain:block/oxidized_airain_panel",
   "particle": "airain:block/oxidized_airain_block"
  },
  "elements": [
@@ -19,7 +20,7 @@
    ],
    "to": [
     16,
-    7,
+    6.98,
     16
    ],
    "faces": {
@@ -187,7 +188,7 @@
    ],
    "to": [
     16,
-    11,
+    10.98,
     12
    ],
    "faces": {
@@ -355,7 +356,7 @@
    ],
    "to": [
     16,
-    15,
+    14.98,
     8
    ],
    "faces": {
@@ -523,7 +524,7 @@
    ],
    "to": [
     16,
-    19,
+    18.98,
     4
    ],
    "faces": {
