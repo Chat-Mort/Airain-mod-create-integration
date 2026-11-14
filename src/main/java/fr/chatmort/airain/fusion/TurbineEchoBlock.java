@@ -18,6 +18,15 @@ import net.minecraft.world.level.block.state.BlockState;
 public class TurbineEchoBlock extends DirectionalKineticBlock implements IBE<TurbineEchoBlockEntity> {
 	public TurbineEchoBlock(Properties p) { super(p); }
 
+	// posé contre un arbre de Create : la face de l'arbre se tourne vers lui (comme le moteur créatif).
+	// Le placement de base de Create tournait la machine dans l'autre sens : l'arbre ne s'y raccordait pas.
+	@Override
+	public BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext c) {
+		Direction prefere = getPreferredFacing(c);
+		if (prefere == null || (c.getPlayer() != null && c.getPlayer().isShiftKeyDown())) return super.getStateForPlacement(c);
+		return defaultBlockState().setValue(FACING, prefere);
+	}
+
 	@Override
 	public boolean hasShaftTowards(LevelReader l, BlockPos pos, BlockState state, Direction face) { return face == state.getValue(FACING); }
 

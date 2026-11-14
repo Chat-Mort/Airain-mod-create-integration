@@ -82,7 +82,9 @@ public final class Passerelle {
 
 	/** Ce qu'il y a sur un côté de passerelle. */
 	public enum Cote implements StringRepresentable {
-		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open"), VITRE("glass"), LIBRE("open");
+		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open"), VITRE("glass"), LIBRE("open"),
+		/** Rambarde dessinée à l'intérieur du bloc : côté cage du monte-charge ou segment mobile relevé (rien ne doit dépasser). */
+		INTERIEUR("inner");
 		private final String nom;
 		Cote(String n) { nom = n; }
 		@Override public String getSerializedName() { return nom; }
@@ -96,20 +98,36 @@ public final class Passerelle {
 	 * elles n'apparaissent que si ce voisin est libre (air, herbe…) et ne se raccorde pas. Rambarde vitrée : idem, elle reste
 	 * vitrée. Côté ouvert à la clé (LIBRE) et portillons : jamais touchés.
 	 */
-	static Cote auto(Cote c, boolean raccorde, boolean libre) {
+	static Cote auto(Cote c, boolean raccorde, boolean libre) { return auto(c, raccorde, libre, false); }
+	/** dedans : la rambarde doit rester dans le bloc (cage du monte-charge, segment mobile relevé ou rentré). */
+	static Cote auto(Cote c, boolean raccorde, boolean libre, boolean dedans) {
 		boolean garde = !raccorde && libre;
-		if (c == Cote.AUCUN || c == Cote.RAMBARDE) return garde ? Cote.RAMBARDE : Cote.AUCUN;
-		if (c == Cote.VITRE) return garde ? Cote.VITRE : Cote.AUCUN;
+		Cote r = dedans ? Cote.INTERIEUR : Cote.RAMBARDE;
+		if (c == Cote.AUCUN || c == Cote.RAMBARDE || c == Cote.INTERIEUR) return garde ? r : Cote.AUCUN;
+		if (c == Cote.VITRE) return garde ? r == Cote.INTERIEUR ? r : Cote.VITRE : Cote.AUCUN;
 		return c;
 	}
 	/** Clé de Create sur un côté : rambarde → rambarde vitrée → ouvert (définitivement) → rambarde. */
-	static Cote suivant(Cote c) { return c == Cote.RAMBARDE ? Cote.VITRE : c == Cote.VITRE ? Cote.LIBRE : Cote.RAMBARDE; }
+	static Cote suivant(Cote c) { return c == Cote.RAMBARDE ? Cote.VITRE : (c == Cote.VITRE || c == Cote.INTERIEUR) ? Cote.LIBRE : Cote.RAMBARDE; }
 	/** Le bloc voisin (côté d) laisse-t-il la place à une rambarde extérieure ? (air, plante, ou une plaque accrochée à la rambarde) */
 	public static boolean libre(BlockGetter l, BlockPos p, Direction d) {
 		BlockState n = l.getBlockState(p.relative(d));
 		// un segment de passerelle mobile relevé ou rentré compte comme du vide : la rambarde de bout revient
 		return n.isAir() || n.canBeReplaced() || n.getBlock() instanceof fr.chatmort.airain.atelier.Plaque
 			|| (n.getBlock() instanceof Plancher && n.getValue(RENTRE));
+	}
+	/**
+	 * Le voisin (côté d) est-il un passage où une rambarde extérieure gênerait ? Segment de passerelle mobile relevé ou
+	 * rentré, cabine du monte-charge, ou case vide de la cage (contre un mât) : la rambarde reste alors dans le bloc.
+	 */
+	public static boolean dedans(BlockGetter l, BlockPos p, Direction d) {
+		BlockPos q = p.relative(d);
+		BlockState n = l.getBlockState(q);
+		if (n.getBlock() instanceof Plancher && n.getValue(RENTRE)) return true;
+		if (n.getBlock() instanceof MonteCharge.Cabine) return true;
+		if (!(n.isAir() || n.canBeReplaced())) return false;
+		for (Direction e : Direction.Plane.HORIZONTAL) if (l.getBlockState(q.relative(e)).getBlock() instanceof MonteCharge.Mat) return true;
+		return false;
 	}
 	public static EnumProperty<Cote> cote(Direction d) {
 		return switch (d) { case NORTH -> NORD; case SOUTH -> SUD; case EAST -> EST; default -> OUEST; };
@@ -180,12 +198,12 @@ public final class Passerelle {
 		}
 		/** Les quatre côtés calculés d'après les voisins (pose normale ou assistée). */
 		static BlockState cotes(BlockState s, BlockGetter l, BlockPos p) {
-			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, s, d), libre(l, p, d)));
+			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, s, d), libre(l, p, d), dedans(l, p, d)));
 			return s;
 		}
 		/** Recalcule les quatre côtés en gardant les choix faits à la clé (segment mobile qui se redéploie). */
 		static BlockState recoter(BlockState s, BlockGetter l, BlockPos p) {
-			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d), libre(l, p, d)));
+			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d), libre(l, p, d), dedans(l, p, d)));
 			return s;
 		}
 		/** Le côté d se raccorde-t-il à une autre pièce de passerelle au même niveau ? */
@@ -199,7 +217,7 @@ public final class Passerelle {
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
 			if (d.getAxis().isHorizontal()) {
-				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d), libre(l, p, d)));
+				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d), libre(l, p, d), dedans(l, p, d)));
 			}
 			return s;
 		}
@@ -209,7 +227,7 @@ public final class Passerelle {
 			if (!(s.getBlock() instanceof Plancher)) return;
 			Cote c = s.getValue(cote(d));
 			if (c == Cote.PORTILLON || c == Cote.OUVERT) return;
-			BlockState n = s.setValue(cote(d), auto(c, raccorde(l, p, s, d), libre(l, p, d)));
+			BlockState n = s.setValue(cote(d), auto(c, raccorde(l, p, s, d), libre(l, p, d), dedans(l, p, d)));
 			if (n != s) l.setBlock(p, n, Block.UPDATE_ALL);
 		}
 
@@ -278,6 +296,7 @@ public final class Passerelle {
 			for (Direction d : Direction.Plane.HORIZONTAL) {
 				Cote c = s.getValue(cote(d));
 				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, h, -2, 16, h + 13, 0), BooleanOp.OR);
+				if (c == Cote.INTERIEUR) v = Shapes.joinUnoptimized(v, tourner(d, 0, h, 0, 16, h + 13, 2), BooleanOp.OR);
 			}
 			return v.optimize();
 		}
@@ -492,13 +511,13 @@ public final class Passerelle {
 		}
 		static BlockState cotes(BlockState s, BlockGetter l, BlockPos p) {
 			for (Direction d : Direction.Plane.HORIZONTAL)
-				if (exterieur(s, d)) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, d), libre(l, p, d)));
+				if (exterieur(s, d)) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, d), libre(l, p, d), dedans(l, p, d)));
 			return s;
 		}
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
 			if (d.getAxis().isHorizontal() && exterieur(s, d)) {
-				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, d), libre(l, p, d)));
+				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, d), libre(l, p, d), dedans(l, p, d)));
 			}
 			return s;
 		}
@@ -577,6 +596,7 @@ public final class Passerelle {
 			for (Direction d : Direction.Plane.HORIZONTAL) {
 				Cote c = s.getValue(cote(d));
 				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, -2, 16, 24, 0), BooleanOp.OR);
+				if (c == Cote.INTERIEUR) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, 0, 16, 24, 2), BooleanOp.OR);
 			}
 			return v.optimize();
 		}

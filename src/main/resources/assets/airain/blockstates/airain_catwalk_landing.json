@@ -66,6 +66,14 @@
   },
   {
    "apply": {
+    "model": "airain:block/airain_catwalk_railing_inner_top"
+   },
+   "when": {
+    "north": "inner"
+   }
+  },
+  {
+   "apply": {
     "model": "airain:block/airain_catwalk_landing_right",
     "y": 90
    },
@@ -133,6 +141,15 @@
    },
    "when": {
     "east": "gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_railing_inner_top",
+    "y": 90
+   },
+   "when": {
+    "east": "inner"
    }
   },
   {
@@ -208,6 +225,15 @@
   },
   {
    "apply": {
+    "model": "airain:block/airain_catwalk_railing_inner_top",
+    "y": 180
+   },
+   "when": {
+    "south": "inner"
+   }
+  },
+  {
+   "apply": {
     "model": "airain:block/airain_catwalk_landing_right",
     "y": 270
    },
@@ -275,6 +301,15 @@
    },
    "when": {
     "west": "gate_open"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/airain_catwalk_railing_inner_top",
+    "y": 270
+   },
+   "when": {
+    "west": "inner"
    }
   },
   {
