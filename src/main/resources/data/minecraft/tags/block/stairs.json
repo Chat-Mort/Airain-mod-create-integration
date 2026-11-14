@@ -16,6 +16,14 @@
   "airain:weathered_cut_airain_stairs",
   "airain:waxed_weathered_cut_airain_stairs",
   "airain:oxidized_cut_airain_stairs",
-  "airain:waxed_oxidized_cut_airain_stairs"
+  "airain:waxed_oxidized_cut_airain_stairs",
+  "airain:white_marble_stairs",
+  "airain:polished_white_marble_stairs",
+  "airain:white_marble_brick_stairs",
+  "airain:black_marble_stairs",
+  "airain:polished_black_marble_stairs",
+  "airain:black_marble_brick_stairs",
+  "airain:slate_stairs",
+  "airain:slate_shingle_stairs"
  ]
 }

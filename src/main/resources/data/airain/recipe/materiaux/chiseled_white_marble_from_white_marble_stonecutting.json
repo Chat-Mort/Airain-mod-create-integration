@@ -1,0 +1,10 @@
+{
+ "type": "minecraft:stonecutting",
+ "ingredient": {
+  "item": "airain:white_marble"
+ },
+ "result": {
+  "id": "airain:chiseled_white_marble",
+  "count": 1
+ }
+}

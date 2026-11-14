@@ -1,0 +1,10 @@
+{
+ "replace": false,
+ "values": [
+  "airain:white_marble_wall",
+  "airain:white_marble_brick_wall",
+  "airain:black_marble_wall",
+  "airain:black_marble_brick_wall",
+  "airain:slate_wall"
+ ]
+}

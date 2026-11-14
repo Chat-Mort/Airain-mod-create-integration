@@ -1,0 +1,192 @@
+{
+ "variants": {
+  "": [
+   {
+    "model": "airain:block/black_marble_0",
+    "weight": 1
+   },
+   {
+    "model": "airain:block/black_marble_0",
+    "weight": 1,
+    "x": 90
+   },
+   {
+    "model": "airain:block/black_marble_0",
+    "weight": 1,
+    "x": 180
+   },
+   {
+    "model": "airain:block/black_marble_0",
+    "weight": 1,
+    "x": 270
+   },
+   {
+    "model": "airain:block/black_marble_0",
+    "weight": 1,
+    "x": 90,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_0",
+    "weight": 1,
+    "x": 270,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_1",
+    "weight": 1
+   },
+   {
+    "model": "airain:block/black_marble_1",
+    "weight": 1,
+    "x": 90
+   },
+   {
+    "model": "airain:block/black_marble_1",
+    "weight": 1,
+    "x": 180
+   },
+   {
+    "model": "airain:block/black_marble_1",
+    "weight": 1,
+    "x": 270
+   },
+   {
+    "model": "airain:block/black_marble_1",
+    "weight": 1,
+    "x": 90,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_1",
+    "weight": 1,
+    "x": 270,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_2",
+    "weight": 1
+   },
+   {
+    "model": "airain:block/black_marble_2",
+    "weight": 1,
+    "x": 90
+   },
+   {
+    "model": "airain:block/black_marble_2",
+    "weight": 1,
+    "x": 180
+   },
+   {
+    "model": "airain:block/black_marble_2",
+    "weight": 1,
+    "x": 270
+   },
+   {
+    "model": "airain:block/black_marble_2",
+    "weight": 1,
+    "x": 90,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_2",
+    "weight": 1,
+    "x": 270,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_3",
+    "weight": 2
+   },
+   {
+    "model": "airain:block/black_marble_3",
+    "weight": 2,
+    "x": 90
+   },
+   {
+    "model": "airain:block/black_marble_3",
+    "weight": 2,
+    "x": 180
+   },
+   {
+    "model": "airain:block/black_marble_3",
+    "weight": 2,
+    "x": 270
+   },
+   {
+    "model": "airain:block/black_marble_3",
+    "weight": 2,
+    "x": 90,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_3",
+    "weight": 2,
+    "x": 270,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_4",
+    "weight": 2
+   },
+   {
+    "model": "airain:block/black_marble_4",
+    "weight": 2,
+    "x": 90
+   },
+   {
+    "model": "airain:block/black_marble_4",
+    "weight": 2,
+    "x": 180
+   },
+   {
+    "model": "airain:block/black_marble_4",
+    "weight": 2,
+    "x": 270
+   },
+   {
+    "model": "airain:block/black_marble_4",
+    "weight": 2,
+    "x": 90,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_4",
+    "weight": 2,
+    "x": 270,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_5",
+    "weight": 2
+   },
+   {
+    "model": "airain:block/black_marble_5",
+    "weight": 2,
+    "x": 90
+   },
+   {
+    "model": "airain:block/black_marble_5",
+    "weight": 2,
+    "x": 180
+   },
+   {
+    "model": "airain:block/black_marble_5",
+    "weight": 2,
+    "x": 270
+   },
+   {
+    "model": "airain:block/black_marble_5",
+    "weight": 2,
+    "x": 90,
+    "y": 90
+   },
+   {
+    "model": "airain:block/black_marble_5",
+    "weight": 2,
+    "x": 270,
+    "y": 90
+   }
+  ]
+ }
+}

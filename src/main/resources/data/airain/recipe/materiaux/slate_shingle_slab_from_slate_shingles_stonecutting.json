@@ -1,0 +1,10 @@
+{
+ "type": "minecraft:stonecutting",
+ "ingredient": {
+  "item": "airain:slate_shingles"
+ },
+ "result": {
+  "id": "airain:slate_shingle_slab",
+  "count": 2
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "replace": false,
+ "values": [
+  "minecraft:calcite",
+  "minecraft:diorite",
+  {
+   "id": "create:limestone",
+   "required": false
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "type": "create:mixing",
+ "ingredients": [
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "tag": "airain:white_marble_stones"
+  },
+  {
+   "item": "minecraft:gold_nugget"
+  }
+ ],
+ "results": [
+  {
+   "id": "airain:white_marble",
+   "count": 8
+  }
+ ]
+}

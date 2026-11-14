@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "pattern": [
+  "WB",
+  "BW"
+ ],
+ "key": {
+  "W": {
+   "item": "airain:white_marble"
+  },
+  "B": {
+   "item": "airain:black_marble"
+  }
+ },
+ "result": {
+  "id": "airain:marble_tiles",
+  "count": 4
+ },
+ "category": "building"
+}

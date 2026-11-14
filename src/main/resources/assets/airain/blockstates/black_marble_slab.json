@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "airain:block/black_marble_slab"
+  },
+  "type=top": {
+   "model": "airain:block/black_marble_slab_top"
+  },
+  "type=double": {
+   "model": "airain:block/black_marble_3"
+  }
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "airain:block/slate_slab"
+  },
+  "type=top": {
+   "model": "airain:block/slate_slab_top"
+  },
+  "type=double": {
+   "model": "airain:block/slate"
+  }
+ }
+}

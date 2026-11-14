@@ -1,0 +1,13 @@
+{
+ "variants": {
+  "type=bottom": {
+   "model": "airain:block/slate_shingle_slab"
+  },
+  "type=top": {
+   "model": "airain:block/slate_shingle_slab_top"
+  },
+  "type=double": {
+   "model": "airain:block/slate_shingles"
+  }
+ }
+}

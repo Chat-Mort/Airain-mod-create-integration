@@ -1,0 +1,13 @@
+{
+ "type": "create:pressing",
+ "ingredients": [
+  {
+   "item": "minecraft:gilded_blackstone"
+  }
+ ],
+ "results": [
+  {
+   "id": "airain:black_marble"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "type": "create:mixing",
+ "ingredients": [
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "tag": "airain:black_marble_stones"
+  },
+  {
+   "item": "minecraft:gold_nugget"
+  }
+ ],
+ "results": [
+  {
+   "id": "airain:black_marble",
+   "count": 8
+  }
+ ]
+}
