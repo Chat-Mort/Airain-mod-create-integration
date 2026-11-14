@@ -117,7 +117,7 @@ def etabli():
         el([9,16,6],[13,17.5,7.5],'#rg'),el([10.5,16,7.5],[11.5,17,13])]
     return E
 def vitre_cadre(h):   # dehors, comme les rambardes
-    return [el([-2,h,-2],[0,h+13,0]),el([0,h+11,-2],[16,h+13,0]),el([0,h,-1.5],[16,h+1.5,-0.5])]
+    return [el([0,h,-2],[2,h+13,0]),el([0,h+11,-2],[16,h+13,0]),el([0,h,-1.5],[16,h+1.5,-0.5])]   # poteau au début de la travée
 def vitre_verre(h): return [el([0,h+1.5,-1.25],[16,h+11,-0.75],'#gl',faces=("north","south"),uv='crop')]
 # ---------------------------------------------------------------- modèles
 TC={'m':'airain:block/airain_block','cr':'airain:block/riveted_airain','cd':'airain:block/airain_block'}

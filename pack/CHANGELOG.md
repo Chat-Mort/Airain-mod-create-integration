@@ -5,7 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 14 novembre 2026 — version 1.56.0
+## 14 novembre 2026 — versions 1.56.0 et 1.56.1
+
+**Corrections (1.56.1)**
+- Rambardes : le poteau est désormais au début de chaque travée, plus dans la case voisine ; un poteau d'angle se pose seul quand deux côtés voisins ont une rambarde. Les rambardes ne dépassent plus dans les angles intérieurs, et ne scintillent plus là où elles se croisent.
+- Scintillement (z-fighting) supprimé dans les modèles du mod : là où deux pièces se recouvraient dans le même plan, la plus grosse recule d'un rien.
+- Échelle d'airain en mode tunnel : poteaux d'angle, ceintures rivetées et panneaux en retrait au lieu de grandes tôles plates.
+- Haut-fourneau : un emplacement par ingrédient (cuivre, zinc, fondant, ferraille, rouages brisés). Trop de cuivre ne bloque plus le fondant. La charge d'un fourneau déjà rempli est rangée au chargement ; ce qui ne tient pas tombe devant le trou de coulée.
+
 
 **Changements**
 - Livre de l'ingénieur refait :

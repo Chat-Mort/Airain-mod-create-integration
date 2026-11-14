@@ -53,12 +53,19 @@ def plein(E):
         out.append(e)
     return out
 def tunnel():
-    # tunnel plein autour de l'échelle : trois parois de tôle, ouvertes côté mur
-    return [el([1,0,1],[15,16,2],'#m',faces=("north","south"),full=True),el([1,0,2],[2,16,13],'#m',faces=("east","west"),full=True),
-            el([14,0,2],[15,16,13],'#m',faces=("east","west"),full=True)]
+    # tunnel autour de l'échelle (ouvert côté mur) : poteaux d'angle, ceintures rivetées en haut, au milieu et en bas,
+    # et des panneaux en retrait entre elles (relief, plus de grande tôle plate)
+    E=[el([1,0,1],[2,16,2]),el([14,0,1],[15,16,2])]                                              # poteaux d'angle
+    for y in (0,7.5,15):
+        E+=[el([2,y,1],[14,y+1,2],'#bd'),el([1,y,2],[2,y+1,13],'#bd'),el([14,y,2],[15,y+1,13],'#bd')]   # ceintures
+    for y0,y1 in ((1,7.5),(8.5,15)):
+        E+=[el([2,y0,1.4],[14,y1,1.6],'#pn',faces=("north","south")),                              # panneaux en retrait
+            el([1.4,y0,2],[1.6,y1,13],'#pn',faces=("east","west")),el([14.4,y0,2],[14.6,y1,13],'#pn',faces=("east","west"))]
+    return E
 def rambarde_nord(h):
-    # à l'extérieur du bloc (sur le bord du voisin) : le plancher garde toute sa largeur ; poteau à l'angle extérieur
-    return [el([0,h+11,-2],[16,h+13,0]),el([0,h+6,-1.5],[16,h+7,-0.5]),el([0,h,-1.5],[16,h+3,-1]),el([-2,h,-2],[0,h+13,0])]
+    # à l'extérieur du bloc (sur le bord du voisin) ; poteau au début de la travée (dans la longueur du bloc, pour ne pas
+    # déborder sur la case voisine) ; le poteau d'angle est un modèle à part, posé quand deux côtés voisins ont une rambarde
+    return [el([0,h+11,-2],[16,h+13,0]),el([0,h+6,-1.5],[16,h+7,-0.5]),el([0,h,-1.5],[16,h+3,-1]),el([0,h,-2],[2,h+13,0])]
 def rambarde_int(h):   # rambarde dans le bloc (cage du monte-charge, segment mobile relevé) : poteaux aux deux bouts
     return [el([0,h+11,0],[16,h+13,2]),el([0,h+6,0.5],[16,h+7,1.5]),el([0,h,0.5],[16,h+3,1]),el([0,h,0],[2,h+13,2]),el([14,h,0],[16,h+13,2])]
 def portillon_nord(h, ouvert):
@@ -123,7 +130,7 @@ def cage():
 # ---------------------------------------------------------------- modèles par teinte
 ROT={'north':0,'east':90,'south':180,'west':270}
 for p in PRE:
-    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','gs':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain','bd':f'airain:block/{p}airain_band'}
+    tex={'m':f'airain:block/{p}airain_block','g':f'airain:block/{p}airain_catwalk','gs':f'airain:block/{p}airain_catwalk','r':f'airain:block/{p}riveted_airain','bd':f'airain:block/{p}airain_band','pn':f'airain:block/{p}airain_panel'}
     for haut,h in (('bottom',3),('top',11)):
         modele(f'{p}airain_catwalk_floor_{haut}',plancher(h),tex); modele(f'{p}airain_catwalk_floor_solid_{haut}',plein(plancher(h)),tex)
         modele(f'{p}airain_catwalk_railing_{haut}',rambarde_nord(h),tex)
