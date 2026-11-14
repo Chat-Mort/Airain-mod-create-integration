@@ -241,6 +241,7 @@ public final class Telepherique {
 		boolean installer(Player j) {
 			List<BlockPos> L = ligne(level, worldPosition);
 			if (L.isEmpty()) { j.displayClientMessage(Component.translatable("airain.telepherique.incomplete").withStyle(ChatFormatting.RED), true); return false; }
+			// une nacelle introuvable (tronçon non chargé, ou perdue) est oubliée : si elle revient, elle se retirera d'elle-même
 			if (trouverNacelle() != null || autreGare(L) instanceof GareBlockEntity g && g.trouverNacelle() != null) {
 				j.displayClientMessage(Component.translatable("airain.telepherique.deja").withStyle(ChatFormatting.RED), true); return false;
 			}

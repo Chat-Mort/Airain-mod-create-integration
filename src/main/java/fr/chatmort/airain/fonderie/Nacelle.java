@@ -203,6 +203,11 @@ public class Nacelle extends Entity implements IEntityWithComplexSpawn {
 			placer(sLocal);
 			return;
 		}
+		// une nacelle que ses gares ne reconnaissent plus (une autre l'a remplacée) redevient un objet
+		if (tickCount % 40 == 0 && gareA != null && level().isLoaded(gareA) && level().getBlockEntity(gareA) instanceof Telepherique.GareBlockEntity ge
+			&& ge.nacelle != null && !ge.nacelle.equals(getUUID())) {
+			ejectPassengers(); spawnAtLocation(new ItemStack(Telepherique.NACELLE_ITEM.get())); discard(); return;
+		}
 		float s = entityData.get(S), cible = entityData.get(CIBLE);
 		if (depart > 0 && --depart == 0) {
 			depart = -1;

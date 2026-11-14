@@ -13,13 +13,6 @@
    "conditions": [
     {
      "condition": "minecraft:survives_explosion"
-    },
-    {
-     "condition": "minecraft:block_state_property",
-     "block": "airain:airain_cable_station",
-     "properties": {
-      "upper": "false"
-     }
     }
    ]
   }
