@@ -14,14 +14,14 @@ def butin(i):
     w(Dd+f'airain/loot_table/blocks/{i}.json',{"type":"minecraft:block","pools":[{"rolls":1,"bonus_rolls":0,"entries":[{"type":"minecraft:item","name":"airain:"+i}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]})
 # ---------------------------------------------------------------- géométrie
 def carter(h, pont):
-    b=h-2      # dessous du plancher
-    E=[el([2,b-10,2],[14,b,14],'#bd',faces=("north","south","east","west")),el([2,b-10,2],[14,b,14],'#pn',faces=("down",),uv='crop'),
-       el([14,b-8,5],[14.6,b-2,11],'#m'),el([14,b-8,5],[14.6,b-2,11],'#m',rot=([14.3,b-5,8],'x',45)),el([14.4,b-6,7],[14.9,b-4,9],'#rg')]
-    if pont:   # charnières au bord nord, au ras du plancher
-        E+=[el([1,b-1,-0.5],[3,b+1,1.5],'#m'),el([13,b-1,-0.5],[15,b+1,1.5],'#m'),el([3,b-0.5,0],[13,b+0.5,1],'#rg')]
-    else:      # fente du télescope sur la face nord du carter
-        E+=[el([3,b-3,1.9],[13,b-1,2],'#rg',faces=("north",))]
-    return E
+    """1.56.3 : plus de carter sous le plancher. Un repère simple posé sur le sol (dessiné vers le nord = vers les segments) :
+    pont-levis : une charnière épaisse au bord qui se relève ; passerelle rétractable : deux rails dans l'axe."""
+    if pont:
+        return [el([0.5,h-0.5,-0.25],[4.5,h+1,1.25],'#m'),el([11.5,h-0.5,-0.25],[15.5,h+1,1.25],'#m'),     # nœuds de charnière
+                el([4.5,h-0.25,0],[11.5,h+0.75,1],'#rg'),el([4.5,h,1],[11.5,h+0.25,3],'#m'),                 # axe, et sa patte
+                el([0.5,h,1.25],[4.5,h+0.25,3],'#m'),el([11.5,h,1.25],[15.5,h+0.25,3],'#m')]
+    return [el([3.5,h,0],[4.5,h+0.5,16],'#rg'),el([11.5,h,0],[12.5,h+0.5,16],'#rg'),                       # rails
+            el([3,h,0],[3.5,h+0.25,16],'#m'),el([12.5,h,0],[13,h+0.25,16],'#m')]                           # patins
 def cote_rail(x0):   # rambarde le long d'un côté (x0 = 0 : ouest, 14 : est), sur toute la profondeur
     h=3; return [el([x0,h+11,0],[x0+2,h+13,16]),el([x0+0.5,h+6,0],[x0+1.5,h+7,16]),el([x0+0.5,h,0],[x0+1,h+3,16]),el([x0,h,0],[x0+2,h+13,2]),el([x0,h,14],[x0+2,h+13,16])]
 def cabine():

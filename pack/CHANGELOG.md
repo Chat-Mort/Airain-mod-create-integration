@@ -5,7 +5,11 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 14 novembre 2026 — versions 1.56.0 à 1.56.2
+## 14 novembre 2026 — versions 1.56.0 à 1.56.3
+
+**Changements (1.56.3)**
+- Pont-levis et passerelle rétractable : plus de carter sous le plancher. La pièce garde le sol des passerelles (caillebotis ou plein) et se reconnaît à un repère posé dessus, tourné vers les segments : une charnière épaisse au bord qui se relève (pont-levis), deux rails dans l'axe (passerelle rétractable).
+
 
 **Corrections (1.56.2)**
 - Lanterne d'airain : sa texture animée s'affiche correctement (flamme rouge visible), au lieu d'être écrasée.
