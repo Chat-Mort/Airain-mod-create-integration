@@ -1138,11 +1138,20 @@ quest(cF, "fo_engrenage", ("L'engrenage d'airain", "The Airain Gear"), 6, 1, [T_
               "Les bornes, le trône, la charte et le Cœur d'Airain en demandent."],
              ["The centrepiece of imperial machines: a cogwheel, an airain sheet, a pour of molten airain, a press stroke. Sequenced assembly.",
               "Terminals, the throne, the charter and Airain's Core require it."]))
-quest(cF, "fo_style", ("Le style impérial", "The Imperial Style"), 6, -1, [T_item("airain:chiseled_airain", 4), T_item("airain:airain_pillar", 4), T_item("airain:airain_lantern", 4)],
+quest(cF, "fo_style", ("Le style impérial", "The Imperial Style"), 6, -2, [T_item("airain:chiseled_airain", 4), T_item("airain:airain_pillar", 4), T_item("airain:airain_lantern", 4)],
       [R_coin("sprocket", 4)], deps=["fo_refonte"],
       desc=D(["Airain taillé, riveté, ciselé, piliers, grilles, portes ferronnées, lanternes à flamme rouge : de quoi bâtir une capitale digne de l'Empire. Au tailleur de pierre depuis un bloc d'airain."],
              ["Cut, riveted and chiseled airain, pillars, grates, wrought doors, red-flame lanterns: enough to build a capital worthy of the Empire. At the stonecutter, from a block of airain."]))
-quest(cF, "fo_patine", ("Rouge impérial", "Imperial Red"), 8, -1, [T_item("airain:oxidized_airain_block")], [R_coin("cog", 1)],
+quest(cF, "fo_materiaux", ("Les matériaux de l'Empire", "Materials of the Empire"), 6, -4,
+      [T_item("airain:white_marble", 16), T_item("airain:black_marble", 16), T_item("airain:slate", 16)], [R_coin("cog", 1)],
+      deps=["fo_style"], optional=True,
+      desc=D(["L'airain ne se suffit pas à lui-même : les capitales mêlaient le marbre blanc veiné d'or, le marbre noir et les toits d'ardoise.",
+              "Mélangeur : 8 calcites, diorites ou calcaires et une pépite d'or donnent 8 marbres blancs ; 8 roches noires, deepslates pavées ou basaltes, du marbre noir. Presse : la deepslate pavée devient de l'ardoise.",
+              "&8Tailleur de pierre : dalles polies, briques, colonnes, ciselé, tuiles, escaliers, dalles et murets.&r"],
+             ["Airain is not enough on its own: the capitals mixed gold-veined white marble, black marble and slate roofs.",
+              "Mixer: 8 calcite, diorite or limestone and a gold nugget make 8 white marble; 8 blackstone, cobbled deepslate or basalt make black marble. Press: cobbled deepslate becomes slate.",
+              "&8Stonecutter: polished, bricks, pillars, chiseled, shingles, stairs, slabs and walls.&r"]))
+quest(cF, "fo_patine", ("Rouge impérial", "Imperial Red"), 8, -3, [T_item("airain:oxidized_airain_block")], [R_coin("cog", 1)],
       deps=["fo_style"], optional=True,
       desc=D(["&7Optionnel.&r Avec le temps, l'airain vire doucement du doré au rouge profond de l'Empire. Une couche de cire (rayon de miel) fige la teinte ; la hache la fait revenir en arrière."],
              ["&7Optional.&r Over time, airain slowly turns from gold to the Empire's deep red. A coat of wax (honeycomb) freezes the colour; an axe takes it back."]))
@@ -1151,11 +1160,11 @@ quest(cF, "fo_laitier", ("Rien ne se perd", "Nothing Is Wasted"), 2, 2, [T_item(
       desc=D(["&7Optionnel.&r Le laitier sort par le trou de coulée (entonnoir). Broyé, il donne de la poudre de cendres ; remis au gueulard, il sert de fondant."],
              ["&7Optional.&r Slag comes out of the taphole (funnel). Crushed, it gives cinder flour; put back into the throat, it serves as flux."]))
 
-quest(cF, "fo_passerelle", ("Au-dessus des machines", "Above the Machines"), 8, 1,
+quest(cF, "fo_passerelle", ("Au-dessus des machines", "Above the Machines"), 8, -1,
       [T_item("airain:airain_catwalk", 16), T_item("airain:airain_catwalk_stairs", 2)], [R_coin("cog", 1)], deps=["fo_style"],
       desc=D(["Dans les usines de l'Empire, on circulait au-dessus des machines. Passerelles, escaliers, rampes, poteaux et échelles d'airain : les rambardes se posent seules, la clé de Create les retire ou les remet."],
              ["In the Empire's factories people moved above the machines. Airain catwalks, stairs, ramps, supports and ladders: railings appear on their own, the Create wrench removes or restores them."]))
-quest(cF, "fo_atelier", ("L'usine suspendue", "The Hanging Factory"), 10, 1,
+quest(cF, "fo_atelier", ("L'usine suspendue", "The Hanging Factory"), 10, -1,
       [T_item("airain:airain_catwalk_landing"), T_item("airain:airain_hanger", 2), T_item("airain:airain_railing", 4)], [R_coin("sprocket", 2)],
       deps=["fo_passerelle"], optional=True,
       desc=D(["&7Optionnel.&r L'escalier à palier tourne d'un quart de tour en montant d'un bloc, avec un palier à mi-hauteur qui se raccorde aux passerelles hautes. Les suspentes pendent les passerelles au plafond ; la rambarde seule borde n'importe quel bloc."],
@@ -1174,12 +1183,12 @@ quest(cF, "fo_tuyaux", ("La tuyauterie impériale", "Imperial Pipework"), 10, 2,
               "Le plancher technique cache tuyaux et conduits : la clé relève la dalle, on y loge l'objet ; un conduit logé reste dans le réseau d'air."],
              ["&7Optional.&r Airain pipes that connect by themselves, handwheel valves (right-click), and the gauge: placed on a Create machine, an air vent or a tank, its needle follows the speed, the current or the fill level.",
               "The raised floor hides pipes and ducts: the wrench lifts the plate, you lodge the item in; a lodged duct stays part of the air network."]))
-quest(cF, "fo_lumieres", ("Les lumières de la capitale", "Lights of the Capital"), 10, -1,
+quest(cF, "fo_lumieres", ("Les lumières de la capitale", "Lights of the Capital"), 8, -2,
       [T_item("airain:airain_lamppost", 3), T_item("airain:airain_pendant_lamp", 2), T_item("airain:airain_wall_lamp", 2)], [R_coin("sprocket", 2)],
       deps=["fo_style"], optional=True,
       desc=D(["&7Optionnel.&r Réverbères impériaux (empilez-les ; la clé sur la tête donne une ou deux lanternes), suspensions d'atelier, appliques à flamme rouge. Et le gyrophare, qui tourne sur un signal de redstone."],
              ["&7Optional.&r Imperial lampposts (stack them; the wrench on the head gives one or two lanterns), workshop pendant lamps, red-flame wall lamps. And the beacon light, which spins on a redstone signal."]))
-quest(cF, "fo_rues", ("Les rues de l'Empire", "Streets of the Empire"), 12, 1,
+quest(cF, "fo_rues", ("Les rues de l'Empire", "Streets of the Empire"), 12, -1,
       [T_item("airain:airain_signpost"), T_item("airain:airain_sign_plate", 3), T_item("airain:airain_workbench")], [R_coin("cog", 1)],
       deps=["fo_atelier"], optional=True,
       desc=D(["&7Optionnel.&r Bornes de carrefour (une étiquette renommée écrit sur la flèche, la clé la tourne), plaques émaillées (la clé change le pictogramme), toboggan, garde-corps vitré (la clé sur une rambarde), et l'établi d'atelier, dont la grille garde ses objets."],

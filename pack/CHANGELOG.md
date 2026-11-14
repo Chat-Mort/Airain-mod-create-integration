@@ -5,6 +5,21 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 15 novembre 2026 — version 1.57.0
+
+**Ajouts**
+- Nouveaux matériaux de construction, pour varier avec l'airain :
+  - marbre blanc et marbre noir veinés d'or : brut (six textures tirées au hasard, pour un rendu naturel), poli, briques, colonne, ciselé, avec escaliers, dalles et murets ;
+  - ardoise (polie et en tuiles pour les toits), avec escaliers, dalles et muret ;
+  - carrelage de marbre noir et blanc, et sa dalle.
+- Recettes : mélangeur de Create (8 calcites, diorites ou calcaires + 1 pépite d'or = 8 marbres blancs ; même chose avec roche noire, deepslate pavée ou basalte pour le marbre noir), presse (deepslate pavée → ardoise, roche noire dorée → marbre noir), établi (2 blancs + 2 noirs = 4 carrelages), variantes au tailleur de pierre.
+- Quête « Les matériaux de l'Empire » (annexe de la fonderie) et une page dans le livre de l'ingénieur (onglet Blocs).
+
+**Changements**
+- Annexe « La fonderie impériale » : quêtes redisposées, plus aucun croisement de liens.
+
+---
+
 ## 14 novembre 2026 — versions 1.56.0 à 1.56.3
 
 **Changements (1.56.3)**

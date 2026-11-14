@@ -368,6 +368,12 @@
 		"Tick the box after a complete delivery."
 	]
 	"quest.1D19C2609F2DC9FE.title": "Air Freight"
+	"quest.1D4408D75ED2AD47.quest_desc": [
+		"Airain is not enough on its own: the capitals mixed gold-veined white marble, black marble and slate roofs."
+		"Mixer: 8 calcite, diorite or limestone and a gold nugget make 8 white marble; 8 blackstone, cobbled deepslate or basalt make black marble. Press: cobbled deepslate becomes slate."
+		"&8Stonecutter: polished, bricks, pillars, chiseled, shingles, stairs, slabs and walls.&r"
+	]
+	"quest.1D4408D75ED2AD47.title": "Materials of the Empire"
 	"quest.1D5897A82AAC331E.quest_desc": [
 		"The Empire searched these temples before you. It did not take everything."
 		"Beware of the pressure plate at the bottom of the chamber: it is wired to explosives."

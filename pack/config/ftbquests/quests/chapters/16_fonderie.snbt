@@ -166,7 +166,41 @@
 				}
 			]
 			x: 6.0d
-			y: -1.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["365D357F3A917CC6"]
+			id: "1D4408D75ED2AD47"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					id: "50ED2D10AFDBC9A4"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:white_marble" }
+					count: 16L
+					id: "197163F8F9FBBDA5"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:black_marble" }
+					count: 16L
+					id: "65F1708DD612AD35"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:slate" }
+					count: 16L
+					id: "6DB390FFC3CDDDAB"
+					type: "item"
+				}
+			]
+			x: 6.0d
+			y: -4.0d
 		}
 		{
 			dependencies: ["365D357F3A917CC6"]
@@ -188,7 +222,7 @@
 				}
 			]
 			x: 8.0d
-			y: -1.0d
+			y: -3.0d
 		}
 		{
 			dependencies: ["27339A8771243368"]
@@ -237,7 +271,7 @@
 				}
 			]
 			x: 8.0d
-			y: 1.0d
+			y: -1.0d
 		}
 		{
 			dependencies: ["1B4E33638C6A805D"]
@@ -272,7 +306,7 @@
 				}
 			]
 			x: 10.0d
-			y: 1.0d
+			y: -1.0d
 		}
 		{
 			dependencies: ["2ADCE98DF27075B6"]
@@ -369,8 +403,8 @@
 					type: "item"
 				}
 			]
-			x: 10.0d
-			y: -1.0d
+			x: 8.0d
+			y: -2.0d
 		}
 		{
 			dependencies: ["67695976737B0BB5"]
@@ -404,7 +438,7 @@
 				}
 			]
 			x: 12.0d
-			y: 1.0d
+			y: -1.0d
 		}
 		{
 			dependencies: ["1B4E33638C6A805D", "2ADCE98DF27075B6"]

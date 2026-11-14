@@ -368,6 +368,12 @@
 		"Validez après une livraison complète."
 	]
 	"quest.1D19C2609F2DC9FE.title": "Le fret aérien"
+	"quest.1D4408D75ED2AD47.quest_desc": [
+		"L'airain ne se suffit pas à lui-même : les capitales mêlaient le marbre blanc veiné d'or, le marbre noir et les toits d'ardoise."
+		"Mélangeur : 8 calcites, diorites ou calcaires et une pépite d'or donnent 8 marbres blancs ; 8 roches noires, deepslates pavées ou basaltes, du marbre noir. Presse : la deepslate pavée devient de l'ardoise."
+		"&8Tailleur de pierre : dalles polies, briques, colonnes, ciselé, tuiles, escaliers, dalles et murets.&r"
+	]
+	"quest.1D4408D75ED2AD47.title": "Les matériaux de l'Empire"
 	"quest.1D5897A82AAC331E.quest_desc": [
 		"L'Empire a fouillé ces temples avant vous. Il n'a pas tout emporté."
 		"Méfiez-vous de la plaque de pression au fond de la salle : elle est reliée à des explosifs."
