@@ -124,7 +124,11 @@ public class PasserelleMobile extends Passerelle.Plancher implements EntityBlock
 				if (!segment(i)) break;
 				BlockPos q = worldPosition.relative(sens(), i);
 				BlockState s = level.getBlockState(q);
-				if (s.getValue(Passerelle.RENTRE) != rentre) level.setBlock(q, s.setValue(Passerelle.RENTRE, rentre), Block.UPDATE_ALL);
+				if (s.getValue(Passerelle.RENTRE) == rentre) continue;
+				BlockState ns = s.setValue(Passerelle.RENTRE, rentre);
+				// segment qui revient : ses côtés sont recalculés (ses voisins le sont par la mise à jour du bloc)
+				if (!rentre) ns = Passerelle.Plancher.recoter(ns, level, q);
+				level.setBlock(q, ns, Block.UPDATE_ALL);
 			}
 		}
 		/** Remet en place les segments (mécanisme cassé, longueur changée). */

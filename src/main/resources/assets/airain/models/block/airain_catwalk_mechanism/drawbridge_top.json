@@ -31,16 +31,40 @@
    ],
    "faces": {
     "north": {
-     "texture": "#bd"
+     "texture": "#bd",
+     "uv": [
+      2,
+      -9,
+      14,
+      1
+     ]
     },
     "south": {
-     "texture": "#bd"
+     "texture": "#bd",
+     "uv": [
+      2,
+      -9,
+      14,
+      1
+     ]
     },
     "east": {
-     "texture": "#bd"
+     "texture": "#bd",
+     "uv": [
+      2,
+      -9,
+      14,
+      1
+     ]
     },
     "west": {
-     "texture": "#bd"
+     "texture": "#bd",
+     "uv": [
+      2,
+      -9,
+      14,
+      1
+     ]
     }
    }
   },
@@ -185,22 +209,58 @@
    ],
    "faces": {
     "north": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      13,
+      6,
+      15,
+      8
+     ]
     },
     "south": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      1,
+      6,
+      3,
+      8
+     ]
     },
     "east": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      -1.5,
+      6,
+      0.5,
+      8
+     ]
     },
     "west": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      -0.5,
+      6,
+      1.5,
+      8
+     ]
     },
     "up": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      1,
+      -0.5,
+      3,
+      1.5
+     ]
     },
     "down": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      1,
+      -1.5,
+      3,
+      0.5
+     ]
     }
    }
   },
@@ -217,22 +277,58 @@
    ],
    "faces": {
     "north": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      1,
+      6,
+      3,
+      8
+     ]
     },
     "south": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      13,
+      6,
+      15,
+      8
+     ]
     },
     "east": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      -1.5,
+      6,
+      0.5,
+      8
+     ]
     },
     "west": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      -0.5,
+      6,
+      1.5,
+      8
+     ]
     },
     "up": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      13,
+      -0.5,
+      15,
+      1.5
+     ]
     },
     "down": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      13,
+      -1.5,
+      15,
+      0.5
+     ]
     }
    }
   },

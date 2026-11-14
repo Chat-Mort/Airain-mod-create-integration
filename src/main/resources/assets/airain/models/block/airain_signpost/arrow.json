@@ -80,13 +80,31 @@
    ],
    "faces": {
     "north": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      7.5,
+      10,
+      8.5,
+      16
+     ]
     },
     "up": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      7.5,
+      -6,
+      8.5,
+      8
+     ]
     },
     "down": {
-     "texture": "#m"
+     "texture": "#m",
+     "uv": [
+      7.5,
+      -8,
+      8.5,
+      6
+     ]
     }
    }
   }

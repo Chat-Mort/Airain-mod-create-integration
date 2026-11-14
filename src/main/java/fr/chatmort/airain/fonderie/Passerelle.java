@@ -107,7 +107,9 @@ public final class Passerelle {
 	/** Le bloc voisin (côté d) laisse-t-il la place à une rambarde extérieure ? (air, plante, ou une plaque accrochée à la rambarde) */
 	public static boolean libre(BlockGetter l, BlockPos p, Direction d) {
 		BlockState n = l.getBlockState(p.relative(d));
-		return n.isAir() || n.canBeReplaced() || n.getBlock() instanceof fr.chatmort.airain.atelier.Plaque;
+		// un segment de passerelle mobile relevé ou rentré compte comme du vide : la rambarde de bout revient
+		return n.isAir() || n.canBeReplaced() || n.getBlock() instanceof fr.chatmort.airain.atelier.Plaque
+			|| (n.getBlock() instanceof Plancher && n.getValue(RENTRE));
 	}
 	public static EnumProperty<Cote> cote(Direction d) {
 		return switch (d) { case NORTH -> NORD; case SOUTH -> SUD; case EAST -> EST; default -> OUEST; };
@@ -179,6 +181,11 @@ public final class Passerelle {
 		/** Les quatre côtés calculés d'après les voisins (pose normale ou assistée). */
 		static BlockState cotes(BlockState s, BlockGetter l, BlockPos p) {
 			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, s, d), libre(l, p, d)));
+			return s;
+		}
+		/** Recalcule les quatre côtés en gardant les choix faits à la clé (segment mobile qui se redéploie). */
+		static BlockState recoter(BlockState s, BlockGetter l, BlockPos p) {
+			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d), libre(l, p, d)));
 			return s;
 		}
 		/** Le côté d se raccorde-t-il à une autre pièce de passerelle au même niveau ? */

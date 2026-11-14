@@ -528,37 +528,73 @@
      "texture": "#gemme",
      "neoforge_data": {
       "block_light": 15
-     }
+     },
+     "uv": [
+      6,
+      -3,
+      10,
+      1
+     ]
     },
     "south": {
      "texture": "#gemme",
      "neoforge_data": {
       "block_light": 15
-     }
+     },
+     "uv": [
+      6,
+      -3,
+      10,
+      1
+     ]
     },
     "east": {
      "texture": "#gemme",
      "neoforge_data": {
       "block_light": 15
-     }
+     },
+     "uv": [
+      6,
+      -3,
+      10,
+      1
+     ]
     },
     "west": {
      "texture": "#gemme",
      "neoforge_data": {
       "block_light": 15
-     }
+     },
+     "uv": [
+      6,
+      -3,
+      10,
+      1
+     ]
     },
     "up": {
      "texture": "#gemme",
      "neoforge_data": {
       "block_light": 15
-     }
+     },
+     "uv": [
+      6,
+      6,
+      10,
+      10
+     ]
     },
     "down": {
      "texture": "#gemme",
      "neoforge_data": {
       "block_light": 15
-     }
+     },
+     "uv": [
+      6,
+      6,
+      10,
+      10
+     ]
     }
    },
    "shade": false,
