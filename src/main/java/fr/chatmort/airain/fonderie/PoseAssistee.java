@@ -50,7 +50,7 @@ public final class PoseAssistee {
 		boolean bas = j.isShiftKeyDown();
 		Block b = bi.getBlock();
 		BlockState s = null;
-		if (b instanceof PasserelleMobile) s = Passerelle.Plancher.cotes(b.defaultBlockState().setValue(Passerelle.HAUT, n == 11).setValue(Passerelle.FACING, d), l, q);
+		if (b instanceof PasserelleMobile) s = Passerelle.Plancher.cotes(b.defaultBlockState().setValue(Passerelle.HAUT, n == 11), l, q);
 		else if (b instanceof Passerelle.Plancher) s = Passerelle.Plancher.cotes(b.defaultBlockState().setValue(Passerelle.HAUT, n == 11), l, q);
 		else if (b instanceof Passerelle.Escalier) {
 			if (n != 3) return;
@@ -72,6 +72,8 @@ public final class PoseAssistee {
 		if (l.isClientSide) return;
 		l.setBlock(q, s, Block.UPDATE_ALL);
 		b.setPlacedBy(l, q, s, j, st);
+		// pièce-mécanisme : tournée dans le prolongement, vers l'extérieur
+		if (l.getBlockEntity(q) instanceof PasserelleMobile.Mecanisme m) m.orienter(d);
 		SoundType son = s.getSoundType(l, q, j);
 		l.playSound(null, q, son.getPlaceSound(), SoundSource.BLOCKS, (son.getVolume() + 1f) / 2f, son.getPitch() * 0.8f);
 		if (!j.getAbilities().instabuild) st.shrink(1);

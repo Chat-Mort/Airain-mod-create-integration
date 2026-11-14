@@ -31,26 +31,27 @@ import java.util.List;
 
 /**
  * Pièce-mécanisme de passerelle mobile : une passerelle ordinaire (on marche dessus, rambardes, portillons) avec un carter
- * suspendu dessous. Elle entraîne les 1 à 4 passerelles ordinaires qui la suivent vers FACING :
+ * suspendu dessous. Elle entraîne les 1 à 4 passerelles ordinaires qui la suivent dans son sens (rangé dans le bloc-entité) :
  * pont-levis (elles se relèvent autour de son bord) ou passerelle rétractable (elles rentrent en télescope dans le carter).
  * Commandes : un arbre de Create par-dessous (un sens déploie, l'autre relève ; la vitesse règle le mouvement),
  * ou la redstone quand l'arbre est à l'arrêt (signal : relevé / rentré).
  * Segments relevés ou rentrés : invisibles et sans collision ; les rambardes de bout se remettent seules des deux côtés.
  */
 public class PasserelleMobile extends Passerelle.Plancher implements EntityBlock, IRotate {
-	public static final IntegerProperty LONGUEUR = IntegerProperty.create("length", 1, 4);
 	public final boolean pontLevis;
 
+	// 1.55.3 : le sens et la longueur sont rangés dans le bloc-entité, plus dans l'état du bloc
+	// (16 combinaisons de plus par état : des millions d'états en mémoire).
 	public PasserelleMobile(WeatherState etat, Properties p, boolean pontLevis) {
 		super(etat, p);
 		this.pontLevis = pontLevis;
-		registerDefaultState(defaultBlockState().setValue(Passerelle.FACING, Direction.NORTH).setValue(LONGUEUR, 3));
 	}
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { super.createBlockStateDefinition(b); b.add(Passerelle.FACING, LONGUEUR); }
 	// posée en regardant vers le vide à franchir
 	@Override
-	public BlockState getStateForPlacement(BlockPlaceContext c) { return super.getStateForPlacement(c).setValue(Passerelle.FACING, c.getHorizontalDirection()); }
+	public void setPlacedBy(Level l, BlockPos p, BlockState s, @javax.annotation.Nullable net.minecraft.world.entity.LivingEntity qui, net.minecraft.world.item.ItemStack st) {
+		super.setPlacedBy(l, p, s, qui, st);
+		if (qui != null && l.getBlockEntity(p) instanceof Mecanisme m) m.orienter(qui.getDirection());
+	}
 
 	// ---------------------------------------------------------------- Create : l'arbre entre par le dessous du carter
 	@Override public boolean hasShaftTowards(LevelReader l, BlockPos p, BlockState s, Direction d) { return d == Direction.DOWN; }
@@ -83,8 +84,8 @@ public class PasserelleMobile extends Passerelle.Plancher implements EntityBlock
 		if (c.getClickedFace().getAxis() == Direction.Axis.Y && Math.min(Math.min(x, 1 - x), Math.min(z, 1 - z)) > 0.2) {
 			if (!l.isClientSide && l.getBlockEntity(p) instanceof Mecanisme m) {
 				m.liberer(4);
-				int n = s.getValue(LONGUEUR) % 4 + 1;
-				l.setBlock(p, s.setValue(LONGUEUR, n), Block.UPDATE_ALL);
+				int n = m.longueur() % 4 + 1;
+				m.longueur = n; m.setChanged();
 				m.resynchroniser();
 				l.playSound(null, p, SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 0.7f + 0.15f * n);
 				if (c.getPlayer() != null) c.getPlayer().displayClientMessage(Component.translatable("airain.mobile.longueur", n).withStyle(ChatFormatting.GOLD), true);
@@ -106,11 +107,18 @@ public class PasserelleMobile extends Passerelle.Plancher implements EntityBlock
 		public float avance = 1, avanceAvant = 1;
 		private int cible = 1;
 		private boolean signal, fantome, pret;
+		private Direction sens = Direction.NORTH;
+		int longueur = 3;
 
 		public Mecanisme(BlockEntityType<?> t, BlockPos p, BlockState s) { super(t, p, s); }
 
-		public Direction sens() { return getBlockState().getValue(Passerelle.FACING); }
-		public int longueur() { return getBlockState().getValue(LONGUEUR); }
+		public Direction sens() { return sens; }
+		public int longueur() { return longueur; }
+		/** Sens donné à la pose (vers le vide à franchir). */
+		public void orienter(Direction d) {
+			if (!d.getAxis().isHorizontal() || d == sens) return;
+			liberer(4); sens = d; setChanged(); sendData();
+		}
 		public boolean pontLevis() { return getBlockState().getBlock() instanceof PasserelleMobile m && m.pontLevis; }
 		/** Le segment i (1 à n) est-il une passerelle ordinaire au même niveau que le mécanisme ? */
 		public boolean segment(int i) {
@@ -168,11 +176,14 @@ public class PasserelleMobile extends Passerelle.Plancher implements EntityBlock
 		public void write(CompoundTag t, HolderLookup.Provider r, boolean client) {
 			super.write(t, r, client);
 			t.putFloat("avance", avance); t.putInt("cible", cible); t.putBoolean("signal", signal); t.putBoolean("fantome", fantome);
+			t.putInt("sens", sens.get2DDataValue()); t.putInt("longueur", longueur);
 		}
 		@Override
 		protected void read(CompoundTag t, HolderLookup.Provider r, boolean client) {
 			super.read(t, r, client);
 			cible = t.getInt("cible"); signal = t.getBoolean("signal");
+			if (t.contains("sens")) sens = Direction.from2DDataValue(t.getInt("sens"));
+			if (t.contains("longueur")) longueur = Math.max(1, Math.min(4, t.getInt("longueur")));
 			if (!client) { avance = t.contains("avance") ? t.getFloat("avance") : 1; fantome = t.getBoolean("fantome"); }
 			else if (!t.contains("avance")) avance = 1;
 			else if (Math.abs(t.getFloat("avance") - avance) > 0.5f) avance = t.getFloat("avance");

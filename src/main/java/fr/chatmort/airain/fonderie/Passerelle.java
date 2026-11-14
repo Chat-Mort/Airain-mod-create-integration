@@ -82,7 +82,7 @@ public final class Passerelle {
 
 	/** Ce qu'il y a sur un côté de passerelle. */
 	public enum Cote implements StringRepresentable {
-		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open"), VITRE("glass"), LIBRE("open"),
+		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open"), VITRE("glass"),
 		/** Rambarde dessinée à l'intérieur du bloc : côté cage du monte-charge ou segment mobile relevé (rien ne doit dépasser). */
 		INTERIEUR("inner");
 		private final String nom;
@@ -108,7 +108,8 @@ public final class Passerelle {
 		return c;
 	}
 	/** Clé de Create sur un côté : rambarde → rambarde vitrée → ouvert (définitivement) → rambarde. */
-	static Cote suivant(Cote c) { return c == Cote.RAMBARDE ? Cote.VITRE : (c == Cote.VITRE || c == Cote.INTERIEUR) ? Cote.LIBRE : Cote.RAMBARDE; }
+	// 1.55.3 : plus de côté « ouvert » à part (moins d'états de bloc) ; un côté vidé à la clé reprend sa rambarde si son voisin change
+	static Cote suivant(Cote c) { return c == Cote.RAMBARDE ? Cote.VITRE : (c == Cote.VITRE || c == Cote.INTERIEUR) ? Cote.AUCUN : Cote.RAMBARDE; }
 	/** Le bloc voisin (côté d) laisse-t-il la place à une rambarde extérieure ? (air, plante, ou une plaque accrochée à la rambarde) */
 	public static boolean libre(BlockGetter l, BlockPos p, Direction d) {
 		BlockState n = l.getBlockState(p.relative(d));
@@ -488,10 +489,14 @@ public final class Passerelle {
 		public Palier(WeatherState etat, Properties p) {
 			super(p); this.etat = etat;
 			registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH).setValue(A_GAUCHE, false).setValue(PLEIN, false)
-				.setValue(NORD, Cote.AUCUN).setValue(SUD, Cote.AUCUN).setValue(EST, Cote.AUCUN).setValue(OUEST, Cote.AUCUN));
+				.setValue(FOND, Cote.AUCUN).setValue(FLANC, Cote.AUCUN));
 		}
 		@Override public WeatherState etat() { return etat; }
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, A_GAUCHE, PLEIN, NORD, SUD, EST, OUEST); }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, A_GAUCHE, PLEIN, FOND, FLANC); }
+		// 1.55.3 : seulement ses deux côtés extérieurs (fond = vers FACING, flanc = à l'opposé de la sortie), au lieu des quatre
+		public static final EnumProperty<Cote> FOND = EnumProperty.create("back", Cote.class), FLANC = EnumProperty.create("side", Cote.class);
+		/** La propriété du côté d (dans le monde) ; seulement pour un côté extérieur. */
+		static EnumProperty<Cote> coteP(BlockState s, Direction d) { return d == s.getValue(FACING) ? FOND : FLANC; }
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
 		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
 
@@ -511,13 +516,13 @@ public final class Passerelle {
 		}
 		static BlockState cotes(BlockState s, BlockGetter l, BlockPos p) {
 			for (Direction d : Direction.Plane.HORIZONTAL)
-				if (exterieur(s, d)) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, d), libre(l, p, d), dedans(l, p, d)));
+				if (exterieur(s, d)) s = s.setValue(coteP(s, d), auto(Cote.AUCUN, raccorde(l, p, d), libre(l, p, d), dedans(l, p, d)));
 			return s;
 		}
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
 			if (d.getAxis().isHorizontal() && exterieur(s, d)) {
-				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, d), libre(l, p, d), dedans(l, p, d)));
+				s = s.setValue(coteP(s, d), auto(s.getValue(coteP(s, d)), raccorde(l, p, d), libre(l, p, d), dedans(l, p, d)));
 			}
 			return s;
 		}
@@ -530,7 +535,7 @@ public final class Passerelle {
 		protected void onRemove(BlockState s, Level l, BlockPos p, BlockState n, boolean deplace) {
 			if (!(n.getBlock() instanceof Palier)) {
 				for (Direction d : Direction.Plane.HORIZONTAL)
-					if (s.getValue(cote(d)) == Cote.PORTILLON || s.getValue(cote(d)) == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
+					if (exterieur(s, d) && s.getValue(coteP(s, d)) == Cote.PORTILLON || s.getValue(coteP(s, d)) == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
 			}
 			super.onRemove(s, l, p, n, deplace);
 			if (!(n.getBlock() instanceof Palier)) { Direction so = sortie(s); Plancher.recalculer(l, p.relative(so).above(), so.getOpposite()); }
@@ -540,10 +545,10 @@ public final class Passerelle {
 		protected ItemInteractionResult useItemOn(ItemStack st, BlockState s, Level l, BlockPos p, Player j, InteractionHand h, BlockHitResult hit) {
 			if (!st.is(Passerelles.PORTILLON.get())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			Direction d = coteVise(p, hit.getLocation());
-			Cote c = s.getValue(cote(d));
+			Cote c = s.getValue(coteP(s, d));
 			if (!exterieur(s, d) || c == Cote.PORTILLON || c == Cote.OUVERT) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			if (!l.isClientSide) {
-				l.setBlock(p, s.setValue(cote(d), Cote.PORTILLON), Block.UPDATE_ALL);
+				l.setBlock(p, s.setValue(coteP(s, d), Cote.PORTILLON), Block.UPDATE_ALL);
 				l.playSound(null, p, SoundEvents.COPPER_PLACE, SoundSource.BLOCKS, 1f, 1f);
 				if (!j.getAbilities().instabuild) st.shrink(1);
 			}
@@ -552,11 +557,12 @@ public final class Passerelle {
 		@Override
 		protected InteractionResult useWithoutItem(BlockState s, Level l, BlockPos p, Player j, BlockHitResult hit) {
 			Direction d = coteVise(p, hit.getLocation());
-			Cote c = s.getValue(cote(d));
+			if (!exterieur(s, d)) return InteractionResult.PASS;
+			Cote c = s.getValue(coteP(s, d));
 			if (c != Cote.PORTILLON && c != Cote.OUVERT) return InteractionResult.PASS;
 			if (!l.isClientSide) {
 				boolean ouvre = c == Cote.PORTILLON;
-				l.setBlock(p, s.setValue(cote(d), ouvre ? Cote.OUVERT : Cote.PORTILLON), Block.UPDATE_ALL);
+				l.setBlock(p, s.setValue(coteP(s, d), ouvre ? Cote.OUVERT : Cote.PORTILLON), Block.UPDATE_ALL);
 				l.playSound(null, p, ouvre ? SoundEvents.COPPER_TRAPDOOR_OPEN : SoundEvents.COPPER_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 1f, 1f);
 			}
 			return InteractionResult.sidedSuccess(l.isClientSide);
@@ -571,9 +577,9 @@ public final class Passerelle {
 			boolean sol = c.getClickedFace() == Direction.UP && bord > 0.2;
 			if (!l.isClientSide) {
 				if (!sol && exterieur(s, d)) {
-					Cote cc = s.getValue(cote(d));
+					Cote cc = s.getValue(coteP(s, d));
 					if (cc == Cote.PORTILLON || cc == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
-					l.setBlock(p, s.setValue(cote(d), (cc == Cote.PORTILLON || cc == Cote.OUVERT) ? Cote.RAMBARDE : suivant(cc)), Block.UPDATE_ALL);
+					l.setBlock(p, s.setValue(coteP(s, d), (cc == Cote.PORTILLON || cc == Cote.OUVERT) ? Cote.RAMBARDE : suivant(cc)), Block.UPDATE_ALL);
 					l.playSound(null, p, SoundEvents.COPPER_HIT, SoundSource.BLOCKS, 1f, 1f);
 				} else {
 					l.setBlock(p, s.setValue(PLEIN, !s.getValue(PLEIN)), Block.UPDATE_ALL);
@@ -594,7 +600,8 @@ public final class Passerelle {
 				v = Shapes.joinUnoptimized(v, tournerEsc(f, x0, b[1], b[2], x1, b[4], b[5]), BooleanOp.OR);
 			}
 			for (Direction d : Direction.Plane.HORIZONTAL) {
-				Cote c = s.getValue(cote(d));
+				if (!exterieur(s, d)) continue;
+				Cote c = s.getValue(coteP(s, d));
 				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, -2, 16, 24, 0), BooleanOp.OR);
 				if (c == Cote.INTERIEUR) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, 0, 16, 24, 2), BooleanOp.OR);
 			}
