@@ -99,6 +99,11 @@ public class AirainClient {
 		// mécanique impériale : volant de l'allégeur, pistons et manomètre du surcompresseur
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Mecanique.ALLEGEUR_BE.get(), fr.chatmort.airain.fonderie.MecaRendus.Allegeur::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Mecanique.SURCOMP_BE.get(), fr.chatmort.airain.fonderie.MecaRendus.Surcompresseur::new);
+		// 1.58 : téléphérique (gare, têtes de pylône : câbles ; nacelle) et laminoir
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.GARE_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.GareRendu::new);
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.TETE_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.TeteRendu::new);
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.LAMINOIR_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.LaminoirRendu::new);
+		event.registerEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.NACELLE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.NacelleRendu::new);
 		event.registerEntityRenderer(AirainMod.GARDIEN.get(), fr.chatmort.airain.gardien.GardienRenderer::new);
 		event.registerEntityRenderer(AirainMod.ASSISE.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
 		event.registerEntityRenderer(AirainMod.CAISSE.get(), fr.chatmort.airain.borne.CaisseRenderer::new);

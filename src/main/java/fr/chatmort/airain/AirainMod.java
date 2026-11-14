@@ -551,6 +551,8 @@ public class AirainMod {
 		// 1.55 : pose assistée dans l'hologramme du haut-fourneau (les deux côtés)
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeFourneau::clicBloc);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeFourneau::clicObjet);
+		// 1.58 : pas de descente de la nacelle en route
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Nacelle::descente);
 		// L'airain : le métal, le style impérial et le haut-fourneau (paquet fonderie)
 		fr.chatmort.airain.fonderie.MetalAirain.charger();
 		fr.chatmort.airain.fonderie.BlocsAirain.charger();
@@ -560,6 +562,7 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.MonteCharge.charger();   // monte-charge (treuil, mât, cabine, boîtier d'appel)
 		fr.chatmort.airain.fonderie.Mecanique.charger();     // mécanique impériale : allégeur et surcompresseur
 		fr.chatmort.airain.fonderie.Materiaux.charger();     // 1.57 : marbres veinés d'or, ardoise, carrelage
+		fr.chatmort.airain.fonderie.Telepherique.charger();  // 1.58 : téléphérique et laminoir
 		fr.chatmort.airain.atelier.Atelier.charger();        // pièces d'atelier : tuyauterie, lampes, réverbères, bornes…
 		fr.chatmort.airain.fonderie.MetalAirain.TYPES.register(bus);
 		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);
@@ -666,6 +669,9 @@ public class AirainMod {
 			BlockStressValues.IMPACTS.register(DESENCH.get(), () -> 8.0);
 			BlockStressValues.CAPACITIES.register(TURBINE_ECHO.get(), () -> 16.0);       // 64 tr/min × 16 = 1 024 de force
 			BlockStressValues.IMPACTS.register(SOURCELINK_MECA.get(), () -> 8.0);
+			// 1.58 : laminoir et gare de téléphérique
+			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Telepherique.LAMINOIR.get(), () -> 4.0);
+			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Telepherique.GARE.get(), () -> 6.0);
 		});
 	}
 
@@ -684,6 +690,8 @@ public class AirainMod {
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, TURBINE_ECHO_BE.get(), (be, side) -> side == be.getBlockState().getValue(fr.chatmort.airain.fusion.TurbineEchoBlock.FACING) ? null : be.reservoir);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, SOURCELINK_MECA_BE.get(), (be, side) -> side == be.getBlockState().getValue(fr.chatmort.airain.fusion.SourcelinkMecaBlock.FACING) ? null : be.reservoir);
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.automatisation);
+		// 1.58 : laminoir (lingots dedans, fil dehors)
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, fr.chatmort.airain.fonderie.Telepherique.LAMINOIR_BE.get(), (be, side) -> be.acces);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, DESENCH_BE.get(), (be, side) -> be.reservoir);
 	}
 

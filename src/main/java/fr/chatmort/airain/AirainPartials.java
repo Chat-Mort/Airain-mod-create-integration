@@ -27,6 +27,14 @@ public class AirainPartials {
 	public static final PartialModel[] PISTON = teintes("airain_supercharger/", "piston");
 	public static final PartialModel VOYANT_SURCOMP = bloc("airain_supercharger/lamp");
 
+	// téléphérique et laminoir (1.58) : poulie de la gare, nacelle (plateforme, bras, chariot), rouleaux du laminoir
+	public static final PartialModel POULIE = bloc("airain_cable_station/wheel");
+	public static final PartialModel PLATEFORME = bloc("airain_gondola/platform");
+	public static final PartialModel BRAS = bloc("airain_gondola/arm");
+	public static final PartialModel CHARIOT = bloc("airain_gondola/carriage");
+	public static final PartialModel ROULEAU_BAS = bloc("airain_rolling_mill/roller_low");
+	public static final PartialModel ROULEAU_HAUT = bloc("airain_rolling_mill/roller_high");
+
 	/** Une pièce animée par teinte de patine (neuf, terni, vieilli, rouge impérial). */
 	/** Repère posé sur le sol des pièces-mécanismes (charnière ou rails ; ancien carter) : [pont-levis ? 0 : 1][haute ? 1 : 0][teinte]. */
 	public static final PartialModel[][][] CARTER = {
