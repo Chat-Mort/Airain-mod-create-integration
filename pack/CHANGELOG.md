@@ -5,7 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 14 novembre 2026 — versions 1.56.0 et 1.56.1
+## 14 novembre 2026 — versions 1.56.0 à 1.56.2
+
+**Corrections (1.56.2)**
+- Lanterne d'airain : sa texture animée s'affiche correctement (flamme rouge visible), au lieu d'être écrasée.
+- Pont-levis et passerelle rétractable : plus de rambardes en travers du tablier relevé ou en mouvement ; seules les rambardes de bout restent, dans le mécanisme et dans le bloc d'en face.
+
+**Changements (1.56.2)**
+- Échelle d'airain : la crinoline et le tunnel arrêtent le joueur ; on n'en sort que par le haut ou par le bas.
+
 
 **Corrections (1.56.1)**
 - Rambardes : le poteau est désormais au début de chaque travée, plus dans la case voisine ; un poteau d'angle se pose seul quand deux côtés voisins ont une rambarde. Les rambardes ne dépassent plus dans les angles intérieurs, et ne scintillent plus là où elles se croisent.
