@@ -137,7 +137,7 @@ public final class Passerelle {
 	/** Hauteur du plancher d'une passerelle, d'un escalier ou d'une rampe, sur sa face d (en px), ou -1 si rien ne s'y raccorde. */
 	static int niveauFace(BlockState s, Direction d) {
 		if (s.getBlock() instanceof Plancher) return s.getValue(RENTRE) ? -1 : s.getValue(HAUT) ? 11 : 3;
-		if (s.getBlock() instanceof MonteCharge.Cabine) return d == s.getValue(FACING) ? 3 : -1;     // cabine arrêtée : son portail donne sur le palier
+		if (s.getBlock() instanceof MonteCharge.Cabine) return d == s.getValue(FACING) && !s.getValue(HAUT) ? 3 : -1;     // cabine arrêtée : son portail (en bas) donne sur le palier
 		if (s.getBlock() instanceof Escalier) { Direction f = s.getValue(FACING); return d == f.getOpposite() ? 3 : d == f ? 19 : -1; }
 		if (s.getBlock() instanceof Rampe) {
 			Direction f = s.getValue(FACING); int bas = s.getValue(HAUT) ? 11 : 3;

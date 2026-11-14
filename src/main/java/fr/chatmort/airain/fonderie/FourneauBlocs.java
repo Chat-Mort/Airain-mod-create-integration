@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
-/** Les blocs du haut-fourneau impérial (structure de 3 × 3 × 4, voir HautFourneauBlockEntity). */
+/** Les blocs du haut-fourneau impérial (creuset 5 × 5, cuve 3 × 3, 5 de haut : voir HautFourneauBlockEntity). */
 public final class FourneauBlocs {
 	private FourneauBlocs() {}
 
@@ -80,6 +80,8 @@ public final class FourneauBlocs {
 		@Override
 		protected InteractionResult useWithoutItem(BlockState s, Level l, BlockPos p, Player j, BlockHitResult h) {
 			if (!l.isClientSide && l.getBlockEntity(p) instanceof HautFourneauBlockEntity be) be.clic(j);
+			// côté client : on allume / éteint aussi l'hologramme (le serveur fait de même dans clic)
+			if (l.isClientSide && l.getBlockEntity(p) instanceof HautFourneauBlockEntity be && !be.forme()) HologrammeFourneau.basculer(j, p, true);
 			return InteractionResult.sidedSuccess(l.isClientSide);
 		}
 		@Override

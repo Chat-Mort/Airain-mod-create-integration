@@ -548,6 +548,9 @@ public class AirainMod {
 		// Glyphe de l'engrenage : Ars Nouveau crée lui-même l'objet du glyphe (airain:glyph_gear)
 		com.hollingsworth.arsnouveau.api.registry.GlyphRegistry.registerSpell(fr.chatmort.airain.fusion.GlypheEngrenage.INSTANCE);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fusion.GlypheEngrenage::tickMonde);
+		// 1.55 : pose assistée dans l'hologramme du haut-fourneau (les deux côtés)
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeFourneau::clicBloc);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeFourneau::clicObjet);
 		// L'airain : le métal, le style impérial et le haut-fourneau (paquet fonderie)
 		fr.chatmort.airain.fonderie.MetalAirain.charger();
 		fr.chatmort.airain.fonderie.BlocsAirain.charger();

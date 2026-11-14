@@ -61,8 +61,9 @@ import java.util.List;
  * Le monte-charge d'airain : un treuil (rotation de Create) au pied d'un mât à crémaillère (jusqu'à 32 blocs), une cabine
  * qui monte et descend contre le mât. Chaque passerelle basse posée en face du mât (de l'autre côté de la cabine) est un
  * étage ; le pied du mât est le rez-de-chaussée. Les paliers gardent leur rambarde tant que la cabine n'y est pas arrêtée.
- * Dans la cabine : clic droit = étage du dessus, accroupi = étage du dessous ; clic droit maintenu sur le panneau du
- * boîtier = tableau de Create pour choisir l'étage. Boîtier d'appel : fait venir la cabine à son étage.
+ * La cabine fait deux blocs de haut, fermée sauf le portail (un bloc de haut, côté passerelles). Dans la cabine : clic
+ * droit = étage du dessus, accroupi = étage du dessous ; clic droit maintenu sur le panneau du boîtier (en haut, côté mât)
+ * = tableau de Create pour choisir l'étage. Boîtier d'appel : fait venir la cabine à son étage.
  */
 public final class MonteCharge {
 	private MonteCharge() {}
@@ -158,12 +159,13 @@ public final class MonteCharge {
 			if (getSpeed() == 0) { if (qui != null) qui.displayClientMessage(Component.translatable("airain.ascenseur.immobile").withStyle(ChatFormatting.RED), true); return; }
 			int a = Math.round(pos), d = o > a ? 1 : -1;
 			for (int y = a + d; y != o + d; y += d) {
-				BlockState s = level.getBlockState(colonne(y));
-				if (!s.isAir() && !(s.getBlock() instanceof Cabine)) { if (qui != null) qui.displayClientMessage(Component.translatable("airain.ascenseur.bloque").withStyle(ChatFormatting.RED), true); return; }
+				// 1.55 : la cabine fait deux blocs de haut, on vérifie aussi le bloc du dessus
+				BlockState s = level.getBlockState(colonne(y)), s2 = level.getBlockState(colonne(y + 1));
+				if ((!s.isAir() && !(s.getBlock() instanceof Cabine)) || (!s2.isAir() && !(s2.getBlock() instanceof Cabine))) { if (qui != null) qui.displayClientMessage(Component.translatable("airain.ascenseur.bloque").withStyle(ChatFormatting.RED), true); return; }
 			}
 			cible = o;
 			BlockPos c = colonne(a);
-			if (level.getBlockState(c).getBlock() instanceof Cabine) level.setBlock(c, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+			retirerCabine(c);
 			mouvement = true;
 			level.playSound(null, c, SoundEvents.IRON_DOOR_CLOSE, SoundSource.BLOCKS, 0.7f, 0.7f);
 			sendData();
@@ -171,16 +173,23 @@ public final class MonteCharge {
 		public void monter(Player qui) { int i = etages.indexOf(Math.round(pos)); if (i >= 0 && i + 1 < etages.size()) allerA(etages.get(i + 1), qui); }
 		public void descendre(Player qui) { int i = etages.indexOf(Math.round(pos)); if (i > 0) allerA(etages.get(i - 1), qui); }
 
+		/** Pose la cabine (bas + haut) à l'arrêt ; le boîtier du sélecteur est dans le haut. */
 		private void poserCabine() {
 			BlockPos c = colonne(Math.round(pos));
-			if (!level.getBlockState(c).isAir() && !(level.getBlockState(c).getBlock() instanceof Cabine)) return;
-			level.setBlock(c, CABINE.get().defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, face), Block.UPDATE_ALL);
-			if (level.getBlockEntity(c) instanceof CabineBlockEntity cb) cb.configurer(worldPosition, etages.size(), etageCourant());
+			for (BlockPos q : new BlockPos[]{c, c.above()})
+				if (!level.getBlockState(q).isAir() && !(level.getBlockState(q).getBlock() instanceof Cabine)) return;
+			BlockState b = CABINE.get().defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, face);
+			level.setBlock(c, b.setValue(Passerelle.HAUT, false), Block.UPDATE_ALL);
+			level.setBlock(c.above(), b.setValue(Passerelle.HAUT, true), Block.UPDATE_ALL);
+			if (level.getBlockEntity(c.above()) instanceof CabineBlockEntity cb) cb.configurer(worldPosition, etages.size(), etageCourant());
+		}
+		private void retirerCabine(BlockPos c) {
+			for (BlockPos q : new BlockPos[]{c.above(), c})
+				if (level.getBlockState(q).getBlock() instanceof Cabine) level.setBlock(q, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
 		}
 		void demonter() {
 			if (level == null || level.isClientSide) return;
-			BlockPos c = colonne(Math.round(pos));
-			if (level.getBlockState(c).getBlock() instanceof Cabine) level.removeBlock(c, false);
+			retirerCabine(colonne(Math.round(pos)));
 		}
 
 		@Override
@@ -193,9 +202,9 @@ public final class MonteCharge {
 				int h = lire();
 				if (h > 0) {
 					if (pos > h) pos = posAvant = 1;
-					BlockState ici = level.getBlockState(colonne(Math.round(pos)));
-					if (!(ici.getBlock() instanceof Cabine)) poserCabine();
-					else if (n != etages.size() && level.getBlockEntity(colonne(Math.round(pos))) instanceof CabineBlockEntity cb) cb.configurer(worldPosition, etages.size(), etageCourant());
+					BlockState ici = level.getBlockState(colonne(Math.round(pos))), dessus = level.getBlockState(colonne(Math.round(pos) + 1));
+					if (!(ici.getBlock() instanceof Cabine) || !(dessus.getBlock() instanceof Cabine)) poserCabine();
+					else if (n != etages.size() && level.getBlockEntity(colonne(Math.round(pos) + 1)) instanceof CabineBlockEntity cb) cb.configurer(worldPosition, etages.size(), etageCourant());
 				}
 			}
 			posAvant = pos;
@@ -256,23 +265,29 @@ public final class MonteCharge {
 
 	// ====================================================================== la cabine (posée par le treuil à l'arrêt ; FACING : son portail)
 	public static class Cabine extends Block implements EntityBlock {
-		private static final java.util.Map<Direction, VoxelShape> FORMES = new java.util.EnumMap<>(Direction.class);
+		private static final java.util.Map<Direction, VoxelShape> FORMES = new java.util.EnumMap<>(Direction.class), FORMES_HAUT = new java.util.EnumMap<>(Direction.class);
 		static {
-			for (Direction d : Direction.Plane.HORIZONTAL)
+			for (Direction d : Direction.Plane.HORIZONTAL) {
 				FORMES.put(d, Shapes.or(Block.box(0, 1, 0, 16, 3, 16), ConduitAir.boiteVers(d, 0, 3, 0, 1, 16, 16), ConduitAir.boiteVers(d, 15, 3, 0, 16, 16, 16), ConduitAir.boiteVers(d, 0, 3, 15, 16, 16, 16)));
+				// 1.55 : le haut est fermé des quatre côtés (le toit n'a pas de collision : on y tient debout)
+				FORMES_HAUT.put(d, Shapes.or(ConduitAir.boiteVers(d, 0, 0, 0, 1, 16, 16), ConduitAir.boiteVers(d, 15, 0, 0, 16, 16, 16), ConduitAir.boiteVers(d, 0, 0, 15, 16, 16, 16), ConduitAir.boiteVers(d, 0, 0, 0, 16, 16, 1)));
+			}
 		}
-		public Cabine(Properties p) { super(p); registerDefaultState(defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH)); }
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(BlockStateProperties.HORIZONTAL_FACING); }
-		@Override protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return FORMES.get(s.getValue(BlockStateProperties.HORIZONTAL_FACING)); }
+		public Cabine(Properties p) { super(p); registerDefaultState(defaultBlockState().setValue(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH).setValue(Passerelle.HAUT, false)); }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(BlockStateProperties.HORIZONTAL_FACING, Passerelle.HAUT); }
+		@Override protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
+			return (s.getValue(Passerelle.HAUT) ? FORMES_HAUT : FORMES).get(s.getValue(BlockStateProperties.HORIZONTAL_FACING));
+		}
 		// ailleurs que sur le panneau : clic droit = étage du dessus, accroupi = étage du dessous
 		@Override
 		protected InteractionResult useWithoutItem(BlockState s, Level l, BlockPos p, Player j, BlockHitResult h) {
-			if (!l.isClientSide && l.getBlockEntity(p) instanceof CabineBlockEntity cb && cb.treuil() != null) {
+			BlockPos haut = s.getValue(Passerelle.HAUT) ? p : p.above();      // le boîtier est dans le haut
+			if (!l.isClientSide && l.getBlockEntity(haut) instanceof CabineBlockEntity cb && cb.treuil() != null) {
 				if (j.isShiftKeyDown()) cb.treuil().descendre(j); else cb.treuil().monter(j);
 			}
 			return InteractionResult.sidedSuccess(l.isClientSide);
 		}
-		@Override public BlockEntity newBlockEntity(BlockPos p, BlockState s) { return new CabineBlockEntity(CABINE_BE.get(), p, s); }
+		@Override public BlockEntity newBlockEntity(BlockPos p, BlockState s) { return s.getValue(Passerelle.HAUT) ? new CabineBlockEntity(CABINE_BE.get(), p, s) : null; }
 		@Override
 		public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s, BlockEntityType<T> t) {
 			return t == CABINE_BE.get() ? (lv, p, st, be) -> ((CabineBlockEntity) be).tick() : null;
@@ -331,15 +346,15 @@ public final class MonteCharge {
 			}
 		}
 	}
-	/** Position du panneau : sur le boîtier, côté intérieur de la rambarde droite de la cabine. */
+	/** Position du panneau (1.55) : sur le boîtier du haut de la cabine, contre la paroi côté mât, tourné vers le portail. */
 	static class Panneau extends ValueBoxTransform {
 		@Override
 		public Vec3 getLocalOffset(LevelAccessor l, BlockPos p, BlockState s) {
-			return tourne(s.getValue(BlockStateProperties.HORIZONTAL_FACING), 12.9 / 16, 9.5 / 16, 4.5 / 16);
+			return tourne(s.getValue(BlockStateProperties.HORIZONTAL_FACING), 8 / 16.0, 5 / 16.0, 13.9 / 16);
 		}
 		@Override
 		public void rotate(LevelAccessor l, BlockPos p, BlockState s, PoseStack ms) {
-			Direction cote = tourne(s.getValue(BlockStateProperties.HORIZONTAL_FACING), Direction.WEST);
+			Direction cote = tourne(s.getValue(BlockStateProperties.HORIZONTAL_FACING), Direction.NORTH);
 			TransformStack.of(ms).rotateYDegrees(AngleHelper.horizontalAngle(cote) + 180);
 		}
 	}
@@ -391,7 +406,8 @@ public final class MonteCharge {
 	}
 	public static final DeferredBlock<Treuil> TREUIL = AirainMod.BLOCKS.register("airain_lift_winch", () -> new Treuil(airain()));
 	public static final DeferredBlock<Mat> MAT = AirainMod.BLOCKS.register("airain_lift_mast", () -> new Mat(airain()));
-	public static final DeferredBlock<Cabine> CABINE = AirainMod.BLOCKS.register("airain_lift_cabin", () -> new Cabine(airain().strength(-1f, 3600000f).noLootTable()));
+	public static final DeferredBlock<Cabine> CABINE = AirainMod.BLOCKS.register("airain_lift_cabin", () -> new Cabine(airain().strength(-1f, 3600000f).noLootTable()
+		.lightLevel(s -> s.getValue(Passerelle.HAUT) ? 10 : 0)));      // plafonnier dans le haut
 	public static final DeferredBlock<Appel> APPEL = AirainMod.BLOCKS.register("airain_lift_call_box", () -> new Appel(airain().noCollission().strength(1.5f, 6f)));
 	static {
 		AirainMod.ITEMS.register("airain_lift_winch", () -> new BlockItem(TREUIL.get(), new Item.Properties()));

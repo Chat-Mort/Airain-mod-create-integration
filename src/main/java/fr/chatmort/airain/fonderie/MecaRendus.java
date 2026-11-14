@@ -95,6 +95,8 @@ public final class MecaRendus {
 			BlockPos q = be.getBlockPos().above(Math.round(y)).relative(f);
 			int l = LevelRenderer.getLightColor(be.getLevel(), q);
 			bloc(cab, ms, buf, l);
+			// 1.55 : le haut de la cabine, un bloc au-dessus
+			ms.pushPose(); ms.translate(0, 1, 0); bloc(cab.setValue(Passerelle.HAUT, true), ms, buf, l); ms.popPose();
 			// portail fermé pendant le trajet (dessiné face au nord, tourné comme la cabine)
 			int r = switch (f) { case EAST -> 90; case SOUTH -> 180; case WEST -> 270; default -> 0; };
 			ms.translate(0.5, 0, 0.5); ms.mulPose(Axis.YP.rotationDegrees(-r)); ms.translate(-0.5, 0, -0.5);

@@ -1,18 +1,33 @@
 {
  "variants": {
-  "facing=north": {
+  "facing=north,top=false": {
    "model": "airain:block/airain_lift_cabin"
   },
-  "facing=east": {
+  "facing=north,top=true": {
+   "model": "airain:block/airain_lift_cabin_top"
+  },
+  "facing=east,top=false": {
    "model": "airain:block/airain_lift_cabin",
    "y": 90
   },
-  "facing=south": {
+  "facing=east,top=true": {
+   "model": "airain:block/airain_lift_cabin_top",
+   "y": 90
+  },
+  "facing=south,top=false": {
    "model": "airain:block/airain_lift_cabin",
    "y": 180
   },
-  "facing=west": {
+  "facing=south,top=true": {
+   "model": "airain:block/airain_lift_cabin_top",
+   "y": 180
+  },
+  "facing=west,top=false": {
    "model": "airain:block/airain_lift_cabin",
+   "y": 270
+  },
+  "facing=west,top=true": {
+   "model": "airain:block/airain_lift_cabin_top",
    "y": 270
   }
  }

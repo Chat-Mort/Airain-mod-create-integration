@@ -30,6 +30,8 @@ public class AirainClient {
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, fr.chatmort.airain.armure.TourbillonClient::avant);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.TourbillonClient::apres);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::champ);
+		// 1.55 : hologramme du haut-fourneau
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeRendu::rendu);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
 			{ e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE, fr.chatmort.airain.gardien.CouronneModele::creer);
 			  e.registerLayerDefinition(fr.chatmort.airain.gardien.CouronneModele.COUCHE_CASQUE, fr.chatmort.airain.gardien.CouronneModele::creerCasque);

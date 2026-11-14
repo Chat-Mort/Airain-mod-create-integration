@@ -68,80 +68,112 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 
 	private boolean forme, change;
 	private HeatLevel chaleur = HeatLevel.NONE;
-	private int air, progres, montrer;
-	private BlockPos tuyere;
+	private int air, souffle, progres;
 	private final List<BlockPos> manquants = new ArrayList<>();
 	private final List<String> raisons = new ArrayList<>();
 
 	public HautFourneauBlockEntity(BlockPos p, BlockState s) { super(Fourneau.BE.get(), p, s); }
 
-	// ------------------------------------------------------------------ géométrie
-	private Direction avant() { return getBlockState().getValue(FourneauBlocs.FACING); }
-	/** Position locale : lx de -1 à 1 (gauche → droite vu de face), ly de 0 à 3, lz de 0 (avant) à 2 (arrière). */
-	private BlockPos local(int lx, int ly, int lz) {
-		Direction a = avant();
-		return worldPosition.relative(a.getCounterClockWise(), lx).above(ly).relative(a.getOpposite(), lz);
+	// ------------------------------------------------------------------ géométrie (1.55 : creuset 5 × 5 à coins coupés, cuve 3 × 3, gueulard)
+	/** Ce qu'attend une case du plan. TUYERE : une des trois places de tuyère (une brique y est acceptée aussi). */
+	public enum Attendu { TROU, BRIQUE, TUYERE, GRILLE, VIDE, GUEULARD }
+	/** Une case du plan, en coordonnées locales (lx -2..2 gauche → droite vu de face, ly 0..4, lz 0 avant → 4 arrière). */
+	public record Case(int lx, int ly, int lz, Attendu quoi) {}
+	public static final List<Case> PLAN = new ArrayList<>();
+	/** Emprise d'une couche : le creuset (couches 0 et 1) ou la cuve (couches 2 à 4). */
+	public static boolean dansEmprise(int lx, int ly, int lz) {
+		if (ly <= 1) return Math.abs(lx) <= 2 && lz >= 0 && lz <= 4 && !(Math.abs(lx) == 2 && (lz == 0 || lz == 4));
+		return Math.abs(lx) <= 1 && lz >= 1 && lz <= 3;
 	}
-	public BlockPos centre(int ly) { return local(0, ly, 1); }
+	static {
+		for (int ly = 0; ly < 5; ly++)
+			for (int lx = -2; lx <= 2; lx++)
+				for (int lz = 0; lz <= 4; lz++) {
+					if (!dansEmprise(lx, ly, lz)) continue;
+					boolean interieur = Math.abs(lx) <= 1 && lz >= 1 && lz <= 3;
+					Attendu a = Attendu.BRIQUE;
+					if (ly == 0 && lx == 0 && lz == 0) a = Attendu.TROU;
+					else if (ly == 0 && lx == 0 && lz == 2) a = Attendu.GRILLE;
+					else if (ly == 1 && interieur) a = Attendu.VIDE;
+					else if (ly == 1 && ((Math.abs(lx) == 2 && lz == 2) || (lx == 0 && lz == 4))) a = Attendu.TUYERE;
+					else if ((ly == 2 || ly == 3) && lx == 0 && lz == 2) a = Attendu.VIDE;
+					else if (ly == 4 && lx == 0 && lz == 2) a = Attendu.GUEULARD;
+					PLAN.add(new Case(lx, ly, lz, a));
+				}
+	}
+	public Direction avant() { return getBlockState().getValue(FourneauBlocs.FACING); }
+	public BlockPos local(int lx, int ly, int lz) { return local(worldPosition, avant(), lx, ly, lz); }
+	public static BlockPos local(BlockPos trou, Direction a, int lx, int ly, int lz) {
+		return trou.relative(a.getCounterClockWise(), lx).above(ly).relative(a.getOpposite(), lz);
+	}
+	public BlockPos centre(int ly) { return local(0, ly, 2); }
+	/** Côtés extérieurs (dans le monde) d'une case : ceux qui donnent hors de l'emprise de sa couche. */
+	public static List<Direction> dehors(Direction a, int lx, int ly, int lz) {
+		List<Direction> r = new ArrayList<>();
+		if (!dansEmprise(lx + 1, ly, lz)) r.add(a.getCounterClockWise());
+		if (!dansEmprise(lx - 1, ly, lz)) r.add(a.getClockWise());
+		if (!dansEmprise(lx, ly, lz - 1)) r.add(a);
+		if (!dansEmprise(lx, ly, lz + 1)) r.add(a.getOpposite());
+		return r;
+	}
+	public static boolean estGrille(BlockState s) { return s.is(TagKey.create(net.minecraft.core.registries.Registries.BLOCK, ResourceLocation.parse("airain:airain_grates"))); }
+	/** La case est-elle conforme ? (une place de tuyère accepte une brique) */
+	public static boolean conforme(Attendu a, BlockState s) {
+		return switch (a) {
+			case TROU -> true;
+			case BRIQUE -> s.is(Fourneau.BRIQUES.get());
+			case TUYERE -> s.is(Fourneau.TUYERE.get()) || s.is(Fourneau.BRIQUES.get());
+			case GRILLE -> estGrille(s);
+			case VIDE -> s.isAir();
+			case GUEULARD -> s.is(Fourneau.GUEULARD.get());
+		};
+	}
 
 	// ------------------------------------------------------------------ vérification de la structure
+	private final List<BlockPos> tuyeres = new ArrayList<>();
 	private boolean verifier() {
-		manquants.clear(); raisons.clear(); tuyere = null;
-		int tuyeres = 0;
-		for (int ly = 0; ly < 4; ly++)
-			for (int lx = -1; lx <= 1; lx++)
-				for (int lz = 0; lz <= 2; lz++) {
-					if (lx == 0 && lz == 0 && ly == 0) continue;                   // le trou de coulée lui-même
-					BlockPos p = local(lx, ly, lz);
-					BlockState s = level.getBlockState(p);
-					if (lx == 0 && lz == 1) {                                       // la colonne centrale
-						if (ly == 0 && !s.is(net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.BLOCK, ResourceLocation.parse("airain:airain_grates")))) manque(p, "grate");
-						if ((ly == 1 || ly == 2) && !s.isAir()) manque(p, "hollow");
-						if (ly == 3 && !s.is(Fourneau.GUEULARD.get())) manque(p, "hopper");
-						continue;
-					}
-					boolean milieu = (lx == 0) != (lz == 1) && !(lx == 0 && lz == 0);   // milieu d'un côté (pas l'avant)
-					if (s.is(Fourneau.TUYERE.get()) && milieu && (ly == 1 || ly == 2)) { tuyeres++; tuyere = p; continue; }
-					if (!s.is(Fourneau.BRIQUES.get())) manque(p, "bricks");
-				}
-		if (tuyeres == 0) raisons.add("tuyere");
-		if (tuyeres > 1) raisons.add("tuyeres");
-		return manquants.isEmpty() && tuyeres == 1;
+		manquants.clear(); raisons.clear(); tuyeres.clear();
+		for (Case c : PLAN) {
+			BlockPos p = local(c.lx(), c.ly(), c.lz());
+			BlockState s = level.getBlockState(p);
+			if (c.quoi() == Attendu.TUYERE && s.is(Fourneau.TUYERE.get())) tuyeres.add(p);
+			if (!conforme(c.quoi(), s)) manque(p, switch (c.quoi()) {
+				case GRILLE -> "grate"; case VIDE -> "hollow"; case GUEULARD -> "hopper"; default -> "bricks"; });
+		}
+		if (tuyeres.isEmpty()) raisons.add("tuyere");
+		return manquants.isEmpty() && !tuyeres.isEmpty();
 	}
 	private void manque(BlockPos p, String quoi) { manquants.add(p); if (!raisons.contains(quoi)) raisons.add(quoi); }
 
 	/** Habillage des briques une fois le fourneau monté (ou rendu nu s'il est démonté). */
 	private void habiller(boolean monte) {
 		Direction a = avant();
-		for (int ly = 0; ly < 4; ly++)
-			for (int lx = -1; lx <= 1; lx++)
-				for (int lz = 0; lz <= 2; lz++) {
-					BlockPos p = local(lx, ly, lz);
-					BlockState s = level.getBlockState(p);
-					if (s.is(Fourneau.BRIQUES.get())) {
-						boolean coin = lx != 0 && lz != 1;
-						Partie part = Partie.AUCUNE; Direction d = Direction.NORTH;
-						if (monte) {
-							part = ly == 0 ? (coin ? Partie.SOCLE_COIN : Partie.SOCLE) : ly == 3 ? (coin ? Partie.COURONNE_COIN : Partie.COURONNE) : (coin ? Partie.CORPS_COIN : Partie.CORPS);
-							if (ly == 2 && lx == 0 && lz == 0) { part = Partie.BLASON; d = a; }
-							if (coin) d = orientationCoin(lx, lz);
-						}
-						BlockState n = s.setValue(FourneauBlocs.PARTIE, part).setValue(FourneauBlocs.FACING, d);
-						if (n != s) level.setBlock(p, n, Block.UPDATE_CLIENTS);
-					}
-					if (monte && s.is(Fourneau.TUYERE.get())) {                // la buse se tourne vers l'extérieur
-						Direction dehors = lz == 1 ? (lx > 0 ? a.getCounterClockWise() : a.getClockWise()) : a.getOpposite();   // lx > 0 : côté anti-horaire (voir local)
-						if (s.getValue(FourneauBlocs.FACING) != dehors) level.setBlock(p, s.setValue(FourneauBlocs.FACING, dehors), Block.UPDATE_CLIENTS);
-					}
+		for (Case c : PLAN) {
+			BlockPos p = local(c.lx(), c.ly(), c.lz());
+			BlockState s = level.getBlockState(p);
+			List<Direction> ext = dehors(a, c.lx(), c.ly(), c.lz());
+			if (s.is(Fourneau.BRIQUES.get())) {
+				Partie part = Partie.AUCUNE; Direction d = Direction.NORTH;
+				if (monte && !ext.isEmpty()) {
+					boolean coin = ext.size() == 2 && ext.get(0).getAxis() != ext.get(1).getAxis();
+					// creuset : socle puis corniche (l'épaulement) ; cuve : ceinture rivetée, corps (blason devant), couronne
+					Partie droit = switch (c.ly()) { case 0, 2 -> Partie.SOCLE; case 3 -> Partie.CORPS; default -> Partie.COURONNE; };
+					Partie angle = switch (c.ly()) { case 0, 2 -> Partie.SOCLE_COIN; case 3 -> Partie.CORPS_COIN; default -> Partie.COURONNE_COIN; };
+					part = coin ? angle : droit;
+					if (coin) d = orientationCoin(ext.get(0), ext.get(1));
+					if (c.ly() == 3 && c.lx() == 0 && c.lz() == 1) { part = Partie.BLASON; d = a; }
 				}
+				BlockState n = s.setValue(FourneauBlocs.PARTIE, part).setValue(FourneauBlocs.FACING, d);
+				if (n != s) level.setBlock(p, n, Block.UPDATE_CLIENTS);
+			}
+			if (monte && s.is(Fourneau.TUYERE.get()) && ext.size() == 1 && s.getValue(FourneauBlocs.FACING) != ext.get(0))   // la buse se tourne vers l'extérieur
+				level.setBlock(p, s.setValue(FourneauBlocs.FACING, ext.get(0)), Block.UPDATE_CLIENTS);
+		}
 	}
-	/** Les modèles de coin sont dessinés pour le coin nord-ouest, puis tournés : on choisit la rotation selon le coin réel. */
-	private Direction orientationCoin(int lx, int lz) {
-		Direction a = avant();
-		Direction cote = lx > 0 ? a.getCounterClockWise() : a.getClockWise();     // face latérale extérieure (lx > 0 : côté anti-horaire)
-		Direction fond = lz == 0 ? a : a.getOpposite();                           // face avant ou arrière
-		boolean n = cote == Direction.NORTH || fond == Direction.NORTH, s = cote == Direction.SOUTH || fond == Direction.SOUTH;
-		boolean o = cote == Direction.WEST || fond == Direction.WEST;
+	/** Les modèles de coin sont dessinés pour le coin nord-ouest, puis tournés : on choisit la rotation selon les deux côtés extérieurs. */
+	private static Direction orientationCoin(Direction x, Direction y) {
+		boolean n = x == Direction.NORTH || y == Direction.NORTH, s = x == Direction.SOUTH || y == Direction.SOUTH;
+		boolean o = x == Direction.WEST || y == Direction.WEST;
 		if (n) return o ? Direction.NORTH : Direction.EAST;   // NO : 0°, NE : 90°
 		if (s) return o ? Direction.WEST : Direction.SOUTH;   // SO : 270°, SE : 180°
 		return Direction.NORTH;
@@ -154,21 +186,23 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 			boolean f = verifier();
 			if (f != forme) { forme = f; habiller(f); change = true; if (!f) allumer(false); }
 			chaleur = forme ? BlazeBurnerBlock.getHeatLevelOf(level.getBlockState(centre(0).below())) : HeatLevel.NONE;
-			air = 0;
-			if (forme && tuyere != null) {
-				BlockPos ventilo = tuyere.relative(level.getBlockState(tuyere).getValue(FourneauBlocs.FACING));
+			// 1.55 : jusqu'à trois tuyères ; chaque ventilateur ajoute son débit
+			air = 0; souffle = 0;
+			if (forme) for (BlockPos t : tuyeres) {
+				BlockPos ventilo = t.relative(level.getBlockState(t).getValue(FourneauBlocs.FACING));
 				if (level.getBlockEntity(ventilo) instanceof KineticBlockEntity k
-					&& BuiltInRegistries.BLOCK.getKey(level.getBlockState(ventilo).getBlock()).toString().equals("create:encased_fan"))
-					air = (int) Math.abs(k.getSpeed());
+					&& BuiltInRegistries.BLOCK.getKey(level.getBlockState(ventilo).getBlock()).toString().equals("create:encased_fan")) {
+					int v = (int) Math.abs(k.getSpeed());
+					if (v > 0) { air += v; souffle += Math.max(1, Math.min(8, v / 32)); }
+				}
 			}
 		}
-		if (montrer > 0) { montrer--; if (montrer % 10 == 0) montrerManquants(); }
 		boolean marche = false;
 		if (forme && air > 0 && chaleur.isAtLeast(HeatLevel.KINDLED)) {
 			Recette r = recette();
 			if (r != null && cuve.getSpace() >= r.mb) {
 				marche = true;
-				progres += Math.max(1, Math.min(8, air / 32));            // 32 tr/min : 1 par tick ; 256 tr/min : 8 par tick
+				progres += souffle;            // par ventilateur : 32 tr/min = 1 par tick, 256 tr/min = 8 par tick
 				if (progres >= TRAVAIL) { progres = 0; produire(r); }
 			}
 		}
@@ -182,14 +216,14 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	private void allumer(boolean oui) {
 		BlockState s = getBlockState();
 		if (s.getValue(FourneauBlocs.LIT) != oui) level.setBlock(worldPosition, s.setValue(FourneauBlocs.LIT, oui), Block.UPDATE_ALL);
-		BlockPos g = centre(3); BlockState gs = level.getBlockState(g);
+		BlockPos g = centre(4); BlockState gs = level.getBlockState(g);
 		if (gs.is(Fourneau.GUEULARD.get()) && gs.getValue(FourneauBlocs.LIT) != oui) level.setBlock(g, gs.setValue(FourneauBlocs.LIT, oui), Block.UPDATE_ALL);
 	}
 
 	void tickClient() {
 		if (level == null || !getBlockState().getValue(FourneauBlocs.LIT)) return;
 		var r = level.random;
-		BlockPos g = centre(3);
+		BlockPos g = centre(4);
 		if (r.nextInt(3) == 0) level.addParticle(ParticleTypes.LARGE_SMOKE, g.getX() + 0.3 + r.nextDouble() * 0.4, g.getY() + 1.4, g.getZ() + 0.3 + r.nextDouble() * 0.4, 0, 0.07, 0);
 		if (r.nextInt(4) == 0) level.addParticle(ParticleTypes.LAVA, g.getX() + 0.5, g.getY() + 1.2, g.getZ() + 0.5, 0, 0, 0);
 		if (r.nextInt(6) == 0) {                                             // gouttes de métal dans la rigole
@@ -242,13 +276,12 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	}
 
 	// ------------------------------------------------------------------ interactions
-	/** Clic droit à main nue sur le trou de coulée : état du fourneau, ou ce qui manque (montré en particules). */
+	/** Clic droit à main nue sur le trou de coulée : état du fourneau, ou hologramme des blocs manquants (allumé / éteint). */
 	void clic(Player j) {
-		boolean f = verifier();
-		if (!f) {
-			j.displayClientMessage(Component.translatable("airain.fourneau.incomplet").withStyle(ChatFormatting.GOLD), false);
-			for (String r : raisons) j.displayClientMessage(Component.literal(" • ").append(Component.translatable("airain.fourneau.manque." + r)), false);
-			montrer = 120;
+		if (!verifier()) {
+			boolean allume = HologrammeFourneau.basculer(j, worldPosition, false);
+			j.displayClientMessage(allume ? Component.translatable("airain.fourneau.hologramme", manquants.size() + (tuyeres.isEmpty() ? 1 : 0)).withStyle(ChatFormatting.GOLD)
+				: Component.translatable("airain.fourneau.hologramme_off").withStyle(ChatFormatting.GRAY), true);
 			return;
 		}
 		j.displayClientMessage(etat(), true);
@@ -257,18 +290,13 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 		String c = chaleur == HeatLevel.SEETHING ? "surchauffe" : chaleur.isAtLeast(HeatLevel.KINDLED) ? "chaud" : "froid";
 		return Component.translatable("airain.fourneau.etat", Component.translatable("airain.fourneau.chaleur." + c), air, cuve.getFluidAmount() / LINGOT);
 	}
-	private void montrerManquants() {
-		if (!(level instanceof ServerLevel sl)) return;
-		var poussiere = new DustParticleOptions(new Vector3f(1f, 0.35f, 0.1f), 1.2f);
-		for (BlockPos p : manquants) sl.sendParticles(poussiere, p.getX() + 0.5, p.getY() + 0.5, p.getZ() + 0.5, 6, 0.3, 0.3, 0.3, 0);
-	}
 	/** Le trou de coulée est cassé : les briques redeviennent nues, le métal et la charge tombent. */
 	void demonter() {
 		if (level == null || level.isClientSide) return;
 		if (forme) habiller(false);
 		for (int i = 0; i < charge.getSlots(); i++) Block.popResource(level, worldPosition, charge.getStackInSlot(i));
 		Block.popResource(level, worldPosition, laitier.getStackInSlot(0));
-		BlockPos g = centre(3); BlockState gs = level.getBlockState(g);
+		BlockPos g = centre(4); BlockState gs = level.getBlockState(g);
 		if (gs.is(Fourneau.GUEULARD.get()) && gs.getValue(FourneauBlocs.LIT)) level.setBlock(g, gs.setValue(FourneauBlocs.LIT, false), Block.UPDATE_ALL);
 	}
 	public boolean forme() { return forme; }
@@ -307,7 +335,7 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	/** Le trou de coulée dont dépend un gueulard (null si aucun fourneau monté autour). */
 	public static HautFourneauBlockEntity depuisGueulard(net.minecraft.world.level.Level l, BlockPos gueulard) {
 		for (Direction d : Direction.Plane.HORIZONTAL) {
-			BlockPos p = gueulard.below(3).relative(d);
+			BlockPos p = gueulard.below(4).relative(d, 2);      // le gueulard est au centre de la cuve, deux blocs derrière le trou
 			BlockState s = l.getBlockState(p);
 			if (s.is(Fourneau.TROU.get()) && s.getValue(FourneauBlocs.FACING) == d && l.getBlockEntity(p) instanceof HautFourneauBlockEntity be) return be;
 		}
@@ -317,7 +345,26 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 	@Override
 	public boolean addToGoggleTooltip(List<Component> t, boolean accroupi) {
 		t.add(Component.literal("    ").append(Component.translatable("block.airain.blast_furnace_taphole")).withStyle(ChatFormatting.GOLD));
-		if (!forme) { t.add(Component.literal("    ").append(Component.translatable("airain.fourneau.incomplet")).withStyle(ChatFormatting.RED)); return true; }
+		if (!forme) {
+			t.add(Component.literal("    ").append(Component.translatable("airain.fourneau.incomplet")).withStyle(ChatFormatting.RED));
+			// ce qui manque, compté case par case (calculé ici, côté client)
+			if (level != null) {
+				int briques = 0, grille = 0, gueulard = 0, vide = 0, tuy = 0;
+				for (Case c : PLAN) {
+					BlockState s = level.getBlockState(local(c.lx(), c.ly(), c.lz()));
+					if (c.quoi() == Attendu.TUYERE && s.is(Fourneau.TUYERE.get())) tuy++;
+					if (conforme(c.quoi(), s)) continue;
+					switch (c.quoi()) { case GRILLE -> grille++; case GUEULARD -> gueulard++; case VIDE -> vide++; default -> briques++; }
+				}
+				if (briques > 0) t.add(ligne("airain.fourneau.lunettes.briques", briques));
+				if (tuy == 0) t.add(ligne("airain.fourneau.lunettes.tuyere", 1));
+				if (grille > 0) t.add(ligne("airain.fourneau.lunettes.grille", grille));
+				if (gueulard > 0) t.add(ligne("airain.fourneau.lunettes.gueulard", gueulard));
+				if (vide > 0) t.add(ligne("airain.fourneau.lunettes.vide", vide));
+				t.add(Component.literal("    ").append(Component.translatable("airain.fourneau.lunettes.astuce")).withStyle(ChatFormatting.DARK_GRAY));
+			}
+			return true;
+		}
 		String c = chaleur == HeatLevel.SEETHING ? "surchauffe" : chaleur.isAtLeast(HeatLevel.KINDLED) ? "chaud" : "froid";
 		t.add(Component.literal("    ").append(Component.translatable("airain.fourneau.lunettes.chaleur", Component.translatable("airain.fourneau.chaleur." + c))).withStyle(ChatFormatting.GRAY));
 		t.add(Component.literal("    ").append(Component.translatable("airain.fourneau.lunettes.air", air)).withStyle(ChatFormatting.GRAY));
@@ -325,6 +372,9 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 		if (progres > 0) t.add(Component.literal("    ").append(Component.translatable("airain.fourneau.lunettes.progres", progres * 100 / TRAVAIL)).withStyle(ChatFormatting.DARK_GRAY));
 		return true;
 	}
+
+	private static Component ligne(String cle, int n) { return Component.literal("     ").append(Component.translatable(cle, n)).withStyle(ChatFormatting.GRAY); }
+	public List<BlockPos> tuyeresPosees() { return tuyeres; }
 
 	// ------------------------------------------------------------------ sauvegarde et synchronisation (pour les lunettes)
 	@Override
