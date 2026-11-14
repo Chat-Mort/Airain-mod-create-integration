@@ -5,6 +5,18 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 14 novembre 2026 — version 1.54.0
+
+**Changements**
+- Passerelles d'airain : le sol (passerelle, escalier, rampe, palier) prend toute la largeur du bloc et les rambardes se dressent juste à l'extérieur, sur les blocs voisins. Elles n'apparaissent que du côté du vide et s'effacent dès qu'un bloc ou une autre passerelle est posé à côté.
+- La clé de Create, sur un côté de passerelle ou de palier, passe de rambarde à garde-corps vitré, puis à côté ouvert (sans rambarde), puis de nouveau à rambarde. Un côté ouvert à la clé le reste.
+- Les suspentes, garde-corps vitrés et plaques émaillées suivent la nouvelle position des rambardes.
+
+**Ajouts**
+- Pose assistée : clic droit avec une pièce de passerelle sur le bord ou la rambarde d'une passerelle posée, et la pièce se pose de l'autre côté, dans le prolongement et à la bonne hauteur (passerelle, escalier qui monte, rampe, palier). Accroupi, l'escalier et la rampe descendent.
+
+---
+
 ## 13 novembre 2026 — versions 1.48.0 à 1.53.1
 
 **Ajouts**

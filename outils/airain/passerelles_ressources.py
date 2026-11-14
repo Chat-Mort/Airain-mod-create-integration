@@ -50,18 +50,20 @@ def tunnel():
     return [el([1,0,1],[15,16,2],'#m',faces=("north","south"),full=True),el([1,0,2],[2,16,13],'#m',faces=("east","west"),full=True),
             el([14,0,2],[15,16,13],'#m',faces=("east","west"),full=True)]
 def rambarde_nord(h):
-    return [el([0,h+11,0],[16,h+13,2]),el([0,h+6,0.5],[16,h+7,1.5]),el([0,h,0.5],[16,h+3,1]),el([0,h,0],[2,h+13,2])]
+    # à l'extérieur du bloc (sur le bord du voisin) : le plancher garde toute sa largeur ; poteau à l'angle extérieur
+    return [el([0,h+11,-2],[16,h+13,0]),el([0,h+6,-1.5],[16,h+7,-0.5]),el([0,h,-1.5],[16,h+3,-1]),el([-2,h,-2],[0,h+13,0])]
 def portillon_nord(h, ouvert):
-    E=[el([0,h,0],[2,h+13,2]),el([14,h,0],[16,h+13,2])]            # poteaux du portillon
+    # dehors, comme les rambardes (z décalé de -2)
+    E=[el([0,h,-2.0],[2,h+13,0.0]),el([14,h,-2.0],[16,h+13,0.0])]            # poteaux du portillon
     if not ouvert:
-        E+=[el([2,h+1,0],[3,h+12,1]),el([13,h+1,0],[14,h+12,1]),el([2,h+11,0],[14,h+12,1]),el([2,h+1,0],[14,h+2,1]),
-            el([3,h+6,0.2],[13,h+7,0.8]),
-            el([3,h+3.5,0.3],[13,h+4.5,0.7],rot=([8,h+4,0.5],'z',22.5)),el([3,h+8.5,0.3],[13,h+9.5,0.7],rot=([8,h+9,0.5],'z',22.5)),
-            el([14,h+7,-0.5],[15,h+9,1.5])]
+        E+=[el([2,h+1,-2.0],[3,h+12,-1.0]),el([13,h+1,-2.0],[14,h+12,-1.0]),el([2,h+11,-2.0],[14,h+12,-1.0]),el([2,h+1,-2.0],[14,h+2,-1.0]),
+            el([3,h+6,-1.8],[13,h+7,-1.2]),
+            el([3,h+3.5,-1.7],[13,h+4.5,-1.3],rot=([8,h+4,-1.5],'z',22.5)),el([3,h+8.5,-1.7],[13,h+9.5,-1.3],rot=([8,h+9,-1.5],'z',22.5)),
+            el([14,h+7,-2.5],[15,h+9,-0.5])]
     else:   # ouvert : le battant pivote sur son poteau ouest et rentre dans la passerelle
-        E+=[el([2,h+1,1],[3,h+12,2]),el([2,h+1,12],[3,h+12,13]),el([2,h+11,2],[3,h+12,12]),el([2,h+1,2],[3,h+2,12]),
-            el([2.2,h+6,2],[2.8,h+7,12]),
-            el([2.3,h+3.5,2],[2.7,h+4.5,12],rot=([2.5,h+4,7],'x',-22.5)),el([2.3,h+8.5,2],[2.7,h+9.5,12],rot=([2.5,h+9,7],'x',-22.5))]
+        E+=[el([2,h+1,-1.0],[3,h+12,0.0]),el([2,h+1,10.0],[3,h+12,11.0]),el([2,h+11,0.0],[3,h+12,10.0]),el([2,h+1,0.0],[3,h+2,10.0]),
+            el([2.2,h+6,0.0],[2.8,h+7,10.0]),
+            el([2.3,h+3.5,0],[2.7,h+4.5,10],rot=([2.5,h+4,5.0],'x',-22.5)),el([2.3,h+8.5,0],[2.7,h+9.5,10],rot=([2.5,h+9,5.0],'x',-22.5))]
     return E
 def m2n(fr,to):
     """Passe une boîte décrite « monte vers +x, côtés en z » à « monte vers le nord, côtés en x » : (x,z) → (z, 16-x)."""
@@ -77,11 +79,11 @@ def escalier_base():
     for i in range(4):
         top=S+4*(i+1)
         # marche : la bande des croisillons (rangs 2 à 6 : une rangée de croix entières), pixel pour pixel
-        e=eln([4*i,top-1,2],[4*i+4,top,14],'#gs',faces=("up","down")); e['faces']['up']['uv']=[2,2,14,6]; e['faces']['down']['uv']=[2,6,14,2]; E.append(e)
-        E.append(eln([4*i+3,top-2,2],[4*i+4,top,14]))
+        e=eln([4*i,top-1,0],[4*i+4,top,16],'#gs',faces=("up","down")); e['faces']['up']['uv']=[0,2,16,6]; e['faces']['down']['uv']=[0,6,16,2]; E.append(e)
+        E.append(eln([4*i+3,top-2,0],[4*i+4,top,16]))
         # nez de marche : bandeau à rivets sur l'avant (pixel pour pixel)
-        n=eln([4*i,top-2,2],[4*i+1,top,14],'#bd')
-        for k,f in n['faces'].items(): f['uv']=[2,1,14,3] if k in ('north','south') else ([7,1,8,3] if k in ('east','west') else [2,1,14,2])
+        n=eln([4*i,top-2,0],[4*i+1,top,16],'#bd')
+        for k,f in n['faces'].items(): f['uv']=[0,1,16,3] if k in ('north','south') else ([7,1,8,3] if k in ('east','west') else [0,1,16,2])
         E.append(n)
     for z0 in (0,14): E.append(eln([0,S+5,z0+0.5],[16,S+8,z0+1.5],rot=([8,S+6.5,8],'z',45)))
     return E
@@ -91,8 +93,8 @@ def escalier_rampe(z0):
 def rampe_base(h0):
     E=[]
     for i in range(8):
-        E.append(eln([2*i,h0-2+i,1],[2*i+2,h0+i,15],'#g',faces=("up","down"),full=True))
-        E.append(eln([2*i+1,h0-1+i,1],[2*i+2,h0+i+0.5,15]))
+        E.append(eln([2*i,h0-2+i,0],[2*i+2,h0+i,16],'#g',faces=("up","down"),full=True))
+        E.append(eln([2*i+1,h0-1+i,0],[2*i+2,h0+i+0.5,16]))
     return E
 def rampe_cote(h0,z0):
     return [eln([0,h0+15,z0],[16,h0+17,z0+2],rot=([8,h0+16,8],'z',22.5)),eln([0,h0+10,z0+0.5],[16,h0+11,z0+1.5],rot=([8,h0+10.5,8],'z',22.5)),
@@ -119,17 +121,17 @@ for p in PRE:
         modele(f'{p}airain_catwalk_gate_{haut}',portillon_nord(h,False),tex)
         modele(f'{p}airain_catwalk_gate_open_{haut}',portillon_nord(h,True),tex)
         modele(f'{p}airain_catwalk_ramp_{haut}',rampe_base(h),tex); modele(f'{p}airain_catwalk_ramp_solid_{haut}',plein(rampe_base(h)),tex)
-        modele(f'{p}airain_catwalk_ramp_left_{haut}',rampe_cote(h,0),tex)
-        modele(f'{p}airain_catwalk_ramp_right_{haut}',rampe_cote(h,14),tex)
+        modele(f'{p}airain_catwalk_ramp_left_{haut}',rampe_cote(h,-2),tex)
+        modele(f'{p}airain_catwalk_ramp_right_{haut}',rampe_cote(h,16),tex)
     modele(f'{p}airain_catwalk_stairs',escalier_base(),tex); modele(f'{p}airain_catwalk_stairs_solid',plein(escalier_base()),tex)
-    modele(f'{p}airain_catwalk_stairs_left',escalier_rampe(0),tex)
-    modele(f'{p}airain_catwalk_stairs_right',escalier_rampe(14),tex)
+    modele(f'{p}airain_catwalk_stairs_left',escalier_rampe(-2),tex)
+    modele(f'{p}airain_catwalk_stairs_right',escalier_rampe(16),tex)
     modele(f'{p}airain_support',poteau_fut(),tex); modele(f'{p}airain_support_bottom',poteau_bas(),tex); modele(f'{p}airain_support_top',poteau_haut(),tex)
     modele(f'{p}airain_ladder',echelle(),tex); modele(f'{p}airain_ladder_cage',cage(),tex); modele(f'{p}airain_ladder_tunnel',tunnel(),tex)
     # objets : une pièce complète
     modele(f'{p}airain_catwalk_item',plancher(3)+rambarde_nord(3),tex)
-    modele(f'{p}airain_catwalk_stairs_item',escalier_base()+escalier_rampe(0)+escalier_rampe(14),tex)
-    modele(f'{p}airain_catwalk_ramp_item',rampe_base(3)+rampe_cote(3,0)+rampe_cote(3,14),tex)
+    modele(f'{p}airain_catwalk_stairs_item',escalier_base()+escalier_rampe(-2)+escalier_rampe(16),tex)
+    modele(f'{p}airain_catwalk_ramp_item',rampe_base(3)+rampe_cote(3,-2)+rampe_cote(3,16),tex)
     modele(f'{p}airain_support_item',poteau_fut()+poteau_bas()+poteau_haut(),tex)
     modele(f'{p}airain_ladder_item',echelle(),tex)
 def mp(model,when=None,y=0):

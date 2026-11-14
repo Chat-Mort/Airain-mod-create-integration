@@ -28,23 +28,23 @@ def dalle(x0,z0,x1,z1,h):
             el([x0,h-2,z0],[x1,h,z0+1]),el([x0,h-2,z1-1],[x1,h,z1]),el([x0,h-2,z0+1],[x0+1,h,z1-1]),el([x1-1,h-2,z0+1],[x1,h,z1-1])]
 def palier():
     # entrée au sud (3 px), palier à 11 px, sortie à l'est (19 px) ; poteau d'angle au sud-est
-    E=dalle(1,12,12,16,7)+dalle(0,0,12,12,11)+dalle(12,1,16,12,15)
+    E=dalle(0,12,12,16,7)+dalle(0,0,12,12,11)+dalle(12,0,16,12,15)
     E+=[el([12,0,12],[16,1,16]),el([12.5,1,12.5],[15.5,24,15.5],'#r'),el([12,24,12],[16,25,16]),
         el([12.5,9,11.5],[15.5,10,12.5]),el([11.5,5,12.5],[12.5,6,15.5])]          # poteau, chapeau et goussets sous les marches
     return E
 def rambarde_ouest(h):
-    return [el([0,h+11,0],[2,h+13,16]),el([0.5,h+6,0],[1.5,h+7,16]),el([0.5,h,0],[1,h+3,16]),el([0,h,14],[2,h+13,16])]
+    return [el([-2,h+11,0],[0,h+13,16]),el([-1.5,h+6,0],[-0.5,h+7,16]),el([-1.5,h,0],[-1,h+3,16]),el([-2,h,16],[0,h+13,18])]
 def suspente_tiges():
     E=[]
-    for z0 in (2.5,12.5):
-        E+=[el([7.5,0,z0],[8.5,16,z0+1]),el([7,6,z0-0.5],[9,9,z0+1.5])]      # tirant et ridoir
+    for z0 in (1,14):
+        E+=[el([7.5,0,z0],[8.5,16,z0+1]),el([7,6,z0-0.5],[9,9,z0+1.5])]      # tirant et ridoir (juste à l'intérieur du bord)
     return E
 def suspente_plaque():
-    return [el([5,15,1],[11,16,15],'#r'),el([7,14,2],[9,15,4]),el([7,14,12],[9,15,14])]
+    return [el([5,15,0.5],[11,16,15.5],'#r'),el([7,14,0.5],[9,15,2.5]),el([7,14,13.5],[9,15,15.5])]
 def suspente_etrier(h):
     """h : dessus de la traverse (sous le plancher du bloc du dessous), en coordonnées de la suspente."""
-    E=[el([7,h-1,1.5],[9,h,14.5])]
-    for z0 in (2.5,12.5): E+=[el([7.5,h,z0],[8.5,0,z0+1]),el([7.25,h-1.5,z0-0.25],[8.75,h-1,z0+1.25])]
+    E=[el([7,h-1,0.5],[9,h,15.5])]
+    for z0 in (1,14): E+=[el([7.5,h,z0],[8.5,0,z0+1]),el([7.25,h-1.5,z0-0.25],[8.75,h-1,z0+1.25])]
     return E
 def rambarde_seule():
     return rambarde_nord(0)+[el([14,0,0],[16,13,2])]
