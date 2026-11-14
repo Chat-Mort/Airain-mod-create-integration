@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 14 novembre 2026 — version 1.56.0
+
+**Changements**
+- Livre de l'ingénieur refait :
+  - chaque chapitre tient en général sur une double page : icône et titre, une phrase d'histoire, puis le mode d'emploi en intertitres, puces et lignes avec l'icône de l'objet ;
+  - le texte commence sous l'histoire, sur la page de gauche, et continue sur la droite ;
+  - tous les textes sont raccourcis (environ 77 pages au lieu de 124) ; l'airain affiche ses ingrédients avec leurs icônes ;
+  - nouvel onglet « Industrie » (airain, récupération, haut-fourneau, style impérial, passerelles, conduite d'air, atelier, mécanismes, mécanique, machines d'Écho) à la place de « Fusion » ; les sommaires ne débordent plus de la page.
+
 ## 14 novembre 2026 — versions 1.55.1 à 1.55.3
 
 **Corrections (1.55.3)**
