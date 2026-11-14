@@ -77,6 +77,9 @@ NFAM=['airain_catwalk_landing','airain_hanger','airain_railing']
 NOUV=[]
 def butin(i,pools=None):
     w(Dd+f'airain/loot_table/blocks/{i}.json',{"type":"minecraft:block","pools":pools or [{"rolls":1,"bonus_rolls":0,"entries":[{"type":"minecraft:item","name":"airain:"+i}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]})
+CW={'north':'east','east':'south','south':'west','west':'north'}; CCW={v:k for k,v in CW.items()}
+def flanc_palier(f,gauche):   # côté opposé à la sortie (sortie : à gauche de facing si virage à gauche)
+    return CW[f] if gauche else CCW[f]
 for f in NFAM:
     for s,p in enumerate(PRE):
         for c in (0,1):
@@ -86,8 +89,11 @@ for f in NFAM:
                 for d,r in ROT.items():
                     for g,cote in (('false','right'),('true','left')):
                         parts+=[mp(M(f'airain_catwalk_landing_{cote}'),{"facing":d,"turn_left":g,"solid":"false"},r),mp(M(f'airain_catwalk_landing_{cote}_solid'),{"facing":d,"turn_left":g,"solid":"true"},r)]
-                    for etat in ('railing','gate','gate_open'): parts.append(mp(M(f'airain_catwalk_{etat}_top'),{d:etat},r))
-                    parts.append(mp(M('airain_catwalk_railing_inner_top'),{d:'inner'},r))
+                    # 1.55.3 : deux côtés seulement, « back » (vers facing) et « side » (à l'opposé de la sortie)
+                    for g,cote in (('false','right'),('true','left')):
+                        for prop,dw in (('back',d),('side',flanc_palier(d,g=='true'))):
+                            for etat,modl in (('railing','railing'),('gate','gate'),('gate_open','gate_open'),('inner','railing_inner')):
+                                parts.append(mp(M(f'airain_catwalk_{modl}_top'),{"facing":d,"turn_left":g,prop:etat},ROT[dw]))
                 butin(i)
             elif f=='airain_hanger':
                 for ax,r in (('x',0),('z',90)):

@@ -5,7 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 14 novembre 2026 — versions 1.55.1 et 1.55.2
+## 14 novembre 2026 — versions 1.55.1 à 1.55.3
+
+**Corrections (1.55.3)**
+- Mémoire : les passerelles occupaient beaucoup trop de RAM (plus de 5 millions d'états de blocs en mémoire). On revient à environ 250 000 :
+  - pont-levis et passerelle rétractable : leur sens et leur longueur sont gardés dans le bloc lui-même, plus dans son état ;
+  - escalier à palier : il ne garde que ses deux côtés extérieurs ;
+  - la clé de Create passe de rambarde à vitrée, puis à rien : un côté vidé reprend sa rambarde si un bloc voisin change.
+- Les pièces de pont-levis et de passerelle rétractable déjà posées reviennent à leur sens et leur longueur par défaut : les casser et les reposer. Les côtés des paliers déjà posés se recalculent au prochain changement voisin (ou en les reposant).
+
 
 **Corrections (1.55.2)**
 - Rambardes à côté de la cage du monte-charge (la cabine, ou la case vide contre le mât) : elles restent à l'intérieur de la passerelle et ne gênent plus la cabine ni le joueur dedans.

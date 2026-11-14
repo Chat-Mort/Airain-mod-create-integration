@@ -224,9 +224,16 @@ for f in ('airain_catwalk','airain_catwalk_landing'):
         for c in (0,1):
             i=('waxed_' if c else '')+p+f; c_=AS+f'blockstates/{i}.json'; bs=json.load(open(c_))
             bs['multipart']=[x for x in bs['multipart'] if 'glass' not in json.dumps(x)]
-            for d,r in ROT.items():
-                for hh,cond in ((('bottom',{"top":"false"}),('top',{"top":"true"})) if f=='airain_catwalk' else (('top',{}),)):
-                    for part in ('frame','pane'): bs['multipart'].append(mp(f'airain:block/{p}airain_catwalk_glass_{part}_{hh}',dict(cond,**{d:"glass"}),r))
+            if f=='airain_catwalk':
+                for d,r in ROT.items():
+                    for hh,cond in (('bottom',{"top":"false"}),('top',{"top":"true"})):
+                        for part in ('frame','pane'): bs['multipart'].append(mp(f'airain:block/{p}airain_catwalk_glass_{part}_{hh}',dict(cond,**{d:"glass"}),r))
+            else:      # palier : côtés « back » et « side » (1.55.3)
+                CW={'north':'east','east':'south','south':'west','west':'north'}; CCW={v:k for k,v in CW.items()}
+                for d in ROT:
+                    for g in ('false','true'):
+                        for prop,dw in (('back',d),('side',CW[d] if g=='true' else CCW[d])):
+                            for part in ('frame','pane'): bs['multipart'].append(mp(f'airain:block/{p}airain_catwalk_glass_{part}_top',{"facing":d,"turn_left":g,prop:"glass"},ROT[dw]))
             w(c_,bs)
 # ---------------------------------------------------------------- patine, étiquettes, recettes, noms
 ox={}; wx={}
