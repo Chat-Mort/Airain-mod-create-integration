@@ -28,7 +28,7 @@ public class AirainPartials {
 	public static final PartialModel VOYANT_SURCOMP = bloc("airain_supercharger/lamp");
 
 	/** Une pièce animée par teinte de patine (neuf, terni, vieilli, rouge impérial). */
-	/** Carter des pièces-mécanismes : [pont-levis ? 0 : 1][haute ? 1 : 0][teinte]. */
+	/** Repère posé sur le sol des pièces-mécanismes (charnière ou rails ; ancien carter) : [pont-levis ? 0 : 1][haute ? 1 : 0][teinte]. */
 	public static final PartialModel[][][] CARTER = {
 		{teintes("airain_catwalk_mechanism/", "drawbridge_bottom"), teintes("airain_catwalk_mechanism/", "drawbridge_top")},
 		{teintes("airain_catwalk_mechanism/", "telescopic_bottom"), teintes("airain_catwalk_mechanism/", "telescopic_top")}};
