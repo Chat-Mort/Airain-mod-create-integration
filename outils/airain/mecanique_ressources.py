@@ -9,17 +9,21 @@ def butin(i):
 TIGE_TRAVERS={"uv":[7,3,9,13],"rotation":90}
 # ---------------------------------------------------------------- allégeur (arbre nord-sud)
 def allegeur():
-    """Flasques ciselés creusés au centre (on voit l'arbre et son palier), quatre colonnes, volant au milieu."""
-    E=[]
-    for z0 in (0,13):
-        dehors="north" if z0==0 else "south"; dedans="south" if z0==0 else "north"
-        for (a,b) in (([0,0],[16,5]),([0,11],[16,16]),([0,5],[5,11]),([11,5],[16,11])):
-            E+=[el([a[0],a[1],z0],[b[0],b[1],z0+3],'#ci',faces=(dehors,)),el([a[0],a[1],z0],[b[0],b[1],z0+3],'#pn',faces=(dedans,))]
-        E+=[el([0,0,z0],[16,16,z0+3],'#bd',faces=("east","west","up","down")),
-            el([5,5,z0],[11,11,z0+3],'#bd',faces=("east","west","up","down"))]          # parois du trou (vues de l'intérieur)
-        zc=z0+2 if z0==0 else z0
-        for (a,b) in (([5,5],[11,6]),([5,10],[11,11]),([5,6],[6,10]),([10,6],[11,10])):  # palier en retrait, autour de l'arbre
-            E.append(el([a[0],a[1],zc],[b[0],b[1],zc+1],'#rg'))
+    """Flasques lisses creusés : cadre plein, fond en retrait de 2 px, bague qui ressort autour de l'arbre (sans motif)."""
+    def flasque():      # flasque nord (face extérieure en z=0, épaisseur 3)
+        E=[]
+        for a,b in (([0,0],[16,3]),([0,13],[16,16]),([0,3],[3,13]),([13,3],[16,13])):      # cadre plein
+            E+=[el([a[0],a[1],0],[b[0],b[1],3],'#m',faces=("north","east","west","up","down")),el([a[0],a[1],0],[b[0],b[1],3],'#pn',faces=("south",))]
+        for a,b in (([3,3],[13,5]),([3,11],[13,13]),([3,5],[5,11]),([11,5],[13,11])):      # fond en retrait
+            E+=[el([a[0],a[1],2],[b[0],b[1],3],'#m',faces=("north","east","west","up","down")),el([a[0],a[1],2],[b[0],b[1],3],'#pn',faces=("south",))]
+        for a,b in (([5,5],[11,6]),([5,10],[11,11]),([5,6],[6,10]),([10,6],[11,10])):      # bague autour de l'arbre (4 px)
+            E.append(el([a[0],a[1],1],[b[0],b[1],3],'#rg'))
+        return E
+    def miroir(e):      # nord -> sud
+        e=json.loads(json.dumps(e)); f,t=e['from'],e['to']; f[2],t[2]=16-t[2],16-f[2]
+        e['faces']={{'north':'south','south':'north'}.get(k,k):v for k,v in e['faces'].items()}
+        return e
+    E=flasque(); E+=[miroir(e) for e in flasque()]
     for (x,y) in ((0,0),(14,0),(0,14),(14,14)):
         e=el([x,y,3],[x+2,y+2,13],'#ro',faces=("up","down"),uv=[7,3,9,13])
         e['faces'].update({k:{"texture":"#ro","uv":[7,3,9,13],"rotation":90} for k in ("east","west")}); E.append(e)
@@ -34,7 +38,7 @@ def volant():
     return E
 def lampes_allegeur():
     E=[]
-    for (x,y) in ((2,2),(12,2),(2,12),(12,12)):
+    for (x,y) in ((0.5,0.5),(13.5,0.5),(0.5,13.5),(13.5,13.5)):      # dans les coins du cadre
         E+=[el([x,y,-0.2],[x+2,y+2,0],'#lr',faces=("north",),uv=[3,6,5,8],lum=True),el([x,y,16],[x+2,y+2,16.2],'#lr',faces=("south",),uv=[3,6,5,8],lum=True)]
     return E
 # ---------------------------------------------------------------- surcompresseur (le raccord vers le nord)

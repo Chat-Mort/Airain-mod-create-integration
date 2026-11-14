@@ -26,7 +26,14 @@ def uv_position(E):
         for k in ('up','down'):
             f=e['faces'].get(k)
             if f and f['texture'] in ('#g','#m') and 'rotation' not in e and abs(e['to'][1]-e['from'][1])<=2.01 and (x1-x0)>=1.99 and (z1-z0)>=1.99:
-                u0,u1=sorted((max(0,min(16,x0)),max(0,min(16,x1)))); v0,v1=sorted((max(0,min(16,z0)),max(0,min(16,z1))))
+                # hors du bloc (rambardes dehors) : on décale de 16 au lieu de rogner, sinon la face devient une ligne
+                def ram(a,b):
+                    a,b=sorted((a,b))
+                    if b-a>16: return 0,16
+                    if a<0: a,b=a+16,b+16
+                    if b>16: a,b=a-16,b-16
+                    return a,b
+                u0,u1=ram(x0,x1); v0,v1=ram(z0,z1)
                 f['uv']=[u0,v0,u1,v1] if k=='up' else [u0,16-v1,u1,16-v0]
     return E
 def modele(nom, elements, tex):

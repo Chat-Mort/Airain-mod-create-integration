@@ -5,7 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 14 novembre 2026 — version 1.54.0
+## 14 novembre 2026 — versions 1.54.0 et 1.54.1
+
+**Corrections (1.54.1)**
+- Le dessus de la main courante des rambardes s'affiche de nouveau.
+- Plus de taches de couleur étrangères (vertes, bleues) sous les passerelles mobiles, sur le trou de coulée, la tuyère et le gueulard du haut-fourneau, ni sur les autres pièces qui dépassent de leur bloc.
+- Passerelles mobiles : quand les segments se relèvent ou rentrent, le mécanisme et le bloc d'en face remettent leurs rambardes ; elles s'effacent de nouveau au redéploiement.
+
+**Changements (1.54.1)**
+- Allégeur impérial : flasques lisses sans motif d'engrenage, creusées en retrait, avec une bague qui ressort autour de l'arbre ; les voyants passent dans les coins du cadre.
 
 **Changements**
 - Passerelles d'airain : le sol (passerelle, escalier, rampe, palier) prend toute la largeur du bloc et les rambardes se dressent juste à l'extérieur, sur les blocs voisins. Elles n'apparaissent que du côté du vide et s'effacent dès qu'un bloc ou une autre passerelle est posé à côté.
