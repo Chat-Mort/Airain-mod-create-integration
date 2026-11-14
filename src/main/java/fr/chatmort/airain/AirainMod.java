@@ -571,6 +571,7 @@ public class AirainMod {
 		MATERIAUX.register(bus);
 		bus.addListener((net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent e) ->
 			e.put(GARDIEN.get(), net.minecraft.world.entity.animal.IronGolem.createAttributes().build()));
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.PoseAssistee::clic);   // pose assistée des passerelles
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Gardiens::etendard);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Fin::commandes);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.pouvoir.Siege::commandes);

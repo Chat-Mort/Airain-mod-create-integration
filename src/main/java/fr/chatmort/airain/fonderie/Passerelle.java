@@ -82,7 +82,7 @@ public final class Passerelle {
 
 	/** Ce qu'il y a sur un côté de passerelle. */
 	public enum Cote implements StringRepresentable {
-		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open"), VITRE("glass");
+		AUCUN("none"), RAMBARDE("railing"), PORTILLON("gate"), OUVERT("gate_open"), VITRE("glass"), LIBRE("open");
 		private final String nom;
 		Cote(String n) { nom = n; }
 		@Override public String getSerializedName() { return nom; }
@@ -91,15 +91,24 @@ public final class Passerelle {
 	public static final EnumProperty<Cote> SUD = EnumProperty.create("south", Cote.class);
 	public static final EnumProperty<Cote> EST = EnumProperty.create("east", Cote.class);
 	public static final EnumProperty<Cote> OUEST = EnumProperty.create("west", Cote.class);
-	/** Côté recalculé quand un voisin change : une rambarde (pleine ou vitrée) s'efface devant un raccord ; sans raccord, une
-	 *  rambarde vitrée reste vitrée, un côté vide reprend une rambarde. Portillons : inchangés. */
-	static Cote auto(Cote c, boolean raccorde) {
-		if (c == Cote.AUCUN || c == Cote.RAMBARDE) return raccorde ? Cote.AUCUN : Cote.RAMBARDE;
-		if (c == Cote.VITRE) return raccorde ? Cote.AUCUN : Cote.VITRE;
+	/**
+	 * Côté recalculé quand un voisin change. Les rambardes sont dessinées à l'extérieur du bloc (sur le bord du bloc voisin) :
+	 * elles n'apparaissent que si ce voisin est libre (air, herbe…) et ne se raccorde pas. Rambarde vitrée : idem, elle reste
+	 * vitrée. Côté ouvert à la clé (LIBRE) et portillons : jamais touchés.
+	 */
+	static Cote auto(Cote c, boolean raccorde, boolean libre) {
+		boolean garde = !raccorde && libre;
+		if (c == Cote.AUCUN || c == Cote.RAMBARDE) return garde ? Cote.RAMBARDE : Cote.AUCUN;
+		if (c == Cote.VITRE) return garde ? Cote.VITRE : Cote.AUCUN;
 		return c;
 	}
-	/** Clé de Create sur un côté : rambarde → rambarde vitrée → rien → rambarde. */
-	static Cote suivant(Cote c) { return c == Cote.RAMBARDE ? Cote.VITRE : c == Cote.VITRE ? Cote.AUCUN : Cote.RAMBARDE; }
+	/** Clé de Create sur un côté : rambarde → rambarde vitrée → ouvert (définitivement) → rambarde. */
+	static Cote suivant(Cote c) { return c == Cote.RAMBARDE ? Cote.VITRE : c == Cote.VITRE ? Cote.LIBRE : Cote.RAMBARDE; }
+	/** Le bloc voisin (côté d) laisse-t-il la place à une rambarde extérieure ? (air, plante, ou une plaque accrochée à la rambarde) */
+	public static boolean libre(BlockGetter l, BlockPos p, Direction d) {
+		BlockState n = l.getBlockState(p.relative(d));
+		return n.isAir() || n.canBeReplaced() || n.getBlock() instanceof fr.chatmort.airain.atelier.Plaque;
+	}
 	public static EnumProperty<Cote> cote(Direction d) {
 		return switch (d) { case NORTH -> NORD; case SOUTH -> SUD; case EAST -> EST; default -> OUEST; };
 	}
@@ -165,7 +174,11 @@ public final class Passerelle {
 			Direction f = c.getClickedFace();
 			double y = c.getClickLocation().y - c.getClickedPos().getY();
 			BlockState s = defaultBlockState().setValue(HAUT, f == Direction.DOWN || (f != Direction.UP && y > 0.5));
-			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), raccorde(c.getLevel(), c.getClickedPos(), s, d) ? Cote.AUCUN : Cote.RAMBARDE);
+			return cotes(s, c.getLevel(), c.getClickedPos());
+		}
+		/** Les quatre côtés calculés d'après les voisins (pose normale ou assistée). */
+		static BlockState cotes(BlockState s, BlockGetter l, BlockPos p) {
+			for (Direction d : Direction.Plane.HORIZONTAL) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, s, d), libre(l, p, d)));
 			return s;
 		}
 		/** Le côté d se raccorde-t-il à une autre pièce de passerelle au même niveau ? */
@@ -179,7 +192,7 @@ public final class Passerelle {
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
 			if (d.getAxis().isHorizontal()) {
-				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d)));
+				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d), libre(l, p, d)));
 			}
 			return s;
 		}
@@ -189,7 +202,7 @@ public final class Passerelle {
 			if (!(s.getBlock() instanceof Plancher)) return;
 			Cote c = s.getValue(cote(d));
 			if (c == Cote.PORTILLON || c == Cote.OUVERT) return;
-			BlockState n = s.setValue(cote(d), auto(c, raccorde(l, p, s, d)));
+			BlockState n = s.setValue(cote(d), auto(c, raccorde(l, p, s, d), libre(l, p, d)));
 			if (n != s) l.setBlock(p, n, Block.UPDATE_ALL);
 		}
 
@@ -257,7 +270,7 @@ public final class Passerelle {
 			VoxelShape v = boite(0, h - 2, 0, 16, h, 16);
 			for (Direction d : Direction.Plane.HORIZONTAL) {
 				Cote c = s.getValue(cote(d));
-				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, h, 0, 16, h + 13, 2), BooleanOp.OR);
+				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, h, -2, 16, h + 13, 0), BooleanOp.OR);
 			}
 			return v.optimize();
 		}
@@ -275,7 +288,9 @@ public final class Passerelle {
 		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(FACING, GAUCHE, DROITE, PLEIN); }
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
 		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
-		@Override public BlockState getStateForPlacement(BlockPlaceContext c) { return defaultBlockState().setValue(FACING, c.getHorizontalDirection()); }
+		@Override public BlockState getStateForPlacement(BlockPlaceContext c) { return cotesMontee(defaultBlockState().setValue(FACING, c.getHorizontalDirection()), c.getLevel(), c.getClickedPos()); }
+		@Override
+		protected BlockState updateShape(BlockState s, Direction d, BlockState v, LevelAccessor l, BlockPos p, BlockPos np) { return retirerMontee(s, d, l, p); }
 		@Override
 		protected void onPlace(BlockState s, Level l, BlockPos p, BlockState ancien, boolean deplace) {
 			super.onPlace(s, l, p, ancien, deplace);
@@ -304,12 +319,24 @@ public final class Passerelle {
 			VoxelShape v = Shapes.empty();
 			for (int i = 0; i < 4; i++) {        // décrit pour un escalier qui monte vers le nord (z décroissant)
 				int top = 3 + 4 * (i + 1);
-				v = Shapes.joinUnoptimized(v, tournerEsc(f, 1, top - 2, 16 - 4 * (i + 1), 15, top, 16 - 4 * i), BooleanOp.OR);
+				v = Shapes.joinUnoptimized(v, tournerEsc(f, 0, top - 2, 16 - 4 * (i + 1), 16, top, 16 - 4 * i), BooleanOp.OR);
 			}
-			if (s.getValue(GAUCHE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, 0, 3, 0, 1, 24, 16), BooleanOp.OR);
-			if (s.getValue(DROITE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, 15, 3, 0, 16, 24, 16), BooleanOp.OR);
+			if (s.getValue(GAUCHE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, -2, 3, 0, 0, 24, 16), BooleanOp.OR);
+			if (s.getValue(DROITE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, 16, 3, 0, 18, 24, 16), BooleanOp.OR);
 			return v.optimize();
 		}
+	}
+	/** Escalier, rampe : une rambarde extérieure de chaque côté libre (à la pose). */
+	static BlockState cotesMontee(BlockState s, BlockGetter l, BlockPos p) {
+		Direction f = s.getValue(FACING);
+		return s.setValue(GAUCHE, libre(l, p, f.getCounterClockWise())).setValue(DROITE, libre(l, p, f.getClockWise()));
+	}
+	/** Escalier, rampe : un bloc posé contre un côté retire la rambarde (elle passerait dedans). */
+	static BlockState retirerMontee(BlockState s, Direction d, LevelAccessor l, BlockPos p) {
+		Direction f = s.getValue(FACING);
+		if (d == f.getCounterClockWise() && s.getValue(GAUCHE) && !libre(l, p, d)) s = s.setValue(GAUCHE, false);
+		if (d == f.getClockWise() && s.getValue(DROITE) && !libre(l, p, d)) s = s.setValue(DROITE, false);
+		return s;
 	}
 	/** Boîte décrite pour une pièce qui monte vers le nord, tournée selon f. */
 	static VoxelShape tournerEsc(Direction f, double x0, double y0, double z0, double x1, double y1, double z1) {
@@ -337,8 +364,10 @@ public final class Passerelle {
 		public BlockState getStateForPlacement(BlockPlaceContext c) {
 			Direction f = c.getClickedFace();
 			double y = c.getClickLocation().y - c.getClickedPos().getY();
-			return defaultBlockState().setValue(FACING, c.getHorizontalDirection()).setValue(HAUT, f == Direction.DOWN || (f != Direction.UP && y > 0.5));
+			return cotesMontee(defaultBlockState().setValue(FACING, c.getHorizontalDirection()).setValue(HAUT, f == Direction.DOWN || (f != Direction.UP && y > 0.5)), c.getLevel(), c.getClickedPos());
 		}
+		@Override
+		protected BlockState updateShape(BlockState s, Direction d, BlockState v, LevelAccessor l, BlockPos p, BlockPos np) { return retirerMontee(s, d, l, p); }
 		@Override
 		protected void onPlace(BlockState s, Level l, BlockPos p, BlockState ancien, boolean deplace) {
 			super.onPlace(s, l, p, ancien, deplace);
@@ -365,9 +394,9 @@ public final class Passerelle {
 		private static VoxelShape forme(BlockState s) {
 			Direction f = s.getValue(FACING); int h0 = s.getValue(HAUT) ? 11 : 3;
 			VoxelShape v = Shapes.empty();
-			for (int i = 0; i < 8; i++) v = Shapes.joinUnoptimized(v, tournerEsc(f, 1, h0 - 2 + i, 14 - 2 * i, 15, h0 + i, 16 - 2 * i), BooleanOp.OR);
-			if (s.getValue(GAUCHE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, 0, h0, 0, 1, Math.min(24, h0 + 17), 16), BooleanOp.OR);
-			if (s.getValue(DROITE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, 15, h0, 0, 16, Math.min(24, h0 + 17), 16), BooleanOp.OR);
+			for (int i = 0; i < 8; i++) v = Shapes.joinUnoptimized(v, tournerEsc(f, 0, h0 - 2 + i, 14 - 2 * i, 16, h0 + i, 16 - 2 * i), BooleanOp.OR);
+			if (s.getValue(GAUCHE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, -2, h0, 0, 0, Math.min(24, h0 + 17), 16), BooleanOp.OR);
+			if (s.getValue(DROITE)) v = Shapes.joinUnoptimized(v, tournerEsc(f, 16, h0, 0, 18, Math.min(24, h0 + 17), 16), BooleanOp.OR);
 			return v.optimize();
 		}
 	}
@@ -452,14 +481,17 @@ public final class Passerelle {
 			Direction f = c.getHorizontalDirection(), dr = f.getClockWise();
 			Vec3 v = c.getClickLocation().subtract(Vec3.atCenterOf(c.getClickedPos()));
 			BlockState s = defaultBlockState().setValue(FACING, f).setValue(A_GAUCHE, v.x * dr.getStepX() + v.z * dr.getStepZ() < 0);
+			return cotes(s, c.getLevel(), c.getClickedPos());
+		}
+		static BlockState cotes(BlockState s, BlockGetter l, BlockPos p) {
 			for (Direction d : Direction.Plane.HORIZONTAL)
-				if (exterieur(s, d)) s = s.setValue(cote(d), raccorde(c.getLevel(), c.getClickedPos(), d) ? Cote.AUCUN : Cote.RAMBARDE);
+				if (exterieur(s, d)) s = s.setValue(cote(d), auto(Cote.AUCUN, raccorde(l, p, d), libre(l, p, d)));
 			return s;
 		}
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
 			if (d.getAxis().isHorizontal() && exterieur(s, d)) {
-				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, d)));
+				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, d), libre(l, p, d)));
 			}
 			return s;
 		}
@@ -529,7 +561,7 @@ public final class Passerelle {
 		private static VoxelShape forme(BlockState s) {
 			Direction f = s.getValue(FACING); boolean g = s.getValue(A_GAUCHE);
 			// décrit pour une entrée au sud, un palier, une sortie à l'est (FACING nord, virage à droite) ; miroir pour la gauche
-			double[][] B = {{1, 5, 12, 12, 7, 16}, {0, 9, 0, 12, 11, 12}, {12, 13, 1, 16, 15, 12}, {12, 0, 12, 16, 24, 16}};
+			double[][] B = {{0, 5, 12, 12, 7, 16}, {0, 9, 0, 12, 11, 12}, {12, 13, 0, 16, 15, 12}, {12, 0, 12, 16, 24, 16}};
 			VoxelShape v = Shapes.empty();
 			for (double[] b : B) {
 				double x0 = g ? 16 - b[3] : b[0], x1 = g ? 16 - b[0] : b[3];
@@ -537,7 +569,7 @@ public final class Passerelle {
 			}
 			for (Direction d : Direction.Plane.HORIZONTAL) {
 				Cote c = s.getValue(cote(d));
-				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, 0, 16, 24, 2), BooleanOp.OR);
+				if (c == Cote.RAMBARDE || c == Cote.PORTILLON || c == Cote.VITRE) v = Shapes.joinUnoptimized(v, tourner(d, 0, 11, -2, 16, 24, 0), BooleanOp.OR);
 			}
 			return v.optimize();
 		}
@@ -575,7 +607,7 @@ public final class Passerelle {
 		private static VoxelShape forme(BlockState s) {
 			boolean x = s.getValue(BlockStateProperties.HORIZONTAL_AXIS) == Direction.Axis.X;
 			VoxelShape v = Shapes.empty();
-			for (double z0 : new double[]{2.5, 12.5})
+			for (double z0 : new double[]{1, 14})
 				v = Shapes.joinUnoptimized(v, x ? Block.box(7.5, 0, z0, 8.5, 16, z0 + 1) : Block.box(z0, 0, 7.5, z0 + 1, 16, 8.5), BooleanOp.OR);
 			if (s.getValue(PLAQUE)) v = Shapes.joinUnoptimized(v, x ? Block.box(5, 15, 1, 11, 16, 15) : Block.box(1, 15, 5, 15, 16, 11), BooleanOp.OR);
 			return v.optimize();

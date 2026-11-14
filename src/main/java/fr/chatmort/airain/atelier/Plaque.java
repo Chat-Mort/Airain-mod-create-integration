@@ -81,6 +81,8 @@ public class Plaque extends Block implements IWrenchable {
 	protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
 		double y0 = switch (s.getValue(NIVEAU)) { case BAS -> 7; case HAUT -> 15; default -> 4; };
 		double y1 = s.getValue(NIVEAU) == Niveau.MILIEU ? 12 : y0 + 6;
-		return fr.chatmort.airain.fonderie.ConduitAir.boiteVers(s.getValue(BlockStateProperties.HORIZONTAL_FACING), 3, y0, 15.5, 13, Math.min(16, y1), 16);
+		// contre une rambarde de passerelle, la plaque se pose sur sa face extérieure (la rambarde occupe le bord de ce bloc)
+		double z0 = s.getValue(NIVEAU) == Niveau.MILIEU ? 15.5 : 13.5;
+		return fr.chatmort.airain.fonderie.ConduitAir.boiteVers(s.getValue(BlockStateProperties.HORIZONTAL_FACING), 3, y0, z0, 13, Math.min(16, y1), z0 + 0.5);
 	}
 }
