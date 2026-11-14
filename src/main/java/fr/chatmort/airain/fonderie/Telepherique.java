@@ -378,7 +378,6 @@ public final class Telepherique {
 		}
 		@Override public CompoundTag getUpdateTag(HolderLookup.Provider r) { return saveWithoutMetadata(r); }
 		@Override public Packet<ClientGamePacketListener> getUpdatePacket() { return ClientboundBlockEntityDataPacket.create(this); }
-		@Override public AABB getRenderBoundingBox() { return new AABB(worldPosition).inflate(PORTEE + 4); }
 	}
 
 	// ====================================================================== le câble (objet) : relie deux nœuds
@@ -494,7 +493,7 @@ public final class Telepherique {
 			return InteractionResult.sidedSuccess(l.isClientSide);
 		}
 		@Override
-		protected void onRemove(BlockState s, Level l, BlockPos p, BlockState n, boolean deplace) {
+		public void onRemove(BlockState s, Level l, BlockPos p, BlockState n, boolean deplace) {
 			if (!s.is(n.getBlock()) && l.getBlockEntity(p) instanceof LaminoirBlockEntity be) {
 				Block.popResource(l, p, be.entree.getStackInSlot(0)); Block.popResource(l, p, be.sortie.getStackInSlot(0));
 			}

@@ -105,6 +105,7 @@ public final class TelepheriqueRendus {
 			if (be.getLevel() != null) travee(be.getLevel(), be.getBlockPos(), be, ms, buf);
 		}
 		@Override public boolean shouldRenderOffScreen(Telepherique.TeteBlockEntity be) { return true; }
+		@Override public net.minecraft.world.phys.AABB getRenderBoundingBox(Telepherique.TeteBlockEntity be) { return new net.minecraft.world.phys.AABB(be.getBlockPos()).inflate(Telepherique.PORTEE + 4); }
 		@Override public int getViewDistance() { return 160; }
 	}
 
