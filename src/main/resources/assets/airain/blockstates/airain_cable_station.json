@@ -1,0 +1,34 @@
+{
+ "variants": {
+  "facing=north,upper=false": {
+   "model": "airain:block/airain_cable_station"
+  },
+  "facing=north,upper=true": {
+   "model": "airain:block/airain_cable_station_upper"
+  },
+  "facing=east,upper=false": {
+   "model": "airain:block/airain_cable_station",
+   "y": 90
+  },
+  "facing=east,upper=true": {
+   "model": "airain:block/airain_cable_station_upper",
+   "y": 90
+  },
+  "facing=south,upper=false": {
+   "model": "airain:block/airain_cable_station",
+   "y": 180
+  },
+  "facing=south,upper=true": {
+   "model": "airain:block/airain_cable_station_upper",
+   "y": 180
+  },
+  "facing=west,upper=false": {
+   "model": "airain:block/airain_cable_station",
+   "y": 270
+  },
+  "facing=west,upper=true": {
+   "model": "airain:block/airain_cable_station_upper",
+   "y": 270
+  }
+ }
+}

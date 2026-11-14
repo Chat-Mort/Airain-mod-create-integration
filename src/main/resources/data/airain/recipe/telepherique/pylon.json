@@ -1,0 +1,21 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "B B",
+  "BSB",
+  "B B"
+ ],
+ "key": {
+  "B": {
+   "item": "airain:airain_bars"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:airain_pylon",
+  "count": 4
+ }
+}

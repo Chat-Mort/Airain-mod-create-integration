@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "GAG",
+  "PCP",
+  "PSP"
+ ],
+ "key": {
+  "G": {
+   "item": "airain:airain_gear"
+  },
+  "A": {
+   "item": "airain:airain_block"
+  },
+  "P": {
+   "item": "airain:airain_sheet"
+  },
+  "C": {
+   "item": "create:brass_casing"
+  },
+  "S": {
+   "item": "create:shaft"
+  }
+ },
+ "result": {
+  "id": "airain:airain_cable_station",
+  "count": 1
+ }
+}

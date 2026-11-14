@@ -47,12 +47,12 @@ public class LivreIngenieurScreen extends Screen {
 		{{"diademe", "airain:echo_diadem"}, {"capitale_arcanique", "airain:foundation_stone"}, {"ameliorations", "airain:expansion_plans"}, {"arcanium", "airain:arcanium_ingot"},
 		 {"armure_runique", "airain:runic_chestplate"}, {"armure_arcanique", "airain:arcane_chestplate"}, {"armes_runiques", "airain:runic_katana"},
 		 {"armes_arcaniques", "airain:arcane_katana"}, {"sceptre_arcanique", "airain:arcane_scepter"}, {"gardien_echo", "airain:primordial_echo_block"},
-		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:resonant_archive"}, {"relais", "kubejs:diapason_echo"}},
+		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:resonant_archive"}, {"relais", "kubejs:diapason_echo"}, {"glyphe_engrenage", "airain:glyph_gear"}},
 		// l'industrie : l'airain et ce qu'on en tire, et les machines qui marient Create et Ars
 		{{"airain", "airain:airain_ingot"}, {"recuperation", "kubejs:ferraille"}, {"haut_fourneau", "airain:blast_furnace_taphole"}, {"style_imperial", "airain:chiseled_airain"},
 		 {"passerelles", "airain:airain_catwalk"}, {"conduite_air", "airain:airain_air_vent"}, {"atelier", "airain:airain_workbench"}, {"mecanismes", "airain:airain_lift_winch"},
 		 {"mecanique", "airain:airain_load_reliever"}, {"turbine_echo", "airain:echo_turbine"}, {"sourcelink_meca", "airain:mechanical_sourcelink"}, {"diffuseur_echo", "airain:echo_diffuser"},
-		 {"condenseur_echo", "airain:echo_condenser"}, {"glyphe_engrenage", "airain:glyph_gear"}}};
+		 {"condenseur_echo", "airain:echo_condenser"}, {"telepherique", "airain:airain_gondola"}}};
 	/** Chapitres à la suite, et la section de chacun. */
 	private static final List<String[]> TOUS = new ArrayList<>();
 	private static final List<Integer> SECTION_DE = new ArrayList<>();

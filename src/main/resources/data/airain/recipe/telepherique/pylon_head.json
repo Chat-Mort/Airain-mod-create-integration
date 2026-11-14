@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "PPP",
+  "WBW",
+  " B "
+ ],
+ "key": {
+  "P": {
+   "item": "airain:airain_sheet"
+  },
+  "W": {
+   "item": "create:cogwheel"
+  },
+  "B": {
+   "item": "airain:airain_bars"
+  }
+ },
+ "result": {
+  "id": "airain:airain_pylon_head",
+  "count": 1
+ }
+}

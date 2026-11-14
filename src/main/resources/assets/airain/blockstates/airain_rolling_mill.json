@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/airain_rolling_mill"
+  },
+  "facing=east": {
+   "model": "airain:block/airain_rolling_mill",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/airain_rolling_mill",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/airain_rolling_mill",
+   "y": 270
+  }
+ }
+}

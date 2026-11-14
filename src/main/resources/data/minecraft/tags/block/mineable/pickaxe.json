@@ -337,6 +337,10 @@
   "airain:slate_shingle_stairs",
   "airain:slate_shingle_slab",
   "airain:marble_tiles",
-  "airain:marble_tile_slab"
+  "airain:marble_tile_slab",
+  "airain:airain_cable_station",
+  "airain:airain_pylon",
+  "airain:airain_pylon_head",
+  "airain:airain_rolling_mill"
  ]
 }

@@ -412,11 +412,23 @@ public final class Telepherique {
 			if (erreur != null) { j.displayClientMessage(Component.translatable("airain.telepherique." + erreur).withStyle(ChatFormatting.RED), true); return ItemInteractionResult.FAIL; }
 			na.lier(na.precedent(), p);
 			ici.lier(a, ici.suivant());
+			orienter(l, a); orienter(l, p);
 			if (!j.getAbilities().instabuild) st.shrink(1);
 			l.playSound(null, p, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1f, 0.8f);
 			boolean complete = !ligne(l, p).isEmpty();
 			j.displayClientMessage(Component.translatable(complete ? "airain.telepherique.complete_ok" : "airain.telepherique.relie").withStyle(ChatFormatting.GOLD), true);
 			return ItemInteractionResult.SUCCESS;
+		}
+		/** Une tête de pylône se tourne dans l'axe de sa ligne (bras et galets de travers). */
+		private static void orienter(Level l, BlockPos p) {
+			BlockState s = l.getBlockState(p);
+			Noeud n = noeud(l, p);
+			if (!(s.getBlock() instanceof TetePylone) || n == null) return;
+			BlockPos a = n.precedent() != null ? n.precedent() : p, b = n.suivant() != null ? n.suivant() : p;
+			int dx = b.getX() - a.getX(), dz = b.getZ() - a.getZ();
+			if (dx == 0 && dz == 0) return;
+			Direction d = Direction.getNearest(dx, 0, dz);
+			if (d.getAxis().isHorizontal() && s.getValue(TetePylone.FACING) != d) l.setBlock(p, s.setValue(TetePylone.FACING, d), Block.UPDATE_ALL);
 		}
 		private static int compter(Level l, BlockPos p) {
 			int n = 0; BlockPos c = p; Noeud x = noeud(l, c);

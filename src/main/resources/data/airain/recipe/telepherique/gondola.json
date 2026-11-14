@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "BCB",
+  "BGB",
+  "WWW"
+ ],
+ "key": {
+  "B": {
+   "item": "airain:airain_bars"
+  },
+  "C": {
+   "item": "airain:airain_chain"
+  },
+  "G": {
+   "item": "airain:airain_gear"
+  },
+  "W": {
+   "item": "airain:airain_catwalk"
+  }
+ },
+ "result": {
+  "id": "airain:airain_gondola",
+  "count": 1
+ }
+}
