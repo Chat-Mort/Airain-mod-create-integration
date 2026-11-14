@@ -1,0 +1,68 @@
+jar: /home/runner/.gradle/caches/modules-2/files-2.1/com.simibubi.create/create-1.21.1/6.0.10-280/92471e8fc5ed4e3c2279001d77ebcec6fd38bcab/create-1.21.1-6.0.10-280-slim.jar
+== millstone/MillstoneBlockEntity
+  public com.simibubi.create.content.kinetics.millstone.MillstoneBlockEntity(net.minecraft.world.level.block.entity.BlockEntityType<?>, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+  public static void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent);
+  public void addBehaviours(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+  public void tickAudio();
+  public void tick();
+  public void invalidate();
+  public void clearContent();
+  public void destroy();
+  private void process();
+     110: invokevirtual #256                // Method com/simibubi/create/content/kinetics/millstone/MillingRecipe.rollResults:(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  public void spawnParticles();
+  public void write(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider, boolean);
+  protected void read(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider, boolean);
+  public int getProcessingSpeed();
+  private boolean canProcess(net.minecraft.world.item.ItemStack);
+  private void lambda$process$1(net.minecraft.world.item.ItemStack);
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$0(com.simibubi.create.content.kinetics.millstone.MillstoneBlockEntity, net.minecraft.core.Direction);
+== crusher/CrushingWheelControllerBlockEntity
+  public com.simibubi.create.content.kinetics.crusher.CrushingWheelControllerBlockEntity(net.minecraft.world.level.block.entity.BlockEntityType<?>, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+  public static void registerCapabilities(net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent);
+  public void addBehaviours(java.util.List<com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour>);
+  private boolean supportsDirectBeltInput(net.minecraft.core.Direction);
+  public void tick();
+  public void tickAudio();
+  private void intakeItem(net.minecraft.world.entity.item.ItemEntity);
+  protected void spawnParticles(net.minecraft.world.item.ItemStack);
+  private void applyRecipe();
+      72: invokevirtual #555                // Method com/simibubi/create/content/processing/recipe/StandardProcessingRecipe.rollResults:(Lnet/minecraft/util/RandomSource;)Ljava/util/List;
+  public java.util.Optional<net.minecraft.world.item.crafting.RecipeHolder<com.simibubi.create.content.processing.recipe.StandardProcessingRecipe<net.neoforged.neoforge.items.wrapper.RecipeWrapper>>> findRecipe();
+  public void write(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider, boolean);
+  protected void read(net.minecraft.nbt.CompoundTag, net.minecraft.core.HolderLookup$Provider, boolean);
+  public void clearContent();
+  public void startCrushing(net.minecraft.world.entity.Entity);
+  private void itemInserted(net.minecraft.world.item.ItemStack);
+  public void clear();
+  public boolean isOccupied();
+  public boolean hasEntity();
+  private java.lang.Runnable lambda$tick$3();
+  private void lambda$tick$2();
+  private boolean lambda$tick$1(net.minecraft.world.entity.Entity);
+  private static net.neoforged.neoforge.items.IItemHandler lambda$registerCapabilities$0(com.simibubi.create.content.kinetics.crusher.CrushingWheelControllerBlockEntity, net.minecraft.core.Direction);
+== fan/AirCurrent
+  public com.simibubi.create.content.kinetics.fan.AirCurrent(com.simibubi.create.content.kinetics.fan.IAirCurrentSource);
+  public void tick();
+  protected void tickAffectedEntities(net.minecraft.world.level.Level);
+     435: invokestatic  #309                // Method com/simibubi/create/content/kinetics/fan/processing/FanProcessing.applyProcessing:(Lnet/minecraft/world/entity/item/ItemEntity;Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;)Z
+  public static boolean isPlayerCreativeFlying(net.minecraft.world.entity.Entity);
+  public void tickAffectedHandlers();
+  public void rebuild();
+  public static float getFlowLimit(net.minecraft.world.level.Level, net.minecraft.core.BlockPos, float, net.minecraft.core.Direction);
+  private static double findMaxDepth(net.minecraft.world.phys.shapes.VoxelShape, net.minecraft.core.Direction);
+  private static boolean shouldAlwaysPass(net.minecraft.world.level.block.state.BlockState);
+  private int getLimit();
+  public void findAffectedHandlers();
+  public void findEntities();
+  public com.simibubi.create.content.kinetics.fan.processing.FanProcessingType getTypeAt(float);
+  private com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour$TransportedResult lambda$tickAffectedHandlers$0(net.minecraft.world.level.Level, com.simibubi.create.content.kinetics.fan.processing.FanProcessingType, com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour, com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack);
+      28: invokestatic  #556                // Method com/simibubi/create/content/kinetics/fan/processing/FanProcessing.applyProcessing:(Lcom/simibubi/create/content/kinetics/belt/transport/TransportedItemStack;Lnet/minecraft/world/level/Level;Lcom/simibubi/create/content/kinetics/fan/processing/FanProcessingType;)Lcom/simibubi/create/content/kinetics/belt/behaviour/TransportedItemStackHandlerBehaviour$TransportedResult;
+== fan/processing/FanProcessing
+  public com.simibubi.create.content.kinetics.fan.processing.FanProcessing();
+  public static boolean canProcess(net.minecraft.world.entity.item.ItemEntity, com.simibubi.create.content.kinetics.fan.processing.FanProcessingType);
+  public static boolean applyProcessing(net.minecraft.world.entity.item.ItemEntity, com.simibubi.create.content.kinetics.fan.processing.FanProcessingType);
+      19: invokeinterface #65,  3           // InterfaceMethod com/simibubi/create/content/kinetics/fan/processing/FanProcessingType.process:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;)Ljava/util/List;
+  public static com.simibubi.create.content.kinetics.belt.behaviour.TransportedItemStackHandlerBehaviour$TransportedResult applyProcessing(com.simibubi.create.content.kinetics.belt.transport.TransportedItemStack, net.minecraft.world.level.Level, com.simibubi.create.content.kinetics.fan.processing.FanProcessingType);
+     117: invokeinterface #65,  3           // InterfaceMethod com/simibubi/create/content/kinetics/fan/processing/FanProcessingType.process:(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/Level;)Ljava/util/List;
+  private static int decrementProcessingTime(net.minecraft.world.entity.item.ItemEntity, com.simibubi.create.content.kinetics.fan.processing.FanProcessingType);
