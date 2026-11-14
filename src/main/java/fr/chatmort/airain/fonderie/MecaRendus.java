@@ -56,7 +56,8 @@ public final class MecaRendus {
 				BlockPos q = be.getBlockPos().relative(f, i);
 				BlockState s = be.getLevel().getBlockState(q);
 				if (!(s.getBlock() instanceof Passerelle.Plancher) || s.getBlock() instanceof PasserelleMobile) break;
-				s = s.setValue(Passerelle.RENTRE, false);
+				// en mouvement : pas de rambarde en travers du tablier (seulement le long des bords)
+				s = s.setValue(Passerelle.RENTRE, false).setValue(Passerelle.cote(f), Passerelle.Cote.AUCUN).setValue(Passerelle.cote(f.getOpposite()), Passerelle.Cote.AUCUN);
 				ms.pushPose();
 				if (pont) {
 					// tout le tablier pivote autour du bord du mécanisme, au ras du plancher

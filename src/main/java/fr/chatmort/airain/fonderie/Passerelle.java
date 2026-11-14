@@ -217,6 +217,9 @@ public final class Passerelle {
 		}
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState voisin, LevelAccessor l, BlockPos p, BlockPos np) {
+			// segment relevé ou rentré : ses côtés restent ceux d'avant (sinon des rambardes apparaîtraient entre les segments) ;
+			// ils sont recalculés quand il se redéploie
+			if (s.getValue(RENTRE)) return s;
 			if (d.getAxis().isHorizontal()) {
 				s = s.setValue(cote(d), auto(s.getValue(cote(d)), raccorde(l, p, s, d), libre(l, p, d), dedans(l, p, d)));
 			}
@@ -463,6 +466,17 @@ public final class Passerelle {
 		public BlockState getStateForPlacement(BlockPlaceContext c) {
 			BlockState s = super.getStateForPlacement(c);
 			return s == null ? null : s.setValue(CAGE, cage(c.getLevel(), c.getClickedPos()) ? Entourage.CRINOLINE : Entourage.RIEN);
+		}
+		// crinoline et tunnel arrêtent le joueur, comme en vrai : on ne sort de l'échelle que par le haut ou par le bas
+		private static final Map<BlockState, VoxelShape> CAGES = new java.util.concurrent.ConcurrentHashMap<>();
+		@Override
+		protected VoxelShape getCollisionShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
+			VoxelShape v = super.getCollisionShape(s, l, p, c);
+			if (s.getValue(CAGE) == Entourage.RIEN) return v;
+			return CAGES.computeIfAbsent(s, e -> {
+				Direction f = e.getValue(FACING);          // dessin : échelle contre le mur au sud, cage ouverte devant (nord)
+				return Shapes.or(v, ConduitAir.boiteVers(f, 1, 0, 1, 15, 16, 2), ConduitAir.boiteVers(f, 1, 0, 2, 2, 16, 13), ConduitAir.boiteVers(f, 14, 0, 2, 15, 16, 13)).optimize();
+			});
 		}
 		// clé de Create : rien → crinoline → tunnel plein → rien
 		@Override
