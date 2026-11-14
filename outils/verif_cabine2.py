@@ -19,7 +19,6 @@ def scene():
     E+=chargel('airain_catwalk_floor_bottom',(1,1,0))+chargel('airain_catwalk_railing_bottom',(1,1,0),270)+chargel('airain_catwalk_railing_bottom',(1,1,0),90)
     for x in range(3):
         for z in range(3): E+=cube((x,0,z))
-    E+=cube((0,1,0))+cube((2,1,0))
     return E
-A=vue(scene(),[-0.8,0.6,-1],700); B=vue(scene(),[1,0.5,1],700)
+A=vue(scene(),[-0.7,0.5,-1],700); B=vue(scene(),[1,0.5,1],700)
 W=Image.new('RGBA',(A.width+B.width+60,max(A.height,B.height)+40),(34,30,38,255)); W.alpha_composite(A,(20,20)); W.alpha_composite(B,(A.width+40,20)); W.save('rendu_fusion/cabine2.png')

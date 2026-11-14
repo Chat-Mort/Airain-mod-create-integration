@@ -87,6 +87,7 @@ for f in NFAM:
                     for g,cote in (('false','right'),('true','left')):
                         parts+=[mp(M(f'airain_catwalk_landing_{cote}'),{"facing":d,"turn_left":g,"solid":"false"},r),mp(M(f'airain_catwalk_landing_{cote}_solid'),{"facing":d,"turn_left":g,"solid":"true"},r)]
                     for etat in ('railing','gate','gate_open'): parts.append(mp(M(f'airain_catwalk_{etat}_top'),{d:etat},r))
+                    parts.append(mp(M('airain_catwalk_railing_inner_top'),{d:'inner'},r))
                 butin(i)
             elif f=='airain_hanger':
                 for ax,r in (('x',0),('z',90)):

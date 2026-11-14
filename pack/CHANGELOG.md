@@ -5,7 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 14 novembre 2026 — version 1.55.1
+## 14 novembre 2026 — versions 1.55.1 et 1.55.2
+
+**Corrections (1.55.2)**
+- Rambardes à côté de la cage du monte-charge (la cabine, ou la case vide contre le mât) : elles restent à l'intérieur de la passerelle et ne gênent plus la cabine ni le joueur dedans.
+- Passerelles mobiles relevées ou rentrées : le mécanisme et le bloc d'en face remettent leur rambarde à l'intérieur de leur bloc, au bout du passage, au lieu de la faire dépasser dans le vide.
+- Sourcelink mécanique et turbine d'Écho posés contre un arbre de Create : ils se tournent maintenant vers l'arbre et s'y raccordent. Un bloc déjà posé à l'envers se recasse et se repose.
+
 
 **Changements**
 - Haut-fourneau impérial, plus imposant : 5 de haut et 54 briques réfractaires.

@@ -59,6 +59,8 @@ def tunnel():
 def rambarde_nord(h):
     # à l'extérieur du bloc (sur le bord du voisin) : le plancher garde toute sa largeur ; poteau à l'angle extérieur
     return [el([0,h+11,-2],[16,h+13,0]),el([0,h+6,-1.5],[16,h+7,-0.5]),el([0,h,-1.5],[16,h+3,-1]),el([-2,h,-2],[0,h+13,0])]
+def rambarde_int(h):   # rambarde dans le bloc (cage du monte-charge, segment mobile relevé) : poteaux aux deux bouts
+    return [el([0,h+11,0],[16,h+13,2]),el([0,h+6,0.5],[16,h+7,1.5]),el([0,h,0.5],[16,h+3,1]),el([0,h,0],[2,h+13,2]),el([14,h,0],[16,h+13,2])]
 def portillon_nord(h, ouvert):
     # dehors, comme les rambardes (z décalé de -2)
     E=[el([0,h,-2.0],[2,h+13,0.0]),el([14,h,-2.0],[16,h+13,0.0])]            # poteaux du portillon
@@ -125,6 +127,7 @@ for p in PRE:
     for haut,h in (('bottom',3),('top',11)):
         modele(f'{p}airain_catwalk_floor_{haut}',plancher(h),tex); modele(f'{p}airain_catwalk_floor_solid_{haut}',plein(plancher(h)),tex)
         modele(f'{p}airain_catwalk_railing_{haut}',rambarde_nord(h),tex)
+        modele(f'{p}airain_catwalk_railing_inner_{haut}',rambarde_int(h),tex)
         modele(f'{p}airain_catwalk_gate_{haut}',portillon_nord(h,False),tex)
         modele(f'{p}airain_catwalk_gate_open_{haut}',portillon_nord(h,True),tex)
         modele(f'{p}airain_catwalk_ramp_{haut}',rampe_base(h),tex); modele(f'{p}airain_catwalk_ramp_solid_{haut}',plein(rampe_base(h)),tex)
@@ -155,7 +158,7 @@ for f in FAM:
                 parts=[mp(M('airain_catwalk_floor_bottom'),{"top":"false","solid":"false"}),mp(M('airain_catwalk_floor_top'),{"top":"true","solid":"false"}),
                        mp(M('airain_catwalk_floor_solid_bottom'),{"top":"false","solid":"true"}),mp(M('airain_catwalk_floor_solid_top'),{"top":"true","solid":"true"})]
                 for d,r in ROT.items():
-                    for etat,modl in (('railing','railing'),('gate','gate'),('gate_open','gate_open')):
+                    for etat,modl in (('railing','railing'),('gate','gate'),('gate_open','gate_open'),('inner','railing_inner')):
                         for haut in ('false','true'):
                             parts.append(mp(M(f'airain_catwalk_{modl}_'+('top' if haut=='true' else 'bottom')),{d:etat,"top":haut},r))
                 bs={"multipart":parts}
