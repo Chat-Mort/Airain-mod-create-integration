@@ -32,13 +32,13 @@ def cabine():
         el([1,9,2],[1.6,10,14],'#bd'),el([14.4,9,2],[15,10,14],'#bd'),el([2,9,14.4],[14,10,15],'#bd')]          # main courante
     return E
 def cabine_haut():
-    """Haut de la cabine (1.55) : fermé de tous côtés (fenêtres vitrées), toit avec plafonnier ; boîtier côté mât."""
+    """Haut de la cabine : fenêtres sur les côtés, paroi côté mât (boîtier), toit avec plafonnier ; ouvert côté passerelles."""
     E=[]
     for (x,z) in ((0,0),(14,0),(0,14),(14,14)): E.append(el([x,0,z],[x+2,16,z+2],'#m'))
-    for a,b,c,d in (([0,0,2],[1,3,14],[0,13,2],[1,15,14]),([15,0,2],[16,3,14],[15,13,2],[16,15,14]),([2,0,0],[14,3,1],[2,13,0],[14,15,1])):
-        E+=[el(a,b,'#bd'),el(c,d,'#bd')]                                    # cadre de fenêtre (dont le linteau au-dessus du portail)
-    E+=[el([0.25,3,2],[0.75,13,14],'#gl',faces=("east","west"),uv='crop'),el([15.25,3,2],[15.75,13,14],'#gl',faces=("east","west"),uv='crop'),
-        el([2,3,0.25],[14,13,0.75],'#gl',faces=("north","south"),uv='crop')]
+    for a,b,c,d in (([0,0,2],[1,3,14],[0,13,2],[1,15,14]),([15,0,2],[16,3,14],[15,13,2],[16,15,14])):
+        E+=[el(a,b,'#bd'),el(c,d,'#bd')]                                    # cadre des fenêtres latérales
+    E+=[el([0.25,3,2],[0.75,13,14],'#gl',faces=("east","west"),uv='crop'),el([15.25,3,2],[15.75,13,14],'#gl',faces=("east","west"),uv='crop')]
+    # côté passerelles : ouvert sur toute la hauteur (on entre debout), seul le toit le surplombe
     E+=[el([2,0,15],[14,15,16],'#pn',uv='crop'),                                            # paroi côté mât
         el([0,15,0],[16,16,16],'#pn',faces=("up","down","north","south","east","west"),uv='crop'),   # toit
         el([6,14.6,6],[10,15,10],'#lw',faces=("down",),uv='crop',lum=True),el([5.5,14.4,5.5],[10.5,15,6],'#bd'),el([5.5,14.4,10],[10.5,15,10.5],'#bd')]

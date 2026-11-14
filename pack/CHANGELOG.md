@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 14 novembre 2026 — version 1.55.0
+## 14 novembre 2026 — version 1.55.1
 
 **Changements**
 - Haut-fourneau impérial, plus imposant : 5 de haut et 54 briques réfractaires.
@@ -15,7 +15,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - Un fourneau 3 × 3 déjà construit n'est plus reconnu : il faut le reconstruire.
 - Une à trois tuyères, au milieu des côtés ou de l'arrière du creuset. Chaque ventilateur ajoute son débit.
 - Construction du haut-fourneau : clic droit main nue sur le trou de coulée, et les blocs manquants apparaissent en hologramme pendant 30 secondes (les mauvais blocs sont entourés de rouge). Un clic droit avec le bon bloc le pose dans la case visée, même en l'air. Les particules orange et le texte dans le chat disparaissent ; les lunettes d'ingénieur comptent ce qui manque.
-- Monte-charge : la cabine fait deux blocs de haut. Elle est fermée de tous côtés (fenêtres vitrées, toit avec plafonnier), sauf le portail côté passerelles, qui garde un bloc de haut. Le panneau de sélection d'étage passe en haut, contre la paroi du mât.
+- Monte-charge : la cabine fait deux blocs de haut. Elle est fermée sur trois côtés (fenêtres vitrées en haut, toit avec plafonnier) et reste ouverte côté passerelles, avec le portail en bas. Le panneau de sélection d'étage passe en haut, contre la paroi du mât.
 - La quête « Les briques réfractaires » demande 54 briques.
 
 ---
