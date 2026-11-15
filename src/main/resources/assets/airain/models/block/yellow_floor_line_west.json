@@ -1,0 +1,34 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "t": "airain:block/yellow_floor_line",
+  "particle": "airain:block/yellow_floor_line"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    7
+   ],
+   "to": [
+    7,
+    0.1,
+    9
+   ],
+   "faces": {
+    "up": {
+     "texture": "#t",
+     "uv": [
+      0,
+      7,
+      7,
+      9
+     ]
+    }
+   }
+  }
+ ]
+}

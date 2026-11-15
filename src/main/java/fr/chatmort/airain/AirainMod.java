@@ -563,6 +563,8 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Mecanique.charger();     // mécanique impériale : allégeur et surcompresseur
 		fr.chatmort.airain.fonderie.Materiaux.charger();     // 1.57 : marbres veinés d'or, ardoise, carrelage
 		fr.chatmort.airain.fonderie.Telepherique.charger();  // 1.58 : téléphérique et laminoir
+		// 1.59 : charpente métallique d'airain et marquages au sol
+		fr.chatmort.airain.fonderie.Charpente.charger();
 		fr.chatmort.airain.atelier.Atelier.charger();        // pièces d'atelier : tuyauterie, lampes, réverbères, bornes…
 		fr.chatmort.airain.fonderie.MetalAirain.TYPES.register(bus);
 		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);

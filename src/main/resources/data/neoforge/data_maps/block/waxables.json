@@ -407,6 +407,102 @@
   },
   "airain:oxidized_airain_supercharger": {
    "waxed": "airain:waxed_oxidized_airain_supercharger"
+  },
+  "airain:airain_beam": {
+   "waxed": "airain:waxed_airain_beam"
+  },
+  "airain:exposed_airain_beam": {
+   "waxed": "airain:waxed_exposed_airain_beam"
+  },
+  "airain:weathered_airain_beam": {
+   "waxed": "airain:waxed_weathered_airain_beam"
+  },
+  "airain:oxidized_airain_beam": {
+   "waxed": "airain:waxed_oxidized_airain_beam"
+  },
+  "airain:airain_knee_brace": {
+   "waxed": "airain:waxed_airain_knee_brace"
+  },
+  "airain:exposed_airain_knee_brace": {
+   "waxed": "airain:waxed_exposed_airain_knee_brace"
+  },
+  "airain:weathered_airain_knee_brace": {
+   "waxed": "airain:waxed_weathered_airain_knee_brace"
+  },
+  "airain:oxidized_airain_knee_brace": {
+   "waxed": "airain:waxed_oxidized_airain_knee_brace"
+  },
+  "airain:airain_rafter": {
+   "waxed": "airain:waxed_airain_rafter"
+  },
+  "airain:exposed_airain_rafter": {
+   "waxed": "airain:waxed_exposed_airain_rafter"
+  },
+  "airain:weathered_airain_rafter": {
+   "waxed": "airain:waxed_weathered_airain_rafter"
+  },
+  "airain:oxidized_airain_rafter": {
+   "waxed": "airain:waxed_oxidized_airain_rafter"
+  },
+  "airain:airain_lattice_girder": {
+   "waxed": "airain:waxed_airain_lattice_girder"
+  },
+  "airain:exposed_airain_lattice_girder": {
+   "waxed": "airain:waxed_exposed_airain_lattice_girder"
+  },
+  "airain:weathered_airain_lattice_girder": {
+   "waxed": "airain:waxed_weathered_airain_lattice_girder"
+  },
+  "airain:oxidized_airain_lattice_girder": {
+   "waxed": "airain:waxed_oxidized_airain_lattice_girder"
+  },
+  "airain:airain_glass_roof": {
+   "waxed": "airain:waxed_airain_glass_roof"
+  },
+  "airain:exposed_airain_glass_roof": {
+   "waxed": "airain:waxed_exposed_airain_glass_roof"
+  },
+  "airain:weathered_airain_glass_roof": {
+   "waxed": "airain:waxed_weathered_airain_glass_roof"
+  },
+  "airain:oxidized_airain_glass_roof": {
+   "waxed": "airain:waxed_oxidized_airain_glass_roof"
+  },
+  "airain:airain_skylight": {
+   "waxed": "airain:waxed_airain_skylight"
+  },
+  "airain:exposed_airain_skylight": {
+   "waxed": "airain:waxed_exposed_airain_skylight"
+  },
+  "airain:weathered_airain_skylight": {
+   "waxed": "airain:waxed_weathered_airain_skylight"
+  },
+  "airain:oxidized_airain_skylight": {
+   "waxed": "airain:waxed_oxidized_airain_skylight"
+  },
+  "airain:airain_gutter": {
+   "waxed": "airain:waxed_airain_gutter"
+  },
+  "airain:exposed_airain_gutter": {
+   "waxed": "airain:waxed_exposed_airain_gutter"
+  },
+  "airain:weathered_airain_gutter": {
+   "waxed": "airain:waxed_weathered_airain_gutter"
+  },
+  "airain:oxidized_airain_gutter": {
+   "waxed": "airain:waxed_oxidized_airain_gutter"
+  },
+  "airain:airain_downpipe": {
+   "waxed": "airain:waxed_airain_downpipe"
+  },
+  "airain:exposed_airain_downpipe": {
+   "waxed": "airain:waxed_exposed_airain_downpipe"
+  },
+  "airain:weathered_airain_downpipe": {
+   "waxed": "airain:waxed_weathered_airain_downpipe"
+  },
+  "airain:oxidized_airain_downpipe": {
+   "waxed": "airain:waxed_oxidized_airain_downpipe"
   }
  }
 }

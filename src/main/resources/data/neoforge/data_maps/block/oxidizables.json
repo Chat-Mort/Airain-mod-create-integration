@@ -305,6 +305,78 @@
   },
   "airain:weathered_airain_supercharger": {
    "next_oxidation_stage": "airain:oxidized_airain_supercharger"
+  },
+  "airain:airain_beam": {
+   "next_oxidation_stage": "airain:exposed_airain_beam"
+  },
+  "airain:exposed_airain_beam": {
+   "next_oxidation_stage": "airain:weathered_airain_beam"
+  },
+  "airain:weathered_airain_beam": {
+   "next_oxidation_stage": "airain:oxidized_airain_beam"
+  },
+  "airain:airain_knee_brace": {
+   "next_oxidation_stage": "airain:exposed_airain_knee_brace"
+  },
+  "airain:exposed_airain_knee_brace": {
+   "next_oxidation_stage": "airain:weathered_airain_knee_brace"
+  },
+  "airain:weathered_airain_knee_brace": {
+   "next_oxidation_stage": "airain:oxidized_airain_knee_brace"
+  },
+  "airain:airain_rafter": {
+   "next_oxidation_stage": "airain:exposed_airain_rafter"
+  },
+  "airain:exposed_airain_rafter": {
+   "next_oxidation_stage": "airain:weathered_airain_rafter"
+  },
+  "airain:weathered_airain_rafter": {
+   "next_oxidation_stage": "airain:oxidized_airain_rafter"
+  },
+  "airain:airain_lattice_girder": {
+   "next_oxidation_stage": "airain:exposed_airain_lattice_girder"
+  },
+  "airain:exposed_airain_lattice_girder": {
+   "next_oxidation_stage": "airain:weathered_airain_lattice_girder"
+  },
+  "airain:weathered_airain_lattice_girder": {
+   "next_oxidation_stage": "airain:oxidized_airain_lattice_girder"
+  },
+  "airain:airain_glass_roof": {
+   "next_oxidation_stage": "airain:exposed_airain_glass_roof"
+  },
+  "airain:exposed_airain_glass_roof": {
+   "next_oxidation_stage": "airain:weathered_airain_glass_roof"
+  },
+  "airain:weathered_airain_glass_roof": {
+   "next_oxidation_stage": "airain:oxidized_airain_glass_roof"
+  },
+  "airain:airain_skylight": {
+   "next_oxidation_stage": "airain:exposed_airain_skylight"
+  },
+  "airain:exposed_airain_skylight": {
+   "next_oxidation_stage": "airain:weathered_airain_skylight"
+  },
+  "airain:weathered_airain_skylight": {
+   "next_oxidation_stage": "airain:oxidized_airain_skylight"
+  },
+  "airain:airain_gutter": {
+   "next_oxidation_stage": "airain:exposed_airain_gutter"
+  },
+  "airain:exposed_airain_gutter": {
+   "next_oxidation_stage": "airain:weathered_airain_gutter"
+  },
+  "airain:weathered_airain_gutter": {
+   "next_oxidation_stage": "airain:oxidized_airain_gutter"
+  },
+  "airain:airain_downpipe": {
+   "next_oxidation_stage": "airain:exposed_airain_downpipe"
+  },
+  "airain:exposed_airain_downpipe": {
+   "next_oxidation_stage": "airain:weathered_airain_downpipe"
+  },
+  "airain:weathered_airain_downpipe": {
+   "next_oxidation_stage": "airain:oxidized_airain_downpipe"
   }
  }
 }

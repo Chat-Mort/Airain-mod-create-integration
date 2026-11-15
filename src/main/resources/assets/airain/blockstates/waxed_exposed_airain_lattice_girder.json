@@ -1,0 +1,24 @@
+{
+ "variants": {
+  "alt=false,axis=x": {
+   "model": "airain:block/exposed_airain_lattice_girder"
+  },
+  "alt=false,axis=z": {
+   "model": "airain:block/exposed_airain_lattice_girder",
+   "y": 90
+  },
+  "alt=false,axis=y": {
+   "model": "airain:block/exposed_airain_lattice_girder_column"
+  },
+  "alt=true,axis=x": {
+   "model": "airain:block/exposed_airain_lattice_girder_alt"
+  },
+  "alt=true,axis=z": {
+   "model": "airain:block/exposed_airain_lattice_girder_alt",
+   "y": 90
+  },
+  "alt=true,axis=y": {
+   "model": "airain:block/exposed_airain_lattice_girder_column_alt"
+  }
+ }
+}

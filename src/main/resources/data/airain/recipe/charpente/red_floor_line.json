@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "minecraft:red_dye"
+  },
+  {
+   "item": "minecraft:stone"
+  }
+ ],
+ "result": {
+  "id": "airain:red_floor_line",
+  "count": 16
+ }
+}

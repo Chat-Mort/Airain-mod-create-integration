@@ -1,0 +1,14 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_skylight_frame"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/oxidized_airain_skylight_glass"
+   }
+  }
+ ]
+}

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Le livre de l'ingénieur, au style du registre. Cinq sommaires (blocs, objets, fin de l'Empire, fin de l'Écho, industrie),
+ * Le livre de l'ingénieur, au style du registre. Six sommaires (blocs, objets, fin de l'Empire, fin de l'Écho, industrie, bâtir),
  * chacun sur une double page ; un clic mène au chapitre. Chaque chapitre : à gauche l'objet, son nom et une phrase
  * d'histoire, puis le mode d'emploi (balisé : intertitres, puces, icônes) qui coule sur la gauche puis la droite.
  */
@@ -29,13 +29,13 @@ public class LivreIngenieurScreen extends Screen {
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, BLEU = 0x28507A;
 
 	/** Sections : clé du sommaire, puis chapitres {clé de texte, objet illustré}. 14 chapitres au plus par sommaire (5 à gauche, 9 à droite). */
-	static final String[] SECTIONS = {"machines", "objets", "empire", "echo", "industrie"};
+	static final String[] SECTIONS = {"machines", "objets", "empire", "echo", "industrie", "batir"};
 	static final String[][][] CHAPITRES = {
 		{{"fondation", "airain:foundation_stone"}, {"grand_etendard", "airain:great_standard"}, {"banniere_murale", "airain:foundation_wall_banner"},
 		 {"gabarit", "airain:banner_template"}, {"registre", "airain:foundation_registry"}, {"socle", "airain:trophy_pedestal"},
 		 {"banc", "airain:maintenance_bench"}, {"modules", "airain:fine_grindstone"}, {"table", "airain:imperial_enchanting_table"},
 		 {"desenchanteur", "airain:disenchanter"}, {"balise", "airain:defense_beacon"}, {"gardien", "airain:guardian_spawn_egg"},
-		 {"modules_gardien", "airain:lantern_module"}, {"materiaux", "airain:chiseled_white_marble"}},
+		 {"modules_gardien", "airain:lantern_module"}},
 		{{"codex", "airain:codex"}, {"chroniques", "airain:chronicles"}, {"reliure", "airain:binder"}, {"manuels", "airain:imperial_arms_regulations"}, {"tableau", "airain:duty_board"},
 		 {"atlas", "airain:atlas"}, {"affiches", "airain:blank_poster"}, {"cartes", "airain:empire_map"},
 		 {"encre", "airain:runic_ink"}, {"schemas", "kubejs:schema_cuivre"}, {"sceau", "kubejs:sceau_forge"},
@@ -49,10 +49,13 @@ public class LivreIngenieurScreen extends Screen {
 		 {"armes_arcaniques", "airain:arcane_katana"}, {"sceptre_arcanique", "airain:arcane_scepter"}, {"gardien_echo", "airain:primordial_echo_block"},
 		 {"solium", "airain:solium"}, {"borne_arcanique", "airain:resonant_archive"}, {"relais", "kubejs:diapason_echo"}, {"glyphe_engrenage", "airain:glyph_gear"}},
 		// l'industrie : l'airain et ce qu'on en tire, et les machines qui marient Create et Ars
-		{{"airain", "airain:airain_ingot"}, {"recuperation", "kubejs:ferraille"}, {"haut_fourneau", "airain:blast_furnace_taphole"}, {"style_imperial", "airain:chiseled_airain"},
-		 {"passerelles", "airain:airain_catwalk"}, {"conduite_air", "airain:airain_air_vent"}, {"atelier", "airain:airain_workbench"}, {"mecanismes", "airain:airain_lift_winch"},
+		{{"airain", "airain:airain_ingot"}, {"recuperation", "kubejs:ferraille"}, {"haut_fourneau", "airain:blast_furnace_taphole"},
+		 {"conduite_air", "airain:airain_air_vent"}, {"mecanismes", "airain:airain_lift_winch"},
 		 {"mecanique", "airain:airain_load_reliever"}, {"turbine_echo", "airain:echo_turbine"}, {"sourcelink_meca", "airain:mechanical_sourcelink"}, {"diffuseur_echo", "airain:echo_diffuser"},
-		 {"condenseur_echo", "airain:echo_condenser"}, {"telepherique", "airain:airain_gondola"}}};
+		 {"condenseur_echo", "airain:echo_condenser"}, {"telepherique", "airain:airain_gondola"}},
+		// 1.59 : bâtir l'Empire, le style, les matériaux, les passerelles, l'atelier, la charpente et les marquages au sol
+		{{"style_imperial", "airain:chiseled_airain"}, {"materiaux", "airain:chiseled_white_marble"}, {"passerelles", "airain:airain_catwalk"},
+		 {"atelier", "airain:airain_workbench"}, {"charpente", "airain:airain_beam"}, {"marquages", "airain:yellow_hazard_stripes"}}};
 	/** Chapitres à la suite, et la section de chacun. */
 	private static final List<String[]> TOUS = new ArrayList<>();
 	private static final List<Integer> SECTION_DE = new ArrayList<>();
@@ -180,7 +183,7 @@ public class LivreIngenieurScreen extends Screen {
 		return i < GAUCHE ? new int[] {bx() + 20, by() + 22 + 56 + i * PAS} : new int[] {bx() + 162, by() + 22 + 2 + (i - GAUCHE) * PAS};
 	}
 
-	/** Onglets des cinq sommaires, en bas de la page de gauche. */
+	/** Onglets des six sommaires, en bas de la page de gauche. */
 	private int[] onglet(int s) {
 		int x = bx() + 20;
 		for (int i = s - s % 3; i < s; i++) x += largeurOnglet(i) + 10;   // trois onglets par ligne

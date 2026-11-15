@@ -1,0 +1,74 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_frame",
+    "y": 270
+   },
+   "when": {
+    "facing": "north"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_frame"
+   },
+   "when": {
+    "facing": "east"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_frame",
+    "y": 90
+   },
+   "when": {
+    "facing": "south"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_frame",
+    "y": 180
+   },
+   "when": {
+    "facing": "west"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_glass",
+    "y": 270
+   },
+   "when": {
+    "facing": "north"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_glass"
+   },
+   "when": {
+    "facing": "east"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_glass",
+    "y": 90
+   },
+   "when": {
+    "facing": "south"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_glass_roof_glass",
+    "y": 180
+   },
+   "when": {
+    "facing": "west"
+   }
+  }
+ ]
+}

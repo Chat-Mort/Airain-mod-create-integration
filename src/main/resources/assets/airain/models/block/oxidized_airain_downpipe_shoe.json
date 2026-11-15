@@ -1,0 +1,147 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "f": "airain:block/oxidized_airain_beam_flange",
+  "fv": "airain:block/oxidized_airain_beam_flange_vertical",
+  "w": "airain:block/oxidized_airain_beam_web",
+  "wv": "airain:block/oxidized_airain_beam_web_vertical",
+  "p": "airain:block/oxidized_airain_beam_plate",
+  "b": "airain:block/oxidized_airain_lattice_bar",
+  "bv": "airain:block/oxidized_airain_lattice_bar_vertical",
+  "g": "airain:block/airain_glass",
+  "pi": "airain:block/oxidized_airain_pipe",
+  "piv": "airain:block/oxidized_airain_pipe_vertical",
+  "particle": "airain:block/oxidized_airain_beam_flange"
+ },
+ "elements": [
+  {
+   "from": [
+    5,
+    0,
+    5
+   ],
+   "to": [
+    11,
+    2,
+    11
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pi",
+     "uv": [
+      5.0,
+      7.0,
+      11.0,
+      9.0
+     ]
+    },
+    "south": {
+     "texture": "#pi",
+     "uv": [
+      5.0,
+      7.0,
+      11.0,
+      9.0
+     ]
+    },
+    "east": {
+     "texture": "#pi",
+     "uv": [
+      5.0,
+      7.0,
+      11.0,
+      9.0
+     ]
+    },
+    "west": {
+     "texture": "#pi",
+     "uv": [
+      5.0,
+      7.0,
+      11.0,
+      9.0
+     ]
+    },
+    "up": {
+     "texture": "#pi",
+     "uv": [
+      5.0,
+      5.0,
+      11.0,
+      11.0
+     ]
+    },
+    "down": {
+     "texture": "#pi",
+     "uv": [
+      5.0,
+      5.0,
+      11.0,
+      11.0
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    6,
+    2,
+    6
+   ],
+   "to": [
+    10,
+    3,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#pi",
+     "uv": [
+      6.0,
+      7.5,
+      10.0,
+      8.5
+     ]
+    },
+    "south": {
+     "texture": "#pi",
+     "uv": [
+      6.0,
+      7.5,
+      10.0,
+      8.5
+     ]
+    },
+    "east": {
+     "texture": "#pi",
+     "uv": [
+      6.0,
+      7.5,
+      10.0,
+      8.5
+     ]
+    },
+    "west": {
+     "texture": "#pi",
+     "uv": [
+      6.0,
+      7.5,
+      10.0,
+      8.5
+     ]
+    },
+    "up": {
+     "texture": "#pi",
+     "uv": [
+      6.0,
+      6.0,
+      10.0,
+      10.0
+     ]
+    }
+   }
+  }
+ ]
+}

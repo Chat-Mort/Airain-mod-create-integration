@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "minecraft:white_dye"
+  },
+  {
+   "item": "minecraft:stone"
+  }
+ ],
+ "result": {
+  "id": "airain:white_floor_line",
+  "count": 16
+ }
+}

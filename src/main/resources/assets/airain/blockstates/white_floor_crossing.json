@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/white_floor_crossing"
+  },
+  "facing=east": {
+   "model": "airain:block/white_floor_crossing",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/white_floor_crossing",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/white_floor_crossing",
+   "y": 270
+  }
+ }
+}

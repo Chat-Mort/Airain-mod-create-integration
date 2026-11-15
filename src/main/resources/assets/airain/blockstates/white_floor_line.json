@@ -1,0 +1,41 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/white_floor_line_dot"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/white_floor_line_north"
+   },
+   "when": {
+    "north": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/white_floor_line_south"
+   },
+   "when": {
+    "south": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/white_floor_line_east"
+   },
+   "when": {
+    "east": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/white_floor_line_west"
+   },
+   "when": {
+    "west": "true"
+   }
+  }
+ ]
+}

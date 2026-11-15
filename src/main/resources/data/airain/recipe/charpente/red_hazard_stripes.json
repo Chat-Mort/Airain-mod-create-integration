@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "minecraft:red_dye"
+  },
+  {
+   "item": "minecraft:white_dye"
+  },
+  {
+   "item": "minecraft:stone"
+  }
+ ],
+ "result": {
+  "id": "airain:red_hazard_stripes",
+  "count": 16
+ }
+}

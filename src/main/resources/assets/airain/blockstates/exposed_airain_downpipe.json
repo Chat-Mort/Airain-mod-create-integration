@@ -1,0 +1,17 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_downpipe"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_downpipe_shoe"
+   },
+   "when": {
+    "outlet": "true"
+   }
+  }
+ ]
+}

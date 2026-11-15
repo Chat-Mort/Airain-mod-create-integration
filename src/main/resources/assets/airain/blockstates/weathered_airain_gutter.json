@@ -1,0 +1,67 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_gutter"
+   },
+   "when": {
+    "axis": "x"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_gutter_start"
+   },
+   "when": {
+    "axis": "x",
+    "start": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_gutter_end"
+   },
+   "when": {
+    "axis": "x",
+    "end": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_gutter",
+    "y": 90
+   },
+   "when": {
+    "axis": "z"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_gutter_start",
+    "y": 90
+   },
+   "when": {
+    "axis": "z",
+    "start": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_gutter_end",
+    "y": 90
+   },
+   "when": {
+    "axis": "z",
+    "end": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/weathered_airain_gutter_outlet"
+   },
+   "when": {
+    "outlet": "true"
+   }
+  }
+ ]
+}

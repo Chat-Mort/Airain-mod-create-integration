@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "building",
+ "ingredients": [
+  {
+   "item": "airain:airain_beam"
+  },
+  {
+   "item": "minecraft:glass"
+  },
+  {
+   "item": "minecraft:glass"
+  },
+  {
+   "item": "minecraft:glass"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_glass_roof",
+  "count": 4
+ }
+}

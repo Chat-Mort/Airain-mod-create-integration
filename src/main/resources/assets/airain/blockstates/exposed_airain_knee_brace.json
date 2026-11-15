@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/exposed_airain_knee_brace",
+   "y": 270
+  },
+  "facing=east": {
+   "model": "airain:block/exposed_airain_knee_brace"
+  },
+  "facing=south": {
+   "model": "airain:block/exposed_airain_knee_brace",
+   "y": 90
+  },
+  "facing=west": {
+   "model": "airain:block/exposed_airain_knee_brace",
+   "y": 180
+  }
+ }
+}
