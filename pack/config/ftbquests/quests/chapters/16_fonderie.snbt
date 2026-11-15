@@ -496,6 +496,76 @@
 			y: -1.0d
 		}
 		{
+			dependencies: ["1B4E33638C6A805D"]
+			id: "5A88F5BBB28D3DAC"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "58A6EBA8D5947E8C"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_beam" }
+					count: 16L
+					id: "2240ABB05F2D9637"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_lattice_girder" }
+					count: 4L
+					id: "3AF92FE789A4758A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:airain_glass_roof" }
+					count: 4L
+					id: "1F2319EEF52E9D0F"
+					type: "item"
+				}
+			]
+			x: 10.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["5A88F5BBB28D3DAC"]
+			id: "53505B8500796E95"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:sprocket" }
+					count: 2
+					id: "603E44DE7FD46A6A"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:yellow_floor_line" }
+					count: 16L
+					id: "480F4F9A9C5D59EC"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:yellow_hazard_stripes" }
+					count: 4L
+					id: "35CA35848A9D107F"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:white_floor_arrow" }
+					count: 2L
+					id: "3F7E59A78A183CF4"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -2.0d
+		}
+		{
 			dependencies: ["1B4E33638C6A805D", "2ADCE98DF27075B6"]
 			id: "235D2E2FFE20DAB2"
 			optional: true

@@ -12,7 +12,7 @@ vus=set(); ims=[]; tot=0; num=6
 for k,ic in ch:
     if k in vus: continue
     vus.add(k)
-    h,u=T[k]; court=L.get(f'airain.ingenieur.{k}.court',k)
+    h,u=T[k] if k in T else (L[f'airain.ingenieur.{k}.histoire'],L[f'airain.ingenieur.{k}.usage']); court=L.get(f'airain.ingenieur.{k}.court',k)
     P=chapitre(ic,court,h,u,num,0); num+=len(P); tot+=len(P)
     if len(P)>1: print('2 pages :',k,len(P))
     ims+=P

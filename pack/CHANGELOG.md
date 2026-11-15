@@ -5,7 +5,19 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 15 novembre 2026 — versions 1.57.0 et 1.58.0
+## 15 novembre 2026 — versions 1.57.0 à 1.59.0
+
+**Ajouts (1.59.0)**
+- **Charpente d'airain** (quatre teintes qui se patinent, et cirées) :
+  - poutrelle en I : debout c'est un poteau, couchée une poutre ; platines rivetées posées seules au bout qui bute sur un bloc (pied de poteau, chapiteau, platine d'about) ; la clé de Create tourne le profil d'un quart de tour ;
+  - jambe de force et chevron à 45° (le haut part devant soi, la clé les tourne), poutre treillis à diagonales alternées d'un bloc à l'autre (accroupi : en colonne) ;
+  - verrière inclinée à poser entre deux chevrons, lanterneau à plat, gouttière (bouts fermés seuls) et descente (sabot au pied, sortie ouverte dans la gouttière au-dessus).
+- **Marquages au sol**, une fine couche de peinture sans collision posée sur tout sol plein : lignes jaunes, blanches ou rouges qui se raccordent seules (droite, angle, T, croix), hachures jaune/noir et rouge/blanc à motif continu, flèches jaunes ou blanches, passage piéton.
+- Recettes : 7 lingots d'airain = 12 poutrelles, le reste de la charpente au tailleur de pierre ; poutrelle + 3 verres = 4 verrières ; 3 plaques d'airain = 4 gouttières ; colorant + pierre = 16 lignes ; deux colorants + pierre = 16 hachures ; flèches et passage piéton au tailleur de pierre depuis une ligne.
+- Deux quêtes optionnelles (« La charpente d'airain », « Les marquages au sol »).
+
+**Changements (1.59.0)**
+- Livre de l'ingénieur : nouvel onglet « Bâtir » (style impérial, matériaux, passerelles, atelier, charpente, marquages), retirés des onglets Blocs et Industrie.
 
 **Ajouts (1.58.0)**
 - **Laminoir** : machine de Create (arbre sur le côté). Un lingot d'airain passé entre ses rouleaux donne 2 fils d'airain ; entonnoirs et tapis acceptés, ou clic droit (lingots dedans, main nue pour reprendre le fil).

@@ -1150,6 +1150,11 @@
 		"&8They spit scalding steam before striking: back off when they hiss.&r"
 	]
 	"quest.52FA0BE465BA921D.title": "Final Challenge: The Bronze Guard"
+	"quest.53505B8500796E95.quest_desc": [
+		"&7Optional.&r Every aisle had its line, every hazard its stripes. Lines connect on their own: straights, corners, T-junctions and crossings."
+		"&8Crafting table: a dye and a stone make 16 lines; yellow and black, or red and white, make stripes. Stonecutter: arrows and pedestrian crossings, from a line.&r"
+	]
+	"quest.53505B8500796E95.title": "Floor Markings"
 	"quest.53673928BEED9E60.quest_desc": [
 		"Crushing wheels are made in the mechanical crafter. Wheels → fan washing → smelting: extra experience and by-products (redstone from iron)."
 		"&8Crush ore blocks mined with Silk Touch: nearly twice the metal.&r"
@@ -1240,6 +1245,11 @@
 		"Four complete cannons. Iron becomes cast iron (press over a heated basin), cast iron melts in a heated basin and is poured into a cannon cast, then the barrel is bored. Details in EMI."
 	]
 	"quest.5A05D09AC645F0CD.title": "A Cannon Battery"
+	"quest.5A88F5BBB28D3DAC.quest_desc": [
+		"&7Optional.&r The Empire's halls stood on airain. The I-beam stands as a post or lies as a beam; its riveted end plates appear on their own. Knee braces, lattice girders, rafters, glass roofs, skylights and gutters complete the framework."
+		"&8Crafting table: 7 airain ingots make 12 I-beams. Stonecutter: the rest, from the I-beam.&r"
+	]
+	"quest.5A88F5BBB28D3DAC.title": "Airain Framework"
 	"quest.5A88FC3E3D161C0E.quest_desc": [
 		"It links all your chests and barrels into a single inventory. Needs a comparator, so Nether quartz."
 		"Open it to search, store and take from the whole warehouse at once. Funnels serving it serve the whole warehouse."

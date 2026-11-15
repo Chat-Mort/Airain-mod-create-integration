@@ -1150,6 +1150,11 @@
 		"&8Ils crachent de la vapeur brûlante avant de frapper : reculez quand ils sifflent.&r"
 	]
 	"quest.52FA0BE465BA921D.title": "Défi final : la garde de bronze"
+	"quest.53505B8500796E95.quest_desc": [
+		"&7Optionnel.&r Chaque allée avait sa ligne, chaque danger ses hachures. Les lignes se raccordent toutes seules : droites, angles, T et croix."
+		"&8Établi : un colorant et une pierre donnent 16 lignes ; jaune et noir, ou rouge et blanc, des hachures. Tailleur de pierre : flèches et passage piéton, depuis une ligne.&r"
+	]
+	"quest.53505B8500796E95.title": "Les marquages au sol"
 	"quest.53673928BEED9E60.quest_desc": [
 		"Les roues de broyage se fabriquent à l'assembleur mécanique. Roues → lavage au ventilateur → fonte : de l'expérience et des sous-produits en plus (de la redstone avec le fer)."
 		"&8Broyez des blocs de minerai minés avec Toucher de soie : près de deux fois plus de métal.&r"
@@ -1240,6 +1245,11 @@
 		"Quatre canons complets. Le fer devient de la fonte (presse sur bassin chauffé), la fonte fond dans un bassin chauffé et se coule dans un moule à canon, puis le fût se perce. Détails dans EMI."
 	]
 	"quest.5A05D09AC645F0CD.title": "Une batterie de canons"
+	"quest.5A88F5BBB28D3DAC.quest_desc": [
+		"&7Optionnel.&r Les halles de l'Empire tenaient sur l'airain. La poutrelle se pose debout en poteau ou couchée en poutre ; ses platines rivetées apparaissent seules au bout. Jambes de force, poutres treillis, chevrons, verrières, lanterneaux et gouttières complètent la charpente."
+		"&8Établi : 7 lingots d'airain donnent 12 poutrelles. Tailleur de pierre : le reste, depuis la poutrelle.&r"
+	]
+	"quest.5A88F5BBB28D3DAC.title": "La charpente d'airain"
 	"quest.5A88FC3E3D161C0E.quest_desc": [
 		"Il relie tous vos coffres et tonneaux en un seul inventaire. Demande un comparateur, donc du quartz du Nether."
 		"Ouvrez-le pour chercher, ranger et prendre dans tout l'entrepôt à la fois. Les entonnoirs qui le servent servent tout l'entrepôt."
