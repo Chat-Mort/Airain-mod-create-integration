@@ -1,0 +1,130 @@
+{
+ "multipart": [
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_post"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_cap"
+   },
+   "when": {
+    "top": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side"
+   },
+   "when": {
+    "north": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_top"
+   },
+   "when": {
+    "north": "true",
+    "top": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_bottom"
+   },
+   "when": {
+    "north": "true",
+    "bottom": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side",
+    "y": 90
+   },
+   "when": {
+    "east": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_top",
+    "y": 90
+   },
+   "when": {
+    "east": "true",
+    "top": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_bottom",
+    "y": 90
+   },
+   "when": {
+    "east": "true",
+    "bottom": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side",
+    "y": 180
+   },
+   "when": {
+    "south": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_top",
+    "y": 180
+   },
+   "when": {
+    "south": "true",
+    "top": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_bottom",
+    "y": 180
+   },
+   "when": {
+    "south": "true",
+    "bottom": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side",
+    "y": 270
+   },
+   "when": {
+    "west": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_top",
+    "y": 270
+   },
+   "when": {
+    "west": "true",
+    "top": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_side_bottom",
+    "y": 270
+   },
+   "when": {
+    "west": "true",
+    "bottom": "true"
+   }
+  }
+ ]
+}

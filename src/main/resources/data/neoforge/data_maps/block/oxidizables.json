@@ -377,6 +377,24 @@
   },
   "airain:weathered_airain_downpipe": {
    "next_oxidation_stage": "airain:oxidized_airain_downpipe"
+  },
+  "airain:airain_mesh_fence": {
+   "next_oxidation_stage": "airain:exposed_airain_mesh_fence"
+  },
+  "airain:exposed_airain_mesh_fence": {
+   "next_oxidation_stage": "airain:weathered_airain_mesh_fence"
+  },
+  "airain:weathered_airain_mesh_fence": {
+   "next_oxidation_stage": "airain:oxidized_airain_mesh_fence"
+  },
+  "airain:airain_sliding_gate": {
+   "next_oxidation_stage": "airain:exposed_airain_sliding_gate"
+  },
+  "airain:exposed_airain_sliding_gate": {
+   "next_oxidation_stage": "airain:weathered_airain_sliding_gate"
+  },
+  "airain:weathered_airain_sliding_gate": {
+   "next_oxidation_stage": "airain:oxidized_airain_sliding_gate"
   }
  }
 }

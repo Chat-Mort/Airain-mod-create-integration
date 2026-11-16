@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "redstone",
+ "ingredients": [
+  {
+   "item": "airain:airain_mesh_fence"
+  },
+  {
+   "item": "airain:airain_mesh_fence"
+  },
+  {
+   "item": "airain:airain_ingot"
+  }
+ ],
+ "result": {
+  "id": "airain:airain_sliding_gate",
+  "count": 1
+ }
+}

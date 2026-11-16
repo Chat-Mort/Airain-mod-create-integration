@@ -569,6 +569,8 @@ public class AirainMod {
 		fr.chatmort.airain.affichage.Email.charger(bus);
 		// 1.62 : rayonnage impérial (casiers, renforts, source de stock)
 		fr.chatmort.airain.stockage.Rayonnage.charger(bus);
+		// 1.63 : cloisons grillagées et portail coulissant
+		fr.chatmort.airain.fonderie.Cloisons.charger();
 		fr.chatmort.airain.atelier.Atelier.charger();        // pièces d'atelier : tuyauterie, lampes, réverbères, bornes…
 		fr.chatmort.airain.fonderie.MetalAirain.TYPES.register(bus);
 		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);

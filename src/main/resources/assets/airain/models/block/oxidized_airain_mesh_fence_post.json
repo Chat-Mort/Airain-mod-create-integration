@@ -1,0 +1,83 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "f": "airain:block/oxidized_airain_beam_flange",
+  "fv": "airain:block/oxidized_airain_beam_flange_vertical",
+  "bd": "airain:block/oxidized_airain_band",
+  "g": "airain:block/oxidized_airain_grate",
+  "ci": "airain:block/oxidized_chiseled_airain",
+  "particle": "airain:block/oxidized_airain_grate"
+ },
+ "elements": [
+  {
+   "from": [
+    7,
+    0,
+    7
+   ],
+   "to": [
+    9,
+    16,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#fv",
+     "uv": [
+      7.0,
+      0.0,
+      9.0,
+      16.0
+     ]
+    },
+    "south": {
+     "texture": "#fv",
+     "uv": [
+      7.0,
+      0.0,
+      9.0,
+      16.0
+     ]
+    },
+    "east": {
+     "texture": "#fv",
+     "uv": [
+      7.0,
+      0.0,
+      9.0,
+      16.0
+     ]
+    },
+    "west": {
+     "texture": "#fv",
+     "uv": [
+      7.0,
+      0.0,
+      9.0,
+      16.0
+     ]
+    },
+    "up": {
+     "texture": "#f",
+     "uv": [
+      7.0,
+      7.0,
+      9.0,
+      9.0
+     ]
+    },
+    "down": {
+     "texture": "#f",
+     "uv": [
+      7.0,
+      7.0,
+      9.0,
+      9.0
+     ]
+    }
+   }
+  }
+ ]
+}

@@ -407,6 +407,22 @@
   "airain:oxidized_airain_downpipe",
   "airain:waxed_oxidized_airain_downpipe",
   "airain:enamel_board",
-  "airain:airain_rack"
+  "airain:airain_rack",
+  "airain:airain_mesh_fence",
+  "airain:airain_sliding_gate",
+  "airain:waxed_airain_mesh_fence",
+  "airain:waxed_airain_sliding_gate",
+  "airain:exposed_airain_mesh_fence",
+  "airain:exposed_airain_sliding_gate",
+  "airain:waxed_exposed_airain_mesh_fence",
+  "airain:waxed_exposed_airain_sliding_gate",
+  "airain:weathered_airain_mesh_fence",
+  "airain:weathered_airain_sliding_gate",
+  "airain:waxed_weathered_airain_mesh_fence",
+  "airain:waxed_weathered_airain_sliding_gate",
+  "airain:oxidized_airain_mesh_fence",
+  "airain:oxidized_airain_sliding_gate",
+  "airain:waxed_oxidized_airain_mesh_fence",
+  "airain:waxed_oxidized_airain_sliding_gate"
  ]
 }
