@@ -528,6 +528,12 @@
 		"L'amélioration de ramassage avale ce que vous touchez au sol ; son filtre choisit quoi garder."
 	]
 	"quest.24CC53E36E5B5F0A.title": "Sac de fer"
+	"quest.24D181F4C7F0ACD8.quest_desc": [
+		"&7Optionnel.&r Chaque atelier avait sa cage, chaque cage sa porte. Les cloisons grillagées se raccordent et s'empilent ; le portail coulissant glisse le long de la cloison."
+		"Clic droit main nue pour l'ouvrir ou le fermer, ou un signal de redstone. Les portails voisins, en largeur comme en hauteur, bougent ensemble ; la clé change le côté où il glisse."
+		"&8Établi : 4 pépites et 2 grilles d'airain donnent 6 cloisons ; 2 cloisons et un lingot d'airain, un portail.&r"
+	]
+	"quest.24D181F4C7F0ACD8.title": "Cloisons et portails"
 	"quest.2543479E97C7BC7E.quest_desc": [
 		"Ils vous ont confié ce qu'ils étaient."
 		"&dL'Écho primordial&r entre dans la fabrication des sorts les plus puissants : explosion, foudre, maléfice, flétrissement, persistance, mur et rafale."

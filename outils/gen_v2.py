@@ -1240,6 +1240,15 @@ quest(cF, "fo_rayonnage", ("Le rayonnage impérial", "The Imperial Racking"), 12
              ["&7Optional.&r The Empire's warehouses could be read at a glance. One item per bay, 32 stacks, stored on its pallet; neighbouring bays form a single self-sorting inventory: one funnel on any bay is enough.",
               "Right-click to deposit (twice quickly: everything you carry of that item), left-click to take a stack, sneak for a single one. The wrench reserves a bay for its item. Reinforcements I to IV: up to 512 stacks. Broken, a bay keeps its contents.",
               "&8Crafting table: 4 I-beams, planks and an airain grate make 2 bays.&r"]))
+quest(cF, "fo_cloisons", ("Cloisons et portails", "Fences and Gates"), 14, -3,
+      [T_item("airain:airain_mesh_fence", 8), T_item("airain:airain_sliding_gate", 2)], [R_coin("sprocket", 2)],
+      deps=["fo_rayonnage"], optional=True,
+      desc=D(["&7Optionnel.&r Chaque atelier avait sa cage, chaque cage sa porte. Les cloisons grillagées se raccordent et s'empilent ; le portail coulissant glisse le long de la cloison.",
+              "Clic droit main nue pour l'ouvrir ou le fermer, ou un signal de redstone. Les portails voisins, en largeur comme en hauteur, bougent ensemble ; la clé change le côté où il glisse.",
+              "&8Établi : 4 pépites et 2 grilles d'airain donnent 6 cloisons ; 2 cloisons et un lingot d'airain, un portail.&r"],
+             ["&7Optional.&r Every workshop had its cage, every cage its gate. Mesh fences connect and stack; the sliding gate slides along the fence.",
+              "Bare-hand right-click to open or close it, or a redstone signal. Neighbouring gates, side by side or stacked, move together; the wrench changes the sliding side.",
+              "&8Crafting table: 4 airain nuggets and 2 airain grates make 6 fences; 2 fences and an airain ingot make a gate.&r"]))
 quest(cF, "fo_mobiles", ("Passages mobiles", "Moving Crossings"), 10, 0,
       [T_item("airain:airain_catwalk_drawbridge"), T_item("airain:airain_catwalk_telescopic")], [R_coin("cog", 2)],
       deps=["fo_passerelle", "fo_engrenage"], optional=True,

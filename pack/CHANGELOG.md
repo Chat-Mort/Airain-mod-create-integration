@@ -5,7 +5,17 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 16 novembre 2026 — versions 1.60.0 à 1.62.0
+## 16 novembre 2026 — versions 1.60.0 à 1.63.0
+
+**Ajouts (1.63.0)**
+- **Cloisons grillagées d'airain** : se raccordent comme des barreaux (lignes, angles, T) et s'empilent, avec un bandeau en haut et en bas de la cloison et une traverse à mi-hauteur.
+- **Portail coulissant d'airain** : glisse le long de la cloison au lieu de pivoter.
+  - Clic droit main nue pour ouvrir ou fermer, ou un signal de redstone.
+  - Les portails voisins (en largeur et en hauteur) forment un seul vantail qui bouge d'un bloc, glissant de toute sa largeur.
+  - Clé de Create : changer le côté où il glisse. Ouvert, il ne bloque plus le passage.
+- Les deux existent en quatre teintes qui se patinent, et cirées.
+- Recettes : 4 pépites et 2 grilles d'airain = 6 cloisons ; 2 cloisons et un lingot d'airain = 1 portail.
+- Quête optionnelle « Cloisons et portails » et une page dans le livre de l'ingénieur (onglet Bâtir).
 
 **Ajouts (1.62.0)**
 - **Rayonnage impérial** : casiers de stockage d'un bloc.

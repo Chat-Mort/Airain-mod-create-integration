@@ -528,6 +528,12 @@
 		"The pickup upgrade swallows what you walk over; its filter picks what to keep."
 	]
 	"quest.24CC53E36E5B5F0A.title": "Iron Backpack"
+	"quest.24D181F4C7F0ACD8.quest_desc": [
+		"&7Optional.&r Every workshop had its cage, every cage its gate. Mesh fences connect and stack; the sliding gate slides along the fence."
+		"Bare-hand right-click to open or close it, or a redstone signal. Neighbouring gates, side by side or stacked, move together; the wrench changes the sliding side."
+		"&8Crafting table: 4 airain nuggets and 2 airain grates make 6 fences; 2 fences and an airain ingot make a gate.&r"
+	]
+	"quest.24D181F4C7F0ACD8.title": "Fences and Gates"
 	"quest.2543479E97C7BC7E.quest_desc": [
 		"They entrusted you with what they were."
 		"&dThe Primordial Echo&r is needed to craft the most powerful spells: explosion, lightning, hex, wither, linger, wall and burst."
