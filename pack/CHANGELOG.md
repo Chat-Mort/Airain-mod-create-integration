@@ -5,9 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 16 novembre 2026 — version 1.60.0
+## 16 novembre 2026 — versions 1.60.0 et 1.61.0
 
-**Ajouts**
+**Changements (1.61.0)**
+- Patine de l'airain : le rouge impérial devient un rouge cramoisi profond. Les stades terni et vieilli glissent progressivement vers lui ; le stade neuf ne change pas, ni les motifs. Toutes les pièces patinées sont concernées (blocs, passerelles, charpente, mécanismes, atelier, lanternes) ; la flamme des lanternes garde sa couleur.
+- Couleurs des stades sur les cartes et dans le menu du tableau émaillé accordées au nouveau rouge.
+
+**Ajouts (1.60.0)**
 - **Tableau émaillé** : afficheur d'usine en émail et airain.
   - Posés côte à côte (même orientation), les blocs forment un seul tableau, jusqu'à 16 × 8 ; le coin en haut à gauche garde les réglages.
   - Relief : contre-plaque au mur, cadre en saillie, émail en retrait, rosaces, écusson au fronton, baguettes d'airain sous le titre et entre les colonnes.
