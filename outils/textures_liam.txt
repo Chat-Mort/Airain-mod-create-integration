@@ -1,0 +1,3 @@
+# Textures retouchées par Liam : aucun générateur ne doit les écraser (chemins depuis assets/airain/textures/)
+block/slate.png
+block/weathered_chiseled_airain.png

@@ -23,12 +23,15 @@ def rouge_voulu(c):
     return s > 0.4 and (h < 15 / 360 or h > 340 / 360)
 
 faits = json.load(open(MANIFESTE)) if os.path.exists(MANIFESTE) else {}
+# retouches de Liam : jamais recolorées
+LIAM = {l.strip() for l in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'textures_liam.txt')) if l.strip() and not l.startswith('#')}
 n = 0
 for p in sorted(glob.glob(os.path.join(RACINE, '**/*.png'), recursive=True)):
     nom = os.path.basename(p)
     pre = next((k for k in STADES if nom.startswith(k)), None)
     if pre is None: continue
     cle = os.path.relpath(p, RACINE)
+    if cle in LIAM: continue
     if faits.get(cle) == empreinte(p): continue          # déjà au nouveau rouge
     dh, ks, kv = STADES[pre]
     neuf_p = os.path.join(os.path.dirname(p), nom[len(pre):])
