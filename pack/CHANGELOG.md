@@ -5,6 +5,26 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 16 novembre 2026 — version 1.60.0
+
+**Ajouts**
+- **Tableau émaillé** : afficheur d'usine en émail et airain.
+  - Posés côte à côte (même orientation), les blocs forment un seul tableau, jusqu'à 16 × 8 ; le coin en haut à gauche garde les réglages.
+  - Relief : contre-plaque au mur, cadre en saillie, émail en retrait, rosaces, écusson au fronton, baguettes d'airain sous le titre et entre les colonnes.
+  - Clic droit main nue : menu en cinq onglets avec aperçu en direct.
+    - Contenu : lignes de type titre, section, texte, valeur, barre de progression, filet, vide, colonne ; texte, taille, alignement et couleur par ligne.
+    - Style : 16 émaux, cadre riveté, lisse, en marbre ou absent, teinte de l'airain, brillant ou mat, ornements.
+    - Police : Minecraft, impériale (empattements) ou gravée.
+    - Lumière : éteint, rétroéclairé ou lettres lumineuses, intensité de 0 à 15, allumage permanent, sur signal de redstone ou en alerte ; alerte quand une ligne dépasse un seuil (clignote ou s'allume, dans la couleur choisie).
+    - Pose : au mur, pendu sous un bloc (deux tiges) ou sur pied, ou automatique ; double face avec le même contenu ou un contenu différent.
+  - Cible de la liaison d'affichage de Create, une liaison par ligne ; les valeurs et barres lisent les nombres, pourcentages et barres de Create.
+  - Les réglages se copient d'un tableau à l'autre avec le presse-papiers de Create.
+- Source de liaison d'affichage « Moulage de canon » sur le moule de Create Big Cannons : remplissage, puis refroidissement, en pourcentage.
+- Recette : 4 plaques et 4 pépites d'airain autour d'un colorant noir = 4 tableaux.
+- Quête optionnelle « Le tableau émaillé » et une page dans le livre de l'ingénieur (onglet Bâtir).
+
+---
+
 ## 15 novembre 2026 — versions 1.57.0 à 1.59.0
 
 **Ajouts (1.59.0)**

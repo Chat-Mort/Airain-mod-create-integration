@@ -1,0 +1,25 @@
+{
+ "providers": [
+  {
+   "type": "bitmap",
+   "file": "airain:font/imperiale.png",
+   "ascent": 7,
+   "height": 9,
+   "chars": [
+    " !\"#$%&'()*+,-./",
+    "0123456789:;<=>?",
+    "@ABCDEFGHIJKLMNO",
+    "PQRSTUVWXYZ[\\]^_",
+    "`abcdefghijklmno",
+    "pqrstuvwxyz{|}~à",
+    "âäçéèêëîïôöùûüÿœ",
+    "æÀÂÄÇÉÈÊËÎÏÔÖÙÛÜ",
+    "ŸŒÆ«»°·—’…€×\u0000\u0000\u0000\u0000"
+   ]
+  },
+  {
+   "type": "reference",
+   "id": "minecraft:default"
+  }
+ ]
+}

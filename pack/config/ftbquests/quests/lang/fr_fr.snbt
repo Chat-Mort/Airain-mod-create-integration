@@ -931,6 +931,12 @@
 	]
 	"quest.40BA346F57FB7B3E.quest_subtitle": "I · Les premiers murmures"
 	"quest.40BA346F57FB7B3E.title": "Les premiers murmures"
+	"quest.413D8C9876D26344.quest_desc": [
+		"&7Optionnel.&r Chaque atelier avait son tableau, chaque quai sa plaque. Posés côte à côte, les tableaux émaillés n'en font qu'un ; clic droit main nue pour le menu : lignes, émail, cadre, police, lumière, accrochage."
+		"Une liaison d'affichage de Create par ligne : stress, vitesse, stocks, débit d'un tapis, trains, moulage d'un canon… Validez quand votre premier tableau affiche une valeur."
+		"&8Établi : 4 plaques et 4 pépites d'airain autour d'un colorant noir donnent 4 tableaux.&r"
+	]
+	"quest.413D8C9876D26344.title": "Le tableau émaillé"
 	"quest.422022D7AAF0448C.quest_desc": [
 		"L'Empire a laissé ses machines, pas ses outils. Il faudra commencer comme ses premiers ingénieurs : à la main."
 		"Les outils et l'épée de fer se fabriquent toujours à l'établi. Les autres armes et les armures passeront par les machines : la presse, puis la forge."

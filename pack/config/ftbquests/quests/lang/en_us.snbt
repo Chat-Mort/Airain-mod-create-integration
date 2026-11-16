@@ -931,6 +931,12 @@
 	]
 	"quest.40BA346F57FB7B3E.quest_subtitle": "I · The First Whispers"
 	"quest.40BA346F57FB7B3E.title": "The First Whispers"
+	"quest.413D8C9876D26344.quest_desc": [
+		"&7Optional.&r Every workshop had its board, every platform its sign. Placed side by side, enamel boards become one; bare-hand right-click opens the menu: lines, enamel, frame, font, light, mounting."
+		"One Create display link per line: stress, speed, stock, belt throughput, trains, cannon casting… Tick the box when your first board shows a value."
+		"&8Crafting table: 4 airain sheets and 4 airain nuggets around a black dye make 4 boards.&r"
+	]
+	"quest.413D8C9876D26344.title": "The Enamel Board"
 	"quest.422022D7AAF0448C.quest_desc": [
 		"The Empire left its machines, not its tools. You will have to start like its first engineers: by hand."
 		"Iron tools and the iron sword are still made at the crafting table. Other weapons and armour will go through the machines: the press, then the forge."
