@@ -5,7 +5,11 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 16 novembre 2026 — versions 1.60.0 à 1.64.0
+## 16 novembre 2026 — versions 1.60.0 à 1.64.1
+
+**Changements (1.64.1)**
+- Airain ciselé : nouveau dessin d'après la retouche de Liam (stade vieilli), décliné aux quatre stades ; l'engrenage est creusé d'un pixel dans le bloc, sur les six faces.
+- Ardoise : texture retouchée par Liam.
 
 **Ajouts (1.64.0)**
 - **Recettes du mod dans EMI** (elles étaient absentes : elles sont dans le code et non dans des fichiers de recette) :

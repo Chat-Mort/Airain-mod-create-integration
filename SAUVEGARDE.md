@@ -1,7 +1,7 @@
 # Sauvegarde du pack « L'Empire d'Airain »
 
 Branche à part du dépôt du mod : rien ici n'est compilé par la CI (elle ne tourne que sur `main`).
-Dernière sauvegarde : 6 novembre 2026, mod 1.64.0.
+Dernière sauvegarde : 6 novembre 2026, mod 1.64.1.
 
 ## Contenu
 
@@ -51,3 +51,4 @@ Le mod lui-même (code Java, ressources) est sur la branche `main`.
 - Ordre des générateurs de ressources : passerelles_ressources, ateliers_ressources, atelier_ressources, puis mecanismes_ressources en dernier (il ajoute la condition « retracted » aux passerelles).
 
 - Après tout générateur de textures : python3 outils/rouge_imperial.py (dépôt du mod), qui ne recolore que les textures patinées pas encore traitées.
+- Après textures_finales.py : outils/airain/cisele_ressources.py (airain ciselé d après la retouche de Liam), puis outils/rouge_imperial.py. Les retouches de Liam (outils/textures_liam.txt du dépôt du mod) ne sont jamais écrasées.

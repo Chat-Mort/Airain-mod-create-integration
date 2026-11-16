@@ -47,10 +47,13 @@ for s,pre in enumerate(PRE):
     ic.save(f'{TX}item/{pre}airain_door.png')
 # copie dans le mod (uniquement nos fichiers, jamais ceux retouchés par Liam)
 DST='/home/claude/airain-mod-create-integration/src/main/resources/assets/airain/textures/'
+LIAM={l.strip() for l in open('/home/claude/airain-mod-create-integration/outils/textures_liam.txt') if l.strip() and not l.startswith('#')}   # retouches de Liam : jamais écrasées
+
 n=0
 for sous in ('block','item'):
     for fn in os.listdir(TX+sous):
         if fn.startswith('airain_bricks') or 'airain_bricks' in fn: continue
+        if sous+'/'+fn in LIAM: continue
         cible=DST+sous+'/'+fn
         shutil.copy(TX+sous+'/'+fn, cible); n+=1
 print('textures copiées', n)

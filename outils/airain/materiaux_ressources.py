@@ -12,7 +12,9 @@ for t,fr in (('white','blanc'),('black','noir')):
     TX[f'polished_{t}_marble']=f'marbre_{fr}_dalles'; TX[f'{t}_marble_bricks']=f'marbre_{fr}_briques'
     TX[f'{t}_marble_pillar']=f'marbre_{fr}_colonne'; TX[f'chiseled_{t}_marble']=f'marbre_{fr}_cisele'
 TX['slate']='ardoise_polie'; TX['slate_shingles']='ardoise_tuiles'; TX['marble_tiles']='carrelage'
-for a,b in TX.items(): shutil.copyfile(M+b+'.png',AS+f'textures/block/{a}.png')
+LIAM={l.strip() for l in open('/home/claude/airain-mod-create-integration/outils/textures_liam.txt') if l.strip() and not l.startswith('#')}   # retouches de Liam : jamais écrasées
+for a,b in TX.items():
+    if f'block/{a}.png' not in LIAM: shutil.copyfile(M+b+'.png',AS+f'textures/block/{a}.png')
 def B(n): return f'airain:block/{n}'
 def modele(nom,parent,tex): w(AS+f'models/block/{nom}.json',{"parent":parent,"textures":tex})
 def item(nom,modele_=None): w(AS+f'models/item/{nom}.json',{"parent":B(modele_ or nom)})
