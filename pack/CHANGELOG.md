@@ -5,7 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 16 novembre 2026 — versions 1.60.0 à 1.63.0
+## 16 novembre 2026 — versions 1.60.0 à 1.64.0
+
+**Ajouts (1.64.0)**
+- **Recettes du mod dans EMI** (elles étaient absentes : elles sont dans le code et non dans des fichiers de recette) :
+  - haut-fourneau impérial : alliage de l'airain (3 cuivres ou cuivre broyé, 1 zinc ou zinc broyé, 1 fondant : calcite, poudre de cendres ou laitier ; brûleur surchauffé ; 360 mB d'airain en fusion et du laitier une fois sur 0,6), refonte de la ferraille et des rouages brisés (brûleur chauffé) ;
+  - laminoir : un lingot d'airain donne 2 fils ;
+  - brume d'Écho (diffuseur devant un ventilateur) : éclats d'améthyste, lapis, bloc d'améthyste, sculk.
+- **Scènes Ponder** (touche W au survol de l'objet, comme pour Create) : haut-fourneau, laminoir, téléphérique, monte-charge, passages mobiles, conduite d'air, rayonnage, tableau émaillé. Textes en français et en anglais.
 
 **Ajouts (1.63.0)**
 - **Cloisons grillagées d'airain** : se raccordent comme des barreaux (lignes, angles, T) et s'empilent, avec un bandeau en haut et en bas de la cloison et une traverse à mi-hauteur.
