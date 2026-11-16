@@ -116,6 +116,8 @@ public class AirainClient {
 	}
 
 	private void setup(FMLClientSetupEvent event) {
+		// 1.64 : scènes Ponder du mod (touche W au survol des objets)
+		net.createmod.ponder.foundation.PonderIndex.addPlugin(new fr.chatmort.airain.ponder.PonderAirain());
 		// couronne et casque couronné sacrés : icône noire et or
 		event.enqueueWork(() -> {
 			var prop = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "sacree");
