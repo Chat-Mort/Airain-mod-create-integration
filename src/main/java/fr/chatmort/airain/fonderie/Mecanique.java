@@ -286,7 +286,7 @@ public final class Mecanique {
 
 	// ====================================================================== enregistrement (4 teintes × patinable/cirée)
 	private static final WeatherState[] ETATS = {WeatherState.UNAFFECTED, WeatherState.EXPOSED, WeatherState.WEATHERED, WeatherState.OXIDIZED};
-	private static final MapColor[] COULEURS = {MapColor.GOLD, MapColor.TERRACOTTA_YELLOW, MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_RED};
+	private static final MapColor[] COULEURS = {MapColor.GOLD, MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_RED, MapColor.COLOR_RED};
 	public static final Map<String, List<DeferredBlock<Block>>> FAMILLES = new LinkedHashMap<>();
 	private interface Fabrique { Block creer(WeatherState e, BlockBehaviour.Properties p); }
 	private static void famille(String nom, Fabrique f) {

@@ -40,7 +40,7 @@ public final class BlocsAirain {
 	public static final String[] STADES = {"", "exposed_", "weathered_", "oxidized_"};
 	private static final WeatherState[] ETATS = {WeatherState.UNAFFECTED, WeatherState.EXPOSED, WeatherState.WEATHERED, WeatherState.OXIDIZED};
 	// couleur sur les cartes : du doré au rouge impérial
-	private static final MapColor[] COULEURS = {MapColor.GOLD, MapColor.TERRACOTTA_YELLOW, MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_RED};
+	private static final MapColor[] COULEURS = {MapColor.GOLD, MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_RED, MapColor.COLOR_RED};
 
 	/** famille → [stade][0 = se patine, 1 = cirée] */
 	public static final Map<String, DeferredBlock<Block>[][]> FAMILLES = new LinkedHashMap<>();

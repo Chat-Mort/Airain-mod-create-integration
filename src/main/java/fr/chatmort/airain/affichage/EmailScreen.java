@@ -196,7 +196,7 @@ public class EmailScreen extends Screen {
 		section(g, tr("cadre"), x + 12, y + 88);
 		for (int i = 0; i < 4; i++) { final int ii = i; bouton(g, x + 12 + i * 51, y + 101, 49, 14, tr("cadre." + i), r.cadre == i, () -> { r.cadre = ii; change(); }); }
 		section(g, tr("airain"), x + 12, y + 121);
-		int[] teintes = {0xD6AA5A, 0xBE8250, 0xA8583C, 0x961E1A};
+		int[] teintes = {0xD6AA5A, 0xC2703E, 0xA83424, 0x900A1C};
 		for (int i = 0; i < 4; i++) { final int ii = i; pastille(g, x + 14 + i * 51, y + 135, teintes[i], r.airain == i, () -> { r.airain = ii; change(); }); texte(g, tr("airain." + i), x + 27 + i * 51, y + 136, ENCRE); }
 		section(g, tr("finition"), x + 12, y + 154);
 		radio(g, x + 14, y + 168, !r.mat, tr("brillant"), () -> { r.mat = false; change(); });
@@ -306,7 +306,7 @@ public class EmailScreen extends Screen {
 		float sc = Math.min((pw - 8) / W, (ph - 34) / H);
 		float bx = px0 + (pw - W * sc) / 2, by = py0 + 16 + (ph - 34 - H * sc) / 2;
 		float ep = r.cadre == 3 ? 0.5f : h == 1 ? 2 : 3;
-		int cadre = r.cadre == 2 ? 0xFFE8E4DC : new int[] {0xFFD6AA5A, 0xFFBE8250, 0xFFA8583C, 0xFF961E1A}[r.airain];
+		int cadre = r.cadre == 2 ? 0xFFE8E4DC : new int[] {0xFFD6AA5A, 0xFFC2703E, 0xFFA83424, 0xFF900A1C}[r.airain];
 		rectF(g, bx, by, bx + W * sc, by + H * sc, r.cadre == 3 ? 0xFF000000 | EmailRendu.couleurEmail(r) : cadre);
 		rectF(g, bx + ep * sc, by + ep * sc, bx + (W - ep) * sc, by + (H - ep) * sc, 0xFF000000 | EmailRendu.couleurEmail(r));
 		final float ox = bx + ep * sc, oy = by + ep * sc;

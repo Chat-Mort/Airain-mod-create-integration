@@ -19,7 +19,7 @@ public final class Passerelles {
 	private Passerelles() {}
 
 	private static final WeatherState[] ETATS = {WeatherState.UNAFFECTED, WeatherState.EXPOSED, WeatherState.WEATHERED, WeatherState.OXIDIZED};
-	private static final MapColor[] COULEURS = {MapColor.GOLD, MapColor.TERRACOTTA_YELLOW, MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_RED};
+	private static final MapColor[] COULEURS = {MapColor.GOLD, MapColor.TERRACOTTA_ORANGE, MapColor.TERRACOTTA_RED, MapColor.COLOR_RED};
 	public static final Map<String, DeferredBlock<Block>[][]> FAMILLES = new LinkedHashMap<>();
 
 	private interface Fabrique { Block creer(WeatherState etat, BlockBehaviour.Properties p); }
