@@ -178,7 +178,7 @@ public final class Cloisons {
 		public float avance, avant;
 		public PortailBE(BlockEntityType<?> t, BlockPos p, BlockState s) { super(t, p, s); avance = avant = s.getValue(OUVERT) ? 1 : 0; }
 		void tick() { avant = avance; float cible = getBlockState().getValue(OUVERT) ? 1 : 0; avance += Math.signum(cible - avance) * Math.min(Math.abs(cible - avance), 1 / 14f); }
-		@Override public net.minecraft.world.phys.AABB getRenderBoundingBox() { return new net.minecraft.world.phys.AABB(worldPosition).inflate(10, 1, 10); }
+		public net.minecraft.world.phys.AABB getRenderBoundingBox() { return new net.minecraft.world.phys.AABB(worldPosition).inflate(10, 1, 10); }
 	}
 
 	// ====================================================================== enregistrement

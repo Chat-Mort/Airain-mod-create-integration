@@ -110,7 +110,7 @@ public class CasierRendu implements BlockEntityRenderer<CasierBlockEntity> {
 	@Override public int getViewDistance() { return 64; }
 
 	/** Boîte texturée pixel pour pixel (uv à la position), teintée. */
-	static void boite(PoseStack ms, VertexConsumer vc, TextureAtlasSprite s, float x0, float y0, float z0, float x1, float y1, float z1, int col, int lum) {
+	public static void boite(PoseStack ms, VertexConsumer vc, TextureAtlasSprite s, float x0, float y0, float z0, float x1, float y1, float z1, int col, int lum) {
 		PoseStack.Pose p = ms.last();
 		int r = (col >> 16) & 255, g = (col >> 8) & 255, b = col & 255;
 		float[][][] f = {
