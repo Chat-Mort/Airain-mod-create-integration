@@ -55,7 +55,8 @@ public class LivreIngenieurScreen extends Screen {
 		 {"condenseur_echo", "airain:echo_condenser"}, {"telepherique", "airain:airain_gondola"}},
 		// 1.59 : bâtir l'Empire, le style, les matériaux, les passerelles, l'atelier, la charpente et les marquages au sol
 		{{"style_imperial", "airain:chiseled_airain"}, {"materiaux", "airain:chiseled_white_marble"}, {"passerelles", "airain:airain_catwalk"},
-		 {"atelier", "airain:airain_workbench"}, {"charpente", "airain:airain_beam"}, {"marquages", "airain:yellow_hazard_stripes"}}};
+		 {"atelier", "airain:airain_workbench"}, {"charpente", "airain:airain_beam"}, {"marquages", "airain:yellow_hazard_stripes"},
+		 {"tableau_emaille", "airain:enamel_board"}}};
 	/** Chapitres à la suite, et la section de chacun. */
 	private static final List<String[]> TOUS = new ArrayList<>();
 	private static final List<Integer> SECTION_DE = new ArrayList<>();

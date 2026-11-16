@@ -565,6 +565,8 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Telepherique.charger();  // 1.58 : téléphérique et laminoir
 		// 1.59 : charpente métallique d'airain et marquages au sol
 		fr.chatmort.airain.fonderie.Charpente.charger();
+		// 1.60 : tableau émaillé (afficheur multibloc, liaison d'affichage de Create)
+		fr.chatmort.airain.affichage.Email.charger(bus);
 		fr.chatmort.airain.atelier.Atelier.charger();        // pièces d'atelier : tuyauterie, lampes, réverbères, bornes…
 		fr.chatmort.airain.fonderie.MetalAirain.TYPES.register(bus);
 		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);
@@ -652,6 +654,8 @@ public class AirainMod {
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.codex(m)))
 			.playToClient(fr.chatmort.airain.borne.PaquetsBorne.Ouvrir.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Ouvrir.CODEC,
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.borne(m)))
+			.playToServer(fr.chatmort.airain.affichage.PaquetEmail.TYPE, fr.chatmort.airain.affichage.PaquetEmail.CODEC,
+				fr.chatmort.airain.affichage.PaquetEmail::traiter)   // 1.60 : réglages du tableau émaillé
 			.playToServer(fr.chatmort.airain.borne.PaquetsBorne.Commander.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Commander.CODEC,
 				fr.chatmort.airain.borne.PaquetsBorne.Commander::traiter)
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
@@ -674,6 +678,8 @@ public class AirainMod {
 			// 1.58 : laminoir et gare de téléphérique
 			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Telepherique.LAMINOIR.get(), () -> 4.0);
 			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Telepherique.GARE.get(), () -> 6.0);
+			// 1.60 : le tableau émaillé reçoit les liaisons d'affichage ; le moule de Big Cannons en devient une source
+			fr.chatmort.airain.affichage.Email.associer();
 		});
 	}
 
