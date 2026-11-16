@@ -567,6 +567,8 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Charpente.charger();
 		// 1.60 : tableau émaillé (afficheur multibloc, liaison d'affichage de Create)
 		fr.chatmort.airain.affichage.Email.charger(bus);
+		// 1.62 : rayonnage impérial (casiers, renforts, source de stock)
+		fr.chatmort.airain.stockage.Rayonnage.charger(bus);
 		fr.chatmort.airain.atelier.Atelier.charger();        // pièces d'atelier : tuyauterie, lampes, réverbères, bornes…
 		fr.chatmort.airain.fonderie.MetalAirain.TYPES.register(bus);
 		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);
@@ -680,10 +682,13 @@ public class AirainMod {
 			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Telepherique.GARE.get(), () -> 6.0);
 			// 1.60 : le tableau émaillé reçoit les liaisons d'affichage ; le moule de Big Cannons en devient une source
 			fr.chatmort.airain.affichage.Email.associer();
+			fr.chatmort.airain.stockage.Rayonnage.associer();
 		});
 	}
 
 	private void capacites(RegisterCapabilitiesEvent event) {
+		// 1.62 : tout le rayonnage, vu depuis n'importe quel casier
+		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, fr.chatmort.airain.stockage.Rayonnage.BE.get(), (be, side) -> be.reseau());
 		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, BANC_BE.get(), (be, side) -> be.automatisation);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, BANC_BE.get(), (be, side) -> be.reservoir);
 		event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, CONDENSEUR_BE.get(), (be, side) -> be.reservoir);   // tuyaux de Create

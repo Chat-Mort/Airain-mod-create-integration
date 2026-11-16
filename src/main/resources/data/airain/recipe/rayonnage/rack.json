@@ -1,0 +1,23 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "BPB",
+  "BGB"
+ ],
+ "key": {
+  "B": {
+   "item": "airain:airain_beam"
+  },
+  "P": {
+   "tag": "minecraft:planks"
+  },
+  "G": {
+   "item": "airain:airain_grate"
+  }
+ },
+ "result": {
+  "id": "airain:airain_rack",
+  "count": 2
+ }
+}

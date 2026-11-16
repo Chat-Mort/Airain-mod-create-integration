@@ -1,0 +1,151 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "f": "airain:block/airain_beam_flange",
+  "fv": "airain:block/airain_beam_flange_vertical",
+  "bd": "airain:block/airain_band",
+  "g": "airain:block/airain_grate",
+  "r": "airain:block/airain_rod",
+  "particle": "airain:block/airain_band"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    14.5,
+    0.5
+   ],
+   "to": [
+    16,
+    16,
+    2.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.25,
+      16.0,
+      8.75
+     ]
+    },
+    "south": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.25,
+      16.0,
+      8.75
+     ]
+    },
+    "east": {
+     "texture": "#bd",
+     "uv": [
+      7.0,
+      7.25,
+      9.0,
+      8.75
+     ]
+    },
+    "west": {
+     "texture": "#bd",
+     "uv": [
+      7.0,
+      7.25,
+      9.0,
+      8.75
+     ]
+    },
+    "up": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.0,
+      16.0,
+      9.0
+     ]
+    },
+    "down": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.0,
+      16.0,
+      9.0
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    14.5,
+    13.5
+   ],
+   "to": [
+    16,
+    16,
+    15.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.25,
+      16.0,
+      8.75
+     ]
+    },
+    "south": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.25,
+      16.0,
+      8.75
+     ]
+    },
+    "east": {
+     "texture": "#bd",
+     "uv": [
+      7.0,
+      7.25,
+      9.0,
+      8.75
+     ]
+    },
+    "west": {
+     "texture": "#bd",
+     "uv": [
+      7.0,
+      7.25,
+      9.0,
+      8.75
+     ]
+    },
+    "up": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.0,
+      16.0,
+      9.0
+     ]
+    },
+    "down": {
+     "texture": "#bd",
+     "uv": [
+      0.0,
+      7.0,
+      16.0,
+      9.0
+     ]
+    }
+   }
+  }
+ ]
+}

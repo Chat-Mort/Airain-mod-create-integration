@@ -1,0 +1,25 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "minecraft:iron_ingot"
+  }
+ ],
+ "result": {
+  "id": "airain:rack_reinforcement_1",
+  "count": 1
+ }
+}

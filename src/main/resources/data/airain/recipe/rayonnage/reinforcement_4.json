@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "airain:rack_reinforcement_3"
+  },
+  {
+   "item": "minecraft:netherite_ingot"
+  }
+ ],
+ "result": {
+  "id": "airain:rack_reinforcement_4",
+  "count": 1
+ }
+}

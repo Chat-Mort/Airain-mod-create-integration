@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "airain:rack_reinforcement_2"
+  },
+  {
+   "item": "airain:airain_gear"
+  },
+  {
+   "item": "airain:airain_gear"
+  },
+  {
+   "item": "minecraft:diamond"
+  }
+ ],
+ "result": {
+  "id": "airain:rack_reinforcement_3",
+  "count": 1
+ }
+}

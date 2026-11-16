@@ -82,6 +82,8 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(AirainMod.BANC_BE.get(), BancEntretienRenderer::new);
 		// 1.60 : tableau émaillé (cadre, émail, texte, barres)
 		event.registerBlockEntityRenderer(fr.chatmort.airain.affichage.Email.BE.get(), fr.chatmort.airain.affichage.EmailRendu::new);
+		// 1.62 : stock et étiquette des casiers du rayonnage
+		event.registerBlockEntityRenderer(fr.chatmort.airain.stockage.Rayonnage.BE.get(), fr.chatmort.airain.stockage.CasierRendu::new);
 		// l'arbre qui sort de la face avant, et la pièce qui tourne (pales de la turbine, engrenage du sourcelink)
 		event.registerBlockEntityRenderer(AirainMod.TURBINE_ECHO_BE.get(), c -> new fr.chatmort.airain.fusion.RotorRenderer<>(c, AirainPartials.ROTOR_TURBINE, false));   // pales à plat dans la cheminée
 		event.registerBlockEntityRenderer(AirainMod.CONDENSEUR_BE.get(), fr.chatmort.airain.fusion.CondenseurRenderer::new);   // le liquide à sa vraie hauteur
