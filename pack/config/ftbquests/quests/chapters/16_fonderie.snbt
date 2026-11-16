@@ -593,6 +593,35 @@
 			y: -2.0d
 		}
 		{
+			dependencies: ["5A88F5BBB28D3DAC"]
+			id: "4DC2044202540975"
+			optional: true
+			rewards: [
+				{
+					item: { count: 1, id: "numismatics:cog" }
+					count: 2
+					id: "298ABE0511E2FCC9"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					item: { count: 1, id: "airain:airain_rack" }
+					count: 8L
+					id: "24F0DF9E71355F2A"
+					type: "item"
+				}
+				{
+					item: { count: 1, id: "airain:rack_reinforcement_1" }
+					count: 1L
+					id: "6BB878E0B96F38D3"
+					type: "item"
+				}
+			]
+			x: 12.0d
+			y: -3.0d
+		}
+		{
 			dependencies: ["1B4E33638C6A805D", "2ADCE98DF27075B6"]
 			id: "235D2E2FFE20DAB2"
 			optional: true

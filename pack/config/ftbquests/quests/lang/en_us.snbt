@@ -1106,6 +1106,12 @@
 		"Some weapons were never mass-produced: they are found in the chests of dungeons and fortresses. Get your hands on a unique Simply Swords weapon, then tick the box."
 	]
 	"quest.4DA9AA29C115DD53.title": "A Unique Weapon"
+	"quest.4DC2044202540975.quest_desc": [
+		"&7Optional.&r The Empire's warehouses could be read at a glance. One item per bay, 32 stacks, stored on its pallet; neighbouring bays form a single self-sorting inventory: one funnel on any bay is enough."
+		"Right-click to deposit (twice quickly: everything you carry of that item), left-click to take a stack, sneak for a single one. The wrench reserves a bay for its item. Reinforcements I to IV: up to 512 stacks. Broken, a bay keeps its contents."
+		"&8Crafting table: 4 I-beams, planks and an airain grate make 2 bays.&r"
+	]
+	"quest.4DC2044202540975.title": "The Imperial Racking"
 	"quest.4DCBE77F930CEB10.quest_desc": [
 		"The weapon of the imperial arena's champions. Heavy, slow, merciless."
 		"The grip is now a copper sheet instead of a stick. It strikes wide: ideal against groups."

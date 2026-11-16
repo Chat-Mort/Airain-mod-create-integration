@@ -1106,6 +1106,12 @@
 		"Certaines armes n'ont jamais été fabriquées en série : on les trouve dans les coffres des donjons et des forteresses. Mettez la main sur une arme unique de Simply Swords, puis validez."
 	]
 	"quest.4DA9AA29C115DD53.title": "Une arme unique"
+	"quest.4DC2044202540975.quest_desc": [
+		"&7Optionnel.&r Les entrepôts de l'Empire se lisaient d'un regard. Un objet par casier, 32 piles, rangé sur sa palette ; les casiers voisins forment un seul inventaire qui range tout seul : un entonnoir sur n'importe quel casier suffit."
+		"Clic droit pour déposer (deux fois vite : tout ce que vous portez de cet objet), clic gauche pour prendre une pile, accroupi pour une seule. La clé réserve un casier à son objet. Renforts I à IV : jusqu'à 512 piles. Cassé, le casier garde son contenu."
+		"&8Établi : 4 poutrelles, des planches et une grille d'airain donnent 2 casiers.&r"
+	]
+	"quest.4DC2044202540975.title": "Le rayonnage impérial"
 	"quest.4DCBE77F930CEB10.quest_desc": [
 		"L'arme des champions de l'arène impériale. Lourde, lente, sans pitié."
 		"Le manche est désormais une plaque de cuivre au lieu d'un bâton. Elle frappe large : idéale contre les groupes."

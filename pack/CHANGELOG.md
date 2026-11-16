@@ -5,7 +5,20 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 16 novembre 2026 — versions 1.60.0 et 1.61.0
+## 16 novembre 2026 — versions 1.60.0 à 1.62.0
+
+**Ajouts (1.62.0)**
+- **Rayonnage impérial** : casiers de stockage d'un bloc.
+  - Les casiers voisins se raccordent (montants en I en bout de rang, entretoises, couronnement) et forment un seul inventaire, jusqu'à 512 casiers.
+  - Un objet par casier, 32 piles. Ce qui entre (entonnoir, bras, emballeur de Create, sur n'importe quel casier) va dans le casier qui contient déjà cet objet, puis dans un casier réservé à cet objet, puis dans un casier libre.
+  - Stock visible : palette de bois, blocs empilés en petits cubes ou objets en caisses à claire-voie, hauteur selon le remplissage ; étiquette émaillée avec l'icône, le nom et la quantité, barrettes des renforts et pastille de réservation.
+  - Main : clic droit avec un objet pour déposer, deux clics rapprochés pour déposer tout ce que l'on porte de cet objet, clic gauche pour prendre une pile, accroupi pour un seul exemplaire.
+  - Clé de Create : réserver le casier à son objet, même vide.
+  - Renforts I à IV (clic droit, dans l'ordre) : 64, 128, 256 et 512 piles.
+  - Cassé, le casier garde son contenu et ses renforts (indiqués dans l'infobulle).
+  - Source de liaison d'affichage « Stock du rayonnage » : les objets du rayonnage, les plus nombreux d'abord.
+- Recettes : 4 poutrelles, 1 planche et 1 grille d'airain = 2 casiers ; renforts à l'établi, chacun à partir du précédent (plaques et fer ; bloc d'airain ; engrenages d'airain et diamant ; lingot de netherite).
+- Quête optionnelle « Le rayonnage impérial » et une page dans le livre de l'ingénieur (onglet Bâtir).
 
 **Changements (1.61.0)**
 - Patine de l'airain : le rouge impérial devient un rouge cramoisi profond. Les stades terni et vieilli glissent progressivement vers lui ; le stade neuf ne change pas, ni les motifs. Toutes les pièces patinées sont concernées (blocs, passerelles, charpente, mécanismes, atelier, lanternes) ; la flamme des lanternes garde sa couleur.
