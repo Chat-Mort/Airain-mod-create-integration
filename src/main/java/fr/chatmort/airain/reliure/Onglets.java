@@ -29,12 +29,16 @@ public final class Onglets {
 		return null;
 	}
 
-	private static int colonnes(AbstractContainerScreen<?> e, int n) { return n * 20 > e.getYSize() - 96 ? 2 : 1; }
+	// 4 onglets au plus par colonne (à hauteur de l'inventaire du joueur) ; les suivants dans une colonne plus à gauche
+	private static final int PAR_COLONNE = 4;
+	/** Plaques d'airain de l'interface HD (22x19, normale et survolée), présentes seulement dans le pack. */
+	private static final net.minecraft.resources.ResourceLocation PLAQUE = net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/book_tab.png");
 
 	private static int[] place(AbstractContainerScreen<?> e, int n, int i) {
-		int col = colonnes(e, n), parCol = (n + col - 1) / col;
-		int c = i / parCol, r = i % parCol;
-		int x = e.getGuiLeft() - 24 - c * 24;
+		int parCol = Math.min(n, PAR_COLONNE);
+		int c = i / PAR_COLONNE, r = i % PAR_COLONNE;
+		// collé au cadre (− 21) ; chaque colonne suivante 23 px plus à gauche
+		int x = e.getGuiLeft() - 21 - c * 23;
 		int y = e.getGuiTop() + e.getYSize() - 6 - (parCol - r) * 20;
 		return new int[] {x, y};
 	}
@@ -49,10 +53,16 @@ public final class Onglets {
 		for (int i = 0; i < n; i++) {
 			int[] p = place(e, n, i);
 			boolean sur = ev.getMouseX() >= p[0] && ev.getMouseX() < p[0] + 22 && ev.getMouseY() >= p[1] && ev.getMouseY() < p[1] + 19;
-			g.fill(p[0] - 1, p[1] - 1, p[0] + 23, p[1] + 20, 0xFF000000);
-			g.fill(p[0], p[1], p[0] + 22, p[1] + 19, sur ? 0xFFFFECBE : 0xFFD2BE96);
-			g.fill(p[0], p[1], p[0] + 22, p[1] + 1, 0x60FFFFFF);
-			g.renderItem(t.livres().get(i), p[0] + 3, p[1] + 2);
+			if (fr.chatmort.airain.gui.InterfaceHD.actif()) {
+				// interface HD : plaque d'airain arrondie côté extérieur (cramoisie au survol), livre au centre
+				g.blit(PLAQUE, p[0], p[1], 0, sur ? 19 : 0, 22, 19, 32, 64);
+				g.renderItem(t.livres().get(i), p[0] + 4, p[1] + 1);
+			} else {
+				g.fill(p[0] - 1, p[1] - 1, p[0] + 23, p[1] + 20, 0xFF000000);
+				g.fill(p[0], p[1], p[0] + 22, p[1] + 19, sur ? 0xFFFFECBE : 0xFFD2BE96);
+				g.fill(p[0], p[1], p[0] + 22, p[1] + 1, 0x60FFFFFF);
+				g.renderItem(t.livres().get(i), p[0] + 3, p[1] + 2);
+			}
 			if (sur) info = t.livres().get(i);
 		}
 		if (info != null)

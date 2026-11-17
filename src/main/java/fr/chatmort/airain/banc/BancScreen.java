@@ -2,6 +2,7 @@ package fr.chatmort.airain.banc;
 
 import java.util.List;
 
+import fr.chatmort.airain.gui.InterfaceHD;
 import fr.chatmort.airain.gui.WidgetsEmpire;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
@@ -42,12 +43,14 @@ public class BancScreen extends AbstractContainerScreen<BancMenu> {
 
 	@Override
 	protected void renderLabels(GuiGraphics g, int mx, int my) {
-		g.drawString(font, title, 10, 6, WidgetsEmpire.BRUN, false);
-		g.drawString(font, playerInventoryTitle, 8, inventoryLabelY, WidgetsEmpire.BRUN, false);
+		// interface HD : titre décalé à droite du réservoir, textes en airain (avec ombre) sur l'ardoise
+		boolean hd = InterfaceHD.actif();
+		g.drawString(font, title, hd ? 34 : 10, 6, InterfaceHD.texte(WidgetsEmpire.BRUN), hd);
+		g.drawString(font, playerInventoryTitle, 8, inventoryLabelY, hd ? InterfaceHD.AIRAIN_SOMBRE : WidgetsEmpire.BRUN, hd);
 		Component etat = menu.vitesse() < 16 ? Component.translatable("airain.banc.arret")
 			: menu.secondes() >= 0 && menu.travaille() ? Component.translatable("airain.banc.rythme", menu.vitesse(), menu.secondes())
 			: Component.translatable("airain.banc.vitesse", menu.vitesse());
-		g.drawString(font, etat, 36, 82, WidgetsEmpire.BRUN, false);
+		g.drawString(font, etat, 36, 82, hd ? InterfaceHD.AIRAIN_SOMBRE : WidgetsEmpire.BRUN, hd);
 	}
 
 	@Override
