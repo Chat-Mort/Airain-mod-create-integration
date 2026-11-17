@@ -1,6 +1,10 @@
 package fr.chatmort.airain.affichage;
 
+import fr.chatmort.airain.gui.InterfaceHD;
+import fr.chatmort.airain.gui.PanneauHD;
 import fr.chatmort.airain.gui.WidgetsEmpire;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -44,6 +48,7 @@ public class EmailScreen extends Screen {
 	@Override
 	protected void init() {
 		champ = null;
+		if (InterfaceHD.actif()) { initHD(); return; }
 		if (onglet == 0) {
 			champ = new EditBox(font, ox() + 55, oy() + 177, 158, 10, Component.empty());
 			champ.setBordered(false); champ.setTextColor(CLAIR); champ.setMaxLength(Reglages.MAX_TEXTE);
@@ -53,6 +58,19 @@ public class EmailScreen extends Screen {
 			addRenderableWidget(champ);
 		}
 	}
+	/** Interface HD : champ « Texte » dans son creux, bouton à chaîne « Terminé » sous le bac. */
+	private void initHD() {
+		if (onglet == 0) {
+			champ = new EditBox(font, ox() + 60, oy() + 140, 142, 10, Component.empty());
+			champ.setBordered(false); champ.setTextColor(0xE8E2D4); champ.setMaxLength(Reglages.MAX_TEXTE);
+			Reglages.Ligne l = ligne();
+			champ.setValue(l == null ? "" : l.texte);
+			champ.setResponder(v -> { Reglages.Ligne x = ligne(); if (x != null && !x.texte.equals(v)) { x.texte = v; change(); } });
+			addRenderableWidget(champ);
+		}
+		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> onClose()).bounds(ox() + 10, oy() + 196, PanneauHD.BOUTON, 20).build());
+	}
+	private int visibles() { return InterfaceHD.actif() ? 5 : VISIBLES; }
 	private void choisir(int i) { choisie = i; rebuildWidgets(); }
 
 	@Override
@@ -109,6 +127,7 @@ public class EmailScreen extends Screen {
 	@Override
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		zones.clear();
+		if (InterfaceHD.actif()) { renderHD(g, mx, my, pt); return; }
 		renderBackground(g, mx, my, pt);
 		int x = ox(), y = oy();
 		g.drawString(font, title.copy().withStyle(s -> s.withBold(true)), x + 14, y + 6, ENCRE, false);
@@ -128,9 +147,9 @@ public class EmailScreen extends Screen {
 	private void contenu(GuiGraphics g, int x, int y) {
 		List<Reglages.Ligne> L = lignes();
 		section(g, tr(r.memeFace ? "lignes" : arriere ? "lignes_arriere" : "lignes_avant"), x + 12, y + 42);
-		defile = Math.max(0, Math.min(defile, Math.max(0, L.size() - VISIBLES)));
+		defile = Math.max(0, Math.min(defile, Math.max(0, L.size() - visibles())));
 		int base = arriere && !r.memeFace ? r.avant.size() : 0;
-		for (int n = 0; n < VISIBLES && n + defile < L.size(); n++) {
+		for (int n = 0; n < visibles() && n + defile < L.size(); n++) {
 			int i = n + defile, ly = y + 55 + n * 11;
 			Reglages.Ligne l = L.get(i);
 			boolean sel = i == choisie;
@@ -262,11 +281,17 @@ public class EmailScreen extends Screen {
 	}
 	@Override
 	public boolean mouseDragged(double mx, double my, int b, double dx, double dy) {
-		if (onglet == 3 && my >= oy() + 70 && my <= oy() + 86 && mx >= ox() + 66 && mx <= ox() + 194) { curseur(mx); return true; }
+		if (onglet == 3 && surCurseur(mx, my)) { curseur(mx); return true; }
 		return super.mouseDragged(mx, my, b, dx, dy);
 	}
+	/** Zone du curseur d'intensité (interface HD : curseur du kit de 140 px en (64, 68)). */
+	private boolean surCurseur(double mx, double my) {
+		if (InterfaceHD.actif()) return my >= oy() + 68 && my <= oy() + 88 && mx >= ox() + 64 && mx <= ox() + 204;
+		return my >= oy() + 70 && my <= oy() + 86 && mx >= ox() + 66 && mx <= ox() + 194;
+	}
 	private void curseur(double mx) {
-		int v = (int) Math.round((mx - (ox() + 70)) * 15 / 120.0); v = Math.max(0, Math.min(15, v));
+		int v = InterfaceHD.actif() ? (int) Math.round((mx - (ox() + 68)) * 15 / 132.0) : (int) Math.round((mx - (ox() + 70)) * 15 / 120.0);
+		v = Math.max(0, Math.min(15, v));
 		if (v != r.intensite) { r.intensite = v; change(); }
 	}
 
@@ -295,10 +320,258 @@ public class EmailScreen extends Screen {
 		for (String s : tr("copier.aide").getString().split("\n")) { g.drawString(font, s, x + 14, ly, SEPIA, false); ly += 10; }
 	}
 
+	// ================================================================ interface HD
+	// Panneau de réglages commun : bac, onglets de classeur, libellés à points de conduite, touches et pastilles serties.
+	// Coordonnées des maquettes validées, relatives au coin du panneau (ox, oy).
+	private static final ResourceLocation SPR_PISTE = ResourceLocation.withDefaultNamespace("widget/slider"),
+		SPR_POIGNEE = ResourceLocation.withDefaultNamespace("widget/slider_handle"),
+		SPR_RAIL = ResourceLocation.withDefaultNamespace("widget/scroller_background"),
+		SPR_CHARIOT = ResourceLocation.withDefaultNamespace("widget/scroller");
+	private static final int HD_TEXTE = 0xC8C2B4, HD_CREME = 0xFFE9B0, HD_VERT = 0x78C878;
+	private int sx, sy;      // souris, pour les survols
+
+	private boolean sous(int x, int y, int w, int h) { return sx >= x && sx < x + w && sy >= y && sy < y + h; }
+	private void hdTexte(GuiGraphics g, Component c, int px, int py, int col) { g.drawString(font, c, ox() + px, oy() + py, col, true); }
+	private void hdSection(GuiGraphics g, Component c, int py) { PanneauHD.libelle(g, font, ox() + 14, oy() + py, ox() + 207, c); }
+	private void hdPuce(GuiGraphics g, Component c, int py) { PanneauHD.libelle(g, font, ox() + 14, oy() + py, ox() + 14, c); }
+	private void hdTouche(GuiGraphics g, int px, int py, int w, boolean actif, Component t, Runnable a) {
+		int x = ox() + px, y = oy() + py;
+		PanneauHD.toucheTexte(g, font, x, y, w, actif, sous(x, y, w, 16), t);
+		zone(x, y, w, 16, a);
+	}
+	private void hdRadio(GuiGraphics g, int px, int py, boolean on, Component t, Runnable a) {
+		int x = ox() + px, y = oy() + py, w = 14 + font.width(t);
+		PanneauHD.radio(g, x, y, on, sous(x, y - 1, w, 13));
+		g.drawString(font, t, x + 14, y + 2, on ? InterfaceHD.AIRAIN : HD_TEXTE, true);
+		zone(x, y - 1, w, 13, a);
+	}
+	private void hdCase(GuiGraphics g, int px, int py, boolean on, Component t, Runnable a) {
+		int x = ox() + px, y = oy() + py;
+		PanneauHD.caseACocher(g, x, y, on);
+		g.drawString(font, t, x + 14, y + 2, on ? InterfaceHD.AIRAIN : HD_TEXTE, true);
+		zone(x, y - 1, 14 + font.width(t), 13, a);
+	}
+	private void hdEmail(GuiGraphics g, int px, int py, int col, boolean sel, Runnable a) {
+		PanneauHD.email(g, ox() + px, oy() + py, col, sel);
+		zone(ox() + px - 1, oy() + py - 1, 12, 12, a);
+	}
+	private void hdFleche(GuiGraphics g, int px, int py, boolean droite, Runnable a) {
+		int x = ox() + px, y = oy() + py;
+		PanneauHD.fleche(g, x, y, droite, sous(x, y, 16, 16));
+		zone(x, y, 16, 16, a);
+	}
+	private void hdValeur(GuiGraphics g, int px, int py, int w, Component t) {
+		PanneauHD.champ(g, ox() + px, oy() + py, w, false);
+		g.drawString(font, t, ox() + px + w / 2 - font.width(t) / 2 + 1, oy() + py + 4, HD_CREME, true);
+	}
+
+	private void renderHD(GuiGraphics g, int mx, int my, float pt) {
+		sx = mx; sy = my;
+		super.renderBackground(g, mx, my, pt);
+		int x = ox(), y = oy();
+		PanneauHD.fond(g, x + 10, y + 10);
+		g.drawString(font, title, x + 12, y + 6, InterfaceHD.AIRAIN, true);
+		// onglets de classeur : de droite à gauche, l'actif en dernier (devant)
+		Component[] noms = new Component[ONGLETS.length];
+		for (int k = 0; k < ONGLETS.length; k++) noms[k] = tr("onglet." + ONGLETS[k]);
+		int[] xs = PanneauHD.placeOnglets(font, noms, x + 10);
+		for (int k = ONGLETS.length - 1; k >= -1; k--) {
+			int c = k < 0 ? onglet : k;
+			if (k >= 0 && k == onglet) continue;
+			final int cc = c;
+			PanneauHD.onglet(g, font, xs[c], y + 18, xs[ONGLETS.length + c], noms[c], c == onglet, c != onglet && sous(xs[c], y + 18, xs[ONGLETS.length + c], 16));
+			zone(xs[c], y + 18, xs[ONGLETS.length + c], 16, () -> { onglet = cc; rebuildWidgets(); });
+		}
+		if (onglet == 0) PanneauHD.champ(g, x + 56, y + 136, 150, champ != null && champ.isFocused());
+		switch (onglet) { case 0 -> contenuHD(g); case 1 -> styleHD(g); case 2 -> policeHD(g); case 3 -> lumiereHD(g); default -> poseHD(g); }
+		apercu(g, x, y);
+		PanneauHD.reflets(g, x + 10, y + 10);
+		for (var w : renderables) w.render(g, mx, my, pt);
+	}
+
+	// ---- 1. contenu : liste de 5 lignes, boutons ronds sur la ligne du titre, réglages de la ligne choisie sous une rainure
+	private void contenuHD(GuiGraphics g) {
+		int x = ox(), y = oy();
+		List<Reglages.Ligne> L = lignes();
+		PanneauHD.libelle(g, font, x + 14, y + 38, x + 136, tr(r.memeFace ? "lignes" : arriere ? "lignes_arriere" : "lignes_avant"));
+		Runnable[] actions = {
+			() -> { if (L.size() >= Reglages.MAX_LIGNES) return;
+				L.add(Math.min(L.size(), choisie + 1), new Reglages.Ligne(Reglages.TEXTE, "", 0, 1, 0)); choisie = Math.min(L.size() - 1, choisie + 1); change(); rebuildWidgets(); },
+			() -> { if (L.size() > 1 && choisie < L.size()) { L.remove(choisie); choisie = Math.max(0, choisie - 1); change(); rebuildWidgets(); } },
+			() -> { if (choisie > 0) { L.add(choisie - 1, L.remove(choisie)); choisie--; change(); } },
+			() -> { if (choisie < L.size() - 1) { L.add(choisie + 1, L.remove(choisie)); choisie++; change(); } }};
+		for (int k = 0; k < 4; k++) {
+			int bx = x + 138 + k * 17, by = y + 38;
+			PanneauHD.rond(g, bx, by, k, sous(bx, by, 16, 16));
+			zone(bx, by, 16, 16, actions[k]);
+		}
+		// liste : creux sombre, ligne choisie en bande cramoisie, une ligne sur deux plus sombre
+		int lx0 = x + 13, ly0 = y + 57, lx1 = x + 199, ly1 = y + 112;
+		g.fill(lx0 - 1, ly0 - 1, lx1 + 1, ly1 + 1, 0xFF704425);
+		g.fill(lx0, ly0, lx1, ly1, 0xFF15171B);
+		defile = Math.max(0, Math.min(defile, Math.max(0, L.size() - visibles())));
+		int base = arriere && !r.memeFace ? r.avant.size() : 0;
+		for (int n = 0; n < visibles() && n + defile < L.size(); n++) {
+			int i = n + defile, ly = ly0 + n * 11;
+			Reglages.Ligne l = L.get(i);
+			boolean sel = i == choisie;
+			if (sel) { g.fill(lx0, ly, lx1, ly + 11, 0xFF820019); g.fill(lx0, ly, lx1, ly + 1, 0xFFAF1D25); g.fill(lx0, ly + 10, lx1, ly + 11, 0xFF520019); }
+			else if (n % 2 == 1) g.fill(lx0, ly, lx1, ly + 11, 0xFF1A1C21);
+			g.drawString(font, tr("type." + l.type), lx0 + 4, ly + 2, sel ? InterfaceHD.AIRAIN : 0xB48242, true);
+			String t = l.texte.isEmpty() && l.type != Reglages.FILET && l.type != Reglages.COLONNE && l.type != Reglages.VIDE ? "-" : l.texte;
+			g.drawString(font, font.plainSubstrByWidth(t, 120), lx0 + 44, ly + 2, sel ? HD_CREME : 0xD8D2C4, true);
+			if (!EmailClientEtat.valeur(pos, base + i).isEmpty()) PanneauHD.lampe(g, lx1 - 9, ly + 2);
+			final int ii = i;
+			zone(lx0, ly, lx1 - lx0, 11, () -> choisir(ii));
+		}
+		// rail de défilement à droite de la liste
+		g.blitSprite(SPR_RAIL, x + 201, ly0, 6, ly1 - ly0);
+		int total = Math.max(1, L.size()), h = Math.max(8, (ly1 - ly0) * Math.min(visibles(), total) / total);
+		int course = ly1 - ly0 - h, pos0 = total > visibles() ? course * defile / (total - visibles()) : 0;
+		g.blitSprite(SPR_CHARIOT, x + 201, ly0 + pos0, 6, h);
+		PanneauHD.rainure(g, x + 13, x + 207, y + 114);
+		Reglages.Ligne l = ligne();
+		if (l == null) return;
+		// type : flèches et cartouche, comme le panneau commun
+		PanneauHD.libelle(g, font, x + 14, y + 118, x + 89, tr("type"));
+		hdFleche(g, 89, 118, false, () -> { l.type = Math.floorMod(l.type - 1, Reglages.NB_TYPES); defauts(l); change(); });
+		PanneauHD.cartouche(g, font, x + 107, y + 118, 80, tr("type." + l.type), false);
+		hdFleche(g, 189, 118, true, () -> { l.type = Math.floorMod(l.type + 1, Reglages.NB_TYPES); defauts(l); change(); });
+		hdPuce(g, tr("texte"), 136);
+		// alignement (traits dessinés) et taille
+		hdPuce(g, tr("aligner"), 154);
+		for (int k = 0; k < 3; k++) {
+			final int kk = k; int bx = x + 66 + k * 17, by = y + 154;
+			hdTouche(g, 66 + k * 17, 154, 16, l.align == k, null, () -> { l.align = kk; change(); });
+			int c = l.align == k ? 0xFFFFE9B0 : 0xFFE1BA6E;
+			for (int t = 0; t < 4; t++) {
+				int L_ = t % 2 == 0 ? 10 : 6, x0 = k == 0 ? 3 : k == 1 ? 3 + (10 - L_) / 2 : 13 - L_;
+				g.fill(bx + x0, by + 4 + t * 2, bx + x0 + L_, by + 5 + t * 2, c);
+			}
+		}
+		hdTexte(g, tr("taille"), 126, 158, InterfaceHD.AIRAIN_SOMBRE);
+		for (int k = 0; k < 3; k++) { final int kk = k; hdTouche(g, 155 + k * 17, 154, 16, l.taille == k, tr("taille." + k), () -> { l.taille = kk; change(); }); }
+		// couleur, puis la liaison (lampe verte et valeur lue)
+		hdPuce(g, Component.translatable("airain.email.couleur"), 171);
+		for (int k = 0; k < Reglages.PALETTE.length; k++) { final int kk = k; hdEmail(g, 66 + k * 11, 173, Reglages.PALETTE[k], l.couleur == k, () -> { l.couleur = kk; change(); }); }
+		if (l.liee()) {
+			String v = EmailClientEtat.valeur(pos, base + choisie);
+			if (!v.isEmpty()) PanneauHD.lampe(g, x + 160, y + 175);
+			g.drawString(font, v.isEmpty() ? Component.literal("-") : Component.literal(font.plainSubstrByWidth(v, 36)), x + 167, y + 175, v.isEmpty() ? HD_TEXTE : HD_VERT, true);
+		}
+	}
+
+	// ---- 2. style : émail, cadre (et teinte de l'airain dessous), finition
+	private void styleHD(GuiGraphics g) {
+		hdSection(g, tr("email"), 38);
+		for (int i = 0; i < 16; i++) { final int ii = i; hdEmail(g, 16 + (i % 8) * 12, 53 + (i / 8) * 12, DyeColor.byId(i).getTextureDiffuseColor() & 0xFFFFFF, r.email == i, () -> { r.email = ii; change(); }); }
+		hdTexte(g, Component.translatable("color.minecraft." + DyeColor.byId(r.email).getName()), 118, 59, 0xD8D2C4);
+		hdSection(g, tr("cadre"), 83);
+		for (int i = 0; i < 4; i++) { final int ii = i; hdTouche(g, 15 + i * 48, 98, 46, r.cadre == i, tr("cadre." + i), () -> { r.cadre = ii; change(); }); }
+		int[] teintes = {0xD6AA5A, 0xC2703E, 0xA83424, 0x900A1C};
+		for (int i = 0; i < 4; i++) {
+			final int ii = i;
+			hdEmail(g, 16 + i * 48, 120, teintes[i], r.airain == i, () -> { r.airain = ii; change(); });
+			hdTexte(g, tr("airain." + i), 29 + i * 48, 121, r.airain == i ? InterfaceHD.AIRAIN : HD_TEXTE);
+		}
+		hdSection(g, tr("finition"), 138);
+		hdRadio(g, 16, 153, !r.mat, tr("brillant"), () -> { r.mat = false; change(); });
+		hdRadio(g, 80, 153, r.mat, tr("mat"), () -> { r.mat = true; change(); });
+		hdCase(g, 16, 168, r.ecusson, tr("ecusson"), () -> { r.ecusson = !r.ecusson; change(); });
+		hdCase(g, 80, 168, r.rosaces, tr("rosaces"), () -> { r.rosaces = !r.rosaces; change(); });
+		hdCase(g, 144, 168, r.baguettes, tr("baguettes"), () -> { r.baguettes = !r.baguettes; change(); });
+	}
+
+	// ---- 3. police : trois exemples sur l'émail choisi, couleurs
+	private void policeHD(GuiGraphics g) {
+		int x = ox(), y = oy();
+		hdSection(g, tr("police"), 38);
+		int em = EmailRendu.couleurEmail(r);
+		for (int i = 0; i < 3; i++) {
+			final int ii = i; int ly = 57 + i * 24;
+			hdRadio(g, 16, ly + 3, r.police == i, tr("police." + i), () -> { r.police = ii; change(); });
+			int bx0 = x + 100, by0 = y + ly - 2;
+			g.fill(bx0 - 1, by0 - 1, bx0 + 107, by0 + 19, 0xFFB48242);
+			g.fill(bx0, by0, bx0 + 106, by0 + 18, 0xFF000000 | em);
+			g.fill(bx0, by0, bx0 + 106, by0 + 1, 0xFF000000 | EmailRendu.melange(em, 0xFFFFFF, 0.25f));
+			MutableComponent ex = Component.literal("Lingots 1 284").withStyle(i == 1 ? net.minecraft.network.chat.Style.EMPTY.withFont(MiseEnPage.IMPERIALE) : net.minecraft.network.chat.Style.EMPTY);
+			if (i == 2) {
+				g.drawString(font, ex, bx0 + 6, by0 + 6, 0xFF000000 | EmailRendu.melange(em, 0xFFFFFF, 0.35f), false);
+				g.drawString(font, ex, bx0 + 6, by0 + 5, 0xFF000000 | EmailRendu.melange(em, 0, 0.6f), false);
+			} else g.drawString(font, ex, bx0 + 6, by0 + 5, 0xFF000000 | Reglages.PALETTE[i == 1 ? 1 : 0], true);
+		}
+		hdSection(g, tr("couleurs"), 133);
+		hdTexte(g, tr("couleur_lignes"), 16, 149, InterfaceHD.AIRAIN_SOMBRE);
+		for (int k = 0; k < Reglages.PALETTE.length; k++) { final int kk = k; hdEmail(g, 110 + k * 12, 148, Reglages.PALETTE[k], false, () -> { for (Reglages.Ligne l : lignes()) l.couleur = kk; change(); }); }
+		hdTexte(g, tr("couleur_valeurs"), 16, 167, InterfaceHD.AIRAIN_SOMBRE);
+		for (int k = 0; k < Reglages.PALETTE.length; k++) { final int kk = k; hdEmail(g, 110 + k * 12, 166, Reglages.PALETTE[k], r.coulValeur == k, () -> { r.coulValeur = kk; change(); }); }
+	}
+
+	// ---- 4. lumière : éclairage, intensité (curseur du kit), allumage en 3 touches, alerte sur deux lignes
+	private void lumiereHD(GuiGraphics g) {
+		int x = ox(), y = oy();
+		hdSection(g, tr("eclairage"), 38);
+		int rx = 16;
+		for (int i = 0; i < 3; i++) { final int ii = i; hdRadio(g, rx, 53, r.eclairage == i, tr("eclairage." + i), () -> { r.eclairage = ii; change(); }); rx += 24 + font.width(tr("eclairage." + i)); }
+		hdTexte(g, tr("intensite"), 16, 74, InterfaceHD.AIRAIN_SOMBRE);
+		boolean dessus = sous(x + 64, y + 68, 140, 20);
+		g.blitSprite(dessus ? ResourceLocation.withDefaultNamespace("widget/slider_highlighted") : SPR_PISTE, x + 64, y + 68, 140, 20);
+		g.blitSprite(dessus ? ResourceLocation.withDefaultNamespace("widget/slider_handle_highlighted") : SPR_POIGNEE, x + 64 + 132 * r.intensite / 15, y + 68, 8, 20);
+		Component v = Component.literal("" + r.intensite);
+		g.drawString(font, v, x + 134 - font.width(v) / 2, y + 74, 0xFFFFFF, true);
+		zone(x + 64, y + 68, 140, 20, () -> {});
+		hdSection(g, tr("allumage"), 95);
+		for (int i = 0; i < 3; i++) { final int ii = i; hdTouche(g, 15 + i * 64, 109, 62, r.allumage == i, tr("allumage." + i), () -> { r.allumage = ii; change(); }); }
+		hdSection(g, tr("alerte"), 132);
+		hdTexte(g, tr("alerte.ligne"), 16, 151, InterfaceHD.AIRAIN_SOMBRE);
+		hdFleche(g, 46, 147, false, () -> { r.alerteLigne = Math.max(0, r.alerteLigne - 1); change(); });
+		hdValeur(g, 64, 147, 14, Component.literal(r.alerteLigne == 0 ? "-" : "" + r.alerteLigne));
+		hdFleche(g, 80, 147, true, () -> { r.alerteLigne = Math.min(Reglages.MAX_LIGNES, r.alerteLigne + 1); change(); });
+		hdTexte(g, tr("alerte.seuil"), 104, 151, InterfaceHD.AIRAIN_SOMBRE);
+		hdFleche(g, 132, 147, false, () -> { r.seuil -= hasShiftDown() ? 10 : 1; change(); });
+		hdValeur(g, 150, 147, 20, Component.literal("" + r.seuil));
+		hdFleche(g, 172, 147, true, () -> { r.seuil += hasShiftDown() ? 10 : 1; change(); });
+		hdTexte(g, tr("alerte.alors_hd"), 16, 171, InterfaceHD.AIRAIN_SOMBRE);
+		for (int i = 0; i < 2; i++) { final int ii = i; hdTouche(g, 46 + i * 52, 167, 50, r.alerteAction == i, tr("alerte.action." + i), () -> { r.alerteAction = ii; change(); }); }
+		for (int i = 0; i < 4; i++) { final int ii = i; hdEmail(g, 154 + i * 12, 170, Reglages.PALETTE[i], r.alerteCouleur == i, () -> { r.alerteCouleur = ii; change(); }); }
+	}
+
+	// ---- 5. pose : accrochage (avec l'accrochage réel au bout de la ligne du titre), double face, aide Copier
+	private void poseHD(GuiGraphics g) {
+		int x = ox(), y = oy();
+		Component ici = null;
+		var mc = net.minecraft.client.Minecraft.getInstance();
+		if (mc.level != null && mc.level.getBlockState(pos).getBlock() instanceof EmailBlock)
+			ici = tr("ici", tr("montage." + mc.level.getBlockState(pos).getValue(EmailBlock.MONTAGE).ordinal()));
+		int xi = ici == null ? 207 : 205 - font.width(ici);
+		PanneauHD.libelle(g, font, x + 14, y + 38, x + xi - 10, tr("accrochage"));
+		if (ici != null) { PanneauHD.lampe(g, x + xi - 8, y + 41); hdTexte(g, ici, xi, 42, HD_VERT); }
+		for (int i = 0; i < 4; i++) { final int ii = i; hdRadio(g, 16 + (i % 2) * 96, 53 + (i / 2) * 14, r.accrochage == i, tr("accrochage." + i), () -> { r.accrochage = ii; change(); }); }
+		hdSection(g, tr("double"), 86);
+		hdRadio(g, 16, 101, r.memeFace, tr("double.meme"), () -> { r.memeFace = true; arriere = false; change(); });
+		hdRadio(g, 112, 101, !r.memeFace, tr("double.different"), () -> {
+			if (r.memeFace && r.arriere.isEmpty()) for (Reglages.Ligne l : r.avant) r.arriere.add(l.copie());
+			r.memeFace = false; change();
+		});
+		if (!r.memeFace) {
+			hdTexte(g, tr("editer"), 16, 121, InterfaceHD.AIRAIN_SOMBRE);
+			Component a = tr("face.avant"), b = tr("face.arriere");
+			int wa = Math.max(66, font.width(a) + 10), wb = Math.max(78, font.width(b) + 10);
+			hdTouche(g, 50, 117, wa, !arriere, a, () -> { arriere = false; choisie = 0; });
+			hdTouche(g, 52 + wa, 117, wb, arriere, b, () -> { arriere = true; choisie = 0; });
+		}
+		hdSection(g, tr("copier"), 141);
+		int ly = 156;
+		for (String l : tr("copier.aide").getString().split("\n")) { hdTexte(g, Component.literal(l), 16, ly, HD_TEXTE); ly += 12; }
+	}
+
 	// ---- aperçu, dans le panneau sombre
 	private void apercu(GuiGraphics g, int x, int y) {
-		int px0 = x + 225, py0 = y + 19, pw = 74, ph = 140;
-		g.drawCenteredString(font, tr("apercu"), px0 + pw / 2, py0 + 3, CLAIR);
+		// interface HD : toute la vitrine (titre en haut, taille au-dessus de l'estrade)
+		boolean hd = InterfaceHD.actif();
+		int px0 = hd ? x + 222 : x + 225, py0 = hd ? y + 17 : y + 19, pw = hd ? 78 : 74, ph = hd ? 163 : 140;
+		if (hd) g.drawString(font, tr("apercu"), px0 + pw / 2 - font.width(tr("apercu")) / 2, py0 + 3, InterfaceHD.AIRAIN_SOMBRE, true);
+		else g.drawCenteredString(font, tr("apercu"), px0 + pw / 2, py0 + 3, CLAIR);
 		var mc = net.minecraft.client.Minecraft.getInstance();
 		int w = 1, h = 1;
 		if (mc.level != null && mc.level.getBlockEntity(pos) instanceof EmailBlockEntity e) { w = e.largeur; h = e.hauteur; }
@@ -324,7 +597,8 @@ public class EmailScreen extends Screen {
 			@Override public void rect(float a, float b, float c, float d, int col) { rectF(g, ox + a * sc, oy + b * sc, ox + c * sc, oy + d * sc, 0xFF000000 | col); }
 			@Override public void baguette(float a, float b, float c, float d) { rectF(g, ox + a * sc, oy + b * sc, ox + c * sc, oy + d * sc, cadre); }
 		}, font, r, lignes(), i -> EmailClientEtat.valeur(pos, base + i), W - 2 * ep, H - 2 * ep);
-		g.drawCenteredString(font, tr("taille_tableau", w, h), px0 + pw / 2, py0 + ph - 14, CLAIR);
+		if (hd) g.drawString(font, tr("taille_tableau", w, h), px0 + pw / 2 - font.width(tr("taille_tableau", w, h)) / 2, py0 + ph - 14, InterfaceHD.AIRAIN_SOMBRE, true);
+		else g.drawCenteredString(font, tr("taille_tableau", w, h), px0 + pw / 2, py0 + ph - 14, CLAIR);
 	}
 	private static void rectF(GuiGraphics g, float x0, float y0, float x1, float y1, int col) {
 		var ps = g.pose(); ps.pushPose(); ps.translate(x0, y0, 0); ps.scale(x1 - x0, y1 - y0, 1); g.fill(0, 0, 1, 1, col); ps.popPose();
@@ -334,7 +608,7 @@ public class EmailScreen extends Screen {
 	@Override
 	public boolean mouseClicked(double mx, double my, int b) {
 		if (b == 0) {
-			if (onglet == 3 && my >= oy() + 70 && my <= oy() + 86 && mx >= ox() + 66 && mx <= ox() + 194) { curseur(mx); return true; }
+			if (onglet == 3 && surCurseur(mx, my)) { curseur(mx); return true; }
 			for (int i = zones.size() - 1; i >= 0; i--) {
 				Zone z = zones.get(i);
 				if (mx >= z.x0 && mx < z.x1 && my >= z.y0 && my < z.y1) {

@@ -86,6 +86,18 @@ public final class PanneauHD {
 	/** Bouton rond 16x16 : 0 plus, 1 moins, 2 haut, 3 bas. */
 	public static void rond(GuiGraphics g, int x, int y, int symbole, boolean survol) { blit(g, x, y, 320 + symbole * 16, survol ? 144 : 128, 16, 16); }
 
+	/** Bouton radio 11x11 (douille d'airain, perle quand il est choisi). */
+	public static void radio(GuiGraphics g, int x, int y, boolean choisi, boolean survol) { blit(g, x, y, 440 + (choisi ? 11 : 0) + (survol ? 22 : 0), 32, 11, 11); }
+
+	/** Case à cocher 11x11 (coche d'airain). */
+	public static void caseACocher(GuiGraphics g, int x, int y, boolean cochee) { blit(g, x, y, cochee ? 495 : 484, 32, 11, 11); }
+
+	/** Touche à texte : active (cramoisie, enfoncée), survolée (rebord cramoisi) ou normale. */
+	public static void toucheTexte(GuiGraphics g, Font font, int x, int y, int w, boolean active, boolean survol, Component txt) {
+		troisTranches(g, x, y, w, 16, 320, active ? 112 : survol ? 176 : 96, 3);
+		if (txt != null) g.drawString(font, txt, x + w / 2 - font.width(txt) / 2, y + 4, active ? 0xFFE9B0 : InterfaceHD.AIRAIN_SOMBRE, true);
+	}
+
 	/** Rainure gravée horizontale. */
 	public static void rainure(GuiGraphics g, int x0, int x1, int y) {
 		g.fill(x0, y, x1, y + 1, 0xFF25282F);
