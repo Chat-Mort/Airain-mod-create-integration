@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import fr.chatmort.airain.gui.InterfaceHD;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -27,6 +29,9 @@ public class BorneScreen extends Screen {
 	private EditBox recherche;
 	private final Button[] lots = new Button[3];
 	private Button commander;
+	/** Interface HD : planche de la borne (Machine à différences ou Archive résonante), présente seulement dans le pack. */
+	private ResourceLocation planche() { return ResourceLocation.fromNamespaceAndPath("airain", d.empire() ? "textures/gui/difference_engine.png" : "textures/gui/resonant_archive.png"); }
+	private void piece(GuiGraphics g, int x, int y, int u, int v, int w, int h) { g.blit(planche(), x, y, u, v, w, h, 512, 256); }
 
 	public BorneScreen(PaquetsBorne.Ouvrir d) {
 		super(Component.translatable(d.empire() ? "block.airain.difference_engine" : "block.airain.resonant_archive"));
@@ -41,6 +46,7 @@ public class BorneScreen extends Screen {
 
 	@Override
 	protected void init() {
+		if (InterfaceHD.actif()) { initHD(); return; }
 		int x = bx(), y = by();
 		String avant = recherche == null ? "" : recherche.getValue();
 		recherche = new EditBox(font, x + 124, y + 22, 52, 14, Component.translatable("airain.borne.chercher"));
@@ -55,6 +61,62 @@ public class BorneScreen extends Screen {
 		commander = addRenderableWidget(Button.builder(Component.translatable("airain.borne.commander"), b -> envoyer()).bounds(x + 184, y + 198, 128, 18).build());
 		filtrer();
 		majBoutons();
+	}
+
+	/** Interface HD : recherche dans son cadre, boutons de lot 52x30 à deux étages, « Commander » à 20 px de haut. */
+	private void initHD() {
+		int x = bx(), y = by();
+		String avant = recherche == null ? "" : recherche.getValue();
+		recherche = new EditBox(font, x + 127, y + 25, 48, 10, Component.translatable("airain.borne.chercher"));
+		recherche.setBordered(false); recherche.setTextColor(d.empire() ? 0xE8E2D4 : 0xE8E2F4);
+		recherche.setValue(avant);
+		recherche.setHint(Component.translatable("airain.borne.chercher"));
+		recherche.setResponder(s -> { defil = 0; filtrer(); });
+		addRenderableWidget(recherche);
+		for (int i = 0; i < 3; i++) {
+			int k = i;
+			lots[i] = addRenderableWidget(new Lot(x + 8 + i * 56, y + (d.empire() ? 178 : 180), k));
+		}
+		commander = addRenderableWidget(new Planche(x + 184, y + 197, 128, 20, Component.translatable("airain.borne.commander"), b -> envoyer()));
+		filtrer();
+		majBoutons();
+	}
+
+	/** Bouton dessiné d'après la planche : « Commander » (chaîne pour l'Empire, dalle à cristaux pour l'Archive). */
+	private class Planche extends Button {
+		Planche(int x, int y, int w, int h, Component t, OnPress a) { super(x, y, w, h, t, a, DEFAULT_NARRATION); }
+		@Override
+		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
+			piece(g, getX(), getY(), 330, !active ? 150 : isHoveredOrFocused() ? 130 : 110, 128, 20);
+			int c = active ? 0xFFFFFF : 0xA0A0A0;
+			renderScrollingString(g, font, getMessage(), getX() + 17, getY(), getX() + getWidth() - 17, getY() + getHeight(), c);
+		}
+	}
+
+	/** Bouton de lot en deux étages : quantité sur la plaque, prix en tableau à volets (Empire) ou gravé (Archive). */
+	private class Lot extends Button {
+		private final int lot;
+		Lot(int x, int y, int lot) { super(x, y, 52, 30, Component.literal("×" + Catalogue.LOTS[lot]), b -> ajouter(lot), DEFAULT_NARRATION); this.lot = lot; }
+		@Override
+		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
+			int x = getX(), y = getY();
+			piece(g, x, y, 330, !active ? 80 : isHoveredOrFocused() ? 50 : 20, 52, 30);
+			String q = "x" + Catalogue.LOTS[lot];
+			g.drawString(font, q, x + 26 - font.width(q) / 2, y + 4, active ? 0xFFFFFF : 0xA0A0A0, true);
+			int p = choix == null ? 0 : Catalogue.prix(choix, lot);
+			if (d.empire()) {
+				// une palette « pièce » puis 4 chiffres complétés de zéros (prix maximum : 8 192 éperons)
+				String t = String.format("%04d", Math.max(0, Math.min(9999, p)));
+				int px = x + 26 - 20;
+				piece(g, px, y + 15, 390, 20, 8, 10);
+				for (int k = 0; k < 4; k++) piece(g, px + 8 + k * 8, y + 15, 398 + 8 * (t.charAt(k) - '0'), 20, 8, 10);
+			} else if (p > 0) {
+				String t = String.valueOf(p);
+				int w = 8 + font.width(t), px = x + 26 - w / 2;
+				piece(g, px, y + 17, 390, 32, 7, 7);
+				g.drawString(font, t, px + 9, y + 17, 0xECE4FF, false);
+			}
+		}
 	}
 
 	private void filtrer() {
@@ -111,6 +173,7 @@ public class BorneScreen extends Screen {
 	public void renderBackground(GuiGraphics g, int mx, int my, float pt) {
 		super.renderBackground(g, mx, my, pt);
 		int x = bx(), y = by();
+		if (InterfaceHD.actif()) { piece(g, x, y, 0, 0, W, H); return; }
 		g.fill(x, y, x + W, y + H, fond);
 		g.renderOutline(x, y, W, H, cadre);
 		g.renderOutline(x + 2, y + 2, W - 4, H - 4, cadre);
@@ -119,6 +182,7 @@ public class BorneScreen extends Screen {
 
 	@Override
 	public void render(GuiGraphics g, int mx, int my, float pt) {
+		if (InterfaceHD.actif()) { renderHD(g, mx, my, pt); return; }
 		super.render(g, mx, my, pt);
 		int x = bx(), y = by();
 		List<Component> info = null;
@@ -181,6 +245,87 @@ public class BorneScreen extends Screen {
 		g.drawString(font, Component.translatable("airain.borne.total"), rx, y + 162, texte, false);
 		prix(g, rx + 40, y + 158, total);
 		g.drawString(font, Component.translatable("airain.borne.solde"), rx, y + 182, solde >= total ? doux : 0xFFD04040, false);
+		prix(g, rx + 40, y + 178, solde);
+		if (alerte > 0) g.drawCenteredString(font, Component.translatable("airain.borne.trop"), x + W / 2, y + H + 4, 0xFFFF6060);
+		if (sous != null) {
+			List<Component> tt = new ArrayList<>(getTooltipFromItem(minecraft, new ItemStack(sous)));
+			tt.add(Component.translatable("airain.borne.palier." + Catalogue.palier(sous).cle).withStyle(net.minecraft.ChatFormatting.GRAY));
+			info = tt;
+		}
+		if (info != null) g.renderTooltip(font, info, java.util.Optional.empty(), mx, my);
+	}
+
+	/**
+	 * Interface HD : rayons en onglets de classeur posés sur le bac, grille gravée dans la planche (case choisie cramoisie,
+	 * ou liseré cyan pour l'Archive), fiche de l'objet descendue de 3 px, bon de commande sur le papier de la planche.
+	 */
+	private void renderHD(GuiGraphics g, int mx, int my, float pt) {
+		int x = bx(), y = by();
+		boolean e = d.empire();
+		int clair = e ? 0xE8E2D4 : 0xE8E2F4, gris = e ? 0x9AA0AA : 0x8A84A0, encre = e ? 0x3A2A1A : 0x2A1A3A, pale = e ? 0x7A6A55 : 0x6A5A80;
+		renderBackground(g, mx, my, pt);
+		List<Component> info = null;
+		g.drawString(font, title, x + (e ? 8 : 10), y + 7, e ? InterfaceHD.AIRAIN : 0xE4DCF6, true);
+		// rayons : onglets inactifs d'abord, l'actif ensuite (il s'ouvre dans le bac)
+		boolean libre = recherche.getValue().isBlank();
+		for (int passe = 0; passe < 2; passe++)
+			for (Catalogue.Rayon r : Catalogue.Rayon.values()) {
+				boolean sel = r == rayon && libre;
+				if (sel != (passe == 1)) continue;
+				int rx = x + 8 + r.ordinal() * 22, ry = y + 20;
+				piece(g, rx, ry, sel ? 350 : 330, 0, 20, 18);
+				g.renderItem(new ItemStack(r.icone), rx + 2, ry + 1);
+				if (mx >= rx && mx < rx + 20 && my >= ry && my < ry + 18) info = List.of(Component.translatable("airain.borne.rayon." + r.cle));
+			}
+		// grille
+		int gx = x + 8, gy = y + 44;
+		Item sous = null;
+		for (int i = 0; i < COLS * RANGS; i++) {
+			int n = defil * COLS + i;
+			int cx = gx + (i % COLS) * 18, cy = gy + (i / COLS) * 18;
+			boolean dedans = mx >= cx && mx < cx + 18 && my >= cy && my < cy + 18;
+			Item it = n < liste.size() ? liste.get(n) : null;
+			if (it == null) continue;
+			if (it == choix) piece(g, cx, cy, 370, 0, 18, 18);
+			else if (dedans) g.fill(cx + 1, cy + 1, cx + 17, cy + 17, 0x30FFFFFF);
+			g.renderItem(new ItemStack(it), cx + 1, cy + 1);
+			if (dedans) sous = it;
+		}
+		int lignesTot = (liste.size() + COLS - 1) / COLS;
+		if (lignesTot > RANGS) {
+			int h = RANGS * 18, bh = Math.max(8, h * RANGS / lignesTot), by0 = gy + (h - bh) * defil / Math.max(1, lignesTot - RANGS);
+			g.fill(x + 172, by0, x + 174, by0 + bh, e ? 0xFFE1BA6E : 0xFFC8C8D8);
+		}
+		if (liste.isEmpty()) g.drawString(font, Component.translatable("airain.borne.vide"), gx + 4, gy + 4, gris, true);
+		// fiche de l'objet choisi
+		if (choix != null) {
+			g.renderItem(new ItemStack(choix), gx, y + 157);
+			g.drawString(font, font.plainSubstrByWidth(choix.getDescription().getString(), 140), gx + 20, y + 158, clair, true);
+			g.drawString(font, Component.translatable("airain.borne.palier." + Catalogue.palier(choix).cle), gx + 20, y + 167, gris, true);
+		} else g.drawString(font, Component.translatable("airain.borne.choisir"), gx, y + 162, gris, true);
+		// widgets (recherche, lots, Commander)
+		for (var w : renderables) w.render(g, mx, my, pt);
+		// bon de commande, à l'encre sur le papier
+		int rx = x + 186;
+		g.drawString(font, Component.translatable("airain.borne.bon", PaquetsBorne.piles(bon), PaquetsBorne.PILES), x + 188, y + (e ? 22 : 24), e ? 0x962024 : 0x7A2A6A, false);
+		if (bon.isEmpty()) g.drawString(font, Component.translatable("airain.borne.bon_vide"), x + 188, y + 46, pale, false);
+		for (int i = 0; i < LIGNES; i++) {
+			int n = defilBon + i;
+			if (n >= bon.size()) break;
+			PaquetsBorne.Ligne l = bon.get(n);
+			int ly = y + 40 + i * 19;
+			boolean dedans = mx >= rx && mx < x + W - 8 && my >= ly && my < ly + 18;
+			if (dedans) g.fill(rx - 2, ly, x + W - 8, ly + 18, 0x28A8966E);
+			g.renderItem(new ItemStack(l.item()), rx, ly + 1);
+			g.drawString(font, "x" + Catalogue.LOTS[l.lot()] + (l.fois() > 1 ? "  x" + l.fois() : ""), rx + 19, ly + 5, encre, false);
+			prixCompact(g, x + W - 10, ly + 5, l.prix());
+			if (dedans) info = List.of(l.item().getDescription(), Component.translatable("airain.borne.retirer").withStyle(net.minecraft.ChatFormatting.GRAY));
+		}
+		if (bon.size() > LIGNES) g.drawString(font, (defilBon + 1) + "-" + Math.min(bon.size(), defilBon + LIGNES) + " / " + bon.size(), x + 188, y + 150, pale, false);
+		long total = PaquetsBorne.total(bon), solde = minecraft.player == null ? 0 : Catalogue.solde(minecraft.player);
+		g.drawString(font, Component.translatable("airain.borne.total"), x + 188, y + 162, encre, false);
+		prix(g, rx + 40, y + 158, total);
+		g.drawString(font, Component.translatable("airain.borne.solde"), x + 188, y + 182, solde >= total ? pale : 0xFFB02020, false);
 		prix(g, rx + 40, y + 178, solde);
 		if (alerte > 0) g.drawCenteredString(font, Component.translatable("airain.borne.trop"), x + W / 2, y + H + 4, 0xFFFF6060);
 		if (sous != null) {
