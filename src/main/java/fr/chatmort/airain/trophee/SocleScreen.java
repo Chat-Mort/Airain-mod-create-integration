@@ -2,6 +2,8 @@ package fr.chatmort.airain.trophee;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.math.Axis;
+import fr.chatmort.airain.gui.InterfaceHD;
+import fr.chatmort.airain.gui.PanneauHD;
 import fr.chatmort.airain.gui.WidgetsEmpire;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -38,6 +40,7 @@ public class SocleScreen extends Screen {
 
 	@Override
 	protected void init() {
+		if (InterfaceHD.actif()) { initHD(); return; }
 		int x = width / 2 - 150, y = haut();
 		int[] l = PAGES[page];
 		for (int n = 0; n < l.length; n++) {
@@ -62,6 +65,36 @@ public class SocleScreen extends Screen {
 		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + 96, y + 186, 94, 20).build());
 	}
 
+	/** Interface HD : onglets raccordés au bac, rangées au pas de 21 dans le bac, flèches à 5 px de son bord. */
+	private void initHD() {
+		int x = width / 2 - 150, y = haut();
+		int[] l = PAGES[page];
+		for (int n = 0; n < l.length; n++) {
+			final int i = l[n];
+			int ly = y + PanneauHD.Y_LIGNES + n * PanneauHD.PAS;
+			addRenderableWidget(new WidgetsEmpire.Fleche(x + 79, ly, false, b -> choix[i] = Math.floorMod(choix[i] - 1, SocleApparence.TAILLES[i])));
+			addRenderableWidget(new WidgetsEmpire.Fleche(x + 179, ly, true, b -> choix[i] = Math.floorMod(choix[i] + 1, SocleApparence.TAILLES[i])));
+		}
+		champ = null;
+		if (page == 1) {
+			// plaque gravée : une rangée de libellé, puis le champ sur toute la largeur du bac
+			champ = new EditBox(font, x + 8, y + 142, 184, 10, Component.translatable("airain.socle.plaque_texte"));
+			champ.setBordered(false); champ.setTextColor(WidgetsEmpire.CREME);
+			champ.setMaxLength(32); champ.setValue(plaque); champ.setResponder(v -> plaque = v);
+			addRenderableWidget(champ);
+		}
+		// onglets : l'actif est ajouté en dernier pour passer devant les autres
+		for (int k = PAGES.length - 1; k >= -1; k--) {
+			int c = k < 0 ? page : k;
+			if (k >= 0 && k == page) continue;
+			final int cible = c;
+			addRenderableWidget(new WidgetsEmpire.Onglet(x + 2 + c * 74, y + PanneauHD.Y_ONGLETS, 72, 16,
+				Component.translatable("airain.socle.onglet." + NOMS_PAGES[c]), c == page, b -> { page = cible; rebuildWidgets(); }));
+		}
+		addRenderableWidget(Button.builder(Component.translatable("gui.done"), b -> valider()).bounds(x, y + 186, PanneauHD.BOUTON, 20).build());
+		addRenderableWidget(Button.builder(Component.translatable("gui.cancel"), b -> onClose()).bounds(x + PanneauHD.ECART_BOUTONS, y + 186, PanneauHD.BOUTON, 20).build());
+	}
+
 	private void valider() {
 		PacketDistributor.sendToServer(new ConfigurerSocle(pos, SocleApparence.depuis(choix).pack(), plaque.trim()));
 		onClose();
@@ -77,6 +110,11 @@ public class SocleScreen extends Screen {
 	public void renderBackground(GuiGraphics g, int mx, int my, float pt) {
 		super.renderBackground(g, mx, my, pt);
 		int x = width / 2 - 150, y = haut();
+		if (InterfaceHD.actif()) {
+			PanneauHD.fond(g, x, y);
+			if (page == 1) PanneauHD.champ(g, x + 4, y + 138, 192, champ != null && champ.isFocused());
+			return;
+		}
 		g.blit(WidgetsEmpire.PANNEAU, x - 10, y - 10, 0, 0, 310, 226, 512, 256);
 		if (page == 1) WidgetsEmpire.creux(g, x, y + 14 + PAGES[1].length * 21 + 14, 190, 20);
 	}
@@ -92,6 +130,20 @@ public class SocleScreen extends Screen {
 	public void render(GuiGraphics g, int mx, int my, float pt) {
 		super.render(g, mx, my, pt);
 		int x = width / 2 - 150, y = haut();
+		if (InterfaceHD.actif()) {
+			// interface HD : titre sur l'ardoise, libellés à points de conduite, valeurs en cartouches émaillés
+			g.drawString(font, title, x + 2, y - 4, InterfaceHD.AIRAIN, true);
+			int[] l = PAGES[page];
+			for (int n = 0; n < l.length; n++) {
+				int k = l[n], ly = y + PanneauHD.Y_LIGNES + n * PanneauHD.PAS;
+				PanneauHD.libelle(g, font, x + 4, ly, x + 79, Component.translatable("airain.socle." + CLES[k]));
+				PanneauHD.cartouche(g, font, x + 97, ly, 80, Component.translatable(valeur(k, choix[k])), false);
+			}
+			if (page == 1) PanneauHD.libelle(g, font, x + 4, y + PanneauHD.Y_LIGNES + l.length * PanneauHD.PAS, x + 196, Component.translatable("airain.socle.plaque_texte"));
+			apercu(g, x, y, pt);
+			PanneauHD.reflets(g, x, y);
+			return;
+		}
 		g.drawString(font, title, x + 2, y - 4, WidgetsEmpire.BRUN, false);
 		int[] l = PAGES[page];
 		for (int n = 0; n < l.length; n++) {

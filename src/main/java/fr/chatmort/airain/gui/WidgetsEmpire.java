@@ -33,6 +33,8 @@ public final class WidgetsEmpire {
 
 		@Override
 		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
+			// interface HD : pastille d'ardoise cerclée d'airain (cramoisie au survol)
+			if (InterfaceHD.actif()) { PanneauHD.fleche(g, getX(), getY(), droite, isHoveredOrFocused()); return; }
 			int u = (droite ? 16 : 0) + (isHoveredOrFocused() ? 32 : 0);
 			g.blit(ELEMENTS, getX(), getY(), u, 16, 16, 16, 128, 64);
 		}
@@ -75,13 +77,19 @@ public final class WidgetsEmpire {
 		private final boolean actif;
 
 		public Onglet(int x, int y, Component nom, boolean actif, OnPress action) {
-			super(x, y, 72, 14, nom, action, DEFAULT_NARRATION);
+			this(x, y, 72, 14, nom, actif, action);
+		}
+
+		/** Onglet de largeur libre (interface HD : onglet de classeur raccordé au bac, 16 de haut). */
+		public Onglet(int x, int y, int w, int h, Component nom, boolean actif, OnPress action) {
+			super(x, y, w, h, nom, action, DEFAULT_NARRATION);
 			this.actif = actif;
 		}
 
 		@Override
 		protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
 			var font = Minecraft.getInstance().font;
+			if (InterfaceHD.actif()) { PanneauHD.onglet(g, font, getX(), getY(), getWidth(), getMessage(), actif, isHoveredOrFocused()); return; }
 			g.blit(ELEMENTS, getX(), getY(), 0, actif ? 32 : 48, 72, 14, 128, 64);
 			int c = actif ? BRUN : isHoveredOrFocused() ? 0x5A3A1A : 0x46301A;
 			g.drawString(font, getMessage(), getX() + 36 - font.width(getMessage()) / 2, getY() + 4, c, false);
