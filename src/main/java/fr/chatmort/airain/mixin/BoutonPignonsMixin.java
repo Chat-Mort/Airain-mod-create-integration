@@ -4,6 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractButton;
 import net.minecraft.client.gui.components.AbstractWidget;
 
@@ -16,6 +17,10 @@ public abstract class BoutonPignonsMixin {
 	@ModifyArg(method = "renderString", at = @At(value = "INVOKE",
 		target = "Lnet/minecraft/client/gui/components/AbstractButton;renderScrollingString(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/client/gui/Font;II)V"), index = 2)
 	private int airain$entrePignons(int marge) {
-		return InterfaceHD.actif() && ((AbstractWidget) (Object) this).getWidth() >= 60 ? InterfaceHD.MARGE_PIGNONS : marge;
+		AbstractWidget b = (AbstractWidget) (Object) this;
+		if (!InterfaceHD.actif() || b.getWidth() < 60) return marge;
+		// un texte un peu trop long mord sur la couronne des pignons plutôt que de défiler (jamais sur leur trou)
+		int place = (b.getWidth() - Minecraft.getInstance().font.width(b.getMessage())) / 2;
+		return Math.max(InterfaceHD.MARGE_PIGNONS_MIN, Math.min(InterfaceHD.MARGE_PIGNONS, place));
 	}
 }

@@ -51,8 +51,9 @@ public class CodexScreen extends Screen {
 
 	@Override
 	protected void init() {
-		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> tourner(-1)));
-		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> tourner(1)));
+		// flèches sous la réglure du bas (y 158), plus dessus ; le numéro de page suit
+		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 160, false, b -> tourner(-1)));
+		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 160, true, b -> tourner(1)));
 		signet = addRenderableWidget(new WidgetsEmpire.Signet(bx(), by(), b -> aller(0)));
 	}
 
@@ -108,7 +109,7 @@ public class CodexScreen extends Screen {
 		if (planche == 0) sommaire(g, gx, dx, y);
 		else page(g, Codex.ENTREES.get(planche - 1), gx, dx, y, mx, my);
 		String n = planche + 1 + " / " + planches();
-		g.drawString(font, n, dx + LARGE / 2 - font.width(n) / 2, by() + 162, SEPIA, false);   // sous la page de droite
+		g.drawString(font, n, dx + LARGE / 2 - font.width(n) / 2, by() + 164, SEPIA, false);   // sous la page de droite
 	}
 
 	private void centre(GuiGraphics g, Component t, int x, int y, int c) { g.drawString(font, t, x + LARGE / 2 - font.width(t) / 2, y, c, false); }

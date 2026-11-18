@@ -16,6 +16,8 @@ public final class InterfaceHD {
 	public static final int AIRAIN = 0xF3D694, AIRAIN_SOMBRE = 0xE1BA6E, ARDOISE_TEXTE = 0x9AA0AA;
 	/** Marge du texte des boutons larges : le pignon occupe les 17 premiers et derniers pixels. */
 	public static final int MARGE_PIGNONS = 17;
+	/** Marge la plus courte : le texte peut mordre sur la couronne dentée, jamais sur le trou du pignon (qui finit à 14 px). */
+	public static final int MARGE_PIGNONS_MIN = 14;
 	private static boolean actif;
 
 	private InterfaceHD() {}

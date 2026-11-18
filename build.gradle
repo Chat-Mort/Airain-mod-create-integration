@@ -32,7 +32,9 @@ repositories {
     maven { url = 'https://maven.ithundxr.dev/snapshots' }   // Registrate
     maven { url = 'https://mvn.devos.one/snapshots/' }       // Registrate (miroir)
     maven { url = 'https://maven.terraformersmc.com/releases/' }   // EMI (compilation seulement)
-    maven { url = 'https://maven.blamejared.com' }           // Ars Nouveau (compilation seulement : le mod est installé à part)
+    maven { url = 'https://maven.blamejared.com' }
+    maven { url = 'https://maven.ftb.dev/releases' }          // FTB Quests et FTB Library (compilation seulement : liste des chapitres)
+    maven { url = 'https://maven.architectury.dev/' }           // Ars Nouveau (compilation seulement : le mod est installé à part)
 }
 
 dependencies {
@@ -41,6 +43,8 @@ dependencies {
     compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
     compileOnly("com.tterrag.registrate:Registrate:${registrate_version}")
     compileOnly("dev.emi:emi-neoforge:1.1.18+1.21.1:api")   // 1.64 : recettes du mod dans EMI
+    compileOnly("dev.ftb.mods:ftb-quests-neoforge:2101.1.39") { transitive = false }
+    compileOnly("dev.ftb.mods:ftb-library-neoforge:2101.1.40") { transitive = false }
     compileOnly("com.hollingsworth.ars_nouveau:ars_nouveau-${minecraft_version}:5.13.+") { transitive = false }
 }
 

@@ -217,8 +217,9 @@ public class ChroniquesScreen extends Screen {
 	@Override
 	protected void init() {
 		if (pages.isEmpty()) construire();
-		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
-		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
+		// flèches sous la réglure du bas (y 158), plus dessus ; le numéro de page suit
+		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 160, false, b -> aller(planche - 1)));
+		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 160, true, b -> aller(planche + 1)));
 		signet = addRenderableWidget(new WidgetsEmpire.Signet(bx(), by(), b -> aller(0)));
 	}
 
@@ -297,7 +298,7 @@ public class ChroniquesScreen extends Screen {
 			int k = planche * 2 + cote;
 			if (k >= pages.size()) break;
 			String n = String.valueOf(k + 1);
-			g.drawString(font, n, px(cote) + LARGE / 2 - font.width(n) / 2, by() + 162, SEPIA, false);
+			g.drawString(font, n, px(cote) + LARGE / 2 - font.width(n) / 2, by() + 164, SEPIA, false);
 		}
 	}
 

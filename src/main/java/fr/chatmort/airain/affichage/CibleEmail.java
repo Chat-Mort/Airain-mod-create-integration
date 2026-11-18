@@ -21,7 +21,9 @@ public class CibleEmail extends DisplayTarget {
 		for (int i = 0; i < texte.size() && ligne + i < e.lignesLiables(); i++) {
 			if (i == 0) reserve(ligne, e, ctx);
 			else if (isReserved(ligne + i, e, ctx)) break;
-			e.recevoir(ligne + i, texte.get(i).getString());
+			// les listes de Create (stock, etc.) complètent chaque ligne d'espaces pour caler les nombres à droite d'un
+			// panneau de 32 colonnes : on les retire, l'alignement choisi pour la ligne du tableau s'applique alors
+			e.recevoir(ligne + i, texte.get(i).getString().strip().replaceAll(" {2,}", " "));
 		}
 	}
 	@Override

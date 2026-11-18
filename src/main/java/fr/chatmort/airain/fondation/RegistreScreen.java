@@ -59,8 +59,9 @@ public class RegistreScreen extends Screen {
 	@Override
 	protected void init() {
 		int x = bx(), y = by();
-		avant = addRenderableWidget(new WidgetsEmpire.Fleche(x + 20, y + 156, false, b -> tourner(-1)));
-		apres = addRenderableWidget(new WidgetsEmpire.Fleche(x + W - 36, y + 156, true, b -> tourner(1)));
+		// flèches sous la réglure du bas (y 158), plus dessus ; le numéro de page suit
+		avant = addRenderableWidget(new WidgetsEmpire.Fleche(x + 20, y + 160, false, b -> tourner(-1)));
+		apres = addRenderableWidget(new WidgetsEmpire.Fleche(x + W - 36, y + 160, true, b -> tourner(1)));
 		signet = addRenderableWidget(new WidgetsEmpire.Signet(x, y, b -> tourner(-planche)));
 	}
 
@@ -105,7 +106,7 @@ public class RegistreScreen extends Screen {
 			int px = x + (c == 0 ? 20 : 162), py = y + 22;
 			contenus.get(k).dessiner(g, px, py, pt);
 			String num = String.valueOf(k + 1);
-			g.drawString(font, num, px + LARGE / 2 - font.width(num) / 2, y + 162, SEPIA, false);
+			g.drawString(font, num, px + LARGE / 2 - font.width(num) / 2, y + 164, SEPIA, false);
 		}
 	}
 

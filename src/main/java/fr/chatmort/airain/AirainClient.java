@@ -31,6 +31,9 @@ public class AirainClient {
 			net.minecraft.server.packs.repository.PackSource.BUILT_IN, true, net.minecraft.server.packs.repository.Pack.Position.TOP));
 		// flou derrière les menus mis à 0 une fois, au premier écran titre (monde net derrière le menu pause)
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gui.FlouMenus::ecran);
+		// livre de recettes vanilla retiré (EMI le remplace) : son bouton se posait sur les gravures de l'inventaire et des fours
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gui.SansLivreRecettes::avant);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gui.SansLivreRecettes::apres);
 		bus.addListener(fr.chatmort.airain.gardien.Loupe::touches);
 		bus.addListener(fr.chatmort.airain.reliure.LectureClient::touches);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.LectureClient::tick);

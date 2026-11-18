@@ -155,7 +155,8 @@ public final class TelepheriqueRendus {
 			BlockState s = Blocks.AIR.defaultBlockState();
 			float lp = Mth.rotLerp(pt, n.lacetAvant, n.lacet), lc = Mth.rotLerp(pt, n.lacetChariotAvant, n.lacetChariot);
 			ms.pushPose();
-			ms.mulPose(Axis.YP.rotationDegrees(-lp)); ms.translate(-0.5, 0, -0.5);
+			// demi-tour de la plateforme : le portillon s'ouvre côté extérieur, à l'opposé du mât de la gare
+			ms.mulPose(Axis.YP.rotationDegrees(180 - lp)); ms.translate(-0.5, 0, -0.5);
 			CachedBuffers.partial(AirainPartials.PLATEFORME, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
 			ms.popPose();
 			ms.pushPose();

@@ -18,8 +18,9 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 	public static final String[] MOTIFS = {"rouage", "cle", "flamme", "couronne", "ancre", "eclair", "etoile", "rouage_brise", "cristal", "fiole", "aucun"};
 	public static final String[] FORMES = {"aronde", "droit", "pointe", "arrondi", "dents", "creneaux", "echancre"};
 	/** Styles : potence, vexillum, cérémonie (les trois de l'étendard simple), puis, pour le grand étendard seulement :
-	 *  sashimono, trois pans, lestée, à chaînes, encadrée, deux bannières. */
-	public static final int STYLES = 9;
+	 *  sashimono, trois pans, lestée, à chaînes. Encadrée et deux bannières (7 et 8) sont retirées du choix :
+	 *  un étendard qui les portait reprend la potence (ou le vexillum) au chargement. */
+	public static final int STYLES = 7;
 	/** Style du petit étendard (son bloc n'a que trois modèles) : sashimono comme la potence, les autres comme le vexillum. */
 	public static int styleSimple(int s) { return s <= 2 ? s : s == 3 ? 0 : 1; }
 	/** Styles centrés devant le mât (une seule bannière, ni double ni côté). */

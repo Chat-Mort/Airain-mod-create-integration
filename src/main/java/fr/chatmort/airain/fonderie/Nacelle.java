@@ -148,7 +148,8 @@ public class Nacelle extends Entity implements IEntityWithComplexSpawn {
 	}
 	/** Pas de descente en route. */
 	public static void descente(EntityMountEvent e) {
-		if (e.isDismounting() && e.getEntityBeingMounted() instanceof Nacelle n && n.enRoute()) e.setCanceled(true);
+		// décidé par le serveur seul : côté client, l'arrivée n'est pas encore connue quand le serveur fait descendre les voyageurs
+		if (e.isDismounting() && !e.getLevel().isClientSide() && e.getEntityBeingMounted() instanceof Nacelle n && n.enRoute()) e.setCanceled(true);
 	}
 	@Override protected boolean canAddPassenger(Entity e) { return getPassengers().size() < PLACES; }
 	@Override public boolean shouldRiderSit() { return false; }

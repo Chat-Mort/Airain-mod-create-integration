@@ -469,10 +469,15 @@ public class EmailScreen extends Screen {
 		hdSection(g, tr("cadre"), 83);
 		for (int i = 0; i < 4; i++) { final int ii = i; hdTouche(g, 15 + i * 48, 98, 46, r.cadre == i, tr("cadre." + i), () -> { r.cadre = ii; change(); }); }
 		int[] teintes = {0xD6AA5A, 0xC2703E, 0xA83424, 0x900A1C};
+		// teintes de l'airain : pastille + nom, réparties sur la largeur du bac selon la longueur des noms (rien ne se chevauche)
+		int somme = 0;
+		for (int i = 0; i < 4; i++) somme += 13 + font.width(tr("airain." + i));
+		float ecart = Math.max(4, (187 - somme) / 3f), tx = 16;
 		for (int i = 0; i < 4; i++) {
-			final int ii = i;
-			hdEmail(g, 16 + i * 48, 120, teintes[i], r.airain == i, () -> { r.airain = ii; change(); });
-			hdTexte(g, tr("airain." + i), 29 + i * 48, 121, r.airain == i ? InterfaceHD.AIRAIN : HD_TEXTE);
+			final int ii = i; int xi = Math.round(tx);
+			hdEmail(g, xi, 120, teintes[i], r.airain == i, () -> { r.airain = ii; change(); });
+			hdTexte(g, tr("airain." + i), xi + 13, 121, r.airain == i ? InterfaceHD.AIRAIN : HD_TEXTE);
+			tx += 13 + font.width(tr("airain." + i)) + ecart;
 		}
 		hdSection(g, tr("finition"), 138);
 		hdRadio(g, 16, 153, !r.mat, tr("brillant"), () -> { r.mat = false; change(); });
@@ -521,16 +526,23 @@ public class EmailScreen extends Screen {
 		g.drawString(font, v, x + 134 - font.width(v) / 2, y + 74, 0xFFFFFF, true);
 		zone(x + 64, y + 68, 140, 20, () -> {});
 		hdSection(g, tr("allumage"), 95);
-		for (int i = 0; i < 3; i++) { final int ii = i; hdTouche(g, 15 + i * 64, 109, 62, r.allumage == i, tr("allumage." + i), () -> { r.allumage = ii; change(); }); }
+		// trois touches à la largeur de leur texte, réparties sur le bac
+		int[] la = new int[3]; int sa = 0;
+		for (int i = 0; i < 3; i++) { la[i] = Math.max(46, font.width(tr("allumage." + i)) + 12); sa += la[i]; }
+		int ea = Math.max(2, (188 - sa) / 2), ax = 15;
+		for (int i = 0; i < 3; i++) { final int ii = i; hdTouche(g, ax, 109, la[i], r.allumage == i, tr("allumage." + i), () -> { r.allumage = ii; change(); }); ax += la[i] + ea; }
 		hdSection(g, tr("alerte"), 132);
+		// ligne puis seuil : chaque réglage suit son libellé (4 px), le seuil est calé à droite du bac
+		int xl = 16 + font.width(tr("alerte.ligne")) + 4;
 		hdTexte(g, tr("alerte.ligne"), 16, 151, InterfaceHD.AIRAIN_SOMBRE);
-		hdFleche(g, 46, 147, false, () -> { r.alerteLigne = Math.max(0, r.alerteLigne - 1); change(); });
-		hdValeur(g, 64, 147, 14, Component.literal(r.alerteLigne == 0 ? "-" : "" + r.alerteLigne));
-		hdFleche(g, 80, 147, true, () -> { r.alerteLigne = Math.min(Reglages.MAX_LIGNES, r.alerteLigne + 1); change(); });
-		hdTexte(g, tr("alerte.seuil"), 104, 151, InterfaceHD.AIRAIN_SOMBRE);
-		hdFleche(g, 132, 147, false, () -> { r.seuil -= hasShiftDown() ? 10 : 1; change(); });
-		hdValeur(g, 150, 147, 20, Component.literal("" + r.seuil));
-		hdFleche(g, 172, 147, true, () -> { r.seuil += hasShiftDown() ? 10 : 1; change(); });
+		hdFleche(g, xl, 147, false, () -> { r.alerteLigne = Math.max(0, r.alerteLigne - 1); change(); });
+		hdValeur(g, xl + 18, 147, 14, Component.literal(r.alerteLigne == 0 ? "-" : "" + r.alerteLigne));
+		hdFleche(g, xl + 34, 147, true, () -> { r.alerteLigne = Math.min(Reglages.MAX_LIGNES, r.alerteLigne + 1); change(); });
+		int xs = 203 - 56;
+		hdTexte(g, tr("alerte.seuil"), xs - 4 - font.width(tr("alerte.seuil")), 151, InterfaceHD.AIRAIN_SOMBRE);
+		hdFleche(g, xs, 147, false, () -> { r.seuil -= hasShiftDown() ? 10 : 1; change(); });
+		hdValeur(g, xs + 18, 147, 20, Component.literal("" + r.seuil));
+		hdFleche(g, xs + 40, 147, true, () -> { r.seuil += hasShiftDown() ? 10 : 1; change(); });
 		hdTexte(g, tr("alerte.alors_hd"), 16, 171, InterfaceHD.AIRAIN_SOMBRE);
 		for (int i = 0; i < 2; i++) { final int ii = i; hdTouche(g, 46 + i * 52, 167, 50, r.alerteAction == i, tr("alerte.action." + i), () -> { r.alerteAction = ii; change(); }); }
 		for (int i = 0; i < 4; i++) { final int ii = i; hdEmail(g, 154 + i * 12, 170, Reglages.PALETTE[i], r.alerteCouleur == i, () -> { r.alerteCouleur = ii; change(); }); }

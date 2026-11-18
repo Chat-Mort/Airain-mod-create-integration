@@ -18,6 +18,9 @@
   "TexteArdoiseMixin",
   "BoutonPignonsMixin",
   "TableSchemasMixin",
-  "CanonSchemasMixin"
+  "CanonSchemasMixin",
+  "OngletChoisiMixin",
+  "ChapitresQuetesMixin",
+  "BoutonImageAccesseur"
  ]
 }

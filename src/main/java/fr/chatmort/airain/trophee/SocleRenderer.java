@@ -133,10 +133,20 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 			VertexConsumer h = buffers.getBuffer(RenderType.entityTranslucentEmissive(HALO));
 			quadHaut(ms, h, 2.5f, haut + 0.06f, 2.5f, 13.5f, 13.5f, 0xFFFFFF, LightTexture.FULL_BRIGHT);
 		}
-		// cloche de verre : anneau, dôme en gradins, bouton
+		// cloche de verre : anneau et bouton d'or ici ; le verre est posé après le trophée (voir plus bas)
 		if (a.presentation() == 3) {
 			boite(ms, buffers.getBuffer(tOr), 2.3f, haut, 2.3f, 13.7f, haut + 0.7f, 13.7f, garn, light);
 			boite(ms, buffers.getBuffer(tOr), 7.2f, haut + 13.5f, 7.2f, 8.8f, haut + 15f, 8.8f, garn, light);
+		}
+		ms.popPose();
+		// plaque : le texte
+		if (a.avecPlaque() && !plaque.isEmpty()) texte(ms, buffers, plaque, jour, haute, light);
+		// le trophée
+		if (!trophee.isEmpty()) trophee(ms, buffers, a, trophee, t, haut / 16f, light, level);
+		// le verre de la cloche en dernier : dessiné avant, il masquait le trophée (translucide lui aussi) qui disparaissait dessous
+		if (a.presentation() == 3) {
+			ms.pushPose();
+			ms.scale(1 / 16f, 1 / 16f, 1 / 16f);
 			VertexConsumer v = buffers.getBuffer(RenderType.entityTranslucent(VERRE));
 			float[][] gradins = {{5.4f, 0.7f, 9f}, {4.7f, 9f, 11f}, {3.5f, 11f, 12.5f}, {2f, 12.5f, 13.5f}};
 			for (int k = 0; k < gradins.length; k++) {
@@ -145,12 +155,8 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 				float rs = k + 1 < gradins.length ? gradins[k + 1][0] : 0;   // couronne de verre entre deux gradins
 				anneau(ms, v, r, rs, haut + gradins[k][2], light);
 			}
+			ms.popPose();
 		}
-		ms.popPose();
-		// plaque : le texte
-		if (a.avecPlaque() && !plaque.isEmpty()) texte(ms, buffers, plaque, jour, haute, light);
-		// le trophée
-		if (!trophee.isEmpty()) trophee(ms, buffers, a, trophee, t, haut / 16f, light, level);
 		ms.popPose();
 	}
 

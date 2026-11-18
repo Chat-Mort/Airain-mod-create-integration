@@ -41,19 +41,47 @@ public class TableauScreen extends Screen {
 		if (!ecriture) return;
 		int i = d.notes().size(), x = nx(i), y = ny(i);
 		saisie = new MultiLineEditBox(font, x + 2, y + 2, NW - 4, NH - 16, Component.translatable("airain.tableau.ecrire"), Component.empty());
-		saisie.setCharacterLimit(Tableaux.LONGUEUR * Tableaux.LIGNES);
+		// la limite est tenue ici : la limite du jeu affiche un compteur « 14/100 » sous le champ, par-dessus les boutons
+		int limite = Tableaux.LONGUEUR * Tableaux.LIGNES;
+		saisie.setValueListener(t -> { if (t.length() > limite) saisie.setValue(t.substring(0, limite)); });
 		addRenderableWidget(saisie);
 		setInitialFocus(saisie);
 		for (int c = 0; c < 3; c++) {
 			int k = c;
-			addRenderableWidget(Button.builder(Component.literal(c == couleur ? "●" : "○").withStyle(s -> s.withColor(PUNAISES[k] & 0xFFFFFF)),
-				b -> { couleur = k; String t = saisie.getValue(); init(); saisie.setValue(t); }).bounds(x + 2 + c * 13, y + NH - 13, 12, 12).build());
+			addRenderableWidget(new Pastille(x + 2 + c * 13, y + NH - 13, PUNAISES[k], c == couleur,
+				b -> { couleur = k; String t = saisie.getValue(); init(); saisie.setValue(t); }));
 		}
-		addRenderableWidget(Button.builder(Component.literal("✔"), b -> {
+		addRenderableWidget(new Touche(x + NW - 28, y + NH - 13, "✔", 0xFF6AC46A, b -> {
 			PacketDistributor.sendToServer(new PaquetsTableau.Action(d.pos(), 0, 0, saisie.getValue(), couleur));
 			ecriture = false; init();
-		}).bounds(x + NW - 28, y + NH - 13, 13, 12).build());
-		addRenderableWidget(Button.builder(Component.literal("✕"), b -> { ecriture = false; init(); }).bounds(x + NW - 14, y + NH - 13, 13, 12).build());
+		}));
+		addRenderableWidget(new Touche(x + NW - 14, y + NH - 13, "✕", 0xFFE06A6A, b -> { ecriture = false; init(); }));
+	}
+
+	/** Couleur de la pince (12x12) : pastille d'émail sertie, anneau cramoisi sur la choisie (un bouton à chaîne n'y tient pas). */
+	private static final class Pastille extends Button {
+		private final int couleur; private final boolean choisie;
+		Pastille(int x, int y, int couleur, boolean choisie, OnPress a) {
+			super(x, y, 12, 12, Component.literal(choisie ? "●" : "○").withStyle(s -> s.withColor(couleur & 0xFFFFFF)), a, DEFAULT_NARRATION);
+			this.couleur = couleur; this.choisie = choisie;
+		}
+		@Override protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
+			if (!InterfaceHD.actif()) { super.renderWidget(g, mx, my, pt); return; }
+			fr.chatmort.airain.gui.PanneauHD.email(g, getX() + 1, getY() + 1, couleur & 0xFFFFFF, choisie || isHoveredOrFocused());
+		}
+	}
+
+	/** Petite touche 13x12 (valider, annuler) : plaquette d'airain, signe de couleur, rebord cramoisi au survol. */
+	private static final class Touche extends Button {
+		private final int signe;
+		Touche(int x, int y, String txt, int signe, OnPress a) { super(x, y, 13, 12, Component.literal(txt), a, DEFAULT_NARRATION); this.signe = signe; }
+		@Override protected void renderWidget(GuiGraphics g, int mx, int my, float pt) {
+			if (!InterfaceHD.actif()) { super.renderWidget(g, mx, my, pt); return; }
+			int x = getX(), y = getY(), bord = isHoveredOrFocused() ? 0xFFB0373A : 0xFFC9974F;
+			g.fill(x, y, x + 13, y + 12, bord); g.fill(x + 1, y + 1, x + 12, y + 11, 0xFF2A2E37); g.fill(x + 1, y + 1, x + 12, y + 2, 0xFF1F2228);
+			var f = net.minecraft.client.Minecraft.getInstance().font;
+			g.drawString(f, getMessage(), x + 7 - f.width(getMessage()) / 2, y + 2, signe, false);
+		}
 	}
 
 	private int noteSous(double mx, double my) {

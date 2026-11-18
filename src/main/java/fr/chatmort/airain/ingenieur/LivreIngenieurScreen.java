@@ -157,8 +157,9 @@ public class LivreIngenieurScreen extends Screen {
 	protected void init() {
 		paginer();
 		planche = Math.min(planche, dernier());
-		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 156, false, b -> aller(planche - 1)));
-		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 156, true, b -> aller(planche + 1)));
+		// flèches sous la réglure du bas (y 158), plus dessus ; le numéro de page suit
+		avant = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + 20, by() + 160, false, b -> aller(planche - 1)));
+		apres = addRenderableWidget(new WidgetsEmpire.Fleche(bx() + W - 36, by() + 160, true, b -> aller(planche + 1)));
 		signet = addRenderableWidget(new WidgetsEmpire.Signet(bx(), by(), b -> aller(planche >= SECTIONS.length ? SECTION_DE.get(pages.get(planche - SECTIONS.length)[0]) : 0)));
 	}
 
@@ -301,7 +302,7 @@ public class LivreIngenieurScreen extends Screen {
 			dessiner(g, L, pg[2], pg[3], dx, y);
 		}
 		String n = (planche + 1) + " / " + (dernier() + 1);
-		g.drawString(font, n, dx + LARGE / 2 - font.width(n) / 2, by() + 162, SEPIA, false);   // sous la page de droite
+		g.drawString(font, n, dx + LARGE / 2 - font.width(n) / 2, by() + 164, SEPIA, false);   // sous la page de droite
 	}
 
 	@Override

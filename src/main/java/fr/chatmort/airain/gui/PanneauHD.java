@@ -1,5 +1,7 @@
 package fr.chatmort.airain.gui;
 
+import com.mojang.blaze3d.systems.RenderSystem;
+
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -43,7 +45,10 @@ public final class PanneauHD {
 	public static void reflets(GuiGraphics g, int x, int y) {
 		g.pose().pushPose();
 		g.pose().translate(0, 0, 400);      // devant l'aperçu en 3D
+		// l'aperçu (franges, rendu 3D) peut laisser le mélange coupé : sans lui, les reflets à 10 % sortaient en blanc plein
+		RenderSystem.enableBlend(); RenderSystem.defaultBlendFunc();
 		blit(g, x + 210, y + 4, 420, 48, 82, 172);
+		RenderSystem.disableBlend();
 		g.pose().popPose();
 	}
 

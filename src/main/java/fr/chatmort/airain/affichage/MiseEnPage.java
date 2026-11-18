@@ -92,8 +92,17 @@ public final class MiseEnPage {
 				float place = l.type == Reglages.BARRE ? wn + wv + 30 : wn + wv + 6;
 				float ss = place * s > l_ ? l_ / place : s;
 				float yy = y + (10 * s - 8 * ss) / 2;
-				p.texte(nom, x0, yy, ss, c, grave);
-				p.texte(va, x1 - wv * ss, yy, ss, cv, grave);
+				// alignement de la ligne : sans nom, la valeur seule se place à gauche, au centre ou à droite ; avec un nom,
+				// « à gauche » garde le nom à gauche et la valeur au bout de la ligne, centre et droite déplacent le groupe
+				if (l.type == Reglages.VALEUR && (l.texte.isEmpty() || l.align != 0)) {
+					float g = l.texte.isEmpty() ? wv * ss : (wn + 6 + wv) * ss;
+					float xg = switch (l.align) { case 1 -> x0 + (l_ - g) / 2; case 2 -> x1 - g; default -> x0; };
+					if (!l.texte.isEmpty()) p.texte(nom, xg, yy, ss, c, grave);
+					p.texte(va, xg + g - wv * ss, yy, ss, cv, grave);
+				} else {
+					p.texte(nom, x0, yy, ss, c, grave);
+					p.texte(va, x1 - wv * ss, yy, ss, cv, grave);
+				}
 				if (l.type == Reglages.BARRE) {
 					float b0 = x0 + (wn + 3) * ss, b1 = x1 - (wv + 3) * ss, h0 = yy + 1.5f * ss, h1 = yy + 6.5f * ss;
 					if (b1 - b0 > 1) {

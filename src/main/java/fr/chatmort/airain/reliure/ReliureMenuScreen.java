@@ -1,6 +1,7 @@
 package fr.chatmort.airain.reliure;
 
 import fr.chatmort.airain.gui.InterfaceHD;
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -45,7 +46,10 @@ public class ReliureMenuScreen extends AbstractContainerScreen<ReliureMenu> {
 			// la vitre passe devant les livres (mais sous l'objet tenu à la souris) : cadre, reflets, meneaux, charnières, serrure
 			g.pose().pushPose();
 			g.pose().translate(0, 0, 200);
+			// reflets translucides : le mélange doit être actif (les objets rendus juste avant le coupent)
+			RenderSystem.enableBlend(); RenderSystem.defaultBlendFunc();
 			g.blit(VITRINE, 0, 13, 0, 140, imageWidth, 30, 256, 256);
+			RenderSystem.disableBlend();
 			g.pose().popPose();
 		}
 		g.drawString(font, title, 8, hd ? 6 : 7, hd ? InterfaceHD.AIRAIN : 0xFFE9B0, hd);

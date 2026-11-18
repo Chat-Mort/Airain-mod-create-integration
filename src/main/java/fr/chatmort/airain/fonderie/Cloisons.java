@@ -94,7 +94,6 @@ public final class Cloisons {
 		private final WeatherState etat;
 		public final int stade;
 		private static final VoxelShape X = Block.box(0, 0, 9, 16, 16, 11), Z = Block.box(9, 0, 0, 11, 16, 16);
-		private static final VoxelShape XO = Block.box(0, 15, 9, 16, 16, 11), ZO = Block.box(9, 15, 0, 11, 16, 16);
 		public Portail(WeatherState etat, int stade, Properties p) {
 			super(p); this.etat = etat; this.stade = stade;
 			registerDefaultState(defaultBlockState().setValue(AXE, Direction.Axis.X).setValue(OUVERT, false).setValue(ALIM, false).setValue(SENS, true));
@@ -118,7 +117,8 @@ public final class Cloisons {
 			if (r == Rotation.NONE || r == Rotation.CLOCKWISE_180) return s;
 			return s.setValue(AXE, s.getValue(AXE) == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X);
 		}
-		@Override protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return s.getValue(OUVERT) ? (s.getValue(AXE) == Direction.Axis.X ? XO : ZO) : (s.getValue(AXE) == Direction.Axis.X ? X : Z); }
+		// ouvert, le portail reste visable sur toute sa baie (pour le refermer ou le casser) mais ne bloque plus le passage
+		@Override protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return s.getValue(AXE) == Direction.Axis.X ? X : Z; }
 		@Override protected VoxelShape getCollisionShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return s.getValue(OUVERT) ? Shapes.empty() : getShape(s, l, p, c); }
 		@Override protected RenderShape getRenderShape(BlockState s) { return RenderShape.ENTITYBLOCK_ANIMATED; }
 		@Override public BlockEntity newBlockEntity(BlockPos p, BlockState s) { return new PortailBE(PORTAIL_BE.get(), p, s); }
