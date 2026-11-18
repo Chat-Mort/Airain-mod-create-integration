@@ -29,6 +29,8 @@ public class AirainClient {
 			net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "resourcepacks/interface_hd"),
 			net.minecraft.server.packs.PackType.CLIENT_RESOURCES, net.minecraft.network.chat.Component.literal("The Airain Empire: HD interface"),
 			net.minecraft.server.packs.repository.PackSource.BUILT_IN, true, net.minecraft.server.packs.repository.Pack.Position.TOP));
+		// flou derrière les menus mis à 0 une fois, au premier écran titre (monde net derrière le menu pause)
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gui.FlouMenus::ecran);
 		bus.addListener(fr.chatmort.airain.gardien.Loupe::touches);
 		bus.addListener(fr.chatmort.airain.reliure.LectureClient::touches);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.LectureClient::tick);
