@@ -157,6 +157,157 @@
     "axis": "y",
     "end": "true"
    }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "node": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_node_x"
+   }
+  },
+  {
+   "when": {
+    "axis": "y",
+    "node": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_node_y"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "node": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_node_z"
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "turned": "false",
+    "splice_start": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_start"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "turned": "false",
+    "splice_start": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_start",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "y",
+    "turned": "false",
+    "splice_start": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_post_splice_start"
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "turned": "true",
+    "splice_start": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_start_turned"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "turned": "true",
+    "splice_start": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_start_turned",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "y",
+    "turned": "true",
+    "splice_start": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_post_splice_start_turned"
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "turned": "false",
+    "splice_end": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_end"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "turned": "false",
+    "splice_end": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_end",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "y",
+    "turned": "false",
+    "splice_end": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_post_splice_end"
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "turned": "true",
+    "splice_end": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_end_turned"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "turned": "true",
+    "splice_end": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_splice_end_turned",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "y",
+    "turned": "true",
+    "splice_end": "true"
+   },
+   "apply": {
+    "model": "airain:block/oxidized_airain_beam_post_splice_end_turned"
+   }
   }
  ]
 }

@@ -1,0 +1,156 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "ambientocclusion": false,
+ "textures": {
+  "f": "airain:block/weathered_airain_beam_flange",
+  "fv": "airain:block/weathered_airain_beam_flange_vertical",
+  "w": "airain:block/weathered_airain_beam_web",
+  "wv": "airain:block/weathered_airain_beam_web_vertical",
+  "p": "airain:block/weathered_airain_beam_plate",
+  "b": "airain:block/weathered_airain_lattice_bar",
+  "bv": "airain:block/weathered_airain_lattice_bar_vertical",
+  "g": "airain:block/airain_glass",
+  "pi": "airain:block/weathered_airain_pipe",
+  "piv": "airain:block/weathered_airain_pipe_vertical",
+  "particle": "airain:block/weathered_airain_beam_flange"
+ },
+ "elements": [
+  {
+   "from": [
+    5,
+    10,
+    3.5
+   ],
+   "to": [
+    7,
+    16.75,
+    12.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      4.625,
+      9.0,
+      11.375
+     ]
+    },
+    "south": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      4.625,
+      9.0,
+      11.375
+     ]
+    },
+    "east": {
+     "texture": "#p",
+     "uv": [
+      3.5,
+      4.625,
+      12.5,
+      11.375
+     ]
+    },
+    "west": {
+     "texture": "#p",
+     "uv": [
+      3.5,
+      4.625,
+      12.5,
+      11.375
+     ]
+    },
+    "up": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      3.5,
+      9.0,
+      12.5
+     ]
+    },
+    "down": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      3.5,
+      9.0,
+      12.5
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    9,
+    10,
+    3.5
+   ],
+   "to": [
+    11,
+    16.75,
+    12.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      4.625,
+      9.0,
+      11.375
+     ]
+    },
+    "south": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      4.625,
+      9.0,
+      11.375
+     ]
+    },
+    "east": {
+     "texture": "#p",
+     "uv": [
+      3.5,
+      4.625,
+      12.5,
+      11.375
+     ]
+    },
+    "west": {
+     "texture": "#p",
+     "uv": [
+      3.5,
+      4.625,
+      12.5,
+      11.375
+     ]
+    },
+    "up": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      3.5,
+      9.0,
+      12.5
+     ]
+    },
+    "down": {
+     "texture": "#p",
+     "uv": [
+      7.0,
+      3.5,
+      9.0,
+      12.5
+     ]
+    }
+   }
+  }
+ ]
+}

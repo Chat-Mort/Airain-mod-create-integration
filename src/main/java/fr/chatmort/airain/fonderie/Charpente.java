@@ -49,6 +49,11 @@ public final class Charpente {
 	/** Platine au bout négatif (ouest, nord, bas) et au bout positif (est, sud, haut). */
 	public static final BooleanProperty DEBUT = BooleanProperty.create("start");
 	public static final BooleanProperty FIN = BooleanProperty.create("end");
+	/** 1.66 : nœud riveté (une poutrelle d'un autre axe bute sur celle-ci) et éclisses au bout négatif / positif
+	 *  (ce bout bute sur une poutrelle d'un autre axe : plus de platine, deux plaques rivetées de part et d'autre de l'âme). */
+	public static final BooleanProperty NOEUD = BooleanProperty.create("node");
+	public static final BooleanProperty ECLISSE_DEBUT = BooleanProperty.create("splice_start");
+	public static final BooleanProperty ECLISSE_FIN = BooleanProperty.create("splice_end");
 	/** Profil tourné d'un quart de tour autour de l'axe (clé de Create). */
 	public static final BooleanProperty TOURNE = BooleanProperty.create("turned");
 	/** Treillis : sens de la diagonale, alterné d'un bloc à l'autre pour dessiner le zigzag. */
@@ -81,19 +86,37 @@ public final class Charpente {
 		private static final Map<BlockState, VoxelShape> FORMES = new ConcurrentHashMap<>();
 		public Poutrelle(WeatherState etat, Properties p) {
 			super(etat, p);
-			registerDefaultState(defaultBlockState().setValue(AXE, Direction.Axis.Y).setValue(DEBUT, false).setValue(FIN, false).setValue(TOURNE, false));
+			registerDefaultState(defaultBlockState().setValue(AXE, Direction.Axis.Y).setValue(DEBUT, false).setValue(FIN, false).setValue(TOURNE, false)
+				.setValue(NOEUD, false).setValue(ECLISSE_DEBUT, false).setValue(ECLISSE_FIN, false));
 		}
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(AXE, DEBUT, FIN, TOURNE); }
-		/** Une platine quand le bout bute sur un bloc qui n'est pas la suite de la poutrelle. */
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { b.add(AXE, DEBUT, FIN, TOURNE, NOEUD, ECLISSE_DEBUT, ECLISSE_FIN); }
+		private static boolean poutrelle(BlockState n) { return n.getBlock() instanceof Poutrelle; }
+		/** Une platine quand le bout bute sur un bloc qui n'est ni la suite de la poutrelle ni une autre poutrelle (éclisses alors). */
 		private static boolean platine(BlockGetter l, BlockPos p, Direction d, Direction.Axis a) {
 			BlockState n = l.getBlockState(p.relative(d));
 			if (n.isAir() || n.canBeReplaced()) return false;
-			return !(n.getBlock() instanceof Poutrelle && n.getValue(AXE) == a);
+			return !poutrelle(n);
+		}
+		/** Des éclisses quand le bout bute sur une poutrelle d'un autre axe (qui porte alors le nœud). */
+		private static boolean eclisse(BlockGetter l, BlockPos p, Direction d, Direction.Axis a) {
+			BlockState n = l.getBlockState(p.relative(d));
+			return poutrelle(n) && n.getValue(AXE) != a;
+		}
+		/** Le nœud : une poutrelle d'un autre axe bute sur celle-ci, par un des côtés. */
+		private static boolean noeud(BlockGetter l, BlockPos p, Direction.Axis a) {
+			for (Direction d : Direction.values()) {
+				if (d.getAxis() == a) continue;
+				BlockState n = l.getBlockState(p.relative(d));
+				if (poutrelle(n) && n.getValue(AXE) == d.getAxis()) return true;
+			}
+			return false;
 		}
 		private static BlockState ajuster(BlockState s, BlockGetter l, BlockPos p) {
 			Direction.Axis a = s.getValue(AXE);
-			return s.setValue(DEBUT, platine(l, p, Direction.fromAxisAndDirection(a, Direction.AxisDirection.NEGATIVE), a))
-				.setValue(FIN, platine(l, p, Direction.fromAxisAndDirection(a, Direction.AxisDirection.POSITIVE), a));
+			Direction moins = Direction.fromAxisAndDirection(a, Direction.AxisDirection.NEGATIVE), plus = Direction.fromAxisAndDirection(a, Direction.AxisDirection.POSITIVE);
+			return s.setValue(DEBUT, platine(l, p, moins, a)).setValue(FIN, platine(l, p, plus, a))
+				.setValue(ECLISSE_DEBUT, eclisse(l, p, moins, a)).setValue(ECLISSE_FIN, eclisse(l, p, plus, a))
+				.setValue(NOEUD, noeud(l, p, a));
 		}
 		@Override
 		public BlockState getStateForPlacement(BlockPlaceContext c) {
@@ -101,7 +124,7 @@ public final class Charpente {
 		}
 		@Override
 		protected BlockState updateShape(BlockState s, Direction d, BlockState v, LevelAccessor l, BlockPos p, BlockPos np) {
-			return d.getAxis() == s.getValue(AXE) ? ajuster(s, l, p) : s;
+			return ajuster(s, l, p);      // les côtés comptent aussi : une poutrelle qui y bute pose le nœud
 		}
 		@Override
 		protected BlockState rotate(BlockState s, Rotation r) {
@@ -116,6 +139,7 @@ public final class Charpente {
 				VoxelShape v = e.getValue(TOURNE) ? boiteAxe(a, 1, 3, 0, 15, 13, 16) : boiteAxe(a, 3, 1, 0, 13, 15, 16);
 				if (e.getValue(DEBUT)) v = Shapes.or(v, boiteAxe(a, 1, 1, 0, 15, 15, 1));
 				if (e.getValue(FIN)) v = Shapes.or(v, boiteAxe(a, 1, 1, 15, 15, 15, 16));
+				if (e.getValue(NOEUD)) v = Shapes.or(v, boiteAxe(a, 0.75, 0.75, 0.5, 15.25, 15.25, 15.5));
 				return v.optimize();
 			});
 		}
@@ -280,4 +304,27 @@ public final class Charpente {
 	}
 
 	public static void charger() { Marquages.charger(); }
+
+	/**
+	 * 1.66 : poutres inclinées posées à la suite. Clic droit sur une jambe de force, un chevron ou une verrière avec une pièce
+	 * inclinée en main : la nouvelle se pose dans la pente, un bloc plus haut et plus loin (accroupi : plus bas et en arrière),
+	 * dans le même sens, sans bloc provisoire pour viser.
+	 */
+	public static void prolonger(net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock e) {
+		var j = e.getEntity(); var l = e.getLevel(); var st = e.getItemStack();
+		if (!(st.getItem() instanceof BlockItem bi) || !(bi.getBlock() instanceof Incline)) return;
+		BlockState sur = l.getBlockState(e.getPos());
+		if (!(sur.getBlock() instanceof Incline)) return;
+		Direction f = sur.getValue(FACING);
+		BlockPos cible = j.isShiftKeyDown() ? e.getPos().relative(f.getOpposite()).below() : e.getPos().relative(f).above();
+		BlockState pose = bi.getBlock().defaultBlockState().setValue(FACING, f);
+		e.setCanceled(true); e.setCancellationResult(InteractionResult.sidedSuccess(l.isClientSide));
+		if (l.isClientSide) return;
+		if (!l.getBlockState(cible).canBeReplaced() || !j.mayUseItemAt(cible, Direction.UP, st) || !l.isUnobstructed(pose, cible, CollisionContext.of(j))) return;
+		l.setBlock(cible, pose, Block.UPDATE_ALL);
+		SoundType son = pose.getSoundType(l, cible, j);
+		l.playSound(null, cible, son.getPlaceSound(), SoundSource.BLOCKS, (son.getVolume() + 1) / 2f, son.getPitch() * 0.8f);
+		if (!j.getAbilities().instabuild) st.shrink(1);
+		j.swing(e.getHand(), true);
+	}
 }

@@ -550,6 +550,8 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fusion.GlypheEngrenage::tickMonde);
 		// 1.55 : pose assistée dans l'hologramme du haut-fourneau (les deux côtés)
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeFourneau::clicBloc);
+		// 1.66 : poutres inclinées posées à la suite d'un clic droit sur la précédente
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Charpente::prolonger);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeFourneau::clicObjet);
 		// 1.58 : pas de descente de la nacelle en route
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Nacelle::descente);
