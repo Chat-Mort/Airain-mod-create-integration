@@ -1,0 +1,76 @@
+// Thème « Empire d'Airain » : ajouté par-dessus le thème de FTB Quests (les propriétés ci-dessous remplacent les siennes)
+[*]
+background: airain:textures/ftbq/ardoise.png; tile_size=96
+chapter_panel_background: airain:textures/ftbq/panneau.png
+key_reference_background: airain:textures/ftbq/ardoise.png; tile_size=96
+selected_chapter_highlight_1: #80820019
+selected_chapter_highlight_2: #40af1d25
+text_color: #F3D694
+hover_text_color: #FFE9B0
+disabled_text_color: #8A8E98
+widget_border: #704425
+widget_background: #50000000
+symbol_in: #F3D694
+symbol_out: #A8763C
+context_menu: hollow_rectangle:#704425; round_edges + airain:textures/ftbq/panneau.png; padding=1
+quest_view_background: {{context_menu}}
+quest_view_border: #A8763C
+quest_view_title: #F3D694
+quest_completed_color: #E8F3D694
+quest_started_color: #E8E1BA6E
+quest_not_started_color: #C8B48242
+quest_locked_color: #FF6A6E78
+dependency_line_texture: airain:textures/ftbq/chaine.png
+dependency_line_completed_color: #F3D694
+dependency_line_uncompleted_color: #C8A8763C
+dependency_line_unavailable_color: #806A6E78
+dependency_line_requires_color: #E1BA6E
+dependency_line_required_for_color: #C04343
+dependency_line_selected_speed: 1.0
+dependency_line_unselected_speed: 0.0
+dependency_line_thickness: 0.22
+
+[584D385E9D365F6E]
+background: airain:textures/ftbq/epure_reveil.png
+
+[7D072E5709492909]
+background: airain:textures/ftbq/epure_andesite.png
+
+[11FB7AD14478FD9E]
+background: airain:textures/ftbq/epure_cuivre.png
+
+[3E6DF521B4BEF468]
+background: airain:textures/ftbq/epure_laiton.png
+
+[4703C8C5F5EB4F30]
+background: airain:textures/ftbq/epure_ciel.png
+
+[793E4FE9A199F8DC]
+background: airain:textures/ftbq/epure_coeur.png
+
+[35BF15091D15D650]
+background: airain:textures/ftbq/epure_reconquete.png
+
+[6C42785A50835ECA]
+background: airain:textures/ftbq/epure_arcanes.png
+
+[42528709A15A648C]
+background: airain:textures/ftbq/epure_sacs.png
+
+[1F79C3CBBD28C61C]
+background: airain:textures/ftbq/epure_commandes.png
+
+[1172B9D9F1004842]
+background: airain:textures/ftbq/epure_ingenierie.png
+
+[268936E7997482A8]
+background: airain:textures/ftbq/epure_bases.png
+
+[6643CF10372B0A3C]
+background: airain:textures/ftbq/epure_arsenal.png
+
+[61CC052BF462CBD1]
+background: airain:textures/ftbq/epure_exploration.png
+
+[6736904DE97196BF]
+background: airain:textures/ftbq/epure_fonderie.png

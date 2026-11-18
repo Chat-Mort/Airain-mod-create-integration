@@ -24,6 +24,11 @@ public class AirainClient {
 		// interface HD : à chaque rechargement des ressources, le mod regarde si le pack « Airain-Interface-HD » est actif
 		bus.addListener((net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent e) ->
 			e.registerReloadListener((net.minecraft.server.packs.resources.ResourceManagerReloadListener) fr.chatmort.airain.gui.InterfaceHD::recharger));
+		// interface HD intégrée au mod (resourcepacks/interface_hd) : pack toujours actif, au-dessus des autres, rien à installer
+		bus.addListener((net.neoforged.neoforge.event.AddPackFindersEvent e) -> e.addPackFinders(
+			net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(AirainMod.ID, "resourcepacks/interface_hd"),
+			net.minecraft.server.packs.PackType.CLIENT_RESOURCES, net.minecraft.network.chat.Component.literal("The Airain Empire: HD interface"),
+			net.minecraft.server.packs.repository.PackSource.BUILT_IN, true, net.minecraft.server.packs.repository.Pack.Position.TOP));
 		bus.addListener(fr.chatmort.airain.gardien.Loupe::touches);
 		bus.addListener(fr.chatmort.airain.reliure.LectureClient::touches);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.reliure.LectureClient::tick);

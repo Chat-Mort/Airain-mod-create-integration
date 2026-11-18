@@ -1,0 +1,32 @@
+{
+  "version": 100,
+  "tooltipStyle": {
+    "sprite": "airain:jade/bulle",
+    "padding": [
+      6,
+      7,
+      5,
+      7
+    ]
+  },
+  "nestedBoxStyle": {
+    "backgroundColor": "#22252c",
+    "borderColor": [
+      "#704425",
+      "#704425",
+      "#a8763c",
+      "#a8763c"
+    ]
+  },
+  "viewGroupStyle": {
+    "backgroundColor": "#1a1c22",
+    "borderColor": [
+      "#704425",
+      "#704425",
+      "#a8763c",
+      "#a8763c"
+    ]
+  },
+  "iconSlotSprite": "airain:jade/logement",
+  "iconSlotInflation": 0
+}
