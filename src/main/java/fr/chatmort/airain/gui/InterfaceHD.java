@@ -2,7 +2,6 @@ package fr.chatmort.airain.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 
@@ -37,7 +36,7 @@ public final class InterfaceHD {
 		int c = couleur & 0xFFFFFF;
 		if (!actif || (c != 0x404040 && c != 0x505050 && c != 0x592424 && c != 0x714A40)) return false;
 		var ecran = Minecraft.getInstance().screen;
-		// l'inventaire créatif garde ses onglets vanilla (gris clair) : on n'y touche pas
-		return ecran instanceof AbstractContainerScreen<?> && !(ecran instanceof CreativeModeInventoryScreen);
+		// l'inventaire créatif a désormais son fond d'ardoise : son titre passe aussi en airain
+		return ecran instanceof AbstractContainerScreen<?>;
 	}
 }
