@@ -28,7 +28,13 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	private static final ResourceLocation LAITON = ResourceLocation.fromNamespaceAndPath("create", "textures/block/brass_block.png");
 
 	/** Géométrie d'une bannière : style, taille (grand étendard) et force du vent. */
-	private record Geo(int style, boolean grand, boolean murale, float w, float l, float vent, int forme, boolean lanternes, float meteo) {}
+	private record Geo(int style, boolean grand, boolean murale, float w, float l, float vent, int forme, boolean lanternes, float meteo, float dx, float dy) {
+		Geo(int style, boolean grand, boolean murale, float w, float l, float vent, int forme, boolean lanternes, float meteo) {
+			this(style, grand, murale, w, l, vent, forme, lanternes, meteo, 0, 0);
+		}
+		/** Même bannière déplacée et redimensionnée (pans de rappel, bannière basse), en géométrie de vexillum. */
+		Geo vexillum(float w2, float l2, float dx2, float dy2, int forme2) { return new Geo(1, grand, murale, w2, l2, vent, forme2, lanternes, meteo, dx2, dy2); }
+	}
 	private static final ResourceLocation OR = ResourceLocation.withDefaultNamespace("textures/block/gold_block.png");
 	private static final ResourceLocation FRANGE = ResourceLocation.fromNamespaceAndPath("airain", "textures/entity/standard/fringe.png");
 	private static final int PLEIN_FEU = LightTexture.FULL_BRIGHT;
@@ -49,7 +55,7 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 			Apparence.VENTS[a.vent()] * meteo, a.forme(), a.avecLanternes(), meteo);
 		else if (murale) geo = new Geo(1, false, true, BanniereMuraleBlock.LARGEURS[a.largeur()],
 			BanniereMuraleBlock.LONGUEURS[a.longueur()] * (1 - 0.8f * hisse), Apparence.VENTS[a.vent()] * meteo, a.forme(), a.avecLanternes(), meteo);
-		else geo = new Geo(a.style(), false, false, 0, 0, 1, a.forme(), false, meteo);
+		else geo = new Geo(Apparence.styleSimple(a.style()), false, false, 0, 0, 1, a.forme(), false, meteo);   // petit étendard : trois styles
 		ms.pushPose();
 		ms.translate(0.5, 0, 0.5);
 		ms.mulPose(Axis.YP.rotationDegrees(-face.toYRot() + 180));   // nord = 0
@@ -65,17 +71,21 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		} else {
 			ms.translate(0, (be.hauteur() - GrandEtendardBlock.MAT) * 16, 0);   // la géométrie est écrite pour un mât de six blocs
 			fleuron(ms, buffers, a.fleuron(), t, lum);
+			int st = a.style();
+			// deux bannières : la grande en haut fait 62 % de la longueur, la petite (sans motif) le reste, 6 px plus bas
+			if (st == 8) geo = new Geo(8, true, false, geo.w(), geo.l() * 0.62f, geo.vent(), geo.forme(), geo.lanternes(), meteo);
 			// mise en berne : la bannière et ses ferrures descendent le long du mât
-			float bas = a.style() == 2 ? 104 - geo.w() - 10 : (a.style() == 1 ? 101.5f : 102.5f) - geo.l();
+			float bas = basStyle(st, geo);
 			float descente = Math.max(0, bas + (be.hauteur() - GrandEtendardBlock.MAT) * 16 - 22) * hisse;
-			int cotes = a.estDouble() && a.style() != 1 ? 2 : 1;
+			int cotes = a.estDouble() && !Apparence.centre(st) ? 2 : 1;
 			for (int c = 0; c < cotes; c++) {
 				ms.pushPose();
 				ms.translate(0, -descente, 0);
-				if (c == 1 || a.aDroite() && a.style() != 1) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière (ou bannière simple à droite), en miroir de l'autre côté du mât
-				ferrures(ms, buffers, geo, lumB);
+				if (c == 1 || a.aDroite() && !Apparence.centre(st)) { ms.translate(16, 0, 0); ms.scale(-1, 1, 1); }   // seconde bannière (ou bannière simple à droite), en miroir de l'autre côté du mât
+				ferrures(ms, buffers, geo, t, lumB);
 				toile(ms, buffers, geo, a, t, lumB);
 				if (a.avecFranges()) franges(ms, buffers, geo, orn, t, lumB);
+				annexes(ms, buffers, geo, a, t, lumB, orn);
 				ms.popPose();
 			}
 			if (a.avecLanternes() && a.style() == 2) {          // cérémonie : deux lanternes sur des potences avant et arrière
@@ -179,10 +189,30 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 				float o = 2.2f * vent * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.08f * vit + v * 3f + u * 2f);
 				return new float[] {x, y, z + o + decal};
 			}
-			case 1 -> {   // vexillum : pend sous la traverse, devant le mât
-				float x = 8 - W / 2 + u * W, y = 101.5f - v * L, z = -2f;
-				float o = 1.8f * vent * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.07f * vit + v * 3f + u * 1.5f);
+			case 1, 4, 8 -> {   // vexillum (aussi la bannière du milieu des trois pans, et la haute des deux bannières) ; dx, dy : pans et bannière basse
+				float x = 8 - W / 2 + u * W + geo.dx(), y = 101.5f + geo.dy() - v * L, z = -2f;
+				float o = 1.8f * vent * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.07f * vit + v * 3f + u * 1.5f + geo.dx() * 0.2f);
 				return new float[] {x, y, z - Math.abs(o) * 0.6f + o * 0.4f + decal};
+			}
+			case 3 -> {   // sashimono : tenue par le bras en haut et par le mât sur le côté, elle ne flotte que du côté libre
+				float x = 9.75f + u * W, y = 103f - v * L, z = 8;
+				float o = 2.0f * vent * (float) Math.pow(u, 1.2) * (float) Math.pow(v, 0.6) * Mth.sin(t * 0.08f * vit + v * 3f + u * 2f);
+				return new float[] {x, y, z + o + decal};
+			}
+			case 5 -> {   // lestée : la barre du bas la tient droite, elle se balance d'un bloc (pendule) avec un léger frisson
+				float x = 8 - W / 2 + u * W, y = 101.5f - v * L;
+				float o = balancier(geo, t) * v + 0.35f * vent * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.09f * vit + v * 3f + u * 1.5f);
+				return new float[] {x, y, -2f + o + decal};
+			}
+			case 6 -> {   // à chaînes : pend sous une barre tenue par deux chaînes, le tout se balance
+				float x = 8 - W / 2 + u * W, y = 95.5f - v * L;
+				float o = balancier(geo, t) * (0.25f + 0.75f * v) + 1.2f * vent * (float) Math.pow(v, 1.3) * Mth.sin(t * 0.07f * vit + v * 3f + u * 1.5f);
+				return new float[] {x, y, -2f + o + decal};
+			}
+			case 7 -> {   // encadrée : tendue dans son cadre, elle ne fait que frémir au milieu
+				float x = 8 - W / 2 + u * W, y = 101.5f - v * L;
+				float o = 0.25f * vent * Mth.sin(t * 0.06f * vit + u * 3f + v * 2f) * Mth.sin((float) Math.PI * u) * Mth.sin((float) Math.PI * v);
+				return new float[] {x, y, -2f + o + decal};
 			}
 			default -> {  // cérémonie : flotte à l'horizontale ; u = hauteur, v = longueur
 				float s = v, x = 9.5f + s * L, y = 104f - u * W - Math.min(10f, 2.4f / vent) * s * s, z = 8;
@@ -192,8 +222,73 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 		}
 	}
 
+	/** Balancement d'ensemble (lestée, à chaînes), en px au bas de la bannière. */
+	private static float balancier(Geo geo, float t) {
+		return 1.4f * geo.vent() * Mth.sin(t * 0.045f * (0.7f + 0.3f * geo.vent()));
+	}
+
+	/** Bas de la bannière (pour la mise en berne). */
+	private static float basStyle(int st, Geo geo) {
+		float W = geo.w(), L = geo.l();
+		return switch (st) {
+			case 0 -> 102.5f - L;
+			case 2 -> 104 - W - 10;
+			case 3 -> 103f - L;
+			case 5, 7 -> 101.5f - L - 2;
+			case 6 -> 95.5f - L;
+			case 8 -> 101.5f - L - 6 - L * 0.38f / 0.62f;
+			default -> 101.5f - L;
+		};
+	}
+
+	/** Largeur d'un pan de rappel (trois pans). */
+	private static float largeurPan(Geo geo) { return Math.max(5f, geo.w() * 0.3f); }
+
+	/** Pièces qui suivent la toile : pans de rappel, bannière basse, barre de lest, chaînes. */
+	private void annexes(PoseStack ms, MultiBufferSource buffers, Geo geo, Apparence a, float t, int lum, int orn) {
+		float W = geo.w(), L = geo.l();
+		switch (geo.style()) {
+			case 4 -> {   // deux pans de rappel étroits, sans motif, pointus, un peu plus courts
+				float pw = largeurPan(geo);
+				Apparence pan = a.variante(Apparence.SANS_MOTIF, 2);
+				for (int k = -1; k <= 1; k += 2) {
+					Geo g = geo.vexillum(pw, L * 0.8f, k * (W / 2 + 2 + pw / 2), 0, 2);
+					toile(ms, buffers, g, pan, t, lum);
+					if (a.avecFranges()) franges(ms, buffers, g, orn, t, lum);
+				}
+			}
+			case 8 -> {   // bannière basse, plus petite, sans motif, sur sa propre traverse
+				Geo g = geo.vexillum(W * 0.75f, L * 0.38f / 0.62f, 0, -(L + 6), a.forme());
+				toile(ms, buffers, g, a.variante(Apparence.SANS_MOTIF, a.forme()), t, lum);
+				if (a.avecFranges()) franges(ms, buffers, g, orn, t, lum);
+			}
+			case 5 -> {   // barre de lest dans l'ourlet, au plus haut de la découpe du bas ; elle suit le balancement
+				float vb = 1f;
+				for (int k = 0; k <= 16; k++) vb = Math.min(vb, basForme(geo.forme(), k / 16f));
+				float y = 101.5f - vb * L, z = -2f + balancier(geo, t) * vb;
+				VertexConsumer laiton = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
+				boite(ms, laiton, 8 - W / 2 - 1, y - 1, z - 0.75f, 8 + W / 2 + 1, y + 0.5f, z + 0.75f, lum);
+				VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(OR));
+				boite(ms, or, 8 - W / 2 - 2.5f, y - 1.5f, z - 1, 8 - W / 2 - 1, y + 1, z + 1, lum);
+				boite(ms, or, 8 + W / 2 + 1, y - 1.5f, z - 1, 8 + W / 2 + 2.5f, y + 1, z + 1, lum);
+			}
+			case 6 -> {   // deux chaînes de quatre maillons, de la traverse (y 102) à la barre qui porte la toile (y 96)
+				float zb = -2f + balancier(geo, t) * 0.25f;
+				VertexConsumer laiton = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
+				for (float x : new float[] {8 - W / 2 + 3, 8 + W / 2 - 3})
+					for (int k = 0; k < 4; k++) {
+						float f0 = k / 4f, f1 = (k + 1) / 4f, y0 = 102 - f0 * 6, y1 = 102 - f1 * 6, z = -2f + (zb + 2f) * (f0 + f1) / 2;
+						if (k % 2 == 0) boite(ms, laiton, x - 0.6f, y1, z - 0.2f, x + 0.6f, y0, z + 0.2f, lum);    // maillon vu de face
+						else boite(ms, laiton, x - 0.2f, y1, z - 0.6f, x + 0.2f, y0, z + 0.6f, lum);              // maillon vu de profil
+					}
+				boite(ms, laiton, 8 - W / 2, 95.5f, zb - 0.6f, 8 + W / 2, 96.5f, zb + 0.6f, lum);                   // barre de la toile
+			}
+			default -> {}
+		}
+	}
+
 	/** Bras, traverse ou anneaux du grand étendard : leur taille suit la largeur de la bannière. */
-	private void ferrures(PoseStack ms, MultiBufferSource buffers, Geo geo, int lum) {
+	private void ferrures(PoseStack ms, MultiBufferSource buffers, Geo geo, float t, int lum) {
 		VertexConsumer fer = buffers.getBuffer(RenderType.entityCutoutNoCull(FER));
 		float W = geo.w();
 		switch (geo.style()) {
@@ -219,12 +314,73 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 					lanterne(ms, buffers, 8 + W / 2 + 4, 101.5f, -2);
 				}
 			}
+			case 3 -> {   // sashimono : bras en équerre, collier, anneaux le long du mât qui tiennent le bord de la bannière
+				float e = geo.lanternes() ? 6 : 1.5f;
+				boite(ms, fer, 9.5f, 103f, 7.25f, 9.75f + W + e, 104.5f, 8.75f, lum);
+				VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
+				boite(ms, or, 8.75f + W + e, 102.5f, 7f, 10.75f + W + e, 105f, 9f, lum);         // embout
+				boite(ms, or, 5.5f, 102f, 5.5f, 10.5f, 103.5f, 10.5f, lum);                     // collier
+				for (float y = 99; y > 103f - geo.l() + 2; y -= 12) boite(ms, or, 5.75f, y - 1.5f, 5.75f, 10.5f, y, 10.25f, lum);
+				if (geo.lanternes()) lanterne(ms, buffers, 15.5f + W, 103f, 8);
+			}
+			case 4, 5, 6, 7, 8 -> {   // styles centrés : potence avant et traverse, à la taille de ce qu'elle porte
+				float demi = switch (geo.style()) { case 4 -> W / 2 + 2 + largeurPan(geo) + 1; case 6 -> W / 2 + 4; case 7 -> W / 2 + 2; default -> W / 2 + 1; };
+				float e = geo.lanternes() ? 4 : 0;
+				boite(ms, fer, 7.25f, 101f, -2.5f, 8.75f, 102.5f, 6f, lum);                    // potence avant
+				VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
+				if (geo.style() == 7) {   // encadrée : cadre d'airain riveté autour de la toile
+					float x0 = 8 - W / 2, x1 = 8 + W / 2, yb = 101.5f - geo.l();
+					boite(ms, or, x0 - 2, 101.5f, -2.75f, x1 + 2, 103.5f, -1.25f, lum);
+					boite(ms, or, x0 - 2, yb - 2, -2.75f, x1 + 2, yb, -1.25f, lum);
+					boite(ms, or, x0 - 2, yb, -2.6f, x0 - 0.5f, 101.5f, -1.4f, lum);
+					boite(ms, or, x1 + 0.5f, yb, -2.6f, x1 + 2, 101.5f, -1.4f, lum);
+					VertexConsumer dore = buffers.getBuffer(RenderType.entityCutoutNoCull(OR));
+					for (float[] c : new float[][] {{x0 - 1.25f, 102.5f}, {x1 + 1.25f, 102.5f}, {x0 - 1.25f, yb - 1}, {x1 + 1.25f, yb - 1}})
+						boite(ms, dore, c[0] - 0.6f, c[1] - 0.6f, -3f, c[0] + 0.6f, c[1] + 0.6f, -2.6f, lum);
+				} else {
+					boite(ms, fer, 8 - demi - e, 101.5f, -2.75f, 8 + demi + e, 103f, -1.25f, lum);   // traverse
+					boite(ms, or, 8 - demi - e - 1.5f, 101f, -3.25f, 8 - demi - e, 103.5f, -0.75f, lum);
+					boite(ms, or, 8 + demi + e, 101f, -3.25f, 8 + demi + e + 1.5f, 103.5f, -0.75f, lum);
+				}
+				if (geo.style() == 6) for (float x : new float[] {8 - demi - 1.5f, 8 + demi + 1.5f}) rouageBout(ms, buffers, x, 102.25f, -2f, t, lum);
+				if (geo.style() == 8) {   // seconde traverse, pour la bannière basse
+					float y2 = 101.5f - geo.l() - 6, d2 = geo.w() * 0.375f + 1;
+					boite(ms, fer, 7.25f, y2 - 0.5f, -2.5f, 8.75f, y2 + 1f, 6f, lum);
+					boite(ms, fer, 8 - d2, y2, -2.75f, 8 + d2, y2 + 1.5f, -1.25f, lum);
+					boite(ms, or, 8 - d2 - 1.5f, y2 - 0.5f, -3.25f, 8 - d2, y2 + 2f, -0.75f, lum);
+					boite(ms, or, 8 + d2, y2 - 0.5f, -3.25f, 8 + d2 + 1.5f, y2 + 2f, -0.75f, lum);
+				}
+				boite(ms, or, 5.5f, 100.5f, 5.5f, 10.5f, 102f, 10.5f, lum);                   // collier
+				if (geo.lanternes()) {
+					lanterne(ms, buffers, 8 - demi - 3, 101.5f, -2);
+					lanterne(ms, buffers, 8 + demi + 3, 101.5f, -2);
+				}
+			}
 			default -> {
 				VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(LAITON));
 				boite(ms, or, 5.5f, 103.5f, 5.5f, 10.5f, 105f, 10.5f, lum);                   // anneaux qui tiennent la hampe
 				boite(ms, or, 5.5f, 103.5f - W, 5.5f, 10.5f, 105f - W, 10.5f, lum);
 			}
 		}
+	}
+
+	/** Petit rouage doré qui tourne au bout de la traverse (bannière à chaînes). */
+	private static void rouageBout(PoseStack ms, MultiBufferSource buffers, float x, float y, float z, float t, int lum) {
+		VertexConsumer or = buffers.getBuffer(RenderType.entityCutoutNoCull(OR));
+		ms.pushPose();
+		ms.translate(x, y, z);
+		ms.mulPose(Axis.ZP.rotationDegrees(t * 1.5f));
+		ms.scale(0.55f, 0.55f, 0.55f);
+		boite(ms, or, -1.25f, -1.25f, -0.9f, 1.25f, 1.25f, 0.9f, lum);
+		for (int k = 0; k < 8; k++) {
+			ms.pushPose();
+			ms.mulPose(Axis.ZP.rotationDegrees(k * 45));
+			boite(ms, or, -1.3f, 2.4f, -0.6f, 1.3f, 3.4f, 0.6f, lum);
+			boite(ms, or, -0.8f, 3.4f, -0.6f, 0.8f, 4.6f, 0.6f, lum);
+			if (k % 2 == 0) boite(ms, or, -0.4f, 1.25f, -0.4f, 0.4f, 2.4f, 0.4f, lum);
+			ms.popPose();
+		}
+		ms.popPose();
 	}
 
 	/** Lanterne suspendue (vraie lanterne du jeu), son sommet accroché en (x, y, z) ; toujours allumée. */
@@ -287,7 +443,16 @@ public class EtendardRenderer implements BlockEntityRenderer<FondationBlockEntit
 	/** Bas de la bannière (en v) pour la colonne u, selon la forme : suit la découpe des textures. */
 	private static float basForme(int forme, float u) {
 		float x = u * 16 - 0.5f, d = Math.abs(x - 7.5f) * 0.85f;
-		float rang = switch (forme) { case 0 -> 25 + d; case 2 -> 31.4f - d; default -> 31; };
+		float c = (x - 7.5f) / 8f;
+		float rang = switch (forme) {
+			case 0 -> 25 + d;
+			case 2 -> 31.4f - d;
+			case 3 -> 23 + 8 * (float) Math.sqrt(Math.max(0, 1 - c * c));                       // arrondie
+			case 4 -> { float w = ((x + 0.5f) / 16f * 2f) % 1f; yield 25 + 6 * (1 - Math.abs(w - 0.5f) * 2); }   // dents de scie
+			case 5 -> { int xi = Math.round(x); yield xi <= 2 || (xi >= 6 && xi <= 9) || xi >= 13 ? 31 : 27; }   // créneaux
+			case 6 -> 31 - 5 * (1 - c * c);                                                        // échancrée
+			default -> 31;
+		};
 		return Math.min(1f, (rang + 1) / 32f);
 	}
 

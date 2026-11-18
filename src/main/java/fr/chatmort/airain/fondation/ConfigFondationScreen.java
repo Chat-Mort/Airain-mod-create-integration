@@ -68,7 +68,8 @@ public class ConfigFondationScreen extends Screen {
 		if (InterfaceHD.actif()) return courante().champs() ? 82 : PanneauHD.Y_LIGNES;   // sous les deux champs et la rainure
 		return courante().champs() ? 76 : 14;
 	}
-	private static int taille(int i) { return i == HAUTEUR ? GrandEtendardBlock.MAT_MAX - GrandEtendardBlock.MAT_MIN + 1 : Apparence.TAILLES[i]; }
+	// les six derniers styles n'existent que pour le grand étendard
+	private int taille(int i) { return i == HAUTEUR ? GrandEtendardBlock.MAT_MAX - GrandEtendardBlock.MAT_MIN + 1 : i == 0 && !grand ? 3 : Apparence.TAILLES[i]; }
 
 	private int haut() {
 		return height / 2 - 108;
@@ -225,7 +226,7 @@ public class ConfigFondationScreen extends Screen {
 			creux(g, x + 96, ly + 2, 88, 16);                                 // cartouche encastré pour la valeur
 			String libelle = murale && k == 9 ? "airain.etendard.embouts" : "airain.etendard." + CLES[k];
 			g.drawString(font, Component.translatable(libelle), x, ly + 6, BRUN, false);
-			boolean inutile = (k == 10 && choix[0] == 1) || (k == 14 && choix[13] == 0);   // vexillum : une seule bannière ; uni : pas de 2e couleur
+			boolean inutile = (k == 10 && Apparence.centre(choix[0])) || (k == 14 && choix[13] == 0);   // styles centrés : une seule bannière ; uni : pas de 2e couleur
 			g.drawCenteredString(font, Component.translatable(k == 10 ? "airain.etendard.banniere." + banniere() : valeur(k, choix[k])), x + 140, ly + 6, inutile ? 0x8A8070 : CREME);
 		}
 		apercu(g, x, y);
@@ -246,7 +247,7 @@ public class ConfigFondationScreen extends Screen {
 			int ly = y + debutLignes() + n * pas();
 			String libelle = murale && k == 9 ? "airain.etendard.embouts" : "airain.etendard." + CLES[k];
 			PanneauHD.libelle(g, font, x + 4, ly, x + HD_FG, Component.translatable(libelle));
-			boolean inutile = (k == 10 && choix[0] == 1) || (k == 14 && choix[13] == 0);
+			boolean inutile = (k == 10 && Apparence.centre(choix[0])) || (k == 14 && choix[13] == 0);
 			PanneauHD.cartouche(g, font, x + HD_CX, ly, HD_CW, Component.translatable(k == 10 ? "airain.etendard.banniere." + banniere() : valeur(k, choix[k])), inutile);
 		}
 	}

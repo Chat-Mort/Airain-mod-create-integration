@@ -16,8 +16,14 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 	public static final int[] FONDS = {0x8E1A16, 0x1E3A6E, 0x1F4D2E, 0x1C1A1C, 0xE6DCC2, 0x5A1E5E, 0xB8792A, 0x5E6670};
 	public static final int[] ORNEMENTS = {0xE8BE5A, 0xD8DCE0, 0xC77A48, 0x282222};
 	public static final String[] MOTIFS = {"rouage", "cle", "flamme", "couronne", "ancre", "eclair", "etoile", "rouage_brise", "cristal", "fiole", "aucun"};
-	public static final String[] FORMES = {"aronde", "droit", "pointe"};
-	public static final int STYLES = 3;
+	public static final String[] FORMES = {"aronde", "droit", "pointe", "arrondi", "dents", "creneaux", "echancre"};
+	/** Styles : potence, vexillum, cérémonie (les trois de l'étendard simple), puis, pour le grand étendard seulement :
+	 *  sashimono, trois pans, lestée, à chaînes, encadrée, deux bannières. */
+	public static final int STYLES = 9;
+	/** Style du petit étendard (son bloc n'a que trois modèles) : sashimono comme la potence, les autres comme le vexillum. */
+	public static int styleSimple(int s) { return s <= 2 ? s : s == 3 ? 0 : 1; }
+	/** Styles centrés devant le mât (une seule bannière, ni double ni côté). */
+	public static boolean centre(int s) { return s == 1 || s >= 4; }
 	/** Grand étendard : longueur et largeur de la bannière en pixels, force du vent. */
 	public static final int[] LONGUEURS = {48, 56, 64};
 	public static final int[] LARGEURS = {20, 24, 28, 32};
@@ -48,6 +54,12 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 			v.length > 13 ? v[13] : 0, v.length > 14 ? v[14] : 4, v.length > 15 ? v[15] : 0, v.length > 16 ? v[16] : 0,
 			v.length > 17 ? v[17] : 0, v.length > 18 ? v[18] : 0, v.length > 19 ? v[19] : 0, v.length > 20 ? v[20] : 0);
 	}
+
+	/** Même apparence avec un autre motif et une autre forme (pans de rappel, bannière basse). */
+	public Apparence variante(int motif_, int forme_) {
+		int[] v = valeurs(); v[3] = motif_; v[4] = forme_; return depuis(v);
+	}
+	public static final int SANS_MOTIF = 10;   // indice de « aucun » dans MOTIFS
 
 	public boolean avecFranges() { return franges == 1; }
 	public boolean estDouble() { return double_ == 1; }
@@ -122,6 +134,8 @@ public record Apparence(int style, int fond, int ornement, int motif, int forme,
 	/** Noms anglais des fichiers de texture. */
 	private static final java.util.Map<String, String> TEXTURES = java.util.Map.ofEntries(
 		java.util.Map.entry("fond_aronde", "field_swallowtail"), java.util.Map.entry("fond_droit", "field_straight"), java.util.Map.entry("fond_pointe", "field_pointed"),
+		java.util.Map.entry("fond_arrondi", "field_rounded"), java.util.Map.entry("fond_dents", "field_zigzag"), java.util.Map.entry("fond_creneaux", "field_castellated"), java.util.Map.entry("fond_echancre", "field_notched"),
+		java.util.Map.entry("ornement_arrondi", "trim_rounded"), java.util.Map.entry("ornement_dents", "trim_zigzag"), java.util.Map.entry("ornement_creneaux", "trim_castellated"), java.util.Map.entry("ornement_echancre", "trim_notched"),
 		java.util.Map.entry("ornement_aronde", "trim_swallowtail"), java.util.Map.entry("ornement_droit", "trim_straight"), java.util.Map.entry("ornement_pointe", "trim_pointed"),
 		java.util.Map.entry("motif_rouage", "emblem_cog"), java.util.Map.entry("motif_cle", "emblem_key"), java.util.Map.entry("motif_flamme", "emblem_flame"),
 		java.util.Map.entry("motif_couronne", "emblem_crown"), java.util.Map.entry("motif_ancre", "emblem_anchor"), java.util.Map.entry("motif_eclair", "emblem_lightning"),

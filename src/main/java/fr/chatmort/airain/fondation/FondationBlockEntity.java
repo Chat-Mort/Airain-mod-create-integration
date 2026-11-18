@@ -183,7 +183,7 @@ public class FondationBlockEntity extends BlockEntity {
 		}
 		nom = n; devise = d; apparence = a;
 		if (level != null && !level.isClientSide && getBlockState().getBlock() instanceof FondationBlock)
-			FondationBlock.appliquerStyle(level, worldPosition, a.style());
+			FondationBlock.appliquerStyle(level, worldPosition, Apparence.styleSimple(a.style()));   // le bloc n'a que trois modèles
 		enregistrer(); maj();
 	}
 
