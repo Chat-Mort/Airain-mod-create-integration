@@ -134,6 +134,8 @@ public class SocleScreen extends Screen {
 			// interface HD : titre sur l'ardoise, libellés à points de conduite, valeurs en cartouches émaillés
 			g.drawString(font, title, x + 2, y - 4, InterfaceHD.AIRAIN, true);
 			int[] l = PAGES[page];
+			// gravure du bas du bac : page du socle seulement (la page du trophée a son champ de texte en y + 138)
+			PanneauHD.garniture(g, x, y, page == 1 ? y + 158 : y + PanneauHD.Y_LIGNES + (l.length - 1) * PanneauHD.PAS + 16);
 			for (int n = 0; n < l.length; n++) {
 				int k = l[n], ly = y + PanneauHD.Y_LIGNES + n * PanneauHD.PAS;
 				PanneauHD.libelle(g, font, x + 4, ly, x + 79, Component.translatable("airain.socle." + CLES[k]));

@@ -33,6 +33,12 @@ public final class PanneauHD {
 
 	public static void fond(GuiGraphics g, int x, int y) { blit(g, x - 10, y - 10, 0, 0, 310, 226); }
 
+	/** Train d'engrenages gravé au bas du bac (atlas 312,200, 101x30), posé seulement si le contenu de l'onglet
+	 *  s'arrête au moins 5 px au-dessus : le tableau émaillé, qui remplit son bac, ne l'appelle pas. */
+	public static void garniture(GuiGraphics g, int x, int y, int finContenu) {
+		if (finContenu + 5 <= y + 142) blit(g, x + 49, y + 142, 312, 200, 101, 30);
+	}
+
 	/** Reflets de la vitre, posés après l'aperçu pour passer devant lui. */
 	public static void reflets(GuiGraphics g, int x, int y) {
 		g.pose().pushPose();

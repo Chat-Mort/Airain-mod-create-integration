@@ -239,6 +239,8 @@ public class ConfigFondationScreen extends Screen {
 			PanneauHD.libelle(g, font, x + 4, y + 49, x + 4, Component.translatable("airain.fondation.devise_courte"));
 		}
 		int[] lignes = courante().lignes();
+		// gravure du bas du bac, sous la dernière rangée (cartouche de 16 px de haut) quand l'onglet laisse la place
+		PanneauHD.garniture(g, x, y, y + debutLignes() + (lignes.length - 1) * pas() + 16);
 		for (int n = 0; n < lignes.length; n++) {
 			int k = lignes[n];
 			int ly = y + debutLignes() + n * pas();
