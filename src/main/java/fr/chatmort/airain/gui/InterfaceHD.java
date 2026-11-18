@@ -29,9 +29,13 @@ public final class InterfaceHD {
 	/** Couleur d'un texte du mod : l'ancienne (brune, pour le laiton) sans le pack, l'airain sur l'ardoise avec. */
 	public static int texte(int ancienne) { return actif ? AIRAIN : ancienne; }
 
-	/** Texte gris foncé vanilla (0x404040) d'un écran de conteneur : illisible sur l'ardoise, il passe en airain. */
+	/**
+	 * Titres sombres d'un écran de conteneur, illisibles sur l'ardoise : ils passent en airain.
+	 * Gris vanilla (0x404040), gris et brun-rouge de Create (0x505050, 0x592424), brun du gardien de stock (0x714A40).
+	 */
 	public static boolean texteSurArdoise(int couleur) {
-		if (!actif || (couleur & 0xFFFFFF) != 0x404040) return false;
+		int c = couleur & 0xFFFFFF;
+		if (!actif || (c != 0x404040 && c != 0x505050 && c != 0x592424 && c != 0x714A40)) return false;
 		var ecran = Minecraft.getInstance().screen;
 		// l'inventaire créatif garde ses onglets vanilla (gris clair) : on n'y touche pas
 		return ecran instanceof AbstractContainerScreen<?> && !(ecran instanceof CreativeModeInventoryScreen);
