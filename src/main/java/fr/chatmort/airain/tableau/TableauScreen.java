@@ -19,6 +19,8 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public class TableauScreen extends Screen {
 	private static final ResourceLocation FOND = ResourceLocation.fromNamespaceAndPath("airain", "textures/gui/duty_board.png");
 	private static final int W = 276, H = 190, NW = 76, NH = 62;
+	/** Lignes de texte qu'une note affiche (de y 8 à NH - 18, tous les 10 px). */
+	private static final int LIGNES_NOTE = (NH - 18 - 8) / 10 + 1;
 	private static final int[] PUNAISES = {0xFFBE2824, 0xFFE2B828, 0xFF46964A};
 	private final PaquetsTableau.Ouvrir d;
 	private MultiLineEditBox saisie;
@@ -41,9 +43,14 @@ public class TableauScreen extends Screen {
 		if (!ecriture) return;
 		int i = d.notes().size(), x = nx(i), y = ny(i);
 		saisie = new MultiLineEditBox(font, x + 2, y + 2, NW - 4, NH - 16, Component.translatable("airain.tableau.ecrire"), Component.empty());
-		// la limite est tenue ici : la limite du jeu affiche un compteur « 14/100 » sous le champ, par-dessus les boutons
+		// la limite est tenue ici (celle du jeu affiche un compteur par-dessus les boutons) : le texte doit tenir sur la note
+		// telle qu'elle s'affiche, en italique sur 4 lignes ; au-delà, la dernière frappe est refusée
 		int limite = Tableaux.LONGUEUR * Tableaux.LIGNES;
-		saisie.setValueListener(t -> { if (t.length() > limite) saisie.setValue(t.substring(0, limite)); });
+		String[] tenu = {""};
+		saisie.setValueListener(t -> {
+			boolean tient = t.length() <= limite && font.split(Component.literal(t).withStyle(ChatFormatting.ITALIC), NW - 8).size() <= LIGNES_NOTE;
+			if (tient) tenu[0] = t; else saisie.setValue(tenu[0]);
+		});
 		addRenderableWidget(saisie);
 		setInitialFocus(saisie);
 		for (int c = 0; c < 3; c++) {

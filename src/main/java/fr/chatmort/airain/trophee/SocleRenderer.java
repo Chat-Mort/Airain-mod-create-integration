@@ -61,7 +61,6 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 	private static final ResourceLocation GARNITURE = rl("airain:textures/block/pedestal_trim.png");
 	private static final ResourceLocation NOIR = rl("minecraft:textures/block/black_concrete.png");
 	private static final ResourceLocation HALO = rl("airain:textures/block/pedestal_halo.png");
-	private static final ResourceLocation VERRE = rl("airain:textures/block/pedestal_glass.png");
 
 	public SocleRenderer(BlockEntityRendererProvider.Context ctx) {}
 
@@ -147,7 +146,11 @@ public class SocleRenderer implements BlockEntityRenderer<SocleBlockEntity> {
 		if (a.presentation() == 3) {
 			ms.pushPose();
 			ms.scale(1 / 16f, 1 / 16f, 1 / 16f);
-			VertexConsumer v = buffers.getBuffer(RenderType.entityTranslucent(VERRE));
+			// le verre va dans le même tampon translucide que les objets (trié du fond vers l'avant) : dans un tampon à part,
+			// dessiné avant celui des objets, il écrivait sa profondeur et le trophée disparaissait derrière
+			var sprite = net.minecraft.client.Minecraft.getInstance().getTextureAtlas(net.minecraft.world.inventory.InventoryMenu.BLOCK_ATLAS)
+				.apply(rl("airain:block/pedestal_glass"));
+			VertexConsumer v = sprite.wrap(buffers.getBuffer(net.minecraft.client.renderer.Sheets.translucentItemSheet()));
 			float[][] gradins = {{5.4f, 0.7f, 9f}, {4.7f, 9f, 11f}, {3.5f, 11f, 12.5f}, {2f, 12.5f, 13.5f}};
 			for (int k = 0; k < gradins.length; k++) {
 				float r = gradins[k][0];
