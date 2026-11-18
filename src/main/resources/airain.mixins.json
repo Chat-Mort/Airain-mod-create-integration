@@ -16,6 +16,8 @@
  },
  "client": [
   "TexteArdoiseMixin",
-  "BoutonPignonsMixin"
+  "BoutonPignonsMixin",
+  "TableSchemasMixin",
+  "CanonSchemasMixin"
  ]
 }
