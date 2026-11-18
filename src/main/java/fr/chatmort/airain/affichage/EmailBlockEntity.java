@@ -163,9 +163,18 @@ public class EmailBlockEntity extends SmartBlockEntity implements ClipboardClone
 
 	// ---------------------------------------------------------------- reçu du menu et des liaisons d'affichage
 	public void appliquer(Reglages r) {
+		// un nombre de lignes de liste changé : les valeurs déjà reçues sont oubliées, les liaisons les renvoient
+		if (reglages != null && !nombres(reglages).equals(nombres(r))) valeurs.clear();
 		reglages = r; marquer();
 		etat();
 	}
+	private static java.util.List<Integer> nombres(Reglages r) {
+		java.util.List<Integer> n = new java.util.ArrayList<>();
+		for (int i = 0; r.liable(i) != null; i++) n.add(r.liable(i).nb);
+		return n;
+	}
+	/** Les valeurs reçues sont oubliées (une liaison a changé de ligne) : les liaisons les renvoient à leur prochain passage. */
+	void oublierValeurs() { valeurs.clear(); marquer(); }
 	/** Une liaison d'affichage écrit sur la ligne i (face avant, puis face arrière si elle est différente). */
 	public void recevoir(int i, String v) {
 		if (i < 0 || i >= 2 * Reglages.MAX_LIGNES) return;

@@ -18,7 +18,10 @@ public class CibleEmail extends DisplayTarget {
 		EmailBlockEntity e = EmailBlockEntity.de(ctx.getTargetBlockEntity());
 		if (e == null) return;
 		// la première ligne reçue va sur la ligne choisie ; les suivantes (listes) sur les lignes d'après, si elles ne sont pas déjà prises
-		for (int i = 0; i < texte.size() && ligne + i < e.lignesLiables(); i++) {
+		// une liste ne remplit que le nombre de lignes réglé sur sa première ligne (0 : jusqu'à une ligne déjà prise)
+		Reglages.Ligne premiere = e.reglages() == null ? null : e.reglages().liable(ligne);
+		int max = premiere != null && premiere.nb > 0 ? premiere.nb : Integer.MAX_VALUE;
+		for (int i = 0; i < texte.size() && i < max && ligne + i < e.lignesLiables(); i++) {
 			if (i == 0) reserve(ligne, e, ctx);
 			else if (isReserved(ligne + i, e, ctx)) break;
 			// les listes de Create (stock, etc.) complètent chaque ligne d'espaces pour caler les nombres à droite d'un

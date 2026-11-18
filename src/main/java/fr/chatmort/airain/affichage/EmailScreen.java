@@ -24,7 +24,7 @@ import java.util.List;
 public class EmailScreen extends Screen {
 	private static final int ENCRE = 0x3A1A0A, SEPIA = 0x6E5034, ROUGE = 0x8A1A14, VERT = 0x286428, CLAIR = 0xFAECC8;
 	private static final int L_CLAIR = 0xFFFAE2A0, L_MOY = 0xFFD6AA5A, L_FONCE = 0xFF966830, L_OMBRE = 0xFF603E1E;
-	private static final String[] ONGLETS = {"contenu", "style", "police", "lumiere", "pose"};
+	private static final String[] ONGLETS = {"contenu", "style", "police", "lumiere", "pose", "liaisons"};
 	private static final int VISIBLES = 7;
 	private final BlockPos pos;
 	private final Reglages r;
@@ -137,7 +137,7 @@ public class EmailScreen extends Screen {
 			bouton(g, tx, y + 22, w, 14, n, k == onglet, () -> { onglet = kk; rebuildWidgets(); });
 			tx += w + 2;
 		}
-		switch (onglet) { case 0 -> contenu(g, x, y); case 1 -> style(g, x, y); case 2 -> police(g, x, y); case 3 -> lumiere(g, x, y); default -> pose(g, x, y); }
+		switch (onglet) { case 0 -> contenu(g, x, y); case 1 -> style(g, x, y); case 2 -> police(g, x, y); case 3 -> lumiere(g, x, y); case 5 -> liaisonsHD(g); default -> pose(g, x, y); }
 		apercu(g, x, y);
 		bouton(g, x + 226, y + 196, 74, 16, Component.translatable("gui.done"), false, this::onClose);
 		for (var w : renderables) w.render(g, mx, my, pt);
@@ -383,7 +383,7 @@ public class EmailScreen extends Screen {
 			zone(xs[c], y + 18, xs[ONGLETS.length + c], 16, () -> { onglet = cc; rebuildWidgets(); });
 		}
 		if (onglet == 0) PanneauHD.champ(g, x + 56, y + 136, 150, champ != null && champ.isFocused());
-		switch (onglet) { case 0 -> contenuHD(g); case 1 -> styleHD(g); case 2 -> policeHD(g); case 3 -> lumiereHD(g); default -> poseHD(g); }
+		switch (onglet) { case 0 -> contenuHD(g); case 1 -> styleHD(g); case 2 -> policeHD(g); case 3 -> lumiereHD(g); case 5 -> liaisonsHD(g); default -> poseHD(g); }
 		apercu(g, x, y);
 		PanneauHD.reflets(g, x + 10, y + 10);
 		for (var w : renderables) w.render(g, mx, my, pt);
@@ -577,6 +577,51 @@ public class EmailScreen extends Screen {
 		for (String l : tr("copier.aide").getString().split("\n")) { hdTexte(g, Component.literal(l), 16, ly, HD_TEXTE); ly += 12; }
 	}
 
+	// ---- 6. liaisons : pour chaque ligne qui peut recevoir une valeur, la liaison d'affichage qui y écrit, et combien de
+	// lignes une source en liste (stock du rayonnage…) remplit à partir d'elle
+	private int defileLiaisons;
+	private void liaisonsHD(GuiGraphics g) {
+		var mc = net.minecraft.client.Minecraft.getInstance();
+		hdSection(g, tr("liaisons"), 38);
+		List<com.simibubi.create.content.redstone.displayLink.DisplayLinkBlockEntity> liens = mc.level == null ? List.of() : Liaisons.vers(mc.level, pos);
+		int n = 0; for (int i = 0; r.liable(i) != null; i++) n++;
+		final int VIS = 6;
+		defileLiaisons = Math.max(0, Math.min(defileLiaisons, Math.max(0, n - VIS)));
+		for (int k = 0; k < VIS && k + defileLiaisons < n; k++) {
+			final int i = k + defileLiaisons; Reglages.Ligne l = r.liable(i); int py = 54 + k * 17;
+			// la ligne : numéro et début de son texte (ou son type), grisée si elle ne reçoit pas de valeur
+			String nom = (i + 1) + " " + (l.texte.isEmpty() ? tr("type." + l.type).getString() : l.texte);
+			hdTexte(g, Component.literal(font.plainSubstrByWidth(nom, 50)), 16, py + 4, l.liee() ? InterfaceHD.AIRAIN_SOMBRE : 0x6A6E78);
+			if (!l.liee()) continue;
+			// liaison actuelle : la première qui écrit sur cette ligne
+			int actuel = -1;
+			for (int q = 0; q < liens.size(); q++) if (liens.get(q).targetLine == i) { actuel = q; break; }
+			final int act = actuel;
+			Component nomLien = act < 0 ? tr("liaisons.aucune") : nomLiaison(mc, liens.get(act));
+			hdFleche(g, 68, py, false, () -> { if (!liens.isEmpty()) choisirLiaison(liens, act, -1, i); });
+			PanneauHD.cartouche(g, font, ox() + 86, oy() + py, 82, Component.literal(font.plainSubstrByWidth(nomLien.getString(), 76)), act < 0);
+			hdFleche(g, 170, py, true, () -> { if (!liens.isEmpty()) choisirLiaison(liens, act, 1, i); });
+			// nombre de lignes de la liste : A (toutes), 1 à 9
+			Component nb = l.nb == 0 ? tr("liaisons.lignes") : Component.literal("" + l.nb);
+			int bx = ox() + 188, by = oy() + py;
+			PanneauHD.toucheTexte(g, font, bx, by, 16, false, sous(bx, by, 16, 16), nb);
+			zone(bx, by, 16, 16, () -> { l.nb = (l.nb + 1) % 10; change(); });
+		}
+		int ly = 158;
+		if (liens.isEmpty()) hdTexte(g, tr("liaisons.vide"), 16, ly, 0xE06A6A);
+		else for (String s : tr("liaisons.aide").getString().split("\n")) { hdTexte(g, Component.literal(s), 16, ly, HD_TEXTE); ly += 11; }
+	}
+	/** Nom d'une liaison : la source qu'elle lit (« Stock du rayonnage »), à défaut le bloc qu'elle vise. */
+	private static Component nomLiaison(net.minecraft.client.Minecraft mc, com.simibubi.create.content.redstone.displayLink.DisplayLinkBlockEntity d) {
+		return d.activeSource != null ? d.activeSource.getName() : mc.level.getBlockState(d.getSourcePosition()).getBlock().getName();
+	}
+	/** Liaison suivante (ou précédente) pour la ligne : « aucune », puis chaque liaison qui vise le tableau. */
+	private void choisirLiaison(List<com.simibubi.create.content.redstone.displayLink.DisplayLinkBlockEntity> liens, int actuel, int sens, int ligne) {
+		int suivant = Math.floorMod(actuel + 1 + sens, liens.size() + 1) - 1;
+		if (suivant < 0) { if (actuel >= 0) PacketDistributor.sendToServer(new PaquetLiaison(pos, liens.get(actuel).getBlockPos(), -1)); }
+		else PacketDistributor.sendToServer(new PaquetLiaison(pos, liens.get(suivant).getBlockPos(), ligne));
+	}
+
 	// ---- aperçu, dans le panneau sombre
 	private void apercu(GuiGraphics g, int x, int y) {
 		// interface HD : toute la vitrine (titre en haut, taille au-dessus de l'estrade)
@@ -634,6 +679,7 @@ public class EmailScreen extends Screen {
 	@Override
 	public boolean mouseScrolled(double mx, double my, double sx, double sy) {
 		if (onglet == 0) { defile = Math.max(0, defile - (int) Math.signum(sy)); return true; }
+		if (onglet == 5) { defileLiaisons = Math.max(0, defileLiaisons - (int) Math.signum(sy)); return true; }
 		return super.mouseScrolled(mx, my, sx, sy);
 	}
 }

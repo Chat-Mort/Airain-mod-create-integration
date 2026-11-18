@@ -21,18 +21,22 @@ public final class Reglages {
 
 	public static final class Ligne {
 		public int type = TEXTE, align = 0, taille = 1, couleur = 0;
+		/** Lignes qu'une source en liste (stock…) peut remplir à partir de celle-ci : 0 = jusqu'à une ligne déjà prise. */
+		public int nb = 0;
 		public String texte = "";
 		public Ligne() {}
 		public Ligne(int type, String texte, int align, int taille, int couleur) { this.type = type; this.texte = texte; this.align = align; this.taille = taille; this.couleur = couleur; }
-		public Ligne copie() { return new Ligne(type, texte, align, taille, couleur); }
+		public Ligne copie() { Ligne l = new Ligne(type, texte, align, taille, couleur); l.nb = nb; return l; }
 		CompoundTag ecrire() {
 			CompoundTag t = new CompoundTag();
 			t.putByte("t", (byte) type); t.putString("x", texte); t.putByte("a", (byte) align); t.putByte("s", (byte) taille); t.putByte("c", (byte) couleur);
+			if (nb > 0) t.putByte("n", (byte) nb);
 			return t;
 		}
 		static Ligne lire(CompoundTag t) {
 			Ligne l = new Ligne(borne(t.getByte("t"), NB_TYPES), t.getString("x"), borne(t.getByte("a"), 3), borne(t.getByte("s"), 3), borne(t.getByte("c"), PALETTE.length));
 			if (l.texte.length() > MAX_TEXTE) l.texte = l.texte.substring(0, MAX_TEXTE);
+			l.nb = Math.max(0, Math.min(MAX_LIGNES, t.getByte("n")));
 			return l;
 		}
 		/** Les lignes qui reçoivent une liaison d'affichage. */
@@ -90,6 +94,14 @@ public final class Reglages {
 		return r;
 	}
 	public Reglages copie() { return lire(ecrire()); }
+
+	/** La i-ème ligne liable (face avant, puis face arrière si elle est différente), comme l'indice des liaisons. */
+	public Ligne liable(int i) {
+		if (i < 0) return null;
+		if (i < avant.size()) return avant.get(i);
+		i -= avant.size();
+		return !memeFace && i < arriere.size() ? arriere.get(i) : null;
+	}
 
 	/** Lignes de la face (arrière : celles de l'avant si les deux faces sont pareilles). */
 	public List<Ligne> face(boolean derriere) { return derriere && !memeFace ? arriere : avant; }

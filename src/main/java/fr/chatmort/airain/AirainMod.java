@@ -660,6 +660,9 @@ public class AirainMod {
 				(m, ctx) -> ctx.enqueueWork(() -> fr.chatmort.airain.fondation.EcranClient.borne(m)))
 			.playToServer(fr.chatmort.airain.affichage.PaquetEmail.TYPE, fr.chatmort.airain.affichage.PaquetEmail.CODEC,
 				fr.chatmort.airain.affichage.PaquetEmail::traiter)   // 1.60 : réglages du tableau émaillé
+			// 1.66 : depuis le menu du tableau émaillé, une liaison d'affichage par ligne
+			.playToServer(fr.chatmort.airain.affichage.PaquetLiaison.TYPE, fr.chatmort.airain.affichage.PaquetLiaison.CODEC,
+				fr.chatmort.airain.affichage.PaquetLiaison::traiter)
 			.playToServer(fr.chatmort.airain.borne.PaquetsBorne.Commander.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Commander.CODEC,
 				fr.chatmort.airain.borne.PaquetsBorne.Commander::traiter)
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
