@@ -42,14 +42,30 @@ public final class Liaisons {
 		return e != null && e.getBlockPos().equals(tableau);
 	}
 
-	/** Serveur : la liaison en lien passe sur la ligne (ou sur aucune si ligne < 0). */
+	/** La ligne est-elle attribuée à une autre liaison, toujours là et toujours visée sur ce tableau ? (sinon l'attribution est oubliée) */
+	static boolean prise(EmailBlockEntity e, int ligne, BlockPos moi) {
+		BlockPos autre = e.lienDe(ligne);
+		if (autre == null || autre.equals(moi)) return false;
+		if (e.getLevel() != null && e.getLevel().isLoaded(autre)
+			&& !(e.getLevel().getBlockEntity(autre) instanceof DisplayLinkBlockEntity d && vise(e.getLevel(), d, e.getBlockPos()))) {
+			e.attributions.remove(autre); e.marquer(); return false;
+		}
+		return true;
+	}
+
+	/** Serveur : la liaison en lien passe sur la ligne (ou sur aucune si ligne < 0) ; le tableau le retient. */
 	static void affecter(Level l, EmailBlockEntity tableau, BlockPos lien, int ligne) {
 		if (!(l.getBlockEntity(lien) instanceof DisplayLinkBlockEntity d) || !vise(l, d, tableau.getBlockPos())) return;
-		int cible = ligne < 0 || ligne >= tableau.lignesLiables() ? AUCUNE : ligne;
-		if (cible != AUCUNE)
-			for (DisplayLinkBlockEntity autre : vers(l, tableau.getBlockPos()))
-				if (autre != d && autre.targetLine == cible) poser(autre, AUCUNE);
-		poser(d, cible);
+		int cible = ligne < 0 || ligne >= tableau.lignesLiables() ? -1 : ligne;
+		if (cible >= 0) {
+			BlockPos ancien = tableau.lienDe(cible);
+			if (ancien != null && !ancien.equals(lien)) {
+				tableau.attributions.put(ancien, -1);
+				if (l.getBlockEntity(ancien) instanceof DisplayLinkBlockEntity a) poser(a, AUCUNE);
+			}
+		}
+		tableau.attributions.put(lien, cible);
+		poser(d, cible < 0 ? AUCUNE : cible);
 		// réservations de lignes de Create (données du tableau) : effacées, chaque liaison reprend la sienne en écrivant
 		CompoundTag t = tableau.getPersistentData();
 		t.remove("DisplayLink");

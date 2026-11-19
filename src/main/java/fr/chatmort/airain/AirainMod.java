@@ -571,6 +571,7 @@ public class AirainMod {
 		fr.chatmort.airain.affichage.Email.charger(bus);
 		// 1.62 : rayonnage impérial (casiers, renforts, source de stock)
 		fr.chatmort.airain.stockage.Rayonnage.charger(bus);
+		fr.chatmort.airain.affichage.SourcesAffichage.SOURCES.register(bus);   // 1.66.4 : nouvelles sources de liaison
 		// 1.63 : cloisons grillagées et portail coulissant
 		fr.chatmort.airain.fonderie.Cloisons.charger();
 		fr.chatmort.airain.atelier.Atelier.charger();        // pièces d'atelier : tuyauterie, lampes, réverbères, bornes…
@@ -690,6 +691,8 @@ public class AirainMod {
 			// 1.60 : le tableau émaillé reçoit les liaisons d'affichage ; le moule de Big Cannons en devient une source
 			fr.chatmort.airain.affichage.Email.associer();
 			fr.chatmort.airain.stockage.Rayonnage.associer();
+			// 1.66.4 : coffres-forts, réservoirs, stockages Sophisticated et haut fourneau d'airain deviennent des sources
+			fr.chatmort.airain.affichage.SourcesAffichage.associer();
 		});
 	}
 

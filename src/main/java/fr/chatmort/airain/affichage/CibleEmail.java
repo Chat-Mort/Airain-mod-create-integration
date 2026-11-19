@@ -17,13 +17,19 @@ public class CibleEmail extends DisplayTarget {
 	public void acceptText(int ligne, List<MutableComponent> texte, DisplayLinkContext ctx) {
 		EmailBlockEntity e = EmailBlockEntity.de(ctx.getTargetBlockEntity());
 		if (e == null) return;
+		// le tableau décide : une liaison qu'il a attribuée écrit sur sa ligne à lui (rien si « aucune »), quelle que soit la ligne
+		// réglée dans la liaison ; une liaison qu'il n'a jamais réglée n'écrit que sur une ligne qui n'est attribuée à personne
+		BlockPos lien = ctx.blockEntity().getBlockPos();
+		Integer attribuee = e.ligneDe(lien);
+		if (attribuee != null) { if (attribuee < 0) return; ligne = attribuee; }
+		else if (Liaisons.prise(e, ligne, lien)) return;
 		// la première ligne reçue va sur la ligne choisie ; les suivantes (listes) sur les lignes d'après, si elles ne sont pas déjà prises
 		// une liste ne remplit que le nombre de lignes réglé sur sa première ligne (0 : jusqu'à une ligne déjà prise)
 		Reglages.Ligne premiere = e.reglages() == null ? null : e.reglages().liable(ligne);
 		int max = premiere != null && premiere.nb > 0 ? premiere.nb : Integer.MAX_VALUE;
 		for (int i = 0; i < texte.size() && i < max && ligne + i < e.lignesLiables(); i++) {
 			if (i == 0) reserve(ligne, e, ctx);
-			else if (isReserved(ligne + i, e, ctx)) break;
+			else if (isReserved(ligne + i, e, ctx) || Liaisons.prise(e, ligne + i, lien)) break;
 			// les listes de Create (stock, etc.) complètent chaque ligne d'espaces pour caler les nombres à droite d'un
 			// panneau de 32 colonnes : on les retire, l'alignement choisi pour la ligne du tableau s'applique alors
 			e.recevoir(ligne + i, texte.get(i).getString().strip().replaceAll(" {2,}", " "));

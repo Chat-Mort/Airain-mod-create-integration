@@ -593,9 +593,14 @@ public class EmailScreen extends Screen {
 			String nom = (i + 1) + " " + (l.texte.isEmpty() ? tr("type." + l.type).getString() : l.texte);
 			hdTexte(g, Component.literal(font.plainSubstrByWidth(nom, 50)), 16, py + 4, l.liee() ? InterfaceHD.AIRAIN_SOMBRE : 0x6A6E78);
 			if (!l.liee()) continue;
-			// liaison actuelle : la première qui écrit sur cette ligne
+			// liaison actuelle : celle que le tableau a attribuée à la ligne, sinon une liaison jamais réglée qui vise cette ligne
 			int actuel = -1;
-			for (int q = 0; q < liens.size(); q++) if (liens.get(q).targetLine == i) { actuel = q; break; }
+			EmailBlockEntity tb = mc.level.getBlockEntity(pos) instanceof EmailBlockEntity x ? x : null;
+			BlockPos attribuee = tb == null ? null : tb.lienDe(i);
+			for (int q = 0; q < liens.size(); q++) {
+				BlockPos lp = liens.get(q).getBlockPos();
+				if (attribuee != null ? lp.equals(attribuee) : liens.get(q).targetLine == i && (tb == null || tb.ligneDe(lp) == null)) { actuel = q; break; }
+			}
 			final int act = actuel;
 			Component nomLien = act < 0 ? tr("liaisons.aucune") : nomLiaison(mc, liens.get(act));
 			hdFleche(g, 68, py, false, () -> { if (!liens.isEmpty()) choisirLiaison(liens, act, -1, i); });

@@ -318,6 +318,15 @@ public class HautFourneauBlockEntity extends BlockEntity implements IHaveGoggleI
 		if (gs.is(Fourneau.GUEULARD.get()) && gs.getValue(FourneauBlocs.LIT)) level.setBlock(g, gs.setValue(FourneauBlocs.LIT, false), Block.UPDATE_ALL);
 	}
 	public boolean forme() { return forme; }
+	// 1.66.4 : lu par la liaison d'affichage (état, avancement de la coulée)
+	/** 0 incomplet, 1 froid, 2 chaud, 3 surchauffé ; + 10 quand il coule. */
+	public int etatAffichage() {
+		if (!forme) return 0;
+		int c = chaleur == HeatLevel.SEETHING ? 3 : chaleur.isAtLeast(HeatLevel.KINDLED) ? 2 : 1;
+		return getBlockState().getValue(FourneauBlocs.LIT) ? c + 10 : c;
+	}
+	/** Avancement de la coulée en cours, de 0 à 1. */
+	public float avancement() { return Math.min(1f, progres / (float) TRAVAIL); }
 
 	// ------------------------------------------------------------------ accès pour les tuyaux, entonnoirs et lunettes
 	/** Ce que voient les tuyaux au trou de coulée : on peut seulement vider la cuve. */

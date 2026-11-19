@@ -31,6 +31,16 @@ public class EmailBlockEntity extends SmartBlockEntity implements ClipboardClone
 	/** Réglages : seulement sur le contrôleur (ou en attente d'être rendus au nouveau contrôleur). */
 	Reglages reglages;
 	final List<String> valeurs = new ArrayList<>();
+	/** 1.66.4 : les liaisons d'affichage attribuées depuis le menu du tableau (position de la liaison → ligne, −1 : aucune).
+	 *  Le tableau a toujours le dernier mot : une liaison attribuée n'écrit que sur sa ligne, une ligne attribuée refuse les autres. */
+	final java.util.Map<BlockPos, Integer> attributions = new java.util.HashMap<>();
+	/** La ligne attribuée à cette liaison (−1 : aucune), ou null si le tableau ne l'a jamais réglée. */
+	public Integer ligneDe(BlockPos lien) { return attributions.get(lien); }
+	/** La liaison attribuée à la ligne, ou null. */
+	public BlockPos lienDe(int ligne) {
+		for (var e : attributions.entrySet()) if (e.getValue() == ligne) return e.getKey();
+		return null;
+	}
 	private BlockPos ctl;
 	int largeur = 1, hauteur = 1;
 	boolean alerte, allume;
@@ -202,6 +212,9 @@ public class EmailBlockEntity extends SmartBlockEntity implements ClipboardClone
 		if (ctl != null) t.putLong("ctl", ctl.asLong());
 		t.putByte("w", (byte) largeur); t.putByte("h", (byte) hauteur);
 		if (client) { t.putBoolean("alerte", alerte); t.putBoolean("allume", allume); }
+		ListTag a = new ListTag();
+		for (var e : attributions.entrySet()) { CompoundTag c = new CompoundTag(); c.putLong("p", e.getKey().asLong()); c.putInt("l", e.getValue()); a.add(c); }
+		t.put("liaisons", a);
 	}
 	@Override
 	protected void read(CompoundTag t, HolderLookup.Provider r, boolean client) {
@@ -211,6 +224,8 @@ public class EmailBlockEntity extends SmartBlockEntity implements ClipboardClone
 		ctl = t.contains("ctl") ? BlockPos.of(t.getLong("ctl")) : null;
 		largeur = Math.max(1, t.getByte("w")); hauteur = Math.max(1, t.getByte("h"));
 		if (client) { alerte = t.getBoolean("alerte"); allume = t.getBoolean("allume"); }
+		attributions.clear();
+		for (Tag x : t.getList("liaisons", Tag.TAG_COMPOUND)) { CompoundTag c = (CompoundTag) x; attributions.put(BlockPos.of(c.getLong("p")), c.getInt("l")); }
 	}
 
 	// ---------------------------------------------------------------- presse-papiers de Create : copier tous les réglages
