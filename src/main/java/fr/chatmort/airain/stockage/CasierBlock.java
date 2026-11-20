@@ -79,7 +79,9 @@ public class CasierBlock extends Block implements EntityBlock, IWrenchable {
 			if (!l.isClientSide) c.renforcer(j, st, r.niveau);
 			return ItemInteractionResult.sidedSuccess(l.isClientSide);
 		}
-		if (st.getItem() instanceof com.simibubi.create.content.equipment.wrench.WrenchItem) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		// clé : on laisse la clé agir (onWrenched) ; « passer à l'interaction par défaut » appelait useWithoutItem,
+		// qui consommait le clic, et la clé ne réservait jamais le casier
+		if (st.getItem() instanceof com.simibubi.create.content.equipment.wrench.WrenchItem) return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
 		if (!l.isClientSide) c.deposer(j, h);
 		return ItemInteractionResult.sidedSuccess(l.isClientSide);
 	}
