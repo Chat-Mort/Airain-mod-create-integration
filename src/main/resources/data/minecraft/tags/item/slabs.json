@@ -25,6 +25,9 @@
   "airain:black_marble_brick_slab",
   "airain:slate_slab",
   "airain:slate_shingle_slab",
-  "airain:marble_tile_slab"
+  "airain:marble_tile_slab",
+  "airain:slate_brick_slab",
+  "airain:small_slate_tile_slab",
+  "airain:cut_slate_slab"
  ]
 }

@@ -1,7 +1,0 @@
-{
- "parent": "minecraft:block/cube_column_horizontal",
- "textures": {
-  "side": "airain:block/white_marble_pillar",
-  "end": "airain:block/polished_white_marble"
- }
-}

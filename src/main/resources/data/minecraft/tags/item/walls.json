@@ -5,6 +5,9 @@
   "airain:white_marble_brick_wall",
   "airain:black_marble_wall",
   "airain:black_marble_brick_wall",
-  "airain:slate_wall"
+  "airain:slate_wall",
+  "airain:slate_brick_wall",
+  "airain:small_slate_tile_wall",
+  "airain:cut_slate_wall"
  ]
 }

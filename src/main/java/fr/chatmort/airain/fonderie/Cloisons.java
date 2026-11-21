@@ -64,19 +64,29 @@ public final class Cloisons {
 	/** Le portail glisse vers le bout positif de son axe (est ou sud), sinon vers le négatif. */
 	public static final BooleanProperty SENS = BooleanProperty.create("slide_positive");
 	public static final EnumProperty<Direction.Axis> AXE = BlockStateProperties.HORIZONTAL_AXIS;
+	// 1.67 : montant d'encadrement au bord d'une cloison qui touche un portail coulissant (un par côté)
+	public static final BooleanProperty CADRE_N = BooleanProperty.create("frame_north"), CADRE_E = BooleanProperty.create("frame_east"),
+			CADRE_S = BooleanProperty.create("frame_south"), CADRE_O = BooleanProperty.create("frame_west");
+	public static BooleanProperty cadre(Direction d) { return switch (d) { case NORTH -> CADRE_N; case EAST -> CADRE_E; case SOUTH -> CADRE_S; default -> CADRE_O; }; }
 
 	// ====================================================================== la cloison
 	public static class Cloison extends IronBarsBlock implements Passerelle.Patinable {
 		private final WeatherState etat;
-		public Cloison(WeatherState etat, Properties p) { super(p); this.etat = etat; registerDefaultState(defaultBlockState().setValue(HAUT, true).setValue(BAS, true)); }
+		public Cloison(WeatherState etat, Properties p) { super(p); this.etat = etat; registerDefaultState(defaultBlockState().setValue(HAUT, true).setValue(BAS, true)
+				.setValue(CADRE_N, false).setValue(CADRE_E, false).setValue(CADRE_S, false).setValue(CADRE_O, false)); }
 		@Override public WeatherState etat() { return etat; }
-		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { super.createBlockStateDefinition(b); b.add(HAUT, BAS); }
+		@Override protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) { super.createBlockStateDefinition(b); b.add(HAUT, BAS, CADRE_N, CADRE_E, CADRE_S, CADRE_O); }
 		private static BlockState vertical(BlockState s, BlockGetter l, BlockPos p) {
 			return s.setValue(HAUT, !(l.getBlockState(p.above()).getBlock() instanceof Cloison)).setValue(BAS, !(l.getBlockState(p.below()).getBlock() instanceof Cloison));
 		}
 		/** Raccord aussi aux portails coulissants (que les barreaux de Minecraft ignorent). */
 		private static BlockState portails(BlockState s, BlockGetter l, BlockPos p) {
-			for (Direction d : Direction.Plane.HORIZONTAL) if (l.getBlockState(p.relative(d)).getBlock() instanceof Portail) s = s.setValue(PROPERTY_BY_DIRECTION.get(d), true);
+			for (Direction d : Direction.Plane.HORIZONTAL) {
+				boolean portail = l.getBlockState(p.relative(d)).getBlock() instanceof Portail;
+				if (portail) s = s.setValue(PROPERTY_BY_DIRECTION.get(d), true);
+				// le montant encadre l'ouverture du portail, et disparaît avec lui
+				s = s.setValue(cadre(d), portail);
+			}
 			return s;
 		}
 		@Override public BlockState getStateForPlacement(BlockPlaceContext c) { return portails(vertical(super.getStateForPlacement(c), c.getLevel(), c.getClickedPos()), c.getLevel(), c.getClickedPos()); }
@@ -87,6 +97,13 @@ public final class Cloisons {
 		}
 		@Override protected void randomTick(BlockState s, ServerLevel l, BlockPos p, RandomSource r) { if (etat != null) changeOverTime(s, l, p, r); }
 		@Override protected boolean isRandomlyTicking(BlockState s) { return etat != null && WeatheringCopper.getNext(s.getBlock()).isPresent(); }
+		// les montants tournent avec la cloison (structures)
+		@Override
+		protected BlockState rotate(BlockState s, Rotation r) {
+			BlockState t = super.rotate(s, r);
+			for (Direction d : Direction.Plane.HORIZONTAL) t = t.setValue(cadre(r.rotate(d)), s.getValue(cadre(d)));
+			return t;
+		}
 	}
 
 	// ====================================================================== le portail coulissant

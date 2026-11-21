@@ -125,6 +125,41 @@
     "west": "true",
     "bottom": "true"
    }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_frame"
+   },
+   "when": {
+    "frame_north": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_frame",
+    "y": 90
+   },
+   "when": {
+    "frame_east": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_frame_mirror",
+    "y": 180
+   },
+   "when": {
+    "frame_south": "true"
+   }
+  },
+  {
+   "apply": {
+    "model": "airain:block/exposed_airain_mesh_fence_frame_mirror",
+    "y": 270
+   },
+   "when": {
+    "frame_west": "true"
+   }
   }
  ]
 }

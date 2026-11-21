@@ -24,6 +24,9 @@
   "airain:polished_black_marble_stairs",
   "airain:black_marble_brick_stairs",
   "airain:slate_stairs",
-  "airain:slate_shingle_stairs"
+  "airain:slate_shingle_stairs",
+  "airain:slate_brick_stairs",
+  "airain:small_slate_tile_stairs",
+  "airain:cut_slate_stairs"
  ]
 }

@@ -1,0 +1,40 @@
+{
+ "variants": {
+  "axis=y,negative_end=true,positive_end=true": {
+   "model": "airain:block/slate_pillar_y"
+  },
+  "axis=x,negative_end=true,positive_end=true": {
+   "model": "airain:block/slate_pillar_x"
+  },
+  "axis=z,negative_end=true,positive_end=true": {
+   "model": "airain:block/slate_pillar_z"
+  },
+  "axis=y,negative_end=false,positive_end=true": {
+   "model": "airain:block/slate_pillar_top_y"
+  },
+  "axis=x,negative_end=false,positive_end=true": {
+   "model": "airain:block/slate_pillar_top_x"
+  },
+  "axis=z,negative_end=false,positive_end=true": {
+   "model": "airain:block/slate_pillar_top_z"
+  },
+  "axis=y,negative_end=true,positive_end=false": {
+   "model": "airain:block/slate_pillar_bottom_y"
+  },
+  "axis=x,negative_end=true,positive_end=false": {
+   "model": "airain:block/slate_pillar_bottom_x"
+  },
+  "axis=z,negative_end=true,positive_end=false": {
+   "model": "airain:block/slate_pillar_bottom_z"
+  },
+  "axis=y,negative_end=false,positive_end=false": {
+   "model": "airain:block/slate_pillar_middle_y"
+  },
+  "axis=x,negative_end=false,positive_end=false": {
+   "model": "airain:block/slate_pillar_middle_x"
+  },
+  "axis=z,negative_end=false,positive_end=false": {
+   "model": "airain:block/slate_pillar_middle_z"
+  }
+ }
+}

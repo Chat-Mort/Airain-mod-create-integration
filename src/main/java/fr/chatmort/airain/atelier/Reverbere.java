@@ -29,6 +29,8 @@ public class Reverbere extends BlocPatine implements IWrenchable {
 	public static final BooleanProperty HAUT = BooleanProperty.create("top");
 	public static final BooleanProperty DOUBLE = BooleanProperty.create("double");
 	private static final VoxelShape FUT = Block.box(6.5, 0, 6.5, 9.5, 16, 9.5), SOCLE = Block.box(3, 0, 3, 13, 5, 13), TETE = Block.box(6, 10, 6, 10, 16, 10);
+	// 1.67 : la lanterne simple est plus large (vitrage de 7, toit de 10)
+	private static final VoxelShape LANTERNE = Block.box(3, 3, 3, 13, 16, 13);
 	public Reverbere(WeatherState etat, Properties p) {
 		super(etat, p);
 		registerDefaultState(defaultBlockState().setValue(BAS, true).setValue(HAUT, true).setValue(DOUBLE, false).setValue(BlockStateProperties.HORIZONTAL_AXIS, Direction.Axis.X));
@@ -59,7 +61,7 @@ public class Reverbere extends BlocPatine implements IWrenchable {
 	protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) {
 		VoxelShape v = FUT;
 		if (s.getValue(BAS)) v = Shapes.or(v, SOCLE);
-		if (s.getValue(HAUT)) v = Shapes.or(v, TETE);
+		if (s.getValue(HAUT)) v = Shapes.or(v, s.getValue(DOUBLE) ? TETE : LANTERNE);
 		return v;
 	}
 }

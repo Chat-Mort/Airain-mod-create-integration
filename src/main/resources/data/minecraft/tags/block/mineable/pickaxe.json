@@ -423,6 +423,21 @@
   "airain:oxidized_airain_mesh_fence",
   "airain:oxidized_airain_sliding_gate",
   "airain:waxed_oxidized_airain_mesh_fence",
-  "airain:waxed_oxidized_airain_sliding_gate"
+  "airain:waxed_oxidized_airain_sliding_gate",
+  "airain:slate_pillar",
+  "airain:slate_bricks",
+  "airain:slate_brick_stairs",
+  "airain:slate_brick_slab",
+  "airain:slate_brick_wall",
+  "airain:small_slate_tiles",
+  "airain:small_slate_tile_stairs",
+  "airain:small_slate_tile_slab",
+  "airain:small_slate_tile_wall",
+  "airain:cut_slate",
+  "airain:cut_slate_stairs",
+  "airain:cut_slate_slab",
+  "airain:cut_slate_wall",
+  "airain:herringbone_slate",
+  "airain:chiseled_slate"
  ]
 }
