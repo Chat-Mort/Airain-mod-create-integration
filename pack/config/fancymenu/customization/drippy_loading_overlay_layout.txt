@@ -356,8 +356,8 @@ element {
   auto_sizing_base_gui_height = 265
   sticky_anchor = false
   anchor_point = mid-centered
-  x = -150
-  y = -50
+  x = -122
+  y = -25
   width = 100
   height = 100
   stay_on_screen = true
@@ -376,8 +376,8 @@ element {
   in_editor_color = #FFC800FF
   advanced_posx = -2147483648
   advanced_posy = -2147483648
-  advanced_width = 298
-  advanced_height = 88
+  advanced_width = 245
+  advanced_height = 39
   stretch_x = false
   stretch_y = false
   appearance_delay_seconds = 1.0

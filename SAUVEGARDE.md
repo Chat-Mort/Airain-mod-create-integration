@@ -1,7 +1,7 @@
 # Sauvegarde du pack « L'Empire d'Airain »
 
 Branche à part du dépôt du mod : rien ici n'est compilé par la CI (elle ne tourne que sur `main`).
-Dernière sauvegarde : 6 novembre 2026, mod 1.64.1.
+Dernière sauvegarde : 21 novembre 2026, mod 1.66.6.
 
 ## Contenu
 
@@ -52,3 +52,9 @@ Le mod lui-même (code Java, ressources) est sur la branche `main`.
 
 - Après tout générateur de textures : python3 outils/rouge_imperial.py (dépôt du mod), qui ne recolore que les textures patinées pas encore traitées.
 - Après textures_finales.py : outils/airain/cisele_ressources.py (airain ciselé d après la retouche de Liam), puis outils/rouge_imperial.py. Les retouches de Liam (outils/textures_liam.txt du dépôt du mod) ne sont jamais écrasées.
+
+## Interface HD (17 au 21 novembre 2026)
+
+Le pack « Airain-Interface-HD » est rangé dans le mod lui-même (`src/main/resources/resourcepacks/interface_hd` sur `main`).
+Les scripts qui l'ont généré (maquettes `gui_neuf`) n'ont pas été sauvegardés et sont perdus : une retouche de l'interface
+se fait désormais directement sur les images du pack, ou en réécrivant le générateur de la pièce concernée.

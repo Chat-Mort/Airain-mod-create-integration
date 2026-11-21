@@ -1235,10 +1235,10 @@ quest(cF, "fo_rayonnage", ("Le rayonnage impérial", "The Imperial Racking"), 12
       [T_item("airain:airain_rack", 8), T_item("airain:rack_reinforcement_1")], [R_coin("cog", 2)],
       deps=["fo_charpente"], optional=True,
       desc=D(["&7Optionnel.&r Les entrepôts de l'Empire se lisaient d'un regard. Un objet par casier, 32 piles, rangé sur sa palette ; les casiers voisins forment un seul inventaire qui range tout seul : un entonnoir sur n'importe quel casier suffit.",
-              "Clic droit pour déposer (deux fois vite : tout ce que vous portez de cet objet), clic gauche pour prendre une pile, accroupi pour une seule. La clé réserve un casier à son objet. Renforts I à IV : jusqu'à 512 piles. Cassé, le casier garde son contenu.",
+              "Clic droit pour déposer (deux fois vite : tout ce que vous portez de cet objet), clic gauche pour prendre une pile, accroupi pour une seule. La clé réserve un casier à son objet. Renforts I à IV : jusqu'à 5 120 piles. Cassé, le casier garde son contenu.",
               "&8Établi : 4 poutrelles, des planches et une grille d'airain donnent 2 casiers.&r"],
              ["&7Optional.&r The Empire's warehouses could be read at a glance. One item per bay, 32 stacks, stored on its pallet; neighbouring bays form a single self-sorting inventory: one funnel on any bay is enough.",
-              "Right-click to deposit (twice quickly: everything you carry of that item), left-click to take a stack, sneak for a single one. The wrench reserves a bay for its item. Reinforcements I to IV: up to 512 stacks. Broken, a bay keeps its contents.",
+              "Right-click to deposit (twice quickly: everything you carry of that item), left-click to take a stack, sneak for a single one. The wrench reserves a bay for its item. Reinforcements I to IV: up to 5,120 stacks. Broken, a bay keeps its contents.",
               "&8Crafting table: 4 I-beams, planks and an airain grate make 2 bays.&r"]))
 quest(cF, "fo_cloisons", ("Cloisons et portails", "Fences and Gates"), 14, -3,
       [T_item("airain:airain_mesh_fence", 8), T_item("airain:airain_sliding_gate", 2)], [R_coin("sprocket", 2)],

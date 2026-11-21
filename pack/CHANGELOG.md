@@ -5,6 +5,92 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 21 novembre 2026 — versions 1.66.5 et 1.66.6
+
+**Corrections**
+- Rayonnage : la clé de Create réserve de nouveau le casier (le clic était pris par le casier lui-même).
+- Rayonnage : un casier réservé porte un petit cadenas, qui ne se confond plus avec la barrette du renfort IV.
+
+**Changements**
+- Rayonnage : chaque renfort multiplie la capacité par 4 (128, 512, 2 048 piles), le renfort IV monte à 5 120 piles (327 680 objets qui s'empilent par 64). Les casiers déjà renforcés passent aux nouvelles capacités ; la quête, le livre de l'ingénieur et la scène Ponder donnent les nouveaux chiffres.
+
+---
+
+## 19 novembre 2026 — versions 1.66.3 et 1.66.4
+
+**Ajouts (1.66.4)**
+- Liaisons d'affichage : le tableau émaillé a toujours le dernier mot. Une liaison choisie dans son onglet Liaisons n'écrit que sur sa ligne, quelle que soit la ligne réglée dans la liaison ; une ligne attribuée refuse les autres liaisons ; une liaison jamais réglée depuis le tableau n'écrit que sur une ligne libre.
+- Sources en liste (stock du rayonnage et nouvelles sources) : affichage au choix (nom et quantité, quantité seule, nom seul), nombres abrégés ou entiers, filtre facultatif (nom ou identifiant d'objet : n'affiche que son total, sur une ligne).
+- Nouvelles sources, la liaison posée directement sur le bloc :
+  - coffre-fort de Create et stockages Sophisticated (coffres, barils, contrôleur…) : contenu et remplissage ;
+  - réservoir de fluide de Create : fluides (mB, ou seaux en abrégé) et remplissage ;
+  - haut fourneau d'airain (liaison sur le trou de coulée) : état, avancement de la coulée, airain fondu en mB ou en lingots, remplissage de la cuve, charge.
+- Le remplissage s'affiche en pourcentage ou en barre.
+
+**Corrections (1.66.3)**
+- Socle : le trophée se voit enfin sous la cloche de verre.
+- Tableau de service : on ne peut plus écrire plus que ce que la note affiche (4 lignes).
+
+---
+
+## 18 novembre 2026 (soir) — versions 1.66.0 à 1.66.2
+
+**Corrections**
+- Menus : le fond d'ardoise ne cache plus le fond d'accueil ni le monde derrière le menu pause (voile translucide).
+- Boutons à chaîne : un texte un peu trop long mord sur la couronne des pignons au lieu de défiler.
+- Barre de défilement des listes : le chariot manquait (texture refusée par le jeu), il est de retour.
+- Onglets des menus (création de monde) : l'onglet choisi garde ses rivets et ses coins arrondis.
+- Inventaire créatif : le congé des onglets du haut se raccorde sans ligne visible.
+- Livre de recettes vanilla retiré de l'inventaire, de l'établi et des fours (EMI le remplace).
+- Effet de verre (Reliure, aperçu de l'étendard, tableau émaillé, socle) : il n'apparaît plus en blanc plein, avec ou sans franges.
+- Livres : les flèches passent sous la réglure du bas, le numéro de page avec elles.
+- Reliure : les colonnes d'onglets se raccordent en une seule plaque.
+- Tableau de service : en écriture de note, plus de compteur par-dessus les boutons ; pastilles de couleur et touches valider / annuler à la taille de la note.
+- Tableau émaillé : textes qui débordaient replacés (teintes de l'airain, allumage, alerte, aide de copie) ; une ligne « valeur » suit l'alignement choisi.
+- Archive résonante : tringle de cristal en haut du bon de commande.
+- Portail : ouvert, il se vise toujours (pour le refermer ou le casser) sans bloquer le passage.
+- Téléphérique : on peut descendre de la nacelle à l'arrivée ; le portillon s'ouvre côté extérieur.
+- Airain ciselé : le creux de l'engrenage est fermé par un cube intérieur.
+- Barre de boss : jauge d'airain à la couleur du boss, crans pour les barres à segments.
+- Sophisticated : colonne des améliorations raccordée au panneau ; réglages de cuisson redessinés.
+- Numismatics : distributeur redessiné pour la version 1.1.0.
+- Waystones : les icônes en couleurs gardent leurs couleurs.
+- FTB Quests : chaque chapitre sur sa plaque, titre lisible selon son état, jauge d'avancement.
+- Ars Nouveau : barre de mana plus fine et graduée.
+
+**Ajouts (1.66.1 et 1.66.2)**
+- Tableau émaillé : onglet « Liaisons » (une liaison d'affichage par ligne, nombre de lignes d'une liste).
+- Charpente : nœud riveté sur la poutrelle touchée par une autre, éclisses rivetées au bout qui la touche (plus de platine).
+- Jambe de force, chevron, verrière : clic droit sur une pièce posée avec une pièce inclinée en main, la suivante se pose dans la pente (accroupi : vers le bas).
+- Jade : logement de l'icône redessiné.
+
+**Changements**
+- Marbre noir plus sombre.
+- Grand étendard : styles « Encadrée » et « Deux bannières » retirés (un étendard qui les portait reprend la potence ou le vexillum).
+- Réglage du flou des menus : Options > Accessibilité (Sodium remplace le menu Vidéo).
+
+---
+
+## 17 et 18 novembre 2026 — versions 1.65.0 à 1.65.7 et interface HD
+
+**Ajouts (interface HD)**
+- Nouvelle interface « Airain-Interface-HD » (3x), intégrée au mod depuis la 1.65.5 : toujours active, au-dessus des autres packs, rien à installer ni à activer. Ardoise et airain, stade de patine selon la famille d'écran.
+  - Vanilla : inventaire, coffres, Shulker, distributeur, entonnoir, établi, fabricateur, fours, alambic, enclume, forge, meule, tailleur, métier, cartographie, balise, cheval, inventaire créatif ; boutons à chaîne et pignons, curseurs, cases, champs, onglets ; HUD (vie en engrenages, faim en flammes, armure en écrous, air en bulles, expérience en courroie) ; menus.
+  - Mod : livres (gouttière, cantonnières), banc d'entretien, tableau de service (tringles, auget), Reliure, panneau de réglages, bornes de commande, Table de l'Empire.
+  - Autres mods : Create (filtre de liste, schémas, boîte à outils, gardien de stock, presse-papiers, horaire), Sophisticated, EMI, Jade (thème à choisir dans ses options), Waystones, FTB Quests (formes, chaînes, une épure par chapitre), Ars Nouveau (style réfractaire), Numismatics.
+  - Écran titre : logo « THE AIRAIN EMPIRE » ; écran de chargement : même logo.
+
+**Ajouts (1.65.7)**
+- Étendards : quatre nouvelles formes du bas (arrondie, dents de scie, créneaux, échancrée), pour tous les étendards et la bannière murale.
+- Grand étendard : nouveaux styles (sashimono, trois pans, lestée, à chaînes) ; ils prennent les formes, couleurs, franges, lanternes et la mise en berne ; le petit étendard garde ses trois styles.
+
+**Changements (1.65.0 à 1.65.6)**
+- Avec le pack HD, les écrans du mod changent de disposition : panneau de réglages à onglets (socle, étendard en 5 onglets, tableau émaillé en 5 onglets), bornes de commande à onglets et lots à volets, Table de l'Empire en mode sélection (niveaux I à X, bouton « Graver »), vitrine de la Reliure, onglets de livres à 4 par colonne.
+- Les titres gris foncé des écrans de conteneur s'écrivent en airain ; le texte des grands boutons reste entre les pignons.
+- Flou derrière les menus mis à 0 une seule fois, au premier lancement.
+
+---
+
 ## 16 novembre 2026 — versions 1.60.0 à 1.64.1
 
 **Changements (1.64.1)**

@@ -39,7 +39,7 @@ S={
   ("A funnel on any bay is enough: each item goes to the bay that already holds it, otherwise to an empty bay.","Un entonnoir sur n'importe quel casier suffit : chaque objet va dans le casier qui le contient déjà, sinon dans un casier libre."),
   ("The stock is visible on the pallet, and the label shows the exact count.","Le stock se voit sur la palette, et l'étiquette donne la quantité exacte."),
   ("Right-click to deposit, twice quickly for everything you carry. Left-click: take a stack; sneak: a single one.","Clic droit pour déposer, deux fois vite pour tout ce que vous portez. Clic gauche : une pile ; accroupi : un seul."),
-  ("Wrench: reserve a bay for its item. Reinforcements I to IV: up to 512 stacks.","Clé : réserver un casier à son objet. Renforts I à IV : jusqu'à 512 piles.")]),
+  ("Wrench: reserve a bay for its item. Reinforcements I to IV: up to 5,120 stacks.","Clé : réserver un casier à son objet. Renforts I à IV : jusqu'à 5 120 piles.")]),
  'tableau_emaille':(("The Enamel Board","Le tableau émaillé"),[
   ("Enamel boards side by side form a single board, up to 16 × 8.","Les tableaux émaillés posés côte à côte n'en forment qu'un, jusqu'à 16 × 8."),
   ("Bare-hand right-click opens the menu: lines, enamel, frame, font, light, mounting.","Clic droit main nue : le menu. Lignes, émail, cadre, police, lumière, accrochage."),

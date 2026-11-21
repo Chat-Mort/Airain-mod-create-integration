@@ -70,7 +70,7 @@ FR={"block.airain.airain_rack":"Casier de rayonnage","item.airain.rack_reinforce
  "airain.casier.renfort_ordre":"Il faut d'abord le renfort %s","airain.casier.renforce":"Capacité : %s piles",
  "airain.ingenieur.rayonnage.titre":"Le rayonnage impérial","airain.ingenieur.rayonnage.court":"Rayonnage",
  "airain.ingenieur.rayonnage.histoire":"Les entrepôts de l'Empire se lisaient d'un regard.",
- "airain.ingenieur.rayonnage.usage":"@airain:airain_rack Un objet par casier, 32 piles\n- Voisins : un seul inventaire trié\n- Clic droit : déposer ; deux fois : tout\n- Clic gauche : une pile ; accroupi : une\n- Clé : réserver le casier\n@airain:rack_reinforcement_1 Renforts I à IV : jusqu'à 512 piles\n- Cassé, le casier garde son contenu"}
+ "airain.ingenieur.rayonnage.usage":"@airain:airain_rack Un objet par casier, 32 piles\n- Voisins : un seul inventaire trié\n- Clic droit : déposer ; deux fois : tout\n- Clic gauche : une pile ; accroupi : une\n- Clé : réserver le casier\n@airain:rack_reinforcement_1 Renforts I à IV : jusqu'à 5 120 piles\n- Cassé, le casier garde son contenu"}
 EN={"block.airain.airain_rack":"Rack Bay","item.airain.rack_reinforcement_1":"Rack Reinforcement I","item.airain.rack_reinforcement_2":"Rack Reinforcement II",
  "item.airain.rack_reinforcement_3":"Rack Reinforcement III","item.airain.rack_reinforcement_4":"Rack Reinforcement IV","airain.display_source.rack_stock":"Rack stock",
  "airain.renfort.aide":"Right-click a rack bay: %s stacks","airain.casier.aide":"One item per bay, 32 stacks; neighbouring bays form one sorted inventory",
@@ -80,7 +80,7 @@ EN={"block.airain.airain_rack":"Rack Bay","item.airain.rack_reinforcement_1":"Ra
  "airain.casier.renfort_ordre":"Reinforcement %s comes first","airain.casier.renforce":"Capacity: %s stacks",
  "airain.ingenieur.rayonnage.titre":"The Imperial Racking","airain.ingenieur.rayonnage.court":"Racking",
  "airain.ingenieur.rayonnage.histoire":"The Empire's warehouses could be read at a glance.",
- "airain.ingenieur.rayonnage.usage":"@airain:airain_rack One item per bay, 32 stacks\n- Neighbours: one sorted inventory\n- Right-click: deposit; twice: all\n- Left-click: a stack; sneak: one\n- Wrench: reserve the bay\n@airain:rack_reinforcement_1 Reinforcements I to IV: up to 512 stacks\n- Broken, the bay keeps its contents"}
+ "airain.ingenieur.rayonnage.usage":"@airain:airain_rack One item per bay, 32 stacks\n- Neighbours: one sorted inventory\n- Right-click: deposit; twice: all\n- Left-click: a stack; sneak: one\n- Wrench: reserve the bay\n@airain:rack_reinforcement_1 Reinforcements I to IV: up to 5,120 stacks\n- Broken, the bay keeps its contents"}
 for f,D in (('fr_fr.json',FR),('en_us.json',EN)):
     pth=AS+'lang/'+f; d=json.load(open(pth)); d.update(D); json.dump(d,open(pth,'w'),ensure_ascii=False,indent=1)
 print('rayonnage ok')
