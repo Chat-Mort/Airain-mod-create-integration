@@ -5,6 +5,19 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 21 novembre 2026 — version 1.67.0
+
+**Changements**
+- Marbre blanc et noir : les grandes veines dorées disparaissent, il ne reste qu'un léger nuage de lumière (six variantes posées au hasard). Le marbre poli passe en quatre dalles biseautées, joints au centre exact du bloc.
+- Colonnes de marbre : posées les unes contre les autres (debout ou couchées), elles se raccordent ; les bandes d'or ne restent qu'aux deux bouts de la colonne.
+- Réverbère : la tête est une vraie lanterne vitrée, plus large, avec un toit à gradins ; la version double porte deux lanternes suspendues plus grandes. La lumière reste au niveau 15.
+- Cloison grillagée : un montant d'airain encadre l'ouverture au bord de chaque cloison qui touche un portail coulissant.
+
+**Ajouts**
+- Ardoise : briques d'ardoise, petites dalles d'ardoise, ardoise taillée (chacune avec escalier, dalle et muret), ardoise en chevrons, ardoise ciselée et colonne d'ardoise (cannelée, qui se raccorde comme les colonnes de marbre). Toutes au tailleur de pierre, à partir de l'ardoise.
+
+---
+
 ## 21 novembre 2026 — versions 1.66.5 et 1.66.6
 
 **Corrections**
