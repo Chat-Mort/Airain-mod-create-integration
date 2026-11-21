@@ -31,6 +31,10 @@ import java.util.UUID;
  */
 public class CasierBlockEntity extends BlockEntity {
 	public static final int PILES = 32, RENFORTS_MAX = 4;
+	/** 1.66.6 : piles par casier selon les renforts (×4 par renfort, puis 5 120 au IV : 327 680 objets, comme un baril de
+	 *  netherite de Sophisticated avec son amélioration de pile en netherite). */
+	private static final int[] CAPACITES = {32, 128, 512, 2048, 5120};
+	public static int piles(int renforts) { return CAPACITES[Math.max(0, Math.min(RENFORTS_MAX, renforts))]; }
 	ItemStack modele = ItemStack.EMPTY;
 	long quantite;
 	int renforts;
@@ -45,8 +49,8 @@ public class CasierBlockEntity extends BlockEntity {
 	public long quantite() { return quantite; }
 	public int renforts() { return renforts; }
 	public boolean reserve() { return reserve; }
-	public long capacite() { return modele.isEmpty() ? (long) PILES << renforts : (long) (PILES << renforts) * modele.getMaxStackSize(); }
-	public long capacitePour(ItemStack s) { return (long) (PILES << renforts) * s.getMaxStackSize(); }
+	public long capacite() { return modele.isEmpty() ? (long) piles(renforts) : (long) piles(renforts) * modele.getMaxStackSize(); }
+	public long capacitePour(ItemStack s) { return (long) piles(renforts) * s.getMaxStackSize(); }
 	/** Ce casier accepte-t-il cet objet ? */
 	boolean accepte(ItemStack s) {
 		if (s.isEmpty()) return false;
@@ -113,7 +117,7 @@ public class CasierBlockEntity extends BlockEntity {
 		level.playSound(null, worldPosition, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 0.6f, 1f);
 	}
 	void info(Player j) {
-		if (modele.isEmpty()) j.displayClientMessage(Component.translatable("airain.casier.vide", PILES << renforts).withStyle(ChatFormatting.GOLD), true);
+		if (modele.isEmpty()) j.displayClientMessage(Component.translatable("airain.casier.vide", piles(renforts)).withStyle(ChatFormatting.GOLD), true);
 		else j.displayClientMessage(Component.translatable("airain.casier.contenu", modele.getHoverName(), quantite, capacite()).withStyle(ChatFormatting.GOLD), true);
 	}
 	void verrouiller(Player j) {
@@ -131,7 +135,7 @@ public class CasierBlockEntity extends BlockEntity {
 		if (!j.getAbilities().instabuild) st.shrink(1);
 		changer();
 		level.playSound(null, worldPosition, SoundEvents.SMITHING_TABLE_USE, SoundSource.BLOCKS, 0.8f, 1.2f);
-		j.displayClientMessage(Component.translatable("airain.casier.renforce", PILES << renforts).withStyle(ChatFormatting.GOLD), true);
+		j.displayClientMessage(Component.translatable("airain.casier.renforce", piles(renforts)).withStyle(ChatFormatting.GOLD), true);
 	}
 
 	// ---------------------------------------------------------------- sauvegarde, synchro, contenu gardé dans l'objet

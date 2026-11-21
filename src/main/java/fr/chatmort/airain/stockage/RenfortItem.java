@@ -14,6 +14,6 @@ public class RenfortItem extends Item {
 	public RenfortItem(int niveau, Properties p) { super(p); this.niveau = niveau; }
 	@Override
 	public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
-		l.add(Component.translatable("airain.renfort.aide", CasierBlockEntity.PILES << niveau).withStyle(ChatFormatting.GRAY));
+		l.add(Component.translatable("airain.renfort.aide", CasierBlockEntity.piles(niveau)).withStyle(ChatFormatting.GRAY));
 	}
 }

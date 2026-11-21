@@ -25,6 +25,6 @@ public class CasierItem extends BlockItem {
 			ItemStack m = ItemStack.parse(c.registries(), t.getCompound("modele")).orElse(ItemStack.EMPTY);
 			if (!m.isEmpty()) l.add(Component.translatable("airain.casier.objet", m.getHoverName(), t.getLong("quantite")).withStyle(ChatFormatting.GOLD));
 		}
-		if (r > 0) l.add(Component.translatable("airain.casier.renforts", r, CasierBlockEntity.PILES << r).withStyle(ChatFormatting.GRAY));
+		if (r > 0) l.add(Component.translatable("airain.casier.renforts", r, CasierBlockEntity.piles(r)).withStyle(ChatFormatting.GRAY));
 	}
 }

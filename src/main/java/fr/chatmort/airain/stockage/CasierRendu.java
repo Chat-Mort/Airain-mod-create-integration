@@ -90,15 +90,21 @@ public class CasierRendu implements BlockEntityRenderer<CasierBlockEntity> {
 			ms.mulPose(Axis.YP.rotationDegrees(180));
 			float s = 0.16f;
 			ms.scale(s, -s, s);
-			String nom = font.plainSubstrByWidth(m.getHoverName().getString(), 52);
+			String nom = font.plainSubstrByWidth(m.getHoverName().getString(), 45);   // place pour le cadenas de réservation
 			font.drawInBatch(Component.literal(nom), 0, 0, 0xFFECE4CE, false, ms.last().pose(), buf, Font.DisplayMode.POLYGON_OFFSET, 0, lum);
 			ms.scale(1.35f, 1.35f, 1);
 			font.drawInBatch(Component.literal(nombre(be.quantite())).withStyle(st -> st.withBold(true)), 0, 6.6f, 0xFFE8C46E, false, ms.last().pose(), buf, Font.DisplayMode.POLYGON_OFFSET, 0, lum);
 			ms.popPose();
 		}
-		// barrettes des renforts et pastille de réservation, à droite de l'étiquette
+		// barrettes des renforts, à droite de l'étiquette
 		for (int k = 0; k < be.renforts(); k++) boite(ms, vc, email, 2.5f, 0.5f + k * 0.7f, -0.45f, 3.2f, 0.95f + k * 0.7f, -0.35f, k < 2 ? 0xE8C46E : k == 2 ? 0x8CBEF0 : 0xD64030, lum);
-		if (be.reserve()) boite(ms, vc, email, 2.5f, 2.6f, -0.45f, 3.2f, 3.1f, -0.35f, 0xD64030, lum);
+		// réservation : un petit cadenas (corps cramoisi, anse crème) à côté des barrettes, pour ne pas se confondre avec le renfort IV
+		if (be.reserve()) {
+			boite(ms, vc, email, 3.45f, 0.5f, -0.45f, 4.25f, 1.2f, -0.35f, 0xD64030, lum);
+			boite(ms, vc, email, 3.55f, 1.2f, -0.45f, 3.7f, 1.65f, -0.35f, 0xECE4CE, lum);
+			boite(ms, vc, email, 4.0f, 1.2f, -0.45f, 4.15f, 1.65f, -0.35f, 0xECE4CE, lum);
+			boite(ms, vc, email, 3.55f, 1.65f, -0.45f, 4.15f, 1.8f, -0.35f, 0xECE4CE, lum);
+		}
 		ms.popPose();
 	}
 	/** 1 856, 2 048 : espaces fines entre les milliers. */
