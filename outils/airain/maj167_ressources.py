@@ -15,6 +15,7 @@ def tex(nom, img):
 for t, f in (('white', 'blanc'), ('black', 'noir')):
     for v in range(6): tex(f'{t}_marble_{v}', Image.open(TEX + f'marbre_{f}_{v}.png'))
     tex(f'polished_{t}_marble', Image.open(TEX + f'marbre_{f}_poli.png'))
+    tex(f'{t}_marble_bricks', Image.open(TEX + f'marbre_{f}_briques.png'))     # 1.67.2 : briques sans or
     for h in (1, 0):
         for b in (1, 0):
             suf = {(1, 1): '', (1, 0): '_top', (0, 1): '_bottom', (0, 0): '_middle'}[(h, b)]

@@ -56,6 +56,20 @@ def poli(nom):
         for oy in (0, 8): biseau(p, ox, oy, ox + 7, oy + 7, C, fonce, .7)
     return im
 
+def briques(nom):
+    """Briques de marbre sans or : même appareil (rangs de 3 px, joints d'origine), remplies du marbre nuancé,
+    arête claire en haut de chaque brique et légère ombre en bas."""
+    t = {'blanc': 'white', 'noir': 'black'}[nom]
+    src = Image.open(T + f'{t}_marble_bricks.png').convert('RGB'); s_ = src.load()
+    joint = (176, 170, 159) if nom == 'blanc' else (11, 10, 12)
+    im = marbre(nom, 3); p = im.load(); S, B, C, V = MARBRE[nom]
+    for y in range(16):
+        for x in range(16):
+            if s_[x, y] == joint: p[x, y] = joint
+            elif y % 4 == 0: p[x, y] = mix(p[x, y], C, .45)
+            elif y % 4 == 2: p[x, y] = mix(p[x, y], S, .35)
+    return im
+
 # ---------------------------------------------------------------- piliers : bande d'or seulement aux bouts d'une colonne
 def pilier(nom, haut, bas):
     src = Image.open(T + nom + '_marble_pillar.png').convert('RGB'); im = src.copy(); p = im.load(); s = src.load()
@@ -166,6 +180,7 @@ TEX = {}
 for n in ('blanc', 'noir'):
     for v in range(6): TEX[f'marbre_{n}_{v}'] = marbre(n, v)
     TEX[f'marbre_{n}_poli'] = poli(n)
+    TEX[f'marbre_{n}_briques'] = briques(n)
     for h in (True, False):
         for b in (True, False): TEX[f'pilier_{n}_{int(h)}{int(b)}'] = pilier({'blanc': 'white', 'noir': 'black'}[n], h, b)
 TEX.update({'ardoise_briques': briques_ardoise(), 'ardoise_dalles': petites_dalles(), 'ardoise_taillee': ardoise_taillee(),
