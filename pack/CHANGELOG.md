@@ -5,11 +5,12 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 22 novembre 2026 — versions 1.67.1 et 1.67.2
+## 22 novembre 2026 — versions 1.67.1 à 1.67.3
 
 **Corrections**
 - Marbre blanc et noir : plus aucune couture entre deux blocs. Les six variantes ont exactement les mêmes bords et ne sont plus tournées au hasard ; la nuance de chaque variante reste au cœur du bloc. Le marbre noir est aussi plus doux.
 - Briques de marbre blanc et noir : plus de veines dorées, les briques prennent la même pierre nuancée que le marbre (1.67.2).
+- Airain ciselé (toutes les teintes) : vu de biais, on ne voit plus l'herbe ou le ciel à travers les creux du motif ; le regard tombe sur le fond du creux (1.67.3).
 
 ---
 
