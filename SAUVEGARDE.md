@@ -1,7 +1,7 @@
 # Sauvegarde du pack « L'Empire d'Airain »
 
 Branche à part du dépôt du mod : rien ici n'est compilé par la CI (elle ne tourne que sur `main`).
-Dernière sauvegarde : 21 novembre 2026, mod 1.67.0.
+Dernière sauvegarde : 22 novembre 2026, mod 1.67.1.
 
 ## Contenu
 

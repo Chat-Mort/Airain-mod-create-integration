@@ -29,12 +29,18 @@ def veine(r, p, col, n, force):
         x += dx; y += dy
 
 def marbre(nom, v):
-    S, B, C, V = MARBRE[nom]; r = random.Random(nom + str(v))
+    """Raccord sans couture entre toutes les variantes : un fond commun (bruit périodique sur 16 px, le même pour les 6)
+    sur les bords, et une nuance propre à chaque variante seulement au cœur du bloc (fondue en sinus vers les bords).
+    Deux variantes voisines ont donc exactement les mêmes pixels de bord."""
+    S, B, C, V = MARBRE[nom]
+    k = .6                                               # nuance douce, la même pour les deux teintes
     im = Image.new('RGB', (16, 16)); p = im.load()
     for y in range(16):
         for x in range(16):
-            n = bruit(v * 7 + (0 if nom == 'blanc' else 100), x, y)
-            p[x, y] = mix(B, C if n > 0 else S, min(1, abs(n) * (.55 if nom == 'blanc' else .7)))
+            # fenêtre en sinus : presque nulle sur les bords (écart entre variantes < 1 niveau de couleur), pleine au cœur
+            f = math.sin(math.pi * (x + .5) / 16) * math.sin(math.pi * (y + .5) / 16)
+            n = .35 * bruit(0 if nom == 'blanc' else 100, x, y) + f * .7 * bruit(v * 7 + 11 + (0 if nom == 'blanc' else 100), x, y)
+            p[x, y] = mix(B, C if n > 0 else S, min(1, abs(n) * k))
     return im
 
 def biseau(p, x0, y0, x1, y1, cl, so, f=.45):

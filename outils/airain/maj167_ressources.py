@@ -174,4 +174,7 @@ for f in os.listdir(AS + 'blockstates'):
         if y: a["y"] = y
         d['multipart'].append({"apply": a, "when": {"frame_" + dirn: "true"}})
     w(p, d)
+# 1.67.1 : marbre brut sans rotation aléatoire (une texture tournée ne se raccorde plus à ses voisines) ; 6 variantes au hasard
+for t in ('white', 'black'):
+    w(AS + f'blockstates/{t}_marble.json', {"variants": {"": [{"model": B(f'{t}_marble_{v}'), "weight": 1 if v < 3 else 2} for v in range(6)]}})
 print('1.67 ok', len(TOUS))

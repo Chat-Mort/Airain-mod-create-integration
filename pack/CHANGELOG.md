@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 22 novembre 2026 — version 1.67.1
+
+**Corrections**
+- Marbre blanc et noir : plus aucune couture entre deux blocs. Les six variantes ont exactement les mêmes bords et ne sont plus tournées au hasard ; la nuance de chaque variante reste au cœur du bloc. Le marbre noir est aussi plus doux.
+
+---
+
 ## 21 novembre 2026 — version 1.67.0
 
 **Changements**
