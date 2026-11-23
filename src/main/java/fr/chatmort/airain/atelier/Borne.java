@@ -122,7 +122,8 @@ public class Borne extends BaseEntityBlock implements IWrenchable {
 	// chaque flèche rend une borne quand on casse le poteau (la première est la borne elle-même)
 	@Override
 	protected void onRemove(BlockState s, Level l, BlockPos p, BlockState n, boolean deplace) {
-		if (!n.is(this) && s.getValue(FLECHE_HAUT) != Dir8.AUCUNE && s.getValue(FLECHE_BAS) != Dir8.AUCUNE) Block.popResource(l, p, new ItemStack(this));
+		// déplacée par un piston ou une machine de Create : la seconde flèche voyage avec la borne, elle ne doit pas tomber en plus
+		if (!deplace && !n.is(this) && s.getValue(FLECHE_HAUT) != Dir8.AUCUNE && s.getValue(FLECHE_BAS) != Dir8.AUCUNE) Block.popResource(l, p, new ItemStack(this));
 		super.onRemove(s, l, p, n, deplace);
 	}
 	@Override

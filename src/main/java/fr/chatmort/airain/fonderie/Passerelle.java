@@ -284,7 +284,8 @@ public final class Passerelle {
 		}
 		@Override
 		protected void onRemove(BlockState s, Level l, BlockPos p, BlockState n, boolean deplace) {
-			if (!(n.getBlock() instanceof Plancher))      // le portillon tombe avec la passerelle (pas quand elle se patine)
+			// déplacée par un piston ou une machine de Create : le portillon voyage avec elle, il ne doit pas tomber en plus
+			if (!deplace && !(n.getBlock() instanceof Plancher))      // le portillon tombe avec la passerelle (pas quand elle se patine)
 				for (Direction d : Direction.Plane.HORIZONTAL)
 					if (s.getValue(cote(d)) == Cote.PORTILLON || s.getValue(cote(d)) == Cote.OUVERT) Block.popResource(l, p, new ItemStack(Passerelles.PORTILLON.get()));
 			super.onRemove(s, l, p, n, deplace);

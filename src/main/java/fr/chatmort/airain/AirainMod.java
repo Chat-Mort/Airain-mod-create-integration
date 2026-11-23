@@ -626,6 +626,9 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::joueur);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::critique);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::tick);
+		// revue 1.68.20 : repères d'écholocation orphelins écartés au chargement ; listes en attente vidées à l'arrêt du serveur
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::repereRecharge);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::arret);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::filon);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);

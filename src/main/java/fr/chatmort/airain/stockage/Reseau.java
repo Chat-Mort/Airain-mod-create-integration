@@ -29,7 +29,9 @@ public class Reseau implements IItemHandler {
 	Reseau(CasierBlockEntity ici) { this.ici = ici; }
 
 	public List<CasierBlockEntity> casiers() {
-		if (vu != version || casiers.isEmpty()) {
+		// un casier du rayonnage dont le chunk s'est déchargé n'est plus dans le monde : ranger dedans perdrait les objets,
+		// on recalcule alors le rayonnage (seuls les casiers chargés en font partie)
+		if (vu != version || casiers.isEmpty() || casiers.stream().anyMatch(net.minecraft.world.level.block.entity.BlockEntity::isRemoved)) {
 			vu = version;
 			List<CasierBlockEntity> l = new ArrayList<>();
 			if (ici.getLevel() != null && !ici.isRemoved()) {

@@ -306,6 +306,18 @@ public final class Armes {
 		}
 	}
 
+	// Écholocation : un repère lumineux encore là quand la partie a été quittée (ou son chunk déchargé) avant d'être effacé
+	// réapparaît au chargement ; on l'écarte à ce moment-là, sinon il brillerait pour toujours
+	public static void repereRecharge(net.neoforged.neoforge.event.entity.EntityJoinLevelEvent e) {
+		if (e.loadedFromDisk() && e.getEntity() instanceof net.minecraft.world.entity.Display.BlockDisplay
+			&& e.getEntity().getTags().stream().anyMatch(t -> t.startsWith("airain_eclo_"))) e.setCanceled(true);
+	}
+
+	// À l'arrêt du serveur : les coups, zones, tourbillons et repères en attente sont oubliés (ils visaient l'ancien monde)
+	public static void arret(net.neoforged.neoforge.event.server.ServerStoppedEvent e) {
+		COUPS.clear(); ZONES.clear(); TOURBILLONS.clear(); REPERES.clear(); RUEE.clear(); TOUCHES.clear(); CRITIQUE.clear();
+	}
+
 	// ------------------------------------------------------------ tick serveur : seconds coups de la twinblade
 	public static void tick(ServerTickEvent.Post e) {
 		if (!ZONES.isEmpty()) zones();

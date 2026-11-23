@@ -98,7 +98,8 @@ public class PlancherTechnique extends BlocPatine implements IWrenchable {
 	}
 	@Override
 	protected void onRemove(BlockState s, Level l, BlockPos p, BlockState n, boolean deplace) {
-		if (!(n.getBlock() instanceof PlancherTechnique) && s.getValue(CONTENU) != Contenu.RIEN) Block.popResource(l, p, objetDe(s.getValue(CONTENU)));
+		// déplacé par un piston ou une machine de Create : le contenu voyage avec le bloc, rien ne doit tomber (sinon il est doublé)
+		if (!deplace && !(n.getBlock() instanceof PlancherTechnique) && s.getValue(CONTENU) != Contenu.RIEN) Block.popResource(l, p, objetDe(s.getValue(CONTENU)));
 		super.onRemove(s, l, p, n, deplace);
 	}
 	@Override protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return FORMES.computeIfAbsent(s, PlancherTechnique::forme); }
