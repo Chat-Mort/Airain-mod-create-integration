@@ -77,10 +77,11 @@ public class LivreIngenieurScreen extends Screen {
 	 *   « ## Titre »   intertitre rouge souligné
 	 *   « - texte »    puce
 	 *   « @id texte »  l'icône de l'objet id, puis le texte
+ *   « ^n texte »   (1.67.4) le sceau de l'Écho du nombre n (numération cistercienne), puis le texte
 	 *   ligne vide     petit blanc
 	 *   sinon          texte courant (les codes § de Minecraft marchent : §l gras, §r normal)
 	 */
-	private static final int TITRE = 0, PUCE = 1, OBJET = 2, TEXTE = 3, VIDE = 4;
+	private static final int TITRE = 0, PUCE = 1, OBJET = 2, TEXTE = 3, VIDE = 4, SCEAU = 5;
 	/** Une ligne affichable : type, texte, icône (ou null), première ligne de son entrée, hauteur. */
 	private record Ligne(int type, FormattedCharSequence t, String id, boolean tete, int haut) {}
 	private List<Ligne> lignes(String brut) {
@@ -91,9 +92,10 @@ public class LivreIngenieurScreen extends Screen {
 			if (par.startsWith("## ")) { type = TITRE; t = "§l" + par.substring(3); }
 			else if (par.startsWith("- ")) { type = PUCE; t = par.substring(2); retrait = 8; }
 			else if (par.startsWith("@") && par.indexOf(' ') > 1) { type = OBJET; id = par.substring(1, par.indexOf(' ')); t = par.substring(par.indexOf(' ') + 1); retrait = 13; }
+			else if (par.startsWith("^") && par.indexOf(' ') > 1) { type = SCEAU; id = par.substring(1, par.indexOf(' ')); t = par.substring(par.indexOf(' ') + 1); retrait = 11; }
 			List<FormattedCharSequence> l = font.split(FormattedText.of(t), LARGE - retrait);
 			for (int k = 0; k < l.size(); k++)
-				r.add(new Ligne(type, l.get(k), k == 0 ? id : null, k == 0, type == TITRE ? 13 : type == OBJET && k == 0 ? 11 : 10));
+				r.add(new Ligne(type, l.get(k), k == 0 ? id : null, k == 0, type == TITRE ? 13 : type == OBJET && k == 0 ? 11 : type == SCEAU && k == 0 ? 13 : 10));
 		}
 		return r;
 	}
@@ -234,10 +236,43 @@ public class LivreIngenieurScreen extends Screen {
 				case TITRE -> { g.drawString(font, l.t(), x, y + 2, ROUGE, false); g.fill(x, y + 11, x + LARGE, y + 12, FILET); }
 				case PUCE -> { if (l.tete()) g.drawString(font, "•", x + 1, y, ROUGE, false); g.drawString(font, l.t(), x + 8, y, ENCRE, false); }
 				case OBJET -> { if (l.id() != null) icone(g, l.id(), x, y - 1, 0.625f); g.drawString(font, l.t(), x + 13, y + (l.id() != null ? 1 : 0), ENCRE, false); }
+				case SCEAU -> { if (l.id() != null) sceau(g, x, y, Integer.parseInt(l.id())); g.drawString(font, l.t(), x + 11, y + (l.id() != null ? 3 : 0), ENCRE, false); }
 				case TEXTE -> g.drawString(font, l.t(), x, y, ENCRE, false);
 				default -> { }
 			}
 			y += l.haut();
+		}
+	}
+
+	/**
+	 * 1.67.4 : sceau de l'Écho à l'encre violette, dessiné au tiers de pixel (cellule 8 x 11). Hampe au centre ;
+	 * unités en haut à droite, dizaines en haut à gauche, centaines en bas à droite, milliers en bas à gauche.
+	 * Même tracé que les sceaux de l'Archive résonante.
+	 */
+	private static final int VIOLET = 0xFF5E2E8C;
+	private void sceau(GuiGraphics g, int x, int y, int n) {
+		g.pose().pushPose();
+		g.pose().translate(x, y - 1, 0);
+		g.pose().scale(1 / 3f, 1 / 3f, 1f);
+		trait(g, 12, 4, 12, 30);
+		for (int rang = 0; rang < 4; rang++, n /= 10) {
+			int c = n % 10, sx = rang % 2 == 0 ? 1 : -1;
+			boolean haut = rang < 2;
+			int x0 = 12, x8 = 12 + 8 * sx, y0 = haut ? 4 : 30, y9 = haut ? 13 : 21;
+			if (c == 1 || c == 5 || c == 7 || c == 9) trait(g, x0, y0, x8, y0);
+			if (c == 2 || c == 8 || c == 9) trait(g, x0, y9, x8, y9);
+			if (c == 3) trait(g, x0, y0, x8, y9);
+			if (c == 4 || c == 5) trait(g, x0, y9, x8, y0);
+			if (c >= 6) trait(g, x8, y0, x8, y9);
+		}
+		g.pose().popPose();
+	}
+	/** Un trait de 2 tiers de pixel d'épaisseur, de (x0, y0) à (x1, y1). */
+	private static void trait(GuiGraphics g, int x0, int y0, int x1, int y1) {
+		int n = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0));
+		for (int i = 0; i <= n; i++) {
+			int px = x0 + Math.round((x1 - x0) * (float) i / Math.max(1, n)), py = y0 + Math.round((y1 - y0) * (float) i / Math.max(1, n));
+			g.fill(px - 1, py - 1, px + 1, py + 1, VIOLET);
 		}
 	}
 

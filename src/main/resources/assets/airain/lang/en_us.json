@@ -1114,7 +1114,7 @@
  "airain.ingenieur.borne_arcanique.titre": "Resonant Archive",
  "airain.ingenieur.borne_arcanique.court": "Resonant Archive",
  "airain.ingenieur.borne_arcanique.histoire": "The Echo remembers everything. Just ask.",
- "airain.ingenieur.borne_arcanique.usage": "- After the Echo ending\n- 3×3 arrival circle in front\n- Raw material catalogue, lots of 1, 32 or 64\n- Paid in coins, change given\n- A minute later, the crate appears on the circle\n- One order at a time, 27 stacks",
+ "airain.ingenieur.borne_arcanique.usage": "- After the Echo ending\n- 3×3 arrival circle in front\n- Raw material catalogue, lots of 1, 32 or 64\n- Paid in coins, change given\n- A minute later, the crate appears on the circle\n- One order at a time, 27 stacks\n\n## Reading an Echo seal\nThe Archive writes its prices as a single sign: a stem, and one stroke per digit. An empty corner means zero.\n^1 Units: top right\n^10 Tens: top left\n^100 Hundreds: bottom right\n^1000 Thousands: bottom left\n## The nine strokes\nDrawn here as units; in the other corners, the same strokes mirrored.\n^1 1: stroke at the end of the stem\n^2 2: same stroke, a little lower\n^3 3: falling diagonal\n^4 4: rising diagonal\n^5 5: 1 and 4\n^6 6: upright stroke at the edge\n^7 7: 1 and 6\n^8 8: 2 and 6\n^9 9: 1, 2 and 6\n## Examples\n^3 3 spurs\n^90 90: 9 tens\n^176 176: 1 hundred, 7 tens, 6 units\n^1024 1,024: 1 thousand, 2 tens, 4 units\n^8192 8,192\n- Hover a lot to see its value in spurs",
  "item.airain.crowned_helmet_sacred": "Sacred Crown",
  "airain.etendard.banniere.0": "Single, left",
  "airain.etendard.banniere.1": "Single, right",

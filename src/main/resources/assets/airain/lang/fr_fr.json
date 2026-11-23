@@ -1114,7 +1114,7 @@
  "airain.ingenieur.borne_arcanique.titre": "Archive résonante",
  "airain.ingenieur.borne_arcanique.court": "Archive résonante",
  "airain.ingenieur.borne_arcanique.histoire": "L'Écho se souvient de tout. Il suffit de demander.",
- "airain.ingenieur.borne_arcanique.usage": "- Après la fin Écho\n- Cercle d'arrivée 3×3 devant elle\n- Catalogue de matières premières, par lots de 1, 32 ou 64\n- Payé en pièces, monnaie rendue\n- Une minute plus tard, la caisse apparaît sur le cercle\n- Une commande à la fois, 27 piles",
+ "airain.ingenieur.borne_arcanique.usage": "- Après la fin Écho\n- Cercle d'arrivée 3×3 devant elle\n- Catalogue de matières premières, par lots de 1, 32 ou 64\n- Payé en pièces, monnaie rendue\n- Une minute plus tard, la caisse apparaît sur le cercle\n- Une commande à la fois, 27 piles\n\n## Lire un sceau de l'Écho\nL'Archive écrit ses prix en un seul signe : une hampe, et un trait par chiffre. Un coin vide vaut zéro.\n^1 Unités : en haut à droite\n^10 Dizaines : en haut à gauche\n^100 Centaines : en bas à droite\n^1000 Milliers : en bas à gauche\n## Les neuf traits\nDessinés ici en unités ; aux autres coins, les mêmes traits en miroir.\n^1 1 : trait au bout de la hampe\n^2 2 : même trait, un peu plus bas\n^3 3 : diagonale qui descend\n^4 4 : diagonale qui monte\n^5 5 : 1 et 4\n^6 6 : trait debout, au bord\n^7 7 : 1 et 6\n^8 8 : 2 et 6\n^9 9 : 1, 2 et 6\n## Exemples\n^3 3 éperons\n^90 90 : 9 dizaines\n^176 176 : 1 centaine, 7 dizaines, 6 unités\n^1024 1 024 : 1 millier, 2 dizaines, 4 unités\n^8192 8 192\n- Au survol d'un lot, la valeur s'affiche en éperons",
  "item.airain.crowned_helmet_sacred": "Couronne sacrée",
  "airain.etendard.banniere.0": "À gauche",
  "airain.etendard.banniere.1": "À droite",
