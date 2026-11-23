@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.19
+
+**Changements**
+- Briques réfractaires passées en anthracite, pour ne plus les confondre avec les briques de Minecraft : bloc de briques réfractaires et toutes les faces du haut fourneau (socle, trou de coulée, tuyère, trémie, emblème, dessus noirci). L'airain, l'émail de l'emblème et le feu gardent leurs couleurs.
+- Brique réfractaire (objet) : vraie brique classique, en anthracite comme le bloc.
+- Laitier : scorie poreuse plus grise (on ne la prend plus pour du charbon), bulles en creux, reflets vitreux bleu-violet, fissure encore rougeoyante.
+
+---
+
 ## 23 novembre 2026 — version 1.68.18
 
 **Changements**
