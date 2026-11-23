@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.6
+
+**Changements**
+- Livre de quêtes :
+  - formes des quêtes redessinées d'un même modèle : fond d'ardoise à médaillon gravé, anneau d'airain en biseau, rivets posés sur l'anneau ; l'anneau garde la couleur de l'état de la quête. Le rond (forme par défaut, la plus vue) et le carré étaient restés ceux d'origine ; l'hexagone, l'engrenage (arêtes en marches) et le carré arrondi sont refaits avec eux ;
+  - icônes en haute définition : flèches, croix, loupe, engrenage, œil, punaise et maillons retracés nets (même dessin, mêmes couleurs) ; menu et « i » agrandis au pixel ; icônes d'objets (récompenses, cadenas, livre, boutique, crayons…) aux pixels nets.
+
+---
+
 ## 23 novembre 2026 — version 1.68.5
 
 **Changements**
