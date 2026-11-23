@@ -1386,6 +1386,7 @@
  "airain.choix.machine.trop_tard": "The machine will never start again: the Core has been broken.",
  "airain.choix.resonateur.pose": "The Core floats above the resonator. The souls gather around it.",
  "airain.choix.resonateur.echo": "You need a Primordial Echo on you for the tuning fork to ring true.",
+ "airain.choix.resonateur.vivant": "The Core still beats. The resonator rejects it while the Emperor lives.",
  "airain.choix.empire.1": "\"Thank you. It was so cold.\"",
  "airain.choix.echo.1": "\"Ada. You were right, from the very start. I forgive you. Forgive me.\"",
  "airain.choix.echo.2": "\"I waited for you.\"",

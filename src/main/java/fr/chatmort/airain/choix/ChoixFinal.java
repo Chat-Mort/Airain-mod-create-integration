@@ -91,6 +91,13 @@ public final class ChoixFinal {
 		ItemStack main = p.getMainHandItem();
 		List<Display.ItemDisplay> ici = poses(sl, new AABB(pos).inflate(1, 2, 1));
 		Fin fin = Fin.de(sl.getServer());
+		// revue 1.68.21 : tant que l'Empereur vit, le Cœur bat encore ; on ne peut pas le poser (sinon la fin Écho se choisissait
+		// avant le combat, et le Cœur d'Airain repris du résonateur revenait éteint)
+		if (ici.isEmpty() && coeur(main) && fin.choix().isEmpty() && !fin.empereurMort()) {
+			p.displayClientMessage(Component.translatable("airain.choix.resonateur.vivant"), true);
+			annuler(e);
+			return;
+		}
 		if (ici.isEmpty() && coeur(main) && fin.choix().isEmpty()) {                 // poser le Cœur
 			if (!p.getAbilities().instabuild) main.shrink(1);
 			commande(sl, pos, "summon minecraft:item_display ~0.5 ~1.9 ~0.5 {Tags:[\"" + POSE + "\"],billboard:\"vertical\",item:{id:\"" + ETEINT + "\",count:1},brightness:{sky:15,block:15}}");
