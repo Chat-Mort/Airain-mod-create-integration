@@ -5,6 +5,20 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.1
+
+**Changements**
+- Interface HD : les 164 derniers éléments encore en basse définition sont redessinés en 3x, au style du pack (cadre d'airain au repos, rouge au survol, gris désactivé ; métal en relief, rivets) :
+  - progrès : cadres de tâche (riveté), de but (arrondi) et de défi (roue dentée), onglets, bandeaux ;
+  - livre de recettes : fond, bouton, filtres, cases, onglets, flèches de page ;
+  - liste des serveurs (barres de signal en or, balayage cyan pendant la mesure), liste des mondes, listes de paquets ;
+  - toasts (plaque rivetée) et leurs icônes de tutoriel, pastilles de notification (sceau de cire) ;
+  - viseur affiné, indicateurs d'attaque, barre de saut ;
+  - boutons verrou et croix, invitations, écrans sociaux, fenêtres surgissantes ;
+  - erreurs d'enclume, de meule, de forge et de métier à tisser, établi mécanique, sacoche, cartographie, sélecteur de mode de jeu.
+
+---
+
 ## 23 novembre 2026 — version 1.68.0
 
 **Changements**
