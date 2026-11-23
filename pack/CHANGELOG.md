@@ -5,6 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.7
+
+**Changements**
+- Boutons des écrans FTB (livre de quêtes, réglages…) : plaque d'ardoise dans un cadre d'airain riveté aux coins ; or au repos, rouge au survol, gris désactivé, comme les autres boutons du pack (ils étaient gris-bleu).
+- Icônes de FTB Library, des améliorations de Sophisticated et de Numismatics en haute définition, aux pixels nets.
+
+---
+
 ## 23 novembre 2026 — version 1.68.6
 
 **Changements**
