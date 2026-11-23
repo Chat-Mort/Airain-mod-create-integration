@@ -49,25 +49,38 @@ public final class TelepheriqueRendus {
 		TextureAtlasSprite sp = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(TEX_CABLE);
 		VertexConsumer vc = buf.getBuffer(RenderType.cutout());
 		Vec3 o = Vec3.atLowerCornerOf(p);
+		// 1.68 : la tresse défile avec le câble (brin droit vers B, l'autre vers A), au rythme de la poulie de la gare A
+		double defile = defilement(l, p, Minecraft.getInstance().getTimer().getGameTimeDeltaPartialTick(false));
 		for (double cote : new double[]{Telepherique.BRIN, -Telepherique.BRIN}) {
 			Vec3 a1 = a.add(da.scale(cote)), b1 = b.add(db.scale(cote));
-			int n_ = Math.max(8, (int) (a1.distanceTo(b1) / 1.2));
+			int n_ = Math.max(8, (int) Math.ceil(a1.distanceTo(b1) / 0.7));    // morceaux de 0,7 bloc au plus : la tresse tient dans la texture
 			Vec3 prec = Telepherique.chainette(a1, b1, 0);
+			double cumul = 0, sens = cote > 0 ? 1 : -1;
 			for (int k = 1; k <= n_; k++) {
 				Vec3 c = Telepherique.chainette(a1, b1, k / (double) n_);
 				int lum = LevelRenderer.getLightColor(l, BlockPos.containing(prec.add(c).scale(0.5)));
-				tube(ms, vc, sp, prec.subtract(o), c.subtract(o), 0.045f, lum);
+				double v0 = cumul - sens * defile;
+				tube(ms, vc, sp, prec.subtract(o), c.subtract(o), 0.045f, lum, (float) (v0 - Math.floor(v0 / PAS_TRESSE) * PAS_TRESSE));
+				cumul += prec.distanceTo(c);
 				prec = c;
 			}
 		}
 	}
+	/** La tresse de la texture du câble se répète tous les 4 px (un quart de bloc). */
+	private static final double PAS_TRESSE = 0.25;
+	/** Longueur de câble déroulée par la poulie de la gare A de la ligne qui passe par p (0 si elle est introuvable). */
+	private static double defilement(Level l, BlockPos p, float pt) {
+		BlockPos g = p; Telepherique.Noeud n = Telepherique.noeud(l, g); int garde = 0;
+		while (n != null && n.precedent() != null && garde++ < Telepherique.NOEUDS_MAX + 2) { g = n.precedent(); n = Telepherique.noeud(l, g); }
+		return l.getBlockEntity(g) instanceof Telepherique.GareBlockEntity ge ? Mth.lerp(pt, ge.derouleAvant, ge.deroule) : 0;
+	}
 	/** Un tube carré de demi-épaisseur r entre u et v. */
-	private static void tube(PoseStack ms, VertexConsumer vc, TextureAtlasSprite sp, Vec3 u, Vec3 v, float r, int lum) {
+	private static void tube(PoseStack ms, VertexConsumer vc, TextureAtlasSprite sp, Vec3 u, Vec3 v, float r, int lum, float debut) {
 		Vec3 d = v.subtract(u).normalize();
 		Vec3 x = d.cross(new Vec3(0, 1, 0)); if (x.lengthSqr() < 1e-6) x = new Vec3(1, 0, 0); x = x.normalize().scale(r);
 		Vec3 y = d.cross(x).normalize().scale(r);
 		Vec3[] c = {x.add(y), x.subtract(y), x.scale(-1).subtract(y), x.scale(-1).add(y)};
-		float u0 = sp.getU(7 / 16f), u1 = sp.getU(9 / 16f), v0 = sp.getV(0), v1 = sp.getV((float) Math.min(1, u.distanceTo(v)));
+		float u0 = sp.getU(7 / 16f), u1 = sp.getU(9 / 16f), v0 = sp.getV(debut), v1 = sp.getV((float) Math.min(1, debut + u.distanceTo(v)));
 		PoseStack.Pose pz = ms.last();
 		for (int i = 0; i < 4; i++) {
 			Vec3 p0 = c[i], p1 = c[(i + 1) % 4];
@@ -158,6 +171,8 @@ public final class TelepheriqueRendus {
 			// demi-tour de la plateforme : le portillon s'ouvre côté extérieur, à l'opposé du mât de la gare
 			ms.mulPose(Axis.YP.rotationDegrees(180 - lp)); ms.translate(-0.5, 0, -0.5);
 			CachedBuffers.partial(AirainPartials.PLATEFORME, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
+			// 1.68 : le portillon n'est là qu'en route ; en gare, l'ouverture est franche
+			if (n.enRoute()) CachedBuffers.partial(AirainPartials.PORTILLON, s).light(light).renderInto(ms, buf.getBuffer(RenderType.cutout()));
 			ms.popPose();
 			ms.pushPose();
 			ms.mulPose(Axis.YP.rotationDegrees(-lc)); ms.translate(-0.5, 0, -0.5);

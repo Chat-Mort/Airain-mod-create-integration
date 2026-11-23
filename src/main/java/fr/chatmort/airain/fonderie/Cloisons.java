@@ -123,6 +123,11 @@ public final class Cloisons {
 			Level l = c.getLevel(); BlockPos p = c.getClickedPos();
 			// il glisse du côté d'une cloison (où le vantail ira se ranger), sinon vers l'est ou le sud
 			boolean neg = l.getBlockState(p.relative(a, -1)).getBlock() instanceof Cloison && !(l.getBlockState(p.relative(a, 1)).getBlock() instanceof Cloison);
+			// 1.68 : posé sur (ou sous) un portail, il en reprend tout (axe, sens de glissement, ouverture) : le vantail reste d'un seul tenant
+			for (BlockPos v : new BlockPos[] {p.below(), p.above()}) {
+				BlockState sv = l.getBlockState(v);
+				if (sv.getBlock() instanceof Portail) return defaultBlockState().setValue(AXE, sv.getValue(AXE)).setValue(SENS, sv.getValue(SENS)).setValue(OUVERT, sv.getValue(OUVERT));
+			}
 			BlockState voisin = l.getBlockState(p.relative(a, -1));
 			if (voisin.getBlock() instanceof Portail && voisin.getValue(AXE) == a) return defaultBlockState().setValue(AXE, a).setValue(SENS, voisin.getValue(SENS)).setValue(OUVERT, voisin.getValue(OUVERT));
 			voisin = l.getBlockState(p.relative(a, 1));

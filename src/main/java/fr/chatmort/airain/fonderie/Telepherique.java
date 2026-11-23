@@ -229,6 +229,8 @@ public final class Telepherique {
 		@Nullable public UUID nacelle;
 		/** Côté client : la nacelle bouge (la poulie tourne) ; angle de la poulie. */
 		public boolean tourne; public float angle, angleAvant;
+		/** 1.68 : vitesse du câble (blocs par tick, donnée par la nacelle) et longueur de câble déroulée (défilement de la tresse). */
+		public float vitesseCable; public double deroule, derouleAvant;
 		private int relance;
 		public GareBlockEntity(BlockEntityType<?> t, BlockPos p, BlockState s) { super(t, p, s); }
 		@Override public BlockPos precedent() { return precedent; }
@@ -283,8 +285,9 @@ public final class Telepherique {
 			super.tick();
 			if (level == null) return;
 			if (level.isClientSide) {
-				angleAvant = angle;
-				if (tourne) angle += Math.max(2f, Math.abs(getSpeed()) / 256f * 16f);
+				angleAvant = angle; derouleAvant = deroule;
+				// 1.68 : la poulie tourne au rythme exact du câble (rayon = écart du brin)
+				if (tourne) { angle += (float) Math.toDegrees(vitesseCable / BRIN); deroule += vitesseCable; }
 				return;
 			}
 			if (relance > 0 && --relance % 10 == 0) {
@@ -292,7 +295,7 @@ public final class Telepherique {
 				if (n != null) { n.vers(worldPosition, null); relance = 0; }
 			}
 		}
-		void tourne(boolean t) { if (t != tourne) { tourne = t; sendData(); } }
+		void tourne(boolean t, float v) { if (t != tourne || v != vitesseCable) { tourne = t; vitesseCable = v; sendData(); } }
 
 		@Override
 		protected void write(CompoundTag t, HolderLookup.Provider r, boolean client) {
@@ -301,6 +304,7 @@ public final class Telepherique {
 			if (suivant != null) t.putLong("suivant", suivant.asLong());
 			if (nacelle != null) t.putUUID("nacelle", nacelle);
 			t.putBoolean("tourne", tourne);
+			t.putFloat("vitesse_cable", vitesseCable);
 		}
 		@Override
 		protected void read(CompoundTag t, HolderLookup.Provider r, boolean client) {
@@ -309,6 +313,7 @@ public final class Telepherique {
 			suivant = t.contains("suivant") ? BlockPos.of(t.getLong("suivant")) : null;
 			nacelle = t.hasUUID("nacelle") ? t.getUUID("nacelle") : null;
 			tourne = t.getBoolean("tourne");
+			vitesseCable = t.getFloat("vitesse_cable");
 		}
 		@Override public AABB getRenderBoundingBox() { return new AABB(worldPosition).inflate(PORTEE + 4); }
 

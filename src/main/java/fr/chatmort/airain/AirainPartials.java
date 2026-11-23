@@ -30,6 +30,8 @@ public class AirainPartials {
 	// téléphérique et laminoir (1.58) : poulie de la gare, nacelle (plateforme, bras, chariot), rouleaux du laminoir
 	public static final PartialModel POULIE = bloc("airain_cable_station/wheel");
 	public static final PartialModel PLATEFORME = bloc("airain_gondola/platform");
+	// 1.68 : le portillon à part, caché quand la nacelle attend en gare
+	public static final PartialModel PORTILLON = bloc("airain_gondola/platform_gate");
 	public static final PartialModel BRAS = bloc("airain_gondola/arm");
 	public static final PartialModel CHARIOT = bloc("airain_gondola/carriage");
 	public static final PartialModel ROULEAU_BAS = bloc("airain_rolling_mill/roller_low");

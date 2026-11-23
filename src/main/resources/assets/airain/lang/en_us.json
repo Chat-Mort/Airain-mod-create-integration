@@ -1877,7 +1877,7 @@
  "airain.ingenieur.telepherique.court": "Cable Car",
  "airain.ingenieur.telepherique.titre": "The Imperial Cable Car",
  "airain.ingenieur.telepherique.histoire": "Airain gondolas crossed the valleys.",
- "airain.ingenieur.telepherique.usage": "## Rolling mill\n@airain:airain_rolling_mill Shaft on the side\n@airain:airain_ingot 1 ingot → 2 wires\n@airain:airain_cable 8 wires + 1 sheet: 2 cables\n## The line\n@airain:airain_cable_station A station at each end\n@airain:airain_pylon Stacked pylons\n@airain:airain_pylon_head Head on top\n- Cable: right-click a node, then the next (32 blocks max, 8 pylons)\n## The gondola\n@airain:airain_gondola Placed on a station\n- Shaft under a station: speed\n- Right-click inside: departure\n- Right-click a station: it comes\n- 4 riders, standing\n- Sneak + hit: take it back",
+ "airain.ingenieur.telepherique.usage": "## Rolling mill\n@airain:airain_rolling_mill Shaft on the side\n@airain:airain_ingot 1 ingot → 2 wires\n@airain:airain_cable 8 wires + 1 sheet: 2 cables\n## The line\n@airain:airain_cable_station A station at each end\n@airain:airain_pylon Stacked pylons\n@airain:airain_pylon_head Head on top\n- Cable: right-click a node, then the next (32 blocks max, 8 pylons)\n## The gondola\n@airain:airain_gondola Placed on a station\n- Shaft under a station: speed (256 RPM: 18 blocks/s)\n- Always on the right-hand rope: one way out, the other back\n- Right-click inside: departure\n- Right-click a station: it comes\n- 4 riders, standing\n- Sneak + hit: take it back",
  "block.airain.airain_beam": "Airain I-Beam",
  "block.airain.waxed_airain_beam": "Waxed Airain I-Beam",
  "block.airain.exposed_airain_beam": "Tarnished Airain I-Beam",
