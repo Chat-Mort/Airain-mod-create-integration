@@ -5,6 +5,18 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.17
+
+**Changements**
+- Écrans de Numismatics en carter de machine, comme ceux de Create : déposants d'andésite et de laiton, terminal bancaire, liste et fenêtre des sous-comptes, liste de confiance, banquier blaze, réglage et achat du point de vente, distributeur et distributeur créatif.
+- Le solde et le prix s'affichent sur un écran de verre fumé serti d'airain, centré sur le texte.
+- Décor propre à la banque : cadran de coffre-fort (terminal), fente à pièces (déposant d'andésite), arbre à engrenages (déposant de laiton), lecteur de cartes (liste de confiance, banquier), voyant de flamme (banquier).
+- Point de vente : l'objet dans une vitrine, les montants sur une étiquette de prix en papier, jauge d'achat ambre, réservoir et éclairs d'énergie refaits, rubis de l'enseigne sur un cartouche d'airain.
+- Les noms modifiables (banquier, sous-compte) s'écrivent sur un ticket clair ; les titres de Numismatics passent en airain sur leur plaque.
+- Engrenage séquencé étoffé : crémaillère continue à droite des rangées, un pignon engrené par rangée, boîte de vitesses et grille sur le plateau du bas.
+
+---
+
 ## 23 novembre 2026 — version 1.68.16
 
 **Changements**

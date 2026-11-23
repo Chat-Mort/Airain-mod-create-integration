@@ -132,9 +132,30 @@ def engrenage_sequence():
     for yy in range(66):
         for X in list(range(0, 15)) + list(range(165 * S - 15, 165 * S)):
             rr.im.putpixel((X, yy), propre.getpixel((X, 0)))
-    # grille d'aération à droite des champs, au pas de 6 texels (66 = 11 x 6 : elle se raccorde d'une rangée à l'autre)
-    for Y in range(2, 66, 6):
-        rr.r(149 * S, Y, 157 * S - 1, Y + 1, ARD['noir']); rr.r(149 * S, Y + 2, 157 * S - 1, Y + 2, hx('454a57'))
+    # à droite des champs : crémaillère d'airain continue (dents au pas de 6 texels : 66 = 11 x 6, elle se raccorde d'une
+    # rangée à l'autre) et un pignon par rangée engrené dessus, centré sur la hauteur de la rangée
+    XR = 470
+    rr.r(XR - 1, 0, XR + 6, 65, ARD['ombre'])                           # logement gravé de la crémaillère
+    rr.r(XR, 0, XR + 5, 65, EXP['trait']); rr.r(XR + 1, 0, XR + 1, 65, EXP['clair']); rr.r(XR + 2, 0, XR + 3, 65, EXP['base']); rr.r(XR + 4, 0, XR + 4, 65, EXP['mi'])
+    for Y in range(0, 66, 11):                                          # dents au pas de 11 texels (66 = 6 x 11), creux face au pignon
+        for (y0, y1) in ((Y + 3, Y + 8),):
+            rr.r(XR - 5, y0, XR - 1, y1, EXP['trait']); rr.r(XR - 4, y0 + 1, XR - 1, y1 - 1, EXP['base']); rr.r(XR - 4, y0 + 1, XR - 1, y0 + 1, EXP['clair'])
+    # pignon de 7 dents (pas de 11 texels sur son cercle primitif), une dent pointée dans le creux de la crémaillère
+    from PIL import Image as _I, ImageDraw as _D
+    import math as _m
+    R, K, n = 13, 8, 7; N = 2 * R + 3; m = _I.new('L', (N * K, N * K)); dd = _D.Draw(m); c = N * K / 2; pts = []
+    for k in range(n * 8):
+        a = 2 * _m.pi * k / (n * 8); ph = k % 8
+        rr_ = R if ph in (0, 1, 7) else R - 3.2 if ph in (3, 4, 5) else R - 1.6
+        pts.append((c + rr_ * K * _m.cos(a), c + rr_ * K * _m.sin(a)))
+    dd.polygon(pts, fill=255); q = 4.2 * K; dd.ellipse([c - q, c - q, c + q, c + q], fill=0)
+    m = m.resize((N, N), _I.BOX).point(lambda v: 255 if v >= 128 else 0); px = m.load(); X0, Y0 = XR - 2 - R - N // 2, 33 - N // 2
+    for y in range(N):
+        for x in range(N):
+            if not px[x, y]: continue
+            bord = any(not (0 <= x + u < N and 0 <= y + v < N) or not px[x + u, y + v] for u, v in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+            t = (x - N / 2) + (y - N / 2)
+            rr.im.putpixel((X0 + x, Y0 + y), EXP['trait'] if bord else EXP['clair'] if t < -R * 0.5 else EXP['base'] if t < R * 0.4 else EXP['mi'])
     rangee = rr.im.crop((0, 0, 165 * S, 66))
     for k in range(5): p.im.paste(rangee, (0, (16 + 22 * k) * S))
     # tuyau : bride à l'entrée, sous le bandeau du titre, et à la sortie, au-dessus du plateau
@@ -144,6 +165,12 @@ def engrenage_sequence():
         p.r(C - 5, Y + 1, C + 5, Y + 1, EXP['clair']); p.r(C - 5, Y + 4, C + 5, Y + 4, EXP['mi']); p.rivet(C, Y + 2)
     # plateau du bas centré sur le bouton de Create (137-154) : de 408 à 467 texels
     p.socle(0, 0, 0, 0, texels=(5 * S, 408, 160 * S - 1, 467))
+    # boîte de vitesses sur le plateau : deux engrenages d'airain engrenés, grille d'aération jusqu'au bouton
+    p.engrenage_relief(26 * S, 438, 24, 10); p.engrenage_relief(26 * S + 37, 438, 14, 7)
+    p.grille(60, 140, 72, 13)
+    # supports de la crémaillère : patte rivetée en haut (sous le titre) et en bas (au-dessus du plateau)
+    for Y in (15 * S - 3, 126 * S):
+        p.r(463, Y, 479, Y + 8, EXP['trait']); p.r(464, Y + 1, 478, Y + 7, EXP['base']); p.r(464, Y + 1, 478, Y + 1, EXP['clair']); p.r(464, Y + 7, 478, Y + 7, EXP['mi']); p.rivet(473, Y + 4)
     # --- les lignes (sur la planche, à leur place d'origine) : fond de rangée + champs / emplacements + repère sur le tuyau
     A, B_, C_ = (30, 56), (88, 28), (118, 28)
     def ligne(y, champs, vides, repere):

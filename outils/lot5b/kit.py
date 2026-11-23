@@ -540,3 +540,20 @@ def _etiqueteuse_dessus(self, x0, x1, y0, y1, fente_y0, fente_y1, partie='tout',
                 c = EXP['trait'] if bord else (hx('b8b8b0') if u + v < 0 else hx('7a7a74')) if d < 5 else EXP['clair'] if u + v < -2 else EXP['base'] if u + v < 4 else EXP['mi']
                 self.im.putpixel((gx + xx, gy + yy), c)
 Planche.etiqueteuse_dessus = _etiqueteuse_dessus
+
+# ---------------- lot Numismatics + engrenage séquencé ----------------
+def _engrenage_relief(p, X, Y, r, dents=8, vide=True):
+    """Engrenage d'airain en relief (centre en texels) : arête sombre, pans éclairés en haut à gauche, centre percé."""
+    m = masque_engrenage(r, dents, moyeu=0.0 if vide else 0.35, rayons=0 if vide else 4, plein=True)
+    if vide:                                                            # couronne pleine, centre vide (préférence de Liam)
+        d = ImageDraw.Draw(m); c = m.width / 2 - 0.5; q = max(2.5, r * 0.36)
+        d.ellipse([c - q, c - q, c + q, c + q], fill=0)
+    px = m.load(); w, h = m.size; X0, Y0 = X - w // 2, Y - h // 2
+    for y in range(h):
+        for x in range(w):
+            if not px[x, y]: continue
+            bord = any(not (0 <= x + a < w and 0 <= y + b < h) or not px[x + a, y + b] for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+            t = (x - w / 2) + (y - h / 2)
+            c = EXP['trait'] if bord else EXP['clair'] if t < -r * 0.5 else EXP['base'] if t < r * 0.4 else EXP['mi']
+            p.im.putpixel((X0 + x, Y0 + y), c)
+Planche.engrenage_relief = _engrenage_relief
