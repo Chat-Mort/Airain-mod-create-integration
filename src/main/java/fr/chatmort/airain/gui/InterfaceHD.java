@@ -20,7 +20,8 @@ public final class InterfaceHD {
 	public static final int MARGE_PIGNONS_MIN = 14;
 	private static boolean actif;
 	/** Écrans de Create redessinés en carter (lot 5b) : on en ajoute un ici quand sa texture HD est livrée. */
-	private static final java.util.Set<String> ECRANS_CREATE_HD = java.util.Set.of("DisplayLinkScreen", "ThresholdSwitchScreen", "ElevatorContactScreen", "SequencedGearshiftScreen", "FactoryPanelScreen", "RedstoneRequesterScreen", "FactoryPanelSetItemScreen");
+	private static final java.util.Set<String> ECRANS_CREATE_HD = java.util.Set.of("DisplayLinkScreen", "ThresholdSwitchScreen", "ElevatorContactScreen", "SequencedGearshiftScreen", "FactoryPanelScreen", "RedstoneRequesterScreen", "FactoryPanelSetItemScreen",
+		"PackageFilterScreen", "LinkedControllerScreen", "ScheduleScreen", "StockKeeperCategoryScreen", "SymmetryWandScreen", "WorldshaperScreen");
 
 	private InterfaceHD() {}
 
