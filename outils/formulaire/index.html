@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspection en jeu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE : registre de travail, sobre et précis, pour cocher en jouant.
+   IDEA : le registre d'inspection d'un atelier de l'Empire, une plaque d'airain par section.
+   PICTURE : le formulaire lui-même, avec un manomètre d'avancement en tête.
+   COLOUR and TYPE : ardoise et airain (les couleurs du pack) ; Barlow Condensed pour les plaques, Barlow pour le texte.
+   LAYOUT : une colonne calme, barre d'outils collante, sections repliables. */
+:root{color-scheme:light dark;
+ --bg:light-dark(#eceef1,#23262d);--panel:light-dark(#ffffff,#2e323b);--ink:light-dark(#1b1e24,#e9e6df);--mute:light-dark(#5b616d,#a3a8b3);
+ --line:light-dark(#d5d9df,#3d424d);--brass:light-dark(#9a6a2c,#e1ba6e);--brass-bg:light-dark(#f6ecd8,#3a3427);
+ --ok:light-dark(#2f7d4a,#7fd19a);--ok-bg:light-dark(#e3f3e8,#24362b);--ko:light-dark(#b3412e,#ff9a85);--ko-bg:light-dark(#fbe6e1,#3d2622);
+ --skip:light-dark(#6a6f7a,#a3a8b3)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:860px;margin:0 auto;padding:clamp(20px,4vw,44px) max(4vw,14px) 80px}
+h1{font:700 clamp(32px,6vw,46px)/1.05 "Barlow Condensed",sans-serif;margin:0 0 6px;text-wrap:balance}
+.intro{color:var(--mute);margin:0 0 22px;max-width:62ch}
+.tete{display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:20px;align-items:center}
+.cadran{width:170px;height:170px}
+.barre{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:18px}
+.barre .compte{font:600 15px "Barlow Condensed";color:var(--mute);margin-right:auto}
+button,.filtre{font:600 15px Barlow,sans-serif;min-height:40px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+button:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+button.principal{background:var(--brass);color:light-dark(#fff,#23262d);border-color:var(--brass)}
+button[aria-pressed=true]{border-color:var(--brass);background:var(--brass-bg)}
+details.sec{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:0 0 14px;overflow:hidden}
+details.sec>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--brass-bg);border-bottom:1px solid var(--line)}
+details.sec>summary::-webkit-details-marker{display:none}
+.plaque{font:700 22px/1.1 "Barlow Condensed",sans-serif;color:var(--brass);flex:1}
+.vis{width:9px;height:9px;border-radius:50%;background:var(--brass);box-shadow:inset -1px -1px 0 rgba(0,0,0,.35)}
+.etat{font:600 14px "Barlow Condensed";color:var(--mute);white-space:nowrap}
+.note-sec{padding:10px 16px 0;color:var(--mute);font-size:15px;margin:0}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;padding:12px 16px;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}
+.item h3{font:600 17px/1.3 Barlow,sans-serif;margin:0}
+.item p{margin:2px 0 0;color:var(--mute);font-size:15px}
+.choix{display:flex;gap:6px;align-self:start}
+.choix button{min-height:44px;min-width:44px;padding:0 10px;font-size:14px}
+.choix button.ok[aria-pressed=true]{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.choix button.ko[aria-pressed=true]{background:var(--ko-bg);border-color:var(--ko);color:var(--ko)}
+.choix button.nv[aria-pressed=true]{color:var(--skip)}
+textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-serif;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical;display:none}
+.item.ko textarea,.item.note textarea{display:block}
+.item.cache{display:none}
+.copie{margin-top:24px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.copie h2{font:700 22px "Barlow Condensed";margin:0 0 6px;color:var(--brass)}
+.copie pre{white-space:pre-wrap;font:14px/1.45 ui-monospace,Menlo,monospace;background:var(--bg);padding:12px;border-radius:8px;max-height:320px;overflow:auto;margin:10px 0 0}
+.msg{color:var(--ok);font-weight:600;margin-left:8px}
+@media(max-width:600px){.tete{grid-template-columns:1fr}.cadran{width:130px;height:130px;justify-self:center;order:-1}.item{grid-template-columns:1fr}.choix{justify-content:flex-start}}
+@media(prefers-reduced-motion:no-preference){#aiguille{transition:transform .5s ease}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="tete">
+  <div>
+   <h1>Inspection en jeu — mod 1.68.22</h1>
+   <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
+  </div>
+  <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
+   <defs><radialGradient id="lun" cx=".35" cy=".3"><stop offset="0" stop-color="#f3d694"/><stop offset=".6" stop-color="#e1ba6e"/><stop offset="1" stop-color="#9a6a2c"/></radialGradient></defs>
+   <circle cx="85" cy="85" r="80" fill="url(#lun)"/><circle cx="85" cy="85" r="80" fill="none" stroke="#704425" stroke-width="3"/>
+   <circle cx="85" cy="85" r="66" fill="#f3ead6" stroke="#704425" stroke-width="2"/>
+   <g id="grad" stroke="#5a2a1a" stroke-width="2"></g>
+   <path id="arc" fill="none" stroke="#b3412e" stroke-width="5" stroke-linecap="round"/>
+   <g id="aiguille" style="transform-origin:85px 85px"><path d="M85 85 L85 30" stroke="#b3412e" stroke-width="3" stroke-linecap="round"/></g>
+   <circle cx="85" cy="85" r="7" fill="#704425"/><circle cx="83" cy="83" r="3" fill="#f3d694"/>
+   <text id="pct" x="85" y="122" text-anchor="middle" font-family="Barlow Condensed" font-weight="700" font-size="20" fill="#3a2a1a">0 %</text>
+  </svg>
+ </div>
+
+ <div class="barre">
+  <span class="compte" id="compte">0 / 0 vus</span>
+  <button id="fAll" aria-pressed="true">Tout</button>
+  <button id="fTodo" aria-pressed="false">À faire</button>
+  <button id="fKo" aria-pressed="false">À revoir</button>
+  <button id="ouvrir">Tout déplier</button>
+ </div>
+
+ <div id="sections"></div>
+
+ <div class="copie">
+  <h2>Résumé à me renvoyer</h2>
+  <p class="intro" style="margin:0">Les lignes « À revoir » avec tes notes, puis ce qui n'a pas été vu.</p>
+  <button class="principal" id="copier">Copier le résumé</button><span class="msg" id="msg" role="status"></span>
+  <button id="raz" style="float:right">Tout effacer</button>
+  <pre id="resume"></pre>
+ </div>
+</div>
+
+<script>
+{
+const S = [
+ {t:"Haut fourneau et briques réfractaires", n:"Brun magnésie depuis la 1.68.22.", l:[
+  ["Haut fourneau monté en entier","Briques brun magnésie, bandes d'airain, emblème, tuyère, trémie, dessus noirci : l'ensemble tient-il ?"],
+  ["Haut fourneau allumé","Trou de coulée et gueulard allumés, fumée, rigole."],
+  ["Bloc de briques réfractaires seul","Lisible à côté de l'ardoise et des briques vanilla."],
+  ["Brique réfractaire (objet)","Ne se confond plus avec la brique vanilla ni l'ardoise."],
+  ["Laitier","Se lit comme une scorie, pas comme du charbon."]]},
+ {t:"Écrans de Create", n:"Style « carter » ; les boutons sont posés par le jeu.", l:[
+  ["Lien d'affichage",""],["Interrupteur à seuil",""],["Contact d'ascenseur","Titre en airain sur la plaque."],
+  ["Engrenage séquencé","Crémaillère, pignons, boîte de vitesses ; rangées bien raccordées quel que soit l'ordre."],
+  ["Réglage de valeur","Règle, chariot, étiquettes à embout arrondi (posé par le mod)."],
+  ["Jauge d'usine et choix d'objet","Étiqueteuse vue du dessus, ticket ; adresse écrite à l'encre sombre."],
+  ["Demandeur",""],["Grenouille-port et boîte aux lettres","Nom du port sur le ticket."],
+  ["Filtre de colis",""],["Assemblage de train et gare","Nom de la gare sur le ticket."],["Télécommande liée et plan",""],
+  ["Catégories du gardien de stock",""],["Éditeur d'horaire",""],["Façonneur et baguette de symétrie",""]]},
+ {t:"Écrans de Numismatics", n:"Titres en airain ; solde sur l'écran de verre fumé.", l:[
+  ["Déposant d'andésite",""],["Déposant de laiton",""],["Terminal bancaire","Cadran de coffre-fort."],
+  ["Liste des sous-comptes","Cartes de comptes, étiquettes du curseur de pièces."],["Fenêtre d'un sous-compte","Nom sur le ticket, icônes des modes."],
+  ["Liste de confiance",""],["Banquier blaze","Nom sur le ticket, voyant de flamme."],
+  ["Réglage du point de vente",""],["Achat au point de vente","Montants lisibles sur l'étiquette de prix ; jauge ambre ; fluide et énergie."],
+  ["Distributeur et distributeur créatif",""]]},
+ {t:"Autres écrans", n:"", l:[
+  ["Recettes de Create dans EMI","Cases, flèches gravées, ombre sous les machines, halo des recettes chauffées, barre de chaleur."],
+  ["Table de décoration (Sophisticated Storage)","Cadre en T, sortie sertie, aperçu, titre en airain."],
+  ["Écrans vanilla et du mod","Établi, fours, coffres, table de l'Empire, banc, etc."],
+  ["Ars Nouveau",""],["Waystones",""],
+  ["FTB Quests","Formes des quêtes, icônes du livre, boutons Nord (or, rouge au survol)."],
+  ["Icônes Sophisticated et Numismatics",""]]},
+ {t:"Blocs et objets", n:"", l:[
+  ["Émail",""],["Verres d'airain et d'écho","Pas de motif répété visible en grand."],
+  ["Marquages au sol et leurs rouleaux",""],["Renforts de rayonnage","Niveau lisible, cabochons centrés."]]},
+ {t:"Créatures retexturées", n:"Textures et animations ne se jugent qu'en jeu.", l:[
+  ["Zombie, husk, noyé",""],["Squelette, vagabond, embourbé, squelette wither",""],["Creeper",""],["Araignée et araignée venimeuse",""],
+  ["Enderman et endermite",""],["Poisson d'argent",""],["Slime et cube de magma",""],["Fantôme",""],["Blaze et breeze","Breeze : rafale et charge de vent."],
+  ["Ghast",""],["Piglin, brute, piglin zombifié",""],["Hoglin et zoglin",""],["Gardien et grand gardien","Rayon compris."],["Shulker","Projectile compris."],
+  ["Wither","Phase invulnérable comprise."],["Dragon de l'End","Boule de feu comprise."],["Flèches et trident",""],
+  ["Gardiens d'airain","Gardien, capitaine, gardien d'Écho, élite, mousse, modules."]]},
+ {t:"Correctifs à confirmer", n:"Versions 1.68.20 et 1.68.21.", l:[
+  ["Plancher technique poussé par un piston","Le contenu (tuyau, câble…) ne doit plus tomber en plus."],
+  ["Passerelle à portillon et borne à deux flèches poussées","Rien ne doit tomber en plus."],
+  ["Pioche de l'Écho","Quitter la partie dans les 5 s après l'écholocation, revenir : plus aucun repère lumineux."],
+  ["Rayonnage à cheval sur deux chunks","Ranger avec un entonnoir quand l'autre bout est déchargé : rien ne disparaît."],
+  ["Résonateur du Grand Relais","Avant la mort de l'Empereur, il refuse le Cœur avec un message."]]},
+ {t:"Balise de défense", n:"Tu voulais la revérifier toi-même avant qu'on y touche.", l:[
+  ["La balise se déclenche et des ennemis apparaissent",""],
+  ["Les ennemis bougent et attaquent","Une piste : ils apparaissent parfois hors de la distance de simulation du serveur et restent figés."],
+  ["L'alerte s'éteint après la vague","Une piste : elle reste allumée après un redémarrage du serveur."]]}
+];
+const CLE = "inspection-airain-1.68.22";
+let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }
+const garder = () => { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) {} };
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const id = (i, j) => "s" + i + "-" + j;
+let filtre = "all";
+
+document.getElementById("sections").innerHTML = S.map((s, i) => `
+ <details class="sec" ${i === 0 ? "open" : ""} data-s="${i}">
+  <summary><span class="vis"></span><span class="plaque">${esc(s.t)}</span><span class="etat" id="et${i}"></span></summary>
+  ${s.n ? `<p class="note-sec">${esc(s.n)}</p>` : ""}
+  ${s.l.map((l, j) => `
+  <div class="item" id="${id(i, j)}">
+   <div><h3>${esc(l[0])}</h3>${l[1] ? `<p>${esc(l[1])}</p>` : ""}</div>
+   <div class="choix" role="group" aria-label="${esc(l[0])}">
+    <button class="ok" data-v="ok" aria-pressed="false">OK</button>
+    <button class="ko" data-v="ko" aria-pressed="false">À revoir</button>
+    <button class="nv" data-v="nv" aria-pressed="false">Pas vu</button>
+   </div>
+   <textarea aria-label="Note : ${esc(l[0])}" placeholder="Ce qui ne va pas, où, comment le reproduire…"></textarea>
+  </div>`).join("")}
+ </details>`).join("");
+
+const grad = document.getElementById("grad");
+grad.innerHTML = Array.from({length: 11}, (_, k) => { const a = (-225 + k * 27) * Math.PI / 180;
+ return `<line x1="${85 + 52 * Math.cos(a)}" y1="${85 + 52 * Math.sin(a)}" x2="${85 + 60 * Math.cos(a)}" y2="${85 + 60 * Math.sin(a)}"/>`; }).join("");
+
+function maj() {
+ let total = 0, vus = 0, ko = 0;
+ S.forEach((s, i) => {
+  let v = 0, k = 0;
+  s.l.forEach((l, j) => {
+   total++; const e = etat[id(i, j)] || {}; const el = document.getElementById(id(i, j));
+   if (e.v) { vus++; v++; } if (e.v === "ko") { ko++; k++; }
+   el.classList.toggle("ko", e.v === "ko"); el.classList.toggle("note", !!e.n);
+   el.querySelectorAll(".choix button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === e.v)));
+   const ta = el.querySelector("textarea"); if (document.activeElement !== ta) ta.value = e.n || "";
+   el.classList.toggle("cache", filtre === "todo" ? !!e.v : filtre === "ko" ? e.v !== "ko" : false);
+  });
+  document.getElementById("et" + i).textContent = `${v} / ${s.l.length}` + (k ? ` · ${k} à revoir` : "");
+ });
+ document.getElementById("compte").textContent = `${vus} / ${total} vus` + (ko ? ` · ${ko} à revoir` : "");
+ const p = total ? vus / total : 0;
+ document.getElementById("pct").textContent = Math.round(p * 100) + " %";
+ document.getElementById("aiguille").style.transform = `rotate(${-135 + p * 270}deg)`;
+ const a0 = -225 * Math.PI / 180, a1 = (-225 + p * 270) * Math.PI / 180, r = 56;
+ document.getElementById("arc").setAttribute("d", p > 0.001 ? `M${85 + r * Math.cos(a0)} ${85 + r * Math.sin(a0)} A${r} ${r} 0 ${p * 270 > 180 ? 1 : 0} 1 ${85 + r * Math.cos(a1)} ${85 + r * Math.sin(a1)}` : "");
+ document.getElementById("resume").textContent = resume();
+}
+
+function resume() {
+ const ko = [], nv = [], notes = [];
+ S.forEach((s, i) => s.l.forEach((l, j) => {
+  const e = etat[id(i, j)] || {};
+  if (e.v === "ko") ko.push(`- [${s.t}] ${l[0]}${e.n ? " : " + e.n.trim() : ""}`);
+  else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
+  if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
+ }));
+ let t = "Inspection en jeu, mod 1.68.22\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
+ t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
+ return t;
+}
+
+document.getElementById("sections").addEventListener("click", ev => {
+ const b = ev.target.closest(".choix button"); if (!b) return;
+ const it = b.closest(".item"), e = etat[it.id] || (etat[it.id] = {});
+ e.v = e.v === b.dataset.v ? undefined : b.dataset.v;
+ garder(); maj();
+ if (e.v === "ko") it.querySelector("textarea").focus();
+});
+document.getElementById("sections").addEventListener("input", ev => {
+ if (ev.target.tagName !== "TEXTAREA") return;
+ const it = ev.target.closest(".item"); (etat[it.id] || (etat[it.id] = {})).n = ev.target.value; garder();
+ document.getElementById("resume").textContent = resume();
+});
+const filtres = {fAll: "all", fTodo: "todo", fKo: "ko"};
+Object.keys(filtres).forEach(k => document.getElementById(k).addEventListener("click", () => {
+ filtre = filtres[k]; Object.keys(filtres).forEach(x => document.getElementById(x).setAttribute("aria-pressed", String(x === k)));
+ if (filtre !== "all") document.querySelectorAll("details.sec").forEach(d => d.open = true);
+ maj();
+}));
+document.getElementById("ouvrir").addEventListener("click", ev => {
+ const tous = [...document.querySelectorAll("details.sec")], ouvrir = tous.some(d => !d.open);
+ tous.forEach(d => d.open = ouvrir); ev.target.textContent = ouvrir ? "Tout replier" : "Tout déplier";
+});
+document.getElementById("copier").addEventListener("click", async () => {
+ const m = document.getElementById("msg");
+ try { await navigator.clipboard.writeText(resume()); m.textContent = "Copié."; }
+ catch (e) { m.textContent = "Copie refusée : sélectionne le texte ci-dessous."; }
+ setTimeout(() => m.textContent = "", 3000);
+});
+let armer = false;
+document.getElementById("raz").addEventListener("click", ev => {
+ if (!armer) { armer = true; ev.target.textContent = "Confirmer l'effacement"; setTimeout(() => { armer = false; ev.target.textContent = "Tout effacer"; }, 4000); return; }
+ etat = {}; garder(); armer = false; ev.target.textContent = "Tout effacer"; maj();
+});
+maj();
+}
+</script>
+</body>
+</html>
