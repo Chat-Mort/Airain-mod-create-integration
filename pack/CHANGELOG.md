@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.14
+
+**Changements**
+- Demandeur de redstone de Create en carter de machine : rangée de 9 cases sertie et boulonnée, adresse sur un ticket sorti de l'étiqueteuse (comme la jauge d'usine), grille d'aération et engrenage gravé, plateau du bas centré sur ses trois boutons.
+- Choix de l'objet de la jauge d'usine : case sertie entre deux flèches d'airain, engrenages gravés, plateau centré sur le bouton.
+- Les titres de ces deux écrans passent en airain.
+
+---
+
 ## 23 novembre 2026 — version 1.68.13
 
 **Changements**

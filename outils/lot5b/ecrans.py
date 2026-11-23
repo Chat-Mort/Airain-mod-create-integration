@@ -287,3 +287,76 @@ def jauge_usine():
             if d <= 7.3: p.im.putpixel((X + dx, Y + dy), EXP['trait'] if d > 6.3 else hx('f3ead6') if d < 5 else EXP['base'])
     p.r(X, Y - 4, X, Y, EXP['trait']); p.r(X, Y, X + 3, Y, EXP['trait'])
     return p.im
+
+def _ticket(p, xa, ya, yb, x_souche, xb, graine=3):
+    """Étiquette d'adresse en ticket ancien (même dessin que la jauge d'usine) : papier vieilli, ombre, double filet autour
+    du texte (jusqu'à x_souche), souche après un pointillé, coins découpés, « No. » et numéro (souche de la jauge)."""
+    import random as _rr
+    rnd = _rr.Random(graine)
+    Xa, Ya, Xb, Yb = xa * S, ya * S, xb * S - 1, yb * S - 1
+    PAP = [hx('f3ead6'), hx('efe4cc'), hx('f6eedc')]; BORD = hx('7a6a4a'); FIL = hx('b8a27a')
+    fond = p.im.copy()
+    p.r(Xa + 3, Yb + 1, Xb + 2, Yb + 3, ARD['ombre']); p.r(Xb + 1, Ya + 3, Xb + 3, Yb + 3, ARD['ombre'])
+    for X in range(Xa + 3, 71 * S - 1):
+        for Y in range(Yb + 1, Yb + 4): c = fond.getpixel((X, Y)); p.im.putpixel((X, Y), tuple(int(v * 0.7) for v in c[:3]) + (255,))
+    fond = p.im.copy()
+    for Y in range(Ya, Yb + 1):
+        for X in range(Xa, Xb + 1): p.im.putpixel((X, Y), PAP[rnd.randint(0, 2)] if rnd.random() < 0.35 else PAP[0])
+    p.r(Xa, Ya, Xb, Ya, BORD); p.r(Xa, Yb, Xb, Yb, BORD); p.r(Xb, Ya, Xb, Yb, BORD); p.r(Xa, Yb - 1, Xb - 1, Yb - 1, hx('d8ccae'))
+    xs = x_souche * S
+    for (x0, y0, x1, y1, c) in ((66 * S, Ya + 2, xs, Yb - 2, FIL), (66 * S + 2, Ya + 4, xs - 2, Yb - 4, hx('d8c6a0'))):
+        p.r(x0, y0, x1, y0, c); p.r(x0, y1, x1, y1, c); p.r(x1, y0, x1, y1, c)
+    for Y in range(Ya + 2, Yb - 1, 3): p.r(xs + 3 * S - 3, Y, xs + 3 * S - 3, Y + 1, BORD)
+    R = 6
+    for j in range(R):
+        for i in range(R):
+            dd = (i + 0.5) ** 2 + (j + 0.5) ** 2
+            for (X, Y) in ((Xb - i, Ya + j), (Xb - i, Yb - j)):
+                if dd < R * R: p.im.putpixel((X, Y), fond.getpixel((X, Y)))
+                elif dd < (R + 1.2) ** 2: p.im.putpixel((X, Y), BORD)
+    # souche : « No. » et numéro, repris de la jauge (même position par rapport au pointillé)
+    lt = Image.open('/home/claude/travail/lot5b/liam_souche.png').convert('RGBA')
+    ox = xs + 3 * S - 3 - (181 * S) + (90 + 440); oy = Ya - 186 * S + (522 + 28)
+    for yy in range(lt.height):
+        for xx in range(lt.width):
+            c = lt.getpixel((xx, yy))
+            if c[3] and c[:3] in ((42, 42, 50), (138, 42, 34)) and ox + xx < Xb - 3: p.im.putpixel((ox + xx, oy + yy), c)
+
+def demandeur():
+    """Demandeur de redstone (requester 16,16 232x120, dessiné en x+3) et réglage d'objet de la jauge (16,160 184x88, en x-5)."""
+    p = Planche(base=original('requester').resize((768, 768), Image.NEAREST))
+    p.efface(16, 16, 232, 120); p.efface(16, 160, 184, 88)
+    # ---------- demandeur
+    p.carter(17, 16, 222, 120, graine=13)
+    p.plaque_nom(79, 18, 102)                                              # titre centré en x + 117 (planche 130)
+    X0, Y0, X1, Y1 = 35 * S, 39 * S, 221 * S - 1, 65 * S - 1                # rangée de 9 cases sertie, 4 px de marge
+    p.r(X0, Y0, X1, Y1, EXP['trait']); p.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); p.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
+    p.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, EXP['base']); p.r(X0 + 4, Y0 + 4, X1 - 4, Y1 - 4, ARD['ombre'])
+    for (X, Y) in ((X0 + 3, Y0 + 3), (X1 - 3, Y0 + 3), (X0 + 3, Y1 - 3), (X1 - 3, Y1 - 3)): p.boulon(X, Y)
+    for i in range(9): p.creux(39 + 20 * i, 43, 18, 18)
+    # étiquette d'adresse (texte en x+55 -> planche 68, y 84) sortie de l'étiqueteuse
+    p.etiqueteuse_dessus(46, 66, 77, 102, 81, 97, partie='socle', x1_socle=71)
+    _ticket(p, 56, 81, 97, 178, 198)
+    p.etiqueteuse_dessus(46, 66, 77, 102, 81, 97, partie='dessus')
+    p.grille(22, 74, 12, 30); p.engrenage(219, 89, 22, 10)
+    # plateau centré sur les boutons (111-128) : 327 à 392 texels
+    p.socle(0, 0, 0, 0, texels=(22 * S, 327, 234 * S - 1, 392))
+    # ---------- réglage d'objet de la jauge
+    p.carter(17, 160, 171, 88, graine=17)
+    p.plaque_nom(57, 162, 102)                                             # titre centré en x + 87 (planche 108)
+    p.case_riche(94, 187)
+    from PIL import Image as _I, ImageDraw as _D
+    for (xa, sens) in ((71, 1), (119, -1)):                                 # deux flèches d'airain pointées vers la case, symétriques autour de son centre (103)
+        fl = _I.new('L', (16 * S, 11 * S)); dd = _D.Draw(fl)
+        pts = [(0, 12), (27, 12), (27, 3), (47, 16), (27, 29), (27, 20), (0, 20)]
+        if sens < 0: pts = [(47 - x, y) for (x, y) in pts]
+        dd.polygon(pts, fill=255)
+        for yy in range(fl.height):
+            for xx in range(fl.width):
+                if fl.getpixel((xx, yy)):
+                    bord = any(not (0 <= xx + a < fl.width and 0 <= yy + b < fl.height) or not fl.getpixel((xx + a, yy + b)) for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                    p.im.putpixel((xa * S + xx, 190 * S + yy), EXP['trait'] if bord else EXP['clair'] if yy < 15 else EXP['mi'])
+    p.engrenage(36, 196, 20, 9); p.engrenage(168, 196, 20, 9)
+    # plateau centré sur le bouton (223-240) : 663 à 728 texels
+    p.socle(0, 0, 0, 0, texels=(22 * S, 663, 183 * S - 1, 728))
+    return p.im
