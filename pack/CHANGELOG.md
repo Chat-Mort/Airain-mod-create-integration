@@ -5,7 +5,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
-## 23 novembre 2026 — version 1.68.1
+## 23 novembre 2026 — versions 1.68.1 et 1.68.2
 
 **Changements**
 - Interface HD : les 164 derniers éléments encore en basse définition sont redessinés en 3x, au style du pack (cadre d'airain au repos, rouge au survol, gris désactivé ; métal en relief, rivets) :
@@ -16,6 +16,12 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
   - viseur affiné, indicateurs d'attaque, barre de saut ;
   - boutons verrou et croix, invitations, écrans sociaux, fenêtres surgissantes ;
   - erreurs d'enclume, de meule, de forge et de métier à tisser, établi mécanique, sacoche, cartographie, sélecteur de mode de jeu.
+- Interface HD (1.68.2) : sprites génériques redessinés :
+  - annuler et valider de la balise : croix et coche en métal ;
+  - fourneau, haut fourneau, fumoir : flèche d'airain rivetée au canal de métal en fusion, flamme de chaudière en trois couches ;
+  - alambic : tube d'airain où coule la potion, bulles en billes de verre, jauge de poudre en gouttière de braise ;
+  - ascenseurs de l'inventaire créatif, du métier à tisser et du tailleur de pierre : poignée d'airain à rainures ;
+  - les empreintes gravées dans les fonds de ces écrans prennent la forme des nouvelles jauges.
 
 ---
 
