@@ -5,6 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.18
+
+**Changements**
+- Recettes de Create dans EMI aux couleurs des recettes EMI du pack : cases d'ardoise au filet d'or (pointillées pour les sorties à chance, filet vif pour le catalyseur), flèches nettes gravées en sombre, vraie ombre sous les machines, halo ambré sous les recettes chauffées, barre de chaleur des bassins encadrée d'or, point d'interrogation en or.
+- Table de décoration de Sophisticated Storage dans le style des écrans d'inventaire du pack : cadre d'or riveté qui suit sa forme en T, ardoise, cases au filet d'or, grande case de sortie sertie, flèche d'or, vitrine sombre pour l'aperçu, engrenages gravés ; titres en airain.
+
+---
+
 ## 23 novembre 2026 — version 1.68.17
 
 **Changements**
