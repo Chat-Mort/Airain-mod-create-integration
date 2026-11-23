@@ -2198,5 +2198,6 @@
  "block.airain.cut_slate_wall": "Cut Slate Wall",
  "block.airain.herringbone_slate": "Herringbone Slate",
  "block.airain.chiseled_slate": "Chiseled Slate",
- "block.airain.slate_pillar": "Slate Pillar"
+ "block.airain.slate_pillar": "Slate Pillar",
+ "airain.borne.sceau": "Echo seal: %s spurs"
 }

@@ -102,20 +102,34 @@ public class BorneScreen extends Screen {
 			int x = getX(), y = getY();
 			piece(g, x, y, 330, !active ? 80 : isHoveredOrFocused() ? 50 : 20, 52, 30);
 			String q = "x" + Catalogue.LOTS[lot];
-			g.drawString(font, q, x + 26 - font.width(q) / 2, y + 4, active ? 0xFFFFFF : 0xA0A0A0, true);
 			int p = choix == null ? 0 : Catalogue.prix(choix, lot);
+			// 1.67.4 : l'Archive écrit le prix en un sceau de l'Écho (numération cistercienne), la quantité à gauche
+			if (!d.empire()) {
+				g.drawString(font, q, x + 8, y + 12, active ? 0xFFFFFF : 0xA0A0A0, true);
+				if (p > 0) sceau(g, x + 52 - 8 - 6, y + 10, p);
+				return;
+			}
+			g.drawString(font, q, x + 26 - font.width(q) / 2, y + 4, active ? 0xFFFFFF : 0xA0A0A0, true);
 			if (d.empire()) {
 				// une palette « pièce » puis 4 chiffres complétés de zéros (prix maximum : 8 192 éperons)
 				String t = String.format("%04d", Math.max(0, Math.min(9999, p)));
 				int px = x + 26 - 20;
 				piece(g, px, y + 15, 390, 20, 8, 10);
 				for (int k = 0; k < 4; k++) piece(g, px + 8 + k * 8, y + 15, 398 + 8 * (t.charAt(k) - '0'), 20, 8, 10);
-			} else if (p > 0) {
-				String t = String.valueOf(p);
-				int w = 8 + font.width(t), px = x + 26 - w / 2;
-				piece(g, px, y + 17, 390, 32, 7, 7);
-				g.drawString(font, t, px + 9, y + 17, 0xECE4FF, false);
 			}
+		}
+	}
+
+	/**
+	 * 1.67.4 : sceau de l'Écho, un seul signe jusqu'à 9 999 (cellule 8 x 11). La hampe, puis un trait par chiffre non nul :
+	 * unités en haut à droite, dizaines en haut à gauche, centaines en bas à droite, milliers en bas à gauche.
+	 */
+	private void sceau(GuiGraphics g, int x, int y, int somme) {
+		int n = Math.max(1, Math.min(9999, somme));
+		piece(g, x, y, 464, 44, 8, 11);
+		for (int rang = 0; rang < 4; rang++, n /= 10) {
+			int c = n % 10;
+			if (c > 0) piece(g, x, y, 392 + 8 * (c - 1), 44 + 11 * rang, 8, 11);
 		}
 	}
 
@@ -305,6 +319,10 @@ public class BorneScreen extends Screen {
 		} else g.drawString(font, Component.translatable("airain.borne.choisir"), gx, y + 162, gris, true);
 		// widgets (recherche, lots, Commander)
 		for (var w : renderables) w.render(g, mx, my, pt);
+		// 1.67.4 : au survol d'un lot de l'Archive, la valeur du sceau en clair
+		if (!e && choix != null)
+			for (int i = 0; i < 3; i++)
+				if (lots[i].isHovered() && Catalogue.prix(choix, i) > 0) info = List.of(Component.translatable("airain.borne.sceau", Catalogue.prix(choix, i)));
 		// bon de commande, à l'encre sur le papier
 		int rx = x + 186;
 		g.drawString(font, Component.translatable("airain.borne.bon", PaquetsBorne.piles(bon), PaquetsBorne.PILES), x + 188, y + (e ? 22 : 24), e ? 0x962024 : 0x7A2A6A, false);

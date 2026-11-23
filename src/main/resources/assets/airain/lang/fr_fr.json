@@ -2198,5 +2198,6 @@
  "block.airain.cut_slate_wall": "Muret d'ardoise taillée",
  "block.airain.herringbone_slate": "Ardoise en chevrons",
  "block.airain.chiseled_slate": "Ardoise ciselée",
- "block.airain.slate_pillar": "Colonne d'ardoise"
+ "block.airain.slate_pillar": "Colonne d'ardoise",
+ "airain.borne.sceau": "Sceau de l'Écho : %s éperons"
 }
