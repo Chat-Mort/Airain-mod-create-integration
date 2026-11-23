@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.21
+
+**Corrections**
+- Résonateur du Grand Relais : tant que l'Empereur est vivant, le Cœur d'Airain ne peut plus y être posé (message « Le Cœur bat encore »). Avant, on pouvait choisir la fin Écho sans avoir combattu l'Empereur, et le Cœur repris du résonateur revenait éteint.
+
+---
+
 ## 23 novembre 2026 — version 1.68.20
 
 **Corrections**
