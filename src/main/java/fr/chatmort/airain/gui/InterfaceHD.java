@@ -19,6 +19,8 @@ public final class InterfaceHD {
 	/** Marge la plus courte : le texte peut mordre sur la couronne dentée, jamais sur le trou du pignon (qui finit à 14 px). */
 	public static final int MARGE_PIGNONS_MIN = 14;
 	private static boolean actif;
+	/** Écrans de Create redessinés en carter (lot 5b) : on en ajoute un ici quand sa texture HD est livrée. */
+	private static final java.util.Set<String> ECRANS_CREATE_HD = java.util.Set.of("DisplayLinkScreen", "ThresholdSwitchScreen", "ElevatorContactScreen");
 
 	private InterfaceHD() {}
 
@@ -36,6 +38,11 @@ public final class InterfaceHD {
 	 */
 	public static boolean texteSurArdoise(int couleur) {
 		int c = couleur & 0xFFFFFF;
+		// écrans de Create passés au carter HD (lot 5b) : leur titre se pose sur une plaque sombre, il passe en airain,
+		// quelle que soit sa teinte d'origine (brun-rouge, gris, ardoise, violet)
+		var e = Minecraft.getInstance().screen;
+		if (actif && e != null && ECRANS_CREATE_HD.contains(e.getClass().getSimpleName())
+			&& (c == 0x592424 || c == 0x505050 || c == 0x3D3C48 || c == 0x2F3738 || c == 0x54214F)) return true;
 		if (!actif || (c != 0x404040 && c != 0x505050 && c != 0x592424 && c != 0x714A40)) return false;
 		var ecran = Minecraft.getInstance().screen;
 		// l'inventaire créatif a désormais son fond d'ardoise : son titre passe aussi en airain

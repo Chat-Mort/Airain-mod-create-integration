@@ -35,4 +35,12 @@ public abstract class TexteArdoiseMixin {
 		if (!ombre && InterfaceHD.texteSurArdoise(color))
 			cir.setReturnValue(drawString(font, text, x, y, InterfaceHD.AIRAIN, true));
 	}
+
+	// texte composé placé au demi-pixel (variante de NeoForge, utilisée par Create pour certains titres) : même traitement
+	// (require = 0 : si la variante n'est pas dans GuiGraphics même, l'injection est simplement ignorée)
+	@Inject(method = "drawString(Lnet/minecraft/client/gui/Font;Lnet/minecraft/util/FormattedCharSequence;FFIZ)I", at = @At("HEAD"), cancellable = true, require = 0)
+	private void airain$sequenceFlottante(Font font, FormattedCharSequence text, float x, float y, int color, boolean ombre, CallbackInfoReturnable<Integer> cir) {
+		if (!ombre && InterfaceHD.texteSurArdoise(color))
+			cir.setReturnValue(((GuiGraphics) (Object) this).drawString(font, text, x, y, InterfaceHD.AIRAIN, true));
+	}
 }
