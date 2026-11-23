@@ -5,6 +5,19 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.0
+
+**Changements**
+- Téléphérique : la nacelle fait le tour complet de la ligne, toujours sur le brin de droite dans le sens de marche (un câble à l'aller, l'autre au retour), avec un demi-tour autour de la poulie de la gare d'arrivée avant de s'arrêter. Elle attend en gare du côté du départ ; dans le demi-tour, la plateforme pivote en douceur.
+- Téléphérique : le câble défile avec la nacelle (chaque brin dans son sens) et les poulies tournent exactement à son rythme, freinages compris.
+- Téléphérique : vitesse relevée, 18 blocs/s à 256 tr/min (7 auparavant) ; démarrage et freinage adaptés à la vitesse.
+- Nacelle : le portillon disparaît quand elle attend en gare, l'ouverture est franche ; il réapparaît au départ.
+
+**Corrections**
+- Portail coulissant : un bloc posé sur ou sous un portail en reprend l'axe, le sens de glissement et l'ouverture (il pouvait glisser à contresens du reste du vantail). Sur un portail déjà posé, un coup de clé remet tout le vantail dans le même sens.
+
+---
+
 ## 23 novembre 2026 — versions 1.67.4 et 1.67.5
 
 **Changements**
