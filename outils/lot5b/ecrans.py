@@ -439,3 +439,176 @@ def grenouille_boite():
     p.socle(0, 0, 0, 0, texels=(6 * S, 312, 208 * S - 1, 371))
     _crayon(p, 230 * S, 3 * S)
     return p.im
+
+# ---------------- conversion des écrans restants (même langue : carter, plaque, cases et champs en creux, plateau du bas)
+from zones import zones as _zones
+def _cases_auto(p, feuille, rect, couleurs=('8b8b8b', 'a3a3a3'), maxi=40):
+    """Cases et champs de l'original (remplissage gris) -> creux gravés ; les cases carrées deviennent des cases serties."""
+    x, y, w, h = rect
+    for (x0, y0, x1, y1) in _zones(feuille, list(couleurs), mini=6):
+        if x0 < x or y0 < y or x1 > x + w or y1 > y + h or (x1 - x0) > 200: continue
+        X, Y, W, H = x0 - 1, y0 - 1, x1 - x0 + 2, y1 - y0 + 2
+        if abs(W - H) <= 2 and W <= maxi: p.case_riche(X, Y, W, H, ep=3)
+        else: p.champ(X, Y, W, H)
+def _garde(p, orig, rects):
+    """Petits dessins de Create à garder (icônes de touches, trains…) : pixels nets, silhouette adoucie."""
+    import sys; sys.path.insert(0, '/home/claude/travail/lot5'); import ftbq
+    for (x, y, w, h) in rects:
+        c = orig.crop((x, y, x + w, y + h)); bb = c.getbbox()
+        if not bb: continue
+        hy = ftbq.hybride(c.crop(bb)); p.im.alpha_composite(hy, ((x + bb[0]) * S, (y + bb[1]) * S))
+def _socle_bas(p, x, y, w, h):
+    """Plateau du bas, centré sur la rangée de boutons de Create (h - 24 à h - 6) et sur la hauteur libre du carter."""
+    Y0 = (y + h) * S - 75; Y1 = (y + h) * S - 16
+    p.socle(0, 0, 0, 0, texels=(x * S + 15, Y0, (x + w) * S - 16, Y1))
+
+def filtre_colis():
+    o = original('filters_2'); p = Planche(base=o.resize((768, 768), Image.NEAREST)); p.efface(0, 0, 218, 79)
+    p.carter(0, 0, 210, 79, graine=21); p.plaque_nom(54, 2, 102)                 # titre centré en x + (218 - 8) / 2
+    p.creux(6, 17, 200, 34)                                                        # bac de l'adresse
+    _cases_auto(p, 'filters_2', (0, 0, 218, 79)); _socle_bas(p, 0, 0, 210, 79)
+    return p.im
+
+def assemblage():
+    o = original('assemble'); p = Planche(base=o.resize((768, 768), Image.NEAREST)); p.efface(0, 0, 200, 178)
+    p.carter(0, 0, 192, 178, graine=23); _ticket_entete(p, 14, 2, 178, 14, graine=9)   # nom de la gare : champ à l'encre sombre
+    p.creux(6, 15, 180, 13, fond=hx('2e323b'))                                     # bandeau du nom du train
+    p.creux(6, 30, 180, 117)                                                       # vue du train
+    p.creux(22, 43, 148, 96, fond=ARD['noir'])
+    p.filet_creux(26, 166, 55)
+    p.grille(8, 34, 10, 40); p.grille(174, 34, 10, 40)
+    _socle_bas(p, 0, 0, 192, 178)
+    # bulle d'information (1,179 haut 150x18 ; 1,198 milieu 1 px étiré ; 1,200 bas 150x4 ; 152,179 pointe 8x6)
+    for r_ in ((1, 179, 150, 18), (1, 198, 150, 1), (1, 200, 150, 4), (152, 179, 8, 6)): p.efface(*r_)
+    X0, X1 = 1 * S, 151 * S - 1
+    def cotes(Y0, Y1):
+        p.r(X0, Y0, X1, Y1, hx('2a2e37')); p.r(X0, Y0, X0, Y1, EXP['trait']); p.r(X1, Y0, X1, Y1, EXP['trait'])
+        p.r(X0 + 1, Y0, X0 + 1, Y1, EXP['base']); p.r(X1 - 1, Y0, X1 - 1, Y1, EXP['mi'])
+    cotes(179 * S, 197 * S - 1); p.r(X0, 179 * S, X1, 179 * S, EXP['trait']); p.r(X0 + 1, 179 * S + 1, X1 - 1, 179 * S + 1, EXP['clair'])
+    p.filet_creux(4, 148, 192)
+    cotes(198 * S, 199 * S - 1)
+    cotes(200 * S, 204 * S - 1); p.r(X0, 204 * S - 1, X1, 204 * S - 1, EXP['trait']); p.r(X0 + 1, 204 * S - 2, X1 - 1, 204 * S - 2, EXP['mi'])
+    for k in range(6 * S):
+        w = max(0, (6 * S - k) * 8 * S // (6 * S) // 2)
+        p.r(156 * S - w, 179 * S + k, 156 * S + w, 179 * S + k, hx('2a2e37') if 0 < k < 6 * S - 1 else EXP['trait'])
+    return p.im
+
+def telecommande_plan():
+    o = original('curiosities_2'); p = Planche(base=o.resize((768, 768), Image.NEAREST)); p.efface(0, 0, 179, 109); p.efface(0, 109, 179, 109)
+    # télécommande liée (0,0 179x109) : deux rangées de touches, icône de chaque touche gardée au-dessus de ses cases
+    p.carter(0, 0, 171, 109, graine=25); p.plaque_nom(11, 2, 102)                  # titre à gauche, en x + 15
+    p.creux(6, 15, 102, 61); p.creux(110, 15, 55, 61)
+    _cases_auto(p, 'curiosities_2', (0, 0, 179, 109))
+    _garde(p, o, [(11 + 24 * k, 23, 18, 9) for k in range(4)] + [(118 + 24 * k, 23, 18, 9) for k in range(2)])
+    _socle_bas(p, 0, 0, 171, 109)
+    # plan (0,109 179x109) : grille 3x3 sertie, flèche d'airain, cases de résultat
+    p.carter(0, 109, 171, 109, graine=27); p.plaque_nom(11, 111, 102)
+    X0, Y0, X1, Y1 = 24 * S, 125 * S, 87 * S - 1, 187 * S - 1
+    p.r(X0, Y0, X1, Y1, EXP['trait']); p.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); p.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
+    p.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, EXP['base']); p.r(X0 + 4, Y0 + 4, X1 - 4, Y1 - 4, ARD['ombre'])
+    for (X, Y) in ((X0 + 3, Y0 + 3), (X1 - 3, Y0 + 3), (X0 + 3, Y1 - 3), (X1 - 3, Y1 - 3)): p.boulon(X, Y)
+    _cases_auto(p, 'curiosities_2', (0, 109, 179, 109))
+    from PIL import Image as _I, ImageDraw as _D
+    fl = _I.new('L', (16 * S, 11 * S)); _D.Draw(fl).polygon([(0, 12), (27, 12), (27, 3), (47, 16), (27, 29), (27, 20), (0, 20)], fill=255)
+    for yy in range(fl.height):
+        for xx in range(fl.width):
+            if fl.getpixel((xx, yy)):
+                bord = any(not (0 <= xx + a < fl.width and 0 <= yy + b < fl.height) or not fl.getpixel((xx + a, yy + b)) for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                p.im.putpixel((95 * S + xx, 150 * S + yy), EXP['trait'] if bord else EXP['clair'] if yy < 15 else EXP['mi'])
+    _socle_bas(p, 0, 109, 171, 109)
+    return p.im
+
+def _sertie(p, x0, y0, x1, y1):
+    X0, Y0, X1, Y1 = x0 * S, y0 * S, x1 * S - 1, y1 * S - 1
+    p.r(X0, Y0, X1, Y1, EXP['trait']); p.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); p.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
+    p.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, EXP['base']); p.r(X0 + 4, Y0 + 4, X1 - 4, Y1 - 4, ARD['ombre'])
+    for (X, Y) in ((X0 + 3, Y0 + 3), (X1 - 3, Y0 + 3), (X0 + 3, Y1 - 3), (X1 - 3, Y1 - 3)): p.boulon(X, Y)
+
+def _etiquette_claire(p, x0, y0, x1, y1, graine=1, oeillet=True):
+    """Petite étiquette de papier vieilli (catégories du gardien) : bord brun, coins gauches coupés, œillet d'airain."""
+    import random as _rr
+    rnd = _rr.Random(graine); PAP = [hx('f3ead6'), hx('efe4cc'), hx('f6eedc')]; BORD = hx('7a6a4a')
+    X0, Y0, X1, Y1 = x0 * S, y0 * S, x1 * S - 1, y1 * S - 1
+    for Y in range(Y0, Y1 + 1):
+        for X in range(X0, X1 + 1): p.im.putpixel((X, Y), PAP[rnd.randint(0, 2)] if rnd.random() < 0.35 else PAP[0])
+    p.r(X0, Y0, X1, Y0, BORD); p.r(X0, Y1, X1, Y1, BORD); p.r(X1, Y0, X1, Y1, BORD); p.r(X0, Y0, X0, Y1, BORD); p.r(X0 + 1, Y1 - 1, X1 - 1, Y1 - 1, hx('d8ccae'))
+    for k in range(4):                                                # coins gauches coupés en biseau
+        p.r(X0, Y0 + k, X0 + 3 - k, Y0 + k, (0, 0, 0, 0)); p.r(X0, Y1 - k, X0 + 3 - k, Y1 - k, (0, 0, 0, 0))
+        p.im.putpixel((X0 + 4 - k, Y0 + k), BORD); p.im.putpixel((X0 + 4 - k, Y1 - k), BORD)
+    if oeillet:
+        Y = (Y0 + Y1) // 2; X = X0 + 7
+        for dy in range(-2, 3):
+            for dx in range(-2, 3):
+                d = abs(dx) + abs(dy)
+                if d <= 3: p.im.putpixel((X + dx, Y + dy), EXP['trait'] if d == 3 or (abs(dx) == 2 and abs(dy) == 1) or (abs(dx) == 1 and abs(dy) == 2) else ARD['ombre'] if d == 0 else EXP['base'])
+
+def categories_gardien():
+    o = original('stock_keeper_categories'); p = Planche(base=o.resize((768, 768), Image.NEAREST))
+    for r in ((32, 0, 192, 18), (32, 32, 192, 20), (32, 79, 200, 33), (32, 208, 192, 38), (38, 127, 27, 18), (38, 159, 171, 18), (211, 160, 8, 17), (238, 86, 14, 20)): p.efface(*r)
+    V = _carter_vertical(32, 192, 109, 29)                             # en-tête 18 + rangées + bas 33
+    p.im.paste(V.crop((0, 0, 256 * S, 18 * S)), (0, 0))
+    p.im.paste(V.crop((0, 18 * S, 256 * S, 38 * S)), (0, 32 * S))
+    p.im.paste(V.crop((0, 76 * S, 256 * S, 109 * S)), (0, 79 * S))
+    p.im.paste(V.crop((0, 30 * S, 256 * S, 68 * S)), (0, 208 * S))
+    p.plaque_nom(77, 2, 102)                                          # titre centré sur la fenêtre (192 / 2)
+    p.socle(0, 0, 0, 0, texels=(37 * S, 261, 219 * S - 1, 320))
+    _cases_auto(p, 'stock_keeper_categories', (32, 208, 192, 38))
+    # étiquettes : nouvelle catégorie (+ rouge), entrée (✕ rouge), flèches de rang d'airain, bulle
+    _etiquette_claire(p, 39, 128, 64, 144, graine=2)
+    for k in range(-2, 3): p.r(56 * S + k, 136 * S - 7, 56 * S + k, 136 * S + 5, hx('8a2a22')) if False else None
+    p.r(57 * S - 1, 133 * S, 57 * S + 1, 139 * S - 1, hx('8a2a22')); p.r(54 * S, 136 * S - 1, 60 * S - 1, 136 * S + 1, hx('8a2a22'))
+    _etiquette_claire(p, 39, 160, 208, 176, graine=4)
+    for k in range(7):
+        p.im.putpixel((200 * S + k, 165 * S + k), hx('8a2a22')); p.im.putpixel((200 * S + 6 - k, 165 * S + k), hx('8a2a22'))
+        p.im.putpixel((200 * S + k + 1, 165 * S + k), hx('8a2a22')); p.im.putpixel((200 * S + 7 - k, 165 * S + k), hx('8a2a22'))
+    for (y, haut) in ((160, True), (169, False)):
+        X, Y = 215 * S, y * S + 4
+        for k in range(6):
+            yy = Y + (k if haut else 6 - k) - 3
+            p.r(X - k, yy, X + k, yy, EXP['trait'] if k in (0, 5) else EXP['base'] if haut else EXP['mi'])
+    X0, Y0 = 238 * S, 86 * S
+    for k in range(21):                                                # bulle : pointe de papier vers la gauche
+        p.r(X0 + 41 - k * 2, Y0 + 10 + k // 2, X0 + 41, Y0 + 10 + k // 2, hx('f3ead6')) if k < 20 else None
+    return p.im
+
+def horaire_gare():
+    o = original('schedule_2'); p = Planche(base=o.resize((768, 768), Image.NEAREST))
+    p.efface(0, 0, 256, 89); p.efface(0, 111, 200, 127); p.efface(55, 47, 32, 18)
+    # éditeur d'horaire (0,0 256x89)
+    p.carter(0, 0, 256, 89, graine=31); p.plaque_nom(77, 2, 102)
+    p.creux(36, 15, 184, 64)
+    _cases_auto(p, 'schedule_2', (0, 0, 256, 89)); p.filet_creux(56, 196, 63)
+    p.grille(8, 18, 22, 58); p.grille(226, 18, 22, 58)
+    p.creux(55, 47, 32, 18)                                            # case supplémentaire (posée par Create)
+    # gare (0,111 200x127) : même dessin que l'assemblage
+    p.carter(0, 111, 192, 127, graine=33); _ticket_entete(p, 14, 113, 178, 125, graine=10)
+    p.creux(6, 126, 180, 13, fond=hx('2e323b')); p.creux(6, 141, 180, 64); p.creux(22, 150, 148, 48, fond=ARD['noir'])
+    _socle_bas(p, 0, 111, 192, 127)
+    _cases_auto(p, 'schedule_2', (0, 205, 200, 33))
+    return p.im
+
+def curiosites():
+    o = original('curiosities'); p = Planche(base=o.resize((768, 768), Image.NEAREST))
+    p.efface(0, 0, 234, 103); p.efface(0, 131, 188, 101)
+    # façonneur (0,0 234x103) : réglages à gauche, grille du motif à droite
+    p.carter(0, 0, 226, 103, graine=35); p.plaque_nom(62, 2, 102)
+    p.creux(6, 15, 141, 48); p.creux(150, 15, 70, 48)
+    _cases_auto(p, 'curiosities', (0, 0, 234, 103), maxi=40)
+    _sertie(p, 154, 17, 216, 61)                                        # grille du motif, 3 x 2 cases
+    for j in range(2):
+        for i in range(3): p.creux(158 + 18 * i, 21 + 18 * j, 18, 18)
+    _socle_bas(p, 0, 0, 226, 103)
+    # baguette de symétrie (0,131 188x101)
+    p.carter(0, 131, 180, 101, graine=37); p.plaque_nom(43, 133, 102)
+    p.creux(6, 146, 168, 50)
+    _cases_auto(p, 'curiosities', (0, 131, 188, 101))
+    # l'icône de rotation de la 2e case, gardée de Create, sur fond d'ardoise
+    ic = o.crop((22, 177, 38, 193)); px = ic.load()
+    for yy in range(16):
+        for xx in range(16):
+            if px[xx, yy][:3] in ((0x8b, 0x8b, 0x8b), (0xa3, 0xa3, 0xa3)): px[xx, yy] = (0, 0, 0, 0)
+    import sys; sys.path.insert(0, '/home/claude/travail/lot5'); import ftbq
+    bb = ic.getbbox()
+    if bb: p.im.alpha_composite(ftbq.hybride(ic.crop(bb)), ((22 + bb[0]) * S, (177 + bb[1]) * S))
+    _socle_bas(p, 0, 131, 180, 101)
+    return p.im

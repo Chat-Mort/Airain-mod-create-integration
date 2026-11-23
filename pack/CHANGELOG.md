@@ -5,6 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.16
+
+**Changements**
+- Derniers écrans de Create en carter de machine : filtre de colis, assemblage de train et gare (nom de la gare sur un ticket clair, vue du train en creux, bulle d'information en ardoise bordée d'airain), télécommande liée (icônes des touches gardées) et plan (grille sertie, flèche d'airain), catégories du gardien de stock (étiquettes de papier à œillet, flèches d'airain), éditeur d'horaire, façonneur (grille du motif sertie) et baguette de symétrie.
+- Les titres de ces écrans passent en airain sur leur plaque.
+
+---
+
 ## 23 novembre 2026 — version 1.68.15
 
 **Changements**
