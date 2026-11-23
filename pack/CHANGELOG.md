@@ -16,6 +16,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 **Corrections**
 - Portail coulissant : un bloc posé sur ou sous un portail en reprend l'axe, le sens de glissement et l'ouverture (il pouvait glisser à contresens du reste du vantail). Sur un portail déjà posé, un coup de clé remet tout le vantail dans le même sens.
 
+- Balise de défense : entre deux vagues, la corne grave des haut-parleurs sonne dès 20 secondes avant la vague suivante (10 auparavant), toutes les 4 secondes ; les battements gardent les 10 dernières secondes.
 ---
 
 ## 23 novembre 2026 — versions 1.67.4 et 1.67.5

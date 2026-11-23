@@ -16,6 +16,7 @@ const BAL_PARTIE = 'airain:defense_beacon_part'            // les autres cases d
 const BAL_RAYONS = [48, 64, 96, 128]
 const BAL_REPIT = 30
 const BAL_COMPTE = 8               // secondes de compte à rebours avant la première vague
+const BAL_SIRENE = 20              // la corne grave des haut-parleurs sonne pendant les 20 dernières secondes du répit (toutes les 4 s)
 const BAL_LUEUR = 90               // secondes avant que les derniers ennemis ne brillent
 const BAL_ATTENTE_MAX = 600        // sans personne pendant 10 minutes : l'assaut est abandonné
 const BAL_SESSIONS = {}
@@ -287,7 +288,7 @@ ServerEvents.tick(event => {
       if (s.etat === 'compte') balCercle(server, s.level, s)
       s.attente--
       if (s.etat === 'compte') server.runCommandSilent(balIci(s) + 'playsound minecraft:block.note_block.basedrum block ' + balQui(s) + ' ~ ~ ~ 2 0.6')
-      if ((s.etat === 'compte' || s.attente <= 10) && s.attente > 0 && s.attente % 4 === 0) balSirene(server, s)
+      if ((s.etat === 'compte' || s.attente <= BAL_SIRENE) && s.attente > 0 && s.attente % 4 === 0) balSirene(server, s)
       else {
         if (s.attente % 6 === 0) balRumeur(server, s)
         if (s.attente <= 10 && s.attente > 0) server.runCommandSilent(balIci(s) + 'playsound minecraft:entity.warden.heartbeat ambient ' + balQui(s) + ' ~ ~ ~ ' + (0.6 + (10 - s.attente) * 0.08).toFixed(2) + ' 1')
