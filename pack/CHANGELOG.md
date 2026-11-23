@@ -5,6 +5,16 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.20
+
+**Corrections**
+- Plancher technique, passerelle à portillon et borne à deux flèches poussés par un piston ou une machine de Create : leur contenu (tuyau, câble…), le portillon ou la seconde flèche ne tombent plus en plus du bloc déplacé (ils étaient doublés).
+- Pioche de l'Écho : les repères lumineux de l'écholocation ne restent plus pour toujours si l'on quitte la partie (ou s'éloigne) dans les 5 secondes ; ils sont retirés au rechargement.
+- Armes : les effets en attente (second coup, zone de résonance, tourbillon, ruée) sont oubliés à l'arrêt du serveur, au lieu de viser l'ancien monde en solo.
+- Rayonnage : quand une partie du rayonnage est dans un chunk déchargé, Create ne range plus d'objets dans ces casiers absents (ils étaient perdus) ; seuls les casiers chargés comptent.
+
+---
+
 ## 23 novembre 2026 — version 1.68.19
 
 **Changements**
