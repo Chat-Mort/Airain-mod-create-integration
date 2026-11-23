@@ -21,6 +21,7 @@
   "CanonSchemasMixin",
   "OngletChoisiMixin",
   "ChapitresQuetesMixin",
-  "BoutonImageAccesseur"
+  "BoutonImageAccesseur",
+  "ReglageValeurMixin"
  ]
 }
