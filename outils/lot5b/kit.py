@@ -169,11 +169,11 @@ def _socle(self, x, y, w, h, texels=None):
     for (X, Y) in ((X0 + 5, Y0 + 6), (X1 - 5, Y0 + 6), (X0 + 5, Y1 - 5), (X1 - 5, Y1 - 5)): self.rivet(X, Y)
 Planche.socle = _socle
 
-def _lampe(self, x, y, couleur, r=8):
+def _lampe(self, x, y, couleur, r=8): self._lampe_texel(x * S, y * S, couleur, r)
+def _lampe_texel(self, X, Y, couleur, r=8):
     """Voyant : bague d'airain, verre coloré bombé, reflet en haut à gauche (centre en pixels d'interface)."""
     C = {'vert': (hx('e8ffd0'), hx('9be27a'), hx('4a9a3c'), hx('2a5e22')), 'ambre': (hx('fff4c8'), hx('ffc860'), hx('e08a10'), hx('8a4a08')),
          'rouge': (hx('ffd0c4'), hx('ff6a50'), hx('c42a22'), hx('6a1210'))}[couleur]
-    X, Y = x * S, y * S
     for dy in range(-r, r + 1):
         for dx in range(-r, r + 1):
             d = math.hypot(dx, dy)
@@ -185,29 +185,24 @@ def _lampe(self, x, y, couleur, r=8):
                 t = (dx + dy) / (2 * (r - 4))
                 c = C[0] if (abs(dx + 3) + abs(dy + 3) <= 1) else C[1] if t < -0.3 else C[2] if t < 0.4 else C[3]
             self.im.putpixel((X + dx, Y + dy), c)
-Planche.lampe = _lampe
+Planche.lampe = _lampe; Planche._lampe_texel = _lampe_texel
 
 def _tuyau(self, x, y0, y1, brides=()):
-    """Tuyau d'airain vertical (2 px d'interface), brides rivetées."""
-    X, Y0, Y1 = x * S - 2, y0 * S, y1 * S - 1
-    for k, c in enumerate([EXP['trait'], EXP['clair'], EXP['clair'], EXP['base'], EXP['base'], EXP['mi'], EXP['sombre'], EXP['trait']]):
+    """Tuyau d'airain vertical de 7 texels, centré sur le texel x*S+1 (le centre du pixel d'interface x), embouts à bride."""
+    C = x * S + 1; X = C - 3; Y0, Y1 = y0 * S, y1 * S - 1
+    for k, c in enumerate([EXP['trait'], EXP['clair'], EXP['clair'], EXP['base'], EXP['mi'], EXP['sombre'], EXP['trait']]):
         self.r(X + k, Y0, X + k, Y1, c)
-    for y in brides:
-        Y = y * S
-        self.r(X - 3, Y - 3, X + 10, Y + 3, EXP['trait']); self.r(X - 2, Y - 2, X + 9, Y + 2, EXP['base']); self.r(X - 2, Y - 2, X + 9, Y - 2, EXP['clair'])
-        self.r(X - 2, Y + 2, X + 9, Y + 2, EXP['mi'])
-    # embouts : le tuyau entre dans une bride pleine à chaque bout (il ne s'arrête plus net)
-    for Y in (Y0, Y1 - 5):
-        self.r(X - 3, Y, X + 10, Y + 5, EXP['trait']); self.r(X - 2, Y + 1, X + 9, Y + 4, EXP['base'])
-        self.r(X - 2, Y + 1, X + 9, Y + 1, EXP['clair']); self.r(X - 2, Y + 4, X + 9, Y + 4, EXP['mi']); self.rivet(X + 3, Y + 2)
+    for Y in [y * S for y in brides] + [Y0, Y1 - 5]:
+        self.r(C - 6, Y, C + 6, Y + 5, EXP['trait']); self.r(C - 5, Y + 1, C + 5, Y + 4, EXP['base'])
+        self.r(C - 5, Y + 1, C + 5, Y + 1, EXP['clair']); self.r(C - 5, Y + 4, C + 5, Y + 4, EXP['mi']); self.rivet(C, Y + 2)
 Planche.tuyau = _tuyau
 def _voyant_monte(self, x, y, couleur):
-    """Voyant monté sur le tuyau : collier carré riveté (plus large que le tuyau), le verre posé dessus."""
-    X, Y = x * S, y * S
+    """Voyant monté sur le tuyau : collier carré riveté centré sur le tuyau (texel x*S+1), le verre posé dessus."""
+    X, Y = x * S + 1, y * S + 1
     self.r(X - 11, Y - 11, X + 11, Y + 11, EXP['trait']); self.r(X - 10, Y - 10, X + 10, Y + 10, EXP['mi'])
     self.r(X - 10, Y - 10, X + 9, Y + 9, EXP['clair']); self.r(X - 9, Y - 9, X + 9, Y + 9, EXP['base'])
     for (a, b) in ((-7, -7), (7, -7), (-7, 7), (7, 7)): self.im.putpixel((X + a, Y + b), EXP['trait']); self.im.putpixel((X + a - 1, Y + b - 1), EXP['clair'])
-    self.lampe(x, y, couleur, r=7)
+    self._lampe_texel(X, Y, couleur, 7)
 Planche.voyant_monte = _voyant_monte
 
 def _chevron(self, x, y):

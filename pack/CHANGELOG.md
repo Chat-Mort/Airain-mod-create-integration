@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.10
+
+**Corrections**
+- Réglage de valeur : les index deviennent des brides qui enserrent les deux rails ; aux deux bouts de la règle, elles la ferment.
+- Lien d'affichage : tuyau de liaison et colliers des voyants centrés au texel près l'un sur l'autre.
+- Contact d'ascenseur : le plateau du bas devient un tiroir entaillé dans le cadre, pour centrer la case et le champ sur sa hauteur.
+
+---
+
 ## 23 novembre 2026 — version 1.68.9
 
 **Corrections**

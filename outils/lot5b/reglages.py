@@ -107,10 +107,14 @@ def reglages():
     ligne(X0, X1, 20, OR['trait']); ligne(X0, X1, 21, OR['base']); ligne(X0, X1, 22, OR['mi']); ligne(X0, X1, 23, OR['trait'])
     # --- repères : index d'airain (pointe vers le bas, tige) sur la piste
     def repere(x, y, w):
-        # index d'airain posé DANS la piste (entre les deux rails, qui restent intacts) : montant de 3 texels,
-        # bouton en losange sur la rainure centrale (retour de Liam : l'ancien débordait sur les rails)
+        # index d'airain : une bride qui enserre les deux rails (raccord en haut et en bas, sur toute la hauteur de la piste),
+        # montant entre les deux, bouton en losange sur la rainure. Aux deux bouts de la règle (valeur 0 et maximum),
+        # cette bride ferme la piste (retour de Liam : la règle finissait ouverte).
         Xa, Ya, Xb = x * s, y * s, (x + w) * s - 1; c = (Xa + Xb) // 2
-        p.r(c - 1, Ya + 4, c + 1, Ya + 19, OR['trait']); p.r(c, Ya + 4, c, Ya + 19, OR['base']); p.im.putpixel((c, Ya + 4), OR['hl'])
+        for (y0, y1) in ((Ya, Ya + 4), (Ya + 19, Ya + 23)):            # colliers sur les rails
+            p.r(c - 3, y0, c + 3, y1, OR['trait']); p.r(c - 2, y0 + 1, c + 2, y1 - 1, OR['base'])
+            p.r(c - 2, y0 + 1, c + 2, y0 + 1, OR['hl']); p.r(c - 2, y1 - 1, c + 2, y1 - 1, OR['mi'])
+        p.r(c - 1, Ya + 5, c + 1, Ya + 18, OR['trait']); p.r(c, Ya + 5, c, Ya + 18, OR['base'])
         for k in range(4):
             p.r(c - 3 + k, Ya + 12 - k, c + 3 - k, Ya + 12 - k, OR['trait']); p.r(c - 3 + k, Ya + 12 + k, c + 3 - k, Ya + 12 + k, OR['trait'])
         for k in range(3):

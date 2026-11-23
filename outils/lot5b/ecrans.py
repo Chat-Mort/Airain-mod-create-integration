@@ -95,7 +95,9 @@ def lien_affichage_B():
     p.plaque_nom(81, 177, 102)                                         # titre en (x + 112, y + 6)
     p.champ(41, 197, 30, 18); p.champ(74, 197, 150, 18, molette=True)
     # plateau du bas : case 231-247 et champ 230-248 -> centré sur 239, du texel 690 au 748 (bas du carter)
-    # plateau centré sur la case (693-743, centre 718) : de 688 à 748 ; cadre de la case à 3 texels, 2 texels de jeu en haut et en bas
-    p.socle(0, 0, 0, 0, texels=(25 * S, 688, 239 * S - 1, 748))
+    # plateau en tiroir, entaillé dans le cadre du bas : centré sur le champ (690-743) avec 12 texels de jeu en haut et en bas
+    # (le carter seul laissait trop peu de place sous les éléments de Create pour les centrer)
+    p.socle(0, 0, 0, 0, texels=(25 * S, 678, 239 * S - 1, 755))
+    p.r(25 * S - 1, 756, 239 * S, 756, EXP['trait'])
     p.case_riche(59, 231, 12, 16, ep=3); p.champ(74, 230, 58, 18, molette=True)
     return p.im
