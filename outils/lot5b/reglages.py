@@ -107,12 +107,15 @@ def reglages():
     ligne(X0, X1, 20, OR['trait']); ligne(X0, X1, 21, OR['base']); ligne(X0, X1, 22, OR['mi']); ligne(X0, X1, 23, OR['trait'])
     # --- repères : index d'airain (pointe vers le bas, tige) sur la piste
     def repere(x, y, w):
+        # index d'airain posé DANS la piste (entre les deux rails, qui restent intacts) : montant de 3 texels,
+        # bouton en losange sur la rainure centrale (retour de Liam : l'ancien débordait sur les rails)
         Xa, Ya, Xb = x * s, y * s, (x + w) * s - 1; c = (Xa + Xb) // 2
-        p.r(Xa, Ya, Xb, Ya + 23, (0, 0, 0, 0))
-        for k in range(6):
-            p.r(c - 5 + k, Ya + k, c + 5 - k, Ya + k, OR['trait'] if k == 0 else OR['hl'] if k == 1 else OR['base'] if k < 4 else OR['mi'])
-        p.r(c - 1, Ya + 6, c + 1, Ya + 19, OR['trait']); p.r(c, Ya + 6, c, Ya + 18, OR['base'])
-        p.r(c - 3, Ya + 19, c + 3, Ya + 23, OR['trait']); p.r(c - 2, Ya + 20, c + 2, Ya + 22, OR['mi']); p.r(c - 2, Ya + 20, c + 2, Ya + 20, OR['clair'])
+        p.r(c - 1, Ya + 4, c + 1, Ya + 19, OR['trait']); p.r(c, Ya + 4, c, Ya + 19, OR['base']); p.im.putpixel((c, Ya + 4), OR['hl'])
+        for k in range(4):
+            p.r(c - 3 + k, Ya + 12 - k, c + 3 - k, Ya + 12 - k, OR['trait']); p.r(c - 3 + k, Ya + 12 + k, c + 3 - k, Ya + 12 + k, OR['trait'])
+        for k in range(3):
+            p.r(c - 2 + k, Ya + 12 - k, c + 2 - k, Ya + 12 - k, OR['clair'] if k else OR['base']); p.r(c - 2 + k, Ya + 12 + k, c + 2 - k, Ya + 12 + k, OR['mi'] if k else OR['base'])
+        p.im.putpixel((c - 1, Ya + 11), OR['hl'])
     repere(0, 0, 7); repere(75, 14, 13)
     R = lambda x, y, w, h, c: p.r(x * s, y * s, (x + w) * s - 1, (y + h) * s - 1, c)
     R(75, 9, 1, 1, ARD['noir'])
@@ -144,10 +147,17 @@ def reglages():
     for X in (0, 21 * s):
         p.r(X, 52 * s, X + 2, 56 * s - 1, OR['trait']); p.r(X + (1 if X == 0 else 0), 52 * s + 1, X + (2 if X == 0 else 1), 56 * s - 2, OR['base'])
     # --- étiquette (0,31 161x11, rognée à droite) : plaque nominative, embout gauche riveté, filet gravé sous le texte
-    lab = [OR['hl'], OR['clair']] + [OR['base']] * 25 + [OR['mi'], OR['hl'], OR['sombre'], OR['trait']][:6]
-    lab = lab[:33]
-    for k, c in enumerate(lab): p.r(0, 31 * s + k, 161 * s - 1, 31 * s + k, c)
-    p.r(0, 31 * s, 1, 42 * s - 1, OR['trait']); p.r(2, 31 * s + 1, 2, 42 * s - 2, OR['hl'])
+    # étiquette (0,31 161x11, rognée à droite) : plaque nominative. Rangées : trait, arête claire, corps, pied ombré, trait.
+    #   L'embout gauche (les 4 px avant le texte) porte une vis et deux pans coupés.
+    rangs = [OR['trait'], OR['hl'], OR['clair']] + [OR['base']] * 25 + [OR['mid'], OR['mi'], OR['sombre'], OR['trait']][:5]
+    rangs = rangs[:31] + [OR['sombre'], OR['trait']]
+    for k, c in enumerate(rangs): p.r(0, 31 * s + k, 161 * s - 1, 31 * s + k, c)
+    Y0 = 31 * s; Y1 = 42 * s - 1
+    p.r(0, Y0, 0, Y1, OR['trait']); p.r(1, Y0 + 1, 1, Y1 - 1, OR['hl'])
+    for k in range(3):                                   # pans coupés en haut et en bas à gauche
+        p.r(0, Y0 + k, 2 - k, Y0 + k, (0, 0, 0, 0)); p.r(0, Y1 - k, 2 - k, Y1 - k, (0, 0, 0, 0))
+        p.im.putpixel((3 - k, Y0 + k), OR['trait']); p.im.putpixel((3 - k, Y1 - k), OR['trait'])
+    p.rivet_or(7, (Y0 + Y1) // 2)
     # (le texte commence 4 px après le bord : l'embout reste libre ; pas de rivet, le texte d'une ligne courte pourrait le toucher)
     # --- cadre : baguettes de 3 px, rivets réguliers sur le haut et le bas (rognés depuis la gauche : le rythme se garde)
     B = bande_or()

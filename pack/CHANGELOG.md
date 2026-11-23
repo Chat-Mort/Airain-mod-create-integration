@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.9
+
+**Corrections**
+- Réglage de valeur : les index des repères restent dans la piste (ils mordaient sur les rails) ; étiquettes à embout chanfreiné et vissé.
+- Lien d'affichage : le tuyau de liaison entre dans une bride à chaque bout ; ses voyants sont montés sur un collier riveté au lieu de chevaucher le tuyau.
+- Contact d'ascenseur : plateau du bas centré sur sa case, cadre de la case sans rivets qui chevauchaient le creux.
+
+---
+
 ## 23 novembre 2026 — version 1.68.8
 
 **Changements**

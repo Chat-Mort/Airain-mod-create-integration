@@ -84,7 +84,7 @@ def lien_affichage_B():
     for y in (25, 104): p.case_riche(36, y); p.champ(60, y, 137, 18, molette=True)
     for y in (46, 64, 84): p.filet_creux(60, 197, y)
     p.filet_creux(28, 208, 93); p.chevron(118, 93)
-    p.tuyau(13, 16, 132, brides=(21, 127)); p.lampe(13, 34, 'vert'); p.lampe(13, 113, 'ambre')
+    p.tuyau(13, 16, 132); p.voyant_monte(13, 34, 'vert'); p.voyant_monte(13, 113, 'ambre')
     p.grille(214, 22, 7, 102)
     # plateau du bas centré sur le bouton de Create (138-156) : 411 à 470 texels
     p.socle(0, 0, 0, 0, texels=(5 * S, 411, 221 * S - 1, 470))
@@ -95,6 +95,7 @@ def lien_affichage_B():
     p.plaque_nom(81, 177, 102)                                         # titre en (x + 112, y + 6)
     p.champ(41, 197, 30, 18); p.champ(74, 197, 150, 18, molette=True)
     # plateau du bas : case 231-247 et champ 230-248 -> centré sur 239, du texel 690 au 748 (bas du carter)
-    p.socle(0, 0, 0, 0, texels=(25 * S, 690, 239 * S - 1, 748))
-    p.case_riche(59, 231, 12, 16, ep=2); p.champ(74, 230, 58, 18, molette=True)
+    # plateau centré sur la case (693-743, centre 718) : de 688 à 748 ; cadre de la case à 3 texels, 2 texels de jeu en haut et en bas
+    p.socle(0, 0, 0, 0, texels=(25 * S, 688, 239 * S - 1, 748))
+    p.case_riche(59, 231, 12, 16, ep=3); p.champ(74, 230, 58, 18, molette=True)
     return p.im

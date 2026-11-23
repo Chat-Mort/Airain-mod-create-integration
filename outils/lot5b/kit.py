@@ -130,8 +130,9 @@ def _case_riche(self, x, y, w=18, h=18, ep=4):
     self.r(X0, Y0, X1, Y1, EXP['trait']); self.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); self.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
     self.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, EXP['base'])
     self.creux(x, y, w, h)
-    for (X, Y) in ((X0 + 2, Y0 + 2), (X1 - 2, Y0 + 2), (X0 + 2, Y1 - 2), (X1 - 2, Y1 - 2)):
-        self.r(X - 1, Y - 1, X + 1, Y + 1, EXP['trait']); self.im.putpixel((X, Y), EXP['clair'])
+    if ep >= 4:                                          # rivets d'angle seulement si le cadre est assez large pour eux
+        for (X, Y) in ((X0 + 2, Y0 + 2), (X1 - 2, Y0 + 2), (X0 + 2, Y1 - 2), (X1 - 2, Y1 - 2)):
+            self.r(X - 1, Y - 1, X + 1, Y + 1, EXP['trait']); self.im.putpixel((X, Y), EXP['clair'])
 Planche.case_riche = _case_riche
 
 def _champ(self, x, y, w, h, molette=False):
@@ -195,7 +196,19 @@ def _tuyau(self, x, y0, y1, brides=()):
         Y = y * S
         self.r(X - 3, Y - 3, X + 10, Y + 3, EXP['trait']); self.r(X - 2, Y - 2, X + 9, Y + 2, EXP['base']); self.r(X - 2, Y - 2, X + 9, Y - 2, EXP['clair'])
         self.r(X - 2, Y + 2, X + 9, Y + 2, EXP['mi'])
+    # embouts : le tuyau entre dans une bride pleine à chaque bout (il ne s'arrête plus net)
+    for Y in (Y0, Y1 - 5):
+        self.r(X - 3, Y, X + 10, Y + 5, EXP['trait']); self.r(X - 2, Y + 1, X + 9, Y + 4, EXP['base'])
+        self.r(X - 2, Y + 1, X + 9, Y + 1, EXP['clair']); self.r(X - 2, Y + 4, X + 9, Y + 4, EXP['mi']); self.rivet(X + 3, Y + 2)
 Planche.tuyau = _tuyau
+def _voyant_monte(self, x, y, couleur):
+    """Voyant monté sur le tuyau : collier carré riveté (plus large que le tuyau), le verre posé dessus."""
+    X, Y = x * S, y * S
+    self.r(X - 11, Y - 11, X + 11, Y + 11, EXP['trait']); self.r(X - 10, Y - 10, X + 10, Y + 10, EXP['mi'])
+    self.r(X - 10, Y - 10, X + 9, Y + 9, EXP['clair']); self.r(X - 9, Y - 9, X + 9, Y + 9, EXP['base'])
+    for (a, b) in ((-7, -7), (7, -7), (-7, 7), (7, 7)): self.im.putpixel((X + a, Y + b), EXP['trait']); self.im.putpixel((X + a - 1, Y + b - 1), EXP['clair'])
+    self.lampe(x, y, couleur, r=7)
+Planche.voyant_monte = _voyant_monte
 
 def _chevron(self, x, y):
     """Petit chevron d'airain pointé vers le bas (sens de la liaison), posé sur un filet."""
