@@ -5,6 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.67.4
+
+**Changements**
+- Barre de mana d'Ars Nouveau entièrement redessinée à la finesse du reste de l'interface : fiole d'argent graduée (quarts et huitièmes), embouts à bagues sertis d'une améthyste, reflets sur le verre. Le décor est centré sur le liquide et recouvre entièrement les voiles rouge (manque de mana) et sombre (mana réservé). Le liquide est animé : surface qui ondule, bulles qui montent.
+- Archive résonante : le prix des lots s'écrit en un sceau de l'Écho, un seul signe lumineux (numération cistercienne, jusqu'à 9 999) : unités en haut à droite, dizaines en haut à gauche, centaines en bas à droite, milliers en bas à gauche. Au survol du bouton, la valeur en éperons.
+
+---
+
 ## 22 novembre 2026 — versions 1.67.1 à 1.67.3
 
 **Corrections**
