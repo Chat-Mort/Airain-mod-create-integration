@@ -181,3 +181,109 @@ def engrenage_sequence():
     vide = p.im.crop((0, 104 * S, 165 * S, 126 * S))
     p.im.paste(vide, (0, 38 * S))
     return p.im
+
+def _carter_vertical(x, w, h, graine):
+    """Carter haut de h px, côtés sans boulon (les morceaux de Create s'empilent : recette ou réassort, puis bas)."""
+    v = Planche(256, 256)
+    v.carter(x, 0, w, h, graine=graine)
+    propre = v.im.crop((0, (h // 2) * S + 1, 256 * S, (h // 2) * S + 2))
+    # bande de côté sans boulon : on cherche une rangée sans boulon (les boulons sont tous les 60 texels, à partir de 30)
+    Yp = 45
+    propre = v.im.crop((0, Yp, 256 * S, Yp + 1))
+    for Y in range(15, h * S - 15):
+        for X in list(range(x * S, x * S + 15)) + list(range((x + w) * S - 15, (x + w) * S)):
+            v.im.putpixel((X, Y), propre.getpixel((X, 0)))
+    return v.im
+
+def jauge_usine():
+    """Jauge d'usine (Create 6) : recette (32,0 192x96) ou réassort (32,112 192x40), puis bas (32,176 200x64), empilés."""
+    p = Planche(base=original('factory_gauge').resize((768, 768), Image.NEAREST))
+    for (u, v_, w, h) in ((32, 0, 192, 96), (32, 112, 192, 40), (32, 176, 200, 64)): p.efface(u, v_, w, h)
+    V = _carter_vertical(32, 192, 160, 11)
+    p.im.paste(V.crop((0, 0, 256 * S, 96 * S)), (0, 0))                         # recette : haut + côtés
+    p.im.paste(V.crop((0, 20 * S, 256 * S, 60 * S)), (0, 112 * S))              # réassort : côtés seuls
+    p.im.paste(V.crop((0, 96 * S, 256 * S, 160 * S)), (0, 176 * S))             # bas : côtés + bas
+    for (u, v_, w, h) in ((0, 96, 256, 16), (0, 152, 256, 24), (0, 240, 256, 16), (0, 0, 32, 96), (224, 0, 32, 256)): pass
+    p.plaque_nom(78, 2, 102)                                                    # titre centré en x + 97
+    # recette : grille 3x3 sertie, flèche, sortie ; colonne des boutons de Create (x+31) laissée libre ; engrenage gravé
+    X0, Y0, X1, Y1 = 95 * S, 23 * S, 161 * S - 1, 89 * S - 1                  # 4 px de marge autour des cases (99-157, 27-85)
+    p.r(X0, Y0, X1, Y1, EXP['trait']); p.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); p.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
+    p.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, EXP['base']); p.r(X0 + 4, Y0 + 4, X1 - 4, Y1 - 4, ARD['ombre'])
+    for (X, Y) in ((X0 + 2, Y0 + 2), (X1 - 2, Y0 + 2), (X0 + 2, Y1 - 2), (X1 - 2, Y1 - 2)): p.boulon(X + (1 if X < X1 else -1), Y + (1 if Y < Y1 else -1))
+    for j in range(3):
+        for i in range(3): p.creux(99 + 20 * i, 27 + 20 * j, 18, 18)
+    for k in range(6):                                                           # flèche d'airain vers la sortie
+        Xf = 170 * S + k
+    fl = Image.new('L', (17 * S, 11 * S)); from PIL import ImageDraw as D; dd = D.Draw(fl)
+    dd.polygon([(0, 12), (27, 12), (27, 3), (48, 16), (27, 29), (27, 20), (0, 20)], fill=255)
+    for yy in range(fl.height):
+        for xx in range(fl.width):
+            if fl.getpixel((xx, yy)):
+                bord = any(not (0 <= xx + a < fl.width and 0 <= yy + b < fl.height) or not fl.getpixel((xx + a, yy + b)) for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                p.im.putpixel((168 * S + xx, 50 * S + yy), EXP['trait'] if bord else EXP['clair'] if yy < 15 else EXP['mi'])
+    p.case_riche(191, 47)
+    p.engrenage(46, 36, 24, 10); p.engrenage(48, 70, 15, 8)                    # (habillage de la première version, retenu)
+    # réassort : la case de l'objet suivi (x+87, y+11), dans un cadre riveté
+    p.case_riche(119, 123)
+    p.grille(40, 118, 14, 28); p.grille(186, 118, 14, 28)
+    # bas : étiquette d'adresse (texte en x+36, 10 de haut), ficelle gravée ; plateau centré sur les boutons (215-232)
+    from PIL import Image as I
+    et = original('stock_keeper') if False else None
+    # étiquette d'adresse qui sort du téléscripteur, dessinée comme un vrai ticket ancien (retour de Liam) : papier vieilli,
+    # double filet autour du texte, souche détachable à droite après un pointillé, coins de la souche découpés en quart de rond,
+    # petit engrenage tamponné et « No. » imprimé sur la souche. Le texte de Create va de x+36 à x+144 (sheet 68-176).
+    p.etiqueteuse_dessus(46, 66, 182, 207, 186, 202, partie='socle', x1_socle=71)   # le socle passe sous l'étiquette
+    import random as _rr
+    rnd = _rr.Random(3)
+    Xa, Ya, Xb, Yb = 56 * S, 186 * S, 198 * S - 1, 202 * S - 1
+    # ombre portée de l'étiquette sur l'ardoise et sur le socle (en bas et à droite)
+    p.r(Xa + 3, Yb + 1, Xb + 2, Yb + 3, ARD['ombre']); p.r(Xb + 1, Ya + 3, Xb + 3, Yb + 3, ARD['ombre'])
+    for X in range(Xa + 3, 71 * S - 1):
+        for Y in range(Yb + 1, Yb + 4): c = p.im.getpixel((X, Y)); p.im.putpixel((X, Y), tuple(int(v * 0.7) for v in c[:3]) + (255,))
+    PAP = [hx('f3ead6'), hx('efe4cc'), hx('f6eedc')]; BORD = hx('7a6a4a'); FIL = hx('b8a27a')
+    fond = p.im.copy()                                                             # l'ardoise derrière (pour les coins découpés)
+    for Y in range(Ya, Yb + 1):
+        for X in range(Xa, Xb + 1):
+            p.im.putpixel((X, Y), PAP[rnd.randint(0, 2)] if rnd.random() < 0.35 else PAP[0])
+    p.r(Xa, Ya, Xb, Ya, BORD); p.r(Xa, Yb, Xb, Yb, BORD); p.r(Xb, Ya, Xb, Yb, BORD)
+    p.r(Xa, Yb - 1, Xb - 1, Yb - 1, hx('d8ccae'))
+    # double filet autour de la zone de texte (66-177 x 187-201)
+    for (x0, y0, x1, y1, c) in ((66 * S, Ya + 2, 178 * S, Yb - 2, FIL), (66 * S + 2, Ya + 4, 178 * S - 2, Yb - 4, hx('d8c6a0'))):
+        p.r(x0, y0, x1, y0, c); p.r(x0, y1, x1, y1, c); p.r(x1, y0, x1, y1, c)
+    # pointillé de la souche
+    for Y in range(Ya + 2, Yb - 1, 3): p.r(181 * S, Y, 181 * S, Y + 1, BORD)
+    # coins de la souche découpés en quart de rond
+    R = 6
+    for j in range(R):
+        for i in range(R):
+            if (i + 0.5) ** 2 + (j + 0.5) ** 2 < R * R:
+                for (X, Y) in ((Xb - i, Ya + j), (Xb - i, Yb - j)): p.im.putpixel((X, Y), fond.getpixel((X, Y)))
+            elif (i + 0.5) ** 2 + (j + 0.5) ** 2 < (R + 1.2) ** 2:
+                for (X, Y) in ((Xb - i, Ya + j), (Xb - i, Yb - j)): p.im.putpixel((X, Y), BORD)
+    # souche : « No. » imprimé en rouge, un numéro de ticket dessous (retour de Liam : plus d'engrenage)
+    from PIL import ImageFont as _F, ImageDraw as _Dd
+    def imprime(t, x, y, taille, c):
+        tx = Image.new('L', (60, 16)); _Dd.Draw(tx).text((0, -1), t, font=_F.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', taille), fill=255)
+        tx = tx.point(lambda v: 255 if v > 110 else 0)
+        for yy in range(tx.height):
+            for xx in range(tx.width):
+                if tx.getpixel((xx, yy)) and x + xx < Xb - 3: p.im.putpixel((x + xx, y + yy), c)
+    # « No. » et numéro : redessinés au pixel par Liam (repris de sa retouche, texel pour texel)
+    lt = Image.open('/home/claude/travail/lot5b/liam_souche.png').convert('RGBA')
+    for yy in range(lt.height):
+        for xx in range(lt.width):
+            c = lt.getpixel((xx, yy))
+            if c[3]: p.im.putpixel((90 + 440 + xx, 522 + 28 + yy), c)
+    # téléscripteur compact, refait : entre le cadre (x 37) et le début du texte (x 68), du haut du morceau (176) au plateau (213)
+    # étiqueteuse (refaite de zéro, dans l'esprit des machines de Create), entre le cadre (x 37) et le texte (x 68)
+    p.etiqueteuse_dessus(46, 66, 182, 207, 186, 202, partie='dessus')        # vue du dessus, comme l'étiquette posée à plat
+    p.socle(0, 0, 0, 0, texels=(37 * S, 639, 219 * S - 1, 704))
+    p.case_riche(99, 215); p.champ(127, 216, 30, 16, molette=True)     # (la case de la grenouille, à gauche, est posée par Create quand il y en a une)
+    # petite horloge gravée devant le délai de promesse
+    X, Y = 92 * S, 224 * S                                                     # (à la place de celle de Create, devant la case)
+    for dy in range(-7, 8):
+        for dx in range(-7, 8):
+            d = (dx * dx + dy * dy) ** 0.5
+            if d <= 7.3: p.im.putpixel((X + dx, Y + dy), EXP['trait'] if d > 6.3 else hx('f3ead6') if d < 5 else EXP['base'])
+    p.r(X, Y - 4, X, Y, EXP['trait']); p.r(X, Y, X + 3, Y, EXP['trait'])
+    return p.im

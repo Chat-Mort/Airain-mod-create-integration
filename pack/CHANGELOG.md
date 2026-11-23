@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.13
+
+**Changements**
+- Jauge d'usine de Create en carter de machine (modes recette et réassort) : titre sur plaque nominative, grille 3 x 3 sertie et boulonnée, flèche d'airain vers la sortie sertie, engrenages gravés, grilles d'aération en réassort, plateau du bas centré sur les boutons.
+- L'adresse de livraison sort d'une étiqueteuse vue du dessus : bobine de papier couchée, rouleau encreur, rouleau presseur, engrenage d'entraînement, socle d'airain qui passe sous l'étiquette. L'étiquette est un ticket ancien en papier vieilli : double filet, souche détachable après un pointillé, « No. » et numéro imprimés, coins découpés, ombre portée.
+- Le titre de la jauge passe en airain.
+
+---
+
 ## 23 novembre 2026 — version 1.68.12
 
 **Changements**
