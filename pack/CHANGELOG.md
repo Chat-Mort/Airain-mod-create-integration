@@ -5,6 +5,17 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.5
+
+**Changements**
+- Émail des tableaux et des étiquettes de rayonnage : glaçure presque blanche et sans motif. L'ancien reflet en coin se répétait à chaque bloc et quadrillait les grands tableaux ; l'émail mat garde juste un grain fin.
+- Verre d'airain (verrières, puits de lumière) plus clair, à peine ambré, reflets en biseau qui se raccordent d'un bloc à l'autre.
+- Verre d'écho aux couleurs de l'Écho : éclats d'améthyste et d'argent à la place des reflets cyan, pourtour en pierre pâle argentée veinée d'améthyste.
+- Lignes au sol (blanche, jaune, rouge) : l'objet devient un rouleau de ruban de marquage.
+- Renforts de rayonnage : ferrure d'airain neuf à pans coupés ; le niveau se lit au nombre de cabochons d'émail (or, or, bleu, rouge), centrés au pixel près.
+
+---
+
 ## 23 novembre 2026 — version 1.68.4
 
 **Changements**
