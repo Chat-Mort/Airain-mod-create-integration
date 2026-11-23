@@ -23,7 +23,18 @@ public final class InterfaceHD {
 	private static final java.util.Set<String> ECRANS_CREATE_HD = java.util.Set.of("DisplayLinkScreen", "ThresholdSwitchScreen", "ElevatorContactScreen", "SequencedGearshiftScreen", "FactoryPanelScreen", "RedstoneRequesterScreen", "FactoryPanelSetItemScreen",
 		"PackageFilterScreen", "LinkedControllerScreen", "ScheduleScreen", "StockKeeperCategoryScreen", "SymmetryWandScreen", "WorldshaperScreen");
 
+	// écrans de Numismatics passés au carter HD : leur titre (blanc, avec ombre) se pose sur la même plaque sombre
+	private static final java.util.Set<String> ECRANS_NUMISMATICS_HD = java.util.Set.of("AndesiteDepositorScreen", "BrassDepositorScreen", "BankScreen",
+		"SubAccountListScreen", "TrustListScreen", "SalepointConfigScreen", "SalepointPurchaseScreen", "VendorScreen");
+
 	private InterfaceHD() {}
+
+	// titre blanc d'un écran de Numismatics (écrit 3 px sous le haut de la fenêtre) : passe en airain comme ceux de Create
+	public static boolean titreNumismatics(int couleur, int y) {
+		var e = Minecraft.getInstance().screen;
+		return actif && (couleur & 0xFFFFFF) == 0xFFFFFF && e instanceof AbstractContainerScreen<?> c
+			&& ECRANS_NUMISMATICS_HD.contains(e.getClass().getSimpleName()) && y == c.getGuiTop() + 3;
+	}
 
 	public static boolean actif() { return actif; }
 

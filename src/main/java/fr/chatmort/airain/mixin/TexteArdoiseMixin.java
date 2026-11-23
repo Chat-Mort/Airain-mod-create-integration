@@ -27,12 +27,18 @@ public abstract class TexteArdoiseMixin {
 	private void airain$chaine(Font font, @Nullable String text, int x, int y, int color, boolean ombre, CallbackInfoReturnable<Integer> cir) {
 		if (!ombre && InterfaceHD.texteSurArdoise(color))
 			cir.setReturnValue(drawString(font, text, x, y, InterfaceHD.AIRAIN, true));
+		// titre blanc des écrans de Numismatics en carter : redessiné en airain, ombre gardée
+		else if (ombre && InterfaceHD.titreNumismatics(color, y))
+			cir.setReturnValue(drawString(font, text, x, y, InterfaceHD.AIRAIN, true));
 	}
 
 	// texte composé (Component, passe par FormattedCharSequence) : même traitement
 	@Inject(method = "drawString(Lnet/minecraft/client/gui/Font;Lnet/minecraft/util/FormattedCharSequence;IIIZ)I", at = @At("HEAD"), cancellable = true)
 	private void airain$sequence(Font font, FormattedCharSequence text, int x, int y, int color, boolean ombre, CallbackInfoReturnable<Integer> cir) {
 		if (!ombre && InterfaceHD.texteSurArdoise(color))
+			cir.setReturnValue(drawString(font, text, x, y, InterfaceHD.AIRAIN, true));
+		// titre blanc des écrans de Numismatics en carter : redessiné en airain, ombre gardée
+		else if (ombre && InterfaceHD.titreNumismatics(color, y))
 			cir.setReturnValue(drawString(font, text, x, y, InterfaceHD.AIRAIN, true));
 	}
 
