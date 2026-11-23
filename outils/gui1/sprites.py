@@ -393,14 +393,14 @@ def conteneurs():
     bs = plaque(18, 20, ROUGE, ARD['noir'], ep=2, coin=1); centre(bs, metal(m_croix(28, 5), ROUGE_VIF)); r['container/bundle/blocked_slot'] = bs
     # cartographie : feuilles de carte
     def feuille(w, h):
-        im = toile(w, h); p = plaque(w, h, OR, hx('e8dcb8'), ep=3, coin=2); d = ImageDraw.Draw(p)
+        im = toile(w, h); p = plaque(w, h, PATINE, hx('e8dcb8'), ep=3, coin=2); d = ImageDraw.Draw(p)
         for k in range(12, p.width - 9, 12): d.line([(k, 6), (k, p.height - 7)], fill=hx('d4c69e'))
         for k in range(12, p.height - 9, 12): d.line([(6, k), (p.width - 7, k)], fill=hx('d4c69e'))
         return p
     r['container/cartography_table/map'] = feuille(66, 66)
     sm = feuille(66, 66); ImageDraw.Draw(sm).rectangle([66, 66, 131, 131], outline=ROUGE['mi'], width=3); r['container/cartography_table/scaled_map'] = sm
     dm = toile(50, 66); colle(dm, feuille(44, 58), 18, 0); colle(dm, feuille(44, 58), 0, 24); r['container/cartography_table/duplicated_map'] = dm
-    r['container/cartography_table/locked'] = centre(toile(10, 14), metal(m_cadenas(24, 34, False), OR))
+    r['container/cartography_table/locked'] = centre(toile(10, 14), metal(m_cadenas(24, 34, False), PATINE))
     # sélecteur de mode de jeu
     r['gamemode_switcher/slot'] = plaque(26, 26, OR, ARD['fond'], ep=3, coin=2)
     sel = toile(26, 26); W = sel.width; m = masque(W, W); rect(m, 0, 0, W, W); rect(m, 5, 5, W - 5, W - 5, 0); colle(sel, metal(m, ROUGE)); r['gamemode_switcher/selection'] = sel

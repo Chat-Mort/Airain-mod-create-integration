@@ -5,6 +5,19 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.3
+
+**Changements**
+- Interface HD d'Ars Nouveau au style réfractaire (pierre pâle argentée, pierre d'écho violet nuit, cristaux ; rien d'airain ni de mécanique) : 181 textures, dont 150 qui étaient encore en basse définition.
+  - Marque-pages du livre de sorts : ruban de pierre pâle à queue d'aronde, cœur violet nuit, cristal au bout (cyan quand il est choisi) ; ceux du bord gauche étaient découpés du mauvais côté, ils suivent maintenant la place que leur donne le jeu. Icônes d'origine agrandies proprement (documentation, Discord, familier, style de sort, vieux livre), les autres redessinées.
+  - Onglets de sort et du terminal de rangement en fanions de pierre pâle ; cases de glyphe en alvéoles creusées, cristaux aux coins ; glyphe choisi encadré d'équerres de cristal.
+  - Bandes de texte en vélin lavande aux bouts frangés, deux filets gravés, un cristal épinglé à chaque bout.
+  - Documentation, icônes de réglages, de tri et d'écoles, pastilles de couleur, curseurs de son : dessins d'origine agrandis, encres beiges passées en violet.
+  - Terminal de rangement agrandi dessiné comme le terminal HD ; bille de défilement en perle d'améthyste.
+- Fourneaux et alambic (jauges de la 1.68.2) en airain exposé, comme le reste de ces écrans ; ascenseurs du métier à tisser et du tailleur de pierre, cartes et cadenas de la cartographie en airain patiné, comme les outils d'atelier.
+
+---
+
 ## 23 novembre 2026 — versions 1.68.1 et 1.68.2
 
 **Changements**

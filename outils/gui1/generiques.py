@@ -13,12 +13,12 @@ def fleche_chauffe():
     """Flèche du fourneau (24 x 16) : une flèche d'airain dont le canal rougeoie de métal en fusion (dessinée en progression)."""
     W, H = 72, 48
     m = masque(W, H); rect(m, 3, 15, 46, 33); poly(m, [(44, 3), (69, 24), (44, 45)])
-    im = metal(m, OR)
+    im = metal(m, EXPOSE)
     canal = masque(W, H); rect(canal, 8, 20, 48, 28); poly(canal, [(47, 13), (60, 24), (47, 35)])
     c = metal(canal, ORANGE, contour=False); im.alpha_composite(c)
     # éclats de chaleur dans le canal
     for x in range(12, 46, 9): im.putpixel((x, 22), ORANGE['clair']); im.putpixel((x + 1, 22), ORANGE['clair'])
-    for (x, y) in ((8, 17), (38, 17), (8, 30), (38, 30)): rivet(im, x, y, OR)
+    for (x, y) in ((8, 17), (38, 17), (8, 30), (38, 30)): rivet(im, x, y, EXPOSE)
     return im
 
 def flamme():
@@ -45,10 +45,10 @@ def fleche_alambic():
     """Flèche de l'alambic (9 x 28) : un tube d'airain vers le bas, avec la potion qui y coule."""
     W, H = 27, 84
     m = masque(W, H); rect(m, 7, 0, 20, 66); poly(m, [(1, 62), (25, 62), (13, 83)])
-    im = metal(m, OR, facettes=lambda x, y: 1 if x < 13 else -1)
+    im = metal(m, EXPOSE, facettes=lambda x, y: 1 if x < 13 else -1)
     canal = masque(W, H); rect(canal, 11, 4, 16, 66); poly(canal, [(8, 66), (18, 66), (13, 76)])
     im.alpha_composite(biseau(canal, FIOLE, contour=False))
-    for y in (14, 30, 46): rivet(im, 8, y, OR)
+    for y in (14, 30, 46): rivet(im, 8, y, EXPOSE)
     return im
 
 def bulles():
@@ -65,14 +65,14 @@ def bulles():
 def jauge_poudre():
     """Jauge de poudre de blaze (18 x 4) : de la braise dans une gouttière d'airain."""
     W, H = 54, 12
-    m = masque(W, H); rect(m, 0, 0, W, H); im = metal(m, OR, contour=False)
+    m = masque(W, H); rect(m, 0, 0, W, H); im = metal(m, EXPOSE, contour=False)
     c = masque(W, H); rect(c, 2, 3, W - 2, H - 3); im.alpha_composite(metal(c, ORANGE, contour=False))
     for x in range(4, W - 3, 6): im.putpixel((x, 4), JAUNE['clair'])
     return im
 
-def poignee(etat):
+def poignee(etat, famille=None):
     """Poignée d'ascenseur (12 x 15) : plaque d'airain à rainures de prise, rivets ; grise quand rien ne défile."""
-    pal = GRIS if etat == 'off' else OR
+    pal = GRIS if etat == 'off' else (famille or OR)
     W, H = 36, 45
     m = masque(W, H); ImageDraw.Draw(m).rounded_rectangle([1, 1, W - 2, H - 2], radius=4, fill=255)
     im = metal(m, pal)
@@ -88,7 +88,8 @@ def tout():
     for f in ('furnace', 'blast_furnace', 'smoker'):
         r[f'container/{f}/burn_progress'] = fleche_chauffe(); r[f'container/{f}/lit_progress'] = flamme()
     for f in ('creative_inventory', 'loom', 'stonecutter'):
-        r[f'container/{f}/scroller'] = poignee(''); r[f'container/{f}/scroller_disabled'] = poignee('off')
+        fam = OR if f == 'creative_inventory' else PATINE      # le métier et le tailleur sont des outils d'atelier
+        r[f'container/{f}/scroller'] = poignee('', fam); r[f'container/{f}/scroller_disabled'] = poignee('off')
     return r
 
 # ---------------- empreintes en creux dans les fonds de conteneur (là où la jauge se remplit)
