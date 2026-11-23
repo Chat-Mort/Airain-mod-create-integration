@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.22
+
+**Changements**
+- Briques réfractaires (objet, bloc et haut fourneau) passées de l'anthracite au brun magnésie : l'anthracite se confondait avec l'ardoise. L'airain, l'émail et le feu ne changent pas.
+
+---
+
 ## 23 novembre 2026 — version 1.68.21
 
 **Corrections**

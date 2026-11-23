@@ -3,7 +3,8 @@
 import colorsys
 from PIL import Image
 import objets
-B = '/home/claude/airain-mod-create-integration/src/main/resources/assets/airain/textures/block/'
+B = '/home/claude/travail/lot7/origine/'                                  # textures rouges d'origine (avant 1.68.19)
+SORTIE = '/home/claude/airain-mod-create-integration/src/main/resources/assets/airain/textures/block/'
 FOUR = ['fire_bricks', 'fire_bricks_corner', 'blast_furnace_airain', 'blast_furnace_emblem', 'blast_furnace_hopper_side', 'blast_furnace_hopper_side_corner',
         'blast_furnace_hopper_top', 'blast_furnace_hopper_top_lit', 'blast_furnace_plinth', 'blast_furnace_plinth_corner', 'blast_furnace_taphole',
         'blast_furnace_taphole_lit', 'blast_furnace_top_sooty', 'blast_furnace_tuyere']

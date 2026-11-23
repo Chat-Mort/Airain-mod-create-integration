@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
 def brique_classique():
     """Brique de la deuxième maquette (jugée « bien mieux ») : silhouette d'origine, teintes de terre cuite, deux grains, un pore."""
-    T = '/home/claude/airain-mod-create-integration/src/main/resources/assets/airain/textures/item/fire_brick.png'
+    T = '/home/claude/travail/lot7/origine/fire_brick_item.png'          # la brique crème d'origine
     o = Image.open(T).convert('RGBA'); im = o.copy()
     t = {'eedebc': 'bc6a50', 'dcc6a0': '9a4b39', 'c4aa84': '7a3a2e', 'a88c6c': '652c26', '76604c': '4a1f1c', '46362c': '1c0b0c'}
     for y in range(16):
