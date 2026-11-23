@@ -5,6 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.15
+
+**Changements**
+- Grenouille-port et boîte aux lettres de Create en carter de machine : le nom du port s'écrit sur une étiquette d'adresse en ticket épinglée dans l'en-tête, crayon de renommage redessiné, drapeau rouge émaillé sur la boîte aux lettres, grille de 2 x 9 cases sertie, engrenages gravés, plateau du bas centré sur les boutons.
+- Jauge d'usine : l'adresse s'écrit à l'encre sombre sur son ticket (elle restait gris très clair).
+
+---
+
 ## 23 novembre 2026 — version 1.68.14
 
 **Changements**

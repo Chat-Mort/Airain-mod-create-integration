@@ -360,3 +360,82 @@ def demandeur():
     # plateau centré sur le bouton (223-240) : 663 à 728 texels
     p.socle(0, 0, 0, 0, texels=(22 * S, 663, 183 * S - 1, 728))
     return p.im
+
+def _ticket_entete(p, xa, ya, xb, yb, graine=7):
+    """Étiquette d'adresse dans l'en-tête (le nom du port y est écrit, centré) : ticket en papier vieilli, double filet,
+    coins découpés aux deux bouts, deux épingles d'airain. Coordonnées en px d'interface."""
+    import random as _rr
+    rnd = _rr.Random(graine)
+    Xa, Ya, Xb, Yb = xa * S, ya * S, xb * S - 1, yb * S - 1
+    PAP = [hx('f3ead6'), hx('efe4cc'), hx('f6eedc')]; BORD = hx('7a6a4a'); FIL = hx('b8a27a')
+    fond = p.im.copy()
+    for Y in range(Ya, Yb + 1):
+        for X in range(Xa, Xb + 1): p.im.putpixel((X, Y), PAP[rnd.randint(0, 2)] if rnd.random() < 0.35 else PAP[0])
+    p.r(Xa, Ya, Xb, Ya, BORD); p.r(Xa, Yb, Xb, Yb, BORD); p.r(Xa, Ya, Xa, Yb, BORD); p.r(Xb, Ya, Xb, Yb, BORD)
+    p.r(Xa + 1, Yb - 1, Xb - 1, Yb - 1, hx('d8ccae'))
+    for (d, c) in ((2, FIL), (4, hx('d8c6a0'))):
+        p.r(Xa + d + 6, Ya + d, Xb - d - 6, Ya + d, c); p.r(Xa + d + 6, Yb - d, Xb - d - 6, Yb - d, c)
+        p.r(Xa + d + 6, Ya + d, Xa + d + 6, Yb - d, c); p.r(Xb - d - 6, Ya + d, Xb - d - 6, Yb - d, c)
+    R = 5
+    for j in range(R):
+        for i in range(R):
+            dd = (i + 0.5) ** 2 + (j + 0.5) ** 2
+            for (X, Y) in ((Xa + i, Ya + j), (Xa + i, Yb - j), (Xb - i, Ya + j), (Xb - i, Yb - j)):
+                if dd < R * R: p.im.putpixel((X, Y), fond.getpixel((X, Y)))
+                elif dd < (R + 1.2) ** 2: p.im.putpixel((X, Y), BORD)
+    for X in (Xa + 5, Xb - 5):                                               # épingles d'airain
+        Y = (Ya + Yb) // 2
+        p.r(X - 1, Y - 1, X + 1, Y + 1, EXP['trait']); p.im.putpixel((X, Y), EXP['clair']); p.im.putpixel((X - 1, Y - 1), EXP['base'])
+
+def _crayon(p, X, Y):
+    """Icône « renommer » (13 x 13 px) : crayon en biais, mine graphite, corps à l'encre du texte, virole d'airain, gomme rouge."""
+    from PIL import Image as _I, ImageDraw as _D
+    K = 8; m = _I.new('RGBA', (39 * K, 39 * K)); d = _D.Draw(m)
+    def seg(a, b, w, c): d.line([(a[0] * K, a[1] * K), (b[0] * K, b[1] * K)], fill=c, width=int(w * K))
+    seg((7, 32), (11, 28), 7, hx('f3ead6'))                       # bois taillé
+    seg((5, 34), (7, 32), 4, hx('2a2a32'))                        # mine
+    seg((11, 28), (27, 12), 8, hx('3d3c48'))                      # corps
+    seg((12, 25), (26, 11), 2, hx('5a5a6a'))                      # reflet du corps
+    seg((27, 12), (30, 9), 8, EXP['base'])                        # virole
+    seg((30, 9), (34, 5), 8, hx('c04343'))                        # gomme
+    im = m.resize((39, 39), _I.BOX)
+    px = im.load()
+    for y in range(39):
+        for x in range(39):
+            if px[x, y][3] >= 128: p.im.putpixel((X + x, Y + y), px[x, y][:3] + (255,))
+
+def grenouille_boite():
+    """Grenouille-port et boîte aux lettres : en-têtes (0,0 214x17 et 0,23 214x24) posés au-dessus du fond commun (0,47 220x82)."""
+    p = Planche(base=original('frogport_and_mailbox').resize((768, 768), Image.NEAREST))
+    p.efface(0, 0, 214, 47); p.efface(0, 47, 220, 82); p.efface(230, 3, 13, 13)
+    # en-tête de la grenouille + fond : un carter continu, côtés sans boulon
+    V = _carter_vertical(1, 212, 99, 19)
+    p.im.paste(V.crop((0, 0, 256 * S, 17 * S)), (0, 0))
+    p.im.paste(V.crop((0, 17 * S, 256 * S, 99 * S)), (0, 47 * S))
+    # en-tête de la boîte aux lettres : même carter, commencé 9 px plus bas (le drapeau dépasse au-dessus)
+    W2 = Planche(256, 256); W2.carter(1, 9, 212, 15 + 82, graine=19)
+    Yp = 45
+    propre = W2.im.crop((0, Yp, 256 * S, Yp + 1))
+    for Y in range(9 * S + 15, 24 * S):
+        for X in list(range(3, 3 + 15)) + list(range(213 * S - 15, 213 * S)): W2.im.putpixel((X, Y), propre.getpixel((X, 0)))
+    p.im.paste(W2.im.crop((0, 0, 256 * S, 24 * S)), (0, 23 * S))
+    # étiquettes d'adresse (texte centré en x + 110, 11 px au-dessus du fond ; crayon 14 px au-dessus)
+    _ticket_entete(p, 14, 4, 207, 17, graine=7)
+    _ticket_entete(p, 14, 23 + 11, 207, 23 + 24, graine=8)
+    # drapeau de la boîte aux lettres : tige d'airain, drapeau rouge émaillé, dressé au-dessus de l'en-tête à droite
+    X0 = 199 * S
+    p.r(X0, 23 * S, X0 + 3, 33 * S, EXP['trait']); p.r(X0 + 1, 23 * S + 1, X0 + 2, 33 * S, EXP['base'])
+    for k in range(13):
+        p.r(X0 + 4, 23 * S + 1 + k, X0 + 4 + 22 - k, 23 * S + 1 + k, hx('c04343') if k else hx('520019'))
+    p.r(X0 + 4, 23 * S + 1, X0 + 26, 23 * S + 2, hx('e06060')); p.r(X0 + 4, 23 * S + 12, X0 + 14, 23 * S + 13, hx('8a0018'))
+    # fond : grille de 2 x 9 cases sertie, engrenages gravés de chaque côté, plateau du bas centré sur les boutons
+    X0, Y0, X1, Y1 = 22 * S, 51 * S, 192 * S - 1, 95 * S - 1
+    p.r(X0, Y0, X1, Y1, EXP['trait']); p.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); p.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
+    p.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, EXP['base']); p.r(X0 + 4, Y0 + 4, X1 - 4, Y1 - 4, ARD['ombre'])
+    for (X, Y) in ((X0 + 3, Y0 + 3), (X1 - 3, Y0 + 3), (X0 + 3, Y1 - 3), (X1 - 3, Y1 - 3)): p.boulon(X, Y)
+    for j in range(2):
+        for i in range(9): p.creux(26 + 18 * i, 55 + 18 * j, 18, 18)
+    p.engrenage(13, 64, 18, 9); p.engrenage(13, 84, 12, 7); p.engrenage(202, 64, 18, 9); p.engrenage(202, 84, 12, 7)
+    p.socle(0, 0, 0, 0, texels=(6 * S, 312, 208 * S - 1, 371))
+    _crayon(p, 230 * S, 3 * S)
+    return p.im
