@@ -151,17 +151,31 @@ def reglages():
     for X in (0, 21 * s):
         p.r(X, 52 * s, X + 2, 56 * s - 1, OR['trait']); p.r(X + (1 if X == 0 else 0), 52 * s + 1, X + (2 if X == 0 else 1), 56 * s - 2, OR['base'])
     # --- étiquette (0,31 161x11, rognée à droite) : plaque nominative, embout gauche riveté, filet gravé sous le texte
-    # étiquette (0,31 161x11, rognée à droite) : plaque nominative. Rangées : trait, arête claire, corps, pied ombré, trait.
-    #   L'embout gauche (les 4 px avant le texte) porte une vis et deux pans coupés.
-    rangs = [OR['trait'], OR['hl'], OR['clair']] + [OR['base']] * 25 + [OR['mid'], OR['mi'], OR['sombre'], OR['trait']][:5]
-    rangs = rangs[:31] + [OR['sombre'], OR['trait']]
-    for k, c in enumerate(rangs): p.r(0, 31 * s + k, 161 * s - 1, 31 * s + k, c)
+    # étiquette (0,31 161x11, rognée à droite) : plaque nominative aux bouts arrondis. Rangées : trait, arête claire, corps,
+    #   pied ombré, trait. L'embout gauche (les 4 px avant le texte) porte une vis ; l'embout droit arrondi (162,31 3x11)
+    #   est posé par le mod sur le bout de la plaque rognée (ReglageValeurMixin).
+    rangs = [OR['trait'], OR['hl'], OR['clair']] + [OR['base']] * 26 + [OR['mid'], OR['mi'], OR['sombre'], OR['trait']]   # 33 texels = 11 px
+    def plaque_rangs(X0, X1):
+        for k, c in enumerate(rangs): p.r(X0, 31 * s + k, X1, 31 * s + k, c)
+    plaque_rangs(0, 161 * s - 1)
     Y0 = 31 * s; Y1 = 42 * s - 1
-    p.r(0, Y0, 0, Y1, OR['trait']); p.r(1, Y0 + 1, 1, Y1 - 1, OR['hl'])
-    for k in range(3):                                   # pans coupés en haut et en bas à gauche
-        p.r(0, Y0 + k, 2 - k, Y0 + k, (0, 0, 0, 0)); p.r(0, Y1 - k, 2 - k, Y1 - k, (0, 0, 0, 0))
-        p.im.putpixel((3 - k, Y0 + k), OR['trait']); p.im.putpixel((3 - k, Y1 - k), OR['trait'])
-    p.rivet_or(7, (Y0 + Y1) // 2)
+    def arrondi(X, droite):
+        # quart de cercle de 5 texels aux deux coins de l'embout ; bord : trait, puis arête (claire à gauche, sombre à droite)
+        R = 5
+        for j in range(R):
+            for i in range(R):
+                d = ((R - 0.5 - i) ** 2 + (R - 0.5 - j) ** 2) ** 0.5
+                for (yy, haut) in ((Y0 + j, True), (Y1 - j, False)):
+                    xx = X + i if not droite else X + 8 - i
+                    if d > R: p.im.putpixel((xx, yy), (0, 0, 0, 0))
+                    elif d > R - 1: p.im.putpixel((xx, yy), OR['trait'])
+                    elif d > R - 2: p.im.putpixel((xx, yy), (OR['hl'] if haut else OR['mi']) if not droite else (OR['clair'] if haut else OR['sombre']))
+        xb = X if not droite else X + 8
+        p.r(xb, Y0 + R, xb, Y1 - R, OR['trait'])
+        p.r(xb + (1 if not droite else -1), Y0 + R, xb + (1 if not droite else -1), Y1 - R, OR['hl'] if not droite else OR['sombre'])
+    arrondi(0, False)
+    p.rivet_or(8, (Y0 + Y1) // 2)
+    plaque_rangs(162 * s, 165 * s - 1); arrondi(162 * s, True)
     # (le texte commence 4 px après le bord : l'embout reste libre ; pas de rivet, le texte d'une ligne courte pourrait le toucher)
     # --- cadre : baguettes de 3 px, rivets réguliers sur le haut et le bas (rognés depuis la gauche : le rythme se garde)
     B = bande_or()

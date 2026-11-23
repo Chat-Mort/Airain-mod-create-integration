@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.11
+
+**Changements**
+- Réglage de valeur : les étiquettes ont des bouts arrondis des deux côtés. Create les coupe à la largeur du texte ; le mod pose désormais un embout arrondi sur leur bout droit.
+
+---
+
 ## 23 novembre 2026 — version 1.68.10
 
 **Corrections**
