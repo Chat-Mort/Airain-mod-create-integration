@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.12
+
+**Changements**
+- Engrenage séquencé de Create en carter de machine : titre sur plaque nominative, champs à bagues, emplacements inutilisés gravés, grille d'aération, plateau du bas centré sur le bouton. Le tuyau de liaison remplace le rail et montre le type de chaque ligne : chevron (rotation), cadran (attente), voyant rouge (signal de redstone), bride (fin) ; les lignes vides n'ont que sa rainure. Son titre passe en airain.
+
+---
+
 ## 23 novembre 2026 — version 1.68.11
 
 **Changements**

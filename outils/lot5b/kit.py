@@ -253,3 +253,11 @@ def _grille(self, x, y, w, h):
     for Y in range(Y0, Y1 - 2, 5):
         self.r(X0, Y, X1, Y + 1, ARD['noir']); self.r(X0, Y + 2, X1, Y + 2, hx('454a57'))
 Planche.grille = _grille
+
+def _emplacement(self, x, y, w, h):
+    """Emplacement vide (champ non utilisé) : simple filet gravé en creux, coins marqués d'un point d'airain."""
+    X0, Y0, X1, Y1 = x * S, y * S, (x + w) * S - 1, (y + h) * S - 1
+    for (a, b, c, d2) in ((X0, Y0, X1, Y0), (X0, Y0, X0, Y1)): self.r(a, b, c, d2, ARD['ombre'])
+    for (a, b, c, d2) in ((X0, Y1, X1, Y1), (X1, Y0, X1, Y1)): self.r(a, b, c, d2, hx('454a57'))
+    for (X, Y) in ((X0 + 2, Y0 + 2), (X1 - 2, Y0 + 2), (X0 + 2, Y1 - 2), (X1 - 2, Y1 - 2)): self.im.putpixel((X, Y), EXP['mi'])
+Planche.emplacement = _emplacement
