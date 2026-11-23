@@ -123,9 +123,10 @@ def _engrenage(self, cx, cy, r, dents=8):
     m = masque_engrenage(r, dents); self.grave(m, cx * S - m.width // 2, cy * S - m.height // 2)
 Planche.engrenage = _engrenage
 
-def _case_riche(self, x, y, w=18, h=18):
-    """Case principale : creux gravé dans un cadre d'airain exposé en relief, rivets aux quatre coins (comme la sortie du fourneau)."""
-    X0, Y0, X1, Y1 = x * S - 4, y * S - 4, (x + w) * S + 3, (y + h) * S + 3
+def _case_riche(self, x, y, w=18, h=18, ep=4):
+    """Case principale : creux gravé dans un cadre d'airain exposé en relief, rivets aux quatre coins (comme la sortie du fourneau).
+    ep : débord du cadre autour de la case (4 texels ; 3 pour un cadre centré au texel près dans un plateau serré)."""
+    X0, Y0, X1, Y1 = x * S - ep, y * S - ep, (x + w) * S - 1 + ep, (y + h) * S - 1 + ep
     self.r(X0, Y0, X1, Y1, EXP['trait']); self.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); self.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
     self.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, EXP['base'])
     self.creux(x, y, w, h)
@@ -158,9 +159,10 @@ def _bandeau(self, x, y, w, h=11):
         self.r(X + 1, Y0 + 1, X + 7, Y0 + 2, EXP['clair']); self.r(X + 1, Y1 - 2, X + 7, Y1 - 1, EXP['mi']); self.rivet(X + 4, (Y0 + Y1) // 2)
 Planche.bandeau = _bandeau
 
-def _socle(self, x, y, w, h):
-    """Plateau du bas (là où Create pose ses boutons) : un cran plus bas que la plaque, bord gravé, rivets aux coins."""
-    X0, Y0, X1, Y1 = x * S, y * S, (x + w) * S - 1, (y + h) * S - 1
+def _socle(self, x, y, w, h, texels=None):
+    """Plateau du bas (là où Create pose ses boutons) : un cran plus bas que la plaque, bord gravé, rivets aux coins.
+    texels=(X0, Y0, X1, Y1) : bornes exactes en texels, pour centrer le plateau au demi-pixel sur une case."""
+    X0, Y0, X1, Y1 = texels or (x * S, y * S, (x + w) * S - 1, (y + h) * S - 1)
     self.r(X0, Y0, X1, Y1, ARD['ombre']); self.r(X0 + 1, Y0 + 1, X1, Y1, hx('3f4450')); self.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, hx('30343d'))
     self.r(X0 + 1, Y0 + 1, X1 - 1, Y0 + 2, ARD['ombre2'])
     for (X, Y) in ((X0 + 5, Y0 + 6), (X1 - 5, Y0 + 6), (X0 + 5, Y1 - 5), (X1 - 5, Y1 - 5)): self.rivet(X, Y)
@@ -202,3 +204,44 @@ def _chevron(self, x, y):
         self.r(X - 6 + k, Y + k, X + 6 - k, Y + k, EXP['trait'])
         if k < 4: self.r(X - 5 + k, Y + k, X + 5 - k, Y + k, EXP['base'] if k else EXP['clair'])
 Planche.chevron = _chevron
+
+# ---------------- piste B : « carter de machine » (cadre épais boulonné, plaque nominative, grilles d'aération) ----------------
+def _boulon(self, cx, cy):
+    """Tête de boulon hexagonale (7 texels), rondelle sombre, pan éclairé en haut à gauche."""
+    for dy in range(-3, 4):
+        for dx in range(-3, 4):
+            if abs(dx) + abs(dy) > 4 or (abs(dx) == 3 and abs(dy) == 3): continue
+            bord = abs(dx) + abs(dy) == 4 or abs(dx) == 3 or abs(dy) == 3
+            c = EXP['trait'] if bord else EXP['clair'] if dx + dy < 0 else EXP['base'] if dx + dy == 0 else EXP['mi']
+            self.im.putpixel((cx + dx, cy + dy), c)
+    self.im.putpixel((cx, cy), EXP['sombre'])
+Planche.boulon = _boulon
+def _carter(self, x, y, w, h, graine=1):
+    """Cadre de carter : 15 texels (5 px) d'airain exposé, une gorge gravée au milieu, boulons aux coins et tous les 20 px."""
+    X0, Y0, X1, Y1 = x * S, y * S, (x + w) * S - 1, (y + h) * S - 1
+    bandes = [EXP['trait'], EXP['clair'], EXP['clair'], EXP['base'], EXP['base'], EXP['base'], EXP['trait'], EXP['clair'],
+              EXP['base'], EXP['base'], EXP['mi'], EXP['mi'], EXP['sombre'], ARD['ombre'], EXP['trait']]
+    for k, c in enumerate(bandes): self.r(X0 + k, Y0 + k, X1 - k, Y1 - k, c)
+    # ombre et lumière des bords : le bas et la droite plus sombres
+    for k in range(1, 13):
+        self.r(X0 + k, Y1 - k, X1 - k, Y1 - k, EXP['mi'] if k < 6 else EXP['sombre']); self.r(X1 - k, Y0 + k, X1 - k, Y1 - k, EXP['mi'] if k < 6 else EXP['sombre'])
+    self.r(X0 + 6, Y1 - 6, X1 - 6, Y1 - 6, EXP['trait']); self.r(X1 - 6, Y0 + 6, X1 - 6, Y1 - 6, EXP['trait'])
+    self.ardoise(X0 + 15, Y0 + 15, X1 - 15, Y1 - 15, graine)
+    for X in range(X0 + 30, X1 - 25, 60): self.boulon(X, Y0 + 3 + 0); self.boulon(X, Y1 - 3)
+    for Y in range(Y0 + 30, Y1 - 25, 60): self.boulon(X0 + 3, Y); self.boulon(X1 - 3, Y)
+    for (X, Y) in ((X0 + 7, Y0 + 7), (X1 - 7, Y0 + 7), (X0 + 7, Y1 - 7), (X1 - 7, Y1 - 7)): self.boulon(X, Y)
+Planche.carter = _carter
+def _plaque_nom(self, x, y, w, h=11):
+    """Plaque nominative en relief (le titre s'y pose) : airain exposé poli, deux vis aux bouts, filet gravé autour du texte."""
+    X0, Y0, X1, Y1 = x * S, y * S, (x + w) * S - 1, (y + h) * S - 1
+    self.r(X0, Y0, X1, Y1, EXP['trait']); self.r(X0 + 1, Y0 + 1, X1 - 1, Y1 - 1, EXP['mi']); self.r(X0 + 1, Y0 + 1, X1 - 2, Y1 - 2, EXP['clair'])
+    self.r(X0 + 2, Y0 + 2, X1 - 2, Y1 - 2, hx('7a3a22')); self.r(X0 + 3, Y0 + 3, X1 - 3, Y1 - 3, hx('5a2a1a'))
+    self.r(X0 + 3, Y1 - 3, X1 - 3, Y1 - 3, hx('8a4a2a'))
+    for X in (X0 + 6, X1 - 6): self.boulon(X, (Y0 + Y1) // 2)
+Planche.plaque_nom = _plaque_nom
+def _grille(self, x, y, w, h):
+    """Grille d'aération gravée : fentes horizontales régulières dans l'ardoise."""
+    X0, Y0, X1, Y1 = x * S, y * S, (x + w) * S - 1, (y + h) * S - 1
+    for Y in range(Y0, Y1 - 2, 5):
+        self.r(X0, Y, X1, Y + 1, ARD['noir']); self.r(X0, Y + 2, X1, Y + 2, hx('454a57'))
+Planche.grille = _grille

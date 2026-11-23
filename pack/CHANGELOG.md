@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.8
+
+**Changements**
+- Premiers écrans de Create en carter de machine : lien d'affichage, contact d'ascenseur, interrupteur à seuil. Cadre d'airain exposé boulonné, titre sur une plaque nominative vissée, cases serties, champs à bagues (⇕ sur ceux qui se règlent à la molette), tuyau de liaison à voyants, grilles d'aération, plateau du bas centré sur ses boutons.
+- Réglage de valeur de Create (clic droit maintenu sur une vitesse, une quantité…) : piste en règle à calcul graduée, index d'airain aux repères, curseur en chariot à molettes, étiquettes en plaques nominatives, cadre riveté à coins en rosace.
+- Les titres de ces écrans s'écrivent en airain sur leur plaque.
+
+---
+
 ## 23 novembre 2026 — version 1.68.7
 
 **Changements**

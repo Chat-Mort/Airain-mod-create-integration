@@ -56,3 +56,45 @@ def interrupteur_seuil():
     for k, c in enumerate(B[:6] + [B[-1]]): p.r(X0 + k, Y0 + k, X0 + 24 * S - 1 - k, Y0 + 24 * S - 1 - k, c)
     p.creux(2, 155, 20, 20)
     return p.im
+
+def interrupteur_seuil_B():
+    """Piste B : carter de machine."""
+    p = Planche()
+    p.carter(0, 0, 173, 103, graine=7)
+    p.plaque_nom(40, 2, 102)                                           # centrée sur le titre (x + 182/2)
+    for y in (23, 47): p.case_riche(23, y)
+    p.grille(6, 21, 11, 46)
+    # plateau du bas centré sur la case (79-97) : de 234 à 293 texels, le bas touche le cadre du carter (retour de Liam)
+    p.socle(0, 0, 0, 0, texels=(5 * S, 234, 168 * S - 1, 293))
+    p.case_riche(12, 79, ep=3)
+    for y in (105, 129):
+        p.efface(0, y, 115, 22)
+        if y == 105: p.champ(3, y + 1, 49, 19); p.champ(55, y + 1, 52, 19, molette=True)
+        else: p.champ(3, y + 1, 104, 19, molette=True)
+    # état courant (0,153 24x24) : repris de la piste A
+    A = interrupteur_seuil(); p.im.paste(A.crop((0, 153 * S, 24 * S, 177 * S)), (0, 153 * S))
+    return p.im
+
+def lien_affichage_B():
+    """Piste B (retenue par Liam) : carter de machine."""
+    p = Planche()
+    p.carter(0, 0, 226, 162, graine=3)
+    p.plaque_nom(66, 2, 102)                                           # centrée sur le titre (x + 235/2)
+    p.creux(25, 15, 186, 117)
+    for y in (25, 104): p.case_riche(36, y); p.champ(60, y, 137, 18, molette=True)
+    for y in (46, 64, 84): p.filet_creux(60, 197, y)
+    p.filet_creux(28, 208, 93); p.chevron(118, 93)
+    p.tuyau(13, 16, 132, brides=(21, 127)); p.lampe(13, 34, 'vert'); p.lampe(13, 113, 'ambre')
+    p.grille(214, 22, 7, 102)
+    # plateau du bas centré sur le bouton de Create (138-156) : 411 à 470 texels
+    p.socle(0, 0, 0, 0, texels=(5 * S, 411, 221 * S - 1, 470))
+    # zone de données (163) : inchangée depuis la piste A
+    A = lien_affichage(); p.im.paste(A.crop((0, 163 * S, 14 * S, 181 * S)), (0, 163 * S))
+    # contact d'ascenseur (20,174 224x80)
+    p.carter(20, 174, 224, 80, graine=5)
+    p.plaque_nom(81, 177, 102)                                         # titre en (x + 112, y + 6)
+    p.champ(41, 197, 30, 18); p.champ(74, 197, 150, 18, molette=True)
+    # plateau du bas : case 231-247 et champ 230-248 -> centré sur 239, du texel 690 au 748 (bas du carter)
+    p.socle(0, 0, 0, 0, texels=(25 * S, 690, 239 * S - 1, 748))
+    p.case_riche(59, 231, 12, 16, ep=2); p.champ(74, 230, 58, 18, molette=True)
+    return p.im
