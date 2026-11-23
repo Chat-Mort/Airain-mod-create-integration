@@ -5,6 +5,18 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 23 novembre 2026 — version 1.68.4
+
+**Changements**
+- Interface HD de Waystones :
+  - icônes des objets de Minecraft (yeux et perles de l'Ender, rose du Wither, éclats, pierre de partage, bloc d'herbe, outils, boussole, livre, crayon, étoile) en pixels nets de Minecraft, silhouette adoucie, comme les objets dans les cases ; les autres icônes agrandies proprement avec un contour ;
+  - quatre icônes à l'univers du pack : avant-poste (à la place des villages), voyageurs, équipes, foyers ;
+  - boutons au cadre d'airain (rouge au survol), poignées de déplacement en métal ;
+  - menu des modificateurs de la pierre de passage dessiné en HD (il était resté en basse définition) : ardoise du distributeur, cinq cases en croix reliées par des tiges d'airain ;
+  - icônes de l'End et du Nether de la liste de sélection, qui manquaient en HD.
+
+---
+
 ## 23 novembre 2026 — version 1.68.3
 
 **Changements**
