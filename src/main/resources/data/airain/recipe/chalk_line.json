@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "equipment",
+ "pattern": [
+  " S ",
+  "FRF",
+  " I "
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "F": {
+   "item": "minecraft:string"
+  },
+  "R": {
+   "item": "minecraft:red_dye"
+  },
+  "I": {
+   "item": "airain:airain_ingot"
+  }
+ },
+ "result": {
+  "id": "airain:chalk_line",
+  "count": 1
+ }
+}

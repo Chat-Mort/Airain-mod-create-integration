@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "redstone",
+ "pattern": [
+  "SLS",
+  "PGP",
+  "SCS"
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "L": {
+   "item": "minecraft:redstone_lamp"
+  },
+  "P": {
+   "item": "minecraft:glass_pane"
+  },
+  "G": {
+   "item": "create:cogwheel"
+  },
+  "C": {
+   "item": "create:andesite_casing"
+  }
+ },
+ "result": {
+  "id": "airain:worksite_projector",
+  "count": 1
+ }
+}

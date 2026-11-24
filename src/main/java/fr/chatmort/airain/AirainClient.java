@@ -46,6 +46,9 @@ public class AirainClient {
 		// 1.69.1 : plaque d'information et marque de la loupe
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::plaque);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::clic);
+		// 1.69.1 : cordeau de maçon, aperçu en fil d'airain et barre d'action
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::rendu);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::tick);
 		// 1.55 : hologramme du haut-fourneau
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeRendu::rendu);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
@@ -123,6 +126,8 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Mecanique.SURCOMP_BE.get(), fr.chatmort.airain.fonderie.MecaRendus.Surcompresseur::new);
 		// 1.58 : téléphérique (gare, têtes de pylône : câbles ; nacelle) et laminoir
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.GARE_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.GareRendu::new);
+		// 1.69.1 : projecteur de chantier (demi-arbre sans Flywheel)
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Projecteur.BE_TYPE.get(), fr.chatmort.airain.fonderie.ProjecteurRendu::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.TETE_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.TeteRendu::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.LAMINOIR_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.LaminoirRendu::new);
 		event.registerEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.NACELLE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.NacelleRendu::new);
@@ -162,6 +167,8 @@ public class AirainClient {
 			.factory(com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual::shaft).skipVanillaRender(be -> false).apply();
 		SimpleBlockEntityVisualizer.builder(fr.chatmort.airain.fonderie.Mecanique.ALLEGEUR_BE.get())
 			.factory(com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual::shaft).skipVanillaRender(be -> false).apply();
+		// 1.69.1 : demi-arbre du projecteur de chantier (avec Flywheel)
+		fr.chatmort.airain.fonderie.ProjecteurRendu.visuel();
 		SimpleBlockEntityVisualizer.builder(AirainMod.DESENCH_BE.get())
 			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
 			.skipVanillaRender(be -> false)

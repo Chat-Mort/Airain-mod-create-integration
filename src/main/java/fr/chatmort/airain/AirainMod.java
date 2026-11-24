@@ -567,6 +567,9 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Telepherique.charger();  // 1.58 : téléphérique et laminoir
 		fr.chatmort.airain.fonderie.MarteauPilon.charger();  // 1.69 : marteau-pilon d'airain
 		fr.chatmort.airain.fonderie.CleAirain.charger();     // 1.69.1 : clé à molette d'airain
+		// 1.69.1 : outils de chantier, cordeau de maçon et projecteur de chantier
+		fr.chatmort.airain.fonderie.Cordeau.charger();
+		fr.chatmort.airain.fonderie.Projecteur.charger();
 		// 1.69 : le marteau-pilon casse les blocs voisins du bloc miné
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MarteauPilon::casse);
 		// 1.59 : charpente métallique d'airain et marquages au sol
@@ -636,6 +639,9 @@ public class AirainMod {
 		// 1.69.1 : marques de la loupe de la couronne (colonnes de lumière, recharge)
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.MarqueLoupe::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.MarqueLoupe::arret);
+		// 1.69.1 : projecteur de chantier, pas de monstres autour quand il est allumé
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Projecteur::apparition);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Projecteur::arret);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::filon);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);
@@ -680,6 +686,8 @@ public class AirainMod {
 			.playToServer(fr.chatmort.airain.fonderie.MarteauPilon.Mode.TYPE, fr.chatmort.airain.fonderie.MarteauPilon.Mode.CODEC, fr.chatmort.airain.fonderie.MarteauPilon.Mode::traiter)
 			// 1.69.1 : clic gauche pendant le zoom de la loupe, marque de la cible
 			.playToServer(fr.chatmort.airain.gardien.MarqueLoupe.Marque.TYPE, fr.chatmort.airain.gardien.MarqueLoupe.Marque.CODEC, fr.chatmort.airain.gardien.MarqueLoupe.Marque::traiter)
+			// 1.69.1 : actions du cordeau de maçon (piquets, pose, annulation, mode)
+			.playToServer(fr.chatmort.airain.fonderie.Cordeau.Action.TYPE, fr.chatmort.airain.fonderie.Cordeau.Action.CODEC, fr.chatmort.airain.fonderie.Cordeau.Action::traiter)
 			.playToServer(fr.chatmort.airain.borne.PaquetsBorne.Commander.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Commander.CODEC,
 				fr.chatmort.airain.borne.PaquetsBorne.Commander::traiter)
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
@@ -702,6 +710,7 @@ public class AirainMod {
 			// 1.58 : laminoir et gare de téléphérique
 			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Telepherique.LAMINOIR.get(), () -> 4.0);
 			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Telepherique.GARE.get(), () -> 6.0);
+			BlockStressValues.IMPACTS.register(fr.chatmort.airain.fonderie.Projecteur.BLOC.get(), () -> 2.0);   // 1.69.1 : projecteur de chantier, charge légère
 			// 1.60 : le tableau émaillé reçoit les liaisons d'affichage ; le moule de Big Cannons en devient une source
 			fr.chatmort.airain.affichage.Email.associer();
 			fr.chatmort.airain.stockage.Rayonnage.associer();

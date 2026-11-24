@@ -59,6 +59,9 @@ public class Manuel extends SavedData {
 		e(EMPIRE, "outils_empire", "airain_steam_hammer", "airain:airain_steam_hammer");   // 1.69
 		// Clé à molette d'airain : la clé de Create améliorée (1.69.1)
 		e(EMPIRE, "outils_empire", "airain_wrench", "airain:airain_wrench");
+		// Cordeau de maçon et projecteur de chantier (1.69.1)
+		e(EMPIRE, "outils_empire", "chalk_line", "airain:chalk_line");
+		e(EMPIRE, "outils_empire", "worksite_projector", "airain:worksite_projector");
 		// ---- Traité des armes de l'Écho
 		e(ECHO, "runiques", "runic_sword", "airain:runic_sword");
 		e(ECHO, "runiques", "runic_katana", "airain:runic_katana");
