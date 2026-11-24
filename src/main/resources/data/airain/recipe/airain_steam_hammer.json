@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "equipment",
+ "pattern": [
+  "SBS",
+  " M ",
+  " A "
+ ],
+ "key": {
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "B": {
+   "item": "airain:airain_block"
+  },
+  "M": {
+   "item": "create:precision_mechanism"
+  },
+  "A": {
+   "item": "create:shaft"
+  }
+ },
+ "result": {
+  "id": "airain:airain_steam_hammer",
+  "count": 1
+ }
+}

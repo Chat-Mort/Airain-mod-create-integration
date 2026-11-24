@@ -137,6 +137,9 @@ public class AirainClient {
 			for (var it : new net.minecraft.world.item.Item[] {AirainMod.COURONNE.get(), AirainMod.CASQUE_COURONNE.get()})
 				net.minecraft.client.renderer.item.ItemProperties.register(it, prop, (s, l, e, n) -> fr.chatmort.airain.Sacre.sacree(s) ? 1f : 0f);
 		});
+		// 1.69 : marteau-pilon, tête en airain rouge impérial en mode 5 × 5
+		event.enqueueWork(() -> net.minecraft.client.renderer.item.ItemProperties.register(fr.chatmort.airain.fonderie.MarteauPilon.MARTEAU.get(),
+			net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "mode"), (s, l, e, n) -> fr.chatmort.airain.fonderie.MarteauPilon.cinq(s) ? 1f : 0f));
 		// Gardien des Cieux : rendu translucide pour que la lumière traverse les vitraux de ses ailes
 		event.enqueueWork(() -> net.minecraft.client.renderer.entity.EnderDragonRenderer.RENDER_TYPE =
 			net.minecraft.client.renderer.RenderType.entityTranslucent(

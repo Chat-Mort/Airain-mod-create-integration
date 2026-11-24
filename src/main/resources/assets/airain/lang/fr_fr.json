@@ -2200,5 +2200,18 @@
  "block.airain.herringbone_slate": "Ardoise en chevrons",
  "block.airain.chiseled_slate": "Ardoise ciselée",
  "block.airain.slate_pillar": "Colonne d'ardoise",
- "airain.borne.sceau": "Sceau de l'Écho : %s éperons"
+ "airain.borne.sceau": "Sceau de l'Écho : %s éperons",
+ "item.airain.airain_steam_hammer": "Marteau-pilon d'airain",
+ "airain.marteau.mode3": "Mode 3 × 3",
+ "airain.marteau.mode5": "Mode 5 × 5 (huile)",
+ "airain.marteau.aide": "Creuse la face visée en 3 × 3 ; accroupi, un seul bloc. Ctrl + clic droit : changer de mode.",
+ "airain.marteau.aide_huile": "Mode 5 × 5 : %s mB d'huile de machine par bloc, prise sur vous (seaux, réservoirs, sac à dos, burettes).",
+ "airain.marteau.reserve": "Réserve d'huile : %s mB",
+ "airain.marteau.sans_huile": "Plus assez d'huile (%s mB) : coup en 3 × 3.",
+ "airain.manuel.section.outils_empire": "Outils de chantier",
+ "airain.manuel.airain_steam_hammer.titre": "Marteau-pilon",
+ "airain.manuel.airain_steam_hammer.sous_titre": "Outil des terrassiers de l'Empire",
+ "airain.manuel.airain_steam_hammer.devise": "Ce que la vapeur frappe ne se relève pas.",
+ "airain.manuel.airain_steam_hammer.pouvoir": "Creuse en 3 × 3 sur la face visée (accroupi : un seul bloc). Ctrl + clic droit : mode 5 × 5, la tête passe au rouge impérial ; chaque bloc cassé coûte 20 mB d'huile de machine prise sur vous. Sans huile, le coup se fait en 3 × 3.",
+ "airain.manuel.airain_steam_hammer.forge": "Établi : deux plaques et un bloc d'airain, un mécanisme de précision, un arbre de Create. Réparé à l'airain."
 }

@@ -56,6 +56,7 @@ public class Manuel extends SavedData {
 		e(EMPIRE, "coiffes_empire", "imperial_helmet", "airain:imperial_helmet");
 		e(EMPIRE, "armures_empire", "set_sacred", "airain:sacred_crown", "airain:sacred_chestplate", "airain:sacred_leggings", "airain:sacred_boots");
 		e(EMPIRE, "armures_empire", "set_imperial", "airain:imperial_helmet", "airain:imperial_chestplate", "airain:imperial_leggings", "airain:imperial_boots");
+		e(EMPIRE, "outils_empire", "airain_steam_hammer", "airain:airain_steam_hammer");   // 1.69
 		// ---- Traité des armes de l'Écho
 		e(ECHO, "runiques", "runic_sword", "airain:runic_sword");
 		e(ECHO, "runiques", "runic_katana", "airain:runic_katana");

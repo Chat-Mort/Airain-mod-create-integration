@@ -2200,5 +2200,18 @@
  "block.airain.herringbone_slate": "Herringbone Slate",
  "block.airain.chiseled_slate": "Chiseled Slate",
  "block.airain.slate_pillar": "Slate Pillar",
- "airain.borne.sceau": "Echo seal: %s spurs"
+ "airain.borne.sceau": "Echo seal: %s spurs",
+ "item.airain.airain_steam_hammer": "Airain Steam Hammer",
+ "airain.marteau.mode3": "3 × 3 mode",
+ "airain.marteau.mode5": "5 × 5 mode (oil)",
+ "airain.marteau.aide": "Digs the aimed face in 3 × 3; sneaking, a single block. Ctrl + right click: switch mode.",
+ "airain.marteau.aide_huile": "5 × 5 mode: %s mB of machine oil per block, taken from you (buckets, tanks, backpack, oil cans).",
+ "airain.marteau.reserve": "Oil reserve: %s mB",
+ "airain.marteau.sans_huile": "Not enough oil (%s mB): 3 × 3 strike.",
+ "airain.manuel.section.outils_empire": "Worksite tools",
+ "airain.manuel.airain_steam_hammer.titre": "Steam Hammer",
+ "airain.manuel.airain_steam_hammer.sous_titre": "Tool of the Empire's navvies",
+ "airain.manuel.airain_steam_hammer.devise": "What steam strikes does not rise again.",
+ "airain.manuel.airain_steam_hammer.pouvoir": "Digs 3 × 3 on the aimed face (sneaking: a single block). Ctrl + right click: 5 × 5 mode, the head turns imperial red; each block broken costs 20 mB of machine oil taken from you. Without oil, the strike is 3 × 3.",
+ "airain.manuel.airain_steam_hammer.forge": "Crafting table: two airain sheets and an airain block, a precision mechanism, a Create shaft. Repaired with airain."
 }
