@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.68.22</h1>
+   <h1>Inspection en jeu — mod 1.69.0</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -99,6 +99,16 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <script>
 {
 const S = [
+ {t:"Marteau-pilon d'airain", n:"Nouveau en 1.69.0.", l:[
+  ["Recette et apparence","Établi : 2 plaques + 1 bloc d'airain, mécanisme de précision, arbre. En main et en case."],
+  ["Coup en 3 × 3","Sur un mur, un sol, un plafond : la zone suit la face visée. Accroupi : un seul bloc."],
+  ["Blocs épargnés","Rien de plus dur que le bloc visé (obsidienne autour de la pierre), aucun coffre ni machine."],
+  ["Ctrl + clic droit","Passe en 5 × 5 et revient : message, son, tête qui passe au rouge impérial."],
+  ["Coût en huile","Une zone pleine de 25 blocs coûte 500 mB, soit une burette ; le reste d'une burette entamée apparaît en réserve dans l'infobulle."],
+  ["Sources d'huile","Seau d'huile, burettes, réservoir du sac à dos porté en accessoire et dans l'inventaire."],
+  ["Sans huile","Message « Plus assez d'huile » et coup en 3 × 3."],
+  ["Enchantements et usure","Efficacité, fortune, toucher de soie, solidité ; réparation à l'enclume et au banc d'entretien."],
+  ["Page du règlement","Section « Outils de chantier » dans le règlement des armes impériales."]]},
  {t:"Haut fourneau et briques réfractaires", n:"Brun magnésie depuis la 1.68.22.", l:[
   ["Haut fourneau monté en entier","Briques brun magnésie, bandes d'airain, emblème, tuyère, trémie, dessus noirci : l'ensemble tient-il ?"],
   ["Haut fourneau allumé","Trou de coulée et gueulard allumés, fumée, rigole."],
@@ -146,7 +156,7 @@ const S = [
   ["Les ennemis bougent et attaquent","Une piste : ils apparaissent parfois hors de la distance de simulation du serveur et restent figés."],
   ["L'alerte s'éteint après la vague","Une piste : elle reste allumée après un redémarrage du serveur."]]}
 ];
-const CLE = "inspection-airain-1.68.22";
+const CLE = "inspection-airain-1.69.0";
 let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }
 const garder = () => { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) {} };
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -204,7 +214,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.68.22\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.69.0\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;
