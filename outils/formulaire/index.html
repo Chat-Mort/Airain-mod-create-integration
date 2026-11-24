@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.69.1</h1>
+   <h1>Inspection en jeu — mod 1.69.2</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -122,6 +122,18 @@ const S = [
   ["Marque d'un bloc","Le bloc brille 8 s puis le repère disparaît ; colonne de lumière au-dessus."],
   ["Message à l'autre joueur","« Liam marked … (34 m, north-east) », avec la distance et la direction vues depuis sa position."],
   ["Quitter pendant une marque","Revenir : plus aucun repère lumineux."]]},
+ {t:"Cordeau de maçon", n:"Nouveau en 1.69.2.", l:[
+  ["Recette et apparence","Plaque, 2 ficelles, colorant rouge, lingot. Dévidoir lisible en main et en case."],
+  ["Piquets A et B","Bloc dans l'autre main ; piquets en rouge, aperçu en fil d'airain qui suit la case visée, nombre de blocs dans la barre."],
+  ["Ligne, sol, mur","Pose au bon endroit ; marches et bûches orientées comme à la main."],
+  ["Mode contour","Ctrl + clic droit : cadre de mur et de sol."],
+  ["Cases occupées et blocs manquants","Rien d'écrasé ; message « missing » et piquets gardés pour compléter."],
+  ["Annuler et limites","Accroupi + clic droit ; refus au-delà de 64 en ligne ou 16 × 16, et hors plan."]]},
+ {t:"Projecteur de chantier", n:"Nouveau en 1.69.2.", l:[
+  ["Recette et apparence","Tête sur lyre, lentille allumée et éteinte, en main et posé."],
+  ["Entraînement","Arbre par-dessous (avec et sans Flywheel) ; s'allume en tournant, s'éteint arrêté ou surchargé."],
+  ["Orientation","Éclaire vers où l'on regarde à la pose ; la clé le tourne (clic sur le dessus)."],
+  ["Pas de monstres","La nuit, aucune apparition à moins de 16 blocs tant qu'il tourne."]]},
  {t:"Haut fourneau et briques réfractaires", n:"Brun magnésie depuis la 1.68.22.", l:[
   ["Haut fourneau monté en entier","Briques brun magnésie, bandes d'airain, emblème, tuyère, trémie, dessus noirci : l'ensemble tient-il ?"],
   ["Haut fourneau allumé","Trou de coulée et gueulard allumés, fumée, rigole."],
@@ -227,7 +239,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.69.1\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.69.2\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;

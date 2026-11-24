@@ -5,6 +5,16 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 24 novembre 2026 — version 1.69.2
+
+**Ajouts**
+- Cordeau de maçon : le bloc à poser se tient dans l'autre main. Clic droit sur un bloc pour planter le piquet A, puis le piquet B ; les cases prévues s'affichent en fil d'airain (visible seulement par celui qui tient le cordeau), et pendant le choix du piquet B l'aperçu suit la case visée avec le nombre de blocs. Clic droit encore : la pose, uniquement dans les cases vides (air, herbe, eau), avec les blocs de l'autre main puis de l'inventaire. S'il en manque, il pose ce qu'il a, le dit, et garde les piquets pour compléter.
+- Ligne droite de 64 blocs ou plan de 16 × 16 au plus, au sol, au plafond ou en mur. Ctrl + clic droit : mode plein ou contour. Accroupi + clic droit : annuler. Recette : une plaque d'airain, deux ficelles et un colorant rouge, un lingot d'airain.
+- Projecteur de chantier : tête orientable sur une lyre, entraîné par un arbre de Create par-dessous. Dès qu'il tourne sans surcharge, il s'allume (lumière 15) et aucun monstre n'apparaît naturellement à moins de 16 blocs ; arrêté, la lentille s'éteint. Posé, il éclaire dans la direction où regarde le joueur ; la clé le tourne. Recette : quatre plaques d'airain, une lampe de redstone, deux vitres, une roue dentée, un carter d'andésite.
+- Règlement des armes impériales : pages du cordeau et du projecteur dans « Outils de chantier ».
+
+---
+
 ## 24 novembre 2026 — version 1.69.1
 
 **Ajouts**
