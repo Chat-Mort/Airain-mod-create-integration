@@ -5,6 +5,17 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 24 novembre 2026 — version 1.69.1
+
+**Ajouts**
+- Clé à molette d'airain : même modèle 3D que la clé de Create, retexturée airain, manche noir et molette rouge impérial. Elle garde toutes les fonctions de la clé de Create (rotation et démontage des machines, ramassage accroupi, réglages des gardiens, fondations et grands étendards) et Create la reconnaît comme sa propre clé.
+- Sur les blocs que Create ignore : clic droit pour les faire tourner (bûches et piliers d'axe en axe, blocs orientés dans les six directions, escaliers, coffres simples, panneaux en 16 crans), accroupi + clic droit pour changer leur forme (angles d'escalier, haut ou bas, dalle haute ou basse, charnière de porte, levier ou bouton au sol, au mur ou au plafond). La barre d'action affiche le nouvel état. Les blocs doubles (lits, portes, grandes plantes) ne tournent pas, et un bloc qui ne tiendrait pas dans la nouvelle position reste comme il est.
+- Recette à l'établi : une clé de Create au centre, deux plaques d'airain sur les côtés, un lingot d'airain dessus, un mécanisme de précision dessous. Page dans « Outils de chantier ».
+- Loupe de la couronne (touche H) : pendant le zoom, une plaque en bas de l'écran donne le nom de la cible, sa distance, sa hauteur par rapport au joueur et sa vie.
+- Clic gauche pendant le zoom : la cible (créature ou bloc, jusqu'à 160 blocs) est marquée pendant 8 s, elle brille à travers les murs pour tous les joueurs et une colonne de lumière monte d'elle. Chaque joueur reçoit le message avec la distance et la direction vues depuis sa position (« Liam marked Zombie (34 m, north-east) »). Le clic ne frappe pas pendant le zoom ; une marque par seconde au plus.
+
+---
+
 ## 24 novembre 2026 — version 1.69.0
 
 **Ajouts**
