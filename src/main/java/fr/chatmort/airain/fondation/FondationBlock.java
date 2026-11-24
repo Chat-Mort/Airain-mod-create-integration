@@ -131,7 +131,8 @@ public class FondationBlock extends Block implements EntityBlock {
 		}
 		if ((imperiale(pile) || echo(pile)) && level.getBlockEntity(bas(state, pos)) instanceof FondationBlockEntity fs)
 			return sacrer(level, bas(state, pos), fs, joueur, pile);
-		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
+		// 1.69.1 : la clé à molette d'airain vaut la clé de Create
+		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench") && !fr.chatmort.airain.fonderie.CleAirain.est(pile))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		BlockPos b = bas(state, pos);
 		if (!(level.getBlockEntity(b) instanceof FondationBlockEntity f))

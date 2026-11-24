@@ -83,6 +83,15 @@ public final class Armes {
 	private record Reperes(ServerLevel sl, String tag, long fin) {}
 	private static final List<Reperes> REPERES = new ArrayList<>();
 
+	// Loupe de la couronne (1.69.1) : un bloc marqué devient un repère lumineux, retiré au bout de « duree » ticks
+	public static void repere(ServerLevel sl, BlockPos b, String tag, int duree) {
+		String etat = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(sl.getBlockState(b).getBlock()).toString();
+		sl.getServer().getCommands().performPrefixedCommand(sl.getServer().createCommandSourceStack().withLevel(sl).withSuppressedOutput().withPermission(4),
+			"summon minecraft:block_display " + b.getX() + " " + b.getY() + " " + b.getZ()
+				+ " {block_state:{Name:\"" + etat + "\"},Glowing:1b,glow_color_override:16045716,brightness:{sky:15,block:15},Tags:[\"" + tag + "\"]}");
+		REPERES.add(new Reperes(sl, tag, sl.getGameTime() + duree));
+	}
+
 	static void echolocation(ServerPlayer p, PiocheItem pioche) {
 		if (p.getCooldowns().isOnCooldown(pioche)) return;
 		ServerLevel sl = p.serverLevel();

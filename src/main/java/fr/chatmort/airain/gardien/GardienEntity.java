@@ -222,7 +222,8 @@ public class GardienEntity extends IronGolem {
 	// ---- interactions
 	static Item objet(ResourceLocation id) { return BuiltInRegistries.ITEM.get(id); }
 
-	static boolean estCle(ItemStack s) { return BuiltInRegistries.ITEM.getKey(s.getItem()).equals(CLE); }
+	// 1.69.1 : la clé à molette d'airain (amélioration de la clé de Create) répare aussi
+	static boolean estCle(ItemStack s) { return BuiltInRegistries.ITEM.getKey(s.getItem()).equals(CLE) || fr.chatmort.airain.fonderie.CleAirain.est(s); }
 
 	@Override
 	protected InteractionResult mobInteract(Player p, InteractionHand main) {

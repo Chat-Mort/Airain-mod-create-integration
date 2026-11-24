@@ -43,6 +43,9 @@ public class AirainClient {
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, fr.chatmort.airain.armure.TourbillonClient::avant);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.TourbillonClient::apres);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::champ);
+		// 1.69.1 : plaque d'information et marque de la loupe
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::plaque);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.Loupe::clic);
 		// 1.55 : hologramme du haut-fourneau
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeRendu::rendu);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->

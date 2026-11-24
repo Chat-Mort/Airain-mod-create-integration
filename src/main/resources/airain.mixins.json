@@ -9,7 +9,8 @@
   "CourantMixin",
   "VentilateurMixin",
   "SourceMixin",
-  "SurcompresseurMixin"
+  "SurcompresseurMixin",
+  "CleCreateMixin"
  ],
  "injectors": {
   "defaultRequire": 0

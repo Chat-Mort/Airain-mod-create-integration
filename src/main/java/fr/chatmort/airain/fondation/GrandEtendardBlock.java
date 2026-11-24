@@ -151,7 +151,8 @@ public class GrandEtendardBlock extends Block implements EntityBlock {
 			return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;   // le gabarit agit lui-même
 		if ((FondationBlock.imperiale(pile) || FondationBlock.echo(pile)) && level.getBlockEntity(base(state, pos)) instanceof FondationBlockEntity fs)
 			return FondationBlock.sacrer(level, base(state, pos), fs, joueur, pile);
-		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench"))
+		// 1.69.1 : la clé à molette d'airain vaut la clé de Create
+		if (!BuiltInRegistries.ITEM.getKey(pile.getItem()).toString().equals("create:wrench") && !fr.chatmort.airain.fonderie.CleAirain.est(pile))
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		BlockPos b = base(state, pos);
 		if (!(level.getBlockEntity(b) instanceof FondationBlockEntity f))

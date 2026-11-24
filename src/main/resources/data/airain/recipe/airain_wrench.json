@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "equipment",
+ "pattern": [
+  " I ",
+  "SWS",
+  " M "
+ ],
+ "key": {
+  "I": {
+   "item": "airain:airain_ingot"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "W": {
+   "item": "create:wrench"
+  },
+  "M": {
+   "item": "create:precision_mechanism"
+  }
+ },
+ "result": {
+  "id": "airain:airain_wrench",
+  "count": 1
+ }
+}

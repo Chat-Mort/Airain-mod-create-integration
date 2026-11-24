@@ -566,6 +566,7 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Materiaux.charger();     // 1.57 : marbres veinés d'or, ardoise, carrelage
 		fr.chatmort.airain.fonderie.Telepherique.charger();  // 1.58 : téléphérique et laminoir
 		fr.chatmort.airain.fonderie.MarteauPilon.charger();  // 1.69 : marteau-pilon d'airain
+		fr.chatmort.airain.fonderie.CleAirain.charger();     // 1.69.1 : clé à molette d'airain
 		// 1.69 : le marteau-pilon casse les blocs voisins du bloc miné
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MarteauPilon::casse);
 		// 1.59 : charpente métallique d'airain et marquages au sol
@@ -632,6 +633,9 @@ public class AirainMod {
 		// revue 1.68.20 : repères d'écholocation orphelins écartés au chargement ; listes en attente vidées à l'arrêt du serveur
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::repereRecharge);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::arret);
+		// 1.69.1 : marques de la loupe de la couronne (colonnes de lumière, recharge)
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.MarqueLoupe::tick);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.gardien.MarqueLoupe::arret);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::filon);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);
@@ -674,6 +678,8 @@ public class AirainMod {
 				fr.chatmort.airain.affichage.PaquetLiaison::traiter)
 			// 1.69 : Ctrl + clic droit avec le marteau-pilon, changement de mode
 			.playToServer(fr.chatmort.airain.fonderie.MarteauPilon.Mode.TYPE, fr.chatmort.airain.fonderie.MarteauPilon.Mode.CODEC, fr.chatmort.airain.fonderie.MarteauPilon.Mode::traiter)
+			// 1.69.1 : clic gauche pendant le zoom de la loupe, marque de la cible
+			.playToServer(fr.chatmort.airain.gardien.MarqueLoupe.Marque.TYPE, fr.chatmort.airain.gardien.MarqueLoupe.Marque.CODEC, fr.chatmort.airain.gardien.MarqueLoupe.Marque::traiter)
 			.playToServer(fr.chatmort.airain.borne.PaquetsBorne.Commander.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Commander.CODEC,
 				fr.chatmort.airain.borne.PaquetsBorne.Commander::traiter)
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,
