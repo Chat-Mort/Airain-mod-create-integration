@@ -5,6 +5,16 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 24 novembre 2026 — version 1.69.0
+
+**Ajouts**
+- Marteau-pilon d'airain : creuse en 3 × 3 sur la face visée (accroupi : un seul bloc), tout ce que minent la pioche et la pelle, niveau diamant, 2 400 coups. Autour du bloc visé, il ne casse que les blocs aussi durs ou moins durs, jamais les blocs à inventaire ; enchantements de pioche, protections et usure appliqués à chaque bloc.
+- Ctrl + clic droit : mode 5 × 5, la tête passe à l'airain rouge impérial. Chaque bloc cassé coûte 20 mB d'huile de machine prise sur le joueur (réserve du marteau, seaux, réservoirs, sacs à dos où qu'ils soient portés, burettes ; le reste d'une burette entamée reste dans la réserve). Sans assez d'huile, le coup se fait en 3 × 3.
+- Recette à l'établi : deux plaques et un bloc d'airain, un mécanisme de précision, un arbre de Create. Réparation à l'airain (enclume ou banc d'entretien).
+- Règlement des armes impériales : nouvelle section « Outils de chantier », page du marteau-pilon.
+
+---
+
 ## 23 novembre 2026 — version 1.68.22
 
 **Changements**
