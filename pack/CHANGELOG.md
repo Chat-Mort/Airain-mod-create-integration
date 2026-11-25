@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 25 novembre 2026 — version 1.69.6
+
+**Changements**
+- Cordeau de maçon : un clic gauche, cordeau en main et piquets plantés, ramasse le cordeau (efface les piquets et l'aperçu) sans frapper ni casser de bloc. Accroupi + clic droit annule toujours aussi. La barre d'action le rappelle pendant le tracé.
+
+---
+
 ## 25 novembre 2026 — version 1.69.5
 
 **Changements**
