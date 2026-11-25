@@ -169,11 +169,11 @@ public final class CleAirain {
 	}
 	private static boolean relie(BlockState s, Direction d) {
 		if (s.getBlock() instanceof net.minecraft.world.level.block.WallBlock) return s.getValue(cote(d)) != net.minecraft.world.level.block.state.properties.WallSide.NONE;
-		return s.getValue(net.minecraft.world.level.block.CrossCollisionBlock.PROPERTY_BY_DIRECTION.get(d));
+		return s.getValue(net.minecraft.world.level.block.PipeBlock.PROPERTY_BY_DIRECTION.get(d));
 	}
 	private static BlockState lien(BlockState s, Direction d) {
 		if (!(s.getBlock() instanceof net.minecraft.world.level.block.WallBlock))
-			return s.setValue(net.minecraft.world.level.block.CrossCollisionBlock.PROPERTY_BY_DIRECTION.get(d), !relie(s, d));
+			return s.setValue(net.minecraft.world.level.block.PipeBlock.PROPERTY_BY_DIRECTION.get(d), !relie(s, d));
 		var aucun = net.minecraft.world.level.block.state.properties.WallSide.NONE;
 		BlockState n = s.setValue(cote(d), relie(s, d) ? aucun : net.minecraft.world.level.block.state.properties.WallSide.LOW);
 		// poteau central comme en vanilla : absent seulement quand le muret file droit (deux côtés opposés, rien d'autre)
