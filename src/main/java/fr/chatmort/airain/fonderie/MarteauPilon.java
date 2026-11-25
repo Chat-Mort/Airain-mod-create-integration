@@ -195,8 +195,20 @@ public final class MarteauPilon {
 			if (s.isEmpty() || estBurette(s) || s == marteau) continue;
 			vus.put(s, true);
 			IFluidHandlerItem fh = s.getCapability(Capabilities.FluidHandler.ITEM);
-			if (fh == null) continue;
-			int k = vider(fh, n - pris, executer);
+			if (fh == null) {
+				// 1.69.8 : seau d'huile sans « réservoir » déclaré : on le vide à la main, le surplus va dans la réserve du marteau
+				if (s.getItem() instanceof net.minecraft.world.item.BucketItem b && b.content.defaultFluidState().is(BancEntretienBlockEntity.HUILES)) {
+					int k = n - pris;
+					pris = n;
+					if (executer) {
+						ecrire(marteau, RESERVE, reserve(marteau) + 1000 - k, false, false);
+						if (s.getCount() == 1) inv.setItem(i, new ItemStack(net.minecraft.world.item.Items.BUCKET));
+						else { s.shrink(1); if (!inv.add(new ItemStack(net.minecraft.world.item.Items.BUCKET))) p.drop(new ItemStack(net.minecraft.world.item.Items.BUCKET), false); }
+					}
+				}
+				continue;
+			}
+			int k = vider(fh, n - pris, executer, marteau);
 			pris += k;
 			if (executer && k > 0 && fh.getContainer() != s) inv.setItem(i, fh.getContainer());   // seau vidé : il redevient un seau vide
 		}
@@ -205,7 +217,7 @@ public final class MarteauPilon {
 			if (pris >= n) break;
 			if (vus.containsKey(sac)) continue;
 			IFluidHandlerItem fh = sac.getCapability(Capabilities.FluidHandler.ITEM);
-			if (fh != null) pris += vider(fh, n - pris, executer);
+			if (fh != null) pris += vider(fh, n - pris, executer, marteau);
 		}
 		// burettes : 500 mB chacune ; ce qui n'est pas utilisé reste dans la réserve du marteau
 		for (int i = 0; i < inv.getContainerSize() && pris < n; i++) {
@@ -223,12 +235,22 @@ public final class MarteauPilon {
 		return pris;
 	}
 
-	private static int vider(IFluidHandlerItem fh, int n, boolean executer) {
+	private static int vider(IFluidHandlerItem fh, int n, boolean executer, ItemStack marteau) {
 		int pris = 0;
 		for (int t = 0; t < fh.getTanks() && pris < n; t++) {
 			FluidStack f = fh.getFluidInTank(t);
 			if (f.isEmpty() || !f.is(BancEntretienBlockEntity.HUILES)) continue;
-			FluidStack d = fh.drain(f.copyWithAmount(n - pris), executer ? IFluidHandler.FluidAction.EXECUTE : IFluidHandler.FluidAction.SIMULATE);
+			IFluidHandler.FluidAction a = executer ? IFluidHandler.FluidAction.EXECUTE : IFluidHandler.FluidAction.SIMULATE;
+			int besoin = n - pris;
+			FluidStack d = fh.drain(f.copyWithAmount(besoin), a);
+			// 1.69.8 : un seau ne se vide que d'un coup (1 000 mB) : on le prend en entier et le surplus va dans la réserve du marteau
+			if (d.isEmpty() && f.getAmount() > besoin) {
+				FluidStack tout = fh.drain(f.copy(), a);
+				if (!tout.isEmpty()) {
+					if (executer && tout.getAmount() > besoin) ecrire(marteau, RESERVE, reserve(marteau) + tout.getAmount() - besoin, false, false);
+					d = tout.copyWithAmount(Math.min(besoin, tout.getAmount()));
+				}
+			}
 			pris += d.getAmount();
 		}
 		return pris;
