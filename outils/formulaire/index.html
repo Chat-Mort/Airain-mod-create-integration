@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.69.3</h1>
+   <h1>Inspection en jeu — mod 1.69.4</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -138,8 +138,10 @@ const S = [
   ["Recette et apparence","Établi mécanique ; cage netherite, rivets d'airain, œil vert, violet ou fermé ; arbre dans le creux arrière (avec et sans Flywheel)."],
   ["Mode et canal","Clic droit à main vide : émetteur ou récepteur ; canal réglé sur les côtés ; lunettes : mode, canal, liaison."],
   ["Overworld vers Nether","La rotation arrive à la même vitesse ; les machines du Nether tournent."],
-  ["Charge","Ce que tirent les machines du récepteur apparaît sur le réseau de l'émetteur (+10 %) ; surcharge : tout s'arrête puis repart."],
-  ["Cas limites","Deux émetteurs sur un canal (message) ; récepteur qui ferait tourner son émetteur : il s'arrête ; changer de mode en marche."]]},
+  ["Charge","Ce que tirent les machines du récepteur apparaît sur le réseau de l'émetteur (+10 %) ; réseau récepteur surchargé : lui seul s'arrête ; émetteur surchargé : tout s'arrête."],
+  ["Cas limites","Deux émetteurs sur un canal (message) ; récepteur qui ferait tourner son émetteur : il s'arrête ; changer de mode en marche."],
+  ["Surcompresseur à la clé (1.69.4)","Clé de Create : il tourne ; accroupi : il se ramasse."],
+  ["Surcompresseur près d'un relais","Il vise le générateur voisin, jamais le relais ; côté émetteur, le gain passe au récepteur."]]},
  {t:"Haut fourneau et briques réfractaires", n:"Brun magnésie depuis la 1.68.22.", l:[
   ["Haut fourneau monté en entier","Briques brun magnésie, bandes d'airain, emblème, tuyère, trémie, dessus noirci : l'ensemble tient-il ?"],
   ["Haut fourneau allumé","Trou de coulée et gueulard allumés, fumée, rigole."],
@@ -245,7 +247,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.69.3\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.69.4\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;

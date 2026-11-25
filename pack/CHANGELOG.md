@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 25 novembre 2026 — version 1.69.4
+
+**Corrections**
+- Surcompresseur : la clé de Create (et la clé d'airain) le tourne et, accroupi, le ramasse comme les machines de Create ; avant, elle n'avait aucun effet dessus.
+- Relais cinétique et surcompresseur : un surcompresseur ne prend plus le relais pour cible (ni émetteur ni récepteur). Sa capacité venant de l'émetteur, c'est le vrai générateur, côté émetteur, qu'il faut surcompresser ; l'effet traverse alors le relais.
+- Relais cinétique : un réseau récepteur surchargé (arrêté par Create) ne pèse plus sur le réseau de l'émetteur ; seule la partie surchargée s'arrête.
+
+---
+
 ## 25 novembre 2026 — version 1.69.3
 
 **Ajouts**
