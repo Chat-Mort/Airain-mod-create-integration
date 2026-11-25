@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 25 novembre 2026 — version 1.69.8
+
+**Corrections**
+- Marteau-pilon : le seau d'huile est reconnu. Un seau ne se vide que d'un coup : le marteau prend les 1 000 mB, rend le seau vide et garde le surplus dans sa réserve (visible dans l'infobulle), utilisé aux coups suivants.
+
+---
+
 ## 25 novembre 2026 — version 1.69.7
 
 **Changements**
