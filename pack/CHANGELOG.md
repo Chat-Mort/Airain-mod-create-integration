@@ -5,6 +5,16 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 25 novembre 2026 — version 1.69.3
+
+**Ajouts**
+- Relais cinétique d'airain : fait passer la rotation de Create d'une dimension à l'autre. Cage d'arêtes noir netherite à rivets d'airain, cœur d'obsidienne à fentes violettes, œil de l'Ender sur la face avant ; l'arbre entre par l'arrière, dans un creux, sans dépasser du bloc.
+- Clic droit à main vide : émetteur (œil vert) ou récepteur (œil violet) ; l'œil se ferme quand rien ne tourne. Canal de 1 à 99 réglé sur les côtés comme sur les machines de Create. Posé contre un arbre, l'arrière se colle à lui.
+- Chaque récepteur du canal rend la rotation de l'émetteur à la même vitesse, dans n'importe quelle dimension. Ce que tirent ses machines pèse sur le réseau de l'émetteur, plus 10 % de perte ; un réseau d'émetteur surchargé arrête ses récepteurs. Un émetteur par canal, autant de récepteurs que voulu ; les deux côtés doivent être chargés. Les lunettes de l'ingénieur montrent le mode, le canal et la liaison.
+- Recette à l'établi mécanique, sur le schéma du transmetteur d'énergie : obsidienne, deux arbres, quatre perles de l'Ender, deux mécanismes de précision, deux plaques d'airain, un œil de l'Ender. Page dans « Outils de chantier ».
+
+---
+
 ## 24 novembre 2026 — version 1.69.2
 
 **Ajouts**
