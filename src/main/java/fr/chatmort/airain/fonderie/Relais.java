@@ -188,7 +188,8 @@ public final class Relais {
 					BE r = relais(srv, g, true, c);
 					if (r == null) { rs.remove(g); continue; }
 					nb++;
-					if (!r.hasNetwork() || r.getSpeed() == 0) continue;
+					// 1.69.4 : un réseau récepteur surchargé est arrêté par Create, il ne tire plus rien sur l'émetteur
+					if (!r.hasNetwork() || r.getSpeed() == 0 || r.isOverStressed()) continue;
 					KineticNetwork n = r.getOrCreateNetwork();
 					float st = n.calculateStress(), cap = n.calculateCapacity();
 					float part = cap > 0 ? Math.min(1f, r.capacite * Math.abs(r.getSpeed()) / cap) : 1f;   // part de ce récepteur dans son réseau

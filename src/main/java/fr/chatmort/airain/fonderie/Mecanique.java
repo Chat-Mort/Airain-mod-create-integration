@@ -177,7 +177,8 @@ public final class Mecanique {
 	}
 
 	// ====================================================================== le surcompresseur (bloc ; FACING : vers le générateur)
-	public static class Surcompresseur extends BlocPatine implements EntityBlock {
+	// 1.69.4 : IWrenchable, pour que la clé (Create ou airain) le tourne et le ramasse accroupi comme les machines de Create
+	public static class Surcompresseur extends BlocPatine implements EntityBlock, com.simibubi.create.content.equipment.wrench.IWrenchable {
 		private static final Map<Direction, VoxelShape> FORMES = new java.util.EnumMap<>(Direction.class);
 		static {
 			for (Direction d : Direction.Plane.HORIZONTAL)
@@ -224,7 +225,8 @@ public final class Mecanique {
 			}
 		return mieux;
 	}
-	private static boolean admis(GeneratingKineticBlockEntity g) { return !(g instanceof CreativeMotorBlockEntity); }
+	// 1.69.4 : ni le moteur créatif, ni le relais cinétique (sa capacité vient de l'émetteur : on surcompresse le vrai générateur, côté émetteur)
+	private static boolean admis(GeneratingKineticBlockEntity g) { return !(g instanceof CreativeMotorBlockEntity) && !(g instanceof Relais.BE); }
 	static void reveiller(Level l, GeneratingKineticBlockEntity g) { if (g != null && !g.isRemoved()) g.updateGeneratedRotation(); }
 	/** Facteur de capacité d'un générateur (appelé par le mixin) : 1,5 si un surcompresseur l'alimente. */
 	public static float facteur(KineticBlockEntity be) {
