@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.69.6</h1>
+   <h1>Inspection en jeu — mod 1.69.7</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -104,7 +104,7 @@ const S = [
   ["Murets à la clé d'airain","Accroupi + clic droit sur un côté : relié ou délié ; aussi barrières, vitres, barreaux ; clic dessus : côté le plus proche."],
   ["Projecteur à la clé","Clic sur n'importe quelle face : quart de tour."],
   ["Nombres des renforts de rayonnage","256k, 1M : plus de chevauchement avec le cadenas."],
-  ["Annuler le cordeau (1.69.6)","Clic gauche avec le cordeau, piquets plantés : tout s'efface, rien n'est cassé ; accroupi + clic droit aussi."]]},
+  ["Annuler le cordeau (1.69.7)","Clic gauche avec le cordeau, piquets plantés : tout s'efface, rien n'est cassé ; accroupi + clic droit : plein ou contour."]]},
  {t:"Marteau-pilon d'airain", n:"Nouveau en 1.69.0.", l:[
   ["Recette et apparence","Établi : 2 plaques + 1 bloc d'airain, mécanisme de précision, arbre. En main et en case."],
   ["Coup en 3 × 3","Sur un mur, un sol, un plafond : la zone suit la face visée. Accroupi : un seul bloc."],
@@ -132,9 +132,9 @@ const S = [
   ["Recette et apparence","Plaque, 2 ficelles, colorant rouge, lingot. Dévidoir lisible en main et en case."],
   ["Piquets A et B","Bloc dans l'autre main ; piquets en rouge, aperçu en fil d'airain qui suit la case visée, nombre de blocs dans la barre."],
   ["Ligne, sol, mur","Pose au bon endroit ; marches et bûches orientées comme à la main."],
-  ["Mode contour","Ctrl + clic droit : cadre de mur et de sol."],
+  ["Mode contour","Accroupi + clic droit : cadre de mur et de sol."],
   ["Cases occupées et blocs manquants","Rien d'écrasé ; message « missing » et piquets gardés pour compléter."],
-  ["Annuler et limites","Accroupi + clic droit ; refus au-delà de 64 en ligne ou 16 × 16, et hors plan."]]},
+  ["Annuler et limites","Clic gauche ; refus au-delà de 64 en ligne ou 16 × 16, et hors plan."]]},
  {t:"Projecteur de chantier", n:"Nouveau en 1.69.2.", l:[
   ["Recette et apparence","Tête sur lyre, lentille allumée et éteinte, en main et posé."],
   ["Entraînement","Arbre par-dessous (avec et sans Flywheel) ; s'allume en tournant, s'éteint arrêté ou surchargé."],
@@ -253,7 +253,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.69.6\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.69.7\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;

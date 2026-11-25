@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 25 novembre 2026 — version 1.69.7
+
+**Changements**
+- Cordeau de maçon : accroupi + clic droit change le mode (plein ou contour), Ctrl + clic droit aussi ; annuler se fait au clic gauche. Avec l'accroupissement réglé sur Ctrl, les deux gestes se confondaient et le cordeau ne pouvait pas être annulé.
+
+---
+
 ## 25 novembre 2026 — version 1.69.6
 
 **Changements**
