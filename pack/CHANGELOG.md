@@ -5,6 +5,20 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 25 novembre 2026 — version 1.69.5
+
+**Changements**
+- Marteau-pilon : Ctrl + clic droit fait un petit déclic sec (plus aigu en passant au 5 × 5) au lieu du bruit de piston.
+- Renforts de rayonnage : au-delà de 999, les quantités s'écrivent en milliers (256 890 devient 256k, puis 1M au-delà du million) ; le cadenas ne chevauche plus le nombre.
+
+**Ajouts**
+- Clé à molette d'airain : accroupi + clic droit sur un muret (tout matériau), une barrière, une vitre ou des barreaux relie ou délie le côté visé (clic sur le dessus : le côté le plus proche du point visé). Le poteau central du muret suit, comme en vanilla.
+
+**Corrections**
+- Projecteur de chantier : la clé le fait pivoter d'un quart de tour, quelle que soit la face cliquée (avant, seulement par le dessus).
+
+---
+
 ## 25 novembre 2026 — version 1.69.4
 
 **Corrections**
