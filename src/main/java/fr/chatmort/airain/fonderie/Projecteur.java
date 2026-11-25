@@ -83,6 +83,8 @@ public final class Projecteur {
 		// la tête éclaire dans la direction où regarde le joueur qui le pose
 		@Override public BlockState getStateForPlacement(BlockPlaceContext c) { return defaultBlockState().setValue(FACING, c.getHorizontalDirection()); }
 		@Override public BlockState rotate(BlockState s, Rotation r) { return s.setValue(FACING, r.rotate(s.getValue(FACING))); }
+		// 1.69.5 : la clé le fait pivoter d'un quart de tour quelle que soit la face cliquée (Create ne le faisait que par le dessus)
+		@Override public BlockState getRotatedBlockState(BlockState s, Direction face) { return s.setValue(FACING, s.getValue(FACING).getClockWise()); }
 		@Override public BlockState mirror(BlockState s, Mirror m) { return s.rotate(m.getRotation(s.getValue(FACING))); }
 		@Override public VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return FORME; }
 		@Override public Direction.Axis getRotationAxis(BlockState s) { return Direction.Axis.Y; }

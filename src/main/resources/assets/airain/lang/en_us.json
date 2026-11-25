@@ -2217,7 +2217,7 @@
  "item.airain.airain_wrench": "Airain Wrench",
  "airain.cle.aide_create": "Keeps every function of the Create wrench.",
  "airain.cle.aide_tourner": "Right click another block: rotate it.",
- "airain.cle.aide_variante": "Sneak + right click: change its shape (stairs, slabs, doors, levers…).",
+ "airain.cle.aide_variante": "Sneak + right click: change its shape (stairs, slabs, doors, levers…), link or unlink a side of a wall or fence.",
  "airain.cle.rotation": "rotation %s / 16",
  "airain.cle.tourne": "rotated",
  "airain.cle.axis.x": "east-west axis",
@@ -2247,7 +2247,7 @@
  "airain.manuel.airain_wrench.titre": "Airain Wrench",
  "airain.manuel.airain_wrench.sous_titre": "Create's wrench, revised by the Empire",
  "airain.manuel.airain_wrench.devise": "Nothing is laid crooked that cannot be set straight.",
- "airain.manuel.airain_wrench.pouvoir": "Does everything the Create wrench does. On other blocks: right click to rotate them, sneak + right click to change their shape (stair corners, top or bottom, top or bottom slab, door hinge, lever on the floor, wall or ceiling).",
+ "airain.manuel.airain_wrench.pouvoir": "Does everything the Create wrench does. On other blocks: right click to rotate them, sneak + right click to change their shape (stair corners, top or bottom, top or bottom slab, door hinge, lever on the floor, wall or ceiling; sides of walls, fences and panes, linked or unlinked).",
  "airain.manuel.airain_wrench.forge": "Crafting table: a Create wrench in the center, two airain sheets on the sides, an airain ingot on top, a precision mechanism below.",
  "airain.loupe.marque": "%s marked %s (%s m, %s)",
  "airain.loupe.marque_soi": "Target marked: %s (%s m, %s)",
@@ -2303,5 +2303,7 @@
  "airain.manuel.kinetic_relay.sous_titre": "Rotation goes through portals",
  "airain.manuel.kinetic_relay.devise": "A shaft here, a shaft there, one single motion.",
  "airain.manuel.kinetic_relay.pouvoir": "The shaft enters from the back. Empty-hand right click: emitter (green eye) or receiver (purple eye); channel 1 to 99 on the sides. Each receiver on the channel gives back the emitter's rotation at the same speed, even in another dimension; what its machines draw weighs on the emitter's network, plus 10 %. One emitter per channel; both sides must be loaded.",
- "airain.manuel.kinetic_relay.forge": "Mechanical crafter: obsidian around, two shafts, four ender pearls, two precision mechanisms, two airain sheets and an eye of ender in the center."
+ "airain.manuel.kinetic_relay.forge": "Mechanical crafter: obsidian around, two shafts, four ender pearls, two precision mechanisms, two airain sheets and an eye of ender in the center.",
+ "airain.cle.lie": "%s side linked",
+ "airain.cle.delie": "%s side unlinked"
 }

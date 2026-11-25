@@ -127,7 +127,8 @@ public final class MarteauPilon {
 				if (!s.is(MARTEAU.get())) return;
 				boolean nouveau = !cinq(s);
 				ecrire(s, MODE, 0, nouveau, true);
-				p.level().playSound(null, p.blockPosition(), nouveau ? SoundEvents.PISTON_EXTEND : SoundEvents.PISTON_CONTRACT, SoundSource.PLAYERS, 0.6f, nouveau ? 0.7f : 0.9f);
+				// 1.69.5 : petit déclic sec, plus aigu en passant au 5 × 5
+				p.level().playSound(null, p.blockPosition(), SoundEvents.COMPARATOR_CLICK, SoundSource.PLAYERS, 0.7f, nouveau ? 1.3f : 1.0f);
 				p.displayClientMessage(Component.translatable(nouveau ? "airain.marteau.mode5" : "airain.marteau.mode3").withStyle(nouveau ? ChatFormatting.RED : ChatFormatting.GOLD), true);
 			});
 		}

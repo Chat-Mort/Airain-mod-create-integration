@@ -2217,7 +2217,7 @@
  "item.airain.airain_wrench": "Clé à molette d'airain",
  "airain.cle.aide_create": "Garde toutes les fonctions de la clé de Create.",
  "airain.cle.aide_tourner": "Clic droit sur un autre bloc : le faire tourner.",
- "airain.cle.aide_variante": "Accroupi + clic droit : changer sa forme (marches, dalles, portes, leviers…).",
+ "airain.cle.aide_variante": "Accroupi + clic droit : changer sa forme (marches, dalles, portes, leviers…), relier ou délier un côté de muret ou de barrière.",
  "airain.cle.rotation": "orientation %s / 16",
  "airain.cle.tourne": "tourné",
  "airain.cle.axis.x": "axe est-ouest",
@@ -2247,7 +2247,7 @@
  "airain.manuel.airain_wrench.titre": "Clé à molette d'airain",
  "airain.manuel.airain_wrench.sous_titre": "La clé de Create, revue par l'Empire",
  "airain.manuel.airain_wrench.devise": "Rien n'est posé de travers qu'on ne puisse redresser.",
- "airain.manuel.airain_wrench.pouvoir": "Fait tout ce que fait la clé de Create. Sur les autres blocs : clic droit pour les faire tourner, accroupi + clic droit pour changer leur forme (angles de marches, haut ou bas, dalle haute ou basse, charnière de porte, levier au sol, au mur ou au plafond).",
+ "airain.manuel.airain_wrench.pouvoir": "Fait tout ce que fait la clé de Create. Sur les autres blocs : clic droit pour les faire tourner, accroupi + clic droit pour changer leur forme (angles de marches, haut ou bas, dalle haute ou basse, charnière de porte, levier au sol, au mur ou au plafond ; côtés des murets, barrières et vitres, relié ou délié).",
  "airain.manuel.airain_wrench.forge": "Établi : une clé de Create au centre, deux plaques d'airain sur les côtés, un lingot d'airain dessus, un mécanisme de précision dessous.",
  "airain.loupe.marque": "%s a marqué : %s (%s m, %s)",
  "airain.loupe.marque_soi": "Cible marquée : %s (%s m, %s)",
@@ -2303,5 +2303,7 @@
  "airain.manuel.kinetic_relay.sous_titre": "La rotation passe les portails",
  "airain.manuel.kinetic_relay.devise": "Un arbre ici, un arbre là-bas, un seul mouvement.",
  "airain.manuel.kinetic_relay.pouvoir": "L'arbre entre par l'arrière. Clic droit à main vide : émetteur (œil vert) ou récepteur (œil violet) ; canal de 1 à 99 sur les côtés. Chaque récepteur du canal rend la rotation de l'émetteur à la même vitesse, même dans une autre dimension ; ce que tirent ses machines pèse sur le réseau de l'émetteur, plus 10 %. Un émetteur par canal ; les deux côtés doivent être chargés.",
- "airain.manuel.kinetic_relay.forge": "Établi mécanique : obsidienne autour, deux arbres, quatre perles de l'Ender, deux mécanismes de précision, deux plaques d'airain et un œil de l'Ender au centre."
+ "airain.manuel.kinetic_relay.forge": "Établi mécanique : obsidienne autour, deux arbres, quatre perles de l'Ender, deux mécanismes de précision, deux plaques d'airain et un œil de l'Ender au centre.",
+ "airain.cle.lie": "côté %s relié",
+ "airain.cle.delie": "côté %s délié"
 }

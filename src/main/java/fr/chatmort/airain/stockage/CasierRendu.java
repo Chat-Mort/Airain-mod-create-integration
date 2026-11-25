@@ -107,11 +107,11 @@ public class CasierRendu implements BlockEntityRenderer<CasierBlockEntity> {
 		}
 		ms.popPose();
 	}
-	/** 1 856, 2 048 : espaces fines entre les milliers. */
+	/** 1.69.5 : au-delà de 999, en milliers arrondis par défaut (256 890 -> 256k), au-delà de 999 999 en millions (1M) : le cadenas ne chevauche plus. */
 	static String nombre(long n) {
-		String s = Long.toString(n); StringBuilder b = new StringBuilder();
-		for (int i = 0; i < s.length(); i++) { if (i > 0 && (s.length() - i) % 3 == 0) b.append(' '); b.append(s.charAt(i)); }
-		return b.toString();
+		if (n >= 1_000_000) return (n / 1_000_000) + "M";
+		if (n >= 1000) return (n / 1000) + "k";
+		return Long.toString(n);
 	}
 	@Override public int getViewDistance() { return 64; }
 

@@ -64,6 +64,22 @@ public final class CleAirain {
 			if (p == null || !p.mayBuild() || s.getBlock() instanceof IWrenchable
 				|| (p.isShiftKeyDown() && AllTags.AllBlockTags.WRENCH_PICKUP.matches(s)))
 				return super.useOn(c);
+			// 1.69.5 : murets, barrières, vitres et barreaux : accroupi, on relie ou délie le côté visé
+			if (p.isShiftKeyDown() && (s.getBlock() instanceof net.minecraft.world.level.block.WallBlock || s.getBlock() instanceof net.minecraft.world.level.block.CrossCollisionBlock)) {
+				Direction d = c.getClickedFace();
+				if (d.getAxis().isVertical()) {      // clic dessus ou dessous : le côté le plus proche du point visé
+					net.minecraft.world.phys.Vec3 v = c.getClickLocation().subtract(net.minecraft.world.phys.Vec3.atCenterOf(pos));
+					d = Math.abs(v.x) > Math.abs(v.z) ? (v.x > 0 ? Direction.EAST : Direction.WEST) : (v.z > 0 ? Direction.SOUTH : Direction.NORTH);
+				}
+				BlockState m = lien(s, d);
+				if (!l.isClientSide) {
+					l.setBlock(pos, m, Block.UPDATE_CLIENTS | Block.UPDATE_KNOWN_SHAPE);
+					l.playSound(null, pos, SoundEvents.ITEM_FRAME_ROTATE_ITEM, SoundSource.BLOCKS, 0.8f, 0.8f + l.random.nextFloat() * 0.2f);
+					p.displayClientMessage(s.getBlock().getName().copy().append(": ").append(Component.translatable(relie(m, d) ? "airain.cle.lie" : "airain.cle.delie",
+						Component.translatable("airain.loupe.dir." + d.getName().charAt(0)))), true);
+				}
+				return InteractionResult.sidedSuccess(l.isClientSide);
+			}
 			BlockState n = p.isShiftKeyDown() ? variante(s) : tourner(s);
 			if (n == null || n == s) return super.useOn(c);
 			if (!n.canSurvive(l, pos)) return InteractionResult.FAIL;
@@ -142,6 +158,29 @@ public final class CleAirain {
 		if (p == BlockStateProperties.SLAB_TYPE) return s.getValue(BlockStateProperties.SLAB_TYPE) == SlabType.TOP;
 		List<T> v = new ArrayList<>(p.getPossibleValues());
 		return v.indexOf(s.getValue(p)) == v.size() - 1;
+	}
+
+	// ------------------------------------------------------------------ 1.69.5 : liaisons des murets et des barrières
+	private static net.minecraft.world.level.block.state.properties.EnumProperty<net.minecraft.world.level.block.state.properties.WallSide> cote(Direction d) {
+		return switch (d) {
+			case NORTH -> BlockStateProperties.NORTH_WALL; case SOUTH -> BlockStateProperties.SOUTH_WALL;
+			case EAST -> BlockStateProperties.EAST_WALL; default -> BlockStateProperties.WEST_WALL;
+		};
+	}
+	private static boolean relie(BlockState s, Direction d) {
+		if (s.getBlock() instanceof net.minecraft.world.level.block.WallBlock) return s.getValue(cote(d)) != net.minecraft.world.level.block.state.properties.WallSide.NONE;
+		return s.getValue(net.minecraft.world.level.block.CrossCollisionBlock.PROPERTY_BY_DIRECTION.get(d));
+	}
+	private static BlockState lien(BlockState s, Direction d) {
+		if (!(s.getBlock() instanceof net.minecraft.world.level.block.WallBlock))
+			return s.setValue(net.minecraft.world.level.block.CrossCollisionBlock.PROPERTY_BY_DIRECTION.get(d), !relie(s, d));
+		var aucun = net.minecraft.world.level.block.state.properties.WallSide.NONE;
+		BlockState n = s.setValue(cote(d), relie(s, d) ? aucun : net.minecraft.world.level.block.state.properties.WallSide.LOW);
+		// poteau central comme en vanilla : absent seulement quand le muret file droit (deux côtés opposés, rien d'autre)
+		boolean no = n.getValue(cote(Direction.NORTH)) != aucun, so = n.getValue(cote(Direction.SOUTH)) != aucun;
+		boolean es = n.getValue(cote(Direction.EAST)) != aucun, ou = n.getValue(cote(Direction.WEST)) != aucun;
+		boolean droit = (no && so && !es && !ou) || (es && ou && !no && !so);
+		return n.setValue(BlockStateProperties.UP, !droit);
 	}
 
 	// ------------------------------------------------------------------ message
