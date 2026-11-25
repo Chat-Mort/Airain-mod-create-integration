@@ -2289,5 +2289,19 @@
  "airain.manuel.worksite_projector.sous_titre": "The night belongs to the worksite",
  "airain.manuel.worksite_projector.devise": "Where it shines, nothing is born.",
  "airain.manuel.worksite_projector.pouvoir": "Driven by a Create shaft from below, it lights up as soon as it turns: light level 15, and no monster spawns naturally within 16 blocks. Stopped or overstressed, it goes dark. The head turns with a wrench.",
- "airain.manuel.worksite_projector.forge": "Crafting table: four airain sheets in the corners, a redstone lamp on top, two glass panes on the sides, a cogwheel in the center, an andesite casing below."
+ "airain.manuel.worksite_projector.forge": "Crafting table: four airain sheets in the corners, a redstone lamp on top, two glass panes on the sides, a cogwheel in the center, an andesite casing below.",
+ "block.airain.kinetic_relay": "Airain Kinetic Relay",
+ "airain.relais.canal": "Channel",
+ "airain.relais.emetteur": "Emitter · channel %s",
+ "airain.relais.recepteur": "Receiver · channel %s",
+ "airain.relais.doublon": "Another emitter already uses this channel",
+ "airain.relais.sans_recepteur": "No receiver on this channel",
+ "airain.relais.vers": "Linked to %s receiver(s)",
+ "airain.relais.sans_emetteur": "No running emitter on this channel",
+ "airain.relais.relie": "Linked to the emitter",
+ "airain.manuel.kinetic_relay.titre": "Airain Kinetic Relay",
+ "airain.manuel.kinetic_relay.sous_titre": "Rotation goes through portals",
+ "airain.manuel.kinetic_relay.devise": "A shaft here, a shaft there, one single motion.",
+ "airain.manuel.kinetic_relay.pouvoir": "The shaft enters from the back. Empty-hand right click: emitter (green eye) or receiver (purple eye); channel 1 to 99 on the sides. Each receiver on the channel gives back the emitter's rotation at the same speed, even in another dimension; what its machines draw weighs on the emitter's network, plus 10 %. One emitter per channel; both sides must be loaded.",
+ "airain.manuel.kinetic_relay.forge": "Mechanical crafter: obsidian around, two shafts, four ender pearls, two precision mechanisms, two airain sheets and an eye of ender in the center."
 }

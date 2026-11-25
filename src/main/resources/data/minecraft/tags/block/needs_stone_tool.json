@@ -347,6 +347,7 @@
   "airain:oxidized_airain_sliding_gate",
   "airain:waxed_oxidized_airain_mesh_fence",
   "airain:waxed_oxidized_airain_sliding_gate",
-  "airain:worksite_projector"
+  "airain:worksite_projector",
+  "airain:kinetic_relay"
  ]
 }

@@ -1,0 +1,36 @@
+{
+ "type": "create:mechanical_crafting",
+ "category": "misc",
+ "pattern": [
+  "OOSOO",
+  "OMPMO",
+  "OAEAO",
+  "OMPMO",
+  "OOSOO"
+ ],
+ "key": {
+  "S": {
+   "item": "create:shaft"
+  },
+  "O": {
+   "item": "minecraft:obsidian"
+  },
+  "P": {
+   "item": "create:precision_mechanism"
+  },
+  "E": {
+   "item": "minecraft:ender_eye"
+  },
+  "M": {
+   "item": "minecraft:ender_pearl"
+  },
+  "A": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:kinetic_relay",
+  "count": 1
+ },
+ "accept_mirrored": true
+}

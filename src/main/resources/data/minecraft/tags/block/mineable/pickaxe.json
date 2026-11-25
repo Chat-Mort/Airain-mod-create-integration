@@ -439,6 +439,7 @@
   "airain:cut_slate_wall",
   "airain:herringbone_slate",
   "airain:chiseled_slate",
-  "airain:worksite_projector"
+  "airain:worksite_projector",
+  "airain:kinetic_relay"
  ]
 }

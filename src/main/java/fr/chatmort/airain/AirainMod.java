@@ -570,6 +570,8 @@ public class AirainMod {
 		// 1.69.1 : outils de chantier, cordeau de maçon et projecteur de chantier
 		fr.chatmort.airain.fonderie.Cordeau.charger();
 		fr.chatmort.airain.fonderie.Projecteur.charger();
+		// 1.69.3 : relais cinétique d'airain (rotation entre dimensions)
+		fr.chatmort.airain.fonderie.Relais.charger();
 		// 1.69 : le marteau-pilon casse les blocs voisins du bloc miné
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MarteauPilon::casse);
 		// 1.59 : charpente métallique d'airain et marquages au sol
@@ -642,6 +644,7 @@ public class AirainMod {
 		// 1.69.1 : projecteur de chantier, pas de monstres autour quand il est allumé
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Projecteur::apparition);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Projecteur::arret);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.Relais::arret);   // 1.69.3 : canaux du relais cinétique vidés à l'arrêt
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::filon);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fondation.Fondations::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.codex.Codex::mort);

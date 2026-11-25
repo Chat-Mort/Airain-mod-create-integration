@@ -128,6 +128,8 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.GARE_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.GareRendu::new);
 		// 1.69.1 : projecteur de chantier (demi-arbre sans Flywheel)
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Projecteur.BE_TYPE.get(), fr.chatmort.airain.fonderie.ProjecteurRendu::new);
+		// 1.69.3 : relais cinétique (demi-arbre dans le creux de la cage)
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Relais.BE_TYPE.get(), fr.chatmort.airain.fonderie.RelaisRendu::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.TETE_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.TeteRendu::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.LAMINOIR_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.LaminoirRendu::new);
 		event.registerEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.NACELLE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.NacelleRendu::new);
@@ -169,6 +171,7 @@ public class AirainClient {
 			.factory(com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual::shaft).skipVanillaRender(be -> false).apply();
 		// 1.69.1 : demi-arbre du projecteur de chantier (avec Flywheel)
 		fr.chatmort.airain.fonderie.ProjecteurRendu.visuel();
+		fr.chatmort.airain.fonderie.RelaisRendu.visuel();   // 1.69.3
 		SimpleBlockEntityVisualizer.builder(AirainMod.DESENCH_BE.get())
 			.factory(SingleAxisRotatingVisual.of(AllPartialModels.MILLSTONE_COG))
 			.skipVanillaRender(be -> false)

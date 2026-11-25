@@ -2289,5 +2289,19 @@
  "airain.manuel.worksite_projector.sous_titre": "La nuit appartient au chantier",
  "airain.manuel.worksite_projector.devise": "Là où il éclaire, rien ne naît.",
  "airain.manuel.worksite_projector.pouvoir": "Entraîné par un arbre de Create par-dessous, il s'allume dès qu'il tourne : lumière 15, et aucun monstre n'apparaît naturellement à moins de 16 blocs. Arrêté ou surchargé, il s'éteint. La tête se tourne à la clé.",
- "airain.manuel.worksite_projector.forge": "Établi : quatre plaques d'airain aux coins, une lampe de redstone dessus, deux vitres sur les côtés, une roue dentée au centre, un carter d'andésite dessous."
+ "airain.manuel.worksite_projector.forge": "Établi : quatre plaques d'airain aux coins, une lampe de redstone dessus, deux vitres sur les côtés, une roue dentée au centre, un carter d'andésite dessous.",
+ "block.airain.kinetic_relay": "Relais cinétique d'airain",
+ "airain.relais.canal": "Canal",
+ "airain.relais.emetteur": "Émetteur · canal %s",
+ "airain.relais.recepteur": "Récepteur · canal %s",
+ "airain.relais.doublon": "Un autre émetteur occupe déjà ce canal",
+ "airain.relais.sans_recepteur": "Aucun récepteur sur ce canal",
+ "airain.relais.vers": "Relié à %s récepteur(s)",
+ "airain.relais.sans_emetteur": "Aucun émetteur en marche sur ce canal",
+ "airain.relais.relie": "Relié à l'émetteur",
+ "airain.manuel.kinetic_relay.titre": "Relais cinétique d'airain",
+ "airain.manuel.kinetic_relay.sous_titre": "La rotation passe les portails",
+ "airain.manuel.kinetic_relay.devise": "Un arbre ici, un arbre là-bas, un seul mouvement.",
+ "airain.manuel.kinetic_relay.pouvoir": "L'arbre entre par l'arrière. Clic droit à main vide : émetteur (œil vert) ou récepteur (œil violet) ; canal de 1 à 99 sur les côtés. Chaque récepteur du canal rend la rotation de l'émetteur à la même vitesse, même dans une autre dimension ; ce que tirent ses machines pèse sur le réseau de l'émetteur, plus 10 %. Un émetteur par canal ; les deux côtés doivent être chargés.",
+ "airain.manuel.kinetic_relay.forge": "Établi mécanique : obsidienne autour, deux arbres, quatre perles de l'Ender, deux mécanismes de précision, deux plaques d'airain et un œil de l'Ender au centre."
 }
