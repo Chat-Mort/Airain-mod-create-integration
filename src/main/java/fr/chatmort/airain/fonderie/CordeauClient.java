@@ -19,6 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
@@ -58,9 +59,24 @@ public final class CordeauClient {
 		return null;
 	}
 
+	// 1.69.6 : clic gauche avec le cordeau en main, piquets plantés : on ramasse le cordeau (une fois par appui, sans frapper ni casser)
+	private static boolean gaucheTenu;
+	public static void clicGauche(InputEvent.InteractionKeyMappingTriggered e) {
+		Minecraft mc = Minecraft.getInstance();
+		if (!e.isAttack() || mc.player == null || mc.level == null) return;
+		ItemStack s = mc.player.getMainHandItem();
+		if (!s.is(Cordeau.CORDEAU.get()) || Cordeau.a(s, mc.level) == null) return;
+		e.setCanceled(true);
+		e.setSwingHand(false);
+		if (gaucheTenu) return;
+		gaucheTenu = true;
+		PacketDistributor.sendToServer(new Cordeau.Action(Cordeau.ANNULER, BlockPos.ZERO, true));
+	}
+
 	// pendant le choix du point B, la barre d'action suit la case visée
 	public static void tick(ClientTickEvent.Post e) {
 		Minecraft mc = Minecraft.getInstance();
+		if (mc.player != null) gaucheTenu = mc.options.keyAttack.isDown() && gaucheTenu;
 		if (mc.player == null || mc.level == null || mc.player.tickCount % 4 != 0) return;
 		ItemStack s = tenu(mc);
 		if (s.isEmpty()) return;

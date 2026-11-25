@@ -49,6 +49,7 @@ public class AirainClient {
 		// 1.69.1 : cordeau de maçon, aperçu en fil d'airain et barre d'action
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::rendu);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::tick);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::clicGauche);   // 1.69.6 : clic gauche = annuler
 		// 1.55 : hologramme du haut-fourneau
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeRendu::rendu);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
