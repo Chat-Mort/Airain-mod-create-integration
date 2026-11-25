@@ -35,8 +35,9 @@ public final class CordeauClient {
 		BlockPos a = Cordeau.a(s, mc.level), b = Cordeau.b(s, mc.level);
 		int quoi;
 		BlockPos pos = BlockPos.ZERO;
-		if (Screen.hasControlDown()) quoi = Cordeau.MODE;
-		else if (mc.player.isShiftKeyDown()) quoi = Cordeau.ANNULER;
+		// 1.69.7 : accroupi (ou Ctrl) + clic droit = plein / contour ; annuler se fait au clic gauche.
+		// Beaucoup de joueurs ont l'accroupissement sur Ctrl : les deux gestes se confondaient.
+		if (Screen.hasControlDown() || mc.player.isShiftKeyDown()) quoi = Cordeau.MODE;
 		else if (a != null && b != null) quoi = Cordeau.POSER;
 		else if (h != null) { quoi = Cordeau.POINT; pos = Cordeau.cellule(mc.level, h); }
 		else return;
