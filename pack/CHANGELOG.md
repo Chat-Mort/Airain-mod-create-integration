@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 26 novembre 2026 — version 1.69.9
+
+**Ajouts**
+- Carton de motif : on construit un échantillon à la main, on prend ses deux coins au carton (les blocs visés eux-mêmes), accroupi + molette pour régler l'épaisseur, puis un clic droit l'enregistre : jusqu'à 32 × 16 × 32, avec l'état complet de chaque bloc (sens des marches, axe des bûches, dalles…) ; l'air compte comme « ne rien poser ». Clic gauche : effacer la sélection, puis le motif. L'infobulle donne la taille et la liste des blocs à prévoir. Recette sans forme : quatre papiers, une plaque d'airain, un colorant noir (quatre cartons).
+- Cordeau + carton dans l'autre main : le motif part du piquet A et se répète dans les trois directions ; aperçu des vrais blocs en transparence (jusqu'à 1 000 cases) ; accroupi + clic droit tourne le motif d'un quart de tour, les états tournent avec. Pose exacte des états enregistrés, cases vides seulement, blocs pris dans l'inventaire ; s'il en manque, la liste s'affiche et les piquets restent.
+- Cordeau : accroupi + molette, deux piquets posés, fait avancer ou reculer d'un bloc la face de la zone regardée (hauteur en regardant en haut ou en bas). Volumes jusqu'à 32 de côté (16 384 cases), plein ou en contour (enveloppe) ; au plus 4 096 blocs par clic, un autre clic droit continue.
+
+---
+
 ## 25 novembre 2026 — version 1.69.8
 
 **Corrections**

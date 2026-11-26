@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.69.8</h1>
+   <h1>Inspection en jeu — mod 1.69.9</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -99,6 +99,13 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <script>
 {
 const S = [
+ {t:"Carton de motif et volumes", n:"Nouveau en 1.69.9.", l:[
+  ["Recette et apparence","Quatre papiers, plaque, colorant noir : quatre cartons ; icône vierge puis imprimée."],
+  ["Enregistrer un échantillon","Deux coins (blocs visés), accroupi + molette pour l'épaisseur, clic droit : message et infobulle (taille, blocs)."],
+  ["Orientations","Marches, bûches, dalles, portes, murets : posés exactement comme enregistrés, aussi après un quart de tour."],
+  ["Aperçu et pose","Carton dans l'autre main du cordeau : vrais blocs en transparence, motif répété depuis A ; blocs manquants listés."],
+  ["Molette sur le cordeau","Accroupi + molette (Ctrl chez toi) : la face regardée avance ou recule ; la barre d'outils ne défile pas."],
+  ["Grand volume","Au-delà de 4 096 blocs : « right click to continue » ; aucun gel du serveur."]]},
  {t:"Retours de l'inspection 1.69.4", n:"Corrigés en 1.69.5.", l:[
   ["Son du marteau-pilon","Ctrl + clic droit : déclic sec, plus aigu en 5 × 5."],
   ["Murets à la clé d'airain","Accroupi + clic droit sur un côté : relié ou délié ; aussi barrières, vitres, barreaux ; clic dessus : côté le plus proche."],
@@ -254,7 +261,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.69.8\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.69.9\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;
