@@ -2371,5 +2371,11 @@
  "airain.manuel.tilers_table.sous_titre": "The Empire's patterns, without building a sample",
  "airain.manuel.tilers_table.devise": "Choose, adjust, print.",
  "airain.manuel.tilers_table.pouvoir": "Create tab: a type (floor, wall, ceiling), a ready-made pattern, blocks in the roles, the cell or pattern size, a border if wanted and a name; « Print » writes the pattern on a blank card. Floors, Walls, Ceilings tabs: shared storage for cards. Right click in the air with a printed card: 3D preview. A broken table keeps its contents.",
- "airain.manuel.tilers_table.forge": "Crafting table: white marble, black marble, white marble; airain sheet, crafting table, airain sheet; airain sheet, pattern card, airain sheet."
+ "airain.manuel.tilers_table.forge": "Crafting table: white marble, black marble, white marble; airain sheet, crafting table, airain sheet; airain sheet, pattern card, airain sheet.",
+ "airain.carreleur.motif.chevrons": "Chevrons",
+ "airain.carreleur.motif.cabochons": "Cabochons",
+ "airain.carreleur.motif.medallion": "Medallion",
+ "airain.carreleur.motif.ring": "Ring",
+ "airain.carreleur.motif.frames": "Frames",
+ "airain.carreleur.motif.dotted_checker": "Dotted checker"
 }

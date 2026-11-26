@@ -108,6 +108,8 @@ public final class Motif {
 		public final int sx, sy, sz; public final BlockState[] palette; public final byte[] cases;
 		// 1.70 : type (floor, wall, ceiling) et bordure qui fait le tour de la zone du cordeau (null : pas de bordure)
 		public String type = "floor"; public BlockState bord; public int bordL;
+		// 1.70.2 : posé une seule fois depuis le bas du mur ; au-dessus, l'état « fond »
+		public boolean uniqueV; public BlockState fond;
 		Grille(int sx, int sy, int sz, BlockState[] p, byte[] c) { this.sx = sx; this.sy = sy; this.sz = sz; palette = p; cases = c; }
 		BlockState brut(int x, int y, int z) { int i = cases[(y * sz + z) * sx + x] & 255; return i == 0 ? null : palette[i - 1]; }
 		int pleins() { int n = 0; for (byte b : cases) if (b != 0) n++; return n; }
@@ -137,6 +139,8 @@ public final class Motif {
 			g.type = m.contains("type") ? m.getString("type") : typeDe(g.sx, g.sy, g.sz);
 			int bi = m.getInt("bord");
 			if (bi > 0 && bi <= p.length) { g.bord = p[bi - 1]; g.bordL = Math.max(1, m.getInt("bord_l")); }
+			int fi = m.getInt("fond");
+			if (m.getBoolean("unique_v") && fi > 0 && fi <= p.length) { g.uniqueV = true; g.fond = p[fi - 1]; }
 			CACHE.put(t, g);
 			return g;
 		}
@@ -177,6 +181,13 @@ public final class Motif {
 			}
 			dx -= dec[0]; dy -= dec[1]; dz -= dec[2];
 		}
+		if (g.uniqueV && g.fond != null) {
+			// compté depuis le bas de la zone (au-dessus de la bordure s'il y en a une)
+			int bas = Math.min(a.getY(), b.getY()) + (g.bord != null && a.getY() != b.getY() ? g.bordL : 0);
+			int vy = c.getY() - bas;
+			if (vy < 0 || vy >= g.sy) return tourne(g.fond, rot);
+			dy = vy;
+		}
 		return etat(g, rot, dx, dy, dz);
 	}
 	static BlockState tourne(BlockState s, int rot) {
@@ -184,7 +195,7 @@ public final class Motif {
 	}
 
 	/** 1.70 : écrit sur un carton un motif sorti de la table du carreleur (tuile de rôles, états des rôles, bordure). */
-	public static void ecrireGenere(ItemStack carton, String type, int[][] tuile, BlockState[] roles, BlockState bord, int bordL) {
+	public static void ecrireGenere(ItemStack carton, String type, int[][] tuile, BlockState[] roles, BlockState bord, int bordL, boolean uniqueV) {
 		int h = tuile.length, w = tuile[0].length;
 		boolean mur = type.equals("wall");
 		int sx = w, sy = mur ? h : 1, sz = mur ? 1 : h;
@@ -203,6 +214,10 @@ public final class Motif {
 		if (bord != null && bordL > 0) {
 			int i = palette.indexOf(bord); if (i < 0) { palette.add(bord); i = palette.size() - 1; }
 			m.putInt("bord", i + 1); m.putInt("bord_l", bordL);
+		}
+		if (uniqueV) {
+			int i = palette.indexOf(roles[0]); if (i < 0) { palette.add(roles[0]); i = palette.size() - 1; }
+			m.putBoolean("unique_v", true); m.putInt("fond", i + 1);
 		}
 		ListTag pl = new ListTag();
 		for (BlockState st : palette) pl.add(NbtUtils.writeBlockState(st));

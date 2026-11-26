@@ -2371,5 +2371,11 @@
  "airain.manuel.tilers_table.sous_titre": "Les motifs de l'Empire, sans construire d'échantillon",
  "airain.manuel.tilers_table.devise": "Choisir, régler, imprimer.",
  "airain.manuel.tilers_table.pouvoir": "Onglet Création : un type (sol, mur, plafond), un motif tout fait, des blocs dans les rôles, la taille des cases ou du motif, une bordure au besoin et un nom ; « Imprimer » écrit le motif sur un carton vierge. Onglets Sols, Murs, Plafonds : rangement partagé des cartons. Clic droit dans le vide avec un carton imprimé : aperçu en 3D. La table cassée garde son contenu.",
- "airain.manuel.tilers_table.forge": "Établi : marbre blanc, marbre noir, marbre blanc ; plaque d'airain, établi, plaque d'airain ; plaque d'airain, carton de motif, plaque d'airain."
+ "airain.manuel.tilers_table.forge": "Établi : marbre blanc, marbre noir, marbre blanc ; plaque d'airain, établi, plaque d'airain ; plaque d'airain, carton de motif, plaque d'airain.",
+ "airain.carreleur.motif.chevrons": "Chevrons",
+ "airain.carreleur.motif.cabochons": "Cabochons",
+ "airain.carreleur.motif.medallion": "Médaillon",
+ "airain.carreleur.motif.ring": "Anneau",
+ "airain.carreleur.motif.frames": "Cadres",
+ "airain.carreleur.motif.dotted_checker": "Damier pointé"
 }

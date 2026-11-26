@@ -31,6 +31,8 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 	// réglages de l'onglet Création (gardés tant que le jeu tourne)
 	private static int type, choix, reglage = -1, bordL = 1;
 	private static boolean bord;
+	private static int defil;            // 1.70.2 : défilement de la liste des motifs (8 lignes visibles)
+	private static final int LIGNES = 8;
 	private static String nom = "";
 
 	private Button btType, moins, plus, bMoins, bPlus, imprimer;
@@ -55,7 +57,7 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 		Generateur.Dessin d = dessin();
 		if (reglage < d.min || reglage > d.max) reglage = d.defaut;
 		int x = leftPos, y = topPos;
-		btType = addRenderableWidget(Button.builder(Component.empty(), b -> { type = (type + 1) % 3; choix = 0; reglage = dessin().defaut; maj(); }).bounds(x + 8, y + 30, 78, 20).build());
+		btType = addRenderableWidget(Button.builder(Component.empty(), b -> { type = (type + 1) % 3; choix = 0; defil = 0; reglage = dessin().defaut; maj(); }).bounds(x + 8, y + 30, 78, 20).build());
 		moins = addRenderableWidget(Button.builder(Component.literal("−"), b -> { reglage = Math.max(dessin().min, reglage - 1); maj(); }).bounds(x + 132, y + 136, 20, 20).build());
 		plus = addRenderableWidget(Button.builder(Component.literal("+"), b -> { reglage = Math.min(dessin().max, reglage + 1); maj(); }).bounds(x + 166, y + 136, 20, 20).build());
 		curseur = addRenderableWidget(new Curseur(x + 90, y + 146, 100));
@@ -121,11 +123,18 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 		if (o == 0) {
 			// liste des motifs du type choisi
 			List<Generateur.Dessin> l = Generateur.PAR_TYPE.get(type);
-			for (int i = 0; i < l.size(); i++) {
-				int y = topPos + 53 + i * 12;
+			defil = Math.max(0, Math.min(defil, l.size() - LIGNES));
+			for (int i = defil; i < Math.min(l.size(), defil + LIGNES); i++) {
+				int y = topPos + 53 + (i - defil) * 12;
 				if (i == choix) g.fill(leftPos + 9, y, leftPos + 85, y + 12, 0xFF5A3C28);
 				else if (mx >= leftPos + 9 && mx < leftPos + 85 && my >= y && my < y + 12) g.fill(leftPos + 9, y, leftPos + 85, y + 12, 0xFF2E3240);
 				g.drawString(font, Component.translatable(l.get(i).cle()), leftPos + 11, y + 2, i == choix ? OR : BLANC, false);
+			}
+			// barre de défilement fine, à droite de la liste, quand il y a plus de 8 motifs
+			if (l.size() > LIGNES) {
+				int h = 96 * LIGNES / l.size(), y = topPos + 53 + (96 - h) * defil / (l.size() - LIGNES);
+				g.fill(leftPos + 83, topPos + 53, leftPos + 85, topPos + 149, 0xFF2A2E37);
+				g.fill(leftPos + 83, y, leftPos + 85, y + h, OR);
 			}
 			apercu(g, leftPos + 92, topPos + 32);
 			// cases des rôles visibles
@@ -151,7 +160,9 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 			for (int col = 0; col < n; col++) {
 				int v = mur ? n - 1 - r : r, role;
 				boolean auBord = bl > 0 && (col < bl || col >= n - bl || v < bl || v >= n - bl);
-				role = auBord ? 3 : t[Math.floorMod(v - bl, h)][Math.floorMod(col - bl, w)];
+				if (auBord) role = 3;
+				else if (d.uniqueV()) role = (v - bl) < h ? t[v - bl][Math.floorMod(col - bl, w)] : 0;   // soubassement, frise : une seule fois en bas
+				else role = t[Math.floorMod(v - bl, h)][Math.floorMod(col - bl, w)];
 				if (role == 2 && !d.accent) role = 0;
 				ItemStack s = menu.table.getItem(Carreleur.ROLES + role);
 				BlockState st = Carreleur.etatDe(s);
@@ -196,12 +207,23 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 		}
 		if (menu.onglet() == 0) {
 			List<Generateur.Dessin> l = Generateur.PAR_TYPE.get(type);
-			for (int i = 0; i < l.size(); i++) {
-				int y = topPos + 53 + i * 12;
-				if (mx >= leftPos + 9 && mx < leftPos + 85 && my >= y && my < y + 12) { choix = i; reglage = dessin().defaut; maj(); return true; }
+			for (int i = defil; i < Math.min(l.size(), defil + LIGNES); i++) {
+				int y = topPos + 53 + (i - defil) * 12;
+				if (mx >= leftPos + 9 && mx < leftPos + 83 && my >= y && my < y + 12) { choix = i; reglage = dessin().defaut; maj(); return true; }
 			}
 		}
 		return super.mouseClicked(mx, my, bt);
+	}
+
+	@Override
+	public boolean mouseScrolled(double mx, double my, double sx, double sy) {
+		// molette sur la liste : défilement des motifs
+		if (menu.onglet() == 0 && mx >= leftPos + 8 && mx < leftPos + 86 && my >= topPos + 52 && my < topPos + 152) {
+			int n = Generateur.PAR_TYPE.get(type).size();
+			defil = Math.max(0, Math.min(n - LIGNES, defil - (int) Math.signum(sy)));
+			return true;
+		}
+		return super.mouseScrolled(mx, my, sx, sy);
 	}
 
 	@Override

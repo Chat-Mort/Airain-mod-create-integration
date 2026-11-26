@@ -139,7 +139,7 @@ public final class Carreleur {
 				}
 				if (!d.accent) roles[2] = roles[0];
 				ItemStack carton = new ItemStack(Motif.CARTON.get());
-				Motif.ecrireGenere(carton, Generateur.TYPES[m.genre()], Generateur.tuile(d, m.reglage()), roles, bord, Math.min(3, Math.max(0, m.bordL())));
+				Motif.ecrireGenere(carton, Generateur.TYPES[m.genre()], Generateur.tuile(d, m.reglage()), roles, bord, Math.min(3, Math.max(0, m.bordL())), d.uniqueV());
 				String nom = m.nom().strip();
 				if (!nom.isEmpty()) carton.set(DataComponents.CUSTOM_NAME, Component.literal(nom));
 				entree.shrink(1);
