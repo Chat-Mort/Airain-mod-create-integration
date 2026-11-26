@@ -38,6 +38,7 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 	private Button btType, moins, plus, bMoins, bPlus, imprimer;
 	private Checkbox caseBord;
 	private Curseur curseur;
+	private boolean glisse;              // 1.70.3 : curseur saisi (l'écran de conteneur ne transmet pas le glisser aux widgets)
 	private EditBox champNom;
 
 	public CarreleurScreen(CarreleurMenu m, Inventory inv, Component t) {
@@ -185,10 +186,14 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 		g.drawString(font, Component.translatable("airain.carreleur.nom"), 8, 157, GRIS, false);
 		if (d.reglage == Generateur.Reglage.CASE) {
 			g.drawString(font, Component.translatable(d == Generateur.Dessin.GRID ? "airain.carreleur.ecart" : "airain.carreleur.case"), 90, 142, BLANC, false);
-			g.drawString(font, String.valueOf(reglage), 156, 142, OR, true);
+			// chiffre centré entre « − » (132-152) et « + » (166-186)
+			String v = String.valueOf(reglage);
+			g.drawString(font, v, 159 - font.width(v) / 2, 142, OR, true);
 		} else {
 			g.drawString(font, Component.translatable("airain.carreleur.taille"), 90, 136, BLANC, false);
-			g.drawString(font, reglage + " × " + reglage, 150, 136, OR, true);
+			// valeur calée à droite sur le bord du curseur, pour ne jamais toucher l'intitulé
+			String v = reglage + " × " + reglage;
+			g.drawString(font, v, 190 - font.width(v), 136, OR, true);
 		}
 		if (bord) g.drawString(font, String.valueOf(bordL), 175, 174, OR, true);
 		g.drawString(font, "→", 228, 127, OR, true);
@@ -205,6 +210,8 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 				return true;
 			}
 		}
+		// curseur saisi : on suit la souris jusqu'au relâchement
+		if (curseur.visible && curseur.isMouseOver(mx, my)) glisse = true;
 		if (menu.onglet() == 0) {
 			List<Generateur.Dessin> l = Generateur.PAR_TYPE.get(type);
 			for (int i = defil; i < Math.min(l.size(), defil + LIGNES); i++) {
@@ -213,6 +220,19 @@ public class CarreleurScreen extends AbstractContainerScreen<CarreleurMenu> {
 			}
 		}
 		return super.mouseClicked(mx, my, bt);
+	}
+
+	@Override
+	public boolean mouseDragged(double mx, double my, int bt, double dx, double dy) {
+		// AbstractContainerScreen garde le glisser pour les cases : on le passe au curseur
+		if (glisse && curseur.visible) return curseur.mouseDragged(mx, my, bt, dx, dy);
+		return super.mouseDragged(mx, my, bt, dx, dy);
+	}
+
+	@Override
+	public boolean mouseReleased(double mx, double my, int bt) {
+		if (glisse) { glisse = false; curseur.onRelease(mx, my); return true; }
+		return super.mouseReleased(mx, my, bt);
 	}
 
 	@Override
