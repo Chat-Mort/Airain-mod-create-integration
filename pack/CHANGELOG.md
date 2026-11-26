@@ -5,6 +5,15 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 26 novembre 2026 — version 1.69.10
+
+**Changements**
+- Textures d'objets revues : plaque d'airain (forme des plaques de Create), lingot et pépite (formes d'origine) en airain à patine rouge, ombres et reflets rouge impérial ; câble d'airain en brins verticaux sur son tambour ; rouage brisé (kubejs) avec des dents carrées ; nacelle du téléphérique suspendue à son câble, vitres et contour.
+- Portillon de passerelle : objet en 3D comme le reste des passerelles (le portillon seul, recentré).
+- Mise à jour : le jar, et le dossier `kubejs` côté joueurs (texture du rouage brisé).
+
+---
+
 ## 26 novembre 2026 — version 1.69.9
 
 **Ajouts**
