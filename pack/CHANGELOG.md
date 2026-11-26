@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 26 novembre 2026 — version 1.70.1
+
+**Changements**
+- Table du carreleur en relief : socle et montants en bande d'airain, caisson d'ardoise en retrait d'un pixel, bordure du plateau un pixel plus bas sous un damier de marbre en relief, équerre d'airain posée dessus ; à l'avant, deux tiroirs qui ressortent, poignées et bords de cartons ; sur les côtés, un échantillon de damier serti.
+
+---
+
 ## 26 novembre 2026 — version 1.70.0
 
 **Ajouts**
