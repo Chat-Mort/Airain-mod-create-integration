@@ -114,18 +114,18 @@ public final class Carreleur {
 	}
 
 	// ------------------------------------------------------------------ impression (paquet client -> serveur)
-	public record Imprimer(int type, int dessin, int reglage, int bordL, String nom) implements CustomPacketPayload {
+	public record Imprimer(int genre, int dessin, int reglage, int bordL, String nom) implements CustomPacketPayload {
 		public static final Type<Imprimer> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("airain", "carreleur_imprimer"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, Imprimer> CODEC = StreamCodec.composite(
-			ByteBufCodecs.VAR_INT, Imprimer::type, ByteBufCodecs.VAR_INT, Imprimer::dessin, ByteBufCodecs.VAR_INT, Imprimer::reglage,
+			ByteBufCodecs.VAR_INT, Imprimer::genre, ByteBufCodecs.VAR_INT, Imprimer::dessin, ByteBufCodecs.VAR_INT, Imprimer::reglage,
 			ByteBufCodecs.VAR_INT, Imprimer::bordL, ByteBufCodecs.stringUtf8(40), Imprimer::nom, Imprimer::new);
 		@Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
 
 		public static void traiter(Imprimer m, IPayloadContext ctx) {
 			ctx.enqueueWork(() -> {
 				if (!(ctx.player() instanceof ServerPlayer p) || !(p.containerMenu instanceof CarreleurMenu menu) || !menu.stillValid(p)) return;
-				if (m.type() < 0 || m.type() > 2) return;
-				var liste = Generateur.PAR_TYPE.get(m.type());
+				if (m.genre() < 0 || m.genre() > 2) return;
+				var liste = Generateur.PAR_TYPE.get(m.genre());
 				if (m.dessin() < 0 || m.dessin() >= liste.size()) return;
 				Generateur.Dessin d = liste.get(m.dessin());
 				Container c = menu.table;
@@ -139,7 +139,7 @@ public final class Carreleur {
 				}
 				if (!d.accent) roles[2] = roles[0];
 				ItemStack carton = new ItemStack(Motif.CARTON.get());
-				Motif.ecrireGenere(carton, Generateur.TYPES[m.type()], Generateur.tuile(d, m.reglage()), roles, bord, Math.min(3, Math.max(0, m.bordL())));
+				Motif.ecrireGenere(carton, Generateur.TYPES[m.genre()], Generateur.tuile(d, m.reglage()), roles, bord, Math.min(3, Math.max(0, m.bordL())));
 				String nom = m.nom().strip();
 				if (!nom.isEmpty()) carton.set(DataComponents.CUSTOM_NAME, Component.literal(nom));
 				entree.shrink(1);
