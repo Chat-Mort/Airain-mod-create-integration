@@ -1,0 +1,28 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "minecraft:paper"
+  },
+  {
+   "item": "minecraft:paper"
+  },
+  {
+   "item": "minecraft:paper"
+  },
+  {
+   "item": "minecraft:paper"
+  },
+  {
+   "item": "airain:airain_sheet"
+  },
+  {
+   "item": "minecraft:black_dye"
+  }
+ ],
+ "result": {
+  "id": "airain:pattern_card",
+  "count": 4
+ }
+}

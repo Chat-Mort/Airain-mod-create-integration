@@ -52,6 +52,12 @@ public final class CordeauClient {
 		return o.is(Cordeau.CORDEAU.get()) ? o : ItemStack.EMPTY;
 	}
 
+	/** 1.69.9 : le carton enregistré tenu dans l'autre main que le cordeau, ou null. */
+	static ItemStack autre(Minecraft mc, ItemStack cordeau) {
+		ItemStack o = mc.player.getMainHandItem() == cordeau ? mc.player.getOffhandItem() : mc.player.getMainHandItem();
+		return o.is(Motif.CARTON.get()) && Motif.enregistre(o) ? o : null;
+	}
+
 	/** Deuxième point provisoire : B s'il est posé, sinon la case visée. */
 	private static BlockPos secondPoint(Minecraft mc, ItemStack s) {
 		BlockPos b = Cordeau.b(s, mc.level);
@@ -66,7 +72,9 @@ public final class CordeauClient {
 		Minecraft mc = Minecraft.getInstance();
 		if (!e.isAttack() || mc.player == null || mc.level == null) return;
 		ItemStack s = mc.player.getMainHandItem();
-		if (!s.is(Cordeau.CORDEAU.get()) || Cordeau.a(s, mc.level) == null) return;
+		// 1.69.9 : avec le carton en main, le clic gauche efface la sélection en cours, sinon le motif
+		boolean carton = s.is(Motif.CARTON.get()) && (Motif.a(s, mc.level) != null || Motif.enregistre(s));
+		if (!carton && (!s.is(Cordeau.CORDEAU.get()) || Cordeau.a(s, mc.level) == null)) return;
 		e.setCanceled(true);
 		e.setSwingHand(false);
 		if (gaucheTenu) return;
@@ -85,7 +93,9 @@ public final class CordeauClient {
 		if (a == null || Cordeau.b(s, mc.level) != null) return;
 		BlockPos c = secondPoint(mc, s);
 		if (c == null) return;
-		mc.gui.setOverlayMessage(Cordeau.forme(a, c, Cordeau.contour(s)).append(Component.translatable("airain.cordeau.suite_b")), false);
+		ItemStack carton = autre(mc, s);
+		var f = carton != null ? Motif.forme(a, c, carton, mc.level) : Cordeau.forme(a, c, Cordeau.contour(s));
+		mc.gui.setOverlayMessage(f.append(Component.translatable("airain.cordeau.suite_b")), false);
 	}
 
 	public static void rendu(RenderLevelStageEvent e) {
@@ -98,16 +108,21 @@ public final class CordeauClient {
 		if (a == null) return;
 		BlockPos b = secondPoint(mc, s);
 		boolean fixe = Cordeau.b(s, mc.level) != null;
-		List<BlockPos> cs = b == null ? null : Cordeau.cases(a, b, Cordeau.contour(s));
+		ItemStack carton = autre(mc, s);
+		Motif.Grille g = carton == null ? null : Motif.grille(carton, mc.level);
+		List<BlockPos> cs = b == null || g != null ? null : Cordeau.cases(a, b, Cordeau.contour(s));
 		PoseStack ms = e.getPoseStack();
 		Vec3 cam = e.getCamera().getPosition();
 		MultiBufferSource.BufferSource buf = mc.renderBuffers().bufferSource();
-		VertexConsumer vc = buf.getBuffer(RenderType.lines());
 		ms.pushPose();
 		ms.translate(-cam.x, -cam.y, -cam.z);
-		// cases prévues en fil d'airain (plus pâle tant que B n'est pas planté)
+		// 1.69.9 : carton dans l'autre main : les vrais blocs du motif en transparence (jusqu'à 1 000 cases)
+		if (g != null && b != null && Cordeau.valide(a, b)) MotifClient.fantomes(ms, buf, mc, a, b, g, Motif.rot(carton));
+		VertexConsumer vc = buf.getBuffer(RenderType.lines());
 		float al = fixe ? 1f : 0.55f;
-		if (cs != null) for (BlockPos c : cs) LevelRenderer.renderLineBox(ms, vc, new AABB(c).deflate(0.03), 0.953f, 0.839f, 0.580f, al);
+		// cases prévues en fil d'airain (plus pâle tant que B n'est pas planté) ; au-delà de 512 cases, le pourtour seulement
+		if (cs != null && cs.size() <= 512) for (BlockPos c : cs) LevelRenderer.renderLineBox(ms, vc, new AABB(c).deflate(0.03), 0.953f, 0.839f, 0.580f, al);
+		else if (b != null && Cordeau.valide(a, b)) LevelRenderer.renderLineBox(ms, vc, MotifClient.boite(a, b).deflate(0.02), 0.953f, 0.839f, 0.580f, al);
 		// piquets A et B en rouge impérial
 		LevelRenderer.renderLineBox(ms, vc, new AABB(a).inflate(0.02), 0.753f, 0.263f, 0.263f, 1f);
 		if (b != null) LevelRenderer.renderLineBox(ms, vc, new AABB(b).inflate(0.02), 0.753f, 0.263f, 0.263f, fixe ? 1f : 0.55f);

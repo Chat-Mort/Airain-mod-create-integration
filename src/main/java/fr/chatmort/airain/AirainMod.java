@@ -572,6 +572,7 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Projecteur.charger();
 		// 1.69.3 : relais cinétique d'airain (rotation entre dimensions)
 		fr.chatmort.airain.fonderie.Relais.charger();
+		fr.chatmort.airain.fonderie.Motif.charger();   // 1.69.9 : carton de motif
 		// 1.69 : le marteau-pilon casse les blocs voisins du bloc miné
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MarteauPilon::casse);
 		// 1.59 : charpente métallique d'airain et marquages au sol

@@ -50,6 +50,10 @@ public class AirainClient {
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::rendu);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::tick);
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.CordeauClient::clicGauche);   // 1.69.6 : clic gauche = annuler
+		// 1.69.9 : carton de motif (molette, aperçu, taille de la sélection)
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MotifClient::molette);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MotifClient::tick);
+		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MotifClient::rendu);
 		// 1.55 : hologramme du haut-fourneau
 		net.neoforged.neoforge.common.NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.HologrammeRendu::rendu);
 		bus.addListener((EntityRenderersEvent.RegisterLayerDefinitions e) ->
@@ -151,6 +155,9 @@ public class AirainClient {
 		// 1.69 : marteau-pilon, tête en airain rouge impérial en mode 5 × 5
 		event.enqueueWork(() -> net.minecraft.client.renderer.item.ItemProperties.register(fr.chatmort.airain.fonderie.MarteauPilon.MARTEAU.get(),
 			net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "mode"), (s, l, e, n) -> fr.chatmort.airain.fonderie.MarteauPilon.cinq(s) ? 1f : 0f));
+		// 1.69.9 : carton de motif, icône imprimée une fois le motif enregistré
+		event.enqueueWork(() -> net.minecraft.client.renderer.item.ItemProperties.register(fr.chatmort.airain.fonderie.Motif.CARTON.get(),
+			net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("airain", "enregistre"), (s, l, e, n) -> fr.chatmort.airain.fonderie.Motif.enregistre(s) ? 1f : 0f));
 		// Gardien des Cieux : rendu translucide pour que la lumière traverse les vitraux de ses ailes
 		event.enqueueWork(() -> net.minecraft.client.renderer.entity.EnderDragonRenderer.RENDER_TYPE =
 			net.minecraft.client.renderer.RenderType.entityTranslucent(

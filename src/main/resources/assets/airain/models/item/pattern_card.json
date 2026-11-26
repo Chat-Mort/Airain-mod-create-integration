@@ -1,0 +1,14 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "airain:item/pattern_card"
+ },
+ "overrides": [
+  {
+   "predicate": {
+    "airain:enregistre": 1
+   },
+   "model": "airain:item/pattern_card_filled"
+  }
+ ]
+}

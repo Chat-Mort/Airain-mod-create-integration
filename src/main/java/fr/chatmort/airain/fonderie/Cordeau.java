@@ -45,7 +45,8 @@ import net.neoforged.neoforge.registries.DeferredItem;
 public final class Cordeau {
 	private Cordeau() {}
 
-	public static final int LIGNE_MAX = 64, COTE_MAX = 16, PORTEE = 10;
+	// 1.69.9 : volumes (accroupi + molette) ; côtés jusqu'à 32, 16 384 cases au plus, 4 096 blocs posés par clic
+	public static final int LIGNE_MAX = 64, COTE_MAX = 32, VOLUME_MAX = 32 * 32 * 16, POSE_MAX = 4096, PORTEE = 10;
 	static final String A = "airain_cordeau_a", B = "airain_cordeau_b", CONTOUR = "airain_cordeau_contour", DIM = "airain_cordeau_dim";
 
 	public static final DeferredItem<Item> CORDEAU = AirainMod.ITEMS.register("chalk_line", () -> new Objet(new Item.Properties().stacksTo(1)));
@@ -91,20 +92,26 @@ public final class Cordeau {
 		return l.getBlockState(h.getBlockPos()).canBeReplaced() ? h.getBlockPos() : h.getBlockPos().relative(h.getDirection());
 	}
 
-	/** Les cases entre A et B, ou null si les points ne sont ni alignés ni dans un plan, ou si c'est trop grand. */
+	/** La sélection entre A et B est-elle acceptable ? Ligne : 64 ; sinon côtés de 32 au plus et 16 384 cases. */
+	public static boolean valide(BlockPos a, BlockPos b) {
+		int dx = Math.abs(a.getX() - b.getX()), dy = Math.abs(a.getY() - b.getY()), dz = Math.abs(a.getZ() - b.getZ());
+		int axes = (dx > 0 ? 1 : 0) + (dy > 0 ? 1 : 0) + (dz > 0 ? 1 : 0);
+		if (axes <= 1) return Math.max(dx, Math.max(dy, dz)) + 1 <= LIGNE_MAX;
+		return dx < COTE_MAX && dy < COTE_MAX && dz < COTE_MAX && (long) (dx + 1) * (dy + 1) * (dz + 1) <= VOLUME_MAX;
+	}
+
+	/** Les cases entre A et B (ligne, plan ou volume ; contour = le bord du plan ou l'enveloppe du volume), ou null si c'est trop grand. */
 	public static List<BlockPos> cases(BlockPos a, BlockPos b, boolean contour) {
 		int dx = Math.abs(a.getX() - b.getX()), dy = Math.abs(a.getY() - b.getY()), dz = Math.abs(a.getZ() - b.getZ());
 		int axes = (dx > 0 ? 1 : 0) + (dy > 0 ? 1 : 0) + (dz > 0 ? 1 : 0);
-		if (axes == 3) return null;
-		if (axes <= 1 && Math.max(dx, Math.max(dy, dz)) + 1 > LIGNE_MAX) return null;
-		if (axes == 2 && (dx + 1 > COTE_MAX || dy + 1 > COTE_MAX || dz + 1 > COTE_MAX)) return null;
+		if (!valide(a, b)) return null;
 		List<BlockPos> r = new ArrayList<>();
 		int x0 = Math.min(a.getX(), b.getX()), y0 = Math.min(a.getY(), b.getY()), z0 = Math.min(a.getZ(), b.getZ());
 		for (int x = x0; x <= x0 + dx; x++)
 			for (int y = y0; y <= y0 + dy; y++)
 				for (int z = z0; z <= z0 + dz; z++) {
-					// contour : seulement le bord du plan
-					if (contour && axes == 2) {
+					// contour : seulement le bord du plan, ou l'enveloppe du volume
+					if (contour && axes >= 2) {
 						boolean bord = (dx > 0 && (x == x0 || x == x0 + dx)) || (dy > 0 && (y == y0 || y == y0 + dy)) || (dz > 0 && (z == z0 || z == z0 + dz));
 						if (!bord) continue;
 					}
@@ -118,16 +125,16 @@ public final class Cordeau {
 		List<BlockPos> c = cases(a, b, contour);
 		int dx = Math.abs(a.getX() - b.getX()) + 1, dy = Math.abs(a.getY() - b.getY()) + 1, dz = Math.abs(a.getZ() - b.getZ()) + 1;
 		int axes = (dx > 1 ? 1 : 0) + (dy > 1 ? 1 : 0) + (dz > 1 ? 1 : 0);
-		if (axes == 3) return Component.translatable("airain.cordeau.biais");
-		if (c == null) return Component.translatable("airain.cordeau.trop", LIGNE_MAX, COTE_MAX, COTE_MAX);
+		if (c == null) return Component.translatable("airain.cordeau.trop", LIGNE_MAX, COTE_MAX);
 		if (axes <= 1) return Component.translatable("airain.cordeau.forme.ligne", c.size());
-		MutableComponent m = dy == 1 ? Component.translatable("airain.cordeau.forme.sol", dx, dz, c.size())
+		MutableComponent m = axes == 3 ? Component.translatable("airain.cordeau.forme.volume", dx, dy, dz, c.size())
+			: dy == 1 ? Component.translatable("airain.cordeau.forme.sol", dx, dz, c.size())
 			: Component.translatable("airain.cordeau.forme.mur", dx > 1 ? dx : dz, dy, c.size());
 		return m.append(Component.translatable(contour ? "airain.cordeau.contour" : "airain.cordeau.plein"));
 	}
 
 	// ------------------------------------------------------------------ actions (paquet client -> serveur)
-	public static final int POINT = 0, POSER = 1, ANNULER = 2, MODE = 3;
+	public static final int POINT = 0, POSER = 1, ANNULER = 2, MODE = 3, TAILLE = 4;   // TAILLE : pos = (face, +1 ou -1, 0)
 
 	public record Action(int quoi, BlockPos pos, boolean mainPrincipale) implements CustomPacketPayload {
 		public static final Type<Action> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath("airain", "cordeau_action"));
@@ -140,10 +147,15 @@ public final class Cordeau {
 				if (!(ctx.player() instanceof ServerPlayer p)) return;
 				InteractionHand main = m.mainPrincipale() ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
 				ItemStack s = p.getItemInHand(main);
-				if (!s.is(CORDEAU.get())) return;
 				ServerLevel sl = p.serverLevel();
+				// 1.69.9 : le carton de motif passe par le même paquet
+				if (s.is(Motif.CARTON.get())) { Motif.action(m, p, sl, s); return; }
+				if (!s.is(CORDEAU.get())) return;
+				ItemStack autre = p.getItemInHand(main == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND);
 				switch (m.quoi()) {
 					case MODE -> {
+						// carton dans l'autre main : accroupi + clic droit tourne le motif
+						if (autre.is(Motif.CARTON.get()) && Motif.enregistre(autre)) { Motif.tourner(p, sl, autre); return; }
 						boolean c = !contour(s);
 						CustomData.update(DataComponents.CUSTOM_DATA, s, t -> t.putBoolean(CONTOUR, c));
 						p.displayClientMessage(Component.translatable(c ? "airain.cordeau.mode_contour" : "airain.cordeau.mode_plein").withStyle(ChatFormatting.GOLD), true);
@@ -154,7 +166,16 @@ public final class Cordeau {
 						p.displayClientMessage(Component.translatable("airain.cordeau.annule").withStyle(ChatFormatting.GRAY), true);
 					}
 					case POINT -> point(p, sl, s, m.pos());
-					case POSER -> poser(p, sl, s, main);
+					case POSER -> { if (autre.is(Motif.CARTON.get()) && Motif.enregistre(autre)) Motif.poser(p, sl, s, autre); else poser(p, sl, s, main); }
+					case TAILLE -> {
+						BlockPos a = a(s, sl), b = b(s, sl);
+						if (a == null || b == null || m.pos().getX() < 0 || m.pos().getX() > 5) return;
+						BlockPos[] n = agrandir(a, b, Direction.from3DDataValue(m.pos().getX()), m.pos().getY() > 0 ? 1 : -1);
+						if (n == null || !valide(n[0], n[1])) return;
+						CustomData.update(DataComponents.CUSTOM_DATA, s, t -> { t.putLong(A, n[0].asLong()); t.putLong(B, n[1].asLong()); });
+						MutableComponent f = autre.is(Motif.CARTON.get()) && Motif.enregistre(autre) ? Motif.forme(n[0], n[1], autre, sl) : forme(n[0], n[1], contour(s));
+						p.displayClientMessage(f.withStyle(ChatFormatting.GOLD), true);
+					}
 					default -> {}
 				}
 			});
@@ -169,7 +190,7 @@ public final class Cordeau {
 			CustomData.update(DataComponents.CUSTOM_DATA, s, t -> { t.putLong(A, c.asLong()); t.remove(B); t.putString(DIM, dim); });
 			p.displayClientMessage(Component.translatable("airain.cordeau.point_a").withStyle(ChatFormatting.GOLD), true);
 		} else {
-			if (cases(a, c, contour(s)) == null) { p.displayClientMessage(forme(a, c, contour(s)).withStyle(ChatFormatting.RED), true); return; }
+			if (!valide(a, c)) { p.displayClientMessage(forme(a, c, contour(s)).withStyle(ChatFormatting.RED), true); return; }
 			CustomData.update(DataComponents.CUSTOM_DATA, s, t -> t.putLong(B, c.asLong()));
 			p.displayClientMessage(forme(a, c, contour(s)).append(Component.translatable("airain.cordeau.suite_poser")).withStyle(ChatFormatting.GOLD), true);
 		}
@@ -188,6 +209,7 @@ public final class Cordeau {
 		ItemStack type = modele.copyWithCount(1);
 		int poses = 0, manque = 0;
 		for (BlockPos c : cs) {
+			if (poses >= POSE_MAX) { manque = -1; break; }   // 1.69.9 : 4 096 par clic, un autre clic continue
 			if (!sl.isLoaded(c) || !sl.getBlockState(c).canBeReplaced() || !sl.mayInteract(p, c)) continue;
 			if (!sl.getEntities((net.minecraft.world.entity.Entity) null, new net.minecraft.world.phys.AABB(c), e -> e.blocksBuilding).isEmpty()) continue;
 			ItemStack pile = source(p, type, autre);
@@ -201,7 +223,8 @@ public final class Cordeau {
 			if (r.consumesAction()) { poses++; if (p.getAbilities().instabuild) pile.setCount(avant); }
 		}
 		if (poses > 0) sl.playSound(null, b, sl.getBlockState(b).getSoundType(sl, b, p).getPlaceSound(), SoundSource.BLOCKS, 1f, 1f);
-		Component msg = manque > 0 ? Component.translatable("airain.cordeau.manque", poses, nom, manque).withStyle(ChatFormatting.RED)
+		Component msg = manque < 0 ? Component.translatable("airain.cordeau.suite", poses).withStyle(ChatFormatting.GOLD)
+			: manque > 0 ? Component.translatable("airain.cordeau.manque", poses, nom, manque).withStyle(ChatFormatting.RED)
 			: Component.translatable("airain.cordeau.pose", poses, nom).withStyle(ChatFormatting.GOLD);
 		p.displayClientMessage(msg, true);
 		if (manque == 0) effacer(s);   // s'il manque des blocs, les piquets restent : on complète après avoir refait le plein
@@ -214,5 +237,20 @@ public final class Cordeau {
 		for (ItemStack i : p.getInventory().items) if (!i.isEmpty() && ItemStack.isSameItemSameComponents(i, type)) return i;
 		if (p.getAbilities().instabuild) return type.copy();
 		return null;
+	}
+
+	/**
+	 * 1.69.9 : accroupi + molette. La face de la sélection tournée vers d avance (delta = +1) ou recule (-1) d'un bloc ;
+	 * jamais sous un bloc d'épaisseur. Rend les deux nouveaux coins (dans l'ordre A, B), ou null si rien ne bouge.
+	 */
+	public static BlockPos[] agrandir(BlockPos a, BlockPos b, Direction d, int delta) {
+		Direction.Axis ax = d.getAxis();
+		int ca = a.get(ax), cb = b.get(ax);
+		boolean positif = d.getAxisDirection() == Direction.AxisDirection.POSITIVE;
+		if (delta < 0 && ca == cb) return null;
+		// le coin qui porte la face visée : le plus grand vers les +, le plus petit vers les - (B si les deux sont au même niveau)
+		boolean surA = ca != cb && (positif ? ca > cb : ca < cb);
+		int pas = positif ? delta : -delta;
+		return new BlockPos[] {surA ? a.relative(ax, pas) : a, surA ? b : b.relative(ax, pas)};
 	}
 }
