@@ -5,6 +5,18 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 26 novembre 2026 — version 1.70.0
+
+**Ajouts**
+- Table du carreleur : générateur de motifs pour qui ne veut pas construire d'échantillon. Onglet Création : type (sol, mur, plafond) au bouton, motif tout fait dans la liste, blocs des rôles (couleur A, couleur B, accent selon le motif, bordure si cochée), réglages, nom, aperçu en direct ; « Print » écrit le motif sur un carton vierge.
+- Réglages propres à chaque motif : taille des cases (1 à 4) pour les motifs simples, taille du motif pour les complexes (rosace, losanges, caissons…), redessinés à la taille choisie. Bordure à cocher (largeur 1 à 3) : elle fait le tour de la zone tracée au cordeau, quelle que soit sa taille, le motif se répète à l'intérieur (au mur, aussi en haut et en bas).
+- Motifs : sols (damier, chevrons, pavés décalés, losanges, bandes, diagonales, rosace, vannerie), murs (appareil, soubassement, pilastres, frise, damier, bandes, diagonales), plafonds (caissons, poutres croisées, grille, damier, rosace, losanges).
+- Onglets Sols, Murs, Plafonds : 36 cartons chacun, rangés selon leur type (un carton pris sur un échantillon y va aussi : une couche à plat = sol, une couche debout = mur). Table partagée ; cassée, elle garde son contenu dans l'objet.
+- Carton de motif : bulle d'aide avec un aperçu miniature ; clic droit dans le vide avec un carton imprimé : fenêtre d'aperçu en 3D (glisser pour tourner, molette pour zoomer, flèches pour un quart de tour).
+- Recette : marbre blanc, marbre noir, marbre blanc ; plaque d'airain, établi, plaque d'airain ; plaque d'airain, carton de motif, plaque d'airain. Page dans « Outils de chantier ».
+
+---
+
 ## 26 novembre 2026 — version 1.69.10
 
 **Changements**

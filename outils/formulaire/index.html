@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.69.10</h1>
+   <h1>Inspection en jeu — mod 1.70.0</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -128,6 +128,15 @@ const S = [
   ["Câble et rouage brisé","Brins verticaux ; dents carrées, cassure visible."],
   ["Nacelle","Suspendue au câble, vitres."],
   ["Portillon de passerelle","En 3D dans l'inventaire, en main et au sol, comme les autres passerelles."]]}
+,
+ {t:"Table du carreleur", n:"Nouveau en 1.70.0.", l:[
+  ["Recette, bloc, objet","Marbre, plaques, établi, carton ; dessus en damier, tiroirs à cartons à l'avant ; orientée vers le joueur."],
+  ["Onglets","Création, Sols, Murs, Plafonds : bascule propre, boutons et cases du pack HD, rien ne déborde."],
+  ["Création","Bouton de type, liste des motifs, rôles (accent et bordure selon le cas), cases ou curseur, aperçu en direct."],
+  ["Impression","Carton vierge + rôles remplis : « Print » donne le carton nommé ; il se pose au cordeau comme prévu."],
+  ["Bordure","Cochée : elle fait le tour de la zone du cordeau, quelle que soit sa taille ; au mur, aussi en haut et en bas."],
+  ["Rangement","Cartons rangés dans l'onglet de leur type (aussi par maj + clic) ; visibles par l'autre joueur ; gardés quand on casse la table."],
+  ["Aperçus","Bulle d'aide avec miniature ; clic droit dans le vide avec un carton : fenêtre 3D, glisser, molette, flèches."]]}
 ];
 const CLE = "inspection-airain-1.69.9";   // nouvelle série : seulement les changements depuis la 1.69.6
 let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }
@@ -187,7 +196,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.69.10\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.70.0\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;
