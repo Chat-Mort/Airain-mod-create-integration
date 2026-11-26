@@ -5,6 +5,18 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 26 novembre 2026 — version 1.70.2
+
+**Ajouts**
+- Table du carreleur : quatre nouveaux motifs, en sol et en plafond : Médaillon, Anneau, Cadres, Damier pointé (couleur A, couleur B, accent ; taille des cases 1 à 3).
+- Liste des motifs défilante à la molette (huit lignes visibles), avec une barre fine à droite.
+
+**Changements**
+- Motifs revus : diagonales et chevrons plus nets, pavés décalés et appareil avec joints, rosace à huit pétales et anneau, cabochons à la place de la vannerie.
+- Soubassement et frise ne se répètent plus sur toute la hauteur : ils restent en bas du mur, le reste est en couleur A.
+
+---
+
 ## 26 novembre 2026 — version 1.70.1
 
 **Changements**
