@@ -1,0 +1,9 @@
+{
+ "parent": "minecraft:block/orientable_with_bottom",
+ "textures": {
+  "top": "airain:block/tilers_table_top",
+  "bottom": "airain:block/tilers_table_bottom",
+  "side": "airain:block/tilers_table_side",
+  "front": "airain:block/tilers_table_front"
+ }
+}

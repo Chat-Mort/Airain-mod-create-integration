@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/tilers_table"
+  },
+  "facing=east": {
+   "model": "airain:block/tilers_table",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/tilers_table",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/tilers_table",
+   "y": 270
+  }
+ }
+}

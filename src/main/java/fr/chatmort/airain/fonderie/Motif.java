@@ -75,6 +75,10 @@ public final class Motif {
 			return InteractionResultHolder.success(p.getItemInHand(main));
 		}
 		@Override
+		public java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent> getTooltipImage(ItemStack s) {
+			return enregistre(s) ? java.util.Optional.of(new Apercu(s)) : java.util.Optional.empty();
+		}
+		@Override
 		public void appendHoverText(ItemStack s, TooltipContext c, List<Component> l, TooltipFlag f) {
 			Grille g = grille(s, null);
 			if (g == null) l.add(Component.translatable("airain.motif.vierge").withStyle(ChatFormatting.GRAY));
@@ -102,6 +106,8 @@ public final class Motif {
 	/** Le motif décodé : dimensions, palette d'états, cases (0 = ne rien poser, sinon index + 1 dans la palette). */
 	public static final class Grille {
 		public final int sx, sy, sz; public final BlockState[] palette; public final byte[] cases;
+		// 1.70 : type (floor, wall, ceiling) et bordure qui fait le tour de la zone du cordeau (null : pas de bordure)
+		public String type = "floor"; public BlockState bord; public int bordL;
 		Grille(int sx, int sy, int sz, BlockState[] p, byte[] c) { this.sx = sx; this.sy = sy; this.sz = sz; palette = p; cases = c; }
 		BlockState brut(int x, int y, int z) { int i = cases[(y * sz + z) * sx + x] & 255; return i == 0 ? null : palette[i - 1]; }
 		int pleins() { int n = 0; for (byte b : cases) if (b != 0) n++; return n; }
@@ -128,6 +134,9 @@ public final class Motif {
 			for (int i = 0; i < p.length; i++) p[i] = NbtUtils.readBlockState(blocs, pl.getCompound(i));
 			g = new Grille(m.getInt("sx"), m.getInt("sy"), m.getInt("sz"), p, m.getByteArray("cases"));
 			if (g.cases.length != g.sx * g.sy * g.sz) return null;
+			g.type = m.contains("type") ? m.getString("type") : typeDe(g.sx, g.sy, g.sz);
+			int bi = m.getInt("bord");
+			if (bi > 0 && bi <= p.length) { g.bord = p[bi - 1]; g.bordL = Math.max(1, m.getInt("bord_l")); }
 			CACHE.put(t, g);
 			return g;
 		}
@@ -147,6 +156,77 @@ public final class Motif {
 		return switch (rot & 3) { case 1 -> s.rotate(Rotation.CLOCKWISE_90); case 2 -> s.rotate(Rotation.CLOCKWISE_180); case 3 -> s.rotate(Rotation.COUNTERCLOCKWISE_90); default -> s; };
 	}
 
+	/** Type d'un motif pris sur un échantillon : une couche à plat = sol, une couche debout = mur. */
+	public static String typeDe(int sx, int sy, int sz) { return sy > 1 && (sx == 1 || sz == 1) ? "wall" : "floor"; }
+	public static String type(ItemStack s) { Grille g = grille(s, null); return g == null ? null : g.type; }
+
+	/**
+	 * 1.70 : l'état à poser dans la case c de la zone A-B, bordure comprise. La bordure fait le tour de la zone
+	 * (au sol et au plafond : sur les côtés seulement ; au mur : aussi en haut et en bas), le motif se répète à l'intérieur.
+	 */
+	public static BlockState etatZone(Grille g, int rot, BlockPos a, BlockPos b, BlockPos c) {
+		int dx = c.getX() - a.getX(), dy = c.getY() - a.getY(), dz = c.getZ() - a.getZ();
+		if (g.bord != null && g.bordL > 0) {
+			int[] ca = {a.getX(), a.getY(), a.getZ()}, cb = {b.getX(), b.getY(), b.getZ()}, cc = {c.getX(), c.getY(), c.getZ()};
+			int[] dec = {0, 0, 0};
+			for (int k = 0; k < 3; k++) {
+				if (ca[k] == cb[k] || (k == 1 && !g.type.equals("wall"))) continue;
+				int lo = Math.min(ca[k], cb[k]), hi = Math.max(ca[k], cb[k]);
+				if (cc[k] - lo < g.bordL || hi - cc[k] < g.bordL) return tourne(g.bord, rot);
+				dec[k] = g.bordL * Integer.signum(cb[k] - ca[k]);
+			}
+			dx -= dec[0]; dy -= dec[1]; dz -= dec[2];
+		}
+		return etat(g, rot, dx, dy, dz);
+	}
+	static BlockState tourne(BlockState s, int rot) {
+		return switch (rot & 3) { case 1 -> s.rotate(Rotation.CLOCKWISE_90); case 2 -> s.rotate(Rotation.CLOCKWISE_180); case 3 -> s.rotate(Rotation.COUNTERCLOCKWISE_90); default -> s; };
+	}
+
+	/** 1.70 : écrit sur un carton un motif sorti de la table du carreleur (tuile de rôles, états des rôles, bordure). */
+	public static void ecrireGenere(ItemStack carton, String type, int[][] tuile, BlockState[] roles, BlockState bord, int bordL) {
+		int h = tuile.length, w = tuile[0].length;
+		boolean mur = type.equals("wall");
+		int sx = w, sy = mur ? h : 1, sz = mur ? 1 : h;
+		List<BlockState> palette = new ArrayList<>();
+		byte[] cases = new byte[sx * sy * sz];
+		for (int v = 0; v < h; v++)
+			for (int u = 0; u < w; u++) {
+				BlockState st = roles[tuile[v][u]];
+				if (st == null) continue;
+				int i = palette.indexOf(st); if (i < 0) { palette.add(st); i = palette.size() - 1; }
+				int x = u, y = mur ? v : 0, z = mur ? 0 : v;
+				cases[(y * sz + z) * sx + x] = (byte) (i + 1);
+			}
+		CompoundTag m = new CompoundTag();
+		m.putInt("sx", sx); m.putInt("sy", sy); m.putInt("sz", sz); m.putString("type", type);
+		if (bord != null && bordL > 0) {
+			int i = palette.indexOf(bord); if (i < 0) { palette.add(bord); i = palette.size() - 1; }
+			m.putInt("bord", i + 1); m.putInt("bord_l", bordL);
+		}
+		ListTag pl = new ListTag();
+		for (BlockState st : palette) pl.add(NbtUtils.writeBlockState(st));
+		m.put("palette", pl); m.putByteArray("cases", cases);
+		CustomData.update(DataComponents.CUSTOM_DATA, carton, t -> { t.put(MOTIF, m); t.remove(ROT); });
+	}
+
+	/**
+	 * 1.70 : vue à plat d'une zone n x n posée avec ce carton (sol et plafond : vue du dessus ; mur : vue de face, le haut en haut).
+	 * [ligne][colonne], null = rien.
+	 */
+	public static BlockState[][] vue2D(Grille g, int rot, int n) {
+		boolean mur = g.type.equals("wall");
+		BlockPos a = BlockPos.ZERO, b = mur ? new BlockPos(n - 1, n - 1, 0) : new BlockPos(n - 1, 0, n - 1);
+		BlockState[][] v = new BlockState[n][n];
+		for (int r = 0; r < n; r++)
+			for (int c = 0; c < n; c++)
+				v[r][c] = etatZone(g, rot, a, b, mur ? new BlockPos(c, n - 1 - r, 0) : new BlockPos(c, 0, r));
+		return v;
+	}
+
+	/** 1.70 : bulle d'aide d'un carton imprimé (aperçu miniature dessiné côté client). */
+	public record Apercu(ItemStack carton) implements net.minecraft.world.inventory.tooltip.TooltipComponent {}
+
 	/** L'objet qui sert à poser cet état (Items.AIR : rien à payer, comme le haut d'une porte ou la tête d'un lit). */
 	static Item objet(BlockState s) {
 		if (s.hasProperty(BlockStateProperties.DOUBLE_BLOCK_HALF) && s.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER) return Items.AIR;
@@ -160,7 +240,7 @@ public final class Motif {
 		int dx = Math.abs(a.getX() - b.getX()) + 1, dy = Math.abs(a.getY() - b.getY()) + 1, dz = Math.abs(a.getZ() - b.getZ()) + 1;
 		if (!Cordeau.valide(a, b)) return Component.translatable("airain.cordeau.trop", Cordeau.LIGNE_MAX, Cordeau.COTE_MAX);
 		int n = 0, r = rot(carton);
-		if (g != null) for (BlockPos c : BlockPos.betweenClosed(a, b)) if (etat(g, r, c.getX() - a.getX(), c.getY() - a.getY(), c.getZ() - a.getZ()) != null) n++;
+		if (g != null) for (BlockPos c : BlockPos.betweenClosed(a, b)) if (etatZone(g, r, a, b, c) != null) n++;
 		MutableComponent m = dy > 1 ? Component.translatable("airain.cordeau.forme.volume", dx, dy, dz, n) : Component.translatable("airain.cordeau.forme.sol", dx, dz, n);
 		return m.append(Component.translatable("airain.motif.suffixe"));
 	}
@@ -236,7 +316,7 @@ public final class Motif {
 				}
 		if (pleins == 0) { p.displayClientMessage(Component.translatable("airain.motif.vide").withStyle(ChatFormatting.RED), true); return; }
 		CompoundTag m = new CompoundTag();
-		m.putInt("sx", sx); m.putInt("sy", sy); m.putInt("sz", sz);
+		m.putInt("sx", sx); m.putInt("sy", sy); m.putInt("sz", sz); m.putString("type", typeDe(sx, sy, sz));
 		ListTag pl = new ListTag();
 		for (BlockState st : palette) pl.add(NbtUtils.writeBlockState(st));
 		m.put("palette", pl); m.putByteArray("cases", cases);
@@ -264,7 +344,7 @@ public final class Motif {
 		for (int passe = 0; passe < 2; passe++) {
 			for (BlockPos c : passe == 0 ? ordre : plusTard) {
 				if (poses >= Cordeau.POSE_MAX) { coupe = true; break; }
-				BlockState st = etat(g, r, c.getX() - a.getX(), c.getY() - a.getY(), c.getZ() - a.getZ());
+				BlockState st = etatZone(g, r, a, b, c);
 				if (st == null || !sl.isLoaded(c) || !sl.getBlockState(c).canBeReplaced() || !sl.mayInteract(p, c)) continue;
 				if (!sl.getEntities((net.minecraft.world.entity.Entity) null, new net.minecraft.world.phys.AABB(c), e -> e.blocksBuilding).isEmpty()) continue;
 				if (!st.canSurvive(sl, c)) { if (passe == 0) plusTard.add(c); continue; }

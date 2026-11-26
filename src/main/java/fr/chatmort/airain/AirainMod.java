@@ -573,6 +573,7 @@ public class AirainMod {
 		// 1.69.3 : relais cinétique d'airain (rotation entre dimensions)
 		fr.chatmort.airain.fonderie.Relais.charger();
 		fr.chatmort.airain.fonderie.Motif.charger();   // 1.69.9 : carton de motif
+		fr.chatmort.airain.fonderie.Carreleur.charger();   // 1.70 : table du carreleur
 		// 1.69 : le marteau-pilon casse les blocs voisins du bloc miné
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MarteauPilon::casse);
 		// 1.59 : charpente métallique d'airain et marquages au sol
@@ -692,6 +693,8 @@ public class AirainMod {
 			.playToServer(fr.chatmort.airain.gardien.MarqueLoupe.Marque.TYPE, fr.chatmort.airain.gardien.MarqueLoupe.Marque.CODEC, fr.chatmort.airain.gardien.MarqueLoupe.Marque::traiter)
 			// 1.69.1 : actions du cordeau de maçon (piquets, pose, annulation, mode)
 			.playToServer(fr.chatmort.airain.fonderie.Cordeau.Action.TYPE, fr.chatmort.airain.fonderie.Cordeau.Action.CODEC, fr.chatmort.airain.fonderie.Cordeau.Action::traiter)
+			// 1.70 : impression d'un carton à la table du carreleur
+			.playToServer(fr.chatmort.airain.fonderie.Carreleur.Imprimer.TYPE, fr.chatmort.airain.fonderie.Carreleur.Imprimer.CODEC, fr.chatmort.airain.fonderie.Carreleur.Imprimer::traiter)
 			.playToServer(fr.chatmort.airain.borne.PaquetsBorne.Commander.TYPE, fr.chatmort.airain.borne.PaquetsBorne.Commander.CODEC,
 				fr.chatmort.airain.borne.PaquetsBorne.Commander::traiter)
 			.playToClient(fr.chatmort.airain.fondation.OuvrirRegistre.TYPE, fr.chatmort.airain.fondation.OuvrirRegistre.CODEC,

@@ -39,7 +39,11 @@ public final class MotifClient {
 		if (Screen.hasControlDown() || mc.player.isShiftKeyDown()) quoi = Cordeau.MODE;          // quart de tour du motif
 		else if (a != null && b != null) quoi = Cordeau.POSER;                                     // enregistrer
 		else if (h != null) { quoi = Cordeau.POINT; pos = h.getBlockPos(); }                        // le bloc visé lui-même
-		else return;
+		else {
+			// 1.70 : clic droit dans le vide avec un carton imprimé : fenêtre d'aperçu en 3D
+			if (Motif.enregistre(s)) mc.setScreen(new CartonScreen(s));
+			return;
+		}
 		PacketDistributor.sendToServer(new Cordeau.Action(quoi, pos, main == InteractionHand.MAIN_HAND));
 	}
 
@@ -106,7 +110,7 @@ public final class MotifClient {
 		VertexConsumer vc = buf.getBuffer(RenderType.translucent());
 		int n = 0;
 		for (BlockPos c : BlockPos.betweenClosed(a, b)) {
-			BlockState st = Motif.etat(g, rot, c.getX() - a.getX(), c.getY() - a.getY(), c.getZ() - a.getZ());
+			BlockState st = Motif.etatZone(g, rot, a, b, c);
 			if (st == null || st.getRenderShape() != RenderShape.MODEL || !mc.level.getBlockState(c).canBeReplaced()) continue;
 			if (++n > Motif.APERCU_MAX) break;
 			ms.pushPose();

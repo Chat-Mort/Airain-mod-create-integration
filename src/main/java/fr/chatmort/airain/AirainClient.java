@@ -21,6 +21,9 @@ public class AirainClient {
 		bus.addListener(this::rendus);
 		bus.addListener(this::setup);
 		bus.addListener(this::ecrans);
+		// 1.70 : aperçu miniature du carton de motif dans sa bulle d'aide
+		bus.addListener((net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent e) ->
+			e.register(fr.chatmort.airain.fonderie.Motif.Apercu.class, fr.chatmort.airain.fonderie.MotifApercu::new));
 		// interface HD : à chaque rechargement des ressources, le mod regarde si le pack « Airain-Interface-HD » est actif
 		bus.addListener((net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent e) ->
 			e.registerReloadListener((net.minecraft.server.packs.resources.ResourceManagerReloadListener) fr.chatmort.airain.gui.InterfaceHD::recharger));
@@ -189,6 +192,7 @@ public class AirainClient {
 	private void ecrans(RegisterMenuScreensEvent event) {
 		event.register(AirainMod.TABLE_MENU.get(), TableEmpireScreen::new);
 		event.register(AirainMod.BANC_MENU.get(), fr.chatmort.airain.banc.BancScreen::new);
+		event.register(fr.chatmort.airain.fonderie.Carreleur.MENU.get(), fr.chatmort.airain.fonderie.CarreleurScreen::new);   // 1.70 : table du carreleur
 		event.register(AirainMod.RELIURE_MENU.get(), fr.chatmort.airain.reliure.ReliureMenuScreen::new);
 		event.register(fr.chatmort.airain.atelier.Atelier.ETABLI_MENU.get(), fr.chatmort.airain.atelier.EtabliScreen::new);   // établi d'atelier
 	}

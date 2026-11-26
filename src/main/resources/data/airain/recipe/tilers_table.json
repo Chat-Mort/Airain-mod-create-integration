@@ -1,0 +1,30 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "WBW",
+  "SCS",
+  "SPS"
+ ],
+ "key": {
+  "W": {
+   "item": "airain:white_marble"
+  },
+  "B": {
+   "item": "airain:black_marble"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "C": {
+   "item": "minecraft:crafting_table"
+  },
+  "P": {
+   "item": "airain:pattern_card"
+  }
+ },
+ "result": {
+  "id": "airain:tilers_table",
+  "count": 1
+ }
+}

@@ -62,6 +62,7 @@ public class Manuel extends SavedData {
 		// Cordeau de maçon et projecteur de chantier (1.69.1)
 		e(EMPIRE, "outils_empire", "chalk_line", "airain:chalk_line");
 		e(EMPIRE, "outils_empire", "pattern_card", "airain:pattern_card");   // 1.69.9
+		e(EMPIRE, "outils_empire", "tilers_table", "airain:tilers_table");   // 1.70
 		e(EMPIRE, "outils_empire", "worksite_projector", "airain:worksite_projector");
 		// Relais cinétique d'airain (1.69.3)
 		e(EMPIRE, "outils_empire", "kinetic_relay", "airain:kinetic_relay");
