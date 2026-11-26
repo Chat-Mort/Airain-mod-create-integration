@@ -5,6 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 26 novembre 2026 — version 1.70.3
+
+**Corrections**
+- Table du carreleur : le curseur de taille se règle en le faisant glisser, plus seulement au clic.
+- Valeurs alignées : la taille du motif est calée à droite du curseur, sans toucher l'intitulé (« Size ») ; le nombre de cases est centré entre « − » et « + » (« Cells »).
+
+---
+
 ## 26 novembre 2026 — version 1.70.2
 
 **Ajouts**

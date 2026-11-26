@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.70.2</h1>
+   <h1>Inspection en jeu — mod 1.70.3</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -143,6 +143,10 @@ const S = [
   ["Liste","Sols 12 motifs, plafonds 10 : la molette fait défiler la liste, barre fine à droite ; le choix reste juste après défilement."],
   ["Sols corrigés","Diagonales, chevrons, pavés décalés avec joints, rosace à huit pétales, cabochons (remplacent la vannerie)."],
   ["Murs corrigés","Appareil avec joints ; soubassement et frise une seule fois en bas du mur, le reste en couleur A."]]}
+,
+ {t:"Curseur du carreleur", n:"1.70.3.", l:[
+  ["Glisser","Le curseur de taille suit la souris tant que le clic est maintenu ; l'aperçu suit."],
+  ["Alignement","« Size » et la valeur ne se touchent plus (valeur calée à droite) ; « Cells » et son chiffre centré entre − et +."]]}
 ];
 const CLE = "inspection-airain-1.69.9";   // nouvelle série : seulement les changements depuis la 1.69.6
 let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }
@@ -202,7 +206,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.70.2\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.70.3\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;
