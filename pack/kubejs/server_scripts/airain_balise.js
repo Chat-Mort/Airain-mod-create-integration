@@ -147,6 +147,7 @@ function balFin(server, cle, message) {
 function balLancer(server, s) {
   const base = BAL_VAGUES[s.vague - 1]
   let total = 0
+  s.suivi = []
   base.forEach(e => {
     const nb = e[0] === BAL_CENTURION ? 1 : Math.min(e[2], Math.max(1, Math.round(e[1] * s.facteur)))
     for (let i = 0; i < nb; i++) {
@@ -158,12 +159,10 @@ function balLancer(server, s) {
         if (h !== null) pos = [x, h, z]
       }
       if (pos === null) continue
-      // invocation sans données : le jeu prépare la créature comme pour un /summon à la main (sinon les créatures dwemer
-      // apparues avec des données disparaissaient aussitôt) ; on la marque juste après
-      const ou = 'execute in ' + s.dim + ' positioned ' + (pos[0] + 0.5) + ' ' + pos[1] + ' ' + (pos[2] + 0.5) + ' run '
-      const ok = server.runCommandSilent(ou + 'summon ' + e[0] + ' ~ ~ ~')
+      // marquée dès l'invocation ; son arrivée dans le monde est suivie (balSuivre) : on garde la créature elle-même
+      const ok = server.runCommandSilent('execute in ' + s.dim + ' run summon ' + e[0] + ' ' + (pos[0] + 0.5) + ' ' + pos[1] + ' ' + (pos[2] + 0.5) +
+        ' {Tags:["airain_vague","' + s.tag + '"],PersistenceRequired:1b}')
       if (ok <= 0) { console.warn('[balise] invocation refusée : ' + e[0] + ' en ' + pos.join(' ') + ' (' + s.dim + ')'); continue }
-      server.runCommandSilent(ou + 'execute as @e[type=' + e[0] + ',distance=..2,tag=!airain_vague,limit=1,sort=nearest] run data merge entity @s {Tags:["airain_vague","' + s.tag + '"],PersistenceRequired:1b}')
       total++
     }
   })
@@ -260,6 +259,16 @@ function balCasse(event) {
 BlockEvents.broken(BAL_TOUR, balCasse)
 BlockEvents.broken(BAL_PARTIE, balCasse)
 
+// ---------- suivi des créatures de vague dès leur arrivée dans le monde ----------
+EntityEvents.spawned(event => {
+  const tags = event.entity.tags
+  if (!tags.contains('airain_vague')) return
+  Object.keys(BAL_SESSIONS).forEach(cle => {
+    const s = BAL_SESSIONS[cle]
+    if (s.suivi && tags.contains(s.tag)) s.suivi.push(event.entity)
+  })
+})
+
 // ---------- chaque seconde ----------
 ServerEvents.tick(event => {
   const server = event.server
@@ -305,13 +314,16 @@ ServerEvents.tick(event => {
 
     // combat
     s.duree++
-    const restants = server.runCommandSilent('execute if entity @e[tag=' + s.tag + ']')
+    // les créatures suivies encore en vie ; à défaut (aucune suivie), le décompte par la commande
+    const vivantes = (s.suivi || []).filter(m => !m.isRemoved() && m.isAlive())
+    const restants = (s.suivi && s.suivi.length > 0) ? vivantes.length : server.runCommandSilent('execute if entity @e[tag=' + s.tag + ']')
     balBarre(server, s, 'airain.balise.barre', s.vague, restants, s.total)
     if (s.duree === BAL_LUEUR) server.runCommandSilent('effect give @e[tag=' + s.tag + '] minecraft:glowing infinite 0 true')
     if (restants > 0) return
     // vague vidée dans les toutes premières secondes : ce n'est pas une victoire, les ennemis ont disparu (on le note)
     if (s.duree <= 3) {
-      console.warn('[balise] vague ' + s.vague + ' : ' + s.total + ' ennemis invoqués, plus aucun après ' + s.duree + ' s (' + s.dim + ' ' + s.x + ' ' + s.y + ' ' + s.z + ')')
+      console.warn('[balise] vague ' + s.vague + ' : ' + s.total + ' ennemis invoqués, ' + s.suivi.length + ' entrés dans le monde, plus aucun après ' + s.duree + ' s (' + s.dim + ' ' + s.x + ' ' + s.y + ' ' + s.z + ')')
+      s.suivi.forEach(m => console.warn('[balise]   ' + m.type + ' en ' + Math.floor(m.x) + ' ' + Math.floor(m.y) + ' ' + Math.floor(m.z) + ' : retirée (' + m.getRemovalReason() + '), vie ' + m.health))
       balFin(server, cle, 'airain.balise.disparus')
       return
     }

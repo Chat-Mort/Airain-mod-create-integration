@@ -12,7 +12,7 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 **Corrections**
 - Étagère impériale : les objets posés sont tournés vers l'avant.
-- Balise de défense : les ennemis apparaissent comme avec un /summon à la main (ils disparaissaient dès leur arrivée et la vague comptait comme gagnée) ; une vague vidée dans les premières secondes n'est plus une victoire : l'assaut s'arrête sans récompense, avec un message, et la cause est notée dans le journal du serveur.
+- Balise de défense : les ennemis de chaque vague sont suivis dès leur arrivée dans le monde et comptés un par un (la vague comptait comme gagnée alors qu'ils venaient d'apparaître) ; une vague vidée dans les premières secondes n'est plus une victoire : l'assaut s'arrête sans récompense, avec un message, et la raison du retrait de chaque créature est notée dans le journal du serveur.
 
 ---
 
