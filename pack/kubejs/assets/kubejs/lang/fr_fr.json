@@ -189,6 +189,7 @@
   "airain.balise.abandon": "La balise s'éteint. L'assaut est abandonné.",
   "airain.balise.reprise": "Vous revenez : la vague %s recommence après le répit.",
   "airain.balise.en_cours": "Un assaut est en cours. Accroupi + clic droit pour l'abandonner.",
+  "airain.balise.disparus": "Les ennemis ont disparu dès leur arrivée : assaut annulé, sans récompense (cause notée dans le journal du serveur).",
   "airain.balise.pas_de_sol": "Aucun sol naturel à ciel ouvert sur le cercle : changez le rayon (accroupi + clic droit).",
   "item.kubejs.ferraille": "Ferraille",
   "item.kubejs.huile_machine": "Huile de machine",

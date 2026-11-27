@@ -105,6 +105,11 @@ const S = [
   ["Armoire : rangées","Une case n'accepte que sa pièce ; maj + clic sur une pièce de l'inventaire : première case libre de sa rangée."],
   ["Armoire : échange","Bouton : armure portée ↔ colonne, pièce par pièce ; marche avec un set complet, incomplet ou sans armure ; son d'équipement."],
   ["Armoire : ancienne","Une armoire posée en 1.71.0 garde son contenu (les objets qui ne sont pas des armures restent, on peut les reprendre)."]]}
+,
+ {t:"Balise de défense", n:"Pack (kubejs), même mod 1.71.1.", l:[
+  ["Apparition","Clic droit, compte à rebours : les ennemis apparaissent sur le cercle et restent ; la barre compte les restants."],
+  ["Vagues","Pas de récompense avant d'avoir tué la vague ; répit de 30 s entre les vagues ; 4e vague : le centurion."],
+  ["Si ça rate encore","Message « les ennemis ont disparu… » : m'envoyer les lignes [balise] du journal du serveur (logs/latest.log)."]]}
 ];
 const CLE = "inspection-airain-1.71.1";   // nouvelle série : seulement les retours de la 1.71.0
 let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }

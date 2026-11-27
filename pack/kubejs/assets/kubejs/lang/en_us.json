@@ -189,6 +189,7 @@
   "airain.balise.abandon": "The beacon goes dark. The assault is abandoned.",
   "airain.balise.reprise": "You're back: wave %s starts again after the respite.",
   "airain.balise.en_cours": "An assault is under way. Sneak + right-click to abandon it.",
+  "airain.balise.disparus": "The enemies vanished as soon as they arrived: assault cancelled, no reward (cause written to the server log).",
   "airain.balise.pas_de_sol": "No natural open ground on the circle: change the radius (sneak + right-click).",
   "item.kubejs.ferraille": "Scrap",
   "item.kubejs.huile_machine": "Machine Oil",
