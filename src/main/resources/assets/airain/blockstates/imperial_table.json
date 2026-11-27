@@ -1,0 +1,391 @@
+{
+ "multipart": [
+  {
+   "when": {
+    "north": "true",
+    "east": "true",
+    "south": "true",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_0"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "true",
+    "south": "true",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_1"
+   }
+  },
+  {
+   "when": {
+    "north": "true",
+    "east": "false",
+    "south": "true",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_2"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "false",
+    "south": "true",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_3"
+   }
+  },
+  {
+   "when": {
+    "north": "true",
+    "east": "true",
+    "south": "false",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_4"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "true",
+    "south": "false",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_5"
+   }
+  },
+  {
+   "when": {
+    "north": "true",
+    "east": "false",
+    "south": "false",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_6"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "false",
+    "south": "false",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_7"
+   }
+  },
+  {
+   "when": {
+    "north": "true",
+    "east": "true",
+    "south": "true",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_8"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "true",
+    "south": "true",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_9"
+   }
+  },
+  {
+   "when": {
+    "north": "true",
+    "east": "false",
+    "south": "true",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_10"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "false",
+    "south": "true",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_11"
+   }
+  },
+  {
+   "when": {
+    "north": "true",
+    "east": "true",
+    "south": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_12"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "true",
+    "south": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_13"
+   }
+  },
+  {
+   "when": {
+    "north": "true",
+    "east": "false",
+    "south": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_14"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "east": "false",
+    "south": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_top_15"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "west": "false",
+    "east": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_11"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "west": "false",
+    "east": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_10"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "west": "true",
+    "east": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_01"
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "west": "true",
+    "east": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_00"
+   }
+  },
+  {
+   "when": {
+    "east": "false",
+    "north": "false",
+    "south": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_11",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "east": "false",
+    "north": "false",
+    "south": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_10",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "east": "false",
+    "north": "true",
+    "south": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_01",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "east": "false",
+    "north": "true",
+    "south": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_00",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "south": "false",
+    "east": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_11",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "south": "false",
+    "east": "false",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_10",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "south": "false",
+    "east": "true",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_01",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "south": "false",
+    "east": "true",
+    "west": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_00",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "west": "false",
+    "south": "false",
+    "north": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_11",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "west": "false",
+    "south": "false",
+    "north": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_10",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "west": "false",
+    "south": "true",
+    "north": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_01",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "west": "false",
+    "south": "true",
+    "north": "true"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_apron_00",
+    "y": 270
+   }
+  },
+  {
+   "when": {
+    "north": "false",
+    "west": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_leg"
+   }
+  },
+  {
+   "when": {
+    "east": "false",
+    "north": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_leg",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "south": "false",
+    "east": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_leg",
+    "y": 180
+   }
+  },
+  {
+   "when": {
+    "west": "false",
+    "south": "false"
+   },
+   "apply": {
+    "model": "airain:block/imperial_table_leg",
+    "y": 270
+   }
+  }
+ ]
+}

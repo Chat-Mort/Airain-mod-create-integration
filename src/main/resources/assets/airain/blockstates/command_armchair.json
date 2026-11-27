@@ -1,0 +1,31 @@
+{
+ "variants": {
+  "facing=north,half=lower": {
+   "model": "airain:block/command_armchair"
+  },
+  "facing=east,half=lower": {
+   "model": "airain:block/command_armchair",
+   "y": 90
+  },
+  "facing=south,half=lower": {
+   "model": "airain:block/command_armchair",
+   "y": 180
+  },
+  "facing=west,half=lower": {
+   "model": "airain:block/command_armchair",
+   "y": 270
+  },
+  "facing=north,half=upper": {
+   "model": "airain:block/command_armchair_top"
+  },
+  "facing=east,half=upper": {
+   "model": "airain:block/command_armchair_top"
+  },
+  "facing=south,half=upper": {
+   "model": "airain:block/command_armchair_top"
+  },
+  "facing=west,half=upper": {
+   "model": "airain:block/command_armchair_top"
+  }
+ }
+}

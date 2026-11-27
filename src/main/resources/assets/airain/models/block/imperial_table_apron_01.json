@@ -1,0 +1,77 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "bois": "airain:block/furniture_wood",
+  "particle": "airain:block/furniture_wood"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    12,
+    1
+   ],
+   "to": [
+    15,
+    14,
+    2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bois",
+     "uv": [
+      1,
+      2,
+      16,
+      4
+     ]
+    },
+    "south": {
+     "texture": "#bois",
+     "uv": [
+      0,
+      2,
+      15,
+      4
+     ]
+    },
+    "west": {
+     "texture": "#bois",
+     "uv": [
+      1,
+      2,
+      2,
+      4
+     ]
+    },
+    "east": {
+     "texture": "#bois",
+     "uv": [
+      14,
+      2,
+      15,
+      4
+     ]
+    },
+    "up": {
+     "texture": "#bois",
+     "uv": [
+      0,
+      1,
+      15,
+      2
+     ]
+    },
+    "down": {
+     "texture": "#bois",
+     "uv": [
+      0,
+      14,
+      15,
+      15
+     ]
+    }
+   }
+  }
+ ]
+}

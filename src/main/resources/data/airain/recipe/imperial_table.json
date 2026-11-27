@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "PMP",
+  "NSN",
+  "P P"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:dark_oak_planks"
+  },
+  "M": {
+   "item": "airain:polished_white_marble"
+  },
+  "N": {
+   "item": "airain:airain_nugget"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  }
+ },
+ "result": {
+  "id": "airain:imperial_table",
+  "count": 2
+ }
+}

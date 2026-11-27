@@ -1,0 +1,7 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "particle": "airain:block/furniture_wood"
+ },
+ "elements": []
+}

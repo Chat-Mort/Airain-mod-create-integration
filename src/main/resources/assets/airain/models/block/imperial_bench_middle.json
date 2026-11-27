@@ -1,0 +1,216 @@
+{
+ "parent": "block/block",
+ "textures": {
+  "bois": "airain:block/furniture_wood",
+  "air": "airain:block/airain_block",
+  "cuirl": "airain:block/furniture_leather",
+  "cuir": "airain:block/furniture_leather_tufted",
+  "particle": "airain:block/furniture_wood"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    6,
+    3
+   ],
+   "to": [
+    16,
+    8,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bois",
+     "uv": [
+      0,
+      8,
+      16,
+      10
+     ]
+    },
+    "south": {
+     "texture": "#bois",
+     "uv": [
+      0,
+      8,
+      16,
+      10
+     ]
+    },
+    "west": {
+     "texture": "#bois",
+     "uv": [
+      3,
+      8,
+      13,
+      10
+     ]
+    },
+    "east": {
+     "texture": "#bois",
+     "uv": [
+      3,
+      8,
+      13,
+      10
+     ]
+    },
+    "up": {
+     "texture": "#bois",
+     "uv": [
+      0,
+      3,
+      16,
+      13
+     ]
+    },
+    "down": {
+     "texture": "#bois",
+     "uv": [
+      0,
+      3,
+      16,
+      13
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    7,
+    2.8
+   ],
+   "to": [
+    16,
+    7.5,
+    13.2
+   ],
+   "faces": {
+    "north": {
+     "texture": "#air",
+     "uv": [
+      0,
+      8.5,
+      16,
+      9
+     ]
+    },
+    "south": {
+     "texture": "#air",
+     "uv": [
+      0,
+      8.5,
+      16,
+      9
+     ]
+    },
+    "west": {
+     "texture": "#air",
+     "uv": [
+      2.8,
+      8.5,
+      13.2,
+      9
+     ]
+    },
+    "east": {
+     "texture": "#air",
+     "uv": [
+      2.8,
+      8.5,
+      13.2,
+      9
+     ]
+    },
+    "up": {
+     "texture": "#air",
+     "uv": [
+      0,
+      2.8,
+      16,
+      13.2
+     ]
+    },
+    "down": {
+     "texture": "#air",
+     "uv": [
+      0,
+      2.8,
+      16,
+      13.2
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    8,
+    3.5
+   ],
+   "to": [
+    16,
+    9.5,
+    12.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cuirl",
+     "uv": [
+      0,
+      6.5,
+      16,
+      8
+     ]
+    },
+    "south": {
+     "texture": "#cuirl",
+     "uv": [
+      0,
+      6.5,
+      16,
+      8
+     ]
+    },
+    "west": {
+     "texture": "#cuirl",
+     "uv": [
+      3.5,
+      6.5,
+      12.5,
+      8
+     ]
+    },
+    "east": {
+     "texture": "#cuirl",
+     "uv": [
+      3.5,
+      6.5,
+      12.5,
+      8
+     ]
+    },
+    "up": {
+     "texture": "#cuir",
+     "uv": [
+      0,
+      3.5,
+      16,
+      12.5
+     ]
+    },
+    "down": {
+     "texture": "#cuirl",
+     "uv": [
+      0,
+      3.5,
+      16,
+      12.5
+     ]
+    }
+   }
+  }
+ ]
+}

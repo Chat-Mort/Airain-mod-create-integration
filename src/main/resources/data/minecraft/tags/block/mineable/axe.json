@@ -1,6 +1,13 @@
 {
  "replace": false,
  "values": [
-  "airain:duty_board"
+  "airain:duty_board",
+  "airain:imperial_chair",
+  "airain:command_armchair",
+  "airain:imperial_bench",
+  "airain:imperial_table",
+  "airain:imperial_desk",
+  "airain:imperial_shelf",
+  "airain:imperial_wardrobe"
  ]
 }

@@ -574,6 +574,7 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.Relais.charger();
 		fr.chatmort.airain.fonderie.Motif.charger();   // 1.69.9 : carton de motif
 		fr.chatmort.airain.fonderie.Carreleur.charger();   // 1.70 : table du carreleur
+		fr.chatmort.airain.fonderie.Mobilier.charger();    // 1.71 : mobilier impérial
 		// 1.69 : le marteau-pilon casse les blocs voisins du bloc miné
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.fonderie.MarteauPilon::casse);
 		// 1.59 : charpente métallique d'airain et marquages au sol

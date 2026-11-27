@@ -138,6 +138,7 @@ public class AirainClient {
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Projecteur.BE_TYPE.get(), fr.chatmort.airain.fonderie.ProjecteurRendu::new);
 		// 1.69.3 : relais cinétique (demi-arbre dans le creux de la cage)
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Relais.BE_TYPE.get(), fr.chatmort.airain.fonderie.RelaisRendu::new);
+		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Mobilier.ETAGERE_BE.get(), fr.chatmort.airain.fonderie.EtagereRendu::new);   // 1.71 : objets posés sur l'étagère
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.TETE_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.TeteRendu::new);
 		event.registerBlockEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.LAMINOIR_BE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.LaminoirRendu::new);
 		event.registerEntityRenderer(fr.chatmort.airain.fonderie.Telepherique.NACELLE.get(), fr.chatmort.airain.fonderie.TelepheriqueRendus.NacelleRendu::new);

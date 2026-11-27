@@ -1,0 +1,124 @@
+{
+ "variants": {
+  "facing=north,left=false,legs=false,right=false": {
+   "model": "airain:block/imperial_bench"
+  },
+  "facing=north,left=false,legs=true,right=false": {
+   "model": "airain:block/imperial_bench"
+  },
+  "facing=north,left=false,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_left"
+  },
+  "facing=north,left=false,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_left"
+  },
+  "facing=north,left=true,legs=false,right=false": {
+   "model": "airain:block/imperial_bench_right"
+  },
+  "facing=north,left=true,legs=true,right=false": {
+   "model": "airain:block/imperial_bench_right"
+  },
+  "facing=north,left=true,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_middle"
+  },
+  "facing=north,left=true,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_middle_legs"
+  },
+  "facing=east,left=false,legs=false,right=false": {
+   "model": "airain:block/imperial_bench",
+   "y": 90
+  },
+  "facing=east,left=false,legs=true,right=false": {
+   "model": "airain:block/imperial_bench",
+   "y": 90
+  },
+  "facing=east,left=false,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_left",
+   "y": 90
+  },
+  "facing=east,left=false,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_left",
+   "y": 90
+  },
+  "facing=east,left=true,legs=false,right=false": {
+   "model": "airain:block/imperial_bench_right",
+   "y": 90
+  },
+  "facing=east,left=true,legs=true,right=false": {
+   "model": "airain:block/imperial_bench_right",
+   "y": 90
+  },
+  "facing=east,left=true,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_middle",
+   "y": 90
+  },
+  "facing=east,left=true,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_middle_legs",
+   "y": 90
+  },
+  "facing=south,left=false,legs=false,right=false": {
+   "model": "airain:block/imperial_bench",
+   "y": 180
+  },
+  "facing=south,left=false,legs=true,right=false": {
+   "model": "airain:block/imperial_bench",
+   "y": 180
+  },
+  "facing=south,left=false,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_left",
+   "y": 180
+  },
+  "facing=south,left=false,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_left",
+   "y": 180
+  },
+  "facing=south,left=true,legs=false,right=false": {
+   "model": "airain:block/imperial_bench_right",
+   "y": 180
+  },
+  "facing=south,left=true,legs=true,right=false": {
+   "model": "airain:block/imperial_bench_right",
+   "y": 180
+  },
+  "facing=south,left=true,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_middle",
+   "y": 180
+  },
+  "facing=south,left=true,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_middle_legs",
+   "y": 180
+  },
+  "facing=west,left=false,legs=false,right=false": {
+   "model": "airain:block/imperial_bench",
+   "y": 270
+  },
+  "facing=west,left=false,legs=true,right=false": {
+   "model": "airain:block/imperial_bench",
+   "y": 270
+  },
+  "facing=west,left=false,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_left",
+   "y": 270
+  },
+  "facing=west,left=false,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_left",
+   "y": 270
+  },
+  "facing=west,left=true,legs=false,right=false": {
+   "model": "airain:block/imperial_bench_right",
+   "y": 270
+  },
+  "facing=west,left=true,legs=true,right=false": {
+   "model": "airain:block/imperial_bench_right",
+   "y": 270
+  },
+  "facing=west,left=true,legs=false,right=true": {
+   "model": "airain:block/imperial_bench_middle",
+   "y": 270
+  },
+  "facing=west,left=true,legs=true,right=true": {
+   "model": "airain:block/imperial_bench_middle_legs",
+   "y": 270
+  }
+ }
+}

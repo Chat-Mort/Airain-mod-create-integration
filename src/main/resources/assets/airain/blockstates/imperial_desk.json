@@ -1,0 +1,49 @@
+{
+ "variants": {
+  "facing=north,part=single": {
+   "model": "airain:block/imperial_desk"
+  },
+  "facing=east,part=single": {
+   "model": "airain:block/imperial_desk",
+   "y": 90
+  },
+  "facing=south,part=single": {
+   "model": "airain:block/imperial_desk",
+   "y": 180
+  },
+  "facing=west,part=single": {
+   "model": "airain:block/imperial_desk",
+   "y": 270
+  },
+  "facing=north,part=left": {
+   "model": "airain:block/imperial_desk_left"
+  },
+  "facing=east,part=left": {
+   "model": "airain:block/imperial_desk_left",
+   "y": 90
+  },
+  "facing=south,part=left": {
+   "model": "airain:block/imperial_desk_left",
+   "y": 180
+  },
+  "facing=west,part=left": {
+   "model": "airain:block/imperial_desk_left",
+   "y": 270
+  },
+  "facing=north,part=right": {
+   "model": "airain:block/imperial_desk_right"
+  },
+  "facing=east,part=right": {
+   "model": "airain:block/imperial_desk_right",
+   "y": 90
+  },
+  "facing=south,part=right": {
+   "model": "airain:block/imperial_desk_right",
+   "y": 180
+  },
+  "facing=west,part=right": {
+   "model": "airain:block/imperial_desk_right",
+   "y": 270
+  }
+ }
+}

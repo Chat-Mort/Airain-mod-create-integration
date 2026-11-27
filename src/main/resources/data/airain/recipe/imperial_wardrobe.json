@@ -1,0 +1,27 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "pattern": [
+  "PSP",
+  "NCN",
+  "PSP"
+ ],
+ "key": {
+  "P": {
+   "item": "minecraft:dark_oak_planks"
+  },
+  "S": {
+   "item": "airain:airain_sheet"
+  },
+  "N": {
+   "item": "airain:airain_nugget"
+  },
+  "C": {
+   "item": "minecraft:chest"
+  }
+ },
+ "result": {
+  "id": "airain:imperial_wardrobe",
+  "count": 1
+ }
+}

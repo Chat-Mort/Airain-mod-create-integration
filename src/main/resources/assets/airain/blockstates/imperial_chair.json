@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "airain:block/imperial_chair"
+  },
+  "facing=east": {
+   "model": "airain:block/imperial_chair",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "airain:block/imperial_chair",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "airain:block/imperial_chair",
+   "y": 270
+  }
+ }
+}

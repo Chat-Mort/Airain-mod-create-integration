@@ -2377,5 +2377,16 @@
  "airain.carreleur.motif.medallion": "Médaillon",
  "airain.carreleur.motif.ring": "Anneau",
  "airain.carreleur.motif.frames": "Cadres",
- "airain.carreleur.motif.dotted_checker": "Damier pointé"
+ "airain.carreleur.motif.dotted_checker": "Damier pointé",
+ "block.airain.imperial_chair": "Chaise impériale",
+ "block.airain.command_armchair": "Fauteuil de commandement",
+ "block.airain.imperial_bench": "Banc impérial",
+ "block.airain.imperial_table": "Table impériale",
+ "block.airain.imperial_desk": "Bureau impérial",
+ "block.airain.imperial_shelf": "Étagère impériale",
+ "block.airain.imperial_wardrobe": "Armoire impériale",
+ "airain.ingenieur.mobilier.titre": "Le mobilier impérial",
+ "airain.ingenieur.mobilier.court": "Mobilier",
+ "airain.ingenieur.mobilier.histoire": "Noyer, airain et cuir rouge : les salles du conseil.",
+ "airain.ingenieur.mobilier.usage": "@airain:imperial_chair Chaise : clic droit, assis\n@airain:command_armchair Fauteuil, sur deux blocs\n@airain:imperial_bench Banc : se raccorde\n@airain:imperial_table Table : se raccorde partout\n@airain:imperial_desk Bureau : 9 cases, 18 à deux\n@airain:imperial_shelf Étagère : 6 objets en vue\n- Objet en main : le poser\n- Main vide : le reprendre\n@airain:imperial_wardrobe Armoire : 27 cases"
 }

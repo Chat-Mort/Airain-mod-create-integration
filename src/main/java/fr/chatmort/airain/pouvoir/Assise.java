@@ -5,6 +5,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 /** Siège invisible sur lequel s'assoit le joueur (même placement que les sièges de Create). */
 public class Assise extends Entity {
@@ -20,7 +21,9 @@ public class Assise extends Entity {
 	@Override
 	public void tick() {
 		super.tick();
-		if (!level().isClientSide && (getPassengers().isEmpty() || !(level().getBlockState(blockPosition()).getBlock() instanceof SiegeBlock))) discard();
+		// 1.71 : on reste assis aussi sur les chaises, le fauteuil et le banc du mobilier impérial
+		BlockState sous = level().getBlockState(blockPosition());
+		if (!level().isClientSide && (getPassengers().isEmpty() || !(sous.getBlock() instanceof SiegeBlock || fr.chatmort.airain.fonderie.Mobilier.assisable(sous)))) discard();
 	}
 
 	@Override
