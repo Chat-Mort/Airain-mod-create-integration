@@ -34,7 +34,8 @@ public final class Trophees {
 		FORCE("force", MobEffects.DAMAGE_BOOST),
 		ABSORPTION("absorption", null),     // cœurs dorés qui se reforment (géré à part)
 		SATIETE("satiete", MobEffects.SATURATION),
-		CHUTE("chute", null);           // pas de dégâts de chute (géré à part)
+		CHUTE("chute", null),           // pas de dégâts de chute (géré à part)
+		VITESSE("vitesse", MobEffects.MOVEMENT_SPEED);   // 1.71.3 : tige de breeze
 
 		public final TagKey<Item> tag;
 		public final Holder<MobEffect> effet;
@@ -91,6 +92,7 @@ public final class Trophees {
 	private static final ResourceLocation COEURS = ResourceLocation.fromNamespaceAndPath("airain", "gravure_coeurs");
 	private static final ResourceLocation RECUL = ResourceLocation.fromNamespaceAndPath("airain", "gravure_recul");
 	private static final ResourceLocation ALLURE = ResourceLocation.fromNamespaceAndPath("airain", "gravure_allure");
+	private static final ResourceLocation NAGE = ResourceLocation.fromNamespaceAndPath("airain", "gravure_nage");
 
 	private static void modif(ServerPlayer p, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> at, ResourceLocation id, double v,
 			net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation op) {
@@ -109,6 +111,10 @@ public final class Trophees {
 		modif(p, net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK, RECUL, graves.contains(Effet.FORCE) ? 1 : 0, OP);
 		modif(p, net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED, ALLURE, graves.contains(Effet.HATE) ? 0.1 : 0,
 			net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+		// 1.71.3 : vitesse gravée = nage +50 % ; feu gravé = aisance dans la lave (vue claire, nage plus rapide)
+		modif(p, net.neoforged.neoforge.common.NeoForgeMod.SWIM_SPEED, NAGE, graves.contains(Effet.VITESSE) ? 0.5 : 0,
+			net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+		if (graves.contains(Effet.FEU)) p.addEffect(new MobEffectInstance(Lave.AISANCE, 260, 0, true, false, false));
 		if (graves.contains(Effet.CHUTE)) p.addEffect(new MobEffectInstance(MobEffects.JUMP, 260, 0, true, false, true));
 		if (graves.contains(Effet.SATIETE)) {
 			if (p.hasEffect(MobEffects.HUNGER)) p.removeEffect(MobEffects.HUNGER);
@@ -119,11 +125,9 @@ public final class Trophees {
 				m.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, true, false));
 	}
 
-	/** Feu gravé : vos coups enflamment ; Résistance gravée : épines (20 % des dégâts renvoyés). */
+	/** Résistance gravée : épines (20 % des dégâts renvoyés). (Le feu gravé n'enflamme plus les coups depuis la 1.71.3.) */
 	public static void coups(net.neoforged.neoforge.event.entity.living.LivingDamageEvent.Post e) {
 		if (graves.isEmpty()) return;
-		if (graves.contains(Effet.FEU) && e.getSource().getEntity() instanceof ServerPlayer p && e.getSource().getDirectEntity() == p && e.getEntity() != p)
-			e.getEntity().igniteForSeconds(4);
 		if (graves.contains(Effet.RESISTANCE) && e.getEntity() instanceof ServerPlayer p && e.getSource().getEntity() instanceof net.minecraft.world.entity.LivingEntity at
 				&& at != p && !e.getSource().is(net.minecraft.world.damagesource.DamageTypes.THORNS) && e.getNewDamage() > 0)
 			at.hurt(p.damageSources().thorns(p), Math.max(1f, e.getNewDamage() * 0.2f));

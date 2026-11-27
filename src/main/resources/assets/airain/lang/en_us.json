@@ -371,7 +371,7 @@
  "airain.ingenieur.registre.usage": "- One page per base: banner, motto, position, distance and arrow\n- Then the trophies on display\n- Wheel or arrows: turn pages",
  "airain.ingenieur.socle.titre": "Empire Pedestal",
  "airain.ingenieur.socle.histoire": "Palaces showed their trophies; their glory served all.",
- "airain.ingenieur.socle.usage": "- Right-click with a trophy: effect for the whole team\n- Identical trophies don't stack\n- Sneak, empty hand: material, velvet, light, plaque\n- Engraving (2 crowns): second effect\n## Trophies\n@minecraft:dragon_egg Dragon egg: falling\n@minecraft:wither_skeleton_skull Skull: fire\n@minecraft:nether_star Nether heart: regen\n@kubejs:echo_primordial Echo: vision\n@airain:colossus_visor Visor: strength\n@airain:magma_heart Magma: resistance\n@airain:prowler_gear Prowler: haste\n@airain:guardian_eye Eye: absorption\n@airain:centurion_seal Seal: saturation",
+ "airain.ingenieur.socle.usage": "- Right-click with a trophy: effect for the whole team\n- Identical trophies don't stack\n- Sneak, empty hand: material, velvet, light, plaque\n- Engraving (2 crowns): second effect\n## Trophies\n@minecraft:dragon_egg Dragon egg: falling\n@minecraft:wither_skeleton_skull Skull: fire\n@minecraft:nether_star Nether heart: regen\n@kubejs:echo_primordial Echo: vision\n@airain:colossus_visor Visor: strength\n@airain:magma_heart Magma: resistance\n@airain:prowler_gear Prowler: haste\n@airain:guardian_eye Eye: absorption\n@airain:centurion_seal Seal: saturation\n@minecraft:breeze_rod Breeze: speed",
  "airain.ingenieur.banc.titre": "Maintenance Bench",
  "airain.ingenieur.banc.histoire": "Automatons don't bleed: they leak.",
  "airain.ingenieur.banc.usage": "- Driven by a cog\n- Empty hand: the screen\n- Item + material + oil (1,000 mB per ingot)\n- Comes out sharpened for 10 minutes: +10%",
@@ -1048,7 +1048,7 @@
  "airain.trophee.deja_grave": "This trophy is already engraved.",
  "airain.trophee.prix_gravure": "Engraving costs %s crowns.",
  "airain.trophee.grave_ok": "%s is engraved: its second effect awakens.",
- "airain.trophee.gravure.feu": "your hits set enemies ablaze",
+ "airain.trophee.gravure.feu": "in lava: clear sight, faster swimming",
  "airain.trophee.gravure.regeneration": "+2 max hearts",
  "airain.trophee.gravure.vision": "hostile creatures within 16 blocks glow",
  "airain.trophee.gravure.chute": "jump boost",
@@ -2389,5 +2389,8 @@
  "airain.ingenieur.mobilier.court": "Furniture",
  "airain.ingenieur.mobilier.histoire": "Walnut, airain and red leather: the council halls.",
  "airain.ingenieur.mobilier.usage": "@airain:imperial_chair Chair: right-click to sit\n@airain:command_armchair Armchair, two blocks tall\n@airain:imperial_bench Bench: joins up\n@airain:imperial_table Table: joins every way\n@airain:imperial_desk Desk: 9 slots, 18 as a pair\n@airain:imperial_shelf Shelf: 6 items on show\n- Item in hand: place it\n- Empty hand: take it back\n@airain:imperial_wardrobe Wardrobe: 9 armor sets",
- "airain.armoire.echanger": "Swap armor"
+ "airain.armoire.echanger": "Swap armor",
+ "airain.trophee.effet.vitesse": "Speed",
+ "airain.trophee.gravure.vitesse": "swimming +50%",
+ "effect.airain.lava_ease": "Lava ease"
 }

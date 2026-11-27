@@ -591,6 +591,7 @@ public class AirainMod {
 		fr.chatmort.airain.fonderie.MetalAirain.FLUIDES.register(bus);
 		fr.chatmort.airain.fusion.EchoLiquide.TYPES.register(bus);   // l'Écho liquide (son bloc et son seau rejoignent BLOCKS et ITEMS)
 		fr.chatmort.airain.fusion.EchoLiquide.FLUIDES.register(bus);
+		fr.chatmort.airain.trophee.Lave.EFFETS.register(bus);   // 1.71.3 : effet caché du trophée de feu gravé
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
 		BLOCK_ENTITIES.register(bus);
@@ -633,6 +634,7 @@ public class AirainMod {
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::boss);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::coups);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Trophees::joueur);
+		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.trophee.Lave::nage);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::tick);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armures::cible);
 		NeoForge.EVENT_BUS.addListener(fr.chatmort.airain.armure.Armes::joueur);

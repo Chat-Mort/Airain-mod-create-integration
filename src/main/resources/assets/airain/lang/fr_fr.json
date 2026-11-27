@@ -371,7 +371,7 @@
  "airain.ingenieur.registre.usage": "- Une page par base : bannière, devise, position, distance et flèche\n- Puis les trophées exposés\n- Molette ou flèches : tourner les pages",
  "airain.ingenieur.socle.titre": "Socle de l'Empire",
  "airain.ingenieur.socle.histoire": "Les palais exposaient leurs trophées ; leur gloire profitait à tous.",
- "airain.ingenieur.socle.usage": "- Clic droit avec un trophée : effet pour toute l'équipe\n- Deux trophées identiques ne cumulent pas\n- Accroupi, main vide : matériau, velours, lumière, plaque\n- Gravure (2 couronnes) : second effet\n## Trophées\n@minecraft:dragon_egg Œuf de dragon : chute\n@minecraft:wither_skeleton_skull Crâne : feu\n@minecraft:nether_star Cœur des enfers : régén.\n@kubejs:echo_primordial Écho : vision\n@airain:colossus_visor Visière : force\n@airain:magma_heart Magma : résistance\n@airain:prowler_gear Rôdeur : célérité\n@airain:guardian_eye Œil : absorption\n@airain:centurion_seal Sceau : satiété",
+ "airain.ingenieur.socle.usage": "- Clic droit avec un trophée : effet pour toute l'équipe\n- Deux trophées identiques ne cumulent pas\n- Accroupi, main vide : matériau, velours, lumière, plaque\n- Gravure (2 couronnes) : second effet\n## Trophées\n@minecraft:dragon_egg Œuf de dragon : chute\n@minecraft:wither_skeleton_skull Crâne : feu\n@minecraft:nether_star Cœur des enfers : régén.\n@kubejs:echo_primordial Écho : vision\n@airain:colossus_visor Visière : force\n@airain:magma_heart Magma : résistance\n@airain:prowler_gear Rôdeur : célérité\n@airain:guardian_eye Œil : absorption\n@airain:centurion_seal Sceau : satiété\n@minecraft:breeze_rod Breeze : vitesse",
  "airain.ingenieur.banc.titre": "Banc d'entretien",
  "airain.ingenieur.banc.histoire": "Les automates ne saignent pas : ils fuient.",
  "airain.ingenieur.banc.usage": "- Entraîné par un rouage\n- Main vide : l'écran\n- Objet + matériau + huile (1 000 mB par lingot)\n- Sort affûté 10 minutes : +10 %",
@@ -1048,7 +1048,7 @@
  "airain.trophee.deja_grave": "Ce trophée est déjà gravé.",
  "airain.trophee.prix_gravure": "La gravure coûte %s couronnes.",
  "airain.trophee.grave_ok": "%s est gravé : son second effet s'éveille.",
- "airain.trophee.gravure.feu": "vos coups enflamment",
+ "airain.trophee.gravure.feu": "dans la lave : vue claire, nage plus rapide",
  "airain.trophee.gravure.regeneration": "+2 cœurs max",
  "airain.trophee.gravure.vision": "les créatures hostiles à 16 blocs brillent",
  "airain.trophee.gravure.chute": "saut amélioré",
@@ -2389,5 +2389,8 @@
  "airain.ingenieur.mobilier.court": "Mobilier",
  "airain.ingenieur.mobilier.histoire": "Noyer, airain et cuir rouge : les salles du conseil.",
  "airain.ingenieur.mobilier.usage": "@airain:imperial_chair Chaise : clic droit, assis\n@airain:command_armchair Fauteuil, sur deux blocs\n@airain:imperial_bench Banc : se raccorde\n@airain:imperial_table Table : se raccorde partout\n@airain:imperial_desk Bureau : 9 cases, 18 à deux\n@airain:imperial_shelf Étagère : 6 objets en vue\n- Objet en main : le poser\n- Main vide : le reprendre\n@airain:imperial_wardrobe Armoire : 9 sets d'armure",
- "airain.armoire.echanger": "Échanger l'armure"
+ "airain.armoire.echanger": "Échanger l'armure",
+ "airain.trophee.effet.vitesse": "Vitesse",
+ "airain.trophee.gravure.vitesse": "nage +50 %",
+ "effect.airain.lava_ease": "Aisance dans la lave"
 }
