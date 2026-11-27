@@ -5,6 +5,17 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 28 novembre 2026 — version 1.71.3
+
+**Ajouts**
+- Trophée de vitesse : la tige de breeze, posée sur un socle, donne Vitesse à toute l'équipe (Vitesse II sur un socle sacré) ; gravée : nage 50 % plus rapide.
+
+**Changements**
+- Trophée de feu gravé : vos coups n'enflamment plus (gênant pour les endermen) ; à la place, dans la lave on y voit clair et on y nage plus vite.
+- Livre de l'ingénieur : la tige de breeze dans la liste des trophées.
+
+---
+
 ## 28 novembre 2026 — version 1.71.2
 
 **Changements**
