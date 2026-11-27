@@ -5,6 +5,21 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 27 novembre 2026 — version 1.71.0
+
+**Ajouts**
+- Mobilier impérial en noyer sombre, airain, cuir rouge capitonné et marbre veiné d'or (livre de l'ingénieur, « Mobilier ») :
+  - Chaise : clic droit pour s'asseoir.
+  - Fauteuil de commandement : deux blocs, dossier haut à oreilles, accoudoirs cloutés, couronne d'airain ; on s'y assoit.
+  - Banc : se raccorde à gauche et à droite, coussin continu, joues aux bouts et une paire de pieds tous les trois blocs ; on s'y assoit.
+  - Table : se raccorde dans les quatre sens (longues tables, grandes tables), incrustation de marbre continue, filet d'airain et pieds seulement sur le pourtour.
+  - Bureau : 9 cases ; deux bureaux côte à côte forment un bureau de deux blocs (niche commune, grand tiroir central, sous-main continu, lampe et encrier) qui ouvre 18 cases.
+  - Étagère : deux niveaux de trois places ; clic droit avec un objet pour le poser, main vide pour le reprendre ; les objets se voient.
+  - Armoire : deux blocs, deux portes à panneaux, 27 cases.
+- Recettes à l'établi (planches de chêne noir, laine rouge ou cuir, pépites et plaques d'airain, marbre poli, coffre).
+
+---
+
 ## 26 novembre 2026 — version 1.70.3
 
 **Corrections**

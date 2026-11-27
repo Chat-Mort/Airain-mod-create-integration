@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.70.3</h1>
+   <h1>Inspection en jeu — mod 1.71.0</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -147,6 +147,17 @@ const S = [
  {t:"Curseur du carreleur", n:"1.70.3.", l:[
   ["Glisser","Le curseur de taille suit la souris tant que le clic est maintenu ; l'aperçu suit."],
   ["Alignement","« Size » et la valeur ne se touchent plus (valeur calée à droite) ; « Cells » et son chiffre centré entre − et +."]]}
+,
+ {t:"Mobilier impérial", n:"Nouveau en 1.71.0.", l:[
+  ["Recettes et rendu","Les 7 meubles se fabriquent à l'établi ; textures nettes, orientés vers le joueur, rien ne clignote ni ne se superpose."],
+  ["S'asseoir","Chaise, fauteuil (bas ou haut cliqué), banc : on s'assoit face à l'avant ; accroupi : on pose un bloc au lieu de s'asseoir."],
+  ["Fauteuil et armoire","Posés sur deux blocs ; casser le haut ou le bas casse tout et rend l'objet (rien en créatif)."],
+  ["Banc","Raccords à gauche et à droite, coussin continu, joues aux bouts, pieds au milieu tous les trois blocs."],
+  ["Table","Longue table et grande table (2 x 3) : marbre continu, filet et ceinture seulement sur le pourtour, pieds aux coins."],
+  ["Bureau","Seul : 9 cases ; deux côte à côte : un seul bureau, 18 cases ; un troisième reste seul ; en casser un rend l'autre seul."],
+  ["Étagère","Poser et reprendre sur les 6 places ; objets bien placés quelle que soit l'orientation ; visibles par l'autre joueur ; rendus quand on la casse."],
+  ["Armoire","27 cases, son de porte ; contenu rendu quand on la casse."],
+  ["Livre de l'ingénieur","Chapitre « Mobilier » dans Bâtir, lignes lisibles sans débordement."]]}
 ];
 const CLE = "inspection-airain-1.69.9";   // nouvelle série : seulement les changements depuis la 1.69.6
 let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }
@@ -206,7 +217,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.70.3\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.71.0\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;
