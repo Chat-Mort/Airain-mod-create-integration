@@ -386,7 +386,7 @@
  "airain.ingenieur.desenchanteur.usage": "- Driven by a cog\n- 500 mB of oil per level\n- Destroys the item, gives one random enchantment\n@airain:runic_ink Ink: purges curses, destroys nothing",
  "airain.ingenieur.balise.titre": "Defense Beacon",
  "airain.ingenieur.balise.histoire": "Its siren called the guards, its light guided reinforcements.",
- "airain.ingenieur.balise.usage": "- 3×3 footprint, 8 high\n- Right-click: 4-wave assault\n- Sneak: radius, and the circle\n- The light sweeps the base, the siren calls each wave\n@airain:sacred_netherite_plate Sacred netherite: strikes attackers",
+ "airain.ingenieur.balise.usage": "- 3×3 footprint, 8 high\n- Right-click: 5-wave assault\n- Sneak: radius, and the circle\n- The light sweeps the base, the siren calls each wave\n@airain:sacred_netherite_plate Sacred netherite: strikes attackers",
  "airain.ingenieur.codex.titre": "Codex of the Empire",
  "airain.ingenieur.codex.histoire": "All the Empire left behind, and all that rose against it.",
  "airain.ingenieur.codex.usage": "- One page per creature, opened at the first victory\n- Ten victories: the engineer's note\n- A boss reveals itself at once\n- A complete force: its emblem",

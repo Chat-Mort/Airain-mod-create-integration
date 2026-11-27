@@ -386,7 +386,7 @@
  "airain.ingenieur.desenchanteur.usage": "- Entraîné par un rouage\n- 500 mB d'huile par niveau\n- Détruit l'objet, rend un enchantement au hasard\n@airain:runic_ink Encre : purge les malédictions sans rien détruire",
  "airain.ingenieur.balise.titre": "Balise de défense",
  "airain.ingenieur.balise.histoire": "Sa sirène appelait les gardes, son feu guidait les renforts.",
- "airain.ingenieur.balise.usage": "- 3×3 au sol, 8 de haut\n- Clic droit : assaut de 4 vagues\n- Accroupi : rayon, et le cercle\n- Le phare balaie la base, la sirène annonce chaque vague\n@airain:sacred_netherite_plate Netherite sacrée : foudroie les assaillants",
+ "airain.ingenieur.balise.usage": "- 3×3 au sol, 8 de haut\n- Clic droit : assaut de 5 vagues\n- Accroupi : rayon, et le cercle\n- Le phare balaie la base, la sirène annonce chaque vague\n@airain:sacred_netherite_plate Netherite sacrée : foudroie les assaillants",
  "airain.ingenieur.codex.titre": "Codex de l'Empire",
  "airain.ingenieur.codex.histoire": "Tout ce que l'Empire a laissé, et ce qui s'est levé contre lui.",
  "airain.ingenieur.codex.usage": "- Une page par créature, ouverte à la première victoire\n- Dix victoires : la note d'ingénieur\n- Un boss se dévoile dès la première\n- Une force complète : son emblème",
