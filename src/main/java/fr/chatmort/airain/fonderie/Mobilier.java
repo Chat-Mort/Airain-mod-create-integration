@@ -89,7 +89,10 @@ public final class Mobilier {
 		() -> BlockEntityType.Builder.of((p, s) -> new Coffre(Mobilier.BUREAU_BE.get(), p, s, 9), BUREAU.get()).build(null));
 	@SuppressWarnings("DataFlowIssue")
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<Coffre>> ARMOIRE_BE = AirainMod.BLOCK_ENTITIES.register("imperial_wardrobe",
-		() -> BlockEntityType.Builder.of((p, s) -> new Coffre(Mobilier.ARMOIRE_BE.get(), p, s, 27), ARMOIRE.get()).build(null));
+		() -> BlockEntityType.Builder.of((p, s) -> new Coffre(Mobilier.ARMOIRE_BE.get(), p, s, ArmoireMenu.CASES), ARMOIRE.get()).build(null));
+	// 1.71.1 : écran de l'armoire (sets d'armure)
+	public static final DeferredHolder<MenuType<?>, MenuType<ArmoireMenu>> ARMOIRE_MENU = AirainMod.MENUS.register("imperial_wardrobe",
+		() -> new MenuType<>(ArmoireMenu::new, net.minecraft.world.flag.FeatureFlags.VANILLA_SET));
 	@SuppressWarnings("DataFlowIssue")
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<Presentoir>> ETAGERE_BE = AirainMod.BLOCK_ENTITIES.register("imperial_shelf",
 		() -> BlockEntityType.Builder.of(Presentoir::new, ETAGERE.get()).build(null));
@@ -334,7 +337,7 @@ public final class Mobilier {
 		@Override protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return Shapes.block(); }
 	}
 
-	// ------------------------------------------------------------------ armoire : deux blocs, 27 cases dans le bas
+	// ------------------------------------------------------------------ armoire : deux blocs, 9 sets d'armure dans le bas (1.71.1)
 	public static class Armoire extends Double implements net.minecraft.world.level.block.EntityBlock {
 		public static final MapCodec<Armoire> CODEC = simpleCodec(Armoire::new);
 		private static final java.util.Map<Direction, VoxelShape> F = formes(new double[] {0, 0, 0.5, 16, 16, 16});
@@ -342,13 +345,13 @@ public final class Mobilier {
 		@Override protected MapCodec<? extends HorizontalDirectionalBlock> codec() { return CODEC; }
 		@Override protected VoxelShape getShape(BlockState s, BlockGetter l, BlockPos p, CollisionContext c) { return F.get(s.getValue(FACING)); }
 		@Override public @org.jetbrains.annotations.Nullable BlockEntity newBlockEntity(BlockPos p, BlockState s) {
-			return s.getValue(HALF) == DoubleBlockHalf.LOWER ? new Coffre(ARMOIRE_BE.get(), p, s, 27) : null;
+			return s.getValue(HALF) == DoubleBlockHalf.LOWER ? new Coffre(ARMOIRE_BE.get(), p, s, ArmoireMenu.CASES) : null;
 		}
 		@Override
 		protected InteractionResult useWithoutItem(BlockState s, Level l, BlockPos p, Player j, BlockHitResult h) {
 			BlockPos b = bas(s, p);
 			if (!l.isClientSide && j instanceof ServerPlayer sp && l.getBlockEntity(b) instanceof Coffre c) {
-				sp.openMenu(new SimpleMenuProvider((id, inv, pl) -> ChestMenu.threeRows(id, inv, c), Component.translatable("block.airain.imperial_wardrobe")));
+				sp.openMenu(new SimpleMenuProvider((id, inv, pl) -> new ArmoireMenu(id, inv, c), Component.translatable("block.airain.imperial_wardrobe")));
 				l.playSound(null, b, SoundEvents.WOODEN_DOOR_OPEN, SoundSource.BLOCKS, 0.7f, 0.9f);
 			}
 			return InteractionResult.sidedSuccess(l.isClientSide);

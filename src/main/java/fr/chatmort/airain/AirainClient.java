@@ -194,6 +194,7 @@ public class AirainClient {
 		event.register(AirainMod.TABLE_MENU.get(), TableEmpireScreen::new);
 		event.register(AirainMod.BANC_MENU.get(), fr.chatmort.airain.banc.BancScreen::new);
 		event.register(fr.chatmort.airain.fonderie.Carreleur.MENU.get(), fr.chatmort.airain.fonderie.CarreleurScreen::new);   // 1.70 : table du carreleur
+		event.register(fr.chatmort.airain.fonderie.Mobilier.ARMOIRE_MENU.get(), fr.chatmort.airain.fonderie.ArmoireScreen::new);   // 1.71.1 : armoire impériale
 		event.register(AirainMod.RELIURE_MENU.get(), fr.chatmort.airain.reliure.ReliureMenuScreen::new);
 		event.register(fr.chatmort.airain.atelier.Atelier.ETABLI_MENU.get(), fr.chatmort.airain.atelier.EtabliScreen::new);   // établi d'atelier
 	}

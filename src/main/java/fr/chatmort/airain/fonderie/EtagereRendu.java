@@ -28,7 +28,7 @@ public class EtagereRendu implements BlockEntityRenderer<Mobilier.Presentoir> {
 			ms.translate(-0.5, 0, -0.5);
 			double x = (1.5 + (i % 3 + 0.5) * 13 / 3.0) / 16, y = (i < 3 ? 1.5 : 8.5) / 16;
 			ms.translate(x, y + 0.19, 9.5 / 16);
-			ms.mulPose(Axis.YP.rotationDegrees(180));          // face de l'objet vers l'avant (nord du modèle)
+			// 1.71.1 : sans demi-tour, l'objet montre déjà sa face vers l'avant (nord du modèle)
 			ms.scale(0.42f, 0.42f, 0.42f);
 			Minecraft.getInstance().getItemRenderer().renderStatic(s, ItemDisplayContext.FIXED, lum, ov, ms, buf, be.getLevel(), (int) be.getBlockPos().asLong() + i);
 			ms.popPose();

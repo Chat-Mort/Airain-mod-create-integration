@@ -2388,5 +2388,6 @@
  "airain.ingenieur.mobilier.titre": "Le mobilier impérial",
  "airain.ingenieur.mobilier.court": "Mobilier",
  "airain.ingenieur.mobilier.histoire": "Noyer, airain et cuir rouge : les salles du conseil.",
- "airain.ingenieur.mobilier.usage": "@airain:imperial_chair Chaise : clic droit, assis\n@airain:command_armchair Fauteuil, sur deux blocs\n@airain:imperial_bench Banc : se raccorde\n@airain:imperial_table Table : se raccorde partout\n@airain:imperial_desk Bureau : 9 cases, 18 à deux\n@airain:imperial_shelf Étagère : 6 objets en vue\n- Objet en main : le poser\n- Main vide : le reprendre\n@airain:imperial_wardrobe Armoire : 27 cases"
+ "airain.ingenieur.mobilier.usage": "@airain:imperial_chair Chaise : clic droit, assis\n@airain:command_armchair Fauteuil, sur deux blocs\n@airain:imperial_bench Banc : se raccorde\n@airain:imperial_table Table : se raccorde partout\n@airain:imperial_desk Bureau : 9 cases, 18 à deux\n@airain:imperial_shelf Étagère : 6 objets en vue\n- Objet en main : le poser\n- Main vide : le reprendre\n@airain:imperial_wardrobe Armoire : 9 sets d'armure",
+ "airain.armoire.echanger": "Échanger l'armure"
 }
