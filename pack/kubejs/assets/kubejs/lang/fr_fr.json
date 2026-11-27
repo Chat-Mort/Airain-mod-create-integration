@@ -175,7 +175,7 @@
   "block.kubejs.banner.franges.red": "Franges rouge",
   "block.kubejs.banner.franges.black": "Franges noir",
   "airain.chantier.pneumatique": "Le réseau pneumatique de l'Empire n'est pas encore rouvert.",
-  "tooltip.kubejs.balise_defense.1": "Tour-phare à sirène (3 × 3 au sol, 8 de haut). Clic droit : lance un assaut de l'Empire (4 vagues).",
+  "tooltip.kubejs.balise_defense.1": "Tour-phare à sirène (3 × 3 au sol, 8 de haut). Clic droit : lance un assaut de l'Empire (5 vagues).",
   "tooltip.kubejs.balise_defense.2": "Accroupi + clic droit : règle le rayon d'arrivée et montre le cercle.",
   "block.kubejs.balise_defense": "Balise de défense",
   "airain.balise.rayon": "Rayon d'arrivée : %s blocs. Le cercle rouge montre où ils apparaîtront.",

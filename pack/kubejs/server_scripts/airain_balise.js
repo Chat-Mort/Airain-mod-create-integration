@@ -3,12 +3,13 @@
 // Un bloc à poser dans la base. Elle n'est jamais consommée.
 //   Accroupi + clic droit (balise au repos) : règle le rayon d'apparition (48, 64, 96, 128 ; 64 par défaut)
 //                                             et montre pendant quelques secondes le cercle d'arrivée.
-//   Clic droit : lance un assaut de 4 vagues après un compte à rebours (le cercle s'affiche).
+//   Clic droit : lance un assaut de 5 vagues après un compte à rebours (le cercle s'affiche).
 //   Accroupi + clic droit pendant un assaut : l'abandonne.
 // Les ennemis n'apparaissent que sur du sol naturel (terre, herbe, sable, neige, pierre, gravier…) à ciel ouvert,
 // sur le cercle choisi : jamais sur vos sols, toits ou chemins. Le cercle vide sur vos murailles le montre.
 // Entre deux vagues, 30 secondes de répit. Si tout le monde meurt ou s'éloigne, seule la vague en cours recommence
-// quand quelqu'un revient. La 4e vague : un centurion à vapeur et son escorte. La première victoire valide la quête.
+// quand quelqu'un revient. 4e vague : un centurion à vapeur ; 5e : deux centurions et leur escorte, renforcés.
+// La première victoire valide la quête.
 // Plus d'ennemis à deux, et un quart de plus à chaque victoire (jusqu'au double).
 
 const BAL_TOUR = 'airain:defense_beacon'             // la tour-phare du mod (cœur, au centre du socle)
@@ -28,13 +29,16 @@ const BAL_ARAIGNEE = 'mebahelcreaturesdwarven:dwarven_spider'
 const BAL_SPHERE = 'mebahelcreaturesdwarven:dwarven_sphere'
 const BAL_GARDIENNE = 'mebahelcreaturesdwarven:dwarven_spider_guardian'
 const BAL_CENTURION = 'mebahelcreaturesdwarven:dwarven_centurion'
-// vagues de base : [ennemi, nombre, plafond] (le centurion reste toujours seul)
+// vagues de base : [ennemi, nombre, plafond] (les centurions ne sont jamais multipliés)
+// 1.71.2 : vagues renforcées pour le chapitre VII, et une 5e vague finale
 const BAL_VAGUES = [
-  [[BAL_ARAIGNEE, 4, 10]],
-  [[BAL_ARAIGNEE, 3, 8], [BAL_SPHERE, 3, 8]],
-  [[BAL_ARAIGNEE, 3, 8], [BAL_SPHERE, 2, 6], [BAL_GARDIENNE, 1, 3]],
-  [[BAL_CENTURION, 1, 1], [BAL_GARDIENNE, 1, 3], [BAL_ARAIGNEE, 4, 10]]
+  [[BAL_ARAIGNEE, 6, 14]],
+  [[BAL_ARAIGNEE, 5, 12], [BAL_SPHERE, 4, 10]],
+  [[BAL_ARAIGNEE, 4, 10], [BAL_SPHERE, 4, 10], [BAL_GARDIENNE, 2, 5]],
+  [[BAL_CENTURION, 1, 1], [BAL_GARDIENNE, 3, 7], [BAL_SPHERE, 4, 10]],
+  [[BAL_CENTURION, 2, 2], [BAL_GARDIENNE, 3, 7], [BAL_ARAIGNEE, 6, 14]]
 ]
+const BAL_FORCE = [5]   // vagues dont les ennemis reçoivent Force I
 const BAL_RARES = [  // [objet, nombre, poids]
   ['minecraft:totem_of_undying', 1, 3], ['minecraft:golden_apple', 3, 4], ['minecraft:experience_bottle', 16, 4],
   ['minecraft:diamond', 4, 4], ['minecraft:netherite_scrap', 2, 2], ['kubejs:fragment_resonance', 3, 3],
@@ -149,7 +153,7 @@ function balLancer(server, s) {
   let total = 0
   s.suivi = []
   base.forEach(e => {
-    const nb = e[0] === BAL_CENTURION ? 1 : Math.min(e[2], Math.max(1, Math.round(e[1] * s.facteur)))
+    const nb = e[0] === BAL_CENTURION ? e[1] : Math.min(e[2], Math.max(1, Math.round(e[1] * s.facteur)))
     for (let i = 0; i < nb; i++) {
       let pos = null
       for (let essai = 0; essai < 40 && pos === null; essai++) {
@@ -174,6 +178,7 @@ function balLancer(server, s) {
     balFin(server, s.cle, 'airain.balise.pas_de_sol')
     return
   }
+  if (BAL_FORCE.indexOf(s.vague) >= 0) server.runCommandSilent('effect give @e[tag=' + s.tag + '] minecraft:strength infinite 0 true')
   balSilence(server, s)
   server.runCommandSilent(balIci(s) + 'playsound minecraft:event.raid.horn hostile ' + balQui(s) + ' ~ ~ ~ 64 0.8')
   server.runCommandSilent(balIci(s) + 'title ' + balQui(s) + ' actionbar {"translate":"airain.balise.vague","with":["' + s.vague + '"],"color":"red"}')

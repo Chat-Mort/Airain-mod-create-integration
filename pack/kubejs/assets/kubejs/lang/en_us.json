@@ -175,7 +175,7 @@
   "block.kubejs.banner.franges.red": "Red Fringe",
   "block.kubejs.banner.franges.black": "Black Fringe",
   "airain.chantier.pneumatique": "The Empire's pneumatic network has not been reopened yet.",
-  "tooltip.kubejs.balise_defense.1": "Siren lighthouse tower (3 × 3 ground, 8 high). Right-click: start an Empire assault (4 waves).",
+  "tooltip.kubejs.balise_defense.1": "Siren lighthouse tower (3 × 3 ground, 8 high). Right-click: start an Empire assault (5 waves).",
   "tooltip.kubejs.balise_defense.2": "Sneak + right-click: set the arrival radius and show the circle.",
   "block.kubejs.balise_defense": "Defense Beacon",
   "airain.balise.rayon": "Arrival radius: %s blocks. The red circle shows where they will appear.",

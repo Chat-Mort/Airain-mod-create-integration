@@ -5,6 +5,13 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 28 novembre 2026 — version 1.71.2
+
+**Changements**
+- Balise de défense : assaut renforcé pour le chapitre VII, en cinq vagues (à deux : environ 9, 14, 15, 12 et 16 ennemis) ; 4e vague menée par un centurion à vapeur, 5e par deux centurions et leur escorte, tous sous Force I. Un quart d'ennemis en plus à chaque victoire, jusqu'au double. Quête, bulle d'aide et livre de l'ingénieur à jour.
+
+---
+
 ## 27 novembre 2026 — version 1.71.1
 
 **Changements**
