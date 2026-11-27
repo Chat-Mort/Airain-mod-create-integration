@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.71.0</h1>
+   <h1>Inspection en jeu — mod 1.71.1</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -99,67 +99,14 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <script>
 {
 const S = [
- {t:"Cordeau de maçon", n:"1.69.6 et 1.69.7.", l:[
-  ["Annuler au clic gauche","Cordeau en main, piquets plantés : clic gauche, tout s'efface ; rien n'est frappé ni cassé."],
-  ["Accroupi + clic droit","Passe du mode plein au mode contour (Ctrl + clic droit aussi)."],
-  ["Zone remplie","Avec assez de blocs, la zone disparaît après la pose ; sinon elle reste pour compléter."]]},
- {t:"Marteau-pilon et huile", n:"1.69.8.", l:[
-  ["Seau d'huile seul","En 5 × 5 avec seulement un seau d'huile : coup en 5 × 5, seau vide rendu."],
-  ["Réserve","Le surplus du seau apparaît en réserve dans l'infobulle et sert aux coups suivants."]]},
- {t:"Carton de motif", n:"Nouveau en 1.69.9.", l:[
-  ["Recette et apparence","Quatre papiers, plaque, colorant noir : quatre cartons ; icône vierge puis imprimée."],
-  ["Prendre un échantillon","Deux coins (les blocs visés eux-mêmes), sélection en fil d'airain, taille dans la barre d'action."],
-  ["Épaisseur","Accroupi + molette : la face regardée avance ou recule ; la barre d'outils ne défile pas."],
-  ["Enregistrer","Clic droit : message, infobulle (taille, liste des blocs) ; depuis une pile, un seul carton imprimé."],
-  ["Effacer","Clic gauche : la sélection en cours, puis le motif."]]},
- {t:"Cordeau avec le carton", n:"Nouveau en 1.69.9.", l:[
-  ["Aperçu","Carton dans l'autre main : vrais blocs en transparence, motif répété depuis le piquet A."],
-  ["Orientations","Marches, bûches, dalles, portes, murets : exactement comme enregistrés."],
-  ["Quart de tour","Accroupi + clic droit : le motif tourne, les orientations tournent avec."],
-  ["Relief","Un échantillon sur plusieurs couches se répète aussi en hauteur."],
-  ["Blocs manquants","Liste des blocs qui manquent ; les piquets restent pour compléter."]]},
- {t:"Cordeau en volume", n:"Nouveau en 1.69.9.", l:[
-  ["Molette","Accroupi + molette, deux piquets posés : la face regardée avance ou recule ; taille dans la barre d'action."],
-  ["Volume plein et contour","Un seul bloc dans l'autre main : volume plein, ou enveloppe en mode contour."],
-  ["Grand volume","Au-delà de 4 096 blocs : « right click to continue », sans gel du serveur."]]}
-,
- {t:"Textures d'objets", n:"1.69.10.", l:[
-  ["Plaque, lingot, pépite","Airain doré à patine rouge, lisibles en case et en main."],
-  ["Câble et rouage brisé","Brins verticaux ; dents carrées, cassure visible."],
-  ["Nacelle","Suspendue au câble, vitres."],
-  ["Portillon de passerelle","En 3D dans l'inventaire, en main et au sol, comme les autres passerelles."]]}
-,
- {t:"Table du carreleur", n:"Nouveau en 1.70.0.", l:[
-  ["Recette, bloc, objet","Marbre, plaques, établi, carton ; relief (1.70.1) : montants, damier en relief, équerre, tiroirs ; orientée vers le joueur."],
-  ["Onglets","Création, Sols, Murs, Plafonds : bascule propre, boutons et cases du pack HD, rien ne déborde."],
-  ["Création","Bouton de type, liste des motifs, rôles (accent et bordure selon le cas), cases ou curseur, aperçu en direct."],
-  ["Impression","Carton vierge + rôles remplis : « Print » donne le carton nommé ; il se pose au cordeau comme prévu."],
-  ["Bordure","Cochée : elle fait le tour de la zone du cordeau, quelle que soit sa taille ; au mur, aussi en haut et en bas."],
-  ["Rangement","Cartons rangés dans l'onglet de leur type (aussi par maj + clic) ; visibles par l'autre joueur ; gardés quand on casse la table."],
-  ["Aperçus","Bulle d'aide avec miniature ; clic droit dans le vide avec un carton : fenêtre 3D, glisser, molette, flèches."]]}
-,
- {t:"Motifs du carreleur", n:"1.70.2.", l:[
-  ["Tes quatre motifs","Médaillon, Anneau, Cadres, Damier pointé : présents en sol et en plafond, conformes à tes dessins (noir = A, blanc = B, rouge = accent), cases 1 à 3."],
-  ["Liste","Sols 12 motifs, plafonds 10 : la molette fait défiler la liste, barre fine à droite ; le choix reste juste après défilement."],
-  ["Sols corrigés","Diagonales, chevrons, pavés décalés avec joints, rosace à huit pétales, cabochons (remplacent la vannerie)."],
-  ["Murs corrigés","Appareil avec joints ; soubassement et frise une seule fois en bas du mur, le reste en couleur A."]]}
-,
- {t:"Curseur du carreleur", n:"1.70.3.", l:[
-  ["Glisser","Le curseur de taille suit la souris tant que le clic est maintenu ; l'aperçu suit."],
-  ["Alignement","« Size » et la valeur ne se touchent plus (valeur calée à droite) ; « Cells » et son chiffre centré entre − et +."]]}
-,
- {t:"Mobilier impérial", n:"Nouveau en 1.71.0.", l:[
-  ["Recettes et rendu","Les 7 meubles se fabriquent à l'établi ; textures nettes, orientés vers le joueur, rien ne clignote ni ne se superpose."],
-  ["S'asseoir","Chaise, fauteuil (bas ou haut cliqué), banc : on s'assoit face à l'avant ; accroupi : on pose un bloc au lieu de s'asseoir."],
-  ["Fauteuil et armoire","Posés sur deux blocs ; casser le haut ou le bas casse tout et rend l'objet (rien en créatif)."],
-  ["Banc","Raccords à gauche et à droite, coussin continu, joues aux bouts, pieds au milieu tous les trois blocs."],
-  ["Table","Longue table et grande table (2 x 3) : marbre continu, filet et ceinture seulement sur le pourtour, pieds aux coins."],
-  ["Bureau","Seul : 9 cases ; deux côte à côte : un seul bureau, 18 cases ; un troisième reste seul ; en casser un rend l'autre seul."],
-  ["Étagère","Poser et reprendre sur les 6 places ; objets bien placés quelle que soit l'orientation ; visibles par l'autre joueur ; rendus quand on la casse."],
-  ["Armoire","27 cases, son de porte ; contenu rendu quand on la casse."],
-  ["Livre de l'ingénieur","Chapitre « Mobilier » dans Bâtir, lignes lisibles sans débordement."]]}
+ {t:"Retours de la 1.71.0", n:"Corrigé en 1.71.1.", l:[
+  ["Étagère","Les objets posés montrent leur face vers l'avant, quelle que soit l'orientation de l'étagère."],
+  ["Armoire : écran","9 colonnes × 4 rangées (casques, plastrons, jambières, bottes), silhouettes dans les cases vides, bouton sous chaque colonne, bulle « Swap armor » ; rien ne déborde."],
+  ["Armoire : rangées","Une case n'accepte que sa pièce ; maj + clic sur une pièce de l'inventaire : première case libre de sa rangée."],
+  ["Armoire : échange","Bouton : armure portée ↔ colonne, pièce par pièce ; marche avec un set complet, incomplet ou sans armure ; son d'équipement."],
+  ["Armoire : ancienne","Une armoire posée en 1.71.0 garde son contenu (les objets qui ne sont pas des armures restent, on peut les reprendre)."]]}
 ];
-const CLE = "inspection-airain-1.69.9";   // nouvelle série : seulement les changements depuis la 1.69.6
+const CLE = "inspection-airain-1.71.1";   // nouvelle série : seulement les retours de la 1.71.0
 let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }
 const garder = () => { try { localStorage.setItem(CLE, JSON.stringify(etat)); } catch (e) {} };
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -217,7 +164,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.71.0\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.71.1\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;

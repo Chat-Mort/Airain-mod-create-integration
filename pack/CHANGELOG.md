@@ -5,6 +5,16 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 27 novembre 2026 — version 1.71.1
+
+**Changements**
+- Armoire impériale : 9 sets d'armure (rangées casques, plastrons, jambières, bottes, une case n'accepte que sa pièce) ; un bouton sous chaque colonne échange en un clic l'armure portée et celle de la colonne, pièce par pièce (set complet, incomplet ou sans armure). Malédiction du lien respectée.
+
+**Corrections**
+- Étagère impériale : les objets posés sont tournés vers l'avant.
+
+---
+
 ## 27 novembre 2026 — version 1.71.0
 
 **Ajouts**
