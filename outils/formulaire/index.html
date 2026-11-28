@@ -62,7 +62,7 @@ textarea{grid-column:1/-1;width:100%;min-height:44px;font:16px/1.4 Barlow,sans-s
 <div class="wrap">
  <div class="tete">
   <div>
-   <h1>Inspection en jeu — mod 1.71.3</h1>
+   <h1>Inspection en jeu — mod 1.72.0</h1>
    <p class="intro">Tout ce qui reste à voir en jeu après la reprise des textures et la relecture du code. Pour chaque ligne : <b>OK</b>, <b>À revoir</b> (une note s'ouvre) ou <b>Pas vu</b>. Tes réponses restent dans ce navigateur ; à la fin, copie le résumé et colle-le moi.</p>
   </div>
   <svg class="cadran" viewBox="0 0 170 170" role="img" aria-label="Avancement de l'inspection">
@@ -113,7 +113,12 @@ const S = [
  {t:"Trophées", n:"1.71.3.", l:[
   ["Trophée de vitesse","Tige de breeze sur un socle : Vitesse pour toute l'équipe ; socle sacré : Vitesse II ; particules bleu clair ; bulle d'aide et livre de l'ingénieur."],
   ["Vitesse gravée","Nage nettement plus rapide (+50 %), rien d'autre ne change."],
-  ["Feu gravé","Les coups n'enflamment plus (endermen) ; dans la lave : vue claire à une vingtaine de blocs, nage plus rapide ; aucune icône d'effet en plus."]]}
+  ["Feu gravé","Les coups n'enflamment plus (endermen) ; dans la lave : vue claire à une vingtaine de blocs, nage plus rapide ; aucune icône d'effet en plus."]]},
+ {t:"Petits vitraux", n:"Nouveau en 1.72.0.", l:[
+  ["Recettes","8 vitres teintées + 1 pépite d'airain = 8 vitraux à losanges ; tailleur : losanges ↔ carreaux ; les 16 couleurs."],
+  ["Pose","Panneau fin face au joueur ; contre un vitrail, il reprend son plan ; on voit bien au travers."],
+  ["Raccords","Baie de plusieurs couleurs : cadre doré seulement sur le pourtour, aucune couture ni tranche visible entre deux vitraux."],
+  ["Rendu","Verre et plombs nets de près comme de loin, rien ne clignote ; dans l'inventaire : panneau encadré."]]}
 ];
 const CLE = "inspection-airain-1.71.1";   // nouvelle série : seulement les retours de la 1.71.0
 let etat = {}; try { etat = JSON.parse(localStorage.getItem(CLE) || "{}"); } catch (e) { etat = {}; }
@@ -173,7 +178,7 @@ function resume() {
   else if (e.n && e.n.trim()) notes.push(`- [${s.t}] ${l[0]} : ${e.n.trim()}`);
   if (!e.v || e.v === "nv") nv.push(`- [${s.t}] ${l[0]}`);
  }));
- let t = "Inspection en jeu, mod 1.71.3\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
+ let t = "Inspection en jeu, mod 1.72.0\n\nÀ revoir :\n" + (ko.length ? ko.join("\n") : "- rien");
  if (notes.length) t += "\n\nRemarques sur des lignes OK :\n" + notes.join("\n");
  t += "\n\nPas encore vu :\n" + (nv.length ? nv.join("\n") : "- rien");
  return t;

@@ -5,6 +5,14 @@ Une entrée par jour, la plus récente en haut. Les numéros sont ceux du mod du
 
 ---
 
+## 28 novembre 2026 — version 1.72.0
+
+**Ajouts**
+- Petits vitraux : 16 couleurs, plombs à losanges ou à carreaux, verre teinté légèrement texturé qui laisse voir au travers. Panneau fin posé face au joueur ; les vitraux voisins dans le même plan se raccordent, de n'importe quelle couleur, et le cadre doré ne reste que sur le pourtour de la baie.
+- Recettes : 8 vitres teintées autour d'une pépite d'airain donnent 8 vitraux à losanges ; tailleur de pierre : losanges ↔ carreaux. Chapitre « Vitraux » dans le livre de l'ingénieur.
+
+---
+
 ## 28 novembre 2026 — version 1.71.3
 
 **Ajouts**
