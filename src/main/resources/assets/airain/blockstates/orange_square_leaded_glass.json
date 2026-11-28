@@ -1,0 +1,97 @@
+{
+ "multipart": [
+  {
+   "when": {
+    "axis": "z"
+   },
+   "apply": {
+    "model": "airain:block/orange_square_leaded_glass"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "up": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_up"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "down": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_down"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "left": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_left"
+   }
+  },
+  {
+   "when": {
+    "axis": "z",
+    "right": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_right"
+   }
+  },
+  {
+   "when": {
+    "axis": "x"
+   },
+   "apply": {
+    "model": "airain:block/orange_square_leaded_glass",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "up": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_up",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "down": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_down",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "left": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_left",
+    "y": 90
+   }
+  },
+  {
+   "when": {
+    "axis": "x",
+    "right": "false"
+   },
+   "apply": {
+    "model": "airain:block/leaded_glass_frame_right",
+    "y": 90
+   }
+  }
+ ]
+}

@@ -57,7 +57,7 @@ public class LivreIngenieurScreen extends Screen {
 		{{"style_imperial", "airain:chiseled_airain"}, {"materiaux", "airain:chiseled_white_marble"}, {"passerelles", "airain:airain_catwalk"},
 		 {"atelier", "airain:airain_workbench"}, {"charpente", "airain:airain_beam"}, {"marquages", "airain:yellow_hazard_stripes"},
 		 {"tableau_emaille", "airain:enamel_board"}, {"rayonnage", "airain:airain_rack"}, {"cloisons", "airain:airain_mesh_fence"},
-		 {"mobilier", "airain:command_armchair"}}};   // 1.71 : mobilier impérial
+		 {"mobilier", "airain:command_armchair"}, {"vitraux", "airain:red_diamond_leaded_glass"}}};   // 1.71 : mobilier ; 1.72 : vitraux
 	/** Chapitres à la suite, et la section de chacun. */
 	private static final List<String[]> TOUS = new ArrayList<>();
 	private static final List<Integer> SECTION_DE = new ArrayList<>();

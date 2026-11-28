@@ -1,0 +1,82 @@
+{
+ "parent": "block/block",
+ "render_type": "minecraft:translucent",
+ "textures": {
+  "verre": "airain:block/leaded_glass/white_square",
+  "particle": "airain:block/leaded_glass/white_square"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    7
+   ],
+   "to": [
+    16,
+    16,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#verre",
+     "uv": [
+      7,
+      0,
+      9,
+      16
+     ],
+     "cullface": "west"
+    },
+    "east": {
+     "texture": "#verre",
+     "uv": [
+      7,
+      0,
+      9,
+      16
+     ],
+     "cullface": "east"
+    },
+    "up": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      7,
+      16,
+      9
+     ],
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      7,
+      16,
+      9
+     ],
+     "cullface": "down"
+    }
+   }
+  }
+ ]
+}

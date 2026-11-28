@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "building",
+ "group": "leaded_glass",
+ "pattern": [
+  "GGG",
+  "GNG",
+  "GGG"
+ ],
+ "key": {
+  "G": {
+   "item": "minecraft:light_gray_stained_glass_pane"
+  },
+  "N": {
+   "item": "airain:airain_nugget"
+  }
+ },
+ "result": {
+  "id": "airain:light_gray_diamond_leaded_glass",
+  "count": 8
+ }
+}

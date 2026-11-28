@@ -1,0 +1,355 @@
+{
+ "parent": "block/block",
+ "render_type": "minecraft:translucent",
+ "textures": {
+  "verre": "airain:block/leaded_glass/cyan_diamond",
+  "particle": "airain:block/leaded_glass/cyan_diamond",
+  "cadre": "airain:block/leaded_glass/frame"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    7
+   ],
+   "to": [
+    16,
+    16,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#verre",
+     "uv": [
+      7,
+      0,
+      9,
+      16
+     ],
+     "cullface": "west"
+    },
+    "east": {
+     "texture": "#verre",
+     "uv": [
+      7,
+      0,
+      9,
+      16
+     ],
+     "cullface": "east"
+    },
+    "up": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      7,
+      16,
+      9
+     ],
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#verre",
+     "uv": [
+      0,
+      7,
+      16,
+      9
+     ],
+     "cullface": "down"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    14,
+    6.9
+   ],
+   "to": [
+    16,
+    16,
+    9.1
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      0,
+      16,
+      2
+     ]
+    },
+    "south": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      0,
+      16,
+      2
+     ]
+    },
+    "west": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      2
+     ]
+    },
+    "east": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      2
+     ]
+    },
+    "up": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      16,
+      9.1
+     ]
+    },
+    "down": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      16,
+      9.1
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    0,
+    6.9
+   ],
+   "to": [
+    16,
+    2,
+    9.1
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      14,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      14,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      14,
+      9.1,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      14,
+      9.1,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      16,
+      9.1
+     ]
+    },
+    "down": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      16,
+      9.1
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    0,
+    6.9
+   ],
+   "to": [
+    2,
+    16,
+    9.1
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cadre",
+     "uv": [
+      14,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      0,
+      2,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      2,
+      9.1
+     ]
+    },
+    "down": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      2,
+      9.1
+     ]
+    }
+   }
+  },
+  {
+   "from": [
+    14,
+    0,
+    6.9
+   ],
+   "to": [
+    16,
+    16,
+    9.1
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      0,
+      2,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#cadre",
+     "uv": [
+      14,
+      0,
+      16,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#cadre",
+     "uv": [
+      14,
+      6.9,
+      16,
+      9.1
+     ]
+    },
+    "down": {
+     "texture": "#cadre",
+     "uv": [
+      14,
+      6.9,
+      16,
+      9.1
+     ]
+    }
+   }
+  }
+ ]
+}

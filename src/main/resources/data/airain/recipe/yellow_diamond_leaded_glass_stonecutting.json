@@ -1,0 +1,10 @@
+{
+ "type": "minecraft:stonecutting",
+ "ingredient": {
+  "item": "airain:yellow_square_leaded_glass"
+ },
+ "result": {
+  "id": "airain:yellow_diamond_leaded_glass",
+  "count": 1
+ }
+}

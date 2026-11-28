@@ -1,0 +1,78 @@
+{
+ "parent": "block/block",
+ "render_type": "minecraft:translucent",
+ "textures": {
+  "cadre": "airain:block/leaded_glass/frame",
+  "particle": "airain:block/leaded_glass/frame"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    6.9
+   ],
+   "to": [
+    2,
+    16,
+    9.1
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cadre",
+     "uv": [
+      14,
+      0,
+      16,
+      16
+     ]
+    },
+    "south": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      0,
+      2,
+      16
+     ]
+    },
+    "west": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      16
+     ]
+    },
+    "east": {
+     "texture": "#cadre",
+     "uv": [
+      6.9,
+      0,
+      9.1,
+      16
+     ]
+    },
+    "up": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      2,
+      9.1
+     ]
+    },
+    "down": {
+     "texture": "#cadre",
+     "uv": [
+      0,
+      6.9,
+      2,
+      9.1
+     ]
+    }
+   }
+  }
+ ]
+}
